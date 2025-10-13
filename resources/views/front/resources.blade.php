@@ -91,6 +91,7 @@
             font-weight: 600;
             text-transform: uppercase;
             z-index: 1;
+    color: var(--dark-blue);
         }
         
         .resource-content {
@@ -102,6 +103,7 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             line-height: 1.3;
+    color: var(--dark-blue);
         }
         
         .resource-meta {
@@ -113,7 +115,7 @@
         }
         
         .resource-excerpt {
-            color: var(--gray-light);
+            color: var(--gray-600);
             line-height: 1.6;
             margin-bottom: 1rem;
         }
@@ -170,6 +172,9 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
+        }
+        .download-card p {
+            color: var(--gray-300);
         }
         
         @keyframes rotate {
@@ -255,7 +260,7 @@
     <section class="hero" style="padding: 120px 0 60px; background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
             <div class="text-center">
-                <h1 class="mb-3 fade-in">
+                <h1 class="mb-3 color-dark-blue fade-in">
                     Resources & <span class="gradient-text">Insights</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
@@ -474,8 +479,8 @@
         <div class="container text-center">
             <div class="section-header">
                 <div class="section-subtitle fade-in">STAY UPDATED</div>
-                <h2 class="section-title fade-in">Get Weekly Insights</h2>
-                <p class="section-description fade-in">
+                <h2 class="section-title color-gray-100 fade-in">Get Weekly Insights</h2>
+                <p class="section-description color-gray-600 fade-in">
                     Join 5,000+ marketers receiving our weekly newsletter with the latest<br>
                     TikTok trends, case studies, and platform updates
                 </p>
@@ -495,31 +500,31 @@
     <!-- Popular Topics -->
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
-            <h2 class="text-center mb-4">Popular Topics</h2>
+            <h2 class="text-center color-dark-blue mb-4">Popular Topics</h2>
             
             <div class="d-flex flex-wrap justify-center gap-2">
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #TikTokMarketing
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #InfluencerROI
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #MicroInfluencers
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #ContentStrategy
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #CampaignAnalytics
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #ViralMarketing
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #BrandCollabs
                 </a>
-                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray); border: 1px solid #E0E0E0;">
+                <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #TikTokTrends
                 </a>
             </div>

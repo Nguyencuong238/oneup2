@@ -97,10 +97,11 @@
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--dark-blue);
         }
         
         .help-description {
-            color: var(--gray-light);
+            color: var(--gray-600);
             font-size: 14px;
         }
         
@@ -135,6 +136,9 @@
         .faq-question:hover {
             background: linear-gradient(90deg, rgba(255, 0, 80, 0.05) 0%, rgba(0, 242, 234, 0.05) 100%);
         }
+        .faq-question span {
+            color: var(--dark-blue)
+        }
         
         .faq-icon {
             width: 24px;
@@ -164,6 +168,9 @@
         .faq-item.active .faq-answer {
             max-height: 500px;
             padding: 0 1.5rem 1.5rem;
+        }
+        .faq-answer p, .faq-answer li {
+            color: var(--gray-600);
         }
         
         .contact-cards {
@@ -256,10 +263,11 @@
         .video-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--dark-blue);
         }
         
         .video-duration {
-            color: var(--gray-light);
+            color: var(--gray-600);
             font-size: 14px;
         }
         
@@ -291,6 +299,9 @@
         .quick-link:hover {
             background: rgba(255, 0, 80, 0.1);
             padding-left: 1rem;
+        }
+        .contact-cards h3 {
+            color: var(--dark-blue);
         }
     </style>
 @endsection
@@ -373,7 +384,7 @@
     <!-- Popular Articles -->
     <section class="section" style="background: #F8F9FA;">
         <div class="container">
-            <h2 class="text-center mb-4">Popular Help Articles</h2>
+            <h2 class="text-center color-dark-blue mb-4">Popular Help Articles</h2>
             
             <div class="faq-section">
                 <div class="faq-item">
@@ -520,8 +531,8 @@
     <!-- Contact Support -->
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
-            <h2 class="text-center mb-3">Still Need Help?</h2>
-            <p class="text-center mb-4" style="color: var(--gray-light);">
+            <h2 class="text-center color-dark-blue mb-3">Still Need Help?</h2>
+            <p class="text-center mb-4" style="color: var(--gray-600);">
                 Our support team is here to assist you
             </p>
             
@@ -529,7 +540,7 @@
                 <div class="contact-card fade-in">
                     <div class="contact-icon">💬</div>
                     <h3>Live Chat</h3>
-                    <p style="color: var(--gray-light); margin: 1rem 0;">
+                    <p style="color: var(--gray-600); margin: 1rem 0;">
                         Chat with our support team in real-time
                     </p>
                     <p style="color: var(--success); font-weight: 600; margin-bottom: 1rem;">
@@ -541,10 +552,10 @@
                 <div class="contact-card fade-in" style="animation-delay: 0.1s;">
                     <div class="contact-icon">✉️</div>
                     <h3>Email Support</h3>
-                    <p style="color: var(--gray-light); margin: 1rem 0;">
+                    <p style="color: var(--gray-600); margin: 1rem 0;">
                         Send us a detailed message
                     </p>
-                    <p style="font-weight: 600; margin-bottom: 1rem;">
+                    <p style="font-weight: 600; margin-bottom: 1rem;color: var(--gray-500);">
                         support@oneup.vn
                     </p>
                     <button class="btn btn-outline">Send Email</button>
@@ -553,10 +564,10 @@
                 <div class="contact-card fade-in" style="animation-delay: 0.2s;">
                     <div class="contact-icon">📞</div>
                     <h3>Phone Support</h3>
-                    <p style="color: var(--gray-light); margin: 1rem 0;">
+                    <p style="color: var(--gray-600); margin: 1rem 0;">
                         Speak directly with our team
                     </p>
-                    <p style="font-weight: 600; margin-bottom: 1rem;">
+                    <p style="font-weight: 600; margin-bottom: 1rem;color: var(--gray-500);">
                         +84 28 1234 5678
                     </p>
                     <button class="btn btn-outline">Call Now</button>
@@ -569,7 +580,7 @@
     <section class="section">
         <div class="container">
             <div class="quick-links">
-                <h3 class="mb-3">Quick Links</h3>
+                <h3 class="mb-3 color-dark-blue">Quick Links</h3>
                 <div class="quick-links-grid">
                     <a href="#" class="quick-link">
                         <span>📚</span> Documentation

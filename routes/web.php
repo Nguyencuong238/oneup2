@@ -30,6 +30,10 @@ use App\Http\Middleware\IsAdmin;
 |
 */
 
+Route::get('dang-nhap', [HomeController::class, 'login'])->name('user.login')->middleware('guest');
+Route::get('dang-ky', [HomeController::class, 'register'])->name('user.register')->middleware('guest');
+Route::get('quen-mat-khau', [HomeController::class, 'forgotPassword'])->name('user.forgotPassword');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('gioi-thieu', [HomeController::class, 'about'])->name('about');

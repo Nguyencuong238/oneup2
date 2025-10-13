@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="Sign up for OneUp KOL Analytics Platform">
-    <title>Sign Up - OneUp KOL Analytics</title>
+    <title>Đăng ký - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -147,7 +147,7 @@
             display: none;
         }
 
-        .form-input.error+.form-error {
+        .form-error.error {
             display: block;
         }
 
@@ -429,63 +429,59 @@
                 <div class="auth-logo-text">OneUp KOL</div>
             </div>
 
-            <h1 class="auth-title">Create Your Account</h1>
-            <p class="auth-subtitle">Start your 14-day free trial, no credit card required</p>
+            <h1 class="auth-title">Tạo tài khoản của bạn</h1>
+            <p class="auth-subtitle">Bắt đầu dùng thử miễn phí 14 ngày, không cần thẻ tín dụng</p>
 
-            <form id="signupForm">
+            <form id="signupForm" method="POST" action="{{ route('register') }}">
+                @csrf
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label" for="firstName">
-                            First Name <span class="required">*</span>
+                        <label class="form-label" for="fullName">
+                            Tên <span class="required">*</span>
                         </label>
-                        <input type="text" id="firstName" class="form-input" placeholder="John" required>
-                        <span class="form-error">First name is required</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="lastName">
-                            Last Name <span class="required">*</span>
-                        </label>
-                        <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
-                        <span class="form-error">Last name is required</span>
+                        <input type="text" name="name" id="fullName" class="form-input" placeholder="Nhập tên"
+                            required>
+                        <span class="form-error">Tên là bắt buộc</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="email">
-                        Email Address <span class="required">*</span>
+                        Email <span class="required">*</span>
                     </label>
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                         </svg>
-                        <input type="email" id="email" class="form-input" placeholder="john@company.com" required>
+                        <input type="email" name="email" id="email" class="form-input" placeholder="Nhập email"
+                            required>
                     </div>
-                    <span class="form-error">Please enter a valid email address</span>
+                    <span class="form-error">Vui lòng nhập địa chỉ email hợp lệ</span>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="company">Company Name</label>
+                    <label class="form-label" for="company">Tên công ty</label>
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
-                        <input type="text" id="company" class="form-input" placeholder="Your Company">
+                        <input type="text" name="company" id="company" class="form-input" placeholder="Tên công ty">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="password">
-                        Password <span class="required">*</span>
+                        Mật khẩu <span class="required">*</span>
                     </label>
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        <input type="password" id="password" class="form-input" placeholder="Create a password" required>
+                        <input type="password" name="password" id="password" class="form-input" required
+                            placeholder="Nhập mật khẩu">
                         <button type="button" class="password-toggle" onclick="togglePassword('password')">
                             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -499,28 +495,52 @@
                         <div class="password-strength-bar" id="passwordStrength"></div>
                     </div>
                     <div class="password-requirements">
-                        Must be at least 8 characters with uppercase, lowercase, and numbers
+                        Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường và số
                     </div>
-                    <span class="form-error">Password does not meet requirements</span>
+                    <span class="form-error">Mật khẩu chưa đúng định dạng yêu cầu</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">
+                        Nhập lại mật khẩu <span class="required">*</span>
+                    </label>
+                    <div class="input-group">
+                        <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-input"
+                            placeholder="Nhập lại mật khẩu" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('password_confirmation')">
+                            <svg width="20" height="20" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="form-error">Mật khẩu nhập lại không khớp</span>
                 </div>
 
                 <div class="checkbox-group">
                     <input type="checkbox" id="terms" name="terms" required>
                     <label for="terms">
-                        I agree to the <a href="#" class="link">Terms of Service</a> and
-                        <a href="#" class="link">Privacy Policy</a>
+                        Tôi đồng ý <a href="#" class="link">Điều khoản dịch vụ</a> và
+                        <a href="#" class="link">Chính sách quyền riêng tư</a>
                     </label>
                 </div>
 
                 <div class="checkbox-group">
                     <input type="checkbox" id="newsletter" name="newsletter">
                     <label for="newsletter">
-                        Send me product updates and marketing communications
+                        Gửi cho tôi các bản cập nhật sản phẩm và thông tin tiếp thị
                     </label>
                 </div>
 
-                <button type="submit" class="btn-auth btn-auth-primary">
-                    Create Account
+                <button type="submit" class="btn-auth btn-auth-primary" style="margin-top: 30px">
+                    Tạo tài khoản
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -530,7 +550,7 @@
             </form>
 
             <div class="divider">
-                <span>Or sign up with</span>
+                <span>Hoặc đăng nhập với</span>
             </div>
 
             <div class="social-login">
@@ -561,37 +581,36 @@
             </div>
 
             <div class="signup-prompt">
-                Already have an account? <a href="{{route('login')}}" class="link">Sign in</a>
+                Bạn đã có tài khoản? <a href="{{ route('user.login') }}" class="link">Đăng nhập</a>
             </div>
         </div>
 
         <!-- Right Side - Visual -->
         <div class="auth-right">
             <div class="auth-visual">
-                <h2 style="font-size: 28px; margin-bottom: 1rem;">Start Your Free Trial</h2>
+                <h2 style="font-size: 28px; margin-bottom: 1rem;">Bắt đầu dùng thử miễn phí</h2>
                 <p style="font-size: 16px; opacity: 0.9; margin-bottom: 2rem;">
-                    No credit card required • 14 days free • Cancel anytime
+                    Không cần thẻ tín dụng • Dùng thử miễn phí 14 ngày • Hủy bất kỳ lúc nào
                 </p>
 
 
-
                 <div style="margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">What's included:</h3>
+                    <h3 style="margin-bottom: 1rem;">Bao gồm:</h3>
                     <ul style="list-style: none;">
                         <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: var(--success);">✓</span> Access to 10,000+ verified KOLs
+                            <span style="color: var(--success);">✓</span> Tiếp cận hơn 10.000 KOL uy tín
                         </li>
                         <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: var(--success);">✓</span> Real-time analytics dashboard
+                            <span style="color: var(--success);">✓</span> Bảng thống kê theo thời gian thực
                         </li>
                         <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: var(--success);">✓</span> AI-powered recommendations
+                            <span style="color: var(--success);">✓</span> Gợi ý thông minh từ AI
                         </li>
                         <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: var(--success);">✓</span> Campaign ROI tracking
+                            <span style="color: var(--success);">✓</span> Theo dõi ROI của chiến dịch
                         </li>
                         <li style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="color: var(--success);">✓</span> Priority support
+                            <span style="color: var(--success);">✓</span> Hỗ trợ ưu tiên
                         </li>
                     </ul>
                 </div>
@@ -648,27 +667,26 @@
             e.preventDefault();
 
             // Get form values
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
+            const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const re_password = document.getElementById('password_confirmation').value;
             const terms = document.getElementById('terms').checked;
 
             // Reset error states
             document.querySelectorAll('.form-input').forEach(input => {
                 input.classList.remove('error');
             });
+            
+            document.querySelectorAll('.form-error').forEach(element => {
+                element.classList.remove('error');
+            });
 
             // Basic validation
             let hasError = false;
 
-            if (!firstName) {
-                document.getElementById('firstName').classList.add('error');
-                hasError = true;
-            }
-
-            if (!lastName) {
-                document.getElementById('lastName').classList.add('error');
+            if (!fullName) {
+                document.getElementById('fullName').classList.add('error');
                 hasError = true;
             }
 
@@ -678,12 +696,21 @@
             }
 
             if (!password || password.length < 8) {
-                document.getElementById('password').classList.add('error');
+                var input = document.getElementById('password');
+                input.classList.add('error');
+                input.closest('.form-group').querySelector('.form-error').classList.add('error');
+                hasError = true;
+            }
+
+            if (password != re_password) {
+                var input = document.getElementById('password_confirmation');
+                input.classList.add('error');
+                input.closest('.form-group').querySelector('.form-error').classList.add('error');
                 hasError = true;
             }
 
             if (!terms) {
-                alert('Please accept the terms and conditions');
+                alert('Vui lòng chấp nhận các điều khoản và điều kiện');
                 hasError = true;
             }
 
@@ -691,15 +718,11 @@
 
             // Show loading state
             const submitBtn = e.target.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<span class="spinner"></span> Creating account...';
+            submitBtn.innerHTML = '<span class="spinner"></span> Đang tạo tài khoản...';
             submitBtn.disabled = true;
 
-            // Simulate API call
-            setTimeout(() => {
-                // Redirect to dashboard or verification page
-                alert('Account created successfully! Please check your email to verify.');
-                window.location.href = '{{route('login')}}';
-            }, 2000);
+
+            document.getElementById('signupForm').submit();
         });
 
         // Remove error state on input
@@ -707,6 +730,10 @@
             input.addEventListener('input', function() {
                 this.classList.remove('error');
             });
+        });
+
+        document.querySelectorAll('.form-error').forEach(element => {
+            element.classList.remove('error');
         });
     </script>
 @endsection

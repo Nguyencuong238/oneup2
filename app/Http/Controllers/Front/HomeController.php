@@ -97,4 +97,19 @@ class HomeController extends Controller
 
         return view('front.kols');
     }
+
+    public function login(Request $req)
+    {
+        return view('front.auth.login');
+    }
+
+    public function register(Request $req)
+    {
+        return view('front.auth.register');
+    }
+
+    public function forgotPassword(Request $req)
+    {
+        return view('front.auth.forgot_password');
+    }
 }

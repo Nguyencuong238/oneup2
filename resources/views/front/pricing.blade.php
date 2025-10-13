@@ -62,6 +62,7 @@
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid #E0E0E0;
+            color: var(--dark-blue);
         }
         
         .comparison-table th {
@@ -99,6 +100,7 @@
             cursor: pointer;
             transition: background 0.3s;
             font-weight: 600;
+    color: var(--dark-blue);
         }
         
         .faq-question:hover {
@@ -118,7 +120,9 @@
             max-height: 500px;
             padding: 0 1.5rem 1.5rem;
         }
-        
+        .faq-answer p {
+            color: var(--gray-700)
+        }
         .faq-icon {
             transition: transform 0.3s;
             color: var(--gray-light);
@@ -205,6 +209,12 @@
             resize: vertical;
             font-family: inherit;
         }
+        .pricing-name {
+            color: var(--gray-100);
+        }
+        .pricing-features li {
+            color: var(--gray-400)
+        }
     </style>
 @endsection
 
@@ -214,7 +224,7 @@
         <div class="container">
             <div class="text-center">
                 <div class="badge badge-success mb-3 fade-in">💰 Save 20% with Annual Plans</div>
-                <h1 class="mb-3 fade-in">
+                <h1 class="mb-3 color-dark-blue fade-in">
                     Simple, Transparent <span class="gradient-text">Pricing</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
@@ -223,11 +233,11 @@
                 
                 <!-- Pricing Toggle -->
                 <div class="pricing-toggle fade-in">
-                    <span>Monthly</span>
+                    <span class="color-dark-blue">Monthly</span>
                     <div class="toggle-switch" id="billingToggle">
                         <div class="toggle-slider"></div>
                     </div>
-                    <span>Annual <span class="badge badge-success">-20%</span></span>
+                    <span class="color-dark-blue">Annual <span class="badge badge-success">-20%</span></span>
                 </div>
             </div>
         </div>
@@ -255,7 +265,7 @@
                         <li>Email support</li>
                         <li>7-day data history</li>
                     </ul>
-                    <a href="{{route('register', ['plan' => 'starter'])}}" class="btn btn-outline btn-large" style="width: 100%;">
+                    <a href="{{route('user.register', ['plan' => 'starter'])}}" class="btn btn-outline btn-large" style="width: 100%;">
                         Start Free Trial
                     </a>
                 </div>
@@ -280,7 +290,7 @@
                         <li>Custom reports</li>
                         <li>Team collaboration (5 users)</li>
                     </ul>
-                    <a href="{{route('register', ['plan' => 'professional'])}}" class="btn btn-primary btn-large" style="width: 100%;">
+                    <a href="{{route('user.register', ['plan' => 'professional'])}}" class="btn btn-primary btn-large" style="width: 100%;">
                         Start Free Trial
                     </a>
                 </div>
@@ -313,7 +323,7 @@
     <!-- Feature Comparison -->
     <section class="section" style="background: #F8F9FA;">
         <div class="container">
-            <h2 class="text-center mb-4">Detailed Feature Comparison</h2>
+            <h2 class="text-center color-dark-blue mb-4">Detailed Feature Comparison</h2>
             
             <div style="overflow-x: auto;">
                 <table class="comparison-table">
@@ -478,12 +488,12 @@
     <!-- CTA Section -->
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container text-center">
-            <h2 class="mb-3">Ready to Get Started?</h2>
-            <p class="mb-4" style="font-size: 18px; color: var(--gray-light);">
+            <h2 class="mb-3 color-dark-blue">Ready to Get Started?</h2>
+            <p class="mb-4 color-gray-600" style="font-size: 18px;">
                 Join 500+ brands optimizing their TikTok influencer campaigns
             </p>
             <div class="d-flex gap-2 justify-center">
-                <a href="{{route('register')}}" class="btn btn-primary btn-large">
+                <a href="{{route('user.register')}}" class="btn btn-primary btn-large">
                     Start 14-Day Free Trial
                 </a>
                 <button class="btn btn-outline btn-large" onclick="openContactModal()">

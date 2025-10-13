@@ -16,6 +16,123 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <style>
+        .color-dark-blue {
+            color: var(--dark-blue);
+        }
+
+        .color-dark {
+            color: var(--dark);
+        }
+
+        .color-gray-100 {
+            color: var(--gray-100);
+        }
+
+        .color-gray-200 {
+            color: var(--gray-200);
+        }
+
+        .color-gray-300 {
+            color: var(--gray-300);
+        }
+
+        .color-gray-400 {
+            color: var(--gray-400);
+        }
+
+        .color-gray-500 {
+            color: var(--gray-500);
+        }
+
+        .color-gray-600 {
+            color: var(--gray-600);
+        }
+
+        .color-gray-700 {
+            color: var(--gray-700);
+        }
+
+        .color-gray-800 {
+            color: var(--gray-800);
+        }
+
+        .color-gray-900 {
+            color: var(--gray-900);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .user-profile:hover {
+            background: var(--gray-200);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        .user-dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-info {
+            position: absolute;
+            z-index: 100;
+        }
+
+        .user-dropdown-container .dropdown-info {
+            display: none;
+            background: #fff;
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 2px 3px 3px 1px rgb(99 103 109 / 50%);
+            transition: all 0.3s ease;
+        }
+
+        .user-dropdown-container.active .dropdown-info {
+            display: block;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .dropdown-info .nav-link {
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .dropdown-info .nav-link:hover::after {
+display: none;
+        }
+    </style>
     @yield('css')
 </head>
 
@@ -29,14 +146,50 @@
             </a>
 
             <div class="nav-links">
-                <a href="/" class="nav-link @if(request()->routeIs('home')) active @endif">Home</a>
-                <a href="{{route('kols')}}" class="nav-link @if(request()->routeIs('kols')) active @endif">KOLs</a>
-                <a href="{{route('about')}}" class="nav-link @if(request()->routeIs('about')) active @endif">About</a>
-                <a href="{{route('pricing')}}" class="nav-link @if(request()->routeIs('pricing')) active @endif">Pricing</a>
-                <a href="{{route('resources')}}" class="nav-link @if(request()->routeIs('resources')) active @endif">Resources</a>
-                <a href="{{route('help')}}" class="nav-link @if(request()->routeIs('help')) active @endif">Help</a>
-                <a href="{{route('login')}}" class="btn btn-outline btn-small">Login</a>
-                <a href="{{route('register')}}" class="btn btn-primary btn-small">Get Started</a>
+                <a href="/" class="nav-link @if (request()->routeIs('home')) active @endif">Home</a>
+                <a href="{{ route('kols') }}" class="nav-link @if (request()->routeIs('kols')) active @endif">KOLs</a>
+                <a href="{{ route('about') }}"
+                    class="nav-link @if (request()->routeIs('about')) active @endif">About</a>
+                <a href="{{ route('pricing') }}"
+                    class="nav-link @if (request()->routeIs('pricing')) active @endif">Pricing</a>
+                <a href="{{ route('resources') }}"
+                    class="nav-link @if (request()->routeIs('resources')) active @endif">Resources</a>
+                <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Help</a>
+                @auth()
+                    <div class="user-dropdown-container">
+                        <div class="user-profile" onclick="toggleUser(this)">
+                            @php
+                                $auth = auth()->user();
+                                $name = $auth->name;
+                                $role = $auth->getRoleNames()->first();
+                                $userAvatar = getFirstCharacter($name);
+                            @endphp
+                            <div class="user-avatar">{{ getFirstCharacter($name) }}</div>
+                            <div class="user-info">
+                                <div class="user-name">{{ $name }}</div>
+                            </div>
+                            <svg width="20" height="20" fill="#475569" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="dropdown-info">
+                            <a href="{{ route('user.dashboard') }}" class="nav-link">Dashboard</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="{{ route('logout') }}" class="nav-link"
+                                    onclick="event.preventDefault();this.closest('form').submit();">
+                                    <i class="icon-switch2"></i> {{ __('Log Out') }}
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('user.login') }}" class="btn btn-outline btn-small">{{ __('Log In') }}</a>
+                    <a href="{{ route('user.register') }}" class="btn btn-primary btn-small">Get Started</a>
+                @endauth
+
             </div>
 
             <div class="menu-toggle">
@@ -127,7 +280,16 @@
                 }
             });
         });
+
+        function toggleUser(element) {
+            const parentElement = element.parentElement;
+
+
+            // Toggle current FAQ
+            parentElement.classList.toggle('active');
+        }
     </script>
+    @yield('js')
 </body>
 
 </html>

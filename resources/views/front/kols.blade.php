@@ -427,7 +427,7 @@
         }
         
         .results-count strong {
-            color: var(--dark-blue);
+            color: var(--gray-100);
             font-weight: 600;
         }
         
@@ -562,7 +562,7 @@
     <section class="hero" style="padding: 120px 0 60px; background: linear-gradient(135deg, var(--primary-lighter) 0%, white 100%);">
         <div class="container">
             <div class="text-center">
-                <h1 class="mb-3 fade-in">
+                <h1 class="mb-3 fade-in color-dark-blue">
                     Discover <span class="gradient-text">10,000+ TikTok KOLs</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
@@ -688,7 +688,7 @@
             </div>
 
             <!-- Active Filters (shown when filters are applied) -->
-            <div class="active-filters" style="display: none;">
+            {{-- <div class="active-filters" style="display: none;">
                 <span style="font-weight: 600; color: var(--dark-blue);">Active Filters:</span>
                 <span class="active-filter-tag">
                     Fashion & Style
@@ -703,7 +703,7 @@
                     <button onclick="removeFilter(this)">×</button>
                 </span>
                 <button class="btn btn-outline btn-small" style="margin-left: auto;">Clear All</button>
-            </div>
+            </div> --}}
 
             <!-- Results Header -->
             <div class="results-header fade-in">
