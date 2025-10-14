@@ -17,50 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        .color-dark-blue {
-            color: var(--dark-blue);
-        }
-
-        .color-dark {
-            color: var(--dark);
-        }
-
-        .color-gray-100 {
-            color: var(--gray-100);
-        }
-
-        .color-gray-200 {
-            color: var(--gray-200);
-        }
-
-        .color-gray-300 {
-            color: var(--gray-300);
-        }
-
-        .color-gray-400 {
-            color: var(--gray-400);
-        }
-
-        .color-gray-500 {
-            color: var(--gray-500);
-        }
-
-        .color-gray-600 {
-            color: var(--gray-600);
-        }
-
-        .color-gray-700 {
-            color: var(--gray-700);
-        }
-
-        .color-gray-800 {
-            color: var(--gray-800);
-        }
-
-        .color-gray-900 {
-            color: var(--gray-900);
-        }
-
         .user-profile {
             display: flex;
             align-items: center;

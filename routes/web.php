@@ -58,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('user/report', [FrontUserController::class, 'report'])->name('user.report');
 	Route::get('user/setting', [FrontUserController::class, 'setting'])->name('user.setting');
 	Route::get('user/billing', [FrontUserController::class, 'billing'])->name('user.billing');
-	Route::get('user/kol-profile', [FrontUserController::class, 'kolProfile'])->name('user.kolProfile');
+	Route::get('user/kol-profile/{id}', [FrontUserController::class, 'kolProfile'])->name('user.kolProfile');
 	Route::get('user/leaderboard', [FrontUserController::class, 'leaderboard'])->name('user.leaderboard');
 });
 Route::prefix('backend')

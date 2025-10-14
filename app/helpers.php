@@ -112,3 +112,16 @@ if (!function_exists('getFirstCharacter')) {
             ->implode('');
     }
 }
+
+function formatDisplayNumber($number) {
+    if ($number >= 1000000) {
+        // Trên 1 triệu → M
+        return round($number / 1000000, 1) . 'M';
+    } elseif ($number >= 1000) {
+        // Trên 1 nghìn → K
+        return round($number / 1000, 1) . 'K';
+    } else {
+        // Dưới 1000 → giữ nguyên
+        return (string)$number;
+    }
+}

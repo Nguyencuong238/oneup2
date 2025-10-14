@@ -8,6 +8,7 @@
     @yield('meta')
 
     <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
     <!-- Fonts -->
@@ -15,6 +16,122 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        body {
+            background: #F8F9FA;
+            min-height: 100vh;
+        }
+
+        .dashboard-layout {
+            display: block;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-right: 1px solid var(--gray-200);
+            padding: 1.5rem 0;
+            position: fixed;
+            height: 100vh;
+            width: 260px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .sidebar-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+
+        .sidebar-logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .sidebar-nav {
+            padding: 0 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            border-radius: 10px;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .nav-item.active {
+            background: var(--primary-lighter);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .nav-badge {
+            margin-left: auto;
+            padding: 2px 8px;
+            background: var(--danger);
+            color: white;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
         .user-profile {
             display: flex;
             align-items: center;
@@ -34,7 +151,7 @@
             width: 40px;
             height: 40px;
             background: var(--gradient-blue);
-            border-radius: 50%;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -48,9 +165,15 @@
 
         .user-name {
             font-weight: 600;
-            color: var(--gray-600);
+            color: var(--dark-blue);
             font-size: 14px;
         }
+
+        .user-role {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
 
         .sidebar-footer .dropdown-info {
             display: none;
@@ -172,7 +295,7 @@
                     <div class="user-avatar">{{ getFirstCharacter($name) }}</div>
                     <div class="user-info">
                         <div class="user-name">{{ $name }}</div>
-                        <div class="user-role">{{ $role }}</div>
+                        <div class="user-role color-gray-600">{{ $role ?? 'User' }}</div>
                     </div>
                     <svg width="20" height="20" fill="" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"

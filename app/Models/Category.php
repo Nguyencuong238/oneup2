@@ -41,21 +41,6 @@ class Category extends Model
         return $tag;
     }
 
-    //    public static function findOrCreate(
-    //        $values,
-    //        string $type = null,
-    //    ) {
-    //        $tags = collect($values)->map(function ($value) use ($type) {
-    //            if ($value instanceof self) {
-    //                return $value;
-    //            }
-    //
-    //            return static::findOrCreateFromString($value, $type);
-    //        });
-    //
-    //        return is_string($values) ? $tags->first() : $tags;
-    //    }
-
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -112,13 +97,13 @@ class Category extends Model
         return $prettyName;
     }
 
-    public function albums()
-    {
-        return $this->morphedByMany(Album::class, 'categoryable');
-    }
-
     public function posts()
     {
         return $this->morphedByMany(Post::class, 'categoryable');
+    }
+
+    public function kols()
+    {
+        return $this->morphedByMany(Kol::class, 'categoryable');
     }
 }

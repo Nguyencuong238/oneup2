@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="KOL Profile - OneUp KOL Analytics Dashboard">
-    <title>Ngọc Trinh Profile - OneUp KOL Analytics</title>
+    <title>{{ $kol->display_name }} - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -319,6 +319,7 @@
             font-weight: 500;
             position: relative;
             transition: all 0.2s;
+            outline: none !important;
         }
 
         .tab:hover {
@@ -700,36 +701,36 @@
         <!-- Profile Header -->
         <div class="profile-header">
             <div class="profile-header-content">
-                <div class="profile-avatar verified">NT</div>
+                {{-- <div class="profile-avatar verified">NT</div> --}}
+                <img class="profile-avatar verified" src="{{ $kol->getFirstMediaUrl('media') }}">
 
                 <div class="profile-info">
                     <div class="profile-top-row">
-                        <h1 class="profile-name">Ngọc Trinh</h1>
+                        <h1 class="profile-name">{{ $kol->display_name }}</h1>
                         <div class="profile-badges">
-                            <span class="badge badge-verified">Verified</span>
+                            @if ($kol->is_verified)
+                                <span class="badge badge-verified">Verified</span>
+                            @endif
                             <span class="badge badge-tier">Diamond Tier</span>
                         </div>
                     </div>
 
-                    <div class="profile-handle">@ngoctrinh.official</div>
+                    <div class="profile-handle">{{ '@' . trim($kol->username, '@') }}</div>
 
                     <div class="profile-bio">
-                        Fashion influencer & Model | Lifestyle Content Creator | Brand Ambassador
-                        📍 Ho Chi Minh City, Vietnam | 🎯 Fashion, Beauty, Lifestyle
+                        {{ $kol->bio }}
                     </div>
 
                     <div class="profile-tags">
-                        <span class="tag">Fashion</span>
-                        <span class="tag">Beauty</span>
-                        <span class="tag">Lifestyle</span>
-                        <span class="tag">Luxury</span>
-                        <span class="tag">Travel</span>
+                        @foreach ($kol->categories as $kc)
+                            <span class="tag">{{ $kc->name }}</span>
+                        @endforeach
                     </div>
 
                     <div class="profile-stats">
                         <div class="stat-item">
-                            <div class="stat-value">2.8M</div>
-                            <div class="stat-label">Followers</div>
+                            <div class="stat-value">{{ formatDisplayNumber($kol->followers) }}</div>
+                            <div class="stat-label">Người theo dõi</div>
                             <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -741,8 +742,8 @@
                         </div>
 
                         <div class="stat-item">
-                            <div class="stat-value">5.8%</div>
-                            <div class="stat-label">Engagement</div>
+                            <div class="stat-value">{{ $kol->engagement - 0 }}%</div>
+                            <div class="stat-label">Tham gia</div>
                             <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -755,15 +756,15 @@
 
                         <div class="stat-item">
                             <div class="stat-value">342</div>
-                            <div class="stat-label">Total Posts</div>
+                            <div class="stat-label">Bài viết</div>
                             <div class="stat-change">
-                                <span style="color: var(--gray-600);">3.2 posts/week</span>
+                                <span style="color: var(--gray-600);">3.2 bài viết/tuần</span>
                             </div>
                         </div>
 
                         <div class="stat-item">
                             <div class="stat-value">125M</div>
-                            <div class="stat-label">Total Views</div>
+                            <div class="stat-label">Lượt xem</div>
                             <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -783,21 +784,21 @@
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                 clip-rule="evenodd" />
                         </svg>
-                        Add to Campaign
+                        Thêm vào chiến dịch
                     </button>
                     <button class="btn-action btn-secondary">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
-                        Save
+                        Lưu
                     </button>
                     <button class="btn-action btn-secondary">
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path
                                 d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                         </svg>
-                        Share
+                        Chia sẻ
                     </button>
                 </div>
             </div>
@@ -806,12 +807,12 @@
         <!-- Tabs -->
         <div class="profile-tabs">
             <div class="tabs-container">
-                <a href="#overview" class="tab active">Overview</a>
-                <a href="#audience" class="tab">Audience</a>
-                <a href="#content" class="tab">Content</a>
-                <a href="#performance" class="tab">Performance</a>
-                <a href="#pricing" class="tab">Pricing</a>
-                <a href="#history" class="tab">Campaign History</a>
+                <a href="#overview" class="tab active">Tổng quan</a>
+                <a href="#audience" class="tab">Khán giả</a>
+                <a href="#content" class="tab">Nội dung</a>
+                <a href="#performance" class="tab">Hiệu suất</a>
+                <a href="#pricing" class="tab">Bảng giá</a>
+                <a href="#history" class="tab">Lịch sử chiến dịch</a>
             </div>
         </div>
 
@@ -823,8 +824,8 @@
                     <!-- Engagement Metrics -->
                     <div class="metric-card">
                         <div class="metric-header">
-                            <h2 class="metric-title">Engagement Metrics</h2>
-                            <span class="metric-period">Last 30 days</span>
+                            <h2 class="metric-title">Chỉ số Tương tác</h2>
+                            <span class="metric-period">30 ngày gần đây</span>
                         </div>
 
                         <div class="engagement-grid">
@@ -881,20 +882,20 @@
                     <!-- Audience Demographics -->
                     <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
-                            <h2 class="metric-title">Audience Demographics</h2>
+                            <h2 class="metric-title">Nhân khẩu học của khán giả</h2>
                         </div>
 
                         <div class="demo-section">
-                            <div class="demo-title">Gender Distribution</div>
+                            <div class="demo-title">Giới tính</div>
                             <div class="demo-bars">
                                 <div class="demo-bar">
-                                    <span class="demo-label">Female</span>
+                                    <span class="demo-label">Nữ</span>
                                     <div class="demo-progress">
                                         <div class="demo-fill" style="width: 72%;">72%</div>
                                     </div>
                                 </div>
                                 <div class="demo-bar">
-                                    <span class="demo-label">Male</span>
+                                    <span class="demo-label">Nam</span>
                                     <div class="demo-progress">
                                         <div class="demo-fill" style="width: 28%; background: var(--gray-600);">28%</div>
                                     </div>
@@ -903,7 +904,7 @@
                         </div>
 
                         <div class="demo-section">
-                            <div class="demo-title">Age Groups</div>
+                            <div class="demo-title">Độ tuổi trung bình</div>
                             <div class="demo-bars">
                                 <div class="demo-bar">
                                     <span class="demo-label">13-17</span>
@@ -933,7 +934,7 @@
                         </div>
 
                         <div class="demo-section">
-                            <div class="demo-title">Top Locations</div>
+                            <div class="demo-title">Khu vực hàng đầu</div>
                             <div class="demo-bars">
                                 <div class="demo-bar">
                                     <span class="demo-label">HCM City</span>
@@ -966,9 +967,8 @@
                     <!-- Recent Content -->
                     <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
-                            <h2 class="metric-title">Recent Content</h2>
-                            <a href="#" style="color: var(--primary); font-size: 14px; text-decoration: none;">View
-                                All →</a>
+                            <h2 class="metric-title">Nội dung gần đây</h2>
+                            <a href="#" style="color: var(--primary); font-size: 14px; text-decoration: none;">Xem tất cả →</a>
                         </div>
 
                         <div class="content-list">
@@ -1063,7 +1063,7 @@
                     <!-- Trust Score -->
                     <div class="metric-card">
                         <div class="metric-header">
-                            <h2 class="metric-title">Trust Score</h2>
+                            <h2 class="metric-title">Điểm uy tín</h2>
                         </div>
 
                         <div class="trust-score-container">
@@ -1104,7 +1104,7 @@
                     <!-- Pricing -->
                     <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
-                            <h2 class="metric-title">Estimated Pricing</h2>
+                            <h2 class="metric-title">Giá ước tính</h2>
                         </div>
 
                         <table class="pricing-table">
@@ -1163,7 +1163,7 @@
                     <!-- Quick Stats -->
                     <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
-                            <h2 class="metric-title">Performance Metrics</h2>
+                            <h2 class="metric-title">Chỉ số hiệu suất</h2>
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
