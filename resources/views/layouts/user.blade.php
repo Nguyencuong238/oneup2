@@ -14,7 +14,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
+        .user-profile:hover {
+            background: var(--gray-200);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        .sidebar-footer .dropdown-info {
+            display: none;
+            background: #fff;
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-footer.active .dropdown-info {
+            display: block;
+        }
+
+        .dropdown-info .nav-link {
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .dropdown-info .nav-link:hover::after {
+            display: none;
+        }
+    </style>
     @yield('css')
 </head>
 
@@ -103,7 +162,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <div class="user-profile">
+                <div class="user-profile" onclick="this.parentElement.classList.toggle('active')">
                     @php
                         $auth = auth()->user();
                         $name = $auth->name;
@@ -121,11 +180,23 @@
                             clip-rule="evenodd" />
                     </svg>
                 </div>
+                <div class="dropdown-info">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="nav-link"
+                            onclick="event.preventDefault();this.closest('form').submit();">
+                            <i class="icon-switch2"></i> {{ __('Log Out') }}
+                        </a>
+                    </form>
+                </div>
             </div>
         </aside>
 
         @yield('page')
     </div>
+
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
 
     @yield('js')
 </body>

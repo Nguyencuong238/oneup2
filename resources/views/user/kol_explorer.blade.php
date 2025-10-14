@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="OneUp KOL Explorer - Find and analyze TikTok influencers">
-    <title>KOL Explorer - OneUp KOL Analytics</title>
+    <title>Khám phá KOLs - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -761,7 +761,7 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">KOL Explorer</h1>
+                <h1 class="page-title">Khám phá KOLs</h1>
             </div>
 
             <div class="topbar-right">
@@ -785,7 +785,7 @@
                         <path
                             d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
                     </svg>
-                    Compare KOLs
+                    So sánh KOLs
                 </button>
             </div>
         </div>
@@ -796,42 +796,24 @@
                 <!-- Filter Sidebar -->
                 <div class="filter-sidebar">
                     <div class="filter-section">
-                        <h3 class="filter-title">Categories</h3>
+                        <h3 class="filter-title">Danh mục</h3>
                         <div class="filter-group">
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="cat-beauty" checked>
-                                <label for="cat-beauty">Beauty & Fashion</label>
-                                <span class="filter-count">234</span>
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="cat-lifestyle">
-                                <label for="cat-lifestyle">Lifestyle</label>
-                                <span class="filter-count">189</span>
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="cat-tech">
-                                <label for="cat-tech">Technology</label>
-                                <span class="filter-count">156</span>
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="cat-food">
-                                <label for="cat-food">Food & Drink</label>
-                                <span class="filter-count">143</span>
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="cat-travel">
-                                <label for="cat-travel">Travel</label>
-                                <span class="filter-count">98</span>
-                            </div>
+                            @foreach ($categories as $c)
+                                <div class="filter-checkbox">
+                                    <input type="checkbox" id="cat-beauty">
+                                    <label for="cat-beauty">{{ $c->name }}</label>
+                                    <span class="filter-count">{{ $c->posts->count() }}</span>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 
                     <div class="filter-section">
                         <h3 class="filter-title">Followers Range</h3>
                         <div class="range-slider">
-                            <input type="range" class="range-input" min="0" max="100" value="65">
+                            <input type="range" class="range-input" min="0" max="10000000" value="1000000">
                             <div class="range-values">
-                                <span>10K</span>
+                                <span>0</span>
                                 <span>10M+</span>
                             </div>
                         </div>
@@ -967,7 +949,8 @@
                                     <span class="rate-badge rate-excellent">Excellent</span>
                                 </div>
                                 <div class="kol-actions">
-                                    <button class="action-btn" onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
                                     <button class="action-btn primary">Select</button>
                                 </div>
                             </div>
@@ -1008,7 +991,8 @@
                                     <span class="rate-badge rate-good">Good</span>
                                 </div>
                                 <div class="kol-actions">
-                                    <button class="action-btn" onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
                                     <button class="action-btn primary">Select</button>
                                 </div>
                             </div>
@@ -1049,7 +1033,8 @@
                                     <span class="rate-badge rate-good">Good</span>
                                 </div>
                                 <div class="kol-actions">
-                                    <button class="action-btn" onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
                                     <button class="action-btn primary">Select</button>
                                 </div>
                             </div>
@@ -1089,7 +1074,8 @@
                                     <span class="rate-badge rate-good">Good</span>
                                 </div>
                                 <div class="kol-actions">
-                                    <button class="action-btn" onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
                                     <button class="action-btn primary">Select</button>
                                 </div>
                             </div>
@@ -1130,7 +1116,8 @@
                                     <span class="rate-badge rate-good">Good</span>
                                 </div>
                                 <div class="kol-actions">
-                                    <button class="action-btn" onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
                                     <button class="action-btn primary">Select</button>
                                 </div>
                             </div>
@@ -1170,7 +1157,8 @@
                                     <span class="rate-badge rate-good">Good</span>
                                 </div>
                                 <div class="kol-actions">
-                                    <button class="action-btn" onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.kolProfile') }}'">Details</button>
                                     <button class="action-btn primary">Select</button>
                                 </div>
                             </div>

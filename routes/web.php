@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\NotificationController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\HomeController as BackendHomeController;
+use App\Http\Controllers\Backend\KolController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
@@ -47,7 +48,7 @@ Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsle
 
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::view('/user/profile', 'profile.show')->name('profile.show');
-	
+
 	Route::get('user/dashboard', [FrontUserController::class, 'dashboard'])->name('user.dashboard');
 	Route::get('user/kol-explorer', [FrontUserController::class, 'kolExplorer'])->name('user.kolExplorer');
 	Route::get('user/campaign', [FrontUserController::class, 'campaign'])->name('user.campaign.index');
@@ -71,6 +72,8 @@ Route::prefix('backend')
 		Route::resource('tags', TagController::class);
 		Route::resource('categories', CategoryController::class);
 		Route::resource('pages', PageController::class);
+
+		Route::resource('kols', KolController::class);
 
 		Route::resource('users', UserController::class);
 		Route::resource('roles', RoleController::class);

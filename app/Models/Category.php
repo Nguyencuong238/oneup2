@@ -81,10 +81,7 @@ class Category extends Model
         if ($this->parent == null) {
             $typeMapping = [
                 'post' => 'Bài viết',
-                'project' => 'Dự án',
-                'event' => 'Sự kiện',
-                'image' => 'Ảnh',
-                'video' => 'Video',
+                'kols' => 'KOLs',
             ];
 
             $prettyName .= ' <b>(' . @$typeMapping[$this->type] . ')</b>';

@@ -12,13 +12,13 @@
             background: #F8F9FA;
             min-height: 100vh;
         }
-        
+
         .dashboard-layout {
             display: block;
             grid-template-columns: 260px 1fr;
             min-height: 100vh;
         }
-        
+
         /* Sidebar */
         .sidebar {
             background: white;
@@ -30,20 +30,20 @@
             overflow-y: auto;
             z-index: 100;
         }
-        
+
         .sidebar-header {
             padding: 0 1.5rem 1.5rem;
             border-bottom: 1px solid var(--gray-200);
             margin-bottom: 1rem;
         }
-        
+
         .sidebar-logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
         }
-        
+
         .sidebar-logo-icon {
             width: 42px;
             height: 42px;
@@ -55,17 +55,17 @@
             font-size: 20px;
             color: white;
         }
-        
+
         .sidebar-logo-text {
             font-size: 20px;
             font-weight: 800;
             color: var(--primary);
         }
-        
+
         .sidebar-nav {
             padding: 0 1rem;
         }
-        
+
         .nav-item {
             display: flex;
             align-items: center;
@@ -78,18 +78,18 @@
             transition: all 0.2s;
             position: relative;
         }
-        
+
         .nav-item:hover {
             background: var(--gray-100);
             color: var(--primary);
         }
-        
+
         .nav-item.active {
             background: var(--primary-lighter);
             color: var(--primary);
             font-weight: 500;
         }
-        
+
         .nav-item.active::before {
             content: '';
             position: absolute;
@@ -101,13 +101,13 @@
             background: var(--primary);
             border-radius: 0 3px 3px 0;
         }
-        
+
         .nav-icon {
             width: 20px;
             height: 20px;
             flex-shrink: 0;
         }
-        
+
         .nav-badge {
             margin-left: auto;
             padding: 2px 8px;
@@ -117,13 +117,13 @@
             font-size: 11px;
             font-weight: 600;
         }
-        
+
         .sidebar-footer {
             margin-top: auto;
             padding: 1.5rem;
             border-top: 1px solid var(--gray-200);
         }
-        
+
         .user-profile {
             display: flex;
             align-items: center;
@@ -134,11 +134,11 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .user-profile:hover {
             background: var(--gray-200);
         }
-        
+
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -150,29 +150,29 @@
             color: white;
             font-weight: 600;
         }
-        
+
         .user-info {
             flex: 1;
         }
-        
+
         .user-name {
             font-weight: 600;
             color: var(--dark-blue);
             font-size: 14px;
         }
-        
+
         .user-role {
             font-size: 12px;
             color: var(--gray-500);
         }
-        
+
         /* Main Content */
         .main-content {
             margin-left: 260px;
             padding: 0;
             background: #F8F9FA;
         }
-        
+
         /* Top Bar */
         .topbar {
             background: white;
@@ -185,19 +185,19 @@
             top: 0;
             z-index: 50;
         }
-        
+
         .topbar-left {
             display: flex;
             align-items: center;
             gap: 2rem;
         }
-        
+
         .page-title {
             font-size: 24px;
             font-weight: 700;
             color: var(--dark-blue);
         }
-        
+
         .date-range-selector {
             display: flex;
             align-items: center;
@@ -208,17 +208,17 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .date-range-selector:hover {
             background: var(--gray-200);
         }
-        
+
         .topbar-right {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-        
+
         .topbar-btn {
             width: 40px;
             height: 40px;
@@ -232,12 +232,12 @@
             transition: all 0.2s;
             position: relative;
         }
-        
+
         .topbar-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
-        
+
         .notification-dot {
             position: absolute;
             top: 8px;
@@ -248,12 +248,12 @@
             border-radius: 50%;
             border: 2px solid white;
         }
-        
+
         /* Analytics Content */
         .analytics-content {
             padding: 2rem;
         }
-        
+
         /* KPI Cards */
         .kpi-grid {
             display: grid;
@@ -261,7 +261,7 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .kpi-card {
             background: white;
             border-radius: 12px;
@@ -270,7 +270,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .kpi-card::before {
             content: '';
             position: absolute;
@@ -280,18 +280,18 @@
             height: 4px;
             background: var(--gradient-blue);
         }
-        
+
         .kpi-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
         }
-        
+
         .kpi-info {
             flex: 1;
         }
-        
+
         .kpi-title {
             font-size: 13px;
             font-weight: 500;
@@ -300,29 +300,29 @@
             letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
         }
-        
+
         .kpi-value {
             font-size: 28px;
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 0.5rem;
         }
-        
+
         .kpi-change {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 14px;
         }
-        
+
         .change-positive {
             color: var(--success);
         }
-        
+
         .change-negative {
             color: var(--danger);
         }
-        
+
         .kpi-icon {
             width: 48px;
             height: 48px;
@@ -333,7 +333,7 @@
             justify-content: center;
             color: var(--primary);
         }
-        
+
         .kpi-sparkline {
             margin-top: 1rem;
             height: 40px;
@@ -342,7 +342,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .sparkline-fill {
             position: absolute;
             bottom: 0;
@@ -352,7 +352,7 @@
             background: linear-gradient(180deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 102, 255, 0.05) 100%);
             border-top: 2px solid var(--primary);
         }
-        
+
         /* Analytics Charts */
         .charts-grid {
             display: grid;
@@ -360,32 +360,32 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .chart-container {
             background: white;
             border-radius: 12px;
             padding: 1.5rem;
             border: 1px solid var(--gray-200);
         }
-        
+
         .chart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .chart-title {
             font-size: 18px;
             font-weight: 600;
             color: var(--dark-blue);
         }
-        
+
         .chart-controls {
             display: flex;
             gap: 0.5rem;
         }
-        
+
         .chart-btn {
             padding: 6px 12px;
             background: transparent;
@@ -396,18 +396,18 @@
             transition: all 0.2s;
             color: var(--gray-600);
         }
-        
+
         .chart-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
-        
+
         .chart-btn.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
         }
-        
+
         .chart-area {
             height: 300px;
             background: var(--gray-50);
@@ -418,7 +418,7 @@
             color: var(--gray-500);
             position: relative;
         }
-        
+
         /* Engagement Heatmap */
         .heatmap-container {
             background: white;
@@ -427,14 +427,14 @@
             border: 1px solid var(--gray-200);
             margin-bottom: 2rem;
         }
-        
+
         .heatmap-grid {
             display: grid;
             grid-template-columns: 60px repeat(7, 1fr);
             gap: 4px;
             margin-top: 1.5rem;
         }
-        
+
         .heatmap-label {
             font-size: 12px;
             color: var(--gray-600);
@@ -443,7 +443,7 @@
             justify-content: flex-end;
             padding-right: 8px;
         }
-        
+
         .heatmap-cell {
             aspect-ratio: 1;
             background: var(--gray-100);
@@ -457,18 +457,37 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .heatmap-cell:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
-        .heat-level-1 { background: #E0F2FE; color: #0C4A6E; }
-        .heat-level-2 { background: #BAE6FD; color: #0C4A6E; }
-        .heat-level-3 { background: #7DD3FC; color: #0C4A6E; }
-        .heat-level-4 { background: #38BDF8; color: white; }
-        .heat-level-5 { background: #0EA5E9; color: white; }
-        
+
+        .heat-level-1 {
+            background: #E0F2FE;
+            color: #0C4A6E;
+        }
+
+        .heat-level-2 {
+            background: #BAE6FD;
+            color: #0C4A6E;
+        }
+
+        .heat-level-3 {
+            background: #7DD3FC;
+            color: #0C4A6E;
+        }
+
+        .heat-level-4 {
+            background: #38BDF8;
+            color: white;
+        }
+
+        .heat-level-5 {
+            background: #0EA5E9;
+            color: white;
+        }
+
         /* Top Content Table */
         .content-table-container {
             background: white;
@@ -476,7 +495,7 @@
             border: 1px solid var(--gray-200);
             overflow: hidden;
         }
-        
+
         .table-header {
             padding: 1.5rem;
             border-bottom: 1px solid var(--gray-200);
@@ -484,13 +503,13 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .table-title {
             font-size: 18px;
             font-weight: 600;
             color: var(--dark-blue);
         }
-        
+
         .table-action {
             color: var(--primary);
             font-size: 14px;
@@ -501,16 +520,16 @@
             gap: 0.5rem;
             transition: all 0.2s;
         }
-        
+
         .table-action:hover {
             gap: 0.75rem;
         }
-        
+
         .content-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         .content-table th {
             text-align: left;
             padding: 12px 1.5rem;
@@ -521,22 +540,22 @@
             letter-spacing: 0.5px;
             background: var(--gray-50);
         }
-        
+
         .content-table td {
             padding: 16px 1.5rem;
             border-top: 1px solid var(--gray-100);
         }
-        
+
         .content-table tr:hover {
             background: var(--gray-50);
         }
-        
+
         .content-info {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
+
         .content-thumbnail {
             width: 48px;
             height: 48px;
@@ -548,28 +567,28 @@
             color: white;
             font-size: 20px;
         }
-        
+
         .content-details {
             flex: 1;
         }
-        
+
         .content-title {
             font-weight: 500;
             color: var(--dark-blue);
             margin-bottom: 0.25rem;
         }
-        
+
         .content-creator {
             font-size: 13px;
             color: var(--gray-600);
         }
-        
+
         .metric-bar {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .bar-fill {
             width: 100px;
             height: 6px;
@@ -577,19 +596,19 @@
             border-radius: 3px;
             overflow: hidden;
         }
-        
+
         .bar-progress {
             height: 100%;
             background: var(--gradient-blue);
             border-radius: 3px;
         }
-        
+
         .metric-text {
             font-size: 14px;
             font-weight: 500;
             color: var(--dark-blue);
         }
-        
+
         /* Filters */
         .analytics-filters {
             display: flex;
@@ -597,7 +616,7 @@
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
-        
+
         .filter-chip {
             padding: 8px 16px;
             background: white;
@@ -608,18 +627,18 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .filter-chip:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
-        
+
         .filter-chip.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
         }
-        
+
         /* Demographic Charts */
         .demo-grid {
             display: grid;
@@ -627,21 +646,21 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .demo-card {
             background: white;
             border-radius: 12px;
             padding: 1.5rem;
             border: 1px solid var(--gray-200);
         }
-        
+
         .demo-title {
             font-size: 16px;
             font-weight: 600;
             color: var(--dark-blue);
             margin-bottom: 1rem;
         }
-        
+
         .demo-chart {
             height: 200px;
             background: var(--gray-50);
@@ -651,14 +670,14 @@
             justify-content: center;
             color: var(--gray-500);
         }
-        
+
         .demo-legend {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.75rem;
             margin-top: 1rem;
         }
-        
+
         .legend-item {
             display: flex;
             align-items: center;
@@ -666,58 +685,58 @@
             font-size: 13px;
             color: var(--gray-700);
         }
-        
+
         .legend-color {
             width: 12px;
             height: 12px;
             border-radius: 3px;
         }
-        
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .dashboard-layout {
                 grid-template-columns: 1fr;
             }
-            
+
             .sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s;
             }
-            
+
             .sidebar.active {
                 transform: translateX(0);
             }
-            
+
             .main-content {
                 margin-left: 0;
             }
-            
+
             .charts-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .kpi-grid {
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
-        
+
         @media (max-width: 768px) {
             .analytics-content {
                 padding: 1rem;
             }
-            
+
             .topbar {
                 padding: 1rem;
             }
-            
+
             .page-title {
                 font-size: 20px;
             }
-            
+
             .date-range-selector {
                 display: none;
             }
-            
+
             .demo-grid {
                 grid-template-columns: 1fr;
             }
@@ -727,468 +746,495 @@
 
 @section('page')
     <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <div class="topbar">
-                <div class="topbar-left">
-                    <h1 class="page-title">Analytics & Insights</h1>
-                    <div class="date-range-selector">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                        <span>Last 30 Days</span>
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="topbar-right">
-                    <button class="topbar-btn">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                        </svg>
-                    </button>
-                    
-                    <button class="topbar-btn">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                        </svg>
-                        <span class="notification-dot"></span>
-                    </button>
-                    
-                    <button class="btn btn-primary btn-small">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                        Export Report
-                    </button>
+    <main class="main-content">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <h1 class="page-title">Analytics & Insights</h1>
+                <div class="date-range-selector">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>Last 30 Days</span>
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
                 </div>
             </div>
-            
-            <!-- Analytics Content -->
-            <div class="analytics-content">
-                <!-- Filters -->
-                <div class="analytics-filters">
-                    <div class="filter-chip active">All Campaigns</div>
-                    <div class="filter-chip">Summer Fashion</div>
-                    <div class="filter-chip">Beauty Launch</div>
-                    <div class="filter-chip">Food Festival</div>
-                    <div class="filter-chip">Tech Review</div>
-                </div>
-                
-                <!-- KPI Cards -->
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <div class="kpi-info">
-                                <div class="kpi-title">Total Impressions</div>
-                                <div class="kpi-value">125.3M</div>
-                                <div class="kpi-change change-positive">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span>+32.5% vs last month</span>
-                                </div>
-                            </div>
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+
+            <div class="topbar-right">
+                <button class="topbar-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </button>
+
+                <button class="topbar-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <button class="btn btn-primary btn-small">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Export Report
+                </button>
+            </div>
+        </div>
+
+        <!-- Analytics Content -->
+        <div class="analytics-content">
+            <!-- Filters -->
+            <div class="analytics-filters">
+                <div class="filter-chip active">All Campaigns</div>
+                <div class="filter-chip">Summer Fashion</div>
+                <div class="filter-chip">Beauty Launch</div>
+                <div class="filter-chip">Food Festival</div>
+                <div class="filter-chip">Tech Review</div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-info">
+                            <div class="kpi-title">Total Impressions</div>
+                            <div class="kpi-value">125.3M</div>
+                            <div class="kpi-change change-positive">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
                                 </svg>
+                                <span>+32.5% vs last month</span>
                             </div>
                         </div>
-                        <div class="kpi-sparkline">
-                            <div class="sparkline-fill"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <div class="kpi-info">
-                                <div class="kpi-title">Engagement Rate</div>
-                                <div class="kpi-value">7.8%</div>
-                                <div class="kpi-change change-positive">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span>+1.2% improvement</span>
-                                </div>
-                            </div>
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="kpi-sparkline">
-                            <div class="sparkline-fill" style="height: 78%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <div class="kpi-info">
-                                <div class="kpi-title">Click-Through Rate</div>
-                                <div class="kpi-value">4.2%</div>
-                                <div class="kpi-change change-negative">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="transform: rotate(180deg);">
-                                        <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span>-0.3% decrease</span>
-                                </div>
-                            </div>
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clip-rule="evenodd"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="kpi-sparkline">
-                            <div class="sparkline-fill" style="height: 42%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <div class="kpi-info">
-                                <div class="kpi-title">Conversion Rate</div>
-                                <div class="kpi-value">2.8%</div>
-                                <div class="kpi-change change-positive">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span>+0.5% increase</span>
-                                </div>
-                            </div>
-                            <div class="kpi-icon">
-                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="kpi-sparkline">
-                            <div class="sparkline-fill" style="height: 28%;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Charts Grid -->
-                <div class="charts-grid">
-                    <!-- Performance Trend Chart -->
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">Performance Trend</h3>
-                            <div class="chart-controls">
-                                <button class="chart-btn active">Views</button>
-                                <button class="chart-btn">Engagement</button>
-                                <button class="chart-btn">Conversions</button>
-                            </div>
-                        </div>
-                        <div class="chart-area">
-                            <span>Line chart will be rendered here</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Top Categories -->
-                    <div class="chart-container">
-                        <div class="chart-header">
-                            <h3 class="chart-title">Top Categories</h3>
-                        </div>
-                        <div class="chart-area" style="height: 300px;">
-                            <span>Pie chart will be rendered here</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Engagement Heatmap -->
-                <div class="heatmap-container">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Engagement Heatmap by Day & Hour</h3>
-                    </div>
-                    <div class="heatmap-grid">
-                        <div></div>
-                        <div class="heatmap-label">Mon</div>
-                        <div class="heatmap-label">Tue</div>
-                        <div class="heatmap-label">Wed</div>
-                        <div class="heatmap-label">Thu</div>
-                        <div class="heatmap-label">Fri</div>
-                        <div class="heatmap-label">Sat</div>
-                        <div class="heatmap-label">Sun</div>
-                        
-                        <div class="heatmap-label">12AM</div>
-                        <div class="heatmap-cell heat-level-1">2.1%</div>
-                        <div class="heatmap-cell heat-level-1">1.8%</div>
-                        <div class="heatmap-cell heat-level-1">2.3%</div>
-                        <div class="heatmap-cell heat-level-2">2.5%</div>
-                        <div class="heatmap-cell heat-level-2">3.1%</div>
-                        <div class="heatmap-cell heat-level-3">4.2%</div>
-                        <div class="heatmap-cell heat-level-3">4.5%</div>
-                        
-                        <div class="heatmap-label">6AM</div>
-                        <div class="heatmap-cell heat-level-2">3.2%</div>
-                        <div class="heatmap-cell heat-level-2">3.5%</div>
-                        <div class="heatmap-cell heat-level-3">4.1%</div>
-                        <div class="heatmap-cell heat-level-3">4.8%</div>
-                        <div class="heatmap-cell heat-level-3">5.2%</div>
-                        <div class="heatmap-cell heat-level-4">6.3%</div>
-                        <div class="heatmap-cell heat-level-4">6.8%</div>
-                        
-                        <div class="heatmap-label">12PM</div>
-                        <div class="heatmap-cell heat-level-4">7.2%</div>
-                        <div class="heatmap-cell heat-level-4">7.8%</div>
-                        <div class="heatmap-cell heat-level-5">8.5%</div>
-                        <div class="heatmap-cell heat-level-5">8.9%</div>
-                        <div class="heatmap-cell heat-level-5">9.2%</div>
-                        <div class="heatmap-cell heat-level-5">9.8%</div>
-                        <div class="heatmap-cell heat-level-5">10.2%</div>
-                        
-                        <div class="heatmap-label">6PM</div>
-                        <div class="heatmap-cell heat-level-5">9.5%</div>
-                        <div class="heatmap-cell heat-level-5">9.8%</div>
-                        <div class="heatmap-cell heat-level-5">10.1%</div>
-                        <div class="heatmap-cell heat-level-5">10.5%</div>
-                        <div class="heatmap-cell heat-level-5">11.2%</div>
-                        <div class="heatmap-cell heat-level-5">12.3%</div>
-                        <div class="heatmap-cell heat-level-5">11.8%</div>
-                    </div>
-                </div>
-                
-                <!-- Demographics -->
-                <div class="demo-grid">
-                    <div class="demo-card">
-                        <h3 class="demo-title">Age Distribution</h3>
-                        <div class="demo-chart">
-                            <span>Bar chart</span>
-                        </div>
-                        <div class="demo-legend">
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #0EA5E9;"></div>
-                                <span>18-24 (35%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #3B82F6;"></div>
-                                <span>25-34 (42%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #6366F1;"></div>
-                                <span>35-44 (18%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #8B5CF6;"></div>
-                                <span>45+ (5%)</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="demo-card">
-                        <h3 class="demo-title">Gender Split</h3>
-                        <div class="demo-chart">
-                            <span>Donut chart</span>
-                        </div>
-                        <div class="demo-legend">
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #EC4899;"></div>
-                                <span>Female (68%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #3B82F6;"></div>
-                                <span>Male (30%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #8B5CF6;"></div>
-                                <span>Other (2%)</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="demo-card">
-                        <h3 class="demo-title">Top Locations</h3>
-                        <div class="demo-chart">
-                            <span>Map visualization</span>
-                        </div>
-                        <div class="demo-legend">
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #10B981;"></div>
-                                <span>Hà Nội (28%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #14B8A6;"></div>
-                                <span>HCM City (35%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #06B6D4;"></div>
-                                <span>Đà Nẵng (12%)</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background: #0EA5E9;"></div>
-                                <span>Others (25%)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Top Content Table -->
-                <div class="content-table-container">
-                    <div class="table-header">
-                        <h3 class="table-title">Top Performing Content</h3>
-                        <a href="#" class="table-action">
-                            View All
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        <div class="kpi-icon">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                <path fill-rule="evenodd"
+                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                    clip-rule="evenodd" />
                             </svg>
-                        </a>
+                        </div>
                     </div>
-                    <table class="content-table">
-                        <thead>
-                            <tr>
-                                <th>Content</th>
-                                <th>Views</th>
-                                <th>Engagement</th>
-                                <th>Conversions</th>
-                                <th>ROI</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="content-info">
-                                        <div class="content-thumbnail">🎬</div>
-                                        <div class="content-details">
-                                            <div class="content-title">Summer Collection Showcase</div>
-                                            <div class="content-creator">@linhnguyen_beauty</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 95%;"></div>
-                                        </div>
-                                        <span class="metric-text">3.2M</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 85%;"></div>
-                                        </div>
-                                        <span class="metric-text">12.5%</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 78%;"></div>
-                                        </div>
-                                        <span class="metric-text">456</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="metric-text" style="color: var(--success);">5.2x</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="content-info">
-                                        <div class="content-thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📸</div>
-                                        <div class="content-details">
-                                            <div class="content-title">Product Review: Skincare Routine</div>
-                                            <div class="content-creator">@minhtran_lifestyle</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 82%;"></div>
-                                        </div>
-                                        <span class="metric-text">2.8M</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 92%;"></div>
-                                        </div>
-                                        <span class="metric-text">14.2%</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 65%;"></div>
-                                        </div>
-                                        <span class="metric-text">324</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="metric-text" style="color: var(--success);">4.8x</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="content-info">
-                                        <div class="content-thumbnail" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🍜</div>
-                                        <div class="content-details">
-                                            <div class="content-title">Food Festival Highlights</div>
-                                            <div class="content-creator">@anpham_food</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 75%;"></div>
-                                        </div>
-                                        <span class="metric-text">2.5M</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 88%;"></div>
-                                        </div>
-                                        <span class="metric-text">13.8%</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="metric-bar">
-                                        <div class="bar-fill">
-                                            <div class="bar-progress" style="width: 72%;"></div>
-                                        </div>
-                                        <span class="metric-text">387</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="metric-text" style="color: var(--success);">4.5x</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="kpi-sparkline">
+                        <div class="sparkline-fill"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-info">
+                            <div class="kpi-title">Engagement Rate</div>
+                            <div class="kpi-value">7.8%</div>
+                            <div class="kpi-change change-positive">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span>+1.2% improvement</span>
+                            </div>
+                        </div>
+                        <div class="kpi-icon">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-sparkline">
+                        <div class="sparkline-fill" style="height: 78%;"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-info">
+                            <div class="kpi-title">Click-Through Rate</div>
+                            <div class="kpi-value">4.2%</div>
+                            <div class="kpi-change change-negative">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
+                                    style="transform: rotate(180deg);">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span>-0.3% decrease</span>
+                            </div>
+                        </div>
+                        <div class="kpi-icon">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-sparkline">
+                        <div class="sparkline-fill" style="height: 42%;"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-info">
+                            <div class="kpi-title">Conversion Rate</div>
+                            <div class="kpi-value">2.8%</div>
+                            <div class="kpi-change change-positive">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span>+0.5% increase</span>
+                            </div>
+                        </div>
+                        <div class="kpi-icon">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="kpi-sparkline">
+                        <div class="sparkline-fill" style="height: 28%;"></div>
+                    </div>
                 </div>
             </div>
-        </main>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <!-- Performance Trend Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Performance Trend</h3>
+                        <div class="chart-controls">
+                            <button class="chart-btn active">Views</button>
+                            <button class="chart-btn">Engagement</button>
+                            <button class="chart-btn">Conversions</button>
+                        </div>
+                    </div>
+                    <div class="chart-area">
+                        <span>Line chart will be rendered here</span>
+                    </div>
+                </div>
+
+                <!-- Top Categories -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Top Categories</h3>
+                    </div>
+                    <div class="chart-area" style="height: 300px;">
+                        <span>Pie chart will be rendered here</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engagement Heatmap -->
+            <div class="heatmap-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Engagement Heatmap by Day & Hour</h3>
+                </div>
+                <div class="heatmap-grid">
+                    <div></div>
+                    <div class="heatmap-label">Mon</div>
+                    <div class="heatmap-label">Tue</div>
+                    <div class="heatmap-label">Wed</div>
+                    <div class="heatmap-label">Thu</div>
+                    <div class="heatmap-label">Fri</div>
+                    <div class="heatmap-label">Sat</div>
+                    <div class="heatmap-label">Sun</div>
+
+                    <div class="heatmap-label">12AM</div>
+                    <div class="heatmap-cell heat-level-1">2.1%</div>
+                    <div class="heatmap-cell heat-level-1">1.8%</div>
+                    <div class="heatmap-cell heat-level-1">2.3%</div>
+                    <div class="heatmap-cell heat-level-2">2.5%</div>
+                    <div class="heatmap-cell heat-level-2">3.1%</div>
+                    <div class="heatmap-cell heat-level-3">4.2%</div>
+                    <div class="heatmap-cell heat-level-3">4.5%</div>
+
+                    <div class="heatmap-label">6AM</div>
+                    <div class="heatmap-cell heat-level-2">3.2%</div>
+                    <div class="heatmap-cell heat-level-2">3.5%</div>
+                    <div class="heatmap-cell heat-level-3">4.1%</div>
+                    <div class="heatmap-cell heat-level-3">4.8%</div>
+                    <div class="heatmap-cell heat-level-3">5.2%</div>
+                    <div class="heatmap-cell heat-level-4">6.3%</div>
+                    <div class="heatmap-cell heat-level-4">6.8%</div>
+
+                    <div class="heatmap-label">12PM</div>
+                    <div class="heatmap-cell heat-level-4">7.2%</div>
+                    <div class="heatmap-cell heat-level-4">7.8%</div>
+                    <div class="heatmap-cell heat-level-5">8.5%</div>
+                    <div class="heatmap-cell heat-level-5">8.9%</div>
+                    <div class="heatmap-cell heat-level-5">9.2%</div>
+                    <div class="heatmap-cell heat-level-5">9.8%</div>
+                    <div class="heatmap-cell heat-level-5">10.2%</div>
+
+                    <div class="heatmap-label">6PM</div>
+                    <div class="heatmap-cell heat-level-5">9.5%</div>
+                    <div class="heatmap-cell heat-level-5">9.8%</div>
+                    <div class="heatmap-cell heat-level-5">10.1%</div>
+                    <div class="heatmap-cell heat-level-5">10.5%</div>
+                    <div class="heatmap-cell heat-level-5">11.2%</div>
+                    <div class="heatmap-cell heat-level-5">12.3%</div>
+                    <div class="heatmap-cell heat-level-5">11.8%</div>
+                </div>
+            </div>
+
+            <!-- Demographics -->
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3 class="demo-title">Age Distribution</h3>
+                    <div class="demo-chart">
+                        <span>Bar chart</span>
+                    </div>
+                    <div class="demo-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #0EA5E9;"></div>
+                            <span>18-24 (35%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #3B82F6;"></div>
+                            <span>25-34 (42%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #6366F1;"></div>
+                            <span>35-44 (18%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #8B5CF6;"></div>
+                            <span>45+ (5%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Gender Split</h3>
+                    <div class="demo-chart">
+                        <span>Donut chart</span>
+                    </div>
+                    <div class="demo-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #EC4899;"></div>
+                            <span>Female (68%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #3B82F6;"></div>
+                            <span>Male (30%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #8B5CF6;"></div>
+                            <span>Other (2%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3 class="demo-title">Top Locations</h3>
+                    <div class="demo-chart">
+                        <span>Map visualization</span>
+                    </div>
+                    <div class="demo-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #10B981;"></div>
+                            <span>Hà Nội (28%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #14B8A6;"></div>
+                            <span>HCM City (35%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #06B6D4;"></div>
+                            <span>Đà Nẵng (12%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #0EA5E9;"></div>
+                            <span>Others (25%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Content Table -->
+            <div class="content-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Top Performing Content</h3>
+                    <a href="#" class="table-action">
+                        View All
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Content</th>
+                            <th>Views</th>
+                            <th>Engagement</th>
+                            <th>Conversions</th>
+                            <th>ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="content-info">
+                                    <div class="content-thumbnail">🎬</div>
+                                    <div class="content-details">
+                                        <div class="content-title">Summer Collection Showcase</div>
+                                        <div class="content-creator">@linhnguyen_beauty</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 95%;"></div>
+                                    </div>
+                                    <span class="metric-text">3.2M</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 85%;"></div>
+                                    </div>
+                                    <span class="metric-text">12.5%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 78%;"></div>
+                                    </div>
+                                    <span class="metric-text">456</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="metric-text" style="color: var(--success);">5.2x</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="content-info">
+                                    <div class="content-thumbnail"
+                                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📸</div>
+                                    <div class="content-details">
+                                        <div class="content-title">Product Review: Skincare Routine</div>
+                                        <div class="content-creator">@minhtran_lifestyle</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 82%;"></div>
+                                    </div>
+                                    <span class="metric-text">2.8M</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 92%;"></div>
+                                    </div>
+                                    <span class="metric-text">14.2%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 65%;"></div>
+                                    </div>
+                                    <span class="metric-text">324</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="metric-text" style="color: var(--success);">4.8x</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="content-info">
+                                    <div class="content-thumbnail"
+                                        style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🍜</div>
+                                    <div class="content-details">
+                                        <div class="content-title">Food Festival Highlights</div>
+                                        <div class="content-creator">@anpham_food</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 75%;"></div>
+                                    </div>
+                                    <span class="metric-text">2.5M</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 88%;"></div>
+                                    </div>
+                                    <span class="metric-text">13.8%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="metric-bar">
+                                    <div class="bar-fill">
+                                        <div class="bar-progress" style="width: 72%;"></div>
+                                    </div>
+                                    <span class="metric-text">387</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="metric-text" style="color: var(--success);">4.5x</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 @endsection
 
 @section('js')
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         // Initialize analytics
         document.addEventListener('DOMContentLoaded', function() {
             // Animate KPI values
             animateKPIValues();
-            
+
             // Initialize chart controls
             initChartControls();
-            
+
             // Initialize filter chips
             initFilterChips();
-            
+
             // Animate progress bars
             animateProgressBars();
         });
-        
+
         function animateKPIValues() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1197,7 +1243,7 @@
                         if (kpiValue && !kpiValue.animated) {
                             kpiValue.animated = true;
                             const finalValue = kpiValue.textContent;
-                            
+
                             // Animate based on value type
                             if (finalValue.includes('M')) {
                                 const num = parseFloat(finalValue) * 1000000;
@@ -1210,24 +1256,24 @@
                     }
                 });
             });
-            
+
             document.querySelectorAll('.kpi-card').forEach(card => {
                 observer.observe(card);
             });
         }
-        
+
         function animateValue(element, start, end, duration, suffix) {
             const range = end - start;
             const increment = range / (duration / 10);
             let current = start;
-            
+
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= end) {
                     current = end;
                     clearInterval(timer);
                 }
-                
+
                 if (suffix === 'M') {
                     element.textContent = (current / 1000000).toFixed(1) + 'M';
                 } else if (suffix === '%') {
@@ -1235,7 +1281,7 @@
                 }
             }, 10);
         }
-        
+
         function initChartControls() {
             document.querySelectorAll('.chart-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1245,13 +1291,14 @@
                 });
             });
         }
-        
+
         function initFilterChips() {
             document.querySelectorAll('.filter-chip').forEach(chip => {
                 chip.addEventListener('click', function() {
                     // Toggle active state
                     if (this.textContent === 'All Campaigns') {
-                        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove(
+                        'active'));
                         this.classList.add('active');
                     } else {
                         document.querySelector('.filter-chip:first-child').classList.remove('active');
@@ -1260,7 +1307,7 @@
                 });
             });
         }
-        
+
         function animateProgressBars() {
             setTimeout(() => {
                 document.querySelectorAll('.bar-progress').forEach(bar => {

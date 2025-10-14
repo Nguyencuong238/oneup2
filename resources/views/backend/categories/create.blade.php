@@ -42,12 +42,8 @@
                                 <option></option>
                                 <option {{ old('type') == 'post' ? 'selected' : null }} value="post">
                                     {{ __('Post') }}</option>
-                                <option {{ old('type') == 'project' ? 'selected' : null }} value="project">
-                                    {{ __('Project') }}</option>
-                                {{-- <option {{ old('type') == 'event' ? 'selected' : null }} value="event">{{ __('Event') }}</option> --}}
-                                <option {{ old('type') == 'image' ? 'selected' : null }} value="image">
-                                    {{ __('Image') }}</option>
-                                {{-- <option {{ old('type') == 'video' ? 'selected' : null }} value="video">{{ __('Video') }}</option> --}}
+                                <option {{ old('type') == 'kols' ? 'selected' : null }} value="kols">
+                                    {{ __('KOLs') }}</option>
                             </select>
                             @error('type')
                                 <span class="invalid-feedback">{{ $message }}</span>

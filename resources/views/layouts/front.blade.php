@@ -112,7 +112,7 @@
             background: #fff;
             width: 100%;
             border-radius: 4px;
-            box-shadow: 2px 3px 3px 1px rgb(99 103 109 / 50%);
+            box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
         }
 
@@ -130,7 +130,7 @@
         }
 
         .dropdown-info .nav-link:hover::after {
-display: none;
+            display: none;
         }
     </style>
     @yield('css')
@@ -157,7 +157,7 @@ display: none;
                 <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Help</a>
                 @auth()
                     <div class="user-dropdown-container">
-                        <div class="user-profile" onclick="toggleUser(this)">
+                        <div class="user-profile" onclick="this.parentElement.classList.toggle('active')">
                             @php
                                 $auth = auth()->user();
                                 $name = $auth->name;
@@ -280,14 +280,6 @@ display: none;
                 }
             });
         });
-
-        function toggleUser(element) {
-            const parentElement = element.parentElement;
-
-
-            // Toggle current FAQ
-            parentElement.classList.toggle('active');
-        }
     </script>
     @yield('js')
 </body>

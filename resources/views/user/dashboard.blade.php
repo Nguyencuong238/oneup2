@@ -684,19 +684,19 @@
         <div class="dashboard-content">
             <!-- Quick Actions -->
             <div class="quick-actions">
-                <a href="{{route('user.kolExplorer')}}" class="quick-action">
+                <a href="{{ route('user.kolExplorer') }}" class="quick-action">
                     <div class="quick-action-icon">🔍</div>
                     <div class="quick-action-text">Find KOLs</div>
                 </a>
-                <a href="{{route('user.campaign.index')}}" class="quick-action">
+                <a href="{{ route('user.campaign.index') }}" class="quick-action">
                     <div class="quick-action-icon">📊</div>
                     <div class="quick-action-text">Create Campaign</div>
                 </a>
-                <a href="{{route('user.report')}}" class="quick-action">
+                <a href="{{ route('user.report') }}" class="quick-action">
                     <div class="quick-action-icon">📈</div>
                     <div class="quick-action-text">Generate Report</div>
                 </a>
-                <a href="{{route('user.analytic')}}" class="quick-action">
+                <a href="{{ route('user.analytic') }}" class="quick-action">
                     <div class="quick-action-icon">💡</div>
                     <div class="quick-action-text">View Insights</div>
                 </a>
@@ -889,7 +889,7 @@
             <div class="dashboard-table" style="margin-top: 2rem;">
                 <div class="table-header">
                     <h2 class="table-title">Top Performing KOLs</h2>
-                    <a href="{{route('user.analytic')}}" class="table-action">
+                    <a href="{{ route('user.analytic') }}" class="table-action">
                         View All
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
