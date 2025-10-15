@@ -91,3 +91,12 @@ Route::prefix('backend')
 	});
 
 Route::get('glide/{path}', ImageController::class)->where('path', '.+');
+
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'vi'])) {
+        session(['locale' => $locale]);
+        app()->setLocale($locale);
+    }
+    return back();
+})->name('lang.switch');
+

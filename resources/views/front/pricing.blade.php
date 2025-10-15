@@ -1,9 +1,9 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>Pricing Plans - OneUp KOL Analytics</title>
+    <title>Bảng giá - OneUp KOL Analytics</title>
     <meta name="description"
-        content="OneUp KOL Analytics Pricing - Choose the perfect plan for your TikTok influencer marketing needs">
+        content="Bảng giá OneUp KOL Analytics - Chọn gói hoàn hảo cho nhu cầu tiếp thị người ảnh hưởng trên TikTok của bạn">
 @endsection
 
 @section('css')
@@ -223,21 +223,21 @@
     <section class="hero" style="padding: 120px 0 60px;">
         <div class="container">
             <div class="text-center">
-                <div class="badge badge-success mb-3 fade-in">💰 Save 20% with Annual Plans</div>
+                <div class="badge badge-success mb-3 fade-in">💰 Tiết kiệm 20% với gói trả theo năm</div>
                 <h1 class="mb-3 color-dark-blue fade-in">
-                    Simple, Transparent <span class="gradient-text">Pricing</span>
+                    Bảng giá <span class="gradient-text">Đơn giản & Minh bạch</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    Choose the perfect plan for your TikTok influencer marketing needs
+                    Chọn gói phù hợp nhất cho nhu cầu marketing KOL TikTok của bạn
                 </p>
-                
+
                 <!-- Pricing Toggle -->
                 <div class="pricing-toggle fade-in">
-                    <span class="color-dark-blue">Monthly</span>
+                    <span class="color-dark-blue">Theo tháng</span>
                     <div class="toggle-switch" id="billingToggle">
                         <div class="toggle-slider"></div>
                     </div>
-                    <span class="color-dark-blue">Annual <span class="badge badge-success">-20%</span></span>
+                    <span class="color-dark-blue">Theo năm <span class="badge badge-success">-20%</span></span>
                 </div>
             </div>
         </div>
@@ -252,21 +252,21 @@
                     <div class="pricing-header">
                         <h3 class="pricing-name">Starter</h3>
                         <div class="pricing-price">
-                            <span class="monthly-price">₫2.9M</span>
-                            <span class="annual-price" style="display: none;">₫2.3M</span>
+                            <span class="monthly-price">₫2.9 triệu</span>
+                            <span class="annual-price" style="display: none;">₫2.3 triệu</span>
                         </div>
-                        <div class="pricing-period">per month</div>
+                        <div class="pricing-period">mỗi tháng</div>
                     </div>
                     <ul class="pricing-features">
-                        <li>Up to 100 KOL searches/month</li>
-                        <li>Basic analytics dashboard</li>
-                        <li>5 campaign slots</li>
-                        <li>Export to CSV</li>
-                        <li>Email support</li>
-                        <li>7-day data history</li>
+                        <li>Tối đa 100 lượt tìm kiếm KOL/tháng</li>
+                        <li>Bảng phân tích cơ bản</li>
+                        <li>5 chiến dịch hoạt động</li>
+                        <li>Xuất dữ liệu ra CSV</li>
+                        <li>Hỗ trợ qua email</li>
+                        <li>Lịch sử dữ liệu 7 ngày</li>
                     </ul>
-                    <a href="{{route('user.register', ['plan' => 'starter'])}}" class="btn btn-outline btn-large" style="width: 100%;">
-                        Start Free Trial
+                    <a href="{{ route('user.register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large" style="width: 100%;">
+                        Bắt đầu dùng thử miễn phí
                     </a>
                 </div>
 
@@ -275,23 +275,23 @@
                     <div class="pricing-header">
                         <h3 class="pricing-name">Professional</h3>
                         <div class="pricing-price">
-                            <span class="monthly-price">₫9.9M</span>
-                            <span class="annual-price" style="display: none;">₫7.9M</span>
+                            <span class="monthly-price">₫9.9 triệu</span>
+                            <span class="annual-price" style="display: none;">₫7.9 triệu</span>
                         </div>
-                        <div class="pricing-period">per month</div>
+                        <div class="pricing-period">mỗi tháng</div>
                     </div>
                     <ul class="pricing-features">
-                        <li>Unlimited KOL searches</li>
-                        <li>Advanced analytics & AI insights</li>
-                        <li>20 campaign slots</li>
-                        <li>API access (1000 calls/day)</li>
-                        <li>Priority support</li>
-                        <li>90-day data history</li>
-                        <li>Custom reports</li>
-                        <li>Team collaboration (5 users)</li>
+                        <li>Tìm kiếm KOL không giới hạn</li>
+                        <li>Phân tích nâng cao & gợi ý từ AI</li>
+                        <li>20 chiến dịch hoạt động</li>
+                        <li>Truy cập API (1000 lượt/ngày)</li>
+                        <li>Hỗ trợ ưu tiên</li>
+                        <li>Lịch sử dữ liệu 90 ngày</li>
+                        <li>Báo cáo tùy chỉnh</li>
+                        <li>Làm việc nhóm (tối đa 5 thành viên)</li>
                     </ul>
-                    <a href="{{route('user.register', ['plan' => 'professional'])}}" class="btn btn-primary btn-large" style="width: 100%;">
-                        Start Free Trial
+                    <a href="{{ route('user.register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large" style="width: 100%;">
+                        Bắt đầu dùng thử miễn phí
                     </a>
                 </div>
 
@@ -299,21 +299,21 @@
                 <div class="pricing-card fade-in" style="animation-delay: 0.2s;">
                     <div class="pricing-header">
                         <h3 class="pricing-name">Enterprise</h3>
-                        <div class="pricing-price">Custom</div>
-                        <div class="pricing-period">tailored to your needs</div>
+                        <div class="pricing-price">Tùy chỉnh</div>
+                        <div class="pricing-period">theo nhu cầu của bạn</div>
                     </div>
                     <ul class="pricing-features">
-                        <li>Everything in Professional</li>
-                        <li>Unlimited campaigns</li>
-                        <li>Unlimited API calls</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom integrations</li>
-                        <li>Unlimited data history</li>
-                        <li>SLA guarantee</li>
-                        <li>Unlimited team members</li>
+                        <li>Tất cả tính năng trong Professional</li>
+                        <li>Chiến dịch không giới hạn</li>
+                        <li>Lượt API không giới hạn</li>
+                        <li>Quản lý tài khoản riêng</li>
+                        <li>Tích hợp tùy chỉnh</li>
+                        <li>Lịch sử dữ liệu không giới hạn</li>
+                        <li>Cam kết SLA</li>
+                        <li>Không giới hạn thành viên nhóm</li>
                     </ul>
                     <button class="btn btn-secondary btn-large" style="width: 100%;" onclick="openContactModal()">
-                        Contact Sales
+                        Liên hệ tư vấn
                     </button>
                 </div>
             </div>
@@ -323,13 +323,13 @@
     <!-- Feature Comparison -->
     <section class="section" style="background: #F8F9FA;">
         <div class="container">
-            <h2 class="text-center color-dark-blue mb-4">Detailed Feature Comparison</h2>
-            
+            <h2 class="text-center color-dark-blue mb-4">So sánh chi tiết các gói</h2>
+
             <div style="overflow-x: auto;">
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Features</th>
+                            <th>Tính năng</th>
                             <th>Starter</th>
                             <th>Professional</th>
                             <th>Enterprise</th>
@@ -337,88 +337,88 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">KOL Discovery</td>
+                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Khám phá KOL</td>
                         </tr>
                         <tr>
-                            <td>KOL Search</td>
-                            <td>100/month</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
+                            <td>Tìm kiếm KOL</td>
+                            <td>100/tháng</td>
+                            <td>Không giới hạn</td>
+                            <td>Không giới hạn</td>
                         </tr>
                         <tr>
-                            <td>Advanced Filters</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
+                            <td>Bộ lọc nâng cao</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
                         </tr>
                         <tr>
-                            <td>AI Recommendations</td>
-                            <td><span class="x-icon">✕</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
+                            <td>Gợi ý từ AI</td>
+                            <td>✕</td>
+                            <td>✓</td>
+                            <td>✓</td>
                         </tr>
                         <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Analytics</td>
+                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Phân tích dữ liệu</td>
                         </tr>
                         <tr>
-                            <td>Basic Metrics</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
+                            <td>Chỉ số cơ bản</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
                         </tr>
                         <tr>
-                            <td>Audience Demographics</td>
-                            <td>Basic</td>
-                            <td>Advanced</td>
-                            <td>Advanced</td>
+                            <td>Nhân khẩu học khán giả</td>
+                            <td>Cơ bản</td>
+                            <td>Nâng cao</td>
+                            <td>Nâng cao</td>
                         </tr>
                         <tr>
-                            <td>Fraud Detection</td>
-                            <td><span class="x-icon">✕</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
+                            <td>Phát hiện gian lận</td>
+                            <td>✕</td>
+                            <td>✓</td>
+                            <td>✓</td>
                         </tr>
                         <tr>
-                            <td>Competitor Analysis</td>
-                            <td><span class="x-icon">✕</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
+                            <td>Phân tích đối thủ</td>
+                            <td>✕</td>
+                            <td>✓</td>
+                            <td>✓</td>
                         </tr>
                         <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Campaign Management</td>
+                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Quản lý chiến dịch</td>
                         </tr>
                         <tr>
-                            <td>Active Campaigns</td>
+                            <td>Chiến dịch hoạt động</td>
                             <td>5</td>
                             <td>20</td>
-                            <td>Unlimited</td>
+                            <td>Không giới hạn</td>
                         </tr>
                         <tr>
-                            <td>Real-time Tracking</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
+                            <td>Theo dõi theo thời gian thực</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
                         </tr>
                         <tr>
-                            <td>ROI Calculator</td>
-                            <td>Basic</td>
-                            <td>Advanced</td>
-                            <td>Custom</td>
+                            <td>Tính toán ROI</td>
+                            <td>Cơ bản</td>
+                            <td>Nâng cao</td>
+                            <td>Tùy chỉnh</td>
                         </tr>
                         <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Support & Service</td>
+                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Hỗ trợ & Dịch vụ</td>
                         </tr>
                         <tr>
-                            <td>Support</td>
+                            <td>Hỗ trợ kỹ thuật</td>
                             <td>Email</td>
-                            <td>Priority Email & Chat</td>
-                            <td>24/7 Phone & Dedicated Manager</td>
+                            <td>Email & Chat ưu tiên</td>
+                            <td>24/7 - Quản lý riêng</td>
                         </tr>
                         <tr>
-                            <td>Training</td>
-                            <td>Self-service</td>
-                            <td>Webinars</td>
-                            <td>Custom onboarding</td>
+                            <td>Đào tạo sử dụng</td>
+                            <td>Tự học</td>
+                            <td>Webinar</td>
+                            <td>Hướng dẫn tùy chỉnh</td>
                         </tr>
                     </tbody>
                 </table>
@@ -429,56 +429,56 @@
     <!-- FAQ Section -->
     <section class="section">
         <div class="container">
-            <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-            
+            <h2 class="text-center mb-4">Câu hỏi thường gặp</h2>
+
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Can I change my plan anytime?</span>
+                        <span>Tôi có thể thay đổi gói bất cứ lúc nào không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll have immediate access to new features. When downgrading, changes take effect at the next billing cycle.</p>
+                        <p>Có! Bạn có thể nâng cấp hoặc hạ cấp gói bất kỳ lúc nào. Khi nâng cấp, bạn sẽ được mở khóa ngay các tính năng mới. Khi hạ cấp, thay đổi sẽ áp dụng từ chu kỳ thanh toán tiếp theo.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Is there a free trial?</span>
+                        <span>Có bản dùng thử miễn phí không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! All plans come with a 14-day free trial. No credit card required. You can explore all features and cancel anytime during the trial period.</p>
+                        <p>Có! Tất cả các gói đều có thời gian dùng thử 14 ngày miễn phí, không cần thẻ tín dụng. Bạn có thể trải nghiệm mọi tính năng và hủy bất kỳ lúc nào trong thời gian thử.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>What payment methods do you accept?</span>
+                        <span>Bạn chấp nhận phương thức thanh toán nào?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>We accept all major credit cards (Visa, MasterCard, American Express), bank transfers, and popular Vietnamese payment methods including MoMo, ZaloPay, and VNPay.</p>
+                        <p>Chúng tôi chấp nhận các loại thẻ quốc tế (Visa, MasterCard, American Express), chuyển khoản ngân hàng, và các phương thức phổ biến tại Việt Nam như MoMo, ZaloPay, VNPay.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Can I get a refund?</span>
+                        <span>Tôi có thể được hoàn tiền không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>We offer a 30-day money-back guarantee for all new customers. If you're not satisfied with our platform, contact us within 30 days of your purchase for a full refund.</p>
+                        <p>Có! Chúng tôi có chính sách hoàn tiền 30 ngày cho khách hàng mới. Nếu bạn không hài lòng, hãy liên hệ trong vòng 30 ngày sau khi mua để được hoàn 100%.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Do you offer discounts for agencies?</span>
+                        <span>Có ưu đãi cho agency không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! We offer special pricing for agencies managing multiple brands. Contact our sales team to discuss custom packages and volume discounts.</p>
+                        <p>Có! Chúng tôi có chính sách giá đặc biệt cho các agency quản lý nhiều thương hiệu. Hãy liên hệ đội ngũ kinh doanh để nhận báo giá và ưu đãi riêng.</p>
                     </div>
                 </div>
             </div>
@@ -488,43 +488,44 @@
     <!-- CTA Section -->
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container text-center">
-            <h2 class="mb-3 color-dark-blue">Ready to Get Started?</h2>
+            <h2 class="mb-3 color-dark-blue">Sẵn sàng bắt đầu ngay?</h2>
             <p class="mb-4 color-gray-600" style="font-size: 18px;">
-                Join 500+ brands optimizing their TikTok influencer campaigns
+                Hơn 500+ thương hiệu đã tối ưu chiến dịch KOL TikTok của họ cùng chúng tôi
             </p>
             <div class="d-flex gap-2 justify-center">
-                <a href="{{route('user.register')}}" class="btn btn-primary btn-large">
-                    Start 14-Day Free Trial
+                <a href="{{ route('user.register') }}" class="btn btn-primary btn-large">
+                    Dùng thử miễn phí 14 ngày
                 </a>
                 <button class="btn btn-outline btn-large" onclick="openContactModal()">
-                    Schedule Demo
+                    Đặt lịch demo
                 </button>
             </div>
             <p class="mt-3" style="color: var(--gray-light);">
-                No credit card required • Cancel anytime
+                Không cần thẻ tín dụng • Hủy bất cứ lúc nào
             </p>
         </div>
     </section>
+
     <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-overlay" onclick="closeContactModal()"></div>
         <div class="modal-content">
             <button class="modal-close" onclick="closeContactModal()">×</button>
-            <h3 class="mb-3">Contact Sales Team</h3>
+            <h3 class="mb-3">Liên hệ đội ngũ kinh doanh</h3>
             <form onsubmit="handleContactForm(event)">
                 <div class="mb-3">
-                    <input type="text" class="filter-input" placeholder="Your Name" required>
+                    <input type="text" class="filter-input" placeholder="Tên của bạn" required>
                 </div>
                 <div class="mb-3">
-                    <input type="email" class="filter-input" placeholder="Email Address" required>
+                    <input type="email" class="filter-input" placeholder="Địa chỉ email" required>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="filter-input" placeholder="Company Name">
+                    <input type="text" class="filter-input" placeholder="Tên công ty">
                 </div>
                 <div class="mb-3">
-                    <textarea class="filter-input" rows="4" placeholder="Tell us about your needs"></textarea>
+                    <textarea class="filter-input" rows="4" placeholder="Mô tả nhu cầu của bạn"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Gửi tin nhắn</button>
             </form>
         </div>
     </div>

@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs@3.x.x" defer></script>
+
 
     <style>
         .user-profile {
@@ -89,6 +91,71 @@
             display: none;
         }
     </style>
+
+    <style>
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+.language-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.language-btn img {
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+}
+
+.language-btn .arrow {
+    font-size: 12px;
+    margin-left: 4px;
+    color: #777;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 8px;
+    min-width: 140px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    margin-top: 6px;
+    z-index: 99;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-content img {
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+}
+</style>
+
     @yield('css')
 </head>
 
@@ -102,15 +169,35 @@
             </a>
 
             <div class="nav-links">
-                <a href="/" class="nav-link @if (request()->routeIs('home')) active @endif">Home</a>
+                <a href="/" class="nav-link @if (request()->routeIs('home')) active @endif">Trang chủ</a>
                 <a href="{{ route('kols') }}" class="nav-link @if (request()->routeIs('kols')) active @endif">KOLs</a>
                 <a href="{{ route('about') }}"
-                    class="nav-link @if (request()->routeIs('about')) active @endif">About</a>
+                    class="nav-link @if (request()->routeIs('about')) active @endif">Về chúng tôi</a>
                 <a href="{{ route('pricing') }}"
-                    class="nav-link @if (request()->routeIs('pricing')) active @endif">Pricing</a>
+                    class="nav-link @if (request()->routeIs('pricing')) active @endif">Bảng giá</a>
                 <a href="{{ route('resources') }}"
-                    class="nav-link @if (request()->routeIs('resources')) active @endif">Resources</a>
-                <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Help</a>
+                    class="nav-link @if (request()->routeIs('resources')) active @endif">Nguồn lực</a>
+                <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Hỗ trợ</a>
+
+                {{-- <div class="language-dropdown">
+                    <button class="language-btn" onclick="toggleDropdown()">
+                        <img src="https://flagcdn.com/24x18/{{ app()->getLocale() == 'vi' ? 'vn' : 'us' }}.png" alt="flag">
+                        <span>{{ app()->getLocale() == 'vi' ? 'Tiếng Việt' : 'English' }}</span>
+                        <span class="arrow">▼</span>
+                    </button>
+
+                    <div id="dropdown" class="dropdown-content">
+                        <a href="{{ route('lang.switch', 'en') }}">
+                            <img src="https://flagcdn.com/24x18/us.png" alt="US Flag">
+                            English
+                        </a>
+                        <a href="{{ route('lang.switch', 'vi') }}">
+                            <img src="https://flagcdn.com/24x18/vn.png" alt="VN Flag">
+                            Tiếng Việt
+                        </a>
+                    </div>
+                </div> --}}
+
                 @auth()
                     <div class="user-dropdown-container">
                         <div class="user-profile" onclick="this.parentElement.classList.toggle('active')">
@@ -131,7 +218,7 @@
                             </svg>
                         </div>
                         <div class="dropdown-info">
-                            <a href="{{ route('user.dashboard') }}" class="nav-link">Dashboard</a>
+                            <a href="{{ route('user.dashboard') }}" class="nav-link">Bảng điều khiển</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}" class="nav-link"
@@ -143,7 +230,7 @@
                     </div>
                 @else
                     <a href="{{ route('user.login') }}" class="btn btn-outline btn-small">{{ __('Log In') }}</a>
-                    <a href="{{ route('user.register') }}" class="btn btn-primary btn-small">Get Started</a>
+                    <a href="{{ route('user.register') }}" class="btn btn-primary btn-small">Bắt đầu</a>
                 @endauth
 
             </div>
@@ -166,7 +253,7 @@
                 <div class="footer-brand">
                     <div class="footer-logo">📊 OneUp KOL</div>
                     <p class="footer-description">
-                        The most comprehensive TikTok KOL analytics platform for Vietnamese market.
+                        Nền tảng phân tích KOL TikTok toàn diện nhất dành cho thị trường Việt Nam.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link">f</a>
@@ -177,44 +264,44 @@
                 </div>
 
                 <div class="footer-column">
-                    <h4>Product</h4>
+                    <h4>Sản phẩm</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Features</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="#">Đặc trưng</a></li>
+                        <li><a href="pricing.html">Bảng giá</a></li>
                         <li><a href="#">API</a></li>
-                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Tích hợp</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
-                    <h4>Company</h4>
+                    <h4>Công ty</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="about.html">Về chúng tôi</a></li>
+                        <li><a href="#">Thành tựu</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Liên hệ</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
-                    <h4>Support</h4>
+                    <h4>Hỗ trợ</h4>
                     <ul class="footer-links">
-                        <li><a href="help.html">Help Center</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Status</a></li>
-                        <li><a href="#">Terms</a></li>
+                        <li><a href="help.html">Trung tâm trợ giúp</a></li>
+                        <li><a href="#">Tài liệu</a></li>
+                        <li><a href="#">Trạng thái</a></li>
+                        <li><a href="#">Điều khoản</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    © 2025 OneUp.vn. All rights reserved.
+                    © 2025 OneUp.vn. Mọi quyền được bảo lưu.
                 </div>
                 <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
+                    <a href="#">Chính sách bảo mật</a>
+                    <a href="#">Điều khoản dịch vụ</a>
+                    <a href="#">Chính sách Cookie</a>
                 </div>
             </div>
         </div>
@@ -236,6 +323,18 @@
                 }
             });
         });
+    </script>
+    <script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        document.addEventListener("click", function hideDropdown(e) {
+            if (!e.target.closest(".language-dropdown")) {
+                dropdown.style.display = "none";
+                document.removeEventListener("click", hideDropdown);
+            }
+        });
+    }
     </script>
     @yield('js')
 </body>

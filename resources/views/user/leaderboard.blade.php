@@ -618,13 +618,13 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">KOL Leaderboards</h1>
+                <h1 class="page-title">Bảng xếp hạng KOL</h1>
                 <div class="date-range-selector">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>Last 30 Days</span>
+                    <span>30 ngày qua</span>
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -640,7 +640,7 @@
                             d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
                             clip-rule="evenodd" />
                     </svg>
-                    Filter
+                    Lọc
                 </button>
                 <button class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -648,7 +648,7 @@
                             d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                    Export Rankings
+                    Xuất file xếp hạng
                 </button>
             </div>
         </div>
@@ -660,9 +660,9 @@
                 <div class="summary-card">
                     <div class="summary-header">
                         <div>
-                            <div class="summary-title">Total KOLs Tracked</div>
+                            <div class="summary-title">Tổng số KOL được theo dõi</div>
                             <div class="summary-value">1,234</div>
-                            <div class="summary-change">+123 new this month</div>
+                            <div class="summary-change">+123 mới trong tháng này</div>
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -676,9 +676,9 @@
                 <div class="summary-card">
                     <div class="summary-header">
                         <div>
-                            <div class="summary-title">Average Engagement</div>
+                            <div class="summary-title">Mức độ tương tác trung bình</div>
                             <div class="summary-value">7.2%</div>
-                            <div class="summary-change">+0.8% from last month</div>
+                            <div class="summary-change">+0,8% so với tháng trước</div>
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -693,9 +693,9 @@
                 <div class="summary-card">
                     <div class="summary-header">
                         <div>
-                            <div class="summary-title">Top Category</div>
-                            <div class="summary-value">Fashion</div>
-                            <div class="summary-change">234 KOLs active</div>
+                            <div class="summary-title">Danh mục hàng đầu</div>
+                            <div class="summary-value">Thời trang</div>
+                            <div class="summary-change">234 KOL đang hoạt động</div>
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -710,9 +710,9 @@
                 <div class="summary-card">
                     <div class="summary-header">
                         <div>
-                            <div class="summary-title">Total Reach</div>
+                            <div class="summary-title">Tổng phạm vi tiếp cận</div>
                             <div class="summary-value">458M</div>
-                            <div class="summary-change">Combined followers</div>
+                            <div class="summary-change">Người theo dõi kết hợp</div>
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -728,14 +728,14 @@
 
             <!-- Category Tabs -->
             <div class="category-tabs">
-                <button class="category-tab active">All Categories</button>
-                <button class="category-tab">Fashion & Beauty</button>
-                <button class="category-tab">Lifestyle</button>
-                <button class="category-tab">Food & Beverage</button>
-                <button class="category-tab">Technology</button>
-                <button class="category-tab">Travel</button>
-                <button class="category-tab">Gaming</button>
-                <button class="category-tab">Fitness</button>
+                <button class="category-tab active">Tất cả danh mục</button>
+                <button class="category-tab">Thời trang & Làm đẹp</button>
+                <button class="category-tab">Phong cách sống</button>
+                <button class="category-tab">Ẩm thực & Đồ uống</button>
+                <button class="category-tab">Công nghệ</button>
+                <button class="category-tab">Du lịch</button>
+                <button class="category-tab">Chơi game</button>
+                <button class="category-tab">Thể dục</button>
             </div>
 
             <!-- Top 3 Podium -->
@@ -751,15 +751,15 @@
                         <div class="podium-stats">
                             <div class="podium-stat">
                                 <div class="stat-value">1.8M</div>
-                                <div class="stat-label">Followers</div>
+                                <div class="stat-label">Người theo dõi</div>
                             </div>
                             <div class="podium-stat">
                                 <div class="stat-value">9.2%</div>
-                                <div class="stat-label">Engagement</div>
+                                <div class="stat-label">Lượt tương tác</div>
                             </div>
                             <div class="podium-stat">
                                 <div class="stat-value">94</div>
-                                <div class="stat-label">Score</div>
+                                <div class="stat-label">Điểm</div>
                             </div>
                         </div>
                     </div>
@@ -773,15 +773,15 @@
                         <div class="podium-stats">
                             <div class="podium-stat">
                                 <div class="stat-value">2.3M</div>
-                                <div class="stat-label">Followers</div>
+                                <div class="stat-label">Người theo dõi</div>
                             </div>
                             <div class="podium-stat">
                                 <div class="stat-value">10.5%</div>
-                                <div class="stat-label">Engagement</div>
+                                <div class="stat-label">Lượt tương tác</div>
                             </div>
                             <div class="podium-stat">
                                 <div class="stat-value">98</div>
-                                <div class="stat-label">Score</div>
+                                <div class="stat-label">Điểm</div>
                             </div>
                         </div>
                     </div>
@@ -796,15 +796,15 @@
                         <div class="podium-stats">
                             <div class="podium-stat">
                                 <div class="stat-value">987K</div>
-                                <div class="stat-label">Followers</div>
+                                <div class="stat-label">Người theo dõi</div>
                             </div>
                             <div class="podium-stat">
                                 <div class="stat-value">11.2%</div>
-                                <div class="stat-label">Engagement</div>
+                                <div class="stat-label">Lượt tương tác</div>
                             </div>
                             <div class="podium-stat">
                                 <div class="stat-value">92</div>
-                                <div class="stat-label">Score</div>
+                                <div class="stat-label">Điểm</div>
                             </div>
                         </div>
                     </div>
@@ -814,16 +814,16 @@
             <!-- Ranking Table -->
             <div class="ranking-container">
                 <div class="ranking-header">
-                    <h2 class="ranking-title">Complete Rankings</h2>
+                    <h2 class="ranking-title">Xếp hạng đầy đủ</h2>
                     <div class="filter-controls">
                         <select class="filter-select">
-                            <option>Sort by: Overall Score</option>
-                            <option>Sort by: Engagement Rate</option>
-                            <option>Sort by: Followers</option>
-                            <option>Sort by: Growth Rate</option>
+                            <option>Sắp xếp theo: Tổng điểm</option>
+                            <option>Sắp xếp theo: Phần trăm lượt tương tác</option>
+                            <option>Sắp xếp theo: Người theo dõi</option>
+                            <option>Sắp xếp theo: Tốc độ tăng trưởng</option>
                         </select>
                         <select class="filter-select">
-                            <option>All Locations</option>
+                            <option>Tất cả các địa điểm</option>
                             <option>Vietnam</option>
                             <option>Singapore</option>
                             <option>Thailand</option>
@@ -834,12 +834,12 @@
                 <table class="ranking-table">
                     <thead>
                         <tr>
-                            <th style="width: 80px;">Rank</th>
+                            <th style="width: 80px;">Thứ hạng</th>
                             <th>KOL</th>
-                            <th>Followers</th>
-                            <th>Engagement</th>
-                            <th>Growth</th>
-                            <th>Score</th>
+                            <th>Người theo dõi</th>
+                            <th>Lượt tương tác</th>
+                            <th>Sự phát triển</th>
+                            <th>Điểm</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -861,12 +861,12 @@
                                         style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">HV</div>
                                     <div class="kol-details">
                                         <div class="kol-name">Hoàng Vũ</div>
-                                        <div class="kol-category">Technology</div>
+                                        <div class="kol-category">Công nghệ</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>765K</td>
-                            <td>8.4%</td>
+                            <td style="color: black">765K</td>
+                            <td style="color: black">8.4%</td>
                             <td class="change-up">+15.2%</td>
                             <td>
                                 <div class="score-bar">
@@ -896,12 +896,12 @@
                                         style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">TL</div>
                                     <div class="kol-details">
                                         <div class="kol-name">Thảo Lê</div>
-                                        <div class="kol-category">Fitness & Health</div>
+                                        <div class="kol-category">Thể dục & Sức khỏe</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>543K</td>
-                            <td>9.1%</td>
+                            <td style="color: black">543K</td>
+                            <td style="color: black">9.1%</td>
                             <td class="change-up">+8.7%</td>
                             <td>
                                 <div class="score-bar">
@@ -925,12 +925,12 @@
                                         style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">DN</div>
                                     <div class="kol-details">
                                         <div class="kol-name">Đức Nguyễn</div>
-                                        <div class="kol-category">Comedy & Entertainment</div>
+                                        <div class="kol-category">Hài kịch & Giải trí</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>3.1M</td>
-                            <td>6.2%</td>
+                            <td style="color: black">3.1M</td>
+                            <td style="color: black">6.2%</td>
                             <td class="change-up">+5.3%</td>
                             <td>
                                 <div class="score-bar">
@@ -959,12 +959,12 @@
                                         style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">TH</div>
                                     <div class="kol-details">
                                         <div class="kol-name">Thu Hương</div>
-                                        <div class="kol-category">Travel & Lifestyle</div>
+                                        <div class="kol-category">Du lịch & Phong cách sống</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>892K</td>
-                            <td>7.8%</td>
+                            <td style="color: black">892K</td>
+                            <td style="color: black">7.8%</td>
                             <td class="change-up">+12.1%</td>
                             <td>
                                 <div class="score-bar">
@@ -998,8 +998,8 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>1.2M</td>
-                            <td>5.9%</td>
+                            <td style="color: black">1.2M</td>
+                            <td style="color: black">5.9%</td>
                             <td class="change-down">-2.1%</td>
                             <td>
                                 <div class="score-bar">

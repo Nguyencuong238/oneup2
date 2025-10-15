@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="OneUp KOL Analytics Dashboard - Monitor your TikTok influencer campaigns">
-    <title>Dashboard - OneUp KOL Analytics</title>
+    <title>Bảng điều khiển - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -470,6 +470,7 @@
             .date-range-selector {
                 display: none;
             }
+
         }
     </style>
 @endsection
@@ -480,13 +481,13 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Dashboard Overview</h1>
+                <h1 class="page-title">Tổng quan về bảng điều khiển</h1>
                 <div class="date-range-selector">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>Last 30 Days</span>
+                    <span>30 ngày qua</span>
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -517,7 +518,7 @@
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                             clip-rule="evenodd" />
                     </svg>
-                    New Campaign
+                    Chiến dịch mới
                 </a>
             </div>
         </div>
@@ -528,19 +529,19 @@
             <div class="quick-actions">
                 <a href="{{ route('user.kolExplorer') }}" class="quick-action">
                     <div class="quick-action-icon">🔍</div>
-                    <div class="quick-action-text">Find KOLs</div>
+                    <div class="quick-action-text">Tìm kiếm KOL</div>
                 </a>
                 <a href="{{ route('user.campaign.index') }}" class="quick-action">
                     <div class="quick-action-icon">📊</div>
-                    <div class="quick-action-text">Create Campaign</div>
+                    <div class="quick-action-text">Tạo chiến dịch</div>
                 </a>
                 <a href="{{ route('user.report') }}" class="quick-action">
                     <div class="quick-action-icon">📈</div>
-                    <div class="quick-action-text">Generate Report</div>
+                    <div class="quick-action-text">Tạo báo cáo</div>
                 </a>
                 <a href="{{ route('user.analytic') }}" class="quick-action">
                     <div class="quick-action-icon">💡</div>
-                    <div class="quick-action-text">View Insights</div>
+                    <div class="quick-action-text">Xem thông tin chi tiết</div>
                 </a>
             </div>
 
@@ -549,7 +550,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Total Reach</div>
+                            <div class="stat-title">Tổng phạm vi tiếp cận</div>
                             <div class="stat-value">45.2M</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -558,7 +559,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+28.7%</span>
-                                <span class="stat-period">vs last month</span>
+                                <span class="stat-period">so với tháng trước</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -573,7 +574,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Active Campaigns</div>
+                            <div class="stat-title">Chiến dịch đang hoạt động</div>
                             <div class="stat-value">18</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -582,7 +583,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+3</span>
-                                <span class="stat-period">new this week</span>
+                                <span class="stat-period">mới trong tuần này</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -598,7 +599,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Avg. Engagement</div>
+                            <div class="stat-title">Tương tác trung bình</div>
                             <div class="stat-value">4.8%</div>
                             <div class="stat-change negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
@@ -608,7 +609,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>-0.3%</span>
-                                <span class="stat-period">vs last week</span>
+                                <span class="stat-period">so với tuần trước</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -624,7 +625,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Total Spend</div>
+                            <div class="stat-title">Tổng chi tiêu</div>
                             <div class="stat-value">285M</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -633,7 +634,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>3.2x ROI</span>
-                                <span class="stat-period">this month</span>
+                                <span class="stat-period">tháng này</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -654,21 +655,21 @@
                 <!-- Performance Chart -->
                 <div class="chart-container">
                     <div class="chart-header">
-                        <h2 class="chart-title">Campaign Performance</h2>
+                        <h2 class="chart-title">Hiệu suất chiến dịch</h2>
                         <div class="chart-tabs">
-                            <button class="chart-tab active">Views</button>
-                            <button class="chart-tab">Engagement</button>
-                            <button class="chart-tab">Conversions</button>
+                            <button class="chart-tab active">Lượt xem</button>
+                            <button class="chart-tab">Sự tham gia</button>
+                            <button class="chart-tab">Chuyển đổi</button>
                         </div>
                     </div>
                     <div class="chart-area">
-                        <span>Chart will be rendered here</span>
+                        <span>Biểu đồ sẽ được hiển thị ở đây</span>
                     </div>
                 </div>
 
                 <!-- Activity Feed -->
                 <div class="activity-feed">
-                    <h2 class="chart-title" style="margin-bottom: 1rem;">Recent Activity</h2>
+                    <h2 class="chart-title" style="margin-bottom: 1rem;">Hoạt động gần đây</h2>
 
                     <div class="activity-item">
                         <div class="activity-icon">
@@ -679,8 +680,8 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Campaign "Summer Fashion" launched</div>
-                            <div class="activity-time">2 hours ago</div>
+                            <div class="activity-title">Chiến dịch "Thời trang mùa hè" được phát động</div>
+                            <div class="activity-time">2 giờ trước</div>
                         </div>
                     </div>
 
@@ -692,8 +693,8 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">New KOL added: @fashionista.vn</div>
-                            <div class="activity-time">5 hours ago</div>
+                            <div class="activity-title">KOL mới được thêm vào: @fashionista.vn</div>
+                            <div class="activity-time">5 giờ trước </div>
                         </div>
                     </div>
 
@@ -706,8 +707,8 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Low engagement alert: Tech Review campaign</div>
-                            <div class="activity-time">8 hours ago</div>
+                            <div class="activity-title">Cảnh báo mức độ tương tác thấp: Chiến dịch đánh giá công nghệ</div>
+                            <div class="activity-time">8 giờ trước</div>
                         </div>
                     </div>
 
@@ -720,8 +721,8 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Monthly report generated</div>
-                            <div class="activity-time">1 day ago</div>
+                            <div class="activity-title">Báo cáo hàng tháng được tạo</div>
+                            <div class="activity-time">1 ngày trước</div>
                         </div>
                     </div>
                 </div>
@@ -730,9 +731,9 @@
             <!-- Top Performing KOLs Table -->
             <div class="dashboard-table" style="margin-top: 2rem;">
                 <div class="table-header">
-                    <h2 class="table-title">Top Performing KOLs</h2>
+                    <h2 class="table-title">KOL có hiệu suất cao nhất</h2>
                     <a href="{{ route('user.analytic') }}" class="table-action">
-                        View All
+                        Xem tất cả
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -744,11 +745,11 @@
                     <thead>
                         <tr>
                             <th>KOL</th>
-                            <th>Category</th>
-                            <th>Followers</th>
-                            <th>Engagement</th>
-                            <th>Campaigns</th>
-                            <th>Performance</th>
+                            <th>Danh mục</th>
+                            <th>Người theo dõi</th>
+                            <th>Sự tham gia</th>
+                            <th>Chiến dịch</th>
+                            <th>Hiệu suất</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -762,12 +763,12 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>Fashion</td>
-                            <td>2.8M</td>
+                            <td style="color: black">Thời trang</td>
+                            <td style="color: black">2.8M</td>
                             <td>
                                 <span class="trend-up">5.8%</span>
                             </td>
-                            <td>3</td>
+                            <td style="color: black">3</td>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                                     <span style="color: var(--success);">+42%</span>
@@ -790,12 +791,12 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>Beauty</td>
-                            <td>1.5M</td>
+                            <td style="color: black">Làm đẹp</td>
+                            <td style="color: black">1.5M</td>
                             <td>
                                 <span class="trend-up">7.2%</span>
                             </td>
-                            <td>2</td>
+                            <td style="color: black">2</td>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                                     <span style="color: var(--success);">+38%</span>
@@ -818,12 +819,12 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>Food</td>
-                            <td>890K</td>
+                            <td style="color: black">Đồ ăn</td>
+                            <td style="color: black">890K</td>
                             <td>
                                 <span class="trend-up">9.1%</span>
                             </td>
-                            <td>4</td>
+                            <td style="color: black">4</td>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                                     <span style="color: var(--success);">+55%</span>

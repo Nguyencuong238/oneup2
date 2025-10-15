@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="OneUp Campaign Management - Track and manage your TikTok KOL campaigns">
-    <title>Campaigns - OneUp KOL Analytics</title>
+    <title>Chiến dịch - Phân tích KOL OneUp</title>
 @endsection
 
 @section('css')
@@ -748,7 +748,7 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Campaign Management</h1>
+                <h1 class="page-title">Quản lý chiến dịch</h1>
             </div>
 
             <div class="topbar-right">
@@ -773,7 +773,7 @@
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                             clip-rule="evenodd" />
                     </svg>
-                    New Campaign
+                    Chiến dịch mới
                 </button>
             </div>
         </div>
@@ -785,7 +785,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Active Campaigns</div>
+                            <div class="stat-title">Chiến dịch đang hoạt động</div>
                             <div class="stat-value">12</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -793,7 +793,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+3 this week</span>
+                                <span>+3 tuần này</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -809,10 +809,10 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Total Budget</div>
+                            <div class="stat-title">Tổng ngân sách</div>
                             <div class="stat-value">₫450M</div>
                             <div class="stat-change positive">
-                                <span style="color: var(--gray-600);">₫285M spent</span>
+                                <span style="color: var(--gray-600);">Đã chi 285 triệu ₫</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -830,7 +830,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">KOLs Engaged</div>
+                            <div class="stat-title">KOLs tham gia</div>
                             <div class="stat-value">68</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -838,7 +838,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+12 new</span>
+                                <span>+12 mới</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -853,7 +853,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Avg. ROI</div>
+                            <div class="stat-title">ROI trung bình</div>
                             <div class="stat-value">3.8x</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -879,23 +879,23 @@
             <div class="campaign-tabs-container">
                 <div class="campaign-tabs">
                     <div class="campaign-tab active" onclick="switchTab('all')">
-                        All Campaigns
+                        Tất cả các chiến dịch
                         <span class="tab-badge">18</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('active')">
-                        Active
+                        Hoạt động
                         <span class="tab-badge">12</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('draft')">
-                        Draft
+                        Bản nháp
                         <span class="tab-badge">3</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('completed')">
-                        Completed
+                        Đã hoàn thành
                         <span class="tab-badge">2</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('paused')">
-                        Paused
+                        Đã tạm dừng
                         <span class="tab-badge">1</span>
                     </div>
                 </div>
@@ -905,30 +905,30 @@
                     <!-- Campaign Card 1 - Active -->
                     <div class="campaign-card">
                         <div class="campaign-header">
-                            <span class="campaign-status status-active">Active</span>
-                            <h3 class="campaign-name">Summer Fashion 2024</h3>
+                            <span class="campaign-status status-active">Hoạt động</span>
+                            <h3 class="campaign-name">Thời trang mùa hè 2024</h3>
                             <div class="campaign-dates">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Jun 15 - Aug 30, 2024</span>
+                                <span>15 tháng 6 - 30 tháng 8 năm 2024</span>
                             </div>
                         </div>
 
                         <div class="campaign-body">
                             <div class="campaign-metrics">
                                 <div class="metric">
-                                    <span class="metric-label">Total Reach</span>
+                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
                                     <span class="metric-value">12.5M</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Engagement</span>
+                                    <span class="metric-label">Lượt tương tác</span>
                                     <span class="metric-value">6.8%</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Conversions</span>
+                                    <span class="metric-label">Chuyển đổi</span>
                                     <span class="metric-value">2,847</span>
                                 </div>
                                 <div class="metric">
@@ -939,7 +939,7 @@
 
                             <div class="campaign-progress">
                                 <div class="progress-header">
-                                    <span class="progress-label">Campaign Progress</span>
+                                    <span class="progress-label">Tiến trình chiến dịch</span>
                                     <span class="progress-value">68%</span>
                                 </div>
                                 <div class="progress-bar">
@@ -957,22 +957,22 @@
                                     <div class="kol-avatar-small"
                                         style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">+5</div>
                                 </div>
-                                <span class="kol-count">8 KOLs participating</span>
+                                <span class="kol-count">8 KOL tham gia</span>
                             </div>
                         </div>
 
                         <div class="campaign-footer">
                             <div class="campaign-budget">
-                                Budget: <span class="budget-amount">₫80M</span>
+                                Ngân sách: <span class="budget-amount">₫80M</span>
                             </div>
                             <div class="campaign-actions">
                                 <button class="action-btn"
                                     onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    View
+                                    Xem
                                 </button>
                                 <button class="action-btn primary"
                                     onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => 'test']) }}'">
-                                    Tracker
+                                    Theo dõi
                                 </button>
                             </div>
                         </div>
@@ -981,30 +981,30 @@
                     <!-- Campaign Card 2 - Active -->
                     <div class="campaign-card">
                         <div class="campaign-header">
-                            <span class="campaign-status status-active">Active</span>
-                            <h3 class="campaign-name">Beauty Product Launch</h3>
+                            <span class="campaign-status status-active">Hoạt động</span>
+                            <h3 class="campaign-name">Ra mắt sản phẩm làm đẹp</h3>
                             <div class="campaign-dates">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Jul 1 - Jul 31, 2024</span>
+                                <span>1 tháng 7 - 31 tháng 7 năm 2024</span>
                             </div>
                         </div>
 
                         <div class="campaign-body">
                             <div class="campaign-metrics">
                                 <div class="metric">
-                                    <span class="metric-label">Total Reach</span>
+                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
                                     <span class="metric-value">8.3M</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Engagement</span>
+                                    <span class="metric-label">Lượt tương tác</span>
                                     <span class="metric-value">8.2%</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Conversions</span>
+                                    <span class="metric-label">Chuyển đổi</span>
                                     <span class="metric-value">1,564</span>
                                 </div>
                                 <div class="metric">
@@ -1015,7 +1015,7 @@
 
                             <div class="campaign-progress">
                                 <div class="progress-header">
-                                    <span class="progress-label">Campaign Progress</span>
+                                    <span class="progress-label">Tiến trình chiến dịch</span>
                                     <span class="progress-value">45%</span>
                                 </div>
                                 <div class="progress-bar">
@@ -1033,22 +1033,22 @@
                                     <div class="kol-avatar-small"
                                         style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">+3</div>
                                 </div>
-                                <span class="kol-count">6 KOLs participating</span>
+                                <span class="kol-count">6 KOL tham gia</span>
                             </div>
                         </div>
 
                         <div class="campaign-footer">
                             <div class="campaign-budget">
-                                Budget: <span class="budget-amount">₫60M</span>
+                                Ngân sách: <span class="budget-amount">₫60M</span>
                             </div>
                             <div class="campaign-actions">
                                 <button class="action-btn"
                                     onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    View
+                                    Xem
                                 </button>
                                 <button class="action-btn primary"
                                     onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => 'test']) }}'">
-                                    Tracker</button>
+                                    Theo dõi</button>
                             </div>
                         </div>
                     </div>
@@ -1056,26 +1056,26 @@
                     <!-- Campaign Card 3 - Draft -->
                     <div class="campaign-card">
                         <div class="campaign-header">
-                            <span class="campaign-status status-draft">Draft</span>
-                            <h3 class="campaign-name">Tech Review Series</h3>
+                            <span class="campaign-status status-draft">Bản nháp</span>
+                            <h3 class="campaign-name">Loạt bài đánh giá công nghệ</h3>
                             <div class="campaign-dates">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Planned: Aug 1 - Sep 30</span>
+                                <span>Dự kiến: 1 tháng 8 - 30 tháng 9</span>
                             </div>
                         </div>
 
                         <div class="campaign-body">
                             <div class="campaign-metrics">
                                 <div class="metric">
-                                    <span class="metric-label">Est. Reach</span>
+                                    <span class="metric-label">Ước tính đạt được</span>
                                     <span class="metric-value">5M</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Target Eng.</span>
+                                    <span class="metric-label">Mục tiêu Eng.</span>
                                     <span class="metric-value">5%</span>
                                 </div>
                                 <div class="metric">
@@ -1083,14 +1083,14 @@
                                     <span class="metric-value">800</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Target ROI</span>
+                                    <span class="metric-label">Mục tiêu ROI</span>
                                     <span class="metric-value">3x</span>
                                 </div>
                             </div>
 
                             <div class="campaign-progress">
                                 <div class="progress-header">
-                                    <span class="progress-label">Setup Progress</span>
+                                    <span class="progress-label">Tiến trình thiết lập</span>
                                     <span class="progress-value">30%</span>
                                 </div>
                                 <div class="progress-bar">
@@ -1102,17 +1102,17 @@
                                 <div class="kol-avatars">
                                     <div class="kol-avatar-small" style="background: var(--gray-400);">?</div>
                                 </div>
-                                <span class="kol-count">0 KOLs selected</span>
+                                <span class="kol-count">0 KOL đã chọn</span>
                             </div>
                         </div>
 
                         <div class="campaign-footer">
                             <div class="campaign-budget">
-                                Budget: <span class="budget-amount">₫40M</span>
+                                Ngân sách: <span class="budget-amount">₫40M</span>
                             </div>
                             <div class="campaign-actions">
-                                <button class="action-btn">Edit</button>
-                                <button class="action-btn primary">Launch</button>
+                                <button class="action-btn">Sửa</button>
+                                <button class="action-btn primary">Ra mắt</button>
                             </div>
                         </div>
                     </div>
@@ -1120,30 +1120,30 @@
                     <!-- Campaign Card 4 - Completed -->
                     <div class="campaign-card">
                         <div class="campaign-header">
-                            <span class="campaign-status status-completed">Completed</span>
-                            <h3 class="campaign-name">Food Festival 2024</h3>
+                            <span class="campaign-status status-completed">Hoàn thành</span>
+                            <h3 class="campaign-name">Lễ hội ẩm thực 2024</h3>
                             <div class="campaign-dates">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>May 1 - May 31, 2024</span>
+                                <span>Ngày 1 tháng 5 - Ngày 31 tháng 5 năm 2024</span>
                             </div>
                         </div>
 
                         <div class="campaign-body">
                             <div class="campaign-metrics">
                                 <div class="metric">
-                                    <span class="metric-label">Total Reach</span>
+                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
                                     <span class="metric-value">15.8M</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Engagement</span>
+                                    <span class="metric-label">Lượt tương tác</span>
                                     <span class="metric-value">9.2%</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Conversions</span>
+                                    <span class="metric-label">Chuyển đổi</span>
                                     <span class="metric-value">3,245</span>
                                 </div>
                                 <div class="metric">
@@ -1154,7 +1154,7 @@
 
                             <div class="campaign-progress">
                                 <div class="progress-header">
-                                    <span class="progress-label">Campaign Progress</span>
+                                    <span class="progress-label">Tiến trình chiến dịch</span>
                                     <span class="progress-value">100%</span>
                                 </div>
                                 <div class="progress-bar">
@@ -1172,17 +1172,17 @@
                                     <div class="kol-avatar-small"
                                         style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">+7</div>
                                 </div>
-                                <span class="kol-count">10 KOLs participated</span>
+                                <span class="kol-count">10 KOL đã tham gia</span>
                             </div>
                         </div>
 
                         <div class="campaign-footer">
                             <div class="campaign-budget">
-                                Budget: <span class="budget-amount">₫100M</span>
+                                Ngân sách: <span class="budget-amount">₫100M</span>
                             </div>
                             <div class="campaign-actions">
-                                <button class="action-btn">Report</button>
-                                <button class="action-btn primary">Clone</button>
+                                <button class="action-btn">Báo cáo</button>
+                                <button class="action-btn primary">Nhân bản</button>
                             </div>
                         </div>
                     </div>
@@ -1190,30 +1190,30 @@
                     <!-- Campaign Card 5 - Paused -->
                     <div class="campaign-card">
                         <div class="campaign-header">
-                            <span class="campaign-status status-paused">Paused</span>
-                            <h3 class="campaign-name">Gaming Tournament</h3>
+                            <span class="campaign-status status-paused">Tạm dừng</span>
+                            <h3 class="campaign-name">Giải đấu trò chơi</h3>
                             <div class="campaign-dates">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Jun 20 - Paused</span>
+                                <span>20 tháng 6 - Tạm dừng</span>
                             </div>
                         </div>
 
                         <div class="campaign-body">
                             <div class="campaign-metrics">
                                 <div class="metric">
-                                    <span class="metric-label">Total Reach</span>
+                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
                                     <span class="metric-value">3.2M</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Engagement</span>
+                                    <span class="metric-label">Lượt tương tác</span>
                                     <span class="metric-value">4.1%</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Conversions</span>
+                                    <span class="metric-label">Chuyển đổi</span>
                                     <span class="metric-value">425</span>
                                 </div>
                                 <div class="metric">
@@ -1224,7 +1224,7 @@
 
                             <div class="campaign-progress">
                                 <div class="progress-header">
-                                    <span class="progress-label">Campaign Progress</span>
+                                    <span class="progress-label">Tiến trình chiến dịch</span>
                                     <span class="progress-value">35%</span>
                                 </div>
                                 <div class="progress-bar">
@@ -1240,20 +1240,20 @@
                                     <div class="kol-avatar-small"
                                         style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">+2</div>
                                 </div>
-                                <span class="kol-count">4 KOLs participating</span>
+                                <span class="kol-count">4 KOL tham gia</span>
                             </div>
                         </div>
 
                         <div class="campaign-footer">
                             <div class="campaign-budget">
-                                Budget: <span class="budget-amount">₫50M</span>
+                                Ngân sách: <span class="budget-amount">₫50M</span>
                             </div>
                             <div class="campaign-actions">
                                 <button class="action-btn"
                                     onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    View
+                                    Xem
                                 </button>
-                                <button class="action-btn primary">Resume</button>
+                                <button class="action-btn primary">Tiếp tục</button>
                             </div>
                         </div>
                     </div>
@@ -1261,30 +1261,30 @@
                     <!-- Campaign Card 6 - Active -->
                     <div class="campaign-card">
                         <div class="campaign-header">
-                            <span class="campaign-status status-active">Active</span>
-                            <h3 class="campaign-name">Fitness Challenge</h3>
+                            <span class="campaign-status status-active">Hoạt động</span>
+                            <h3 class="campaign-name">Thử thách thể hình</h3>
                             <div class="campaign-dates">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Jul 15 - Aug 15, 2024</span>
+                                <span>15 tháng 7 - 15 tháng 8, 2024</span>
                             </div>
                         </div>
 
                         <div class="campaign-body">
                             <div class="campaign-metrics">
                                 <div class="metric">
-                                    <span class="metric-label">Total Reach</span>
+                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
                                     <span class="metric-value">6.7M</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Engagement</span>
+                                    <span class="metric-label">Lượt tương tác</span>
                                     <span class="metric-value">7.3%</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-label">Conversions</span>
+                                    <span class="metric-label">Chuyển đổi</span>
                                     <span class="metric-value">892</span>
                                 </div>
                                 <div class="metric">
@@ -1295,7 +1295,7 @@
 
                             <div class="campaign-progress">
                                 <div class="progress-header">
-                                    <span class="progress-label">Campaign Progress</span>
+                                    <span class="progress-label">Tiến trình chiến dịch</span>
                                     <span class="progress-value">25%</span>
                                 </div>
                                 <div class="progress-bar">
@@ -1312,20 +1312,20 @@
                                     <div class="kol-avatar-small"
                                         style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">+3</div>
                                 </div>
-                                <span class="kol-count">5 KOLs participating</span>
+                                <span class="kol-count">5 KOL tham gia</span>
                             </div>
                         </div>
 
                         <div class="campaign-footer">
                             <div class="campaign-budget">
-                                Budget: <span class="budget-amount">₫35M</span>
+                                Ngân sách: <span class="budget-amount">₫35M</span>
                             </div>
                             <div class="campaign-actions">
                                 <button class="action-btn"
                                     onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    View
+                                    Xem
                                 </button>
-                                <button class="action-btn primary">Manage</button>
+                                <button class="action-btn primary">Quản lý</button>
                             </div>
                         </div>
                     </div>

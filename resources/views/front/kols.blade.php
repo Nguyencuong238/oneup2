@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>KOL Directory - OneUp KOL Analytics</title>
+    <title>Danh mục KOL - Phân tích KOL OneUp</title>
     <meta name="description" content="Browse and discover 10,000+ verified TikTok KOLs in Vietnam">
 
 @endsection
@@ -563,10 +563,10 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 fade-in color-dark-blue">
-                    Discover <span class="gradient-text">10,000+ TikTok KOLs</span>
+                    Khám phá <span class="gradient-text">10,000+ KOL TikTok</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    Browse verified influencers with detailed analytics and real-time tracking
+                    Duyệt qua các influencer đã được xác minh với phân tích chi tiết và theo dõi theo thời gian thực
                 </p>
             </div>
         </div>
@@ -578,12 +578,12 @@
             <!-- Search Bar -->
             <div class="search-bar fade-in">
                 <div class="search-input-group">
-                    <input type="text" class="search-input" placeholder="Search by name, handle, or keyword...">
+                    <input type="text" class="search-input" placeholder="Tìm theo tên, tài khoản hoặc từ khóa...">
                     <button class="btn btn-primary">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
                         </svg>
-                        Search
+                        Tìm kiếm
                     </button>
                 </div>
             </div>
@@ -595,10 +595,10 @@
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
                         </svg>
-                        Filters
+                        Bộ lọc
                     </div>
                     <div class="filters-toggle" onclick="toggleFilters()">
-                        <span id="filterToggleText">Hide Filters</span>
+                        <span id="filterToggleText">Ẩn bộ lọc</span>
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         </svg>
@@ -607,125 +607,107 @@
                 
                 <div class="filters-content" id="filtersContent">
                     <div class="filter-group">
-                        <label class="filter-label">Category</label>
+                        <label class="filter-label">Danh mục</label>
                         <select class="filter-select">
-                            <option>All Categories</option>
-                            <option>Fashion & Style</option>
-                            <option>Beauty & Makeup</option>
-                            <option>Food & Cooking</option>
-                            <option>Travel & Tourism</option>
-                            <option>Technology</option>
-                            <option>Fitness & Health</option>
-                            <option>Entertainment</option>
-                            <option>Education</option>
+                            <option>Tất cả danh mục</option>
+                            <option>Thời trang & Phong cách</option>
+                            <option>Làm đẹp & Trang điểm</option>
+                            <option>Ẩm thực & Nấu ăn</option>
+                            <option>Du lịch & Khám phá</option>
+                            <option>Công nghệ</option>
+                            <option>Thể hình & Sức khỏe</option>
+                            <option>Giải trí</option>
+                            <option>Giáo dục</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Followers Range</label>
+                        <label class="filter-label">Khoảng người theo dõi</label>
                         <select class="filter-select">
-                            <option>All Ranges</option>
+                            <option>Tất cả</option>
                             <option>Nano (1K - 10K)</option>
                             <option>Micro (10K - 100K)</option>
-                            <option>Mid-tier (100K - 500K)</option>
+                            <option>Trung cấp (100K - 500K)</option>
                             <option>Macro (500K - 1M)</option>
                             <option>Mega (1M+)</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Engagement Rate</label>
+                        <label class="filter-label">Tỷ lệ tương tác</label>
                         <select class="filter-select">
-                            <option>Any Rate</option>
-                            <option>Above 1%</option>
-                            <option>Above 3%</option>
-                            <option>Above 5%</option>
-                            <option>Above 8%</option>
-                            <option>Above 10%</option>
+                            <option>Bất kỳ</option>
+                            <option>Trên 1%</option>
+                            <option>Trên 3%</option>
+                            <option>Trên 5%</option>
+                            <option>Trên 8%</option>
+                            <option>Trên 10%</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Location</label>
+                        <label class="filter-label">Khu vực</label>
                         <select class="filter-select">
-                            <option>All Locations</option>
+                            <option>Tất cả khu vực</option>
                             <option>Hà Nội</option>
                             <option>TP. Hồ Chí Minh</option>
                             <option>Đà Nẵng</option>
                             <option>Cần Thơ</option>
                             <option>Hải Phòng</option>
-                            <option>Other</option>
+                            <option>Khác</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Language</label>
+                        <label class="filter-label">Ngôn ngữ</label>
                         <select class="filter-select">
-                            <option>All Languages</option>
-                            <option>Vietnamese</option>
-                            <option>English</option>
-                            <option>Bilingual</option>
+                            <option>Tất cả ngôn ngữ</option>
+                            <option>Tiếng Việt</option>
+                            <option>Tiếng Anh</option>
+                            <option>Song ngữ</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Verification</label>
+                        <label class="filter-label">Trạng thái xác minh</label>
                         <div class="filter-chips">
-                            <button class="filter-chip active">All</button>
-                            <button class="filter-chip">Verified Only</button>
-                            <button class="filter-chip">Rising Stars</button>
+                            <button class="filter-chip active">Tất cả</button>
+                            <button class="filter-chip">Chỉ tài khoản xác minh</button>
+                            <button class="filter-chip">Ngôi sao đang lên</button>
                         </div>
                     </div>
                 </div>
                 
                 <div class="filter-actions">
-                    <button class="btn btn-primary">Apply Filters</button>
-                    <button class="btn btn-outline">Clear All</button>
+                    <button class="btn btn-primary">Áp dụng</button>
+                    <button class="btn btn-outline">Xóa tất cả</button>
                     <span style="margin-left: auto; color: var(--gray-600); font-size: 14px;">
-                        3 filters applied
+                        3 bộ lọc đang được áp dụng
                     </span>
                 </div>
             </div>
 
-            <!-- Active Filters (shown when filters are applied) -->
-            {{-- <div class="active-filters" style="display: none;">
-                <span style="font-weight: 600; color: var(--dark-blue);">Active Filters:</span>
-                <span class="active-filter-tag">
-                    Fashion & Style
-                    <button onclick="removeFilter(this)">×</button>
-                </span>
-                <span class="active-filter-tag">
-                    100K - 500K Followers
-                    <button onclick="removeFilter(this)">×</button>
-                </span>
-                <span class="active-filter-tag">
-                    Above 5% Engagement
-                    <button onclick="removeFilter(this)">×</button>
-                </span>
-                <button class="btn btn-outline btn-small" style="margin-left: auto;">Clear All</button>
-            </div> --}}
-
             <!-- Results Header -->
             <div class="results-header fade-in">
                 <div class="results-count">
-                    Showing <strong>1-12</strong> of <strong>2,847</strong> KOLs
+                    Hiển thị <strong>1-12</strong> trong tổng số <strong>2,847</strong> KOL
                 </div>
                 <div class="results-controls">
                     <select class="sort-dropdown">
-                        <option>Most Relevant</option>
-                        <option>Highest Engagement</option>
-                        <option>Most Followers</option>
-                        <option>Recently Active</option>
-                        <option>Fastest Growing</option>
-                        <option>Best Value</option>
+                        <option>Phù hợp nhất</option>
+                        <option>Tỷ lệ tương tác cao nhất</option>
+                        <option>Nhiều người theo dõi nhất</option>
+                        <option>Hoạt động gần đây</option>
+                        <option>Tăng trưởng nhanh nhất</option>
+                        <option>Giá trị tốt nhất</option>
                     </select>
                     <div class="view-toggle">
-                        <button class="view-btn active" title="Grid View">
+                        <button class="view-btn active" title="Dạng lưới">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM13 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z"/>
                             </svg>
                         </button>
-                        <button class="view-btn" title="List View">
+                        <button class="view-btn" title="Dạng danh sách">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
                             </svg>
@@ -736,62 +718,51 @@
 
             <!-- KOL Cards Grid -->
             <div class="kol-grid">
-                <!-- KOL Card 1 -->
+                @foreach(range(1,12) as $i)
                 <div class="kol-card fade-in">
                     <div class="kol-card-header">
-                        <img src="https://via.placeholder.com/400x200/FF0050/ffffff?text=Fashion+Content" alt="Cover" class="kol-cover-image">
-                        <span class="kol-badge verified">Verified</span>
-                        <div class="trending-tag">
-                            🔥 Trending
-                        </div>
+                        <img src="https://via.placeholder.com/400x200/FF0050/ffffff?text=TikTok+KOL+{{$i}}" alt="KOL Cover" class="kol-cover-image">
+                        <span class="kol-badge verified">Đã xác minh</span>
+                        <div class="trending-tag">🔥 Thịnh hành</div>
                         <div class="kol-avatar-wrapper">
-                            <div class="kol-avatar">NT</div>
+                            <div class="kol-avatar">K{{$i}}</div>
                         </div>
                     </div>
                     <div class="kol-card-body">
                         <div class="kol-info">
                             <div class="kol-name">
-                                Ngọc Trinh
+                                KOL Mẫu {{$i}}
                                 <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
                                 </svg>
                             </div>
-                            <div class="kol-handle">@ngoctrinh.official</div>
-                            <span class="kol-category">Fashion & Style</span>
+                            <div class="kol-handle">@kol{{$i}}</div>
+                            <span class="kol-category">Danh mục: Thời trang</span>
                         </div>
                         <p class="kol-bio">
-                            Fashion influencer sharing daily outfit inspirations and style tips. Brand ambassador for luxury fashion brands.
+                            Influencer chia sẻ nội dung hấp dẫn, có phong cách riêng và tương tác cao với khán giả.
                         </p>
                         <div class="kol-stats">
                             <div class="kol-stat">
-                                <span class="kol-stat-value">2.8M</span>
-                                <span class="kol-stat-label">Followers</span>
+                                <span class="kol-stat-value">{{ rand(10,100) }}K</span>
+                                <span class="kol-stat-label">Người theo dõi</span>
                             </div>
                             <div class="kol-stat">
-                                <span class="kol-stat-value">5.8%</span>
-                                <span class="kol-stat-label">Engagement</span>
+                                <span class="kol-stat-value">{{ rand(2,8) }}%</span>
+                                <span class="kol-stat-label">Tương tác</span>
                             </div>
                             <div class="kol-stat">
-                                <span class="kol-stat-value">450K</span>
-                                <span class="kol-stat-label">Avg Views</span>
+                                <span class="kol-stat-value">{{ rand(50,500) }}K</span>
+                                <span class="kol-stat-label">Lượt xem TB</span>
                             </div>
                         </div>
                         <div class="kol-metrics">
-                            <span class="metric-tag good">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                                </svg>
-                                High Quality
-                            </span>
-                            <span class="metric-tag">
-                                📍 Hà Nội
-                            </span>
-                            <span class="metric-tag">
-                                💰 Premium
-                            </span>
+                            <span class="metric-tag good">✨ Chất lượng cao</span>
+                            <span class="metric-tag">📍 Việt Nam</span>
+                            <span class="metric-tag">💰 Trung bình</span>
                         </div>
                         <div class="kol-actions">
-                            <button class="btn btn-primary" style="flex: 1;">View Profile</button>
+                            <button class="btn btn-primary" style="flex: 1;">Xem hồ sơ</button>
                             <button class="btn btn-outline btn-icon">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
@@ -800,159 +771,21 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- KOL Card 2 -->
-                <div class="kol-card fade-in" style="animation-delay: 0.1s;">
-                    <div class="kol-card-header">
-                        <img src="https://via.placeholder.com/400x200/00D4AA/ffffff?text=Beauty+Tutorials" alt="Cover" class="kol-cover-image">
-                        <span class="kol-badge rising">Rising Star</span>
-                        <div class="kol-avatar-wrapper">
-                            <div class="kol-avatar">MH</div>
-                        </div>
-                    </div>
-                    <div class="kol-card-body">
-                        <div class="kol-info">
-                            <div class="kol-name">
-                                Minh Hằng
-                                <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                                </svg>
-                            </div>
-                            <div class="kol-handle">@minhang.beauty</div>
-                            <span class="kol-category">Beauty & Makeup</span>
-                        </div>
-                        <p class="kol-bio">
-                            Professional makeup artist sharing beauty tutorials, skincare routines, and product reviews.
-                        </p>
-                        <div class="kol-stats">
-                            <div class="kol-stat">
-                                <span class="kol-stat-value">1.5M</span>
-                                <span class="kol-stat-label">Followers</span>
-                            </div>
-                            <div class="kol-stat">
-                                <span class="kol-stat-value">7.2%</span>
-                                <span class="kol-stat-label">Engagement</span>
-                            </div>
-                            <div class="kol-stat">
-                                <span class="kol-stat-value">280K</span>
-                                <span class="kol-stat-label">Avg Views</span>
-                            </div>
-                        </div>
-                        <div class="kol-metrics">
-                            <span class="metric-tag good">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                </svg>
-                                Top Rated
-                            </span>
-                            <span class="metric-tag">
-                                📍 TP.HCM
-                            </span>
-                            <span class="metric-tag">
-                                ⚡ Fast Growing
-                            </span>
-                        </div>
-                        <div class="kol-actions">
-                            <button class="btn btn-primary" style="flex: 1;">View Profile</button>
-                            <button class="btn btn-outline btn-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- KOL Card 2 -->
-                <div class="kol-card fade-in" style="animation-delay: 0.1s;">
-                    <div class="kol-card-header">
-                        <img src="https://via.placeholder.com/400x200/00D4AA/ffffff?text=Beauty+Tutorials" alt="Cover" class="kol-cover-image">
-                        <span class="kol-badge rising">Rising Star</span>
-                        <div class="kol-avatar-wrapper">
-                            <div class="kol-avatar">MH</div>
-                        </div>
-                    </div>
-                    <div class="kol-card-body">
-                        <div class="kol-info">
-                            <div class="kol-name">
-                                Minh Hằng
-                                <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                                </svg>
-                            </div>
-                            <div class="kol-handle">@minhang.beauty</div>
-                            <span class="kol-category">Beauty & Makeup</span>
-                        </div>
-                        <p class="kol-bio">
-                            Professional makeup artist sharing beauty tutorials, skincare routines, and product reviews.
-                        </p>
-                        <div class="kol-stats">
-                            <div class="kol-stat">
-                                <span class="kol-stat-value">1.5M</span>
-                                <span class="kol-stat-label">Followers</span>
-                            </div>
-                            <div class="kol-stat">
-                                <span class="kol-stat-value">7.2%</span>
-                                <span class="kol-stat-label">Engagement</span>
-                            </div>
-                            <div class="kol-stat">
-                                <span class="kol-stat-value">280K</span>
-                                <span class="kol-stat-label">Avg Views</span>
-                            </div>
-                        </div>
-                        <div class="kol-metrics">
-                            <span class="metric-tag good">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                </svg>
-                                Top Rated
-                            </span>
-                            <span class="metric-tag">
-                                📍 TP.HCM
-                            </span>
-                            <span class="metric-tag">
-                                ⚡ Fast Growing
-                            </span>
-                        </div>
-                        <div class="kol-actions">
-                            <button class="btn btn-primary" style="flex: 1;">View Profile</button>
-                            <button class="btn btn-outline btn-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- More KOL Cards... (3-12) -->
-                <!-- Truncated for brevity - would include all 12 cards as in original -->
-                
+                @endforeach
             </div>
 
             <!-- Pagination -->
-            <div class="pagination">
-                <button class="page-btn" disabled>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/>
-                    </svg>
-                </button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn">4</button>
-                <button class="page-btn">5</button>
-                <span style="padding: 0 0.5rem; color: var(--gray-600);">...</span>
-                <button class="page-btn">237</button>
-                <button class="page-btn">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
-                    </svg>
-                </button>
+            <div class="pagination fade-in">
+                <button class="btn btn-outline" disabled>← Trước</button>
+                <button class="btn btn-primary">1</button>
+                <button class="btn btn-outline">2</button>
+                <button class="btn btn-outline">3</button>
+                <button class="btn btn-outline">Tiếp →</button>
             </div>
         </div>
     </section>
 @endsection
+
 
 @section('js')
     <script>

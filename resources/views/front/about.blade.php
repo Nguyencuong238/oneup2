@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>About Us - OneUp KOL Analytics</title>
+    <title>Giới thiệu về chúng tôi - OneUp KOL Analytics</title>
     <meta name="description" content="About OneUp KOL Analytics - Leading TikTok influencer marketing platform in Vietnam">
 @endsection
 
@@ -246,11 +246,11 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 color-dark-blue fade-in">
-                    Empowering Brands with <span class="gradient-text">Data-Driven</span><br>
-                    Influencer Marketing
+                    Trao Quyền Cho Thương Hiệu Với <span class="gradient-text">Dữ Liệu Thông Minh</span><br>
+                    Trong Tiếp Thị Người Ảnh Hưởng
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    We're on a mission to revolutionize how brands connect with TikTok creators in Vietnam
+                    Chúng tôi đang thực hiện sứ mệnh cách mạng hóa cách các thương hiệu kết nối với nhà sáng tạo TikTok tại Việt Nam.
                 </p>
             </div>
         </div>
@@ -262,19 +262,19 @@
             <div class="stats-container">
                 <div class="stat-item fade-in">
                     <div class="stat-number" data-counter="2019">0</div>
-                    <div class="stat-label">Founded</div>
+                    <div class="stat-label">Thành lập</div>
                 </div>
                 <div class="stat-item fade-in" style="animation-delay: 0.1s;">
                     <div class="stat-number" data-counter="45">0</div>
-                    <div class="stat-label">Team Members</div>
+                    <div class="stat-label">Thành viên</div>
                 </div>
                 <div class="stat-item fade-in" style="animation-delay: 0.2s;">
                     <div class="stat-number" data-counter="500">0</div>
-                    <div class="stat-label">Happy Clients</div>
+                    <div class="stat-label">Khách hàng hài lòng</div>
                 </div>
                 <div class="stat-item fade-in" style="animation-delay: 0.3s;">
                     <div class="stat-number">₫50B+</div>
-                    <div class="stat-label">Campaign Value Tracked</div>
+                    <div class="stat-label">Giá trị chiến dịch được theo dõi</div>
                 </div>
             </div>
         </div>
@@ -284,34 +284,30 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">OUR STORY</div>
-                <h2 class="section-title color-gray-100 fade-in">How It All Started</h2>
+                <div class="section-subtitle fade-in">CÂU CHUYỆN CỦA CHÚNG TÔI</div>
+                <h2 class="section-title color-gray-100 fade-in">Khởi Nguồn</h2>
             </div>
 
             <div class="grid grid-2 align-center gap-5">
                 <div class="slide-in-left">
                     <p class="mb-3" style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        OneUp KOL Analytics was born from a simple observation: Vietnamese brands were struggling to
-                        navigate the rapidly growing TikTok influencer landscape. Traditional methods of finding and vetting
-                        KOLs were time-consuming, expensive, and often ineffective.
+                        OneUp KOL Analytics ra đời từ một quan sát đơn giản: các thương hiệu Việt Nam đang gặp khó khăn trong việc định hướng thị trường người ảnh hưởng TikTok đang phát triển nhanh chóng. 
+                        Các phương pháp truyền thống để tìm kiếm và đánh giá KOL tốn nhiều thời gian, chi phí và thường không hiệu quả.
                     </p>
                     <p class="mb-3" style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        Our founding team, with backgrounds in data science, digital marketing, and software engineering,
-                        came together in 2019 with a vision to democratize access to influencer marketing intelligence.
+                        Nhóm sáng lập của chúng tôi — với nền tảng khoa học dữ liệu, tiếp thị số và kỹ thuật phần mềm — đã cùng nhau xây dựng tầm nhìn từ năm 2019: dân chủ hóa khả năng tiếp cận dữ liệu trong lĩnh vực tiếp thị người ảnh hưởng.
                     </p>
                     <p style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        Today, we're proud to be Vietnam's leading TikTok KOL analytics platform, helping hundreds of brands
-                        make data-driven decisions and achieve remarkable ROI on their influencer campaigns.
+                        Ngày nay, chúng tôi tự hào là nền tảng phân tích KOL TikTok hàng đầu Việt Nam, giúp hàng trăm thương hiệu ra quyết định dựa trên dữ liệu và đạt được ROI vượt trội trong các chiến dịch người ảnh hưởng.
                     </p>
                 </div>
                 <div class="slide-in-right">
                     <div
                         style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%); border-radius: 20px; padding: 3rem; text-align: center;">
                         <div style="font-size: 64px; margin-bottom: 1rem;">🚀</div>
-                        <h3 class="gradient-text">Our Mission</h3>
+                        <h3 class="gradient-text">Sứ Mệnh Của Chúng Tôi</h3>
                         <p style="color: var(--gray-800); margin-top: 1rem; font-style: italic;">
-                            "To empower every brand in Vietnam with the tools and insights needed to run successful
-                            influencer marketing campaigns"
+                            "Trao quyền cho mọi thương hiệu tại Việt Nam với công cụ và dữ liệu cần thiết để triển khai các chiến dịch tiếp thị người ảnh hưởng thành công."
                         </p>
                     </div>
                 </div>
@@ -322,15 +318,15 @@
     <!-- Timeline -->
     <section class="section" style="background: #F8F9FA;">
         <div class="container">
-            <h2 class="text-center mb-5 color-dark-blue">Our Journey</h2>
+            <h2 class="text-center mb-5 color-dark-blue">Hành Trình Của Chúng Tôi</h2>
 
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2019</h3>
-                        <h4>Company Founded</h4>
-                        <p>Started with a team of 3 founders and a vision to transform influencer marketing</p>
+                        <h4>Thành lập công ty</h4>
+                        <p>Bắt đầu với 3 nhà sáng lập cùng tầm nhìn thay đổi ngành tiếp thị người ảnh hưởng.</p>
                     </div>
                 </div>
 
@@ -338,8 +334,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2020</h3>
-                        <h4>Beta Launch</h4>
-                        <p>Released beta version with 50 early adopter brands</p>
+                        <h4>Ra mắt phiên bản Beta</h4>
+                        <p>Ra mắt bản thử nghiệm với 50 thương hiệu đầu tiên.</p>
                     </div>
                 </div>
 
@@ -347,8 +343,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2021</h3>
-                        <h4>Series A Funding</h4>
-                        <p>Raised $2M to expand platform capabilities and team</p>
+                        <h4>Gọi vốn Series A</h4>
+                        <p>Gọi vốn 2 triệu USD để mở rộng năng lực nền tảng và đội ngũ.</p>
                     </div>
                 </div>
 
@@ -356,8 +352,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2022</h3>
-                        <h4>AI Integration</h4>
-                        <p>Launched AI-powered KOL recommendations and fraud detection</p>
+                        <h4>Tích hợp AI</h4>
+                        <p>Ra mắt gợi ý KOL và phát hiện gian lận dựa trên trí tuệ nhân tạo.</p>
                     </div>
                 </div>
 
@@ -365,8 +361,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2023</h3>
-                        <h4>Market Leader</h4>
-                        <p>Became Vietnam's #1 TikTok KOL analytics platform</p>
+                        <h4>Dẫn đầu thị trường</h4>
+                        <p>Trở thành nền tảng phân tích KOL TikTok số 1 tại Việt Nam.</p>
                     </div>
                 </div>
 
@@ -374,8 +370,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2024</h3>
-                        <h4>Regional Expansion</h4>
-                        <p>Expanded to Thailand, Philippines, and Indonesia</p>
+                        <h4>Mở rộng khu vực</h4>
+                        <p>Mở rộng sang Thái Lan, Philippines và Indonesia.</p>
                     </div>
                 </div>
             </div>
@@ -386,48 +382,45 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">CORE VALUES</div>
-                <h2 class="section-title color-gray-100 fade-in">What Drives Us</h2>
+                <div class="section-subtitle fade-in">GIÁ TRỊ CỐT LÕI</div>
+                <h2 class="section-title color-gray-100 fade-in">Điều Thôi Thúc Chúng Tôi</h2>
             </div>
 
             <div class="values-grid">
                 <div class="value-card fade-in">
                     <div class="value-icon">🎯</div>
-                    <h3>Data-Driven</h3>
-                    <p>We believe in the power of data to drive better decisions. Every feature we build is designed to
-                        provide actionable insights.</p>
+                    <h3>Dựa Trên Dữ Liệu</h3>
+                    <p>Chúng tôi tin vào sức mạnh của dữ liệu để ra quyết định tốt hơn. Mọi tính năng đều được thiết kế để cung cấp thông tin hành động cụ thể.</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.1s;">
                     <div class="value-icon">🤝</div>
-                    <h3>Customer Success</h3>
-                    <p>Your success is our success. We're committed to helping every client achieve their influencer
-                        marketing goals.</p>
+                    <h3>Thành Công Của Khách Hàng</h3>
+                    <p>Thành công của bạn là thành công của chúng tôi. Cam kết hỗ trợ mọi khách hàng đạt được mục tiêu tiếp thị người ảnh hưởng.</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.2s;">
                     <div class="value-icon">💡</div>
-                    <h3>Innovation</h3>
-                    <p>We continuously innovate to stay ahead of the rapidly evolving social media landscape.</p>
+                    <h3>Đổi Mới</h3>
+                    <p>Liên tục đổi mới để bắt kịp xu hướng mạng xã hội phát triển không ngừng.</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.3s;">
                     <div class="value-icon">🔍</div>
-                    <h3>Transparency</h3>
-                    <p>We believe in transparent pricing, clear metrics, and honest communication with all stakeholders.</p>
+                    <h3>Minh Bạch</h3>
+                    <p>Chúng tôi tin tưởng vào sự minh bạch về giá, chỉ số và giao tiếp rõ ràng với mọi đối tác.</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.4s;">
                     <div class="value-icon">⚡</div>
-                    <h3>Speed</h3>
-                    <p>In the fast-paced world of social media, speed matters. We help you move quickly without sacrificing
-                        quality.</p>
+                    <h3>Tốc Độ</h3>
+                    <p>Trong thế giới mạng xã hội nhanh chóng, tốc độ là yếu tố then chốt. Chúng tôi giúp bạn hành động nhanh mà vẫn đảm bảo chất lượng.</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.5s;">
                     <div class="value-icon">🌟</div>
-                    <h3>Excellence</h3>
-                    <p>We strive for excellence in everything we do, from product development to customer support.</p>
+                    <h3>Xuất Sắc</h3>
+                    <p>Không ngừng nỗ lực để đạt sự xuất sắc trong mọi lĩnh vực — từ phát triển sản phẩm đến chăm sóc khách hàng.</p>
                 </div>
             </div>
         </div>
@@ -437,10 +430,10 @@
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">OUR TEAM</div>
-                <h2 class="section-title fade-in">Meet the People Behind OneUp</h2>
+                <div class="section-subtitle fade-in">ĐỘI NGŨ CỦA CHÚNG TÔI</div>
+                <h2 class="section-title fade-in">Những Con Người Đằng Sau OneUp</h2>
                 <p class="section-description fade-in">
-                    A diverse team of experts passionate about influencer marketing
+                    Đội ngũ đa dạng các chuyên gia đam mê tiếp thị người ảnh hưởng
                 </p>
             </div>
 
@@ -448,43 +441,43 @@
                 <div class="team-member fade-in">
                     <div class="team-avatar">NT</div>
                     <div class="team-name">Nguyễn Thành</div>
-                    <div class="team-role">CEO & Co-Founder</div>
-                    <div class="team-bio">10+ years in digital marketing. Former Head of Digital at Unilever Vietnam.</div>
+                    <div class="team-role">CEO & Đồng Sáng Lập</div>
+                    <div class="team-bio">Hơn 10 năm trong lĩnh vực tiếp thị số. Cựu Trưởng phòng Digital tại Unilever Việt Nam.</div>
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.1s;">
                     <div class="team-avatar">LH</div>
                     <div class="team-name">Lê Hương</div>
-                    <div class="team-role">CTO & Co-Founder</div>
-                    <div class="team-bio">AI/ML expert. Previously Senior Engineer at Google Singapore.</div>
+                    <div class="team-role">CTO & Đồng Sáng Lập</div>
+                    <div class="team-bio">Chuyên gia AI/ML. Cựu kỹ sư cấp cao tại Google Singapore.</div>
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.2s;">
                     <div class="team-avatar">PM</div>
                     <div class="team-name">Phạm Minh</div>
-                    <div class="team-role">Head of Product</div>
-                    <div class="team-bio">Product visionary with experience at Grab and Shopee.</div>
+                    <div class="team-role">Trưởng Bộ Phận Sản Phẩm</div>
+                    <div class="team-bio">Tầm nhìn sản phẩm với kinh nghiệm tại Grab và Shopee.</div>
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.3s;">
                     <div class="team-avatar">TD</div>
                     <div class="team-name">Trần Dung</div>
-                    <div class="team-role">Head of Data Science</div>
-                    <div class="team-bio">PhD in Data Science. Expert in social media analytics.</div>
+                    <div class="team-role">Trưởng Bộ Phận Khoa Học Dữ Liệu</div>
+                    <div class="team-bio">Tiến sĩ Khoa học Dữ liệu. Chuyên gia phân tích mạng xã hội.</div>
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.4s;">
                     <div class="team-avatar">VL</div>
                     <div class="team-name">Vũ Linh</div>
-                    <div class="team-role">Head of Customer Success</div>
-                    <div class="team-bio">Passionate about helping brands succeed with influencer marketing.</div>
+                    <div class="team-role">Trưởng Bộ Phận Thành Công Khách Hàng</div>
+                    <div class="team-bio">Đam mê giúp thương hiệu thành công cùng tiếp thị người ảnh hưởng.</div>
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.5s;">
                     <div class="team-avatar">HN</div>
                     <div class="team-name">Hoàng Nam</div>
-                    <div class="team-role">Head of Marketing</div>
-                    <div class="team-bio">Growth hacker with track record of scaling B2B SaaS companies.</div>
+                    <div class="team-role">Trưởng Bộ Phận Tiếp Thị</div>
+                    <div class="team-bio">Chuyên gia tăng trưởng với thành tích mở rộng các công ty SaaS B2B.</div>
                 </div>
             </div>
         </div>
@@ -494,8 +487,8 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">TRUSTED BY</div>
-                <h2 class="section-title color-gray-100 fade-in">Our Partners & Clients</h2>
+                <div class="section-subtitle fade-in">ĐƯỢC TIN TƯỞNG BỞI</div>
+                <h2 class="section-title color-gray-100 fade-in">Đối Tác & Khách Hàng</h2>
             </div>
 
             <div class="partner-logos">
@@ -514,30 +507,30 @@
     <!-- Awards Section -->
     <section class="section" style="background: #F8F9FA;">
         <div class="container text-center">
-            <h2 class="mb-4">Awards & Recognition</h2>
+            <h2 class="mb-4">Giải Thưởng & Sự Công Nhận</h2>
 
             <div class="grid grid-4">
                 <div class="card fade-in">
                     <div style="font-size: 48px; margin-bottom: 1rem;">🏆</div>
-                    <h4>Best MarTech Startup</h4>
+                    <h4>Startup MarTech Xuất Sắc Nhất</h4>
                     <p style="color: var(--gray-light);">Vietnam Tech Awards 2023</p>
                 </div>
 
                 <div class="card fade-in" style="animation-delay: 0.1s;">
                     <div style="font-size: 48px; margin-bottom: 1rem;">⭐</div>
-                    <h4>Top 10 Startups</h4>
-                    <p style="color: var(--gray-light);">Southeast Asia 2023</p>
+                    <h4>Top 10 Startup Hàng Đầu</h4>
+                    <p style="color: var(--gray-light);">Đông Nam Á 2023</p>
                 </div>
 
                 <div class="card fade-in" style="animation-delay: 0.2s;">
                     <div style="font-size: 48px; margin-bottom: 1rem;">🚀</div>
-                    <h4>Fastest Growing</h4>
+                    <h4>Tăng Trưởng Nhanh Nhất</h4>
                     <p style="color: var(--gray-light);">Tech in Asia 2022</p>
                 </div>
 
                 <div class="card fade-in" style="animation-delay: 0.3s;">
                     <div style="font-size: 48px; margin-bottom: 1rem;">💎</div>
-                    <h4>Innovation Award</h4>
+                    <h4>Giải Thưởng Đổi Mới</h4>
                     <p style="color: var(--gray-light);">Digital Marketing Asia 2023</p>
                 </div>
             </div>
@@ -547,17 +540,17 @@
     <!-- CTA Section -->
     <section class="section" style="background: var(--gradient); color: white;">
         <div class="container text-center">
-            <h2 class="mb-3">Join Us on Our Mission</h2>
+            <h2 class="mb-3">Hãy Cùng Chúng Tôi Thực Hiện Sứ Mệnh</h2>
             <p class="mb-4" style="font-size: 18px; opacity: 0.9;">
-                Be part of the influencer marketing revolution in Southeast Asia
+                Trở thành một phần của cuộc cách mạng tiếp thị người ảnh hưởng tại Đông Nam Á.
             </p>
             <div class="d-flex gap-2 justify-center">
                 <a href="{{ route('user.register') }}" class="btn" style="background: white; color: var(--primary);">
-                    Start Free Trial
+                    Bắt Đầu Dùng Thử Miễn Phí
                 </a>
                 <a href="#" class="btn"
                     style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
-                    View Open Positions
+                    Xem Vị Trí Tuyển Dụng
                 </a>
             </div>
         </div>

@@ -218,7 +218,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
-                    <span>Dashboard</span>
+                    <span>Bảng điều khiển</span>
                 </a>
 
                 <a href="{{ route('user.kolExplorer') }}"
@@ -227,7 +227,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <span>KOL Explorer</span>
+                    <span>Khám phá KOL</span>
                 </a>
 
                 <a href="{{ route('user.campaign.index') }}"
@@ -236,7 +236,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
-                    <span>Campaigns</span>
+                    <span>Chiến dịch</span>
                     <span class="nav-badge">3</span>
                 </a>
 
@@ -245,7 +245,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>Analytics</span>
+                    <span>Phân tích</span>
                 </a>
 
                 <a href="{{ route('user.report') }}" class="nav-item @if (request()->routeIs('user.report')) active @endif">
@@ -253,7 +253,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1m3-2V8a2 2 0 00-2-2H8a2 2 0 00-2 2v8m5-4h4" />
                     </svg>
-                    <span>Reports</span>
+                    <span>Báo cáo</span>
                 </a>
 
                 <a href="{{ route('user.leaderboard') }}"
@@ -262,7 +262,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
-                    <span>Leaderboards</span>
+                    <span>Bảng xếp hạng</span>
                 </a>
 
                 <a href="{{ route('user.setting') }}" class="nav-item @if (request()->routeIs('user.setting')) active @endif">
@@ -272,7 +272,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span>Settings</span>
+                    <span>Cài đặt</span>
                 </a>
 
                 <a href="{{ route('user.billing') }}" class="nav-item @if (request()->routeIs('user.billing')) active @endif">
@@ -280,7 +280,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
-                    <span>Billing</span>
+                    <span>Thanh toán</span>
                 </a>
             </nav>
 
@@ -295,7 +295,7 @@
                     <div class="user-avatar">{{ getFirstCharacter($name) }}</div>
                     <div class="user-info">
                         <div class="user-name">{{ $name }}</div>
-                        <div class="user-role color-gray-600">{{ $role ?? 'User' }}</div>
+                        <div class="user-role color-gray-600">{{ $role ?? 'Người dùng' }}</div>
                     </div>
                     <svg width="20" height="20" fill="" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -308,13 +308,12 @@
                         @csrf
                         <a href="{{ route('logout') }}" class="nav-link"
                             onclick="event.preventDefault();this.closest('form').submit();">
-                            <i class="icon-switch2"></i> {{ __('Log Out') }}
+                            <i class="icon-switch2"></i> {{ __('Đăng xuất') }}
                         </a>
                     </form>
                 </div>
             </div>
         </aside>
-
         @yield('page')
     </div>
 

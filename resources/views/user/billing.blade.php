@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="Billing & Invoices - OneUp KOL Analytics Dashboard">
-    <title>Billing - OneUp KOL Analytics</title>
+    <title>Thanh toán - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -664,8 +664,8 @@
     <main class="main-content">
         <!-- Page Header -->
         <div class="page-header">
-            <h1 class="page-title">Billing & Invoices</h1>
-            <p class="page-subtitle">Manage your subscription, payment methods and download invoices</p>
+            <h1 class="page-title">Thanh toán & Hóa đơn</h1>
+            <p class="page-subtitle">Quản lý gói đăng ký, phương thức thanh toán và tải hóa đơn</p>
         </div>
 
         <!-- Billing Container -->
@@ -673,29 +673,29 @@
             <!-- Current Plan -->
             <div class="current-plan-card">
                 <div class="plan-info">
-                    <div class="plan-label">Current Plan</div>
-                    <div class="plan-name-large">Professional Plan</div>
+                    <div class="plan-label">Gói hiện tại</div>
+                    <div class="plan-name-large">Gói Chuyên nghiệp</div>
 
                     <div class="plan-details">
                         <div class="plan-detail-item">
-                            <span class="plan-detail-label">Monthly Cost</span>
+                            <span class="plan-detail-label">Chi phí hàng tháng</span>
                             <span class="plan-detail-value">₫2,500,000</span>
                         </div>
                         <div class="plan-detail-item">
-                            <span class="plan-detail-label">Next Billing Date</span>
-                            <span class="plan-detail-value">Feb 15, 2025</span>
+                            <span class="plan-detail-label">Ngày thanh toán kế tiếp</span>
+                            <span class="plan-detail-value">15 Tháng 2, 2025</span>
                         </div>
                         <div class="plan-detail-item">
-                            <span class="plan-detail-label">Team Members</span>
-                            <span class="plan-detail-value">3 of 5 seats used</span>
+                            <span class="plan-detail-label">Thành viên nhóm</span>
+                            <span class="plan-detail-value">3 / 5 chỗ đã dùng</span>
                         </div>
                         <div class="plan-detail-item">
-                            <span class="plan-detail-label">KOL Tracking</span>
-                            <span class="plan-detail-value">Unlimited</span>
+                            <span class="plan-detail-label">Theo dõi KOL</span>
+                            <span class="plan-detail-value">Không giới hạn</span>
                         </div>
                     </div>
 
-                    <button class="upgrade-btn">Upgrade to Enterprise</button>
+                    <button class="upgrade-btn">Nâng cấp lên Gói Doanh nghiệp</button>
                 </div>
             </div>
 
@@ -703,7 +703,7 @@
             <div class="billing-stats">
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-title">API Calls</span>
+                        <span class="stat-title">Lượt gọi API</span>
                         <div class="stat-icon">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -712,7 +712,7 @@
                         </div>
                     </div>
                     <div class="stat-value">42,853</div>
-                    <div class="stat-description">of 100,000 monthly limit</div>
+                    <div class="stat-description">trên tổng 100,000 lượt/tháng</div>
                     <div class="stat-progress">
                         <div class="stat-progress-fill" style="width: 42.8%;"></div>
                     </div>
@@ -720,7 +720,7 @@
 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-title">Storage Used</span>
+                        <span class="stat-title">Dung lượng đã dùng</span>
                         <div class="stat-icon">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
@@ -730,7 +730,7 @@
                         </div>
                     </div>
                     <div class="stat-value">8.4 GB</div>
-                    <div class="stat-description">of 50 GB included</div>
+                    <div class="stat-description">trên tổng 50 GB</div>
                     <div class="stat-progress">
                         <div class="stat-progress-fill" style="width: 16.8%;"></div>
                     </div>
@@ -738,7 +738,7 @@
 
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-title">Active Campaigns</span>
+                        <span class="stat-title">Chiến dịch đang hoạt động</span>
                         <div class="stat-icon">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -748,7 +748,7 @@
                         </div>
                     </div>
                     <div class="stat-value">18</div>
-                    <div class="stat-description">No limit on Pro plan</div>
+                    <div class="stat-description">Không giới hạn trong gói Pro</div>
                     <div class="stat-progress">
                         <div class="stat-progress-fill" style="width: 100%; background: var(--success);"></div>
                     </div>
@@ -758,30 +758,30 @@
             <!-- Usage Chart -->
             <div class="usage-chart">
                 <div class="section-header">
-                    <h2 class="section-title">Usage Trends</h2>
+                    <h2 class="section-title">Xu hướng sử dụng</h2>
                     <select class="filter-select">
-                        <option>Last 30 days</option>
-                        <option>Last 3 months</option>
-                        <option>Last 6 months</option>
-                        <option>This year</option>
+                        <option>30 ngày gần đây</option>
+                        <option>3 tháng gần đây</option>
+                        <option>6 tháng gần đây</option>
+                        <option>Năm nay</option>
                     </select>
                 </div>
                 <div class="chart-container">
-                    Usage chart will be rendered here
+                    Biểu đồ sử dụng sẽ hiển thị tại đây
                 </div>
             </div>
 
             <!-- Payment Methods -->
             <div class="payment-method-card">
                 <div class="section-header">
-                    <h2 class="section-title">Payment Methods</h2>
+                    <h2 class="section-title">Phương thức thanh toán</h2>
                     <button class="btn btn-primary">
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                 clip-rule="evenodd" />
                         </svg>
-                        Add Payment Method
+                        Thêm phương thức thanh toán
                     </button>
                 </div>
 
@@ -789,18 +789,18 @@
                     <div class="payment-card active">
                         <div class="card-icon">VISA</div>
                         <div class="card-details">
-                            <div class="card-type">Visa ending in 4242</div>
+                            <div class="card-type">Visa kết thúc bằng 4242</div>
                             <div class="card-number">•••• •••• •••• 4242</div>
-                            <div class="card-expiry">Expires 12/2026</div>
+                            <div class="card-expiry">Hết hạn 12/2026</div>
                         </div>
                     </div>
 
                     <div class="payment-card">
                         <div class="card-icon" style="background: #FF5F00; color: white;">MC</div>
                         <div class="card-details">
-                            <div class="card-type">Mastercard ending in 8888</div>
+                            <div class="card-type">Mastercard kết thúc bằng 8888</div>
                             <div class="card-number">•••• •••• •••• 8888</div>
-                            <div class="card-expiry">Expires 06/2025</div>
+                            <div class="card-expiry">Hết hạn 06/2025</div>
                         </div>
                     </div>
                 </div>
@@ -812,8 +812,8 @@
                             clip-rule="evenodd" />
                     </svg>
                     <div class="alert-content">
-                        Your payment method will be charged automatically on your billing date. You can change or remove
-                        payment methods at any time.
+                        Phương thức thanh toán của bạn sẽ được trừ tự động vào ngày thanh toán. Bạn có thể thay đổi hoặc
+                        xóa bất kỳ lúc nào.
                     </div>
                 </div>
             </div>
@@ -821,150 +821,110 @@
             <!-- Invoices -->
             <div class="invoices-section">
                 <div class="section-header">
-                    <h2 class="section-title">Invoice History</h2>
+                    <h2 class="section-title">Lịch sử hóa đơn</h2>
                     <button class="btn btn-secondary">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        Download All
+                        Tải tất cả
                     </button>
                 </div>
 
                 <div class="filter-bar">
                     <select class="filter-select">
-                        <option>All Status</option>
-                        <option>Paid</option>
-                        <option>Pending</option>
-                        <option>Failed</option>
+                        <option>Tất cả trạng thái</option>
+                        <option>Đã thanh toán</option>
+                        <option>Đang chờ</option>
+                        <option>Thất bại</option>
                     </select>
                     <select class="filter-select">
-                        <option>Last 12 months</option>
-                        <option>This year</option>
-                        <option>Last year</option>
-                        <option>All time</option>
+                        <option>12 tháng gần đây</option>
+                        <option>Năm nay</option>
+                        <option>Năm trước</option>
+                        <option>Tất cả</option>
                     </select>
-                    <input type="text" class="search-input" placeholder="Search invoices...">
+                    <input type="text" class="search-input" placeholder="Tìm kiếm hóa đơn...">
                 </div>
 
                 <table class="invoices-table">
                     <thead>
                         <tr>
-                            <th>Invoice</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Hóa đơn</th>
+                            <th>Ngày</th>
+                            <th>Số tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <span class="invoice-id">#INV-2025-001</span>
-                            </td>
-                            <td>Jan 15, 2025</td>
-                            <td>
-                                <span class="invoice-amount">₫2,500,000</span>
-                            </td>
-                            <td>
-                                <span class="status-badge status-paid">
-                                    <span
-                                        style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                    Paid
-                                </span>
-                            </td>
+                            <td><span class="invoice-id">#INV-2025-001</span></td>
+                            <td>15 Tháng 1, 2025</td>
+                            <td><span class="invoice-amount">₫2,500,000</span></td>
+                            <td><span class="status-badge status-paid"><span
+                                        style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
+                                    thanh toán</span></td>
                             <td>
                                 <div class="invoice-actions">
-                                    <button class="action-btn">View</button>
-                                    <button class="action-btn">Download</button>
+                                    <button class="action-btn">Xem</button>
+                                    <button class="action-btn">Tải xuống</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="invoice-id">#INV-2024-012</span>
-                            </td>
-                            <td>Dec 15, 2024</td>
-                            <td>
-                                <span class="invoice-amount">₫2,500,000</span>
-                            </td>
-                            <td>
-                                <span class="status-badge status-paid">
-                                    <span
-                                        style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                    Paid
-                                </span>
-                            </td>
+                            <td><span class="invoice-id">#INV-2024-012</span></td>
+                            <td>15 Tháng 12, 2024</td>
+                            <td><span class="invoice-amount">₫2,500,000</span></td>
+                            <td><span class="status-badge status-paid"><span
+                                        style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
+                                    thanh toán</span></td>
                             <td>
                                 <div class="invoice-actions">
-                                    <button class="action-btn">View</button>
-                                    <button class="action-btn">Download</button>
+                                    <button class="action-btn">Xem</button>
+                                    <button class="action-btn">Tải xuống</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="invoice-id">#INV-2024-011</span>
-                            </td>
-                            <td>Nov 15, 2024</td>
-                            <td>
-                                <span class="invoice-amount">₫2,500,000</span>
-                            </td>
-                            <td>
-                                <span class="status-badge status-paid">
-                                    <span
-                                        style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                    Paid
-                                </span>
-                            </td>
+                            <td><span class="invoice-id">#INV-2024-011</span></td>
+                            <td>15 Tháng 11, 2024</td>
+                            <td><span class="invoice-amount">₫2,500,000</span></td>
+                            <td><span class="status-badge status-paid"><span
+                                        style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
+                                    thanh toán</span></td>
                             <td>
                                 <div class="invoice-actions">
-                                    <button class="action-btn">View</button>
-                                    <button class="action-btn">Download</button>
+                                    <button class="action-btn">Xem</button>
+                                    <button class="action-btn">Tải xuống</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="invoice-id">#INV-2024-010</span>
-                            </td>
-                            <td>Oct 15, 2024</td>
-                            <td>
-                                <span class="invoice-amount">₫2,500,000</span>
-                            </td>
-                            <td>
-                                <span class="status-badge status-paid">
-                                    <span
-                                        style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                    Paid
-                                </span>
-                            </td>
+                            <td><span class="invoice-id">#INV-2024-010</span></td>
+                            <td>15 Tháng 10, 2024</td>
+                            <td><span class="invoice-amount">₫2,500,000</span></td>
+                            <td><span class="status-badge status-paid"><span
+                                        style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
+                                    thanh toán</span></td>
                             <td>
                                 <div class="invoice-actions">
-                                    <button class="action-btn">View</button>
-                                    <button class="action-btn">Download</button>
+                                    <button class="action-btn">Xem</button>
+                                    <button class="action-btn">Tải xuống</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="invoice-id">#INV-2024-009</span>
-                            </td>
-                            <td>Sep 15, 2024</td>
-                            <td>
-                                <span class="invoice-amount">₫1,500,000</span>
-                            </td>
-                            <td>
-                                <span class="status-badge status-paid">
-                                    <span
-                                        style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                    Paid
-                                </span>
-                            </td>
+                            <td><span class="invoice-id">#INV-2024-009</span></td>
+                            <td>15 Tháng 9, 2024</td>
+                            <td><span class="invoice-amount">₫1,500,000</span></td>
+                            <td><span class="status-badge status-paid"><span
+                                        style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
+                                    thanh toán</span></td>
                             <td>
                                 <div class="invoice-actions">
-                                    <button class="action-btn">View</button>
-                                    <button class="action-btn">Download</button>
+                                    <button class="action-btn">Xem</button>
+                                    <button class="action-btn">Tải xuống</button>
                                 </div>
                             </td>
                         </tr>
@@ -993,6 +953,7 @@
         </div>
     </main>
 @endsection
+
 
 @section('js')
     <script>

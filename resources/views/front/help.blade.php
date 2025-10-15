@@ -312,14 +312,14 @@
     <section class="hero" style="padding: 120px 0 80px; background: var(--gradient);">
         <div class="container">
             <div class="text-center" style="color: white;">
-                <h1 class="mb-3 fade-in">How Can We Help You?</h1>
+                <h1 class="mb-3 fade-in">Chúng tôi có thể giúp gì cho bạn?</h1>
                 <p class="mb-4 fade-in" style="font-size: 20px; opacity: 0.9;">
-                    Search our knowledge base or browse categories below
+                    Tìm kiếm trong trung tâm hỗ trợ hoặc duyệt theo danh mục bên dưới
                 </p>
                 
                 <!-- Search Box -->
                 <div class="search-box fade-in">
-                    <input type="text" class="search-input" placeholder="Search for articles, guides, or topics..." id="searchInput">
+                    <input type="text" class="search-input" placeholder="Tìm bài viết, hướng dẫn hoặc chủ đề..." id="searchInput">
                     <button class="search-btn" onclick="performSearch()">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
@@ -328,11 +328,11 @@
                 </div>
                 
                 <div class="fade-in" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <span style="opacity: 0.9;">Popular searches:</span>
-                    <a href="#" style="color: white; text-decoration: underline;">API documentation</a>
-                    <a href="#" style="color: white; text-decoration: underline;">Campaign setup</a>
-                    <a href="#" style="color: white; text-decoration: underline;">Billing questions</a>
-                    <a href="#" style="color: white; text-decoration: underline;">KOL verification</a>
+                    <span style="opacity: 0.9;">Tìm kiếm phổ biến:</span>
+                    <a href="#" style="color: white; text-decoration: underline;">Tài liệu API</a>
+                    <a href="#" style="color: white; text-decoration: underline;">Thiết lập chiến dịch</a>
+                    <a href="#" style="color: white; text-decoration: underline;">Câu hỏi thanh toán</a>
+                    <a href="#" style="color: white; text-decoration: underline;">Xác minh KOL</a>
                 </div>
             </div>
         </div>
@@ -344,38 +344,38 @@
             <div class="help-categories">
                 <div class="help-category fade-in" onclick="showCategory('getting-started')">
                     <div class="help-icon">🚀</div>
-                    <h3 class="help-title">Getting Started</h3>
-                    <p class="help-description">Learn the basics of using OneUp KOL Analytics platform</p>
+                    <h3 class="help-title">Bắt đầu sử dụng</h3>
+                    <p class="help-description">Tìm hiểu những kiến thức cơ bản khi sử dụng nền tảng OneUp KOL Analytics</p>
                 </div>
                 
                 <div class="help-category fade-in" style="animation-delay: 0.1s;" onclick="showCategory('account')">
                     <div class="help-icon">👤</div>
-                    <h3 class="help-title">Account & Billing</h3>
-                    <p class="help-description">Manage your account, subscription, and payment methods</p>
+                    <h3 class="help-title">Tài khoản & Thanh toán</h3>
+                    <p class="help-description">Quản lý tài khoản, gói đăng ký và phương thức thanh toán của bạn</p>
                 </div>
                 
                 <div class="help-category fade-in" style="animation-delay: 0.2s;" onclick="showCategory('campaigns')">
                     <div class="help-icon">📈</div>
-                    <h3 class="help-title">Campaigns</h3>
-                    <p class="help-description">Create, manage, and track your influencer campaigns</p>
+                    <h3 class="help-title">Chiến dịch</h3>
+                    <p class="help-description">Tạo, quản lý và theo dõi chiến dịch influencer của bạn</p>
                 </div>
                 
                 <div class="help-category fade-in" style="animation-delay: 0.3s;" onclick="showCategory('analytics')">
                     <div class="help-icon">📊</div>
-                    <h3 class="help-title">Analytics & Reports</h3>
-                    <p class="help-description">Understanding metrics, insights, and generating reports</p>
+                    <h3 class="help-title">Phân tích & Báo cáo</h3>
+                    <p class="help-description">Hiểu rõ các chỉ số, thông tin chi tiết và cách tạo báo cáo</p>
                 </div>
                 
                 <div class="help-category fade-in" style="animation-delay: 0.4s;" onclick="showCategory('kol-discovery')">
                     <div class="help-icon">🔍</div>
-                    <h3 class="help-title">KOL Discovery</h3>
-                    <p class="help-description">Find and evaluate the right influencers for your brand</p>
+                    <h3 class="help-title">Khám phá KOL</h3>
+                    <p class="help-description">Tìm và đánh giá influencer phù hợp với thương hiệu của bạn</p>
                 </div>
                 
                 <div class="help-category fade-in" style="animation-delay: 0.5s;" onclick="showCategory('api')">
                     <div class="help-icon">⚙️</div>
-                    <h3 class="help-title">API & Integrations</h3>
-                    <p class="help-description">Connect OneUp with your existing tools and workflows</p>
+                    <h3 class="help-title">API & Tích hợp</h3>
+                    <p class="help-description">Kết nối OneUp với các công cụ và quy trình hiện có của bạn</p>
                 </div>
             </div>
         </div>
@@ -384,92 +384,92 @@
     <!-- Popular Articles -->
     <section class="section" style="background: #F8F9FA;">
         <div class="container">
-            <h2 class="text-center color-dark-blue mb-4">Popular Help Articles</h2>
+            <h2 class="text-center color-dark-blue mb-4">Bài viết hỗ trợ phổ biến</h2>
             
             <div class="faq-section">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>How do I start my first campaign?</span>
+                        <span>Làm thế nào để bắt đầu chiến dịch đầu tiên?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>To start your first campaign:</p>
+                        <p>Để bắt đầu chiến dịch đầu tiên của bạn:</p>
                         <ol style="margin-left: 20px; margin-top: 10px;">
-                            <li>Navigate to the Campaigns section in your dashboard</li>
-                            <li>Click "Create New Campaign"</li>
-                            <li>Set your campaign objectives and budget</li>
-                            <li>Use our KOL Discovery tool to find suitable influencers</li>
-                            <li>Review and launch your campaign</li>
+                            <li>Đi đến mục Chiến dịch trong trang quản trị</li>
+                            <li>Nhấn “Tạo chiến dịch mới”</li>
+                            <li>Đặt mục tiêu và ngân sách cho chiến dịch</li>
+                            <li>Sử dụng công cụ Khám phá KOL để tìm influencer phù hợp</li>
+                            <li>Xem lại và khởi chạy chiến dịch</li>
                         </ol>
-                        <p style="margin-top: 10px;">For detailed instructions, check our <a href="#" style="color: var(--primary);">Campaign Setup Guide</a>.</p>
+                        <p style="margin-top: 10px;">Xem chi tiết trong <a href="#" style="color: var(--primary);">Hướng dẫn thiết lập chiến dịch</a>.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>How accurate is the fraud detection system?</span>
+                        <span>Hệ thống phát hiện gian lận có chính xác không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Our fraud detection system uses advanced AI algorithms to analyze multiple signals including:</p>
+                        <p>Hệ thống phát hiện gian lận của chúng tôi sử dụng AI nâng cao để phân tích nhiều tín hiệu như:</p>
                         <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>Follower growth patterns</li>
-                            <li>Engagement rate consistency</li>
-                            <li>Comment authenticity</li>
-                            <li>Audience demographics distribution</li>
+                            <li>Mô hình tăng trưởng người theo dõi</li>
+                            <li>Tính nhất quán của tỷ lệ tương tác</li>
+                            <li>Tính xác thực của bình luận</li>
+                            <li>Phân bố nhân khẩu học của khán giả</li>
                         </ul>
-                        <p style="margin-top: 10px;">The system has a 95% accuracy rate in detecting fake followers and engagement manipulation.</p>
+                        <p style="margin-top: 10px;">Hệ thống đạt độ chính xác 95% trong việc phát hiện người theo dõi giả và tương tác ảo.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Can I export data to Excel or CSV?</span>
+                        <span>Tôi có thể xuất dữ liệu sang Excel hoặc CSV không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! You can export data in multiple formats:</p>
+                        <p>Có! Bạn có thể xuất dữ liệu theo nhiều định dạng:</p>
                         <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>CSV for raw data analysis</li>
-                            <li>Excel (XLSX) for formatted reports</li>
-                            <li>PDF for presentation-ready reports</li>
+                            <li>CSV để phân tích dữ liệu thô</li>
+                            <li>Excel (XLSX) cho báo cáo định dạng sẵn</li>
+                            <li>PDF cho báo cáo trình bày chuyên nghiệp</li>
                         </ul>
-                        <p style="margin-top: 10px;">Simply click the "Export" button on any data table or report page and select your preferred format.</p>
+                        <p style="margin-top: 10px;">Chỉ cần nhấn nút “Xuất” trên bảng dữ liệu hoặc trang báo cáo và chọn định dạng mong muốn.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>What's included in the API access?</span>
+                        <span>API cung cấp những tính năng gì?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>API access includes:</p>
+                        <p>Quyền truy cập API bao gồm:</p>
                         <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>RESTful API endpoints for all major features</li>
-                            <li>Real-time webhooks for campaign events</li>
-                            <li>Rate limits based on your subscription plan</li>
-                            <li>Comprehensive documentation and code examples</li>
-                            <li>SDK libraries for Python, JavaScript, and PHP</li>
+                            <li>API RESTful cho hầu hết các tính năng chính</li>
+                            <li>Webhook thời gian thực cho sự kiện chiến dịch</li>
+                            <li>Giới hạn tốc độ dựa trên gói đăng ký của bạn</li>
+                            <li>Tài liệu chi tiết và ví dụ mã nguồn</li>
+                            <li>Thư viện SDK cho Python, JavaScript và PHP</li>
                         </ul>
-                        <p style="margin-top: 10px;">Check our <a href="#" style="color: var(--primary);">API Documentation</a> for implementation details.</p>
+                        <p style="margin-top: 10px;">Xem thêm trong <a href="#" style="color: var(--primary);">Tài liệu API</a>.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>How do I upgrade or downgrade my plan?</span>
+                        <span>Làm sao để nâng cấp hoặc hạ cấp gói dịch vụ?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>You can change your plan anytime from your account settings:</p>
+                        <p>Bạn có thể thay đổi gói dịch vụ bất kỳ lúc nào trong phần Cài đặt tài khoản:</p>
                         <ol style="margin-left: 20px; margin-top: 10px;">
-                            <li>Go to Settings → Billing</li>
-                            <li>Click "Change Plan"</li>
-                            <li>Select your new plan</li>
-                            <li>Confirm the changes</li>
+                            <li>Vào Cài đặt → Thanh toán</li>
+                            <li>Nhấn “Thay đổi gói”</li>
+                            <li>Chọn gói mới của bạn</li>
+                            <li>Xác nhận thay đổi</li>
                         </ol>
-                        <p style="margin-top: 10px;">Upgrades take effect immediately. Downgrades apply at the next billing cycle. Unused credits are prorated.</p>
+                        <p style="margin-top: 10px;">Nâng cấp có hiệu lực ngay lập tức. Hạ cấp sẽ áp dụng từ chu kỳ thanh toán tiếp theo. Tín dụng chưa dùng sẽ được tính theo tỷ lệ tương ứng.</p>
                     </div>
                 </div>
             </div>
@@ -479,9 +479,9 @@
     <!-- Video Tutorials -->
     <section class="section">
         <div class="container">
-            <h2 class="text-center mb-4">Video Tutorials</h2>
+            <h2 class="text-center mb-4">Video hướng dẫn</h2>
             <p class="text-center mb-4" style="color: var(--gray-light);">
-                Learn how to use OneUp KOL Analytics with our step-by-step video guides
+                Học cách sử dụng OneUp KOL Analytics qua các video hướng dẫn chi tiết
             </p>
             
             <div class="video-grid">
@@ -490,8 +490,8 @@
                         <div class="play-btn">▶</div>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Platform Overview</div>
-                        <div class="video-duration">5 min • Beginner</div>
+                        <div class="video-title">Tổng quan nền tảng</div>
+                        <div class="video-duration">5 phút • Cơ bản</div>
                     </div>
                 </div>
                 
@@ -500,8 +500,8 @@
                         <div class="play-btn">▶</div>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Setting Up Your First Campaign</div>
-                        <div class="video-duration">8 min • Beginner</div>
+                        <div class="video-title">Thiết lập chiến dịch đầu tiên</div>
+                        <div class="video-duration">8 phút • Cơ bản</div>
                     </div>
                 </div>
                 
@@ -510,8 +510,8 @@
                         <div class="play-btn">▶</div>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Advanced Analytics Features</div>
-                        <div class="video-duration">12 min • Advanced</div>
+                        <div class="video-title">Tính năng phân tích nâng cao</div>
+                        <div class="video-duration">12 phút • Nâng cao</div>
                     </div>
                 </div>
                 
@@ -520,8 +520,8 @@
                         <div class="play-btn">▶</div>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Using the API</div>
-                        <div class="video-duration">15 min • Developer</div>
+                        <div class="video-title">Sử dụng API</div>
+                        <div class="video-duration">15 phút • Dành cho lập trình viên</div>
                     </div>
                 </div>
             </div>
@@ -531,46 +531,46 @@
     <!-- Contact Support -->
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
-            <h2 class="text-center color-dark-blue mb-3">Still Need Help?</h2>
+            <h2 class="text-center color-dark-blue mb-3">Vẫn cần hỗ trợ thêm?</h2>
             <p class="text-center mb-4" style="color: var(--gray-600);">
-                Our support team is here to assist you
+                Đội ngũ hỗ trợ của chúng tôi luôn sẵn sàng giúp bạn
             </p>
             
             <div class="contact-cards">
                 <div class="contact-card fade-in">
                     <div class="contact-icon">💬</div>
-                    <h3>Live Chat</h3>
+                    <h3>Trò chuyện trực tuyến</h3>
                     <p style="color: var(--gray-600); margin: 1rem 0;">
-                        Chat with our support team in real-time
+                        Trao đổi trực tiếp với đội ngũ hỗ trợ
                     </p>
                     <p style="color: var(--success); font-weight: 600; margin-bottom: 1rem;">
-                        Available Mon-Fri, 9AM-6PM GMT+7
+                        Hoạt động Thứ 2 - Thứ 6, 9:00 - 18:00 (GMT+7)
                     </p>
-                    <button class="btn btn-primary">Start Chat</button>
+                    <button class="btn btn-primary">Bắt đầu trò chuyện</button>
                 </div>
                 
                 <div class="contact-card fade-in" style="animation-delay: 0.1s;">
                     <div class="contact-icon">✉️</div>
-                    <h3>Email Support</h3>
+                    <h3>Hỗ trợ qua Email</h3>
                     <p style="color: var(--gray-600); margin: 1rem 0;">
-                        Send us a detailed message
+                        Gửi cho chúng tôi tin nhắn chi tiết
                     </p>
                     <p style="font-weight: 600; margin-bottom: 1rem;color: var(--gray-500);">
                         support@oneup.vn
                     </p>
-                    <button class="btn btn-outline">Send Email</button>
+                    <button class="btn btn-outline">Gửi Email</button>
                 </div>
                 
                 <div class="contact-card fade-in" style="animation-delay: 0.2s;">
                     <div class="contact-icon">📞</div>
-                    <h3>Phone Support</h3>
+                    <h3>Hỗ trợ qua điện thoại</h3>
                     <p style="color: var(--gray-600); margin: 1rem 0;">
-                        Speak directly with our team
+                        Nói chuyện trực tiếp với đội ngũ của chúng tôi
                     </p>
                     <p style="font-weight: 600; margin-bottom: 1rem;color: var(--gray-500);">
                         +84 28 1234 5678
                     </p>
-                    <button class="btn btn-outline">Call Now</button>
+                    <button class="btn btn-outline">Gọi ngay</button>
                 </div>
             </div>
         </div>
@@ -580,37 +580,38 @@
     <section class="section">
         <div class="container">
             <div class="quick-links">
-                <h3 class="mb-3 color-dark-blue">Quick Links</h3>
+                <h3 class="mb-3 color-dark-blue">Liên kết nhanh</h3>
                 <div class="quick-links-grid">
                     <a href="#" class="quick-link">
-                        <span>📚</span> Documentation
+                        <span>📚</span> Tài liệu
                     </a>
                     <a href="#" class="quick-link">
-                        <span>🔧</span> API Reference
+                        <span>🔧</span> Tham chiếu API
                     </a>
                     <a href="#" class="quick-link">
-                        <span>📝</span> Release Notes
+                        <span>📝</span> Ghi chú phát hành
                     </a>
                     <a href="#" class="quick-link">
-                        <span>🔒</span> Security & Privacy
+                        <span>🔒</span> Bảo mật & Quyền riêng tư
                     </a>
                     <a href="#" class="quick-link">
-                        <span>💡</span> Feature Requests
+                        <span>💡</span> Đề xuất tính năng
                     </a>
                     <a href="#" class="quick-link">
-                        <span>🐛</span> Report a Bug
+                        <span>🐛</span> Báo lỗi
                     </a>
                     <a href="#" class="quick-link">
-                        <span>📊</span> System Status
+                        <span>📊</span> Trạng thái hệ thống
                     </a>
                     <a href="#" class="quick-link">
-                        <span>👥</span> Community Forum
+                        <span>👥</span> Diễn đàn cộng đồng
                     </a>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
 
 @section('js')
     <script>

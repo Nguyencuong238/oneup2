@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="Account Settings - OneUp KOL Analytics Dashboard">
-    <title>Settings - OneUp KOL Analytics</title>
+    <title>Cài đặt - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -737,8 +737,8 @@
     <main class="main-content">
         <!-- Settings Header -->
         <div class="settings-header">
-            <h1 class="settings-title">Account Settings</h1>
-            <p class="settings-subtitle">Manage your account settings and preferences</p>
+            <h1 class="settings-title">Cài đặt tài khoản</h1>
+            <p class="settings-subtitle">Quản lý cài đặt và tùy chọn tài khoản của bạn</p>
         </div>
 
         <!-- Settings Layout -->
@@ -758,7 +758,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
-                    <span>Notifications</span>
+                    <span>Thông báo</span>
                 </a>
 
                 <a href="#security" class="settings-nav-item">
@@ -766,7 +766,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
-                    <span>Security</span>
+                    <span>Bảo vệ</span>
                 </a>
 
                 <a href="#api" class="settings-nav-item">
@@ -782,7 +782,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-3-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                     </svg>
-                    <span>Integrations</span>
+                    <span>Tích hợp</span>
                 </a>
 
                 <a href="#billing" class="settings-nav-item">
@@ -790,7 +790,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
-                    <span>Billing</span>
+                    <span>Thanh toán</span>
                 </a>
 
                 <a href="#activity" class="settings-nav-item">
@@ -798,7 +798,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span>Activity Log</span>
+                    <span>Nhật ký hoạt động</span>
                 </a>
             </aside>
 
@@ -806,8 +806,8 @@
             <div class="settings-content">
                 <!-- Profile Section -->
                 <div class="settings-section" id="profile">
-                    <h2 class="section-title">Profile Information</h2>
-                    <p class="section-description">Update your personal information and profile settings</p>
+                    <h2 class="section-title">Thông tin hồ sơ</h2>
+                    <p class="section-description">Cập nhật thông tin cá nhân và cài đặt hồ sơ của bạn</p>
 
                     <!-- Avatar Upload -->
                     <div class="form-group">
@@ -822,7 +822,7 @@
                                 </div>
                             </div>
                             <div class="avatar-info">
-                                <div class="avatar-title">Profile Photo</div>
+                                <div class="avatar-title">Ảnh đại diện</div>
                                 <div class="avatar-description">JPG, GIF or PNG. Max size 2MB</div>
                                 <button class="btn btn-secondary">
                                     <svg width="16" height="16" fill="none" stroke="currentColor"
@@ -830,7 +830,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                     </svg>
-                                    Upload New Photo
+                                    Tải ảnh mới lên
                                 </button>
                             </div>
                         </div>
@@ -839,52 +839,52 @@
                     <!-- Personal Information -->
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">First Name</label>
+                            <label class="form-label">Tên</label>
                             <input type="text" class="form-input" value="John">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Last Name</label>
+                            <label class="form-label">Họ</label>
                             <input type="text" class="form-input" value="Doe">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Email Address</label>
+                        <label class="form-label">Địa chỉ email</label>
                         <input type="email" class="form-input" value="john.doe@company.com">
-                        <span class="form-helper">This email will be used for login and notifications</span>
+                        <span class="form-helper">Email này sẽ được sử dụng để đăng nhập và nhận thông báo</span>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Phone Number</label>
+                        <label class="form-label">Số điện thoại</label>
                         <input type="tel" class="form-input" value="+84 90 123 4567">
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Company</label>
+                            <label class="form-label">Công ty</label>
                             <input type="text" class="form-input" value="OneUp Digital Marketing">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Job Title</label>
+                            <label class="form-label">Chức danh công việc</label>
                             <input type="text" class="form-input" value="Marketing Manager">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Bio</label>
-                        <textarea class="form-input" rows="4" placeholder="Tell us about yourself...">Experienced marketing professional specializing in influencer marketing and digital campaigns.</textarea>
+                        <label class="form-label">Tiểu sử</label>
+                        <textarea class="form-input" rows="4" placeholder="Tell us about yourself...">Chuyên gia tiếp thị giàu kinh nghiệm, chuyên về tiếp thị người có sức ảnh hưởng và các chiến dịch kỹ thuật số.</textarea>
                     </div>
                 </div>
 
                 <!-- Notifications Section -->
                 <div class="settings-section" id="notifications">
-                    <h2 class="section-title">Notification Preferences</h2>
-                    <p class="section-description">Choose how you want to be notified about activity</p>
+                    <h2 class="section-title">Tùy chọn thông báo</h2>
+                    <p class="section-description">Chọn cách bạn muốn được thông báo về hoạt động</p>
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">Email Notifications</div>
-                            <div class="toggle-description">Receive email updates about your campaigns</div>
+                            <div class="toggle-label">Thông báo qua email</div>
+                            <div class="toggle-description">Nhận cập nhật qua email về các chiến dịch của bạn</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" checked>
@@ -894,8 +894,8 @@
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">Campaign Alerts</div>
-                            <div class="toggle-description">Get notified when campaigns reach milestones</div>
+                            <div class="toggle-label">Cảnh báo chiến dịch</div>
+                            <div class="toggle-description">Nhận thông báo khi chiến dịch đạt đến cột mốc</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" checked>
@@ -905,8 +905,8 @@
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">KOL Updates</div>
-                            <div class="toggle-description">Notifications about saved KOLs and their performance</div>
+                            <div class="toggle-label">Cập nhật KOL</div>
+                            <div class="toggle-description">Thông báo về KOL đã lưu và hiệu suất của họ</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox">
@@ -916,8 +916,8 @@
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">Weekly Reports</div>
-                            <div class="toggle-description">Receive weekly summary of your campaigns</div>
+                            <div class="toggle-label">Báo cáo hàng tuần</div>
+                            <div class="toggle-description">Nhận tóm tắt hàng tuần về các chiến dịch của bạn</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" checked>
@@ -927,8 +927,8 @@
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">Product Updates</div>
-                            <div class="toggle-description">News about new features and improvements</div>
+                            <div class="toggle-label">Cập nhật sản phẩm</div>
+                            <div class="toggle-description">Tin tức về các tính năng mới và cải tiến</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox">
@@ -939,8 +939,8 @@
 
                 <!-- Security Section -->
                 <div class="settings-section" id="security">
-                    <h2 class="section-title">Security Settings</h2>
-                    <p class="section-description">Keep your account secure with these settings</p>
+                    <h2 class="section-title">Cài đặt bảo mật</h2>
+                    <p class="section-description">Giữ tài khoản của bạn an toàn với các cài đặt này</p>
 
                     <div class="alert-card alert-success">
                         <svg class="alert-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -949,30 +949,30 @@
                                 clip-rule="evenodd" />
                         </svg>
                         <div class="alert-content">
-                            Your account is protected with two-factor authentication
+                            Tài khoản của bạn được bảo vệ bằng xác thực hai yếu tố
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Current Password</label>
+                        <label class="form-label">Mật khẩu hiện tại</label>
                         <input type="password" class="form-input" placeholder="Enter current password">
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">New Password</label>
+                            <label class="form-label">Mật khẩu mới</label>
                             <input type="password" class="form-input" placeholder="Enter new password">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Confirm Password</label>
+                            <label class="form-label">Xác nhận mật khẩu</label>
                             <input type="password" class="form-input" placeholder="Confirm new password">
                         </div>
                     </div>
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">Two-Factor Authentication</div>
-                            <div class="toggle-description">Add an extra layer of security to your account</div>
+                            <div class="toggle-label">Xác thực hai yếu tố</div>
+                            <div class="toggle-description">Thêm một lớp bảo mật bổ sung cho tài khoản của bạn</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" checked>
@@ -981,7 +981,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Login Sessions</label>
+                        <label class="form-label">Phiên đăng nhập</label>
                         <div class="activity-log">
                             <div class="activity-item">
                                 <div class="activity-icon-wrapper">
@@ -992,10 +992,10 @@
                                     </svg>
                                 </div>
                                 <div class="activity-details">
-                                    <div class="activity-action">Chrome on Windows - Current Session</div>
+                                    <div class="activity-action">Chrome trên Windows - Phiên hiện tại</div>
                                     <div class="activity-meta">
                                         <span>192.168.1.1</span>
-                                        <span>Active now</span>
+                                        <span>Đang hoạt động</span>
                                     </div>
                                 </div>
                             </div>
@@ -1010,10 +1010,10 @@
                                     </svg>
                                 </div>
                                 <div class="activity-details">
-                                    <div class="activity-action">Safari on iPhone</div>
+                                    <div class="activity-action">Safari trên iPhone</div>
                                     <div class="activity-meta">
                                         <span>192.168.1.2</span>
-                                        <span>2 hours ago</span>
+                                        <span>2 giờ trước</span>
                                     </div>
                                 </div>
                             </div>
@@ -1024,7 +1024,7 @@
                 <!-- API Keys Section -->
                 <div class="settings-section" id="api">
                     <h2 class="section-title">API Keys</h2>
-                    <p class="section-description">Manage your API keys for third-party integrations</p>
+                    <p class="section-description">Quản lý khóa API của bạn để tích hợp với bên thứ ba</p>
 
                     <div class="alert-card alert-warning">
                         <svg class="alert-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1033,18 +1033,18 @@
                                 clip-rule="evenodd" />
                         </svg>
                         <div class="alert-content">
-                            Keep your API keys secure. Never share them publicly or commit them to version control.
+                            Giữ khóa API của bạn an toàn. Không bao giờ chia sẻ chúng công khai hoặc cam kết chúng với cơ quan quản lý phiên bản.
                         </div>
                     </div>
 
                     <table class="api-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Key</th>
-                                <th>Status</th>
-                                <th>Created</th>
-                                <th>Actions</th>
+                                <th>Tên</th>
+                                <th>Khóa</th>
+                                <th>Trạng thái</th>
+                                <th>Đã tạo</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1054,7 +1054,7 @@
                                     <div class="api-key-display">
                                         <span class="api-key-text api-key-hidden">sk_live_abcd1234efgh5678</span>
                                         <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 12px;">
-                                            Show
+                                            Xem
                                         </button>
                                     </div>
                                 </td>
@@ -1062,23 +1062,23 @@
                                     <span class="api-status active">
                                         <span
                                             style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                        Active
+                                        Hoạt động
                                     </span>
                                 </td>
                                 <td>Jan 15, 2025</td>
                                 <td>
                                     <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 12px;">
-                                        Regenerate
+                                        Tái tạo
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Development API</td>
+                                <td>Phát triển API</td>
                                 <td>
                                     <div class="api-key-display">
                                         <span class="api-key-text api-key-hidden">sk_test_wxyz9876ijkl5432</span>
                                         <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 12px;">
-                                            Show
+                                            Xem
                                         </button>
                                     </div>
                                 </td>
@@ -1086,13 +1086,13 @@
                                     <span class="api-status active">
                                         <span
                                             style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span>
-                                        Active
+                                        Hoạt động
                                     </span>
                                 </td>
                                 <td>Dec 20, 2024</td>
                                 <td>
                                     <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 12px;">
-                                        Regenerate
+                                        Tái tạo
                                     </button>
                                 </td>
                             </tr>
@@ -1105,20 +1105,20 @@
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                 clip-rule="evenodd" />
                         </svg>
-                        Generate New API Key
+                       Tạo khóa API mới
                     </button>
                 </div>
 
                 <!-- Billing Section -->
                 <div class="settings-section" id="billing">
-                    <h2 class="section-title">Billing & Plans</h2>
-                    <p class="section-description">Manage your subscription and billing information</p>
+                    <h2 class="section-title">Thanh toán & Gói cước</h2>
+                    <p class="section-description">Quản lý thông tin đăng ký và thanh toán của bạn</p>
 
                     <div class="plans-grid">
                         <div class="plan-card">
-                            <div class="plan-name">Starter</div>
-                            <div class="plan-price">Free</div>
-                            <div class="plan-period">Forever</div>
+                            <div class="plan-name">Người mới bắt đầu</div>
+                            <div class="plan-price">Miễn phí</div>
+                            <div class="plan-period">Mãi mãi</div>
                             <ul class="plan-features">
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1126,7 +1126,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Up to 10 KOLs tracking
+                                    Theo dõi tối đa 10 KOL
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1134,7 +1134,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Basic analytics
+                                    Phân tích cơ bản
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1142,17 +1142,17 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    1 user account
+                                   1 tài khoản người dùng
                                 </li>
                             </ul>
-                            <button class="btn btn-secondary" style="width: 100%;">Current Plan</button>
+                            <button class="btn btn-secondary" style="width: 100%;">Kế hoạch hiện tại</button>
                         </div>
 
                         <div class="plan-card current">
-                            <span class="plan-badge">Current</span>
-                            <div class="plan-name">Professional</div>
+                            <span class="plan-badge">Hiện hành</span>
+                            <div class="plan-name">Chuyên nghiệp</div>
                             <div class="plan-price">₫2.5M</div>
-                            <div class="plan-period">per month</div>
+                            <div class="plan-period">mỗi tháng</div>
                             <ul class="plan-features">
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1160,7 +1160,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Unlimited KOLs tracking
+                                    Theo dõi KOL không giới hạn
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1168,7 +1168,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Advanced analytics
+                                    Phân tích nâng cao
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1176,7 +1176,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Up to 5 team members
+                                    Tối đa 5 thành viên trong nhóm
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1184,16 +1184,16 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    API access
+                                    Truy cập API
                                 </li>
                             </ul>
                             <button class="btn btn-primary" style="width: 100%;">Current Plan</button>
                         </div>
 
                         <div class="plan-card">
-                            <div class="plan-name">Enterprise</div>
-                            <div class="plan-price">Custom</div>
-                            <div class="plan-period">Contact sales</div>
+                            <div class="plan-name">Doanh nghiệp</div>
+                            <div class="plan-price">Phong tục</div>
+                            <div class="plan-period">Liên hệ bán hàng</div>
                             <ul class="plan-features">
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1201,7 +1201,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Everything in Pro
+                                    Mọi thứ Pro
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1209,7 +1209,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Unlimited team members
+                                    Số lượng thành viên trong nhóm không giới hạn
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1217,7 +1217,7 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Priority support
+                                    Hỗ trợ ưu tiên
                                 </li>
                                 <li class="plan-feature">
                                     <svg class="plan-feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -1225,10 +1225,10 @@
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    Custom integrations
+                                    Tích hợp tùy chỉnh
                                 </li>
                             </ul>
-                            <button class="btn btn-secondary" style="width: 100%;">Contact Sales</button>
+                            <button class="btn btn-secondary" style="width: 100%;">Liên hệ bán hàng</button>
                         </div>
                     </div>
                 </div>
@@ -1236,10 +1236,10 @@
                 <!-- Save Button -->
                 <div class="btn-group">
                     <button class="btn btn-primary">
-                        Save Changes
+                        Lưu thay đổi
                     </button>
                     <button class="btn btn-secondary">
-                        Cancel
+                        Hủy bỏ
                     </button>
                 </div>
             </div>

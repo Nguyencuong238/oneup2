@@ -591,13 +591,13 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Analytics & Insights</h1>
+                <h1 class="page-title">Phân tích & Thông tin chi tiết</h1>
                 <div class="date-range-selector">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>Last 30 Days</span>
+                    <span>30 ngày qua</span>
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -628,7 +628,7 @@
                             d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                    Export Report
+                    Xuất báo cáo
                 </button>
             </div>
         </div>
@@ -637,11 +637,11 @@
         <div class="analytics-content">
             <!-- Filters -->
             <div class="analytics-filters">
-                <div class="filter-chip active">All Campaigns</div>
-                <div class="filter-chip">Summer Fashion</div>
-                <div class="filter-chip">Beauty Launch</div>
-                <div class="filter-chip">Food Festival</div>
-                <div class="filter-chip">Tech Review</div>
+                <div class="filter-chip active">Tất cả các chiến dịch</div>
+                <div class="filter-chip">Thời trang mùa hè</div>
+                <div class="filter-chip">Ra mắt sản phẩm làm đẹp</div>
+                <div class="filter-chip">Lễ hội ẩm thực</div>
+                <div class="filter-chip">Đánh giá công nghệ</div>
             </div>
 
             <!-- KPI Cards -->
@@ -649,7 +649,7 @@
                 <div class="kpi-card">
                     <div class="kpi-header">
                         <div class="kpi-info">
-                            <div class="kpi-title">Total Impressions</div>
+                            <div class="kpi-title">Tổng số lần hiển thị</div>
                             <div class="kpi-value">125.3M</div>
                             <div class="kpi-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -657,7 +657,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+32.5% vs last month</span>
+                                <span>+32.5% so với tháng trước</span>
                             </div>
                         </div>
                         <div class="kpi-icon">
@@ -677,7 +677,7 @@
                 <div class="kpi-card">
                     <div class="kpi-header">
                         <div class="kpi-info">
-                            <div class="kpi-title">Engagement Rate</div>
+                            <div class="kpi-title">Tỷ lệ tương tác</div>
                             <div class="kpi-value">7.8%</div>
                             <div class="kpi-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -685,7 +685,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+1.2% improvement</span>
+                                <span>Cải thiện +1,2%</span>
                             </div>
                         </div>
                         <div class="kpi-icon">
@@ -704,7 +704,7 @@
                 <div class="kpi-card">
                     <div class="kpi-header">
                         <div class="kpi-info">
-                            <div class="kpi-title">Click-Through Rate</div>
+                            <div class="kpi-title">Tỷ lệ nhấp chuột</div>
                             <div class="kpi-value">4.2%</div>
                             <div class="kpi-change change-negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
@@ -713,7 +713,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>-0.3% decrease</span>
+                                <span>-0.3% giảm</span>
                             </div>
                         </div>
                         <div class="kpi-icon">
@@ -732,7 +732,7 @@
                 <div class="kpi-card">
                     <div class="kpi-header">
                         <div class="kpi-info">
-                            <div class="kpi-title">Conversion Rate</div>
+                            <div class="kpi-title">Tỷ lệ chuyển đổi</div>
                             <div class="kpi-value">2.8%</div>
                             <div class="kpi-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -740,7 +740,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+0.5% increase</span>
+                                <span>+0.5% tăng</span>
                             </div>
                         </div>
                         <div class="kpi-icon">
@@ -761,25 +761,25 @@
                 <!-- Performance Trend Chart -->
                 <div class="chart-container">
                     <div class="chart-header">
-                        <h3 class="chart-title">Performance Trend</h3>
+                        <h3 class="chart-title">Xu hướng hiệu suất</h3>
                         <div class="chart-controls">
-                            <button class="chart-btn active">Views</button>
-                            <button class="chart-btn">Engagement</button>
-                            <button class="chart-btn">Conversions</button>
+                            <button class="chart-btn active">Lượt xem</button>
+                            <button class="chart-btn">Lượt tương tác</button>
+                            <button class="chart-btn">Chuyển đổi</button>
                         </div>
                     </div>
                     <div class="chart-area">
-                        <span>Line chart will be rendered here</span>
+                        <span>Biểu đồ đường sẽ được hiển thị ở đây</span>
                     </div>
                 </div>
 
                 <!-- Top Categories -->
                 <div class="chart-container">
                     <div class="chart-header">
-                        <h3 class="chart-title">Top Categories</h3>
+                        <h3 class="chart-title">Danh mục hàng đầu</h3>
                     </div>
                     <div class="chart-area" style="height: 300px;">
-                        <span>Pie chart will be rendered here</span>
+                        <span>Biểu đồ hình tròn sẽ được hiển thị ở đây</span>
                     </div>
                 </div>
             </div>
@@ -787,17 +787,17 @@
             <!-- Engagement Heatmap -->
             <div class="heatmap-container">
                 <div class="chart-header">
-                    <h3 class="chart-title">Engagement Heatmap by Day & Hour</h3>
+                    <h3 class="chart-title">Bản đồ nhiệt tương tác theo ngày và giờ</h3>
                 </div>
                 <div class="heatmap-grid">
                     <div></div>
-                    <div class="heatmap-label">Mon</div>
-                    <div class="heatmap-label">Tue</div>
-                    <div class="heatmap-label">Wed</div>
-                    <div class="heatmap-label">Thu</div>
-                    <div class="heatmap-label">Fri</div>
-                    <div class="heatmap-label">Sat</div>
-                    <div class="heatmap-label">Sun</div>
+                    <div class="heatmap-label">Thứ hai</div>
+                    <div class="heatmap-label">Thứ ba</div>
+                    <div class="heatmap-label">Thứ tư</div>
+                    <div class="heatmap-label">Thứ năm</div>
+                    <div class="heatmap-label">Thứ sáu</div>
+                    <div class="heatmap-label">Thứ bảy</div>
+                    <div class="heatmap-label">Chủ nhật</div>
 
                     <div class="heatmap-label">12AM</div>
                     <div class="heatmap-cell heat-level-1">2.1%</div>
@@ -840,9 +840,9 @@
             <!-- Demographics -->
             <div class="demo-grid">
                 <div class="demo-card">
-                    <h3 class="demo-title">Age Distribution</h3>
+                    <h3 class="demo-title">Phân bố độ tuổi</h3>
                     <div class="demo-chart">
-                        <span>Bar chart</span>
+                        <span>Biểu đồ cột</span>
                     </div>
                     <div class="demo-legend">
                         <div class="legend-item">
@@ -865,30 +865,30 @@
                 </div>
 
                 <div class="demo-card">
-                    <h3 class="demo-title">Gender Split</h3>
+                    <h3 class="demo-title">Phân chia giới tính</h3>
                     <div class="demo-chart">
-                        <span>Donut chart</span>
+                        <span>Biểu đồ hình tròn</span>
                     </div>
                     <div class="demo-legend">
                         <div class="legend-item">
                             <div class="legend-color" style="background: #EC4899;"></div>
-                            <span>Female (68%)</span>
+                            <span>Nữ (68%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #3B82F6;"></div>
-                            <span>Male (30%)</span>
+                            <span>Nam (30%)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #8B5CF6;"></div>
-                            <span>Other (2%)</span>
+                            <span>Khác (2%)</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="demo-card">
-                    <h3 class="demo-title">Top Locations</h3>
+                    <h3 class="demo-title">Địa điểm hàng đầu</h3>
                     <div class="demo-chart">
-                        <span>Map visualization</span>
+                        <span>Hình ảnh hóa bản đồ</span>
                     </div>
                     <div class="demo-legend">
                         <div class="legend-item">
@@ -905,7 +905,7 @@
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #0EA5E9;"></div>
-                            <span>Others (25%)</span>
+                            <span>Khác (25%)</span>
                         </div>
                     </div>
                 </div>
@@ -914,9 +914,9 @@
             <!-- Top Content Table -->
             <div class="content-table-container">
                 <div class="table-header">
-                    <h3 class="table-title">Top Performing Content</h3>
+                    <h3 class="table-title">Nội dung có hiệu suất cao nhất</h3>
                     <a href="#" class="table-action">
-                        View All
+                        Xem tất cả
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -927,10 +927,10 @@
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th>Content</th>
-                            <th>Views</th>
-                            <th>Engagement</th>
-                            <th>Conversions</th>
+                            <th>Nội dung</th>
+                            <th>Lượt xem</th>
+                            <th>Tương tác</th>
+                            <th>Chuyển đổi</th>
                             <th>ROI</th>
                         </tr>
                     </thead>
@@ -940,7 +940,7 @@
                                 <div class="content-info">
                                     <div class="content-thumbnail">🎬</div>
                                     <div class="content-details">
-                                        <div class="content-title">Summer Collection Showcase</div>
+                                        <div class="content-title">Trình diễn bộ sưu tập mùa hè</div>
                                         <div class="content-creator">@linhnguyen_beauty</div>
                                     </div>
                                 </div>
@@ -979,7 +979,7 @@
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📸</div>
                                     <div class="content-details">
-                                        <div class="content-title">Product Review: Skincare Routine</div>
+                                        <div class="content-title">Đánh giá sản phẩm: Quy trình chăm sóc da</div>
                                         <div class="content-creator">@minhtran_lifestyle</div>
                                     </div>
                                 </div>
@@ -1018,7 +1018,7 @@
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🍜</div>
                                     <div class="content-details">
-                                        <div class="content-title">Food Festival Highlights</div>
+                                        <div class="content-title">Điểm nổi bật của Lễ hội ẩm thực</div>
                                         <div class="content-creator">@anpham_food</div>
                                     </div>
                                 </div>

@@ -653,12 +653,12 @@
 @endsection
 
 @section('page')
-    <!-- Main Content -->
+    <!-- Nội dung chính -->
     <main class="main-content">
-        <!-- Top Bar -->
+        <!-- Thanh trên cùng -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Reports & Export</h1>
+                <h1 class="page-title">Báo cáo & Xuất dữ liệu</h1>
             </div>
 
             <div class="topbar-right">
@@ -668,7 +668,7 @@
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                             clip-rule="evenodd" />
                     </svg>
-                    Schedule Report
+                    Lên lịch báo cáo
                 </button>
                 <button class="btn btn-primary btn-small" onclick="generateReport()">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -676,76 +676,76 @@
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                             clip-rule="evenodd" />
                     </svg>
-                    Generate Report
+                    Tạo báo cáo
                 </button>
             </div>
         </div>
 
-        <!-- Reports Content -->
+        <!-- Nội dung báo cáo -->
         <div class="reports-content">
-            <!-- Report Generator -->
+            <!-- Trình tạo báo cáo -->
             <div class="report-generator">
                 <div class="generator-header">
-                    <h2 class="generator-title">Quick Report Generator</h2>
-                    <p class="generator-description">Select parameters to generate a custom report</p>
+                    <h2 class="generator-title">Trình tạo báo cáo nhanh</h2>
+                    <p class="generator-description">Chọn thông số để tạo báo cáo tùy chỉnh</p>
                 </div>
 
                 <div class="generator-form">
                     <div class="form-group">
-                        <label class="form-label">Report Type</label>
+                        <label class="form-label">Loại báo cáo</label>
                         <select class="form-select">
-                            <option>Campaign Performance Report</option>
-                            <option>KOL Analysis Report</option>
-                            <option>Financial Summary</option>
-                            <option>Engagement Analytics</option>
-                            <option>ROI Report</option>
+                            <option>Báo cáo hiệu suất chiến dịch</option>
+                            <option>Báo cáo phân tích KOL</option>
+                            <option>Tổng hợp tài chính</option>
+                            <option>Phân tích tương tác</option>
+                            <option>Báo cáo ROI</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Campaign</label>
+                        <label class="form-label">Chiến dịch</label>
                         <select class="form-select">
-                            <option>All Campaigns</option>
-                            <option>Summer Fashion 2024</option>
-                            <option>Beauty Product Launch</option>
-                            <option>Food Festival 2024</option>
+                            <option>Tất cả chiến dịch</option>
+                            <option>Thời trang mùa hè 2024</option>
+                            <option>Ra mắt sản phẩm làm đẹp</option>
+                            <option>Lễ hội ẩm thực 2024</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Date Range</label>
+                        <label class="form-label">Khoảng thời gian</label>
                         <select class="form-select">
-                            <option>Last 30 Days</option>
-                            <option>Last 7 Days</option>
-                            <option>This Month</option>
-                            <option>Last Month</option>
-                            <option>Custom Range</option>
+                            <option>30 ngày gần nhất</option>
+                            <option>7 ngày gần nhất</option>
+                            <option>Tháng này</option>
+                            <option>Tháng trước</option>
+                            <option>Tùy chọn thời gian</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Format</label>
+                        <label class="form-label">Định dạng</label>
                         <select class="form-select">
-                            <option>PDF Report</option>
-                            <option>Excel Spreadsheet</option>
-                            <option>CSV Data</option>
-                            <option>PowerPoint Presentation</option>
+                            <option>Báo cáo PDF</option>
+                            <option>Bảng tính Excel</option>
+                            <option>Dữ liệu CSV</option>
+                            <option>Bản trình bày PowerPoint</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="generator-actions">
-                    <button class="btn btn-secondary">Preview Report</button>
-                    <button class="btn btn-primary" onclick="generateReport()">Generate & Download</button>
-                    <button class="btn btn-secondary">Email Report</button>
+                    <button class="btn btn-secondary">Xem trước</button>
+                    <button class="btn btn-primary" onclick="generateReport()">Tạo & Tải xuống</button>
+                    <button class="btn btn-secondary">Gửi qua email</button>
                 </div>
             </div>
 
-            <!-- Report Templates -->
+            <!-- Mẫu báo cáo -->
             <div class="templates-section">
                 <div class="section-header">
-                    <h2 class="section-title">Report Templates</h2>
-                    <a href="#" class="btn btn-secondary btn-small">View All Templates</a>
+                    <h2 class="section-title">Mẫu báo cáo</h2>
+                    <a href="#" class="btn btn-secondary btn-small">Xem tất cả mẫu</a>
                 </div>
 
                 <div class="templates-grid">
@@ -754,12 +754,11 @@
                             📊
                         </div>
                         <div class="template-body">
-                            <h3 class="template-name">Monthly Performance Report</h3>
-                            <p class="template-description">Comprehensive monthly campaign performance analysis with KPIs
-                                and trends</p>
+                            <h3 class="template-name">Báo cáo hiệu suất hàng tháng</h3>
+                            <p class="template-description">Phân tích chi tiết hiệu suất chiến dịch hàng tháng cùng các chỉ số KPI và xu hướng</p>
                             <div class="template-footer">
-                                <span class="template-badge">Popular</span>
-                                <a href="#" class="template-action">Use Template →</a>
+                                <span class="template-badge">Phổ biến</span>
+                                <a href="#" class="template-action">Dùng mẫu →</a>
                             </div>
                         </div>
                     </div>
@@ -770,12 +769,11 @@
                             💰
                         </div>
                         <div class="template-body">
-                            <h3 class="template-name">ROI Analysis Report</h3>
-                            <p class="template-description">Detailed return on investment analysis with cost breakdown and
-                                revenue metrics</p>
+                            <h3 class="template-name">Báo cáo phân tích ROI</h3>
+                            <p class="template-description">Phân tích chi tiết lợi tức đầu tư, bao gồm chi phí và doanh thu</p>
                             <div class="template-footer">
-                                <span class="template-badge">Finance</span>
-                                <a href="#" class="template-action">Use Template →</a>
+                                <span class="template-badge">Tài chính</span>
+                                <a href="#" class="template-action">Dùng mẫu →</a>
                             </div>
                         </div>
                     </div>
@@ -786,11 +784,11 @@
                             👥
                         </div>
                         <div class="template-body">
-                            <h3 class="template-name">KOL Performance Comparison</h3>
-                            <p class="template-description">Compare and analyze performance metrics across multiple KOLs</p>
+                            <h3 class="template-name">So sánh hiệu suất KOL</h3>
+                            <p class="template-description">So sánh và phân tích các chỉ số hiệu suất giữa nhiều KOL</p>
                             <div class="template-footer">
-                                <span class="template-badge">Analytics</span>
-                                <a href="#" class="template-action">Use Template →</a>
+                                <span class="template-badge">Phân tích</span>
+                                <a href="#" class="template-action">Dùng mẫu →</a>
                             </div>
                         </div>
                     </div>
@@ -801,33 +799,32 @@
                             📈
                         </div>
                         <div class="template-body">
-                            <h3 class="template-name">Executive Summary</h3>
-                            <p class="template-description">High-level overview designed for executive stakeholders and
-                                decision makers</p>
+                            <h3 class="template-name">Tóm tắt điều hành</h3>
+                            <p class="template-description">Tổng quan cấp cao dành cho các nhà lãnh đạo và người ra quyết định</p>
                             <div class="template-footer">
-                                <span class="template-badge">Executive</span>
-                                <a href="#" class="template-action">Use Template →</a>
+                                <span class="template-badge">Quản lý</span>
+                                <a href="#" class="template-action">Dùng mẫu →</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Recent Reports -->
+            <!-- Báo cáo gần đây -->
             <div class="reports-table-container">
                 <div class="table-header">
-                    <h2 class="table-title">Recent Reports</h2>
-                    <a href="#" class="btn btn-secondary btn-small">View All</a>
+                    <h2 class="table-title">Báo cáo gần đây</h2>
+                    <a href="#" class="btn btn-secondary btn-small">Xem tất cả</a>
                 </div>
 
                 <table class="reports-table">
                     <thead>
                         <tr>
-                            <th>Report Name</th>
-                            <th>Type</th>
-                            <th>Generated</th>
-                            <th>Size</th>
-                            <th>Actions</th>
+                            <th>Tên báo cáo</th>
+                            <th>Loại</th>
+                            <th>Ngày tạo</th>
+                            <th>Dung lượng</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -842,130 +839,61 @@
                                         </svg>
                                     </div>
                                     <div class="report-details">
-                                        <div class="report-name">Summer Campaign Performance Report</div>
-                                        <div class="report-campaign">Summer Fashion Collection 2024</div>
+                                        <div class="report-name">Báo cáo hiệu suất chiến dịch mùa hè</div>
+                                        <div class="report-campaign">Bộ sưu tập thời trang mùa hè 2024</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <span class="report-type type-performance">Performance</span>
-                            </td>
-                            <td>Jul 25, 2024</td>
+                            <td><span class="report-type type-performance">Hiệu suất</span></td>
+                            <td>25 Tháng 7, 2024</td>
                             <td>2.4 MB</td>
                             <td>
                                 <div class="report-actions">
-                                    <button class="action-btn" title="Download">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Share">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Delete">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
+                                    <button class="action-btn" title="Tải xuống">📥</button>
+                                    <button class="action-btn" title="Chia sẻ">🔗</button>
+                                    <button class="action-btn" title="Xóa">🗑️</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="report-info">
-                                    <div class="report-icon">
-                                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
+                                    <div class="report-icon">📄</div>
                                     <div class="report-details">
-                                        <div class="report-name">Q2 Financial Summary</div>
-                                        <div class="report-campaign">All Campaigns</div>
+                                        <div class="report-name">Tổng hợp tài chính quý 2</div>
+                                        <div class="report-campaign">Tất cả chiến dịch</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <span class="report-type type-financial">Financial</span>
-                            </td>
-                            <td>Jul 20, 2024</td>
+                            <td><span class="report-type type-financial">Tài chính</span></td>
+                            <td>20 Tháng 7, 2024</td>
                             <td>1.8 MB</td>
                             <td>
                                 <div class="report-actions">
-                                    <button class="action-btn" title="Download">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Share">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Delete">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
+                                    <button class="action-btn" title="Tải xuống">📥</button>
+                                    <button class="action-btn" title="Chia sẻ">🔗</button>
+                                    <button class="action-btn" title="Xóa">🗑️</button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="report-info">
-                                    <div class="report-icon">
-                                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
+                                    <div class="report-icon">📄</div>
                                     <div class="report-details">
-                                        <div class="report-name">Top KOLs Performance Analysis</div>
-                                        <div class="report-campaign">Beauty Product Launch</div>
+                                        <div class="report-name">Phân tích hiệu suất KOL hàng đầu</div>
+                                        <div class="report-campaign">Ra mắt sản phẩm làm đẹp</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <span class="report-type type-kol">KOL Analysis</span>
-                            </td>
-                            <td>Jul 18, 2024</td>
+                            <td><span class="report-type type-kol">Phân tích KOL</span></td>
+                            <td>18 Tháng 7, 2024</td>
                             <td>3.1 MB</td>
                             <td>
                                 <div class="report-actions">
-                                    <button class="action-btn" title="Download">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Share">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                                        </svg>
-                                    </button>
-                                    <button class="action-btn" title="Delete">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
+                                    <button class="action-btn" title="Tải xuống">📥</button>
+                                    <button class="action-btn" title="Chia sẻ">🔗</button>
+                                    <button class="action-btn" title="Xóa">🗑️</button>
                                 </div>
                             </td>
                         </tr>
@@ -974,53 +902,55 @@
             </div>
         </div>
     </main>
-    <!-- Schedule Modal -->
+
+    <!-- Hộp thoại lên lịch -->
     <div class="schedule-modal" id="scheduleModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Schedule Automated Reports</h3>
-                <p class="modal-description">Set up recurring reports to be generated and sent automatically</p>
+                <h3 class="modal-title">Lên lịch báo cáo tự động</h3>
+                <p class="modal-description">Thiết lập các báo cáo định kỳ được tạo và gửi tự động</p>
             </div>
 
             <div class="schedule-options">
                 <div class="schedule-option">
                     <input type="radio" name="schedule" class="schedule-radio" id="daily">
                     <div class="schedule-label">
-                        <div class="schedule-title">Daily Report</div>
-                        <div class="schedule-desc">Receive report every day at 9:00 AM</div>
+                        <div class="schedule-title">Báo cáo hàng ngày</div>
+                        <div class="schedule-desc">Nhận báo cáo mỗi ngày lúc 9:00 sáng</div>
                     </div>
                 </div>
 
                 <div class="schedule-option">
                     <input type="radio" name="schedule" class="schedule-radio" id="weekly" checked>
                     <div class="schedule-label">
-                        <div class="schedule-title">Weekly Report</div>
-                        <div class="schedule-desc">Receive report every Monday at 9:00 AM</div>
+                        <div class="schedule-title">Báo cáo hàng tuần</div>
+                        <div class="schedule-desc">Nhận báo cáo mỗi thứ Hai lúc 9:00 sáng</div>
                     </div>
                 </div>
 
                 <div class="schedule-option">
                     <input type="radio" name="schedule" class="schedule-radio" id="monthly">
                     <div class="schedule-label">
-                        <div class="schedule-title">Monthly Report</div>
-                        <div class="schedule-desc">Receive report on the 1st of every month</div>
+                        <div class="schedule-title">Báo cáo hàng tháng</div>
+                        <div class="schedule-desc">Nhận báo cáo vào ngày đầu tiên mỗi tháng</div>
                     </div>
                 </div>
             </div>
 
             <div class="modal-actions">
-                <button class="btn btn-secondary" onclick="closeScheduleModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="saveSchedule()">Schedule Report</button>
+                <button class="btn btn-secondary" onclick="closeScheduleModal()">Hủy</button>
+                <button class="btn btn-primary" onclick="saveSchedule()">Lên lịch</button>
             </div>
         </div>
     </div>
 
-    <!-- Export Status -->
+    <!-- Trạng thái xuất -->
     <div class="export-status" id="exportStatus">
         <div class="export-spinner"></div>
-        <span class="export-text">Generating report...</span>
+        <span class="export-text">Đang tạo báo cáo...</span>
     </div>
 @endsection
+
 
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>

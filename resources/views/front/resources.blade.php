@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>Resources - OneUp KOL Analytics</title>
+    <title>Tài nguyên - OneUp KOL Analytics</title>
     <meta name="description"
         content="Resources - Blog, guides, case studies and insights about TikTok influencer marketing">
 
@@ -261,20 +261,20 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 color-dark-blue fade-in">
-                    Resources & <span class="gradient-text">Insights</span>
+                    Tài Nguyên & <span class="gradient-text">Thông Tin Chiến Lược</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    Learn everything about TikTok influencer marketing with our guides, case studies, and industry reports
+                    Tìm hiểu mọi thứ về marketing influencer TikTok qua hướng dẫn, nghiên cứu điển hình và báo cáo ngành.
                 </p>
                 
                 <!-- Resource Tabs -->
                 <div class="resource-tabs fade-in">
-                    <button class="tab-btn active" onclick="filterResources('all')">All Resources</button>
-                    <button class="tab-btn" onclick="filterResources('blog')">Blog Posts</button>
-                    <button class="tab-btn" onclick="filterResources('guides')">Guides</button>
-                    <button class="tab-btn" onclick="filterResources('cases')">Case Studies</button>
-                    <button class="tab-btn" onclick="filterResources('reports')">Reports</button>
-                    <button class="tab-btn" onclick="filterResources('webinars')">Webinars</button>
+                    <button class="tab-btn active" onclick="filterResources('all')">Tất Cả</button>
+                    <button class="tab-btn" onclick="filterResources('blog')">Bài Viết</button>
+                    <button class="tab-btn" onclick="filterResources('guides')">Hướng Dẫn</button>
+                    <button class="tab-btn" onclick="filterResources('cases')">Nghiên Cứu Điển Hình</button>
+                    <button class="tab-btn" onclick="filterResources('reports')">Báo Cáo</button>
+                    <button class="tab-btn" onclick="filterResources('webinars')">Hội Thảo Trực Tuyến</button>
                 </div>
             </div>
         </div>
@@ -287,22 +287,22 @@
                 <!-- Featured Article -->
                 <div class="featured-resource resource-card fade-in">
                     <div class="resource-image">
-                        <span class="resource-category">Featured Report</span>
+                        <span class="resource-category">Báo Cáo Nổi Bật</span>
                         <span style="font-size: 72px;">📈</span>
                     </div>
                     <div class="resource-content">
-                        <div class="badge badge-primary mb-2">NEW</div>
-                        <h2 class="resource-title">2025 TikTok KOL Marketing Report: Vietnam Market</h2>
+                        <div class="badge badge-primary mb-2">MỚI</div>
+                        <h2 class="resource-title">Báo Cáo Marketing KOL TikTok 2025: Thị Trường Việt Nam</h2>
                         <div class="resource-meta">
-                            <span>📅 Jan 15, 2025</span>
-                            <span>⏱ 15 min read</span>
-                            <span>👁 5.2K views</span>
+                            <span>📅 15 Tháng 1, 2025</span>
+                            <span>⏱ 15 phút đọc</span>
+                            <span>👁 5.2K lượt xem</span>
                         </div>
                         <p class="resource-excerpt">
-                            Comprehensive analysis of TikTok influencer marketing trends in Vietnam. Discover average engagement rates, pricing benchmarks, and successful campaign strategies from 500+ campaigns.
+                            Phân tích toàn diện xu hướng marketing KOL TikTok tại Việt Nam. Khám phá tỷ lệ tương tác trung bình, mức giá tham khảo và chiến lược thành công từ hơn 500 chiến dịch.
                         </p>
                         <a href="#" class="resource-link">
-                            Download Free Report
+                            Tải Báo Cáo Miễn Phí
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/>
                             </svg>
@@ -313,120 +313,120 @@
                 <!-- Blog Posts -->
                 <div class="resource-card fade-in" data-category="blog">
                     <div class="resource-image">
-                        <span class="resource-category">Blog</span>
+                        <span class="resource-category">Bài Viết</span>
                         <span>💡</span>
                     </div>
                     <div class="resource-content">
-                        <h3 class="resource-title">10 Signs of Fake TikTok Followers You Should Know</h3>
+                        <h3 class="resource-title">10 Dấu Hiệu Nhận Biết Follower Ảo Trên TikTok</h3>
                         <div class="resource-meta">
-                            <span>Jan 12, 2025</span>
-                            <span>8 min read</span>
+                            <span>12 Tháng 1, 2025</span>
+                            <span>8 phút đọc</span>
                         </div>
                         <p class="resource-excerpt">
-                            Learn how to identify fake followers and ensure you're partnering with authentic TikTok creators...
+                            Học cách phát hiện follower ảo để đảm bảo bạn hợp tác với những người sáng tạo thật sự...
                         </p>
                         <a href="#" class="resource-link">
-                            Read More →
+                            Đọc Thêm →
                         </a>
                     </div>
                 </div>
 
                 <div class="resource-card fade-in" data-category="guides">
                     <div class="resource-image">
-                        <span class="resource-category">Guide</span>
+                        <span class="resource-category">Hướng Dẫn</span>
                         <span>📚</span>
                     </div>
                     <div class="resource-content">
-                        <h3 class="resource-title">Complete Guide to TikTok Campaign Planning</h3>
+                        <h3 class="resource-title">Hướng Dẫn Toàn Diện Lên Kế Hoạch Chiến Dịch TikTok</h3>
                         <div class="resource-meta">
-                            <span>Jan 10, 2025</span>
-                            <span>20 min read</span>
+                            <span>10 Tháng 1, 2025</span>
+                            <span>20 phút đọc</span>
                         </div>
                         <p class="resource-excerpt">
-                            Step-by-step guide to planning, executing, and measuring successful TikTok influencer campaigns...
+                            Từng bước lập kế hoạch, thực thi và đo lường chiến dịch influencer TikTok thành công...
                         </p>
                         <a href="#" class="resource-link">
-                            Read Guide →
+                            Xem Hướng Dẫn →
                         </a>
                     </div>
                 </div>
 
                 <div class="resource-card fade-in" data-category="cases">
                     <div class="resource-image">
-                        <span class="resource-category">Case Study</span>
+                        <span class="resource-category">Nghiên Cứu Điển Hình</span>
                         <span>🎯</span>
                     </div>
                     <div class="resource-content">
-                        <h3 class="resource-title">How Brand X Achieved 500% ROI with Micro-Influencers</h3>
+                        <h3 class="resource-title">Cách Thương Hiệu X Đạt 500% ROI Với Micro-Influencer</h3>
                         <div class="resource-meta">
-                            <span>Jan 8, 2025</span>
-                            <span>12 min read</span>
+                            <span>8 Tháng 1, 2025</span>
+                            <span>12 phút đọc</span>
                         </div>
                         <p class="resource-excerpt">
-                            Discover how a local fashion brand leveraged micro-influencers to drive massive sales growth...
+                            Tìm hiểu cách một thương hiệu thời trang địa phương tận dụng micro-influencer để tăng trưởng doanh số vượt bậc...
                         </p>
                         <a href="#" class="resource-link">
-                            View Case Study →
+                            Xem Chi Tiết →
                         </a>
                     </div>
                 </div>
 
                 <div class="resource-card fade-in" data-category="blog">
                     <div class="resource-image">
-                        <span class="resource-category">Blog</span>
+                        <span class="resource-category">Bài Viết</span>
                         <span>🚀</span>
                     </div>
                     <div class="resource-content">
-                        <h3 class="resource-title">TikTok Algorithm Changes: What Marketers Need to Know</h3>
+                        <h3 class="resource-title">Thay Đổi Thuật Toán TikTok: Marketer Cần Biết Gì</h3>
                         <div class="resource-meta">
-                            <span>Jan 5, 2025</span>
-                            <span>6 min read</span>
+                            <span>5 Tháng 1, 2025</span>
+                            <span>6 phút đọc</span>
                         </div>
                         <p class="resource-excerpt">
-                            Latest updates to TikTok's algorithm and how they impact your influencer marketing strategy...
+                            Cập nhật mới nhất về thuật toán TikTok và cách nó ảnh hưởng đến chiến lược influencer marketing của bạn...
                         </p>
                         <a href="#" class="resource-link">
-                            Read More →
+                            Đọc Thêm →
                         </a>
                     </div>
                 </div>
 
                 <div class="resource-card fade-in" data-category="reports">
                     <div class="resource-image">
-                        <span class="resource-category">Report</span>
+                        <span class="resource-category">Báo Cáo</span>
                         <span>📊</span>
                     </div>
                     <div class="resource-content">
-                        <h3 class="resource-title">Q4 2024 TikTok Performance Benchmarks</h3>
+                        <h3 class="resource-title">Chỉ Số Hiệu Suất TikTok Quý 4/2024</h3>
                         <div class="resource-meta">
-                            <span>Dec 28, 2024</span>
-                            <span>25 min read</span>
+                            <span>28 Tháng 12, 2024</span>
+                            <span>25 phút đọc</span>
                         </div>
                         <p class="resource-excerpt">
-                            Industry benchmarks for engagement rates, CPM, and conversion rates across different niches...
+                            Thống kê ngành về tỷ lệ tương tác, CPM, và tỷ lệ chuyển đổi qua các lĩnh vực khác nhau...
                         </p>
                         <a href="#" class="resource-link">
-                            Download Report →
+                            Tải Báo Cáo →
                         </a>
                     </div>
                 </div>
 
                 <div class="resource-card fade-in" data-category="webinars">
                     <div class="resource-image">
-                        <span class="resource-category">Webinar</span>
+                        <span class="resource-category">Hội Thảo Trực Tuyến</span>
                         <span>🎥</span>
                     </div>
                     <div class="resource-content">
-                        <h3 class="resource-title">Mastering TikTok Analytics: Live Workshop</h3>
+                        <h3 class="resource-title">Làm Chủ Phân Tích TikTok: Workshop Trực Tiếp</h3>
                         <div class="resource-meta">
-                            <span>Feb 1, 2025</span>
+                            <span>1 Tháng 2, 2025</span>
                             <span>2:00 PM GMT+7</span>
                         </div>
                         <p class="resource-excerpt">
-                            Join our live workshop to learn advanced analytics techniques for measuring campaign success...
+                            Tham gia workshop trực tiếp để học kỹ thuật phân tích nâng cao trong đo lường hiệu quả chiến dịch...
                         </p>
                         <a href="#" class="resource-link">
-                            Register Now →
+                            Đăng Ký Ngay →
                         </a>
                     </div>
                 </div>
@@ -440,34 +440,34 @@
             <div class="grid grid-3">
                 <div class="download-card fade-in">
                     <div style="font-size: 48px; margin-bottom: 1rem;">📱</div>
-                    <h3 style="margin-bottom: 1rem;">TikTok KOL Checklist</h3>
+                    <h3 style="margin-bottom: 1rem;">Danh Sách Kiểm Tra TikTok KOL</h3>
                     <p style="opacity: 0.9; margin-bottom: 1.5rem;">
-                        Essential checklist for vetting TikTok influencers
+                        Danh sách quan trọng để đánh giá và chọn lọc influencer TikTok
                     </p>
                     <button class="btn" style="background: white; color: var(--primary);">
-                        Download Free
+                        Tải Miễn Phí
                     </button>
                 </div>
 
                 <div class="download-card fade-in" style="animation-delay: 0.1s;">
                     <div style="font-size: 48px; margin-bottom: 1rem;">📋</div>
-                    <h3 style="margin-bottom: 1rem;">Campaign Template</h3>
+                    <h3 style="margin-bottom: 1rem;">Mẫu Kế Hoạch Chiến Dịch</h3>
                     <p style="opacity: 0.9; margin-bottom: 1.5rem;">
-                        Ready-to-use template for planning TikTok campaigns
+                        Mẫu sẵn sàng sử dụng để lập kế hoạch chiến dịch TikTok hiệu quả
                     </p>
                     <button class="btn" style="background: white; color: var(--primary);">
-                        Get Template
+                        Nhận Mẫu
                     </button>
                 </div>
 
                 <div class="download-card fade-in" style="animation-delay: 0.2s;">
                     <div style="font-size: 48px; margin-bottom: 1rem;">💰</div>
-                    <h3 style="margin-bottom: 1rem;">ROI Calculator</h3>
+                    <h3 style="margin-bottom: 1rem;">Công Cụ Tính ROI</h3>
                     <p style="opacity: 0.9; margin-bottom: 1.5rem;">
-                        Excel template to calculate campaign ROI instantly
+                        File Excel giúp bạn tính toán ROI chiến dịch tức thì
                     </p>
                     <button class="btn" style="background: white; color: var(--primary);">
-                        Download Tool
+                        Tải Công Cụ
                     </button>
                 </div>
             </div>
@@ -478,21 +478,21 @@
     <section class="section">
         <div class="container text-center">
             <div class="section-header">
-                <div class="section-subtitle fade-in">STAY UPDATED</div>
-                <h2 class="section-title color-gray-100 fade-in">Get Weekly Insights</h2>
+                <div class="section-subtitle fade-in">CẬP NHẬT MỚI NHẤT</div>
+                <h2 class="section-title color-gray-100 fade-in">Nhận Tin Tức Hàng Tuần</h2>
                 <p class="section-description color-gray-600 fade-in">
-                    Join 5,000+ marketers receiving our weekly newsletter with the latest<br>
-                    TikTok trends, case studies, and platform updates
+                    Tham gia hơn 5,000 marketer nhận bản tin hàng tuần về<br>
+                    xu hướng TikTok, nghiên cứu và cập nhật nền tảng mới nhất.
                 </p>
             </div>
             
             <form class="newsletter-form fade-in" onsubmit="handleNewsletter(event)">
-                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-                <button type="submit" class="btn btn-primary">Subscribe</button>
+                <input type="email" class="newsletter-input" placeholder="Nhập email của bạn" required>
+                <button type="submit" class="btn btn-primary">Đăng Ký</button>
             </form>
             
             <p class="mt-3" style="color: var(--gray-light); font-size: 14px;">
-                No spam. Unsubscribe anytime.
+                Không spam. Bạn có thể hủy đăng ký bất cứ lúc nào.
             </p>
         </div>
     </section>
@@ -500,37 +500,38 @@
     <!-- Popular Topics -->
     <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
-            <h2 class="text-center color-dark-blue mb-4">Popular Topics</h2>
+            <h2 class="text-center color-dark-blue mb-4">Chủ Đề Phổ Biến</h2>
             
             <div class="d-flex flex-wrap justify-center gap-2">
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
                     #TikTokMarketing
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #InfluencerROI
+                    #HiệuQuảInfluencer
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #MicroInfluencers
+                    #MicroInfluencer
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #ContentStrategy
+                    #ChiếnLượcNộiDung
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #CampaignAnalytics
+                    #PhânTíchChiếnDịch
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #ViralMarketing
+                    #MarketingLanTruyền
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #BrandCollabs
+                    #HợpTácThươngHiệu
                 </a>
                 <a href="#" class="badge" style="padding: 10px 20px; font-size: 14px; background: white; color: var(--gray-600); border: 1px solid #E0E0E0;">
-                    #TikTokTrends
+                    #XuHướngTikTok
                 </a>
             </div>
         </div>
     </section>
 @endsection
+
 
 @section('js')
     <script>
