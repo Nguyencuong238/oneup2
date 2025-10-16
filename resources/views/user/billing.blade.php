@@ -860,7 +860,7 @@
                     <tbody>
                         <tr>
                             <td><span class="invoice-id">#INV-2025-001</span></td>
-                            <td>15 Tháng 1, 2025</td>
+                            <td style="color: black">15 Tháng 1, 2025</td>
                             <td><span class="invoice-amount">₫2,500,000</span></td>
                             <td><span class="status-badge status-paid"><span
                                         style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
@@ -874,7 +874,7 @@
                         </tr>
                         <tr>
                             <td><span class="invoice-id">#INV-2024-012</span></td>
-                            <td>15 Tháng 12, 2024</td>
+                            <td style="color: black">15 Tháng 12, 2024</td>
                             <td><span class="invoice-amount">₫2,500,000</span></td>
                             <td><span class="status-badge status-paid"><span
                                         style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
@@ -888,7 +888,7 @@
                         </tr>
                         <tr>
                             <td><span class="invoice-id">#INV-2024-011</span></td>
-                            <td>15 Tháng 11, 2024</td>
+                            <td style="color: black">15 Tháng 11, 2024</td>
                             <td><span class="invoice-amount">₫2,500,000</span></td>
                             <td><span class="status-badge status-paid"><span
                                         style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
@@ -902,7 +902,7 @@
                         </tr>
                         <tr>
                             <td><span class="invoice-id">#INV-2024-010</span></td>
-                            <td>15 Tháng 10, 2024</td>
+                            <td style="color: black">15 Tháng 10, 2024</td>
                             <td><span class="invoice-amount">₫2,500,000</span></td>
                             <td><span class="status-badge status-paid"><span
                                         style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã
@@ -916,7 +916,7 @@
                         </tr>
                         <tr>
                             <td><span class="invoice-id">#INV-2024-009</span></td>
-                            <td>15 Tháng 9, 2024</td>
+                            <td style="color: black">15 Tháng 9, 2024</td>
                             <td><span class="invoice-amount">₫1,500,000</span></td>
                             <td><span class="status-badge status-paid"><span
                                         style="width:6px;height:6px;background:currentColor;border-radius:50%;"></span>Đã

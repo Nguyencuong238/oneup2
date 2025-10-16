@@ -845,8 +845,8 @@
                                 </div>
                             </td>
                             <td><span class="report-type type-performance">Hiệu suất</span></td>
-                            <td>25 Tháng 7, 2024</td>
-                            <td>2.4 MB</td>
+                            <td style="color:black">25 Tháng 7, 2024</td>
+                            <td style="color:black">2.4 MB</td>
                             <td>
                                 <div class="report-actions">
                                     <button class="action-btn" title="Tải xuống">📥</button>
@@ -866,8 +866,8 @@
                                 </div>
                             </td>
                             <td><span class="report-type type-financial">Tài chính</span></td>
-                            <td>20 Tháng 7, 2024</td>
-                            <td>1.8 MB</td>
+                            <td style="color:black">20 Tháng 7, 2024</td>
+                            <td style="color:black">1.8 MB</td>
                             <td>
                                 <div class="report-actions">
                                     <button class="action-btn" title="Tải xuống">📥</button>
@@ -887,8 +887,8 @@
                                 </div>
                             </td>
                             <td><span class="report-type type-kol">Phân tích KOL</span></td>
-                            <td>18 Tháng 7, 2024</td>
-                            <td>3.1 MB</td>
+                            <td style="color:black">18 Tháng 7, 2024</td>
+                            <td style="color:black">3.1 MB</td>
                             <td>
                                 <div class="report-actions">
                                     <button class="action-btn" title="Tải xuống">📥</button>

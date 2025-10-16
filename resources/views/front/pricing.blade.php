@@ -266,7 +266,7 @@
                         <li>Lịch sử dữ liệu 7 ngày</li>
                     </ul>
                     <a href="{{ route('user.register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large" style="width: 100%;">
-                        Bắt đầu dùng thử miễn phí
+                        Dùng thử miễn phí
                     </a>
                 </div>
 
@@ -291,7 +291,7 @@
                         <li>Làm việc nhóm (tối đa 5 thành viên)</li>
                     </ul>
                     <a href="{{ route('user.register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large" style="width: 100%;">
-                        Bắt đầu dùng thử miễn phí
+                        Dùng thử miễn phí
                     </a>
                 </div>
 
