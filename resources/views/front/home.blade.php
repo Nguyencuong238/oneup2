@@ -400,48 +400,47 @@
     <section class="hero" style="padding: 140px 0 80px;">
         <div class="hero-content">
             <div class="hero-text fade-in">
-                <div class="badge badge-primary mb-3">🚀 Nền tảng ứng dụng AI</div>
+                <div class="badge badge-primary mb-3">🚀 Nền tảng hỗ trợ AI</div>
                 <h1>
-                    Khám phá & Phân tích <span class="gradient-text">KOL TikTok</span>
-                    giúp bạn đạt hiệu quả vượt trội
+                   Khám phá và phân tích <span class="gradient-text">TikTok KOLs</span>
+                    giúp bạn cải thiện hiệu xuất
                 </h1>
                 <p style="font-size: 1.25rem; color: var(--gray-600); margin-bottom: 2rem;">
-                    Truy cập dữ liệu thời gian thực của hơn 10.000 nhà sáng tạo TikTok Việt Nam.
-                    Đưa ra quyết định dựa trên dữ liệu một cách tự tin.
+                    Truy cập dữ liệu thời gian thực của hơn 10.000 nhà sáng tạo TikTok tại Việt Nam. Tự tin đưa ra quyết định dựa trên dữ liệu.
                 </p>
 
                 <div class="d-flex gap-2 mb-4">
                     <a href="{{ route('user.register') }}" class="btn btn-primary btn-large">
-                        Dùng thử miễn phí
+                        Bắt đầu dùng thử miễn phí
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
                         </svg>
                     </a>
                     <a href="#demo" class="btn btn-outline btn-large">
-                        Xem demo
+                        Xem bản demo
                     </a>
                 </div>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-value">10,000+</div>
-                        <div class="hero-stat-label">KOL đã xác minh</div>
+                        <div class="hero-stat-label">KOL đã được xác minh</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value">2.5B+</div>
-                        <div class="hero-stat-label">Tổng lượng tiếp cận</div>
+                        <div class="hero-stat-label">Tổng phạm vi tiếp cận</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value">98%</div>
-                        <div class="hero-stat-label">Độ chính xác</div>
+                        <div class="hero-stat-label">Tỷ lệ chính xác</div>
                     </div>
                 </div>
             </div>
 
             <div class="hero-visual fade-in" style="animation-delay: 0.2s;">
                 <div class="kol-showcase">
-                    <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 KOL nổi bật hôm nay</h4>
+                    <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 KOLs thịnh hành hiện nay</h4>
                     <div class="kol-grid">
                         <div class="kol-card-mini">
                             <div class="kol-avatar">NT</div>
@@ -496,14 +495,14 @@
                         <path fill-rule="evenodd"
                             d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100-4h2a1 1 0 100-2 2 2 0 00-2 2v11a2 2 0 002 2h6a2 2 0 002-2V5a2 2 0 00-2-2H6z" />
                     </svg>
-                    <span>Dữ liệu theo thời gian thực</span>
+                    <span>Dữ liệu thời gian thực</span>
                 </div>
                 <div class="trust-badge">
                     <svg class="trust-badge-icon" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                     </svg>
-                    <span>Hồ sơ được xác minh</span>
+                    <span>Hồ sơ đã được xác minh</span>
                 </div>
                 <div class="trust-badge">
                     <svg class="trust-badge-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -527,7 +526,7 @@
     <section class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">CÁCH HOẠT ĐỘNG</div>
+                <div class="section-subtitle fade-in">CÁCH THỨC HOẠT ĐỘNG</div>
                 <h2 class="section-title fade-in">Thành công của bạn trong 4 bước đơn giản</h2>
             </div>
 
@@ -535,25 +534,341 @@
                 <div class="feature-box fade-in">
                     <div class="feature-number">1</div>
                     <h4>Tìm kiếm & Lọc</h4>
-                    <p>Sử dụng bộ lọc nâng cao để tìm KOL theo lĩnh vực, vị trí, lượng theo dõi, tỷ lệ tương tác và hơn thế nữa.</p>
+                    <p>Sử dụng bộ lọc nâng cao để tìm KOL theo lĩnh vực, vị trí, người theo dõi, tỷ lệ tương tác, v.v.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.1s;">
                     <div class="feature-number">2</div>
                     <h4>Phân tích hiệu suất</h4>
-                    <p>Xem chi tiết dữ liệu như nhân khẩu học khán giả, hiệu quả nội dung và điểm tin cậy.</p>
+                    <p>Xem xét các số liệu chi tiết bao gồm thông tin nhân khẩu học của khán giả, hiệu suất nội dung và điểm xác thực.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.2s;">
                     <div class="feature-number">3</div>
-                    <h4>Lập kế hoạch chiến dịch</h4>
-                    <p>Sử dụng gợi ý từ AI để chọn nhóm KOL phù hợp nhất với ngân sách và mục tiêu.</p>
+                    <h4>Kế hoạch chiến dịch</h4>
+                    <p>Sử dụng các đề xuất của AI để lựa chọn hỗn hợp KOL tối ưu cho ngân sách và mục tiêu của bạn.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.3s;">
                     <div class="feature-number">4</div>
                     <h4>Theo dõi kết quả</h4>
-                    <p>Theo dõi hiệu suất, ROI và nhận insight hữu ích để tối ưu chiến dịch.</p>
+                    <p>Theo dõi hiệu suất theo thời gian thực, ROI và nhận thông tin chi tiết hữu ích để tối ưu hóa chiến dịch của bạn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KOL List Section -->
+    <section id="kol-list" class="kol-list-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle fade-in">Người đạt thành tích cao nhất</div>
+                <h2 class="section-title fade-in">KOL TikTok nổi bật</h2>
+                <p class="section-description fade-in">
+                    Khám phá những người có ảnh hưởng đã được xác minh với thành tích đã được chứng minh
+                </p>
+            </div>
+
+            <div class="kol-filter-tabs">
+                <button class="filter-tab active">Tất cả danh mục</button>
+                <button class="filter-tab">Thời trang</button>
+                <button class="filter-tab">Làm đẹp</button>
+                <button class="filter-tab">Ẩm thực</button>
+                <button class="filter-tab">Công nghệ</button>
+                <button class="filter-tab">Du lịch</button>
+                <button class="filter-tab">Phong cách sống</button>
+            </div>
+
+            <div class="kol-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hồ sơ KOL</th>
+                            <th>Danh mục</th>
+                            <th>Người theo dõi</th>
+                            <th>Mức độ tương tác</th>
+                            <th>Lượt xem trung bình</th>
+                            <th>Điểm tin cậy</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="kol-profile">
+                                    <div class="kol-avatar-large">NT</div>
+                                    <div class="kol-details">
+                                        <div style="font-weight: 600;">Ngọc Trinh</div>
+                                        <div class="kol-handle">@ngoctrinh.official</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Thời trang</td>
+                            <td><strong>2.8M</strong></td>
+                            <td><span class="metric-badge high">5.8%</span></td>
+                            <td>450K</td>
+                            <td><span class="metric-badge high">92/100</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="kol-profile">
+                                    <div class="kol-avatar-large">ST</div>
+                                    <div class="kol-details">
+                                        <div style="font-weight: 600;">Sơn Tùng</div>
+                                        <div class="kol-handle">@sontung.mtp</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Âm nhạc</td>
+                            <td><strong>4.2M</strong></td>
+                            <td><span class="metric-badge high">7.2%</span></td>
+                            <td>850K</td>
+                            <td><span class="metric-badge high">95/100</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="kol-profile">
+                                    <div class="kol-avatar-large">CP</div>
+                                    <div class="kol-details">
+                                        <div style="font-weight: 600;">Chi Pu</div>
+                                        <div class="kol-handle">@chipupu</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Giải trí</td>
+                            <td><strong>1.5M</strong></td>
+                            <td><span class="metric-badge medium">3.2%</span></td>
+                            <td>220K</td>
+                            <td><span class="metric-badge medium">78/100</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="kol-profile">
+                                    <div class="kol-avatar-large">LH</div>
+                                    <div class="kol-details">
+                                        <div style="font-weight: 600;">Lan Hương</div>
+                                        <div class="kol-handle">@lanhuong.beauty</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Làm đẹp</td>
+                            <td><strong>890K</strong></td>
+                            <td><span class="metric-badge high">8.5%</span></td>
+                            <td>180K</td>
+                            <td><span class="metric-badge high">88/100</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="kol-profile">
+                                    <div class="kol-avatar-large">TN</div>
+                                    <div class="kol-details">
+                                        <div style="font-weight: 600;">Thanh Nam</div>
+                                        <div class="kol-handle">@thanhnam.tech</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Công nghệ</td>
+                            <td><strong>650K</strong></td>
+                            <td><span class="metric-badge high">9.2%</span></td>
+                            <td>150K</td>
+                            <td><span class="metric-badge high">90/100</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="{{ route('user.register') }}" class="btn btn-primary btn-large">
+                    Xem tất cả hơn 10.000 KOL
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle fade-in">TÍNH NĂNG MẠNH MẼ</div>
+                <h2 class="section-title color-gray-100 fade-in">Mọi thứ bạn cần để thành công</h2>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="card-title">Khám phá thông minh</h3>
+                    <p class="card-description color-gray-500">
+                        Tìm kiếm hỗ trợ AI với hơn 50 bộ lọc để tìm KOL hoàn hảo cho thương hiệu của bạn
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in" style="animation-delay: 0.1s">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="card-title">Phân tích thời gian thực</h3>
+                    <p class="card-description color-gray-500">
+                        Theo dõi số liệu hiệu suất, tỷ lệ tương tác và ROI theo thời gian thực
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in" style="animation-delay: 0.2s">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="card-title">Người lập kế hoạch chiến dịch</h3>
+                    <p class="card-description color-gray-500">
+                        Lập kế hoạch, thực hiện và tối ưu hóa các chiến dịch với thông tin chi tiết dựa trên dữ liệu
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in" style="animation-delay: 0.3s">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="card-title">Phát hiện gian lận</h3>
+                    <p class="card-description color-gray-500">
+                        AI tiên tiến phát hiện người theo dõi giả mạo và thao túng tương tác
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in" style="animation-delay: 0.4s">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="card-title">Máy tính ROI</h3>
+                    <p class="card-description color-gray-500">
+                        Tính toán và dự đoán ROI của chiến dịch trước khi bạn chi tiêu
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in" style="animation-delay: 0.5s">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="card-title">Theo dõi tăng trưởng</h3>
+                    <p class="card-description color-gray-500">
+                       Theo dõi xu hướng tăng trưởng của KOL và sớm xác định những ngôi sao đang lên
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" style="background: var(--gray-100);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle fade-in">CÂU CHUYỆN THÀNH CÔNG</div>
+                <h2 class="section-title fade-in">Được các thương hiệu hàng đầu tin cậy</h2>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card fade-in">
+                    <div class="d-flex gap-1 mb-3">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
+                        "OneUp KOL đã giúp chúng tôi tăng ROI lên 300% chỉ trong 3 tháng. Các khuyến nghị của AI cực kỳ chính xác."
+                    </p>
+                    <div class="d-flex align-center gap-2">
+                        <div class="kol-avatar">NT</div>
+                        <div>
+                            <strong>Nguyễn Thảo</strong><br>
+                            <small class="color-gray-500">Giám đốc Tiếp thị, Thương hiệu Thời trang</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in" style="animation-delay: 0.1s">
+                    <div class="d-flex gap-1 mb-3">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
+                        "Tính năng phát hiện gian lận đã giúp chúng tôi tránh lãng phí ngân sách cho những người có sức ảnh hưởng giả mạo. Công cụ thiết yếu cho bất kỳ nhà tiếp thị nào."
+                    </p>
+                    <div class="d-flex align-center gap-2">
+                        <div class="kol-avatar">LM</div>
+                        <div>
+                            <strong>Lê Minh</strong><br>
+                            <small class="color-gray-500">CEO, Tech Startup</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in" style="animation-delay: 0.2s">
+                    <div class="d-flex gap-1 mb-3">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
+                        "Theo dõi thời gian thực giúp chúng tôi tối ưu hóa chiến dịch ngay lập tức. Chúng tôi đã thấy tỷ lệ tương tác tăng gấp 5 lần."
+                    </p>
+                    <div class="d-flex align-center gap-2">
+                        <div class="kol-avatar">PH</div>
+                        <div>
+                            <strong>Phạm Hương</strong><br>
+                            <small class="color-gray-500">CMO, Công ty làm đẹp</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: var(--gradient-blue); color: white;">
+        <div class="container">
+            <div class="cta-split">
+                <div class="cta-content">
+                    <h2 style="color: white;">Bạn đã sẵn sàng chuyển đổi hoạt động tiếp thị trên TikTok chưa?</h2>
+                    <p style="font-size: 1.25rem; opacity: 0.95; margin-bottom: 2rem; color: #fefefe;">
+                        Tham gia cùng hơn 500 thương hiệu sử dụng OneUp KOL để tối ưu hóa các chiến dịch có sức ảnh hưởng của họ
+                    </p>
+
+                    <ul class="cta-features">
+                        <li>Truy cập hơn 10.000 hồ sơ KOL đã được xác minh</li>
+                        <li>Phân tích theo thời gian thực và theo dõi ROI</li>
+                        <li>Đề xuất hỗ trợ bởi AI</li>
+                        <li>Hỗ trợ khách hàng tận tâm</li>
+                    </ul>
+
+                    <div class="d-flex gap-2" style="margin-top: 2rem;">
+                        <a href="{{ route('user.register') }}" class="btn"
+                            style="background: white; color: var(--primary);">
+                            Bắt đầu dùng thử miễn phí
+                        </a>
+                        <a href="{{ route('pricing') }}" class="btn"
+                            style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
+                            Xem giá
+                        </a>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <div style="background: white; border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-2xl);">
+                        <h3 style="color: var(--dark-blue); margin-bottom: 1.5rem;">Bắt đầu trong vài phút</h3>
+                        <div style="text-align: left;">
+                            <div
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--gray-200);">
+                                <span style="color: var(--primary); font-size: 24px; font-weight: 700;">1</span>
+                                <span style="color: var(--gray-700);">Đăng ký tài khoản miễn phí</span>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--gray-200);">
+                                <span style="color: var(--primary); font-size: 24px; font-weight: 700;">2</span>
+                                <span style="color: var(--gray-700);">Tìm kiếm và phân tích KOL</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0;">
+                                <span style="color: var(--primary); font-size: 24px; font-weight: 700;">3</span>
+                                <span style="color: var(--gray-700);">Khởi chạy chiến dịch đầu tiên của bạn</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
