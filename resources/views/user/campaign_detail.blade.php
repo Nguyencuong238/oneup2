@@ -1,84 +1,13 @@
 @extends('layouts.user')
 
 @section('meta')
-    <meta name="description" content="OneUp Campaign Detail - Monitor and manage your campaign performance">
-    <title>Campaign Detail - OneUp KOL Analytics</title>
+    <meta name="description" content="Chi tiết chiến dịch OneUp - Giám sát và quản lý hiệu suất chiến dịch">
+    <title>Chi tiết chiến dịch - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
     <style>
         /* Base styles from dashboard */
-        body {
-            background: #F8F9FA;
-            min-height: 100vh;
-        }
-
-        .dashboard-layout {
-            display: block;
-            grid-template-columns: 260px 1fr;
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: white;
-            border-right: 1px solid var(--gray-200);
-            padding: 1.5rem 0;
-            position: fixed;
-            height: 100vh;
-            width: 260px;
-            overflow-y: auto;
-            z-index: 100;
-        }
-
-        .sidebar-header {
-            padding: 0 1.5rem 1.5rem;
-            border-bottom: 1px solid var(--gray-200);
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .sidebar-logo-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--gradient-blue);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: white;
-        }
-
-        .sidebar-logo-text {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .sidebar-nav {
-            padding: 0 1rem;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 10px;
-            color: var(--gray-600);
-            text-decoration: none;
-            transition: all 0.2s;
-            position: relative;
-        }
-
         .nav-item:hover {
             background: var(--gray-100);
             color: var(--primary);
@@ -199,6 +128,21 @@
         .status-active {
             background: rgba(16, 185, 129, 0.1);
             color: var(--success);
+        }
+
+        .status-draft {
+            background: rgba(156, 163, 175, 0.1);
+            color: var(--gray-600);
+        }
+
+        .status-completed {
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .status-paused {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
         }
 
         .topbar-right {
@@ -682,8 +626,16 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Campaign Detail</h1>
-                <span class="campaign-status status-active">Active</span>
+                <h1 class="page-title">Chi tiết chiến dịch</h1>
+                @php
+                    $statusText = [
+                        'active' => 'Đang hoạt động',
+                        'paused' => 'Tạm dừng',
+                        'completed' => 'Đã hoàn thành',
+                        'cancelled' => 'Đã hủy',
+                    ];
+                @endphp
+                <span class="campaign-status status-{{ $campaign->status }}">{{ $statusText[$campaign->status] }}</span>
             </div>
 
             <div class="topbar-right">
@@ -693,10 +645,10 @@
                             d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                    Export Report
+                    Xuất báo cáo
                 </button>
                 <button class="btn btn-primary btn-small">
-                    Edit Campaign
+                    Chỉnh sửa chiến dịch
                 </button>
             </div>
         </div>
@@ -707,7 +659,7 @@
             <div class="campaign-header-card">
                 <div class="campaign-header-info">
                     <div class="campaign-title-section">
-                        <h1 class="campaign-title">Summer Fashion Collection 2024</h1>
+                        <h1 class="campaign-title">{{ $campaign->name ?? 'Không tên chiến dịch' }}</h1>
                         <div class="campaign-meta">
                             <div class="meta-item">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -715,14 +667,15 @@
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Jun 15 - Aug 30, 2024</span>
+                                <span>{{ $campaign->start_date ? $campaign->start_date->format('d M Y') : '' }} -
+                                    {{ $campaign->end_date ? $campaign->end_date->format('d M Y') : '' }}</span>
                             </div>
                             <div class="meta-item">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path
                                         d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                                 </svg>
-                                <span>8 KOLs</span>
+                                <span>{{ $campaign->kols->count() }} KOL</span>
                             </div>
                             <div class="meta-item">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -732,13 +685,22 @@
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Budget: ₫80M</span>
+                                <span>Ngân sách: ₫{{ number_format($totalBudget) }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="campaign-actions">
-                        <button class="btn btn-secondary btn-small">Pause</button>
-                        <button class="btn btn-secondary btn-small">Clone</button>
+                        <form action="{{ route('user.campaign.changeStatus') }}" method="post" id="change-status-form">
+                            @csrf
+                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+                            <input type="hidden" name="status"
+                                value="{{ $campaign->status == 'active' ? 'paused' : 'active' }}">
+
+                            <button class="btn btn-secondary btn-small">
+                                {{ $campaign->status == 'active' ? 'Tạm dừng' : 'Tiếp tục' }}
+                            </button>
+                        </form>
+                        <button class="btn btn-secondary btn-small" id="clone-campaign">Nhân bản</button>
                     </div>
                 </div>
 
@@ -746,31 +708,32 @@
                 <div class="progress-overview">
                     <div class="progress-header">
                         <div>
-                            <div class="progress-title">Campaign Progress</div>
-                            <div style="font-size: 14px; color: var(--gray-600); margin-top: 0.25rem;">15 days remaining
+                            <div class="progress-title">Tiến độ chiến dịch</div>
+                            <div style="font-size: 14px; color: var(--gray-600); margin-top: 0.25rem;">Còn
+                                {{ $remainingDays }} ngày
                             </div>
                         </div>
-                        <div class="progress-percentage">68%</div>
+                        <div class="progress-percentage">{{ $progress }}%</div>
                     </div>
                     <div class="progress-bar-large">
-                        <div class="progress-fill-large" style="width: 68%;"></div>
+                        <div class="progress-fill-large" style="width: 0%;"></div>
                     </div>
                     <div class="progress-stats">
                         <div class="progress-stat">
-                            <div class="stat-value">45 days</div>
-                            <div class="stat-label">Duration</div>
+                            <div class="stat-value">{{ $durationDays ?? 'N/A' }} ngày</div>
+                            <div class="stat-label">Thời lượng</div>
                         </div>
                         <div class="progress-stat">
-                            <div class="stat-value">₫54.4M</div>
-                            <div class="stat-label">Spent</div>
+                            <div class="stat-value">₫{{ number_format($spentBudget) }}</div>
+                            <div class="stat-label">Đã chi</div>
                         </div>
                         <div class="progress-stat">
-                            <div class="stat-value">24</div>
-                            <div class="stat-label">Content Posted</div>
+                            <div class="stat-value">{{ $contentPosted }}</div>
+                            <div class="stat-label">Nội dung đã đăng</div>
                         </div>
                         <div class="progress-stat">
-                            <div class="stat-value">4.2x</div>
-                            <div class="stat-label">Current ROI</div>
+                            <div class="stat-value">{{ $currentRoi ? number_format($currentRoi, 2) . 'x' : 'N/A' }}</div>
+                            <div class="stat-label">ROI hiện tại</div>
                         </div>
                     </div>
                 </div>
@@ -781,15 +744,15 @@
                 <div class="metric-card">
                     <div class="metric-header">
                         <div>
-                            <div class="metric-title">Total Reach</div>
-                            <div class="metric-value">12.5M</div>
+                            <div class="metric-title">Tổng phạm vi tiếp cận</div>
+                            <div class="metric-value">{{ $totalViews ? number_format($totalViews) : '0' }}</div>
                             <div class="metric-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+2.3M this week</span>
+                                <span>+{{ isset($campaign->week_change_reach) ? number_format($campaign->week_change_reach) . ' tuần này' : '—' }}</span>
                             </div>
                         </div>
                         <div class="metric-icon">
@@ -806,15 +769,15 @@
                 <div class="metric-card">
                     <div class="metric-header">
                         <div>
-                            <div class="metric-title">Engagement Rate</div>
-                            <div class="metric-value">6.8%</div>
+                            <div class="metric-title">Tỷ lệ tương tác</div>
+                            <div class="metric-value">{{ $campaign->target_engagement }}%</div>
                             <div class="metric-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+0.5% improvement</span>
+                                <span>{{ isset($campaign->week_change_engagement) ? '+' . $campaign->week_change_engagement . '%' : '—' }}</span>
                             </div>
                         </div>
                         <div class="metric-icon">
@@ -830,15 +793,15 @@
                 <div class="metric-card">
                     <div class="metric-header">
                         <div>
-                            <div class="metric-title">Total Conversions</div>
-                            <div class="metric-value">2,847</div>
+                            <div class="metric-title">Tổng chuyển đổi</div>
+                            <div class="metric-value">{{ $campaign->target_conversions - 0 }}</div>
                             <div class="metric-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+423 new</span>
+                                <span>{{ isset($campaign->week_change_conversions) ? '+' . $campaign->week_change_conversions . ' mới' : '—' }}</span>
                             </div>
                         </div>
                         <div class="metric-icon">
@@ -853,8 +816,9 @@
                 <div class="metric-card">
                     <div class="metric-header">
                         <div>
-                            <div class="metric-title">Cost Per View</div>
-                            <div class="metric-value">₫4.35</div>
+                            <div class="metric-title">Chi phí mỗi lượt xem</div>
+                            <div class="metric-value">
+                                {{ $totalViews ? '₫' . number_format($spentBudget / max(1, $totalViews), 2) : '0' }}</div>
                             <div class="metric-change change-negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                                     style="transform: rotate(180deg);">
@@ -862,7 +826,7 @@
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>-₫0.15 decrease</span>
+                                <span>{{ isset($campaign->week_change_cpv) ? '-₫' . number_format($campaign->week_change_cpv, 2) . ' giảm' : '—' }}</span>
                             </div>
                         </div>
                         <div class="metric-icon">
@@ -881,10 +845,10 @@
             <!-- Content Tabs -->
             <div class="content-tabs-container">
                 <div class="content-tabs">
-                    <div class="content-tab active" onclick="switchTab('kols')">KOL Performance</div>
-                    <div class="content-tab" onclick="switchTab('content')">Content Feed</div>
-                    <div class="content-tab" onclick="switchTab('timeline')">Timeline</div>
-                    <div class="content-tab" onclick="switchTab('analytics')">Analytics</div>
+                    <div class="content-tab active" onclick="switchTab('kols')">Hiệu suất KOL</div>
+                    <div class="content-tab" onclick="switchTab('content')">Luồng nội dung</div>
+                    <div class="content-tab" onclick="switchTab('timeline')">Dòng thời gian</div>
+                    <div class="content-tab" onclick="switchTab('analytics')">Phân tích</div>
                 </div>
 
                 <!-- Tab Content -->
@@ -893,112 +857,74 @@
                         <thead>
                             <tr>
                                 <th>KOL</th>
-                                <th>Content Posted</th>
-                                <th>Total Views</th>
-                                <th>Engagement</th>
-                                <th>Conversions</th>
-                                <th>Performance</th>
+                                <th>Nội dung đã đăng</th>
+                                <th>Tổng lượt xem</th>
+                                <th>Tương tác</th>
+                                <th>Chuyển đổi</th>
+                                <th>Hiệu suất</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="kol-info-cell">
-                                        <div class="kol-avatar-small">LN</div>
-                                        <div class="kol-details">
-                                            <div class="kol-name">Linh Nguyễn</div>
-                                            <div class="kol-handle">@linhnguyen_beauty</div>
+                            @foreach ($kolStats as $k)
+                                @php
+                                    $views = $k->views ?? 0;
+                                    $eng = $k->engagement ?? 0;
+                                    // Compute relative widths (cap at 100%) based on campaign totals
+                                    $viewsWidth = $totalViews
+                                        ? min(100, round(($views / max(1, $totalViews)) * 100))
+                                        : 0;
+                                    $engWidth = $campaign->target_engagement
+                                        ? min(100, round(($eng / max(1, $campaign->target_engagement)) * 100))
+                                        : min(100, $eng);
+                                @endphp
+                                <tr>
+                                    <td>
+                                        <div class="kol-info-cell">
+                                            <div class="kol-avatar-small">
+                                                @if (!empty($k->avatar))
+                                                    <img src="{{ $k->avatar }}" alt=""
+                                                        style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
+                                                @else
+                                                    {{ strtoupper(substr($k->name ?? '', 0, 2)) }}
+                                                @endif
+                                            </div>
+                                            <div class="kol-details">
+                                                <div class="kol-name">{{ $k->name }}</div>
+                                                <div class="kol-handle">{{ $k->handle ?? '' }}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>4 videos</td>
-                                <td>
-                                    <div class="performance-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 85%;"></div>
+                                    </td>
+                                    <td class="color-gray-700">{{ $k->content_posted ?? 0 }} nội dung</td>
+                                    <td class="color-gray-700">
+                                        <div class="performance-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: {{ $viewsWidth }}%;"></div>
+                                            </div>
+                                            <span>{{ number_format($views) }}</span>
                                         </div>
-                                        <span>3.2M</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="performance-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 92%;"></div>
+                                    </td>
+                                    <td>
+                                        <div class="performance-bar">
+                                            <div class="bar-container">
+                                                <div class="bar-fill" style="width: {{ $engWidth }}%;"></div>
+                                            </div>
+                                            <span>{{ is_numeric($eng) ? $eng . '%' : $eng }}</span>
                                         </div>
-                                        <span>8.5%</span>
-                                    </div>
-                                </td>
-                                <td>652</td>
-                                <td>
-                                    <span style="color: var(--success); font-weight: 600;">Excellent</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="kol-info-cell">
-                                        <div class="kol-avatar-small"
-                                            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MT</div>
-                                        <div class="kol-details">
-                                            <div class="kol-name">Minh Trần</div>
-                                            <div class="kol-handle">@minhtran_lifestyle</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>3 videos</td>
-                                <td>
-                                    <div class="performance-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 75%;"></div>
-                                        </div>
-                                        <span>2.8M</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="performance-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 68%;"></div>
-                                        </div>
-                                        <span>6.2%</span>
-                                    </div>
-                                </td>
-                                <td>489</td>
-                                <td>
-                                    <span style="color: var(--primary); font-weight: 600;">Good</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="kol-info-cell">
-                                        <div class="kol-avatar-small"
-                                            style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">AP</div>
-                                        <div class="kol-details">
-                                            <div class="kol-name">An Phạm</div>
-                                            <div class="kol-handle">@anpham_food</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>5 videos</td>
-                                <td>
-                                    <div class="performance-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 65%;"></div>
-                                        </div>
-                                        <span>2.4M</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="performance-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 95%;"></div>
-                                        </div>
-                                        <span>9.8%</span>
-                                    </div>
-                                </td>
-                                <td>724</td>
-                                <td>
-                                    <span style="color: var(--success); font-weight: 600;">Excellent</span>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="color-gray-700">{{ $k->conversions ?? 0 }}</td>
+                                    <td>
+                                        @if (($k->performance_label ?? '') == 'Good')
+                                            <span style="color: var(--success); font-weight: 600;">Xuất sắc</span>
+                                        @elseif(($k->performance_label ?? '') == 'Average')
+                                            <span style="color: var(--primary); font-weight: 600;">Tốt</span>
+                                        @elseif(($k->performance_label ?? '') == 'Poor')
+                                            <span style="color: var(--danger); font-weight: 600;">Kém</span>
+                                        @else
+                                            <span style="color: var(--gray-600);">—</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -1006,55 +932,64 @@
                 <!-- Content Feed Tab (Hidden by default) -->
                 <div class="tab-content" id="content-tab" style="display: none;">
                     <div class="content-feed">
-                        <div class="content-card">
-                            <div class="content-thumbnail">🎬</div>
-                            <div class="content-body">
-                                <div class="content-creator">
-                                    <div class="creator-avatar">LN</div>
-                                    <span class="creator-name">@linhnguyen_beauty</span>
+                        @if (!empty($contents) && count($contents))
+                            @foreach ($contents as $c)
+                                <div class="content-card">
+                                    <div class="content-thumbnail">{{ $c->type_icon ?? '🎬' }}</div>
+                                    <div class="content-body">
+                                        <div class="content-creator">
+                                            <div class="creator-avatar">
+                                                {{ strtoupper(substr($c->creator_name ?? ($c->creator_handle ?? 'C'), 0, 2)) }}
+                                            </div>
+                                            <span
+                                                class="creator-name">{{ $c->creator_handle ?? ($c->creator_name ?? 'Unknown') }}</span>
+                                        </div>
+                                        <div class="content-stats">
+                                            <div class="content-stat">
+                                                <div class="content-stat-value">{{ number_format($c->views ?? 0) }}</div>
+                                                <div class="content-stat-label">Lượt xem</div>
+                                            </div>
+                                            <div class="content-stat">
+                                                <div class="content-stat-value">{{ number_format($c->likes ?? 0) }}</div>
+                                                <div class="content-stat-label">Lượt thích</div>
+                                            </div>
+                                            <div class="content-stat">
+                                                <div class="content-stat-value">{{ $c->engagement_rate ?? '0%' }}</div>
+                                                <div class="content-stat-label">Tương tác</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="content-stats">
-                                    <div class="content-stat">
-                                        <div class="content-stat-value">856K</div>
-                                        <div class="content-stat-label">Views</div>
+                            @endforeach
+                        @else
+                            <div class="content-card">
+                                <div class="content-thumbnail">🎬</div>
+                                <div class="content-body">
+                                    <div class="content-creator">
+                                        <img class="creator-avatar"
+                                            src="{{ $campaign->kols->first()->getFirstMediaUrl('media') }}">
+                                        <span
+                                            class="creator-name">{{ $campaign->kols->first()->handle ?? $campaign->kols->first()->display_name }}</span>
                                     </div>
-                                    <div class="content-stat">
-                                        <div class="content-stat-value">72.3K</div>
-                                        <div class="content-stat-label">Likes</div>
-                                    </div>
-                                    <div class="content-stat">
-                                        <div class="content-stat-value">8.4%</div>
-                                        <div class="content-stat-label">Engagement</div>
+                                    <div class="content-stats">
+                                        <div class="content-stat">
+                                            <div class="content-stat-value">{{ number_format($totalViews ?? 0) }}</div>
+                                            <div class="content-stat-label">Lượt xem</div>
+                                        </div>
+                                        <div class="content-stat">
+                                            <div class="content-stat-value">
+                                                {{ number_format($kolStats->sum('likes') ?? 0) }}</div>
+                                            <div class="content-stat-label">Lượt thích</div>
+                                        </div>
+                                        <div class="content-stat">
+                                            <div class="content-stat-value">{{ $campaign->target_engagement ?? '0%' }}
+                                            </div>
+                                            <div class="content-stat-label">Tương tác</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="content-card">
-                            <div class="content-thumbnail"
-                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📸</div>
-                            <div class="content-body">
-                                <div class="content-creator">
-                                    <div class="creator-avatar"
-                                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MT</div>
-                                    <span class="creator-name">@minhtran_lifestyle</span>
-                                </div>
-                                <div class="content-stats">
-                                    <div class="content-stat">
-                                        <div class="content-stat-value">923K</div>
-                                        <div class="content-stat-label">Views</div>
-                                    </div>
-                                    <div class="content-stat">
-                                        <div class="content-stat-value">58.2K</div>
-                                        <div class="content-stat-label">Likes</div>
-                                    </div>
-                                    <div class="content-stat">
-                                        <div class="content-stat-value">6.3%</div>
-                                        <div class="content-stat-label">Engagement</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
 
@@ -1064,9 +999,10 @@
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
                             <div class="timeline-content">
-                                <div class="timeline-date">July 25, 2024 - 2:30 PM</div>
-                                <div class="timeline-title">Campaign Milestone Reached</div>
-                                <div class="timeline-description">Campaign reached 10M total views across all KOL content
+                                <div class="timeline-date">25 Tháng 7, 2024 - 14:30</div>
+                                <div class="timeline-title">Mốc chiến dịch đạt được</div>
+                                <div class="timeline-description">Chiến dịch đạt 10M lượt xem tổng cộng trên tất cả nội
+                                    dung KOL
                                 </div>
                             </div>
                         </div>
@@ -1074,20 +1010,20 @@
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
                             <div class="timeline-content">
-                                <div class="timeline-date">July 20, 2024 - 11:15 AM</div>
-                                <div class="timeline-title">New Content Posted</div>
-                                <div class="timeline-description">@linhnguyen_beauty posted summer collection showcase
-                                    video</div>
+                                <div class="timeline-date">20 Tháng 7, 2024 - 11:15</div>
+                                <div class="timeline-title">Đã đăng nội dung mới</div>
+                                <div class="timeline-description">@linhnguyen_beauty đã đăng video giới thiệu bộ sưu tập
+                                    mùa hè</div>
                             </div>
                         </div>
 
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
                             <div class="timeline-content">
-                                <div class="timeline-date">July 15, 2024 - 9:00 AM</div>
-                                <div class="timeline-title">Campaign Mid-point</div>
-                                <div class="timeline-description">50% of campaign duration completed with 65% of goals
-                                    achieved</div>
+                                <div class="timeline-date">15 Tháng 7, 2024 - 09:00</div>
+                                <div class="timeline-title">Giữa chiến dịch</div>
+                                <div class="timeline-description">50% thời lượng chiến dịch đã hoàn thành và đạt 65% mục
+                                    tiêu</div>
                             </div>
                         </div>
                     </div>
@@ -1123,7 +1059,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Animate progress bar
             setTimeout(() => {
-                document.querySelector('.progress-fill-large').style.width = '68%';
+                document.querySelector('.progress-fill-large').style.width = '{{ $progress }}%';
             }, 300);
 
             // Animate metric values
@@ -1146,7 +1082,7 @@
                                 const num = parseFloat(finalValue);
                                 animateValue(metricValue, 0, num, 1500, '%');
                             } else if (finalValue.includes('₫')) {
-                                const num = parseFloat(finalValue);
+                                const num = parseFloat(finalValue.replace('₫', ''));
                                 animateValue(metricValue, 0, num, 1500, '₫');
                             } else if (finalValue.includes(',')) {
                                 const num = parseInt(finalValue.replace(/,/g, ''));
@@ -1185,5 +1121,27 @@
                 }
             }, 10);
         }
+    </script>
+    <script>
+        jQuery(function($) {
+            $('#change-status-form').on('submit', function(e) {
+                e.preventDefault();
+
+                var status = $(this).find('input[name="status"]').val();
+                var msg = '';
+
+                if (status == 'active') {
+                    msg = 'Bạn có chắc chắn muốn chuyển chiến dịch sang trạng thái hoạt động?';
+                } else {
+                    msg = 'Bạn có chắc chắn muốn tạm dựng chiến dịch?';
+                }
+
+                if (confirm(msg)) {
+                    // submit bằng phương thức native để tránh kích hoạt lại handler jQuery
+                    this.submit();
+                }
+                // nếu hủy, nothing to do (form đã bị preventDefault)
+            });
+        });
     </script>
 @endsection

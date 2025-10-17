@@ -636,306 +636,294 @@
 
 @section('page')
     <!-- Main Content -->
-    <main class="main-content">
-        <!-- Top Bar -->
+    <form class="main-content" action="{{ route('user.campaign.store') }}" method="POST">
+        @csrf
+
+        <!-- Thanh trên cùng -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Campaign Planner</h1>
+                <h1 class="page-title">Trình lập kế hoạch chiến dịch</h1>
             </div>
 
             <div class="topbar-right">
-                <button class="btn btn-secondary btn-small">
-                    Save Draft
+                <button class="btn btn-secondary btn-small btn-draft">
+                    Lưu nháp
                 </button>
-                <button class="btn btn-primary btn-small">
-                    Launch Campaign
+                <button class="btn btn-primary btn-small btn-save">
+                    Khởi chạy chiến dịch
                 </button>
             </div>
         </div>
 
-        <!-- Planner Content -->
+        <!-- Nội dung Planner -->
         <div class="planner-content">
-            <!-- Stepper -->
+            <!-- Thanh bước -->
             <div class="stepper-container">
                 <div class="stepper">
                     <div class="step completed">
                         <div class="step-indicator">✓</div>
-                        <span class="step-label">Basic Info</span>
+                        <span class="step-label">Thông tin cơ bản</span>
                     </div>
                     <div class="step active">
                         <div class="step-indicator">2</div>
-                        <span class="step-label">Target & Budget</span>
+                        <span class="step-label">Mục tiêu & Ngân sách</span>
                     </div>
                     <div class="step">
                         <div class="step-indicator">3</div>
-                        <span class="step-label">Select KOLs</span>
+                        <span class="step-label">Chọn KOL</span>
                     </div>
                     <div class="step">
                         <div class="step-indicator">4</div>
-                        <span class="step-label">Content Brief</span>
+                        <span class="step-label">Tóm tắt nội dung</span>
                     </div>
                     <div class="step">
                         <div class="step-indicator">5</div>
-                        <span class="step-label">Review & Launch</span>
+                        <span class="step-label">Xem lại & Khởi chạy</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Main Grid -->
+            <!-- Lưới chính -->
             <div class="planner-grid">
-                <!-- Left Column - Forms -->
+                <!-- Cột trái - Form -->
                 <div>
-                    <!-- Campaign Details -->
+                    <!-- Thông tin chiến dịch -->
                     <div class="form-section">
-                        <h2 class="section-title">Campaign Details</h2>
+                        <h2 class="section-title">Chi tiết chiến dịch</h2>
 
                         <div class="form-group">
-                            <label class="form-label">Campaign Name *</label>
-                            <input type="text" class="form-input" placeholder="e.g., Summer Fashion Collection 2024"
-                                value="Summer Fashion Collection 2024">
+                            <label class="form-label">Tên chiến dịch *</label>
+                            <input type="text" name="name" value="{{ old('name') }}" class="form-input"
+                                placeholder="Tên chiến dịch..." required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">Start Date *</label>
-                                <input type="date" class="form-input" value="2024-08-01">
+                                <label class="form-label">Ngày bắt đầu *</label>
+                                <input type="date" name="start_date" value="{{ old('start_date') }}" id="start_date"
+                                    class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">End Date *</label>
-                                <input type="date" class="form-input" value="2024-08-31">
+                                <label class="form-label">Ngày kết thúc *</label>
+                                <input type="date" name="end_date" value="{{ old('end_date') }}" id="end_date"
+                                    class="form-input" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Campaign Category</label>
-                            <select class="form-select">
-                                <option>Fashion & Beauty</option>
-                                <option>Food & Beverage</option>
-                                <option>Technology</option>
-                                <option>Lifestyle</option>
-                                <option>Travel</option>
+                            <label class="form-label">Danh mục</label>
+                            <select class="form-select" name="campaign_category">
+                                <option>-- Chọn --</option>
+                                @foreach ($campaignCategories as $item)
+                                    <option value="{{ $item->id }}" @if (old('campaign_category' == $item->id)) selected @endif>
+                                        {{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Campaign Description</label>
-                            <textarea class="form-textarea" placeholder="Describe your campaign objectives and key messages...">Launch our new summer collection with focus on sustainable fashion and youth appeal. Target Gen Z audience with authentic content showcasing daily wear scenarios.</textarea>
+                            <label class="form-label">Mô tả chiến dịch</label>
+                            <textarea class="form-textarea" name="description" placeholder="Mô tả chiến dịch...">{{ old('description') }}</textarea>
                         </div>
                     </div>
 
-                    <!-- Target & Budget -->
+                    <!-- Mục tiêu & Ngân sách -->
                     <div class="form-section" style="margin-top: 1.5rem;">
-                        <h2 class="section-title">Target & Budget</h2>
+                        <h2 class="section-title">Mục tiêu & Ngân sách</h2>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">Target Reach</label>
-                                <input type="number" class="form-input" placeholder="1000000" value="5000000">
-                                <span class="form-help">Estimated total views</span>
+                                <label class="form-label">Phạm vi tiếp cận mục tiêu</label>
+                                <input type="number" name="target_reach" value="{{ old('target_reach') }}"
+                                    class="form-input" placeholder="0">
+                                <span class="form-help">Lượng người xem dự kiến</span>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Target Engagement Rate</label>
-                                <input type="number" class="form-input" placeholder="5" value="7" step="0.1">
-                                <span class="form-help">Minimum engagement %</span>
+                                <label class="form-label">Tỷ lệ tương tác mục tiêu</label>
+                                <input type="number" name="target_engagement" value="{{ old('target_engagement') }}"
+                                    class="form-input" placeholder="0" step="0.1">
+                                <span class="form-help">Tỷ lệ tương tác tối thiểu (%)</span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Total Budget (VNĐ)</label>
-                            <input type="number" class="form-input" placeholder="50000000" value="80000000">
-                            <span class="form-help">Including KOL fees and production costs</span>
+                            <label class="form-label">Tổng ngân sách (VNĐ)</label>
+                            <input type="number" name="budget_amount" value="{{ old('budget_amount') }}" id="budget_amount"
+                                class="form-input" placeholder="0">
+                            <span class="form-help">Bao gồm chi phí KOL và sản xuất nội dung</span>
                         </div>
 
                         <div class="budget-calculator">
                             <div class="budget-item">
-                                <span class="budget-label">KOL Fees (70%)</span>
-                                <span class="budget-value">₫56,000,000</span>
+                                <span class="budget-label">Chi phí KOL (70%)</span>
+                                <span class="budget-value kol-fee">₫0</span>
                             </div>
                             <div class="budget-item">
-                                <span class="budget-label">Content Production (20%)</span>
-                                <span class="budget-value">₫16,000,000</span>
+                                <span class="budget-label">Sản xuất nội dung (20%)</span>
+                                <span class="budget-value produce-fee">₫0</span>
                             </div>
                             <div class="budget-item">
-                                <span class="budget-label">Management Fee (10%)</span>
-                                <span class="budget-value">₫8,000,000</span>
+                                <span class="budget-label">Phí quản lý (10%)</span>
+                                <span class="budget-value manage-fee">₫0</span>
                             </div>
                             <div class="budget-item budget-total">
-                                <span class="budget-label">Total Budget</span>
-                                <span class="budget-value">₫80,000,000</span>
+                                <span class="budget-label">Tổng ngân sách</span>
+                                <span class="budget-value">₫0</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- KOL Selection -->
+                    <!-- Chọn KOL -->
                     <div class="form-section" style="margin-top: 1.5rem;">
-                        <h2 class="section-title">Select KOLs</h2>
+                        <h2 class="section-title">Chọn KOL</h2>
 
                         <div class="form-group">
-                            <label class="form-label">Filter by Category</label>
-                            <select class="form-select">
-                                <option>All Categories</option>
-                                <option selected>Fashion & Beauty</option>
-                                <option>Lifestyle</option>
+                            <label class="form-label">Lọc theo danh mục</label>
+                            <select class="form-select" id="select-kol-category">
+                                <option>Tất cả danh mục</option>
+                                @foreach ($kolCategories as $item)
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="kol-selection-grid">
-                            <div class="kol-select-card selected">
-                                <input type="checkbox" class="kol-checkbox" checked>
-                                <div class="kol-avatar">LN</div>
-                                <div class="kol-info">
-                                    <div class="kol-name">Linh Nguyễn</div>
-                                    <div class="kol-stats">
-                                        <span>2.3M followers</span>
-                                        <span>•</span>
-                                        <span>8.5% engagement</span>
+                            @foreach ($kols as $item)
+                                <div class="kol-select-card"
+                                    data-categories="{{ ',' . $item->categories->implode('id', ',') . ',' }}">
+                                    <input type="checkbox" class="kol-checkbox" name="kols[]"
+                                        value="{{ $item->id }}"
+                                        {{ in_array($item->id, old('kols', [])) ? 'checked' : '' }}>
+                                    {{-- <div class="kol-avatar">LN</div> --}}
+                                    <img class="kol-avatar" src="{{ $item->getFirstMediaUrl('media') }}">
+                                    <div class="kol-info">
+                                        <div class="kol-name">{{ $item->display_name }}</div>
+                                        <div class="kol-stats">
+                                            <span>
+                                                {{ formatDisplayNumber($item->followers, 3) }} người theo dõi
+                                            </span>
+                                            <span>•</span>
+                                            <span>{{ $item->engagement }}% tương tác</span>
+                                        </div>
+                                    </div>
+                                    <div class="kol-price">
+                                        <div class="price-label">Giá ước tính</div>
+                                        <div class="price-value">₫{{ numberFormat($item->price) }}</div>
                                     </div>
                                 </div>
-                                <div class="kol-price">
-                                    <div class="price-label">Est. Price</div>
-                                    <div class="price-value">₫15M</div>
-                                </div>
-                            </div>
-
-                            <div class="kol-select-card selected">
-                                <input type="checkbox" class="kol-checkbox" checked>
-                                <div class="kol-avatar"
-                                    style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MT</div>
-                                <div class="kol-info">
-                                    <div class="kol-name">Minh Trần</div>
-                                    <div class="kol-stats">
-                                        <span>1.8M followers</span>
-                                        <span>•</span>
-                                        <span>6.2% engagement</span>
-                                    </div>
-                                </div>
-                                <div class="kol-price">
-                                    <div class="price-label">Est. Price</div>
-                                    <div class="price-value">₫12M</div>
-                                </div>
-                            </div>
-
-                            <div class="kol-select-card">
-                                <input type="checkbox" class="kol-checkbox">
-                                <div class="kol-avatar"
-                                    style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">TH</div>
-                                <div class="kol-info">
-                                    <div class="kol-name">Thu Hương</div>
-                                    <div class="kol-stats">
-                                        <span>987K followers</span>
-                                        <span>•</span>
-                                        <span>9.8% engagement</span>
-                                    </div>
-                                </div>
-                                <div class="kol-price">
-                                    <div class="price-label">Est. Price</div>
-                                    <div class="price-value">₫8M</div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
-                    <!-- Content Requirements -->
+                    <!-- Yêu cầu nội dung -->
                     <div class="form-section" style="margin-top: 1.5rem;">
-                        <h2 class="section-title">Content Requirements</h2>
+                        <h2 class="section-title">Yêu cầu nội dung</h2>
 
                         <div class="form-group">
-                            <label class="form-label">Content Type</label>
-                            <select class="form-select">
-                                <option>Video (15-60s)</option>
-                                <option>Video Series</option>
-                                <option>Live Stream</option>
-                                <option>Photo Posts</option>
+                            <label class="form-label">Loại nội dung</label>
+                            <select class="form-select" name="content_type">
+                                <option value="short_video" @if (old('content_type') == 'short_video') selected @endif>
+                                    Video
+                                    (15-60s)</option>
+                                <option value="videos" @if (old('content_type') == 'videos') selected @endif>
+                                    Chuỗi video
+                                </option>
+                                <option value="livestream" @if (old('content_type') == 'livestream') selected @endif>
+                                    Phát trực tiếp
+                                </option>
+                                <option value="image_post" @if (old('content_type') == 'image_post') selected @endif>
+                                    Bài đăng hình ảnh</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Key Messages</label>
+                            <label class="form-label">Thông điệp chính</label>
                             <div class="tags-input">
                                 <span class="tag">
-                                    Sustainable Fashion
+                                    Thời trang bền vững
                                     <span class="tag-remove">×</span>
                                 </span>
                                 <span class="tag">
-                                    Summer Collection
+                                    Bộ sưu tập mùa hè
                                     <span class="tag-remove">×</span>
                                 </span>
                                 <span class="tag">
-                                    Youth Style
+                                    Phong cách trẻ
                                     <span class="tag-remove">×</span>
                                 </span>
-                                <input type="text" class="tag-input-field" placeholder="Add tag...">
+                                <input type="text" class="tag-input-field" placeholder="Thêm thẻ...">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Hashtags</label>
-                            <input type="text" class="form-input"
-                                value="#OneUpFashion #SummerVibes #SustainableStyle #GenZFashion">
+                            <label class="form-label">Hashtag</label>
+                            <input type="text" class="form-input" name="hashtag"
+                                value="" placeholder="#hashtag1 #hashtag2">
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column - Preview -->
+                <!-- Cột phải - Xem trước -->
                 <div class="preview-panel">
-                    <!-- Campaign Preview -->
+                    <!-- Tóm tắt chiến dịch -->
                     <div class="preview-card">
-                        <h3 class="preview-title">Campaign Summary</h3>
+                        <h3 class="preview-title">Tóm tắt chiến dịch</h3>
 
                         <div class="preview-item">
-                            <span class="preview-label">Duration</span>
-                            <span class="preview-value">31 days</span>
+                            <span class="preview-label">Thời gian</span>
+                            <span class="preview-value preview-duration">0 ngày</span>
                         </div>
                         <div class="preview-item">
-                            <span class="preview-label">Selected KOLs</span>
-                            <span class="preview-value">2 KOLs</span>
+                            <span class="preview-label">Số KOL đã chọn</span>
+                            <span class="preview-value preview-kols">0 KOL</span>
                         </div>
                         <div class="preview-item">
-                            <span class="preview-label">Total Budget</span>
-                            <span class="preview-value">₫80M</span>
+                            <span class="preview-label">Tổng ngân sách</span>
+                            <span class="preview-value preview-budget">₫0</span>
                         </div>
                         <div class="preview-item">
-                            <span class="preview-label">Cost per KOL</span>
-                            <span class="preview-value">₫40M avg</span>
+                            <span class="preview-label">Chi phí trung bình / KOL</span>
+                            <span class="preview-value preview-fee">₫0</span>
                         </div>
                     </div>
 
-                    <!-- Forecast Metrics -->
+                    <!-- Dự đoán hiệu suất -->
                     <div class="preview-card">
-                        <h3 class="preview-title">Estimated Performance</h3>
+                        <h3 class="preview-title">Hiệu suất dự kiến</h3>
 
                         <div class="forecast-grid">
                             <div class="forecast-card">
-                                <div class="forecast-value">8.2M</div>
-                                <div class="forecast-label">Est. Reach</div>
+                                <div class="forecast-value">0M</div>
+                                <div class="forecast-label">Lượt tiếp cận ước tính</div>
                             </div>
                             <div class="forecast-card">
-                                <div class="forecast-value">7.5%</div>
-                                <div class="forecast-label">Est. Engagement</div>
+                                <div class="forecast-value">0%</div>
+                                <div class="forecast-label">Tỷ lệ tương tác ước tính</div>
                             </div>
                             <div class="forecast-card">
-                                <div class="forecast-value">₫9.7</div>
-                                <div class="forecast-label">CPV</div>
+                                <div class="forecast-value">₫0</div>
+                                <div class="forecast-label">Chi phí / lượt xem (CPV)</div>
                             </div>
                             <div class="forecast-card">
-                                <div class="forecast-value">3.8x</div>
-                                <div class="forecast-label">Est. ROI</div>
+                                <div class="forecast-value">0x</div>
+                                <div class="forecast-label">ROI ước tính</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Selected KOLs -->
+                    <!-- Danh sách KOL đã chọn -->
                     <div class="preview-card">
-                        <h3 class="preview-title">Selected KOLs (2)</h3>
+                        <h3 class="preview-title">KOL đã chọn (0)</h3>
 
                         <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            {{-- <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div class="kol-avatar" style="width: 36px; height: 36px; font-size: 14px;">LN</div>
                                 <div style="flex: 1;">
-                                    <div style="font-weight: 500; font-size: 14px;">Linh Nguyễn</div>
-                                    <div style="font-size: 12px; color: var(--gray-600);">2.3M followers</div>
+                                    <div class="fw-600 fs-14 color-gray-700">Linh Nguyễn</div>
+                                    <div class="fs-12 color-gray-600">2.3 triệu người theo dõi</div>
                                 </div>
-                                <span style="font-weight: 600; color: var(--primary);">₫15M</span>
+                                <span style="font-weight: 600; color: var(--primary);">₫15 triệu</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <div class="kol-avatar"
@@ -943,16 +931,16 @@
                                     MT</div>
                                 <div style="flex: 1;">
                                     <div style="font-weight: 500; font-size: 14px;">Minh Trần</div>
-                                    <div style="font-size: 12px; color: var(--gray-600);">1.8M followers</div>
+                                    <div style="font-size: 12px; color: var(--gray-600);">1.8 triệu người theo dõi</div>
                                 </div>
-                                <span style="font-weight: 600; color: var(--primary);">₫12M</span>
-                            </div>
+                                <span style="font-weight: 600; color: var(--primary);">₫12 triệu</span>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Actions -->
+            <!-- Nút hành động -->
             <div class="planner-actions">
                 <button class="btn btn-secondary">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
@@ -961,13 +949,13 @@
                             d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                    Previous Step
+                    Bước trước
                 </button>
 
                 <div class="action-buttons">
-                    <button class="btn btn-secondary">Save as Draft</button>
+                    <button class="btn btn-secondary">Lưu nháp</button>
                     <button class="btn btn-primary">
-                        Next Step
+                        Bước tiếp theo
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                             style="margin-left: 0.5rem;">
                             <path fill-rule="evenodd"
@@ -978,14 +966,14 @@
                 </div>
             </div>
         </div>
-    </main>
+    </form>
 @endsection
 
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         // Initialize planner
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
             // KOL selection
             initKOLSelection();
 
@@ -995,81 +983,66 @@
             // Tags input
             initTagsInput();
 
-            // Update forecasts
-            updateForecasts();
+            // Forecast inputs
+            ['target_reach', 'target_engagement', 'budget_amount'].forEach(function(name) {
+                $(`input[name="${name}"]`).on('input', updateForecastFromInputs);
+            });
+            updateForecastFromInputs();
         });
 
         function initKOLSelection() {
-            document.querySelectorAll('.kol-select-card').forEach(card => {
-                const checkbox = card.querySelector('.kol-checkbox');
+            $('.kol-select-card').each(function() {
+                var card = $(this);
+                var checkbox = card.find('.kol-checkbox');
 
-                card.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('kol-checkbox')) {
-                        checkbox.checked = !checkbox.checked;
-                        card.classList.toggle('selected', checkbox.checked);
+                card.on('click', function(e) {
+                    if (!$(e.target).hasClass('kol-checkbox')) {
+                        checkbox.prop('checked', !checkbox.prop('checked'));
+                        card.toggleClass('selected', checkbox.prop('checked'));
                         updateSelectedKOLs();
                     }
                 });
 
-                checkbox.addEventListener('change', function() {
-                    card.classList.toggle('selected', this.checked);
+                checkbox.on('change', function() {
+                    card.toggleClass('selected', $(this).prop('checked'));
                     updateSelectedKOLs();
                 });
             });
         }
 
-        function updateSelectedKOLs() {
-            const selected = document.querySelectorAll('.kol-checkbox:checked').length;
-            document.querySelector('.preview-item:nth-child(2) .preview-value').textContent = `${selected} KOLs`;
-
-            // Update cost calculation
-            let totalKOLCost = 0;
-            document.querySelectorAll('.kol-select-card.selected').forEach(card => {
-                const priceText = card.querySelector('.price-value').textContent;
-                const price = parseInt(priceText.replace(/[^\d]/g, '')) * 1000000;
-                totalKOLCost += price;
-            });
-
-            if (selected > 0) {
-                const avgCost = totalKOLCost / selected / 1000000;
-                document.querySelector('.preview-item:nth-child(4) .preview-value').textContent =
-                    `₫${avgCost.toFixed(0)}M avg`;
-            }
-        }
-
         function initBudgetCalculator() {
-            const budgetInput = document.querySelector('input[placeholder="50000000"]');
-            budgetInput.addEventListener('input', function() {
-                const budget = parseInt(this.value) || 0;
+            $('#budget_amount').on('input', function() {
+                var budget = parseInt($(this).val()) || 0;
 
-                // Update budget breakdown
-                document.querySelector('.budget-item:nth-child(1) .budget-value').textContent =
-                    `₫${(budget * 0.7 / 1000000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}M`;
-                document.querySelector('.budget-item:nth-child(2) .budget-value').textContent =
-                    `₫${(budget * 0.2 / 1000000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}M`;
-                document.querySelector('.budget-item:nth-child(3) .budget-value').textContent =
-                    `₫${(budget * 0.1 / 1000000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}M`;
-                document.querySelector('.budget-total .budget-value').textContent =
-                    `₫${(budget / 1000000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}M`;
+                $('.budget-item:nth-child(1) .budget-value').text(
+                    `₫${numberFormat(budget * 0.7)}`
+                );
+                $('.budget-item:nth-child(2) .budget-value').text(
+                    `₫${numberFormat(budget * 0.2)}`
+                );
+                $('.budget-item:nth-child(3) .budget-value').text(
+                    `₫${numberFormat(budget * 0.1)}`
+                );
+                $('.budget-total .budget-value, .preview-budget').text(
+                    `₫${numberFormat(budget)}`
+                );
             });
         }
 
         function initTagsInput() {
-            const tagInput = document.querySelector('.tag-input-field');
-            const tagsContainer = document.querySelector('.tags-input');
+            var tagInput = $('.tag-input-field');
+            var tagsContainer = $('.tags-input');
 
-            tagInput.addEventListener('keypress', function(e) {
+            tagInput.on('keypress', function(e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    const value = this.value.trim();
+                    var value = $(this).val().trim();
                     if (value) {
-                        const tag = document.createElement('span');
-                        tag.className = 'tag';
-                        tag.innerHTML = `${value}<span class="tag-remove">×</span>`;
-                        tagsContainer.insertBefore(tag, this);
-                        this.value = '';
+                        var tag = $(`<span class="tag">${value}<span class="tag-remove">×</span></span>`);
+                        tag.insertBefore(this);
+                        $(this).val('');
 
-                        tag.querySelector('.tag-remove').addEventListener('click', function() {
+                        tag.find('.tag-remove').on('click', function() {
                             tag.remove();
                         });
                     }
@@ -1077,37 +1050,153 @@
             });
 
             // Remove existing tags
-            document.querySelectorAll('.tag-remove').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.parentElement.remove();
-                });
+            $('.tag-remove').on('click', function() {
+                $(this).parent().remove();
             });
         }
 
-        function updateForecasts() {
-            // Simulate forecast calculation based on selected KOLs and budget
-            const selected = document.querySelectorAll('.kol-checkbox:checked').length;
-            if (selected > 0) {
-                // Update forecast values with animation
-                animateValue(document.querySelector('.forecast-card:nth-child(1) .forecast-value'), 0, 8.2, 1000, 'M');
-                animateValue(document.querySelector('.forecast-card:nth-child(2) .forecast-value'), 0, 7.5, 1000, '%');
-            }
-        }
-
         function animateValue(element, start, end, duration, suffix) {
-            const range = end - start;
-            const increment = range / (duration / 10);
-            let current = start;
+            var range = end - start;
+            var increment = range / (duration / 10);
+            var current = start;
 
-            const timer = setInterval(() => {
+            var timer = setInterval(function() {
                 current += increment;
                 if (current >= end) {
                     current = end;
                     clearInterval(timer);
                 }
-
-                element.textContent = current.toFixed(1) + (suffix || '');
+                $(element).text(current.toFixed(1) + (suffix || ''));
             }, 10);
         }
+        // Tính toán hiệu suất dự kiến dựa trên input mục tiêu & ngân sách
+        function updateForecastFromInputs() {
+            // Lấy giá trị từ các input
+            const reach = parseInt($('input[name="target_reach"]').val()) || 0;
+            const engagement = parseFloat($('input[name="target_engagement"]').val()) || 0;
+            const budget = parseInt($('input[name="budget_amount"]').val()) || 0;
+
+            // Lượt tiếp cận ước tính
+            $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? numberFormat(reach) : '0');
+
+            // Tỷ lệ tương tác ước tính
+            $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) + '%' : '0%');
+
+            // Chi phí / lượt xem (CPV)
+            let cpv = reach > 0 ? (budget / reach) : 0;
+            $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + numberFormat(cpv) : '₫0');
+
+            // ROI ước tính (giả sử ROI = (reach * engagement / 100) / (budget/1000000))
+            let roi = budget > 0 ? ((reach * (engagement / 100)) / (budget / 1000000)) : 0;
+            $('.forecast-card').eq(3).find('.forecast-value').text(roi > 0 ? numberFormat(roi) + 'x' : '0x');
+        }
+
+        $('#start_date, #end_date').on('change', function() {
+            let date1 = new Date($('#start_date').val());
+            let date2 = new Date($('#end_date').val());
+
+            if (!isNaN(date1) && !isNaN(date2) && date2 > date1) {
+                // Tính số mili-giây chênh lệch
+                let diffTime = date2 - date1;
+
+                // Chuyển sang số ngày
+                let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                $('.preview-duration').text(diffDays + ' ngày');
+            } else {
+                $('.preview-duration').text('0 ngày');
+            }
+        });
+
+        function updateSelectedKOLs() {
+            var selectedCards = $('.kol-select-card.selected');
+            var selectedCount = selectedCards.length;
+            $('.preview-kols').text(`${selectedCount} KOL`);
+
+            // Update cost calculation
+            var totalKOLCost = 0;
+            var kolListHtml = '';
+            selectedCards.each(function() {
+                var avatar = $(this).find('.kol-avatar').clone().css({
+                    width: '36px',
+                    height: '36px',
+                    'font-size': '14px'
+                });
+                var name = $(this).find('.kol-name').text();
+                var followers = $(this).find('.kol-stats span').first().text();
+                var priceText = $(this).find('.price-value').text();
+                var price = parseInt(priceText.replace(/[^\d]/g, ''));
+                totalKOLCost += price;
+
+                kolListHtml += `
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        ${$('<div>').append(avatar).html()}
+                        <div style="flex: 1;">
+                            <div class="fw-600 fs-14 color-gray-700">${name}</div>
+                            <div class="fs-12 color-gray-600">${followers}</div>
+                        </div>
+                        <span style="font-weight: 600; color: var(--primary);">${priceText}</span>
+                    </div>
+                `;
+            });
+
+            $('.preview-card').eq(2).find('h3').text(`KOL đã chọn (${selectedCount})`);
+            $('.preview-card').eq(2).find('> div').html(kolListHtml);
+
+            if (selectedCount > 0) {
+                var avgCost = totalKOLCost / selectedCount;
+                $('.preview-fee').text(`₫${numberFormat(avgCost, 3)}`);
+            } else {
+                $('.preview-fee').text('₫0');
+                $('.preview-card').eq(2).find('> div').html('');
+                $('.preview-card').eq(2).find('h3').text('KOL đã chọn (0)');
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#select-kol-category').on('change', function() {
+                var selectedCat = $(this).val();
+                $('.kol-select-card').each(function() {
+                    var categories = $(this).data('categories') + '';
+                    if (selectedCat === '' || selectedCat === undefined || selectedCat ===
+                        'Tất cả danh mục') {
+                        $(this).show();
+                    } else {
+                        if (categories.indexOf(',' + selectedCat + ',') !== -1) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Xử lý submit cho 2 nút
+            $('.btn-draft, .btn-save').on('click', function(e) {
+                e.preventDefault();
+
+                // Xác định status
+                let status = $(this).hasClass('btn-draft') ? 'draft' : 'active';
+
+                // Lấy form
+                let $form = $(this).closest('form');
+
+                // Xóa input status cũ nếu có
+                $form.find('input[name="status"]').remove();
+
+                // Thêm input status mới
+                $('<input>').attr({
+                    type: 'hidden',
+                    name: 'status',
+                    value: status
+                }).appendTo($form);
+
+                // Submit form
+                $form.submit();
+            });
+        });
     </script>
 @endsection

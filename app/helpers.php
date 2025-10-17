@@ -113,15 +113,34 @@ if (!function_exists('getFirstCharacter')) {
     }
 }
 
-function formatDisplayNumber($number) {
+function formatDisplayNumber($number, $decimal = 1) {
     if ($number >= 1000000) {
         // Trên 1 triệu → M
-        return round($number / 1000000, 1) . 'M';
+        return round($number / 1000000, $decimal) . 'M';
     } elseif ($number >= 1000) {
         // Trên 1 nghìn → K
-        return round($number / 1000, 1) . 'K';
+        return round($number / 1000, $decimal) . 'K';
     } else {
         // Dưới 1000 → giữ nguyên
         return (string)$number;
     }
+}
+function numberFormat($number, $decimal = 0, $decimal_separator = ',', $thousands_separator = '.')
+{
+    $prefix = $number < 0 ? '-' : '';
+    $absNumber = abs($number);
+
+    // Làm tròn
+    $rounded = round($absNumber, $decimal);
+
+    // Nếu số > 0 và làm tròn thành 0 => giữ nguyên giá trị gốc
+    $valueToFormat = ($number > 0 && $rounded == 0) ? $absNumber : $rounded;
+
+    // Tách phần nguyên và phần thập phân (không ép đủ số 0)
+    $parts = explode('.', $valueToFormat - 0);
+
+    // Format phần nguyên
+    $parts[0] = number_format($parts[0], 0, '', $thousands_separator);
+
+    return $prefix . implode($decimal_separator, $parts);
 }

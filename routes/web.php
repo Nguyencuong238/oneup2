@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Backend\CampaignController;
 use App\Http\Controllers\Backend\NotificationController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\HomeController as BackendHomeController;
 use App\Http\Controllers\Backend\KolController;
+use App\Http\Controllers\Backend\OrganizationController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
@@ -14,11 +16,8 @@ use App\Http\Controllers\Front\UserController as FrontUserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\NewsletterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Front\PostController as FrontPostController;
 use App\Http\Controllers\ImageController;
-use App\Http\Middleware\Filter;
 use App\Http\Middleware\IsAdmin;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +36,7 @@ Route::get('quen-mat-khau', [HomeController::class, 'forgotPassword'])->name('us
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('gioi-thieu', [HomeController::class, 'about'])->name('about');
+Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('tin-tuc', [HomeController::class, 'news'])->name('news');
 Route::get('tin-tuc/{post:slug}', [HomeController::class, 'newsDetail'])->name('news_detail');
 Route::get('pricing', [HomeController::class, 'pricing'])->name('pricing');
@@ -46,20 +45,24 @@ Route::get('kols', [HomeController::class, 'kols'])->name('kols');
 Route::get('help', [HomeController::class, 'help'])->name('help');
 Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsletters');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-	Route::view('/user/profile', 'profile.show')->name('profile.show');
+Route::prefix('user/')->middleware(['auth', 'verified'])->group(function () {
+	Route::view('profile', 'profile.show')->name('profile.show');
 
-	Route::get('user/dashboard', [FrontUserController::class, 'dashboard'])->name('user.dashboard');
-	Route::get('user/kol-explorer', [FrontUserController::class, 'kolExplorer'])->name('user.kolExplorer');
-	Route::get('user/campaign', [FrontUserController::class, 'campaign'])->name('user.campaign.index');
-	Route::get('user/campaign-detail/{slug}', [FrontUserController::class, 'campaignDetail'])->name('user.campaign.detail');
-	Route::get('user/campaign-tracker/{slug}', [FrontUserController::class, 'campaignTracker'])->name('user.campaign.tracker');
-	Route::get('user/analytic', [FrontUserController::class, 'analytic'])->name('user.analytic');
-	Route::get('user/report', [FrontUserController::class, 'report'])->name('user.report');
-	Route::get('user/setting', [FrontUserController::class, 'setting'])->name('user.setting');
-	Route::get('user/billing', [FrontUserController::class, 'billing'])->name('user.billing');
-	Route::get('user/kol-profile/{id}', [FrontUserController::class, 'kolProfile'])->name('user.kolProfile');
-	Route::get('user/leaderboard', [FrontUserController::class, 'leaderboard'])->name('user.leaderboard');
+	Route::get('dashboard', [FrontUserController::class, 'dashboard'])->name('user.dashboard');
+	Route::get('kol-explorer', [FrontUserController::class, 'kolExplorer'])->name('user.kolExplorer');
+
+	Route::get('campaign', [FrontUserController::class, 'campaign'])->name('user.campaign.index');
+	Route::get('campaign-planner', [FrontUserController::class, 'campaignPlanner'])->name('user.campaign.planner');
+	Route::get('campaign-detail/{slug}', [FrontUserController::class, 'campaignDetail'])->name('user.campaign.detail');
+	Route::get('campaign-tracker/{slug}', [FrontUserController::class, 'campaignTracker'])->name('user.campaign.tracker');
+	Route::post('campaign-store', [FrontUserController::class, 'campaignStore'])->name('user.campaign.store');
+	Route::get('analytic', [FrontUserController::class, 'analytic'])->name('user.analytic');
+	Route::get('report', [FrontUserController::class, 'report'])->name('user.report');
+	Route::get('setting', [FrontUserController::class, 'setting'])->name('user.setting');
+	Route::get('billing', [FrontUserController::class, 'billing'])->name('user.billing');
+	Route::get('kol-profile/{id}', [FrontUserController::class, 'kolProfile'])->name('user.kolProfile');
+	Route::get('leaderboard', [FrontUserController::class, 'leaderboard'])->name('user.leaderboard');
+	Route::post('campaign-status', [FrontUserController::class, 'changeStatus'])->name('user.campaign.changeStatus');
 });
 Route::prefix('backend')
 	->middleware(['auth', 'verified', IsAdmin::class])
@@ -74,6 +77,8 @@ Route::prefix('backend')
 		Route::resource('pages', PageController::class);
 
 		Route::resource('kols', KolController::class);
+		Route::resource('organizations', OrganizationController::class);
+		Route::resource('campaigns', CampaignController::class);
 
 		Route::resource('users', UserController::class);
 		Route::resource('roles', RoleController::class);

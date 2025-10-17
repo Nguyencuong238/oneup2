@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
             'tempo'   => 'Spatie\MediaLibraryPro\Models\TemporaryUpload',
             'category'   => 'App\Models\Category',
             'kol'   => 'App\Models\Kol',
+            'organization'   => 'App\Models\Organization',
         ]);
     }
 }

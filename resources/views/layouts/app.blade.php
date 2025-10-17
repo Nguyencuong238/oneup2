@@ -88,27 +88,25 @@
                             </li>
                         @endcan
 
-                        {{-- @canany('blogs.view', 'blogs.create', 'blogs.edit', 'blogs.delete')
+                        @canany('organizations.view', 'organizations.create', 'organizations.edit', 'organizations.delete')
 						<li class="nav-item">
-							<a href="{{ route('blogs.index') }}" class="nav-link">
+							<a href="{{ route('organizations.index') }}" class="nav-link">
 								<i class="icon-compose"></i>
-								<span>
-										{{ __('Tiến độ dự án') }}
-								</span>
+								<span>Tổ chức</span>
 							</a>
 						</li>
-						@endcan  --}}
+						@endcan 
 
-                        {{--  @canany('events.view', 'events.create', 'events.edit', 'events.delete')
+                         @canany('campaigns.view', 'campaigns.create', 'campaigns.edit', 'campaigns.delete')
                         <li class="nav-item">
-                            <a href="{{ route('events.index') }}" class="nav-link">
+                            <a href="{{ route('campaigns.index') }}" class="nav-link">
                                 <i class="icon-grid6"></i>
                                 <span>
-									{{ __('Event') }}
+									Chiến dịch
 								</span>
                             </a>
                         </li>
-                        @endcan  --}}
+                        @endcan 
 
                         {{-- <li class="nav-item">
                             <a href="{{ route('channels.index') }}" class="nav-link">

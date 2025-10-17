@@ -64,6 +64,10 @@
             color: white;
         }
 
+        .page-title {
+            margin-bottom: 0;
+        }
+
         .sidebar-logo-text {
             font-size: 20px;
             font-weight: 800;
@@ -191,12 +195,20 @@
         .dropdown-info .nav-link {
             padding: 10px 15px;
             display: block;
+            white-space: nowrap;
         }
 
         .dropdown-info .nav-link:hover::after {
             display: none;
         }
+
+        button:focus,
+        a:focus {
+            outline: none;
+        }
     </style>
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @yield('css')
 </head>
 
@@ -319,7 +331,45 @@
 
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        function numberFormat(number, decimal = 0, decimal_separator = ',', thousands_separator = '.') {
+            const prefix = number < 0 ? '-' : '';
+            const absNumber = Math.abs(number);
 
+            // Làm tròn
+            const rounded = Math.round(absNumber * Math.pow(10, decimal)) / Math.pow(10, decimal);
+
+            // Nếu số > 0 mà làm tròn thành 0 => giữ nguyên
+            const valueToFormat = (number > 0 && rounded === 0) ? absNumber : rounded;
+
+            // Chuyển thành chuỗi, không ép đủ số 0
+            let parts = valueToFormat.toString().split('.');
+
+            // Thêm dấu phân cách hàng nghìn
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands_separator);
+
+            return prefix + parts.join(decimal_separator);
+        }
+    </script>
+    <script>
+        @if(session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+        @if(session('errors'))
+            toastr.error("{{ session('errors')->first() }}");
+        @endif
+        @if(session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+        @if(session('info'))
+            toastr.info("{{ session('info') }}");
+        @endif
+        @if(session('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
     @yield('js')
 </body>
 

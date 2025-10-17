@@ -7,7 +7,6 @@
 
 @section('css')
     <style>
-
         /* Main Content */
         .main-content {
             margin-left: 260px;
@@ -481,7 +480,7 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Tổng quan về bảng điều khiển</h1>
+                <h1 class="page-title">Bảng điều khiển</h1>
                 <div class="date-range-selector">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -512,7 +511,7 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="../index.html" class="btn btn-primary btn-small">
+                <a href="{{route('user.campaign.planner')}}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -531,18 +530,22 @@
                     <div class="quick-action-icon">🔍</div>
                     <div class="quick-action-text">Tìm kiếm KOL</div>
                 </a>
+
                 <a href="{{ route('user.campaign.index') }}" class="quick-action">
                     <div class="quick-action-icon">📊</div>
                     <div class="quick-action-text">Tạo chiến dịch</div>
                 </a>
+
                 <a href="{{ route('user.report') }}" class="quick-action">
                     <div class="quick-action-icon">📈</div>
                     <div class="quick-action-text">Tạo báo cáo</div>
                 </a>
+
                 <a href="{{ route('user.analytic') }}" class="quick-action">
                     <div class="quick-action-icon">💡</div>
                     <div class="quick-action-text">Xem thông tin chi tiết</div>
                 </a>
+
             </div>
 
             <!-- Stats Grid -->
@@ -550,7 +553,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Tổng phạm vi tiếp cận</div>
+                            <div class="stat-title">Phạm vi tiếp cận</div>
                             <div class="stat-value">45.2M</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -583,7 +586,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+3</span>
-                                <span class="stat-period">mới trong tuần này</span>
+                                <span class="stat-period">mới tuần này</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -658,7 +661,7 @@
                         <h2 class="chart-title">Hiệu suất chiến dịch</h2>
                         <div class="chart-tabs">
                             <button class="chart-tab active">Lượt xem</button>
-                            <button class="chart-tab">Sự tham gia</button>
+                            <button class="chart-tab">Tương tác</button>
                             <button class="chart-tab">Chuyển đổi</button>
                         </div>
                     </div>
@@ -680,7 +683,7 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Chiến dịch "Thời trang mùa hè" được phát động</div>
+                            <div class="activity-title">Chiến dịch "Thời trang mùa hè" đã được khởi chạy</div>
                             <div class="activity-time">2 giờ trước</div>
                         </div>
                     </div>
@@ -693,8 +696,8 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">KOL mới được thêm vào: @fashionista.vn</div>
-                            <div class="activity-time">5 giờ trước </div>
+                            <div class="activity-title">Đã thêm KOL mới: @fashionista.vn</div>
+                            <div class="activity-time">5 giờ trước</div>
                         </div>
                     </div>
 
@@ -721,7 +724,7 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Báo cáo hàng tháng được tạo</div>
+                            <div class="activity-title">Báo cáo tháng đã được tạo</div>
                             <div class="activity-time">1 ngày trước</div>
                         </div>
                     </div>
@@ -746,8 +749,8 @@
                         <tr>
                             <th>KOL</th>
                             <th>Danh mục</th>
-                            <th>Người theo dõi</th>
-                            <th>Sự tham gia</th>
+                            <th>Nười theo dõi</th>
+                            <th>Tương tác</th>
                             <th>Chiến dịch</th>
                             <th>Hiệu suất</th>
                         </tr>

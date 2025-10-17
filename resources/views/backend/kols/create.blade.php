@@ -51,7 +51,7 @@
 
 
                         <div class="form-group">
-                            <label>Tỷ lệ tham gia: (%)</label>
+                            <label>Tỷ lệ tuơng tác: (%)</label>
                             <input type="number" name="engagement" value="{{ old('engagement') }}" class="form-control @error('engagement')is-invalid @enderror" placeholder="">
                             @error('engagement')
                                 <span class="invalid-feedback">{{ $message }}</span>
@@ -68,6 +68,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Giá:</label>
+                            <input type="number" name="price" value="{{ old('price') }}" class="form-control @error('price')is-invalid @enderror" placeholder="">
+                            @error('price')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label>{{ __('Avatar') }}:</label>
                             @php
                                 $kol = new \App\Models\Kol;
@@ -76,7 +84,7 @@
                                 name="media"
                                 :model="$kol"
                                 collection="media"
-                                rules="mimes:png,jpeg,pdf"
+                                rules="mimes:png,jpeg,jpg,webp"
                                 max-items="1"
                             />
                         </div>

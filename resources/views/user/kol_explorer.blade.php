@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta name="description" content="OneUp KOL Explorer - Find and analyze TikTok influencers">
-    <title>Khám phá KOLs - OneUp KOL Analytics</title>
+    <title>Khám phá KOL - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -761,7 +761,7 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Khám phá KOLs</h1>
+                <h1 class="page-title">Khám phá KOL</h1>
             </div>
 
             <div class="topbar-right">
@@ -785,7 +785,7 @@
                         <path
                             d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
                     </svg>
-                    So sánh KOLs
+                    So sánh KOL
                 </button>
             </div>
         </div>
@@ -803,7 +803,7 @@
                                     <input type="checkbox" name="categories[]" id="cat-{{ $c->id }}"
                                         value="{{ $c->id }}" @if (in_array($c->id, request('categories', []))) checked @endif>
                                     <label for="cat-{{ $c->id }}">{{ $c->name }}</label>
-                                    <span class="filter-count">{{ $c->kols()->count() }}</span>
+                                    {{-- <span class="filter-count">{{ $c->kols()->count() }}</span> --}}
                                 </div>
                             @endforeach
                         </div>
@@ -813,7 +813,7 @@
                         <h3 class="filter-title">Người theo dõi</h3>
                         <div class="range-slider">
                             <input type="range" name="followers" class="range-input" min="0" max="10000000"
-                                step="100000" value="{{request()->followers ?? 0}}">
+                                step="100000" value="{{ request()->followers ?? 0 }}">
                             <div class="range-values">
                                 <span class="min-value">0</span>
                                 <span class="current-value">{{ formatDisplayNumber(request()->followers ?? 0) }}</span>
@@ -823,25 +823,25 @@
                     </div>
 
                     <div class="filter-section">
-                        <h3 class="filter-title">Tỷ lệ tham gia</h3>
+                        <h3 class="filter-title">Tỷ lệ tương tác</h3>
                         <div class="filter-group">
                             <div class="filter-checkbox">
                                 <input type="checkbox" name="engagement" id="eng-excellent"
                                     @if (request()->engagement >= 8) checked @endif>
-                                <label for="eng-excellent">Excellent (8%+)</label>
-                                <span class="filter-count">45</span>
+                                <label for="eng-excellent">Xuất sắc (8%+)</label>
+                                {{-- <span class="filter-count">45</span> --}}
                             </div>
                             <div class="filter-checkbox">
                                 <input type="checkbox" name="engagement" id="eng-good"
                                     @if (request()->engagement >= 5) checked @endif>
-                                <label for="eng-good">Good (5-8%)</label>
-                                <span class="filter-count">112</span>
+                                <label for="eng-good">Tốt (5-8%)</label>
+                                {{-- <span class="filter-count">112</span> --}}
                             </div>
                             <div class="filter-checkbox">
                                 <input type="checkbox" name="engagement" id="eng-average"
                                     @if (request()->engagement >= 2.5) checked @endif>
-                                <label for="eng-average">Average (2-5%)</label>
-                                <span class="filter-count">234</span>
+                                <label for="eng-average">Trung bình (2-5%)</label>
+                                {{-- <span class="filter-count">234</span> --}}
                             </div>
                         </div>
                     </div>
@@ -852,17 +852,17 @@
                             <div class="filter-checkbox">
                                 <input type="checkbox" id="loc-vn">
                                 <label for="loc-vn">Vietnam</label>
-                                <span class="filter-count">567</span>
+                                {{-- <span class="filter-count">567</span> --}}
                             </div>
                             <div class="filter-checkbox">
                                 <input type="checkbox" id="loc-sg">
                                 <label for="loc-sg">Singapore</label>
-                                <span class="filter-count">89</span>
+                                {{-- <span class="filter-count">89</span> --}}
                             </div>
                             <div class="filter-checkbox">
                                 <input type="checkbox" id="loc-th">
                                 <label for="loc-th">Thailand</label>
-                                <span class="filter-count">123</span>
+                                {{-- <span class="filter-count">123</span> --}}
                             </div>
                         </div>
                     </div>
@@ -870,7 +870,8 @@
                     <div class="filter-section">
                         <h3 class="filter-title">Điểm uy tín</h3>
                         <div class="range-slider">
-                            <input type="range" name="trust_score" class="range-input" min="0" max="100" value="{{request()->trust_score ?? 0}}">
+                            <input type="range" name="trust_score" class="range-input" min="0" max="100"
+                                value="{{ request()->trust_score ?? 0 }}">
                             <div class="range-values">
                                 <span class="min-value">0</span>
                                 <span class="current-value">{{ request()->trust_score - 0 }}</span>
@@ -883,7 +884,8 @@
                         Áp dụng
                     </button>
                     <button type="button" class="btn btn-secondary justify-center"
-                        style="width: 100%; margin-top: 0.5rem;" onclick="window.location.href='{{request()->url('')}}'">
+                        style="width: 100%; margin-top: 0.5rem;"
+                        onclick="window.location.href='{{ request()->url('') }}'">
                         Đặt lại
                     </button>
                 </form>
@@ -892,13 +894,13 @@
                 <div class="kol-list-container">
                     <div class="list-header">
                         <div class="results-info">
-                            Đang hiển thị <span class="results-count">{{ $kols->count() }}</span> KOLs
+                            Đang hiển thị <span class="results-count">{{ $kols->count() }}</span> KOL
                         </div>
 
                         <div class="view-controls">
                             <select class="sort-dropdown" id="sortBy">
                                 <option>-- Sắp xếp --</option>
-                                <option value="engagement">Tỷ lệ tham gia</option>
+                                <option value="engagement">Tỷ lệ tương tác</option>
                                 <option value="followers">Lượt theo dõi</option>
                                 <option value="trust_score">Điểm uy tín</option>
                             </select>
@@ -955,7 +957,14 @@
                                         <div class="metric-label">Điểm uy tín</div>
                                     </div>
                                 </div>
+
                                 @php
+                                    $rankTexts = [
+                                        'excellent' => 'Xuất sắc',
+                                        'good' => 'Tốt',
+                                        'average' => 'Trung bình',
+                                    ];
+
                                     if ($kol->engagement < 2.5) {
                                         $rateRanking = null;
                                     } elseif ($kol->engagement >= 8) {
@@ -966,10 +975,12 @@
                                         $rateRanking = 'average';
                                     }
                                 @endphp
+
                                 <div class="kol-engagement">
                                     <div class="engagement-rate">
-                                        <span
-                                            class="rate-badge rate-{{ $rateRanking }} text-transform-capitalize">{{ $rateRanking }}</span>
+                                        <span class="rate-badge rate-{{ $rateRanking }} text-transform-capitalize">
+                                            {{ @$rankTexts[$rateRanking] }}
+                                        </span>
                                     </div>
                                     <div class="kol-actions">
                                         <button class="action-btn"
@@ -1020,7 +1031,8 @@
                                             </div>
                                         </td>
                                         <td class="color-gray-700">{{ formatDisplayNumber($kol->followers) }}</td>
-                                        <td><span class="rate-badge rate-excellent">{{ $kol->engagement - 0 }}%</span></td>
+                                        <td><span class="rate-badge rate-excellent">{{ $kol->engagement - 0 }}%</span>
+                                        </td>
                                         <td class="color-gray-700">{{ $kol->trust_score - 0 }}</td>
                                         <td class="trend-up">+12.3%</td>
                                         <td>
@@ -1045,7 +1057,7 @@
     <div class="compare-drawer" id="compareDrawer">
         <div class="drawer-header">
             <div>
-                <span class="drawer-title">So sánh KOLs</span>
+                <span class="drawer-title">So sánh KOL</span>
                 <span class="selected-count">0</span>
             </div>
             <div style="display: flex; gap: 1rem;">

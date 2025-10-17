@@ -1,8 +1,8 @@
 @extends('layouts.user')
 
 @section('meta')
-    <meta name="description" content="OneUp Campaign Management - Track and manage your TikTok KOL campaigns">
-    <title>Chiến dịch - Phân tích KOL OneUp</title>
+    <meta name="description" content="Quản lý chiến dịch OneUp - Theo dõi và quản lý các chiến dịch KOL TikTok của bạn">
+    <title>Chiến dịch - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -767,14 +767,14 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <button class="btn btn-primary btn-small" onclick="createNewCampaign()">
+                <a href="{{route('user.campaign.planner')}}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                             clip-rule="evenodd" />
                     </svg>
                     Chiến dịch mới
-                </button>
+                </a>
             </div>
         </div>
 
@@ -786,14 +786,14 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Chiến dịch đang hoạt động</div>
-                            <div class="stat-value">12</div>
+                            <div class="stat-value">{{ $activeCount }}</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+3 tuần này</span>
+                                <span>+{{ $activeCount }} tuần này</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -810,9 +810,9 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Tổng ngân sách</div>
-                            <div class="stat-value">₫450M</div>
+                            <div class="stat-value">₫{{ $totalBudget/1000000 }}M</div>
                             <div class="stat-change positive">
-                                <span style="color: var(--gray-600);">Đã chi 285 triệu ₫</span>
+                                <span style="color: var(--gray-600);">Đã chi {{ numberFormat($spentBudget/1000000, 3) }} triệu ₫</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -830,15 +830,15 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">KOLs tham gia</div>
-                            <div class="stat-value">68</div>
+                            <div class="stat-title">KOL đã tham gia</div>
+                            <div class="stat-value">{{ $totalKols }}</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>+12 mới</span>
+                                <span>+{{ $totalKols }} mới</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -854,7 +854,7 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">ROI trung bình</div>
-                            <div class="stat-value">3.8x</div>
+                            <div class="stat-value">{{ $avgRoi }}x</div>
                             <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -879,456 +879,104 @@
             <div class="campaign-tabs-container">
                 <div class="campaign-tabs">
                     <div class="campaign-tab active" onclick="switchTab('all')">
-                        Tất cả các chiến dịch
-                        <span class="tab-badge">18</span>
+                        Tất cả chiến dịch
+                        <span class="tab-badge">{{ $totalCampaigns }}</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('active')">
-                        Hoạt động
-                        <span class="tab-badge">12</span>
+                        Đang hoạt động
+                        <span class="tab-badge">{{ $activeCount }}</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('draft')">
                         Bản nháp
-                        <span class="tab-badge">3</span>
+                        <span class="tab-badge">{{ $draftCount }}</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('completed')">
                         Đã hoàn thành
-                        <span class="tab-badge">2</span>
+                        <span class="tab-badge">{{ $completedCount }}</span>
                     </div>
                     <div class="campaign-tab" onclick="switchTab('paused')">
-                        Đã tạm dừng
-                        <span class="tab-badge">1</span>
+                        Tạm dừng
+                        <span class="tab-badge">{{ $pausedCount }}</span>
                     </div>
                 </div>
 
                 <!-- Campaigns Grid -->
                 <div class="campaigns-grid" id="campaignsGrid">
-                    <!-- Campaign Card 1 - Active -->
-                    <div class="campaign-card">
-                        <div class="campaign-header">
-                            <span class="campaign-status status-active">Hoạt động</span>
-                            <h3 class="campaign-name">Thời trang mùa hè 2024</h3>
-                            <div class="campaign-dates">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>15 tháng 6 - 30 tháng 8 năm 2024</span>
+                    @foreach($campaigns as $campaign)
+                        <div class="campaign-card">
+                            <div class="campaign-header">
+                                <span class="campaign-status status-{{ $campaign->status }}">
+                                    {{ $campaign->status == 'active' ? 'Đang hoạt động' : ($campaign->status == 'draft' ? 'Bản nháp' : ($campaign->status == 'completed' ? 'Hoàn thành' : ($campaign->status == 'paused' ? 'Tạm dừng' : $campaign->status))) }}
+                                </span>
+                                <h3 class="campaign-name">{{ $campaign->name }}</h3>
+                                <div class="campaign-dates">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span>{{ $campaign->start_date ? $campaign->start_date->format('d/m/Y') : '' }} - {{ $campaign->end_date ? $campaign->end_date->format('d/m/Y') : '' }}</span>
+                                </div>
+                            </div>
+                            <div class="campaign-body">
+                                <div class="campaign-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Phạm vi tiếp cận</span>
+                                        <span class="metric-value">{{ numberFormat($campaign->target_reach) }}</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Tương tác</span>
+                                        <span class="metric-value">{{ $campaign->target_engagement }}%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Ngân sách</span>
+                                        <span class="metric-value">
+                                            ₫{{ numberFormat($campaign->budget_amount/1000000, 3) }}M
+                                        </span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">ROI</span>
+                                        <span class="metric-value">{{ numberFormat($campaign->roi,1) }}x</span>
+                                    </div>
+                                </div>
+                                <div class="campaign-progress">
+                                    <div class="progress-header">
+                                        <span class="progress-label">Tiến độ chiến dịch</span>
+                                        <span class="progress-value">{{ $campaign->progress ?? '0' }}%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: {{ $campaign->progress ?? 0 }}%"></div>
+                                    </div>
+                                </div>
+                                <div class="campaign-kols">
+                                    <div class="kol-avatars">
+                                        @foreach($campaign->kols->take(3) as $kol)
+                                            <img class="kol-avatar-small" src="{{ $kol->getFirstMediaUrl('media') }}">
+                                        @endforeach
+                                        @if($campaign->kols->count() > 3)
+                                            <div class="kol-avatar-small" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">+{{ $campaign->kols->count() - 3 }}</div>
+                                        @endif
+                                    </div>
+                                    <span class="kol-count">{{ $campaign->kols->count() }} KOL tham gia</span>
+                                </div>
+                            </div>
+                            <div class="campaign-footer">
+                                <div class="campaign-budget">
+                                    Ngân sách: <span class="budget-amount">₫{{ numberFormat($campaign->budget_amount/1000000, 3) }}M</span>
+                                </div>
+                                <div class="campaign-actions">
+                                    <button class="action-btn"
+                                        onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
+                                        Xem
+                                    </button>
+                                    <button class="action-btn primary"
+                                        onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => $campaign->slug]) }}'">
+                                        Theo dõi
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="campaign-body">
-                            <div class="campaign-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
-                                    <span class="metric-value">12.5M</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Lượt tương tác</span>
-                                    <span class="metric-value">6.8%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Chuyển đổi</span>
-                                    <span class="metric-value">2,847</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">ROI</span>
-                                    <span class="metric-value">4.2x</span>
-                                </div>
-                            </div>
-
-                            <div class="campaign-progress">
-                                <div class="progress-header">
-                                    <span class="progress-label">Tiến trình chiến dịch</span>
-                                    <span class="progress-value">68%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 68%"></div>
-                                </div>
-                            </div>
-
-                            <div class="campaign-kols">
-                                <div class="kol-avatars">
-                                    <div class="kol-avatar-small">LN</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MT</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">AP</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">+5</div>
-                                </div>
-                                <span class="kol-count">8 KOL tham gia</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-footer">
-                            <div class="campaign-budget">
-                                Ngân sách: <span class="budget-amount">₫80M</span>
-                            </div>
-                            <div class="campaign-actions">
-                                <button class="action-btn"
-                                    onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    Xem
-                                </button>
-                                <button class="action-btn primary"
-                                    onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => 'test']) }}'">
-                                    Theo dõi
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Campaign Card 2 - Active -->
-                    <div class="campaign-card">
-                        <div class="campaign-header">
-                            <span class="campaign-status status-active">Hoạt động</span>
-                            <h3 class="campaign-name">Ra mắt sản phẩm làm đẹp</h3>
-                            <div class="campaign-dates">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>1 tháng 7 - 31 tháng 7 năm 2024</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-body">
-                            <div class="campaign-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
-                                    <span class="metric-value">8.3M</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Lượt tương tác</span>
-                                    <span class="metric-value">8.2%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Chuyển đổi</span>
-                                    <span class="metric-value">1,564</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">ROI</span>
-                                    <span class="metric-value">3.5x</span>
-                                </div>
-                            </div>
-
-                            <div class="campaign-progress">
-                                <div class="progress-header">
-                                    <span class="progress-label">Tiến trình chiến dịch</span>
-                                    <span class="progress-value">45%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 45%"></div>
-                                </div>
-                            </div>
-
-                            <div class="campaign-kols">
-                                <div class="kol-avatars">
-                                    <div class="kol-avatar-small">NT</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">MH</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">TL</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">+3</div>
-                                </div>
-                                <span class="kol-count">6 KOL tham gia</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-footer">
-                            <div class="campaign-budget">
-                                Ngân sách: <span class="budget-amount">₫60M</span>
-                            </div>
-                            <div class="campaign-actions">
-                                <button class="action-btn"
-                                    onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    Xem
-                                </button>
-                                <button class="action-btn primary"
-                                    onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => 'test']) }}'">
-                                    Theo dõi</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Campaign Card 3 - Draft -->
-                    <div class="campaign-card">
-                        <div class="campaign-header">
-                            <span class="campaign-status status-draft">Bản nháp</span>
-                            <h3 class="campaign-name">Loạt bài đánh giá công nghệ</h3>
-                            <div class="campaign-dates">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>Dự kiến: 1 tháng 8 - 30 tháng 9</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-body">
-                            <div class="campaign-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Ước tính đạt được</span>
-                                    <span class="metric-value">5M</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Mục tiêu Eng.</span>
-                                    <span class="metric-value">5%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Est. Conv.</span>
-                                    <span class="metric-value">800</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Mục tiêu ROI</span>
-                                    <span class="metric-value">3x</span>
-                                </div>
-                            </div>
-
-                            <div class="campaign-progress">
-                                <div class="progress-header">
-                                    <span class="progress-label">Tiến trình thiết lập</span>
-                                    <span class="progress-value">30%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 30%; background: var(--gray-400);"></div>
-                                </div>
-                            </div>
-
-                            <div class="campaign-kols">
-                                <div class="kol-avatars">
-                                    <div class="kol-avatar-small" style="background: var(--gray-400);">?</div>
-                                </div>
-                                <span class="kol-count">0 KOL đã chọn</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-footer">
-                            <div class="campaign-budget">
-                                Ngân sách: <span class="budget-amount">₫40M</span>
-                            </div>
-                            <div class="campaign-actions">
-                                <button class="action-btn">Sửa</button>
-                                <button class="action-btn primary">Ra mắt</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Campaign Card 4 - Completed -->
-                    <div class="campaign-card">
-                        <div class="campaign-header">
-                            <span class="campaign-status status-completed">Hoàn thành</span>
-                            <h3 class="campaign-name">Lễ hội ẩm thực 2024</h3>
-                            <div class="campaign-dates">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>Ngày 1 tháng 5 - Ngày 31 tháng 5 năm 2024</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-body">
-                            <div class="campaign-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
-                                    <span class="metric-value">15.8M</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Lượt tương tác</span>
-                                    <span class="metric-value">9.2%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Chuyển đổi</span>
-                                    <span class="metric-value">3,245</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">ROI</span>
-                                    <span class="metric-value">5.1x</span>
-                                </div>
-                            </div>
-
-                            <div class="campaign-progress">
-                                <div class="progress-header">
-                                    <span class="progress-label">Tiến trình chiến dịch</span>
-                                    <span class="progress-value">100%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 100%; background: var(--success);"></div>
-                                </div>
-                            </div>
-
-                            <div class="campaign-kols">
-                                <div class="kol-avatars">
-                                    <div class="kol-avatar-small">AP</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">TL</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">DH</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">+7</div>
-                                </div>
-                                <span class="kol-count">10 KOL đã tham gia</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-footer">
-                            <div class="campaign-budget">
-                                Ngân sách: <span class="budget-amount">₫100M</span>
-                            </div>
-                            <div class="campaign-actions">
-                                <button class="action-btn">Báo cáo</button>
-                                <button class="action-btn primary">Nhân bản</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Campaign Card 5 - Paused -->
-                    <div class="campaign-card">
-                        <div class="campaign-header">
-                            <span class="campaign-status status-paused">Tạm dừng</span>
-                            <h3 class="campaign-name">Giải đấu trò chơi</h3>
-                            <div class="campaign-dates">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>20 tháng 6 - Tạm dừng</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-body">
-                            <div class="campaign-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
-                                    <span class="metric-value">3.2M</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Lượt tương tác</span>
-                                    <span class="metric-value">4.1%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Chuyển đổi</span>
-                                    <span class="metric-value">425</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">ROI</span>
-                                    <span class="metric-value">2.1x</span>
-                                </div>
-                            </div>
-
-                            <div class="campaign-progress">
-                                <div class="progress-header">
-                                    <span class="progress-label">Tiến trình chiến dịch</span>
-                                    <span class="progress-value">35%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 35%; background: var(--warning);"></div>
-                                </div>
-                            </div>
-
-                            <div class="campaign-kols">
-                                <div class="kol-avatars">
-                                    <div class="kol-avatar-small">HV</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">DN</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">+2</div>
-                                </div>
-                                <span class="kol-count">4 KOL tham gia</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-footer">
-                            <div class="campaign-budget">
-                                Ngân sách: <span class="budget-amount">₫50M</span>
-                            </div>
-                            <div class="campaign-actions">
-                                <button class="action-btn"
-                                    onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    Xem
-                                </button>
-                                <button class="action-btn primary">Tiếp tục</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Campaign Card 6 - Active -->
-                    <div class="campaign-card">
-                        <div class="campaign-header">
-                            <span class="campaign-status status-active">Hoạt động</span>
-                            <h3 class="campaign-name">Thử thách thể hình</h3>
-                            <div class="campaign-dates">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>15 tháng 7 - 15 tháng 8, 2024</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-body">
-                            <div class="campaign-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Tổng phạm vi tiếp cận</span>
-                                    <span class="metric-value">6.7M</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Lượt tương tác</span>
-                                    <span class="metric-value">7.3%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Chuyển đổi</span>
-                                    <span class="metric-value">892</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">ROI</span>
-                                    <span class="metric-value">3.9x</span>
-                                </div>
-                            </div>
-
-                            <div class="campaign-progress">
-                                <div class="progress-header">
-                                    <span class="progress-label">Tiến trình chiến dịch</span>
-                                    <span class="progress-value">25%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 25%"></div>
-                                </div>
-                            </div>
-
-                            <div class="campaign-kols">
-                                <div class="kol-avatars">
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">TL</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">HM</div>
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">+3</div>
-                                </div>
-                                <span class="kol-count">5 KOL tham gia</span>
-                            </div>
-                        </div>
-
-                        <div class="campaign-footer">
-                            <div class="campaign-budget">
-                                Ngân sách: <span class="budget-amount">₫35M</span>
-                            </div>
-                            <div class="campaign-actions">
-                                <button class="action-btn"
-                                    onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => 'test']) }}'">
-                                    Xem
-                                </button>
-                                <button class="action-btn primary">Quản lý</button>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -1348,12 +996,6 @@
 
             // Filter campaigns based on tab
             console.log('Switching to tab:', tab);
-        }
-
-        // Create new campaign
-        function createNewCampaign() {
-            console.log('Creating new campaign...');
-            // Navigate to campaign creation page
         }
 
         // Animate stats on load
@@ -1394,6 +1036,7 @@
                                 animateValue(statValue, 0, num, 1000);
                             } else if (finalValue.includes('x')) {
                                 const num = parseFloat(finalValue) * 10;
+                                console.log(num)
                                 animateValue(statValue, 0, num, 1000);
                             } else {
                                 const num = parseInt(finalValue);

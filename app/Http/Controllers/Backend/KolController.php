@@ -63,18 +63,19 @@ class KolController extends Controller
 
         $kol = Kol::create([
             'platform_id'       => request('platform_id'),
-            'username'     => request('username'),
-            'display_name'     => request('display_name'),
-            'bio'     => request('bio'),
-            'location_country'     => request('location_country'),
+            'username'          => request('username'),
+            'display_name'      => request('display_name'),
+            'bio'               => request('bio'),
+            'location_country'  => request('location_country'),
             'location_city'     => request('location_city'),
-            'language'        => request('language'),
-            'is_verified' => request('is_verified'),
-            'status' => request('status'),
-            'tier' => request('tier'),
-            'followers' => request('followers'),
-            'trust_score' => request('trust_score'),
-            'engagement' => request('engagement'),
+            'language'          => request('language'),
+            'is_verified'       => request('is_verified'),
+            'status'            => request('status'),
+            'tier'              => request('tier'),
+            'followers'         => request('followers'),
+            'trust_score'       => request('trust_score'),
+            'engagement'        => request('engagement'),
+            'price'             => request('price')
         ]);
 
         $kol
@@ -116,7 +117,7 @@ class KolController extends Controller
 
         $kol = Kol::with('media')->findOrFail($id);
 
-        $categories = Category::where('type', 'kol')->tree()->get()->toTree();
+        $categories = Category::where('type', 'kols')->tree()->get()->toTree();
 
         return view('backend.kols.edit', compact('categories', 'kol'));
     }
@@ -138,18 +139,19 @@ class KolController extends Controller
 
         $kol->fill([
             'platform_id'       => request('platform_id'),
-            'username'     => request('username'),
-            'display_name'     => request('display_name'),
-            'bio'     => request('bio'),
-            'location_country'     => request('location_country'),
+            'username'          => request('username'),
+            'display_name'      => request('display_name'),
+            'bio'               => request('bio'),
+            'location_country'  => request('location_country'),
             'location_city'     => request('location_city'),
-            'language'        => request('language'),
-            'is_verified' => request('is_verified'),
-            'status' => request('status'),
-            'tier' => request('tier'),
-            'followers' => request('followers'),
-            'trust_score' => request('trust_score'),
-            'engagement' => request('engagement'),
+            'language'          => request('language'),
+            'is_verified'       => request('is_verified'),
+            'status'            => request('status'),
+            'tier'              => request('tier'),
+            'followers'         => request('followers'),
+            'trust_score'       => request('trust_score'),
+            'engagement'        => request('engagement'),
+            'price'             => request('price')
         ])->save();
 
         $kol

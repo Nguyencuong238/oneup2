@@ -44,6 +44,8 @@
                                     {{ __('Post') }}</option>
                                 <option {{ old('type') == 'kols' ? 'selected' : null }} value="kols">
                                     {{ __('KOLs') }}</option>
+                                <option {{ old('type') == 'campaigns' ? 'selected' : null }} value="campaigns">
+                                    {{ __('Chiến dịch') }}</option>
                             </select>
                             @error('type')
                                 <span class="invalid-feedback">{{ $message }}</span>

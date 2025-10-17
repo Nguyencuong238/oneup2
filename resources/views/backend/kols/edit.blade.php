@@ -51,7 +51,7 @@
 
 
                         <div class="form-group">
-                            <label>Tỷ lệ tham gia: (%)</label>
+                            <label>Tỷ lệ tương tác: (%)</label>
                             <input type="number" name="engagement" value="{{ old('engagement', $kol->engagement) }}" class="form-control @error('engagement')is-invalid @enderror" placeholder="">
                             @error('engagement')
                                 <span class="invalid-feedback">{{ $message }}</span>
@@ -68,12 +68,20 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Giá:</label>
+                            <input type="number" name="price" value="{{ old('price', $kol->price) }}" class="form-control @error('price')is-invalid @enderror" placeholder="">
+                            @error('price')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label>{{ __('Avatar') }}:</label>
                             <x-media-library-collection
                                 name="media"
                                 :model="$kol"
                                 collection="media"
-                                rules="mimes:png,jpeg,pdf"
+                                rules="mimes:png,jpeg,jpg,webp"
                                 max-items="1"
                             />
                         </div>
@@ -180,7 +188,7 @@
 
                     <div class="collapse show" id="category">
                         <div class="card-body">
-                            @include('backend.kols._categories', ['categories' => $categories, 'selected' => old('categories', [])])
+                            @include('backend.kols._categories', ['categories' => $categories, 'selected' => old('categories', $kol->categories()->pluck('id')->toArray())])
                         </div>
                     </div>
                 </div>
