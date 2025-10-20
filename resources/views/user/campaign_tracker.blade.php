@@ -729,10 +729,9 @@
                 <div class="selector-header">
                     <h2 class="selector-title">Chọn chiến dịch để theo dõi</h2>
                     <select class="campaign-dropdown">
-                        <option selected>Bộ sưu tập thời trang mùa hè 2024</option>
-                        <option>Ra mắt sản phẩm làm đẹp</option>
-                        <option>Lễ hội ẩm thực 2024</option>
-                        <option>Giải đấu game</option>
+                        @foreach($campaigns as $c)
+                        <option @if($c->id == $campaign->id) selected @endif value="{{$c->slug}}">{{$c->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="campaign-info">
@@ -1187,5 +1186,12 @@
             refreshCountdown = 45;
             refreshData();
         });
+    </script>
+
+    <script>
+        $('.campaign-dropdown').on('change', function() {
+            let val = $(this).val();
+            window.location.href = '/user/campaign-tracker/' + val;
+        })
     </script>
 @endsection
