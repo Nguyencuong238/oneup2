@@ -639,6 +639,9 @@
     <form class="main-content" action="{{ route('user.campaign.store') }}" method="POST">
         @csrf
 
+        @if($campaign->id && !request('is_clone'))
+        <input type="hidden" name="campaign_id" value="{{$campaign->id}}">
+        @endif
         <!-- Thanh trên cùng -->
         <div class="topbar">
             <div class="topbar-left">
@@ -700,12 +703,12 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Ngày bắt đầu *</label>
-                                <input type="date" name="start_date" value="{{ old('start_date', $campaign->start_date->format('Y-m-d')) }}" id="start_date"
+                                <input type="date" name="start_date" value="{{ old('start_date', $campaign->start_date?->format('Y-m-d')) }}" id="start_date"
                                     class="form-input" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Ngày kết thúc *</label>
-                                <input type="date" name="end_date" value="{{ old('end_date', $campaign->end_date->format('Y-m-d')) }}" id="end_date"
+                                <input type="date" name="end_date" value="{{ old('end_date', $campaign->end_date?->format('Y-m-d')) }}" id="end_date"
                                     class="form-input" required>
                             </div>
                         </div>
@@ -840,7 +843,7 @@
                         <div class="form-group">
                             <label class="form-label">Thông điệp chính</label>
                             <div class="tags-input">
-                                <span class="tag">
+                                {{-- <span class="tag">
                                     Thời trang bền vững
                                     <span class="tag-remove">×</span>
                                 </span>
@@ -851,7 +854,7 @@
                                 <span class="tag">
                                     Phong cách trẻ
                                     <span class="tag-remove">×</span>
-                                </span>
+                                </span> --}}
                                 <input type="text" class="tag-input-field" placeholder="Thêm thẻ...">
                             </div>
                         </div>
@@ -935,7 +938,7 @@
             </div>
 
             <!-- Nút hành động -->
-            <div class="planner-actions">
+            <div class="planner-actions d-none">
                 <button class="btn btn-secondary">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                         style="margin-right: 0.5rem;">

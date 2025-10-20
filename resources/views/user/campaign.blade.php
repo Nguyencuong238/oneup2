@@ -980,8 +980,10 @@
                             </div>
                             <div class="campaign-footer">
                                 <div class="campaign-budget">
-                                    Ngân sách: <span
-                                        class="budget-amount">₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M</span>
+                                    Ngân sách:
+                                    <span class="budget-amount">
+                                        ₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M
+                                    </span>
                                 </div>
                                 <div class="campaign-actions">
                                     @if ($campaign->status == 'active')
@@ -996,12 +998,13 @@
                                     @endif
 
                                     @if ($campaign->status == 'draft')
-                                        <button class="action-btn" onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug]) }}'">
+                                        <button class="action-btn"
+                                            onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug]) }}'">
                                             Sửa
                                         </button>
 
                                         <form action="{{ route('user.campaign.changeStatus') }}" method="post"
-                                            id="change-status-form">
+                                            class="change-status-form">
                                             @csrf
                                             <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
                                             <input type="hidden" name="status" value="active">
@@ -1016,7 +1019,7 @@
                                             Xem
                                         </button>
                                         <form action="{{ route('user.campaign.changeStatus') }}" method="post"
-                                            id="change-status-form">
+                                            class="change-status-form">
                                             @csrf
                                             <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
                                             <input type="hidden" name="status" value="active">
@@ -1026,18 +1029,13 @@
                                     @endif
 
                                     @if ($campaign->status == 'completed')
-                                        <button class="action-btn"
-                                            onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
-                                            Xem
+                                        <button class="action-btn">
+                                            Báo cáo
                                         </button>
-                                        <form action="{{ route('user.campaign.changeStatus') }}" method="post"
-                                            id="change-status-form">
-                                            @csrf
-                                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
-                                            <input type="hidden" name="status" value="active">
-
-                                            <button class="action-btn primary">Tiếp tục</button>
-                                        </form>
+                                        <button class="action-btn primary"
+                                            onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">
+                                            Nhân bản
+                                        </button>
                                     @endif
                                 </div>
                             </div>
@@ -1143,5 +1141,25 @@
         function toggleSidebar() {
             document.querySelector('.sidebar').classList.toggle('active');
         }
+    </script>
+    <script>
+        $('.change-status-form').on('submit', function(e) {
+            e.preventDefault();
+
+            var status = $(this).find('input[name="status"]').val();
+            var msg = '';
+
+            if (status == 'active') {
+                msg = 'Bạn có chắc chắn muốn chuyển chiến dịch sang trạng thái hoạt động?';
+            } else {
+                msg = 'Bạn có chắc chắn muốn tạm dựng chiến dịch?';
+            }
+
+            if (confirm(msg)) {
+                // submit bằng phương thức native để tránh kích hoạt lại handler jQuery
+                this.submit();
+            }
+            
+        });
     </script>
 @endsection

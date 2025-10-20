@@ -13,7 +13,8 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        return view('user.dashboard');
+        $kols = Kol::where('status', 'active')->limit(10)->get();
+        return view('user.dashboard', compact('kols'));
     }
 
     public function kolExplorer()
@@ -197,7 +198,8 @@ class UserController extends Controller
         ]);
 
         // Create campaign
-        $campaign = new \App\Models\Campaign();
+
+        $campaign = Campaign::where('id', $request->campaign_id)->firstOrNew();
         $campaign->name = $request->name;
         $campaign->slug = Str::slug($request->name);
         $campaign->start_date = $request->start_date;

@@ -73,4 +73,20 @@ class Kol extends Model implements HasMedia
             ->nonQueued();
     }
 
+
+
+    /**
+     * The campaigns this KOL is attached to.
+     *
+     * Assumes a pivot table named `campaign_kols` with optional metric columns
+     * like `views`, `conversions`, `content_posted`, `engagement` and timestamps.
+     */
+    public function campaigns()
+    {
+        return $this->belongsToMany(\App\Models\Campaign::class, 'campaign_kols', 'kol_id', 'campaign_id')
+                    //->withPivot(['views', 'conversions', 'content_posted', 'engagement'])
+                    //->withTimestamps()
+                    ;
+    }
+
 }

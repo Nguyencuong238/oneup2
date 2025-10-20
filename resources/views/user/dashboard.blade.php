@@ -756,22 +756,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($kols as $kol)
                         <tr>
                             <td>
                                 <div class="kol-cell">
-                                    <div class="kol-avatar-small">NT</div>
+                                    <img class="kol-avatar-small" src="{{$kol->getFirstMediaUrl('media')}}">
                                     <div>
-                                        <div class="kol-name-small">Ngọc Trinh</div>
-                                        <div class="kol-handle-small">@ngoctrinh.official</div>
+                                        <div class="kol-name-small">{{$kol->display_name}}</div>
+                                        <div class="kol-handle-small">{{ '@' . trim($kol->username, '@') }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td style="color: black">Thời trang</td>
-                            <td style="color: black">2.8M</td>
+                            <td style="color: black">
+                                {{$kol->categories->pluck('name')->implode(', ')}}
+                            </td>
+                            <td style="color: black">{{ formatDisplayNumber($kol->followers) }}</td>
                             <td>
                                 <span class="trend-up">5.8%</span>
                             </td>
-                            <td style="color: black">3</td>
+                            <td style="color: black">{{$kol->campaigns->count()}}</td>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                                     <span style="color: var(--success);">+42%</span>
@@ -784,62 +787,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small">MH</div>
-                                    <div>
-                                        <div class="kol-name-small">Minh Hằng</div>
-                                        <div class="kol-handle-small">@minhhang.beauty</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">Làm đẹp</td>
-                            <td style="color: black">1.5M</td>
-                            <td>
-                                <span class="trend-up">7.2%</span>
-                            </td>
-                            <td style="color: black">2</td>
-                            <td>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <span style="color: var(--success);">+38%</span>
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
-                                        style="color: var(--success);">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small">TL</div>
-                                    <div>
-                                        <div class="kol-name-small">Thùy Linh</div>
-                                        <div class="kol-handle-small">@thuylinh.food</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">Đồ ăn</td>
-                            <td style="color: black">890K</td>
-                            <td>
-                                <span class="trend-up">9.1%</span>
-                            </td>
-                            <td style="color: black">4</td>
-                            <td>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <span style="color: var(--success);">+55%</span>
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
-                                        style="color: var(--success);">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
