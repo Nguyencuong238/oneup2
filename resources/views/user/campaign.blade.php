@@ -407,8 +407,8 @@
         }
 
         .status-active {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
         }
 
         .status-draft {
@@ -417,8 +417,8 @@
         }
 
         .status-completed {
-            background: rgba(0, 102, 255, 0.1);
-            color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
         }
 
         .status-paused {
@@ -502,6 +502,19 @@
             background: var(--gradient-blue);
             border-radius: 10px;
             transition: width 0.3s;
+        }
+
+
+        .progress-completed {
+            background: var(--success);
+        }
+
+        .progress-draft {
+            background: var(--gray-400);
+        }
+
+        .progress-paused {
+            background: var(--warning);
         }
 
         .campaign-kols {
@@ -767,7 +780,7 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="{{route('user.campaign.planner')}}" class="btn btn-primary btn-small">
+                <a href="{{ route('user.campaign.planner') }}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -810,9 +823,10 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Tổng ngân sách</div>
-                            <div class="stat-value">₫{{ $totalBudget/1000000 }}M</div>
+                            <div class="stat-value">₫{{ $totalBudget / 1000000 }}M</div>
                             <div class="stat-change positive">
-                                <span style="color: var(--gray-600);">Đã chi {{ numberFormat($spentBudget/1000000, 3) }} triệu ₫</span>
+                                <span style="color: var(--gray-600);">Đã chi {{ numberFormat($spentBudget / 1000000, 3) }}
+                                    triệu ₫</span>
                             </div>
                         </div>
                         <div class="stat-icon">
@@ -902,7 +916,7 @@
 
                 <!-- Campaigns Grid -->
                 <div class="campaigns-grid" id="campaignsGrid">
-                    @foreach($campaigns as $campaign)
+                    @foreach ($campaigns as $campaign)
                         <div class="campaign-card">
                             <div class="campaign-header">
                                 <span class="campaign-status status-{{ $campaign->status }}">
@@ -915,7 +929,8 @@
                                             d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    <span>{{ $campaign->start_date ? $campaign->start_date->format('d/m/Y') : '' }} - {{ $campaign->end_date ? $campaign->end_date->format('d/m/Y') : '' }}</span>
+                                    <span>{{ $campaign->start_date ? $campaign->start_date->format('d/m/Y') : '' }} -
+                                        {{ $campaign->end_date ? $campaign->end_date->format('d/m/Y') : '' }}</span>
                                 </div>
                             </div>
                             <div class="campaign-body">
@@ -931,12 +946,12 @@
                                     <div class="metric">
                                         <span class="metric-label">Ngân sách</span>
                                         <span class="metric-value">
-                                            ₫{{ numberFormat($campaign->budget_amount/1000000, 3) }}M
+                                            ₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M
                                         </span>
                                     </div>
                                     <div class="metric">
                                         <span class="metric-label">ROI</span>
-                                        <span class="metric-value">{{ numberFormat($campaign->roi,1) }}x</span>
+                                        <span class="metric-value">{{ numberFormat($campaign->roi, 1) }}x</span>
                                     </div>
                                 </div>
                                 <div class="campaign-progress">
@@ -945,16 +960,19 @@
                                         <span class="progress-value">{{ $campaign->progress ?? '0' }}%</span>
                                     </div>
                                     <div class="progress-bar">
-                                        <div class="progress-fill" style="width: {{ $campaign->progress ?? 0 }}%"></div>
+                                        <div class="progress-fill progress-{{ $campaign->status }}"
+                                            style="width: {{ $campaign->progress ?? 0 }}%"></div>
                                     </div>
                                 </div>
                                 <div class="campaign-kols">
                                     <div class="kol-avatars">
-                                        @foreach($campaign->kols->take(3) as $kol)
+                                        @foreach ($campaign->kols->take(3) as $kol)
                                             <img class="kol-avatar-small" src="{{ $kol->getFirstMediaUrl('media') }}">
                                         @endforeach
-                                        @if($campaign->kols->count() > 3)
-                                            <div class="kol-avatar-small" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">+{{ $campaign->kols->count() - 3 }}</div>
+                                        @if ($campaign->kols->count() > 3)
+                                            <div class="kol-avatar-small"
+                                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                                                +{{ $campaign->kols->count() - 3 }}</div>
                                         @endif
                                     </div>
                                     <span class="kol-count">{{ $campaign->kols->count() }} KOL tham gia</span>
@@ -962,17 +980,65 @@
                             </div>
                             <div class="campaign-footer">
                                 <div class="campaign-budget">
-                                    Ngân sách: <span class="budget-amount">₫{{ numberFormat($campaign->budget_amount/1000000, 3) }}M</span>
+                                    Ngân sách: <span
+                                        class="budget-amount">₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M</span>
                                 </div>
                                 <div class="campaign-actions">
-                                    <button class="action-btn"
-                                        onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
-                                        Xem
-                                    </button>
-                                    <button class="action-btn primary"
-                                        onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => $campaign->slug]) }}'">
-                                        Theo dõi
-                                    </button>
+                                    @if ($campaign->status == 'active')
+                                        <button class="action-btn"
+                                            onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
+                                            Xem
+                                        </button>
+                                        <button class="action-btn primary"
+                                            onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => $campaign->slug]) }}'">
+                                            Theo dõi
+                                        </button>
+                                    @endif
+
+                                    @if ($campaign->status == 'draft')
+                                        <button class="action-btn" onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug]) }}'">
+                                            Sửa
+                                        </button>
+
+                                        <form action="{{ route('user.campaign.changeStatus') }}" method="post"
+                                            id="change-status-form">
+                                            @csrf
+                                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+                                            <input type="hidden" name="status" value="active">
+
+                                            <button class="action-btn primary">Khởi chạy</button>
+                                        </form>
+                                    @endif
+
+                                    @if ($campaign->status == 'paused')
+                                        <button class="action-btn"
+                                            onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
+                                            Xem
+                                        </button>
+                                        <form action="{{ route('user.campaign.changeStatus') }}" method="post"
+                                            id="change-status-form">
+                                            @csrf
+                                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+                                            <input type="hidden" name="status" value="active">
+
+                                            <button class="action-btn primary">Tiếp tục</button>
+                                        </form>
+                                    @endif
+
+                                    @if ($campaign->status == 'completed')
+                                        <button class="action-btn"
+                                            onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
+                                            Xem
+                                        </button>
+                                        <form action="{{ route('user.campaign.changeStatus') }}" method="post"
+                                            id="change-status-form">
+                                            @csrf
+                                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+                                            <input type="hidden" name="status" value="active">
+
+                                            <button class="action-btn primary">Tiếp tục</button>
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                         </div>

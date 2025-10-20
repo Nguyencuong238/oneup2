@@ -52,7 +52,7 @@ Route::prefix('user/')->middleware(['auth', 'verified'])->group(function () {
 	Route::get('kol-explorer', [FrontUserController::class, 'kolExplorer'])->name('user.kolExplorer');
 
 	Route::get('campaign', [FrontUserController::class, 'campaign'])->name('user.campaign.index');
-	Route::get('campaign-planner', [FrontUserController::class, 'campaignPlanner'])->name('user.campaign.planner');
+	Route::get('campaign-planner/{slug?}', [FrontUserController::class, 'campaignPlanner'])->name('user.campaign.planner');
 	Route::get('campaign-detail/{slug}', [FrontUserController::class, 'campaignDetail'])->name('user.campaign.detail');
 	Route::get('campaign-tracker/{slug}', [FrontUserController::class, 'campaignTracker'])->name('user.campaign.tracker');
 	Route::post('campaign-store', [FrontUserController::class, 'campaignStore'])->name('user.campaign.store');

@@ -112,19 +112,6 @@ if (!function_exists('getFirstCharacter')) {
             ->implode('');
     }
 }
-
-function formatDisplayNumber($number, $decimal = 1) {
-    if ($number >= 1000000) {
-        // Trên 1 triệu → M
-        return round($number / 1000000, $decimal) . 'M';
-    } elseif ($number >= 1000) {
-        // Trên 1 nghìn → K
-        return round($number / 1000, $decimal) . 'K';
-    } else {
-        // Dưới 1000 → giữ nguyên
-        return (string)$number;
-    }
-}
 function numberFormat($number, $decimal = 0, $decimal_separator = ',', $thousands_separator = '.')
 {
     $prefix = $number < 0 ? '-' : '';
@@ -143,4 +130,18 @@ function numberFormat($number, $decimal = 0, $decimal_separator = ',', $thousand
     $parts[0] = number_format($parts[0], 0, '', $thousands_separator);
 
     return $prefix . implode($decimal_separator, $parts);
+}
+
+
+function formatDisplayNumber($number, $decimal = 1) {
+    if ($number >= 1000000) {
+        // Trên 1 triệu → M
+        return numberFormat($number / 1000000, $decimal) . 'M';
+    } elseif ($number >= 1000) {
+        // Trên 1 nghìn → K
+        return numberFormat($number / 1000, $decimal) . 'K';
+    } else {
+        // Dưới 1000 → giữ nguyên
+        return (string)$number;
+    }
 }

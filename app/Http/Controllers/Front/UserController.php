@@ -87,13 +87,16 @@ class UserController extends Controller
             ]);
     }
 
-    public function campaignPlanner()
+    public function campaignPlanner($slug = null)
     {
         $campaignCategories = Category::where('type', 'campaigns')->tree()->get()->toTree();
         $kolCategories = Category::where('type', 'kols')->tree()->get()->toTree();
         $kols = Kol::all();
+        
+        $campaign = Campaign::where('slug', $slug)->firstOrNew();
+        
 
-        return view('user.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols'));
+        return view('user.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
     }
 
     public function campaignDetail($slug)

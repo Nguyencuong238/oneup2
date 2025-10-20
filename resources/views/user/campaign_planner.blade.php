@@ -693,19 +693,19 @@
 
                         <div class="form-group">
                             <label class="form-label">Tên chiến dịch *</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-input"
+                            <input type="text" name="name" value="{{ old('name', $campaign->name) }}" class="form-input"
                                 placeholder="Tên chiến dịch..." required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Ngày bắt đầu *</label>
-                                <input type="date" name="start_date" value="{{ old('start_date') }}" id="start_date"
+                                <input type="date" name="start_date" value="{{ old('start_date', $campaign->start_date->format('Y-m-d')) }}" id="start_date"
                                     class="form-input" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Ngày kết thúc *</label>
-                                <input type="date" name="end_date" value="{{ old('end_date') }}" id="end_date"
+                                <input type="date" name="end_date" value="{{ old('end_date', $campaign->end_date->format('Y-m-d')) }}" id="end_date"
                                     class="form-input" required>
                             </div>
                         </div>
@@ -715,7 +715,7 @@
                             <select class="form-select" name="campaign_category">
                                 <option>-- Chọn --</option>
                                 @foreach ($campaignCategories as $item)
-                                    <option value="{{ $item->id }}" @if (old('campaign_category' == $item->id)) selected @endif>
+                                    <option value="{{ $item->id }}" @if (old('campaign_category', $campaign->category_id == $item->id)) selected @endif>
                                         {{ $item->name }}</option>
                                 @endforeach
                             </select>
@@ -723,7 +723,7 @@
 
                         <div class="form-group">
                             <label class="form-label">Mô tả chiến dịch</label>
-                            <textarea class="form-textarea" name="description" placeholder="Mô tả chiến dịch...">{{ old('description') }}</textarea>
+                            <textarea class="form-textarea" name="description" placeholder="Mô tả chiến dịch...">{{ old('description', $campaign->description) }}</textarea>
                         </div>
                     </div>
 
@@ -734,13 +734,13 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Phạm vi tiếp cận mục tiêu</label>
-                                <input type="number" name="target_reach" value="{{ old('target_reach') }}"
+                                <input type="number" name="target_reach" value="{{ old('target_reach', $campaign->target_reach) }}"
                                     class="form-input" placeholder="0">
                                 <span class="form-help">Lượng người xem dự kiến</span>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Tỷ lệ tương tác mục tiêu</label>
-                                <input type="number" name="target_engagement" value="{{ old('target_engagement') }}"
+                                <input type="number" name="target_engagement" value="{{ old('target_engagement', $campaign->target_engagement) }}"
                                     class="form-input" placeholder="0" step="0.1">
                                 <span class="form-help">Tỷ lệ tương tác tối thiểu (%)</span>
                             </div>
@@ -748,7 +748,7 @@
 
                         <div class="form-group">
                             <label class="form-label">Tổng ngân sách (VNĐ)</label>
-                            <input type="number" name="budget_amount" value="{{ old('budget_amount') }}" id="budget_amount"
+                            <input type="number" name="budget_amount" value="{{ old('budget_amount', $campaign->budget_amount-0) }}" id="budget_amount"
                                 class="form-input" placeholder="0">
                             <span class="form-help">Bao gồm chi phí KOL và sản xuất nội dung</span>
                         </div>
@@ -756,19 +756,19 @@
                         <div class="budget-calculator">
                             <div class="budget-item">
                                 <span class="budget-label">Chi phí KOL (70%)</span>
-                                <span class="budget-value kol-fee">₫0</span>
+                                <span class="budget-value kol-fee">₫{{formatDisplayNumber($campaign->budget_amount * 0.7)}}</span>
                             </div>
                             <div class="budget-item">
                                 <span class="budget-label">Sản xuất nội dung (20%)</span>
-                                <span class="budget-value produce-fee">₫0</span>
+                                <span class="budget-value produce-fee">₫{{formatDisplayNumber($campaign->budget_amount * 0.2)}}</span>
                             </div>
                             <div class="budget-item">
                                 <span class="budget-label">Phí quản lý (10%)</span>
-                                <span class="budget-value manage-fee">₫0</span>
+                                <span class="budget-value manage-fee">₫{{formatDisplayNumber($campaign->budget_amount * 0.1)}}</span>
                             </div>
                             <div class="budget-item budget-total">
                                 <span class="budget-label">Tổng ngân sách</span>
-                                <span class="budget-value">₫0</span>
+                                <span class="budget-value totalBudget">₫{{formatDisplayNumber($campaign->budget_amount)}}</span>
                             </div>
                         </div>
                     </div>
@@ -794,7 +794,7 @@
                                     data-categories="{{ ',' . $item->categories->implode('id', ',') . ',' }}">
                                     <input type="checkbox" class="kol-checkbox" name="kols[]"
                                         value="{{ $item->id }}"
-                                        {{ in_array($item->id, old('kols', [])) ? 'checked' : '' }}>
+                                        {{ in_array($item->id, old('kols', $campaign->kols->pluck('id')->toArray())) ? 'checked' : '' }}>
                                     {{-- <div class="kol-avatar">LN</div> --}}
                                     <img class="kol-avatar" src="{{ $item->getFirstMediaUrl('media') }}">
                                     <div class="kol-info">
@@ -809,7 +809,7 @@
                                     </div>
                                     <div class="kol-price">
                                         <div class="price-label">Giá ước tính</div>
-                                        <div class="price-value">₫{{ numberFormat($item->price) }}</div>
+                                        <div class="price-value">₫{{ formatDisplayNumber($item->price,2) }}</div>
                                     </div>
                                 </div>
                             @endforeach
@@ -823,16 +823,16 @@
                         <div class="form-group">
                             <label class="form-label">Loại nội dung</label>
                             <select class="form-select" name="content_type">
-                                <option value="short_video" @if (old('content_type') == 'short_video') selected @endif>
+                                <option value="short_video" @if (old('content_type', $campaign->content_type) == 'short_video') selected @endif>
                                     Video
                                     (15-60s)</option>
-                                <option value="videos" @if (old('content_type') == 'videos') selected @endif>
+                                <option value="videos" @if (old('content_type', $campaign->content_type) == 'videos') selected @endif>
                                     Chuỗi video
                                 </option>
-                                <option value="livestream" @if (old('content_type') == 'livestream') selected @endif>
+                                <option value="livestream" @if (old('content_type', $campaign->content_type) == 'livestream') selected @endif>
                                     Phát trực tiếp
                                 </option>
-                                <option value="image_post" @if (old('content_type') == 'image_post') selected @endif>
+                                <option value="image_post" @if (old('content_type', $campaign->content_type) == 'image_post') selected @endif>
                                     Bài đăng hình ảnh</option>
                             </select>
                         </div>
@@ -876,15 +876,15 @@
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Số KOL đã chọn</span>
-                            <span class="preview-value preview-kols">0 KOL</span>
+                            <span class="preview-value preview-kols">{{$campaign->kols->count()}} KOL</span>
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Tổng ngân sách</span>
-                            <span class="preview-value preview-budget">₫0</span>
+                            <span class="preview-value preview-budget">₫{{formatDisplayNumber($campaign->budget_amount)}}</span>
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Chi phí trung bình / KOL</span>
-                            <span class="preview-value preview-fee">₫0</span>
+                            <span class="preview-value preview-fee">₫{{formatDisplayNumber($campaign->kols->avg('price'))}}</span>
                         </div>
                     </div>
 
@@ -917,24 +917,18 @@
                         <h3 class="preview-title">KOL đã chọn (0)</h3>
 
                         <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                            {{-- <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div class="kol-avatar" style="width: 36px; height: 36px; font-size: 14px;">LN</div>
-                                <div style="flex: 1;">
-                                    <div class="fw-600 fs-14 color-gray-700">Linh Nguyễn</div>
-                                    <div class="fs-12 color-gray-600">2.3 triệu người theo dõi</div>
-                                </div>
-                                <span style="font-weight: 600; color: var(--primary);">₫15 triệu</span>
-                            </div>
+                            @forEach($campaign->kols as $item)
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <div class="kol-avatar"
-                                    style="width: 36px; height: 36px; font-size: 14px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                                    MT</div>
+                                <img class="kol-avatar" style="width: 36px; height: 36px; font-size: 14px;" src="{{$item->getFirstMediaUrl('media')}}">
                                 <div style="flex: 1;">
-                                    <div style="font-weight: 500; font-size: 14px;">Minh Trần</div>
-                                    <div style="font-size: 12px; color: var(--gray-600);">1.8 triệu người theo dõi</div>
+                                    <div class="fw-600 fs-14 color-gray-700">{{$item->display_name}}</div>
+                                    <div class="fs-12 color-gray-600">
+                                        {{formatDisplayNumber($item->followers,2)}} người theo dõi
+                                    </div>
                                 </div>
-                                <span style="font-weight: 600; color: var(--primary);">₫12 triệu</span>
-                            </div> --}}
+                                <span style="font-weight: 600; color: var(--primary);">₫{{formatDisplayNumber($item->price)}}</span>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -988,6 +982,7 @@
                 $(`input[name="${name}"]`).on('input', updateForecastFromInputs);
             });
             updateForecastFromInputs();
+            campaignDuration();
         });
 
         function initKOLSelection() {
@@ -1014,16 +1009,16 @@
             $('#budget_amount').on('input', function() {
                 var budget = parseInt($(this).val()) || 0;
 
-                $('.budget-item:nth-child(1) .budget-value').text(
+                $('.kol-fee').text(
                     `₫${numberFormat(budget * 0.7)}`
                 );
-                $('.budget-item:nth-child(2) .budget-value').text(
+                $('.produce-fee').text(
                     `₫${numberFormat(budget * 0.2)}`
                 );
-                $('.budget-item:nth-child(3) .budget-value').text(
+                $('.manage-fee').text(
                     `₫${numberFormat(budget * 0.1)}`
                 );
-                $('.budget-total .budget-value, .preview-budget').text(
+                $('.totalBudget, .preview-budget').text(
                     `₫${numberFormat(budget)}`
                 );
             });
@@ -1092,6 +1087,9 @@
         }
 
         $('#start_date, #end_date').on('change', function() {
+            campaignDuration();
+        });
+        function campaignDuration() {
             let date1 = new Date($('#start_date').val());
             let date2 = new Date($('#end_date').val());
 
@@ -1105,7 +1103,7 @@
             } else {
                 $('.preview-duration').text('0 ngày');
             }
-        });
+        }
 
         function updateSelectedKOLs() {
             var selectedCards = $('.kol-select-card.selected');

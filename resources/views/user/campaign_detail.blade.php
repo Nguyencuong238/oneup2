@@ -126,8 +126,8 @@
         }
 
         .status-active {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
         }
 
         .status-draft {
@@ -136,8 +136,8 @@
         }
 
         .status-completed {
-            background: rgba(0, 102, 255, 0.1);
-            color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
         }
 
         .status-paused {
@@ -633,6 +633,7 @@
                         'paused' => 'Tạm dừng',
                         'completed' => 'Đã hoàn thành',
                         'cancelled' => 'Đã hủy',
+                        'draft' => 'Bản nháp'
                     ];
                 @endphp
                 <span class="campaign-status status-{{ $campaign->status }}">{{ $statusText[$campaign->status] }}</span>
@@ -690,6 +691,7 @@
                         </div>
                     </div>
                     <div class="campaign-actions">
+                        @if(in_array($campaign->status, ['active', 'paused']))
                         <form action="{{ route('user.campaign.changeStatus') }}" method="post" id="change-status-form">
                             @csrf
                             <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
@@ -700,6 +702,7 @@
                                 {{ $campaign->status == 'active' ? 'Tạm dừng' : 'Tiếp tục' }}
                             </button>
                         </form>
+                        @endif
                         <button class="btn btn-secondary btn-small" id="clone-campaign">Nhân bản</button>
                     </div>
                 </div>
