@@ -577,120 +577,114 @@
         <div class="container">
             <!-- Search Bar -->
             <div class="search-bar fade-in">
-                <div class="search-input-group">
-                    <input type="text" class="search-input" placeholder="Tìm theo tên, tài khoản hoặc từ khóa...">
-                    <button class="btn btn-primary">
+                <form method="GET" action="{{ route('kols') }}" class="search-input-group">
+                    <input 
+                        type="text" 
+                        name="search" 
+                        value="{{ request('search') }}" 
+                        class="search-input" 
+                        placeholder="Tìm theo tên, tài khoản hoặc từ khóa..."
+                    >
+                    <button class="btn btn-primary" type="submit">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" 
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" 
+                                clip-rule="evenodd"/>
                         </svg>
                         Tìm kiếm
                     </button>
-                </div>
+                </form>
             </div>
+                <form method="GET" action="{{ route('kols') }}" class="search-bar fade-in mb-6">
+                    <div class="filters-section mt-6">
+                        <div class="filters-content" id="filtersContent">
+                            <div class="filter-group">
+                                <label class="filter-label">Danh mục</label>
+                                <select name="category" class="filter-select">
+                                    <option value="all">Tất cả danh mục</option>
+                                    <option value="beauty-fashion" {{ request('category') == 'beauty-fashion' ? 'selected' : '' }}>Beauty & Fashion</option>
+                                    <option value="food-drink" {{ request('category') == 'food-drink' ? 'selected' : '' }}>Food & Drink</option>
+                                    <option value="travel" {{ request('category') == 'travel' ? 'selected' : '' }}>Travel</option>
+                                    <option value="technology" {{ request('category') == 'technology' ? 'selected' : '' }}>Technology</option>
+                                    <option value="lifestyle" {{ request('category') == 'lifestyle' ? 'selected' : '' }}>Lifestyle</option>
+                                </select>
+                            </div>
 
-            <!-- Filters Section -->
-            <div class="filters-section fade-in">
-                <div class="filters-header">
-                    <div class="filters-title">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
-                        </svg>
-                        Bộ lọc
-                    </div>
-                    <div class="filters-toggle" onclick="toggleFilters()">
-                        <span id="filterToggleText">Ẩn bộ lọc</span>
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                </div>
-                
-                <div class="filters-content" id="filtersContent">
-                    <div class="filter-group">
-                        <label class="filter-label">Danh mục</label>
-                        <select class="filter-select">
-                            <option>Tất cả danh mục</option>
-                            <option>Thời trang & Phong cách</option>
-                            <option>Làm đẹp & Trang điểm</option>
-                            <option>Ẩm thực & Nấu ăn</option>
-                            <option>Du lịch & Khám phá</option>
-                            <option>Công nghệ</option>
-                            <option>Thể hình & Sức khỏe</option>
-                            <option>Giải trí</option>
-                            <option>Giáo dục</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label class="filter-label">Khoảng người theo dõi</label>
-                        <select class="filter-select">
-                            <option>Tất cả</option>
-                            <option>Nano (1K - 10K)</option>
-                            <option>Micro (10K - 100K)</option>
-                            <option>Trung cấp (100K - 500K)</option>
-                            <option>Macro (500K - 1M)</option>
-                            <option>Mega (1M+)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label class="filter-label">Tỷ lệ tương tác</label>
-                        <select class="filter-select">
-                            <option>Bất kỳ</option>
-                            <option>Trên 1%</option>
-                            <option>Trên 3%</option>
-                            <option>Trên 5%</option>
-                            <option>Trên 8%</option>
-                            <option>Trên 10%</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label class="filter-label">Khu vực</label>
-                        <select class="filter-select">
-                            <option>Tất cả khu vực</option>
-                            <option>Hà Nội</option>
-                            <option>TP. Hồ Chí Minh</option>
-                            <option>Đà Nẵng</option>
-                            <option>Cần Thơ</option>
-                            <option>Hải Phòng</option>
-                            <option>Khác</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label class="filter-label">Ngôn ngữ</label>
-                        <select class="filter-select">
-                            <option>Tất cả ngôn ngữ</option>
-                            <option>Tiếng Việt</option>
-                            <option>Tiếng Anh</option>
-                            <option>Song ngữ</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label class="filter-label">Trạng thái xác minh</label>
-                        <div class="filter-chips">
-                            <button class="filter-chip active">Tất cả</button>
-                            <button class="filter-chip">Chỉ tài khoản xác minh</button>
-                            <button class="filter-chip">Ngôi sao đang lên</button>
+                            {{-- Followers --}}
+                            <div class="filter-group">
+                                <label class="filter-label">Khoảng người theo dõi</label>
+                                <select name="followers" class="filter-select">
+                                    <option value="all">Tất cả</option>
+                                    <option value="nano" {{ request('followers')=='nano'?'selected':'' }}>Nano (1K–10K)</option>
+                                    <option value="micro" {{ request('followers')=='micro'?'selected':'' }}>Micro (10K–100K)</option>
+                                    <option value="mid" {{ request('followers')=='mid'?'selected':'' }}>Trung cấp (100K–500K)</option>
+                                    <option value="macro" {{ request('followers')=='macro'?'selected':'' }}>Macro (500K–1M)</option>
+                                    <option value="mega" {{ request('followers')=='mega'?'selected':'' }}>Mega (1M+)</option>
+                                </select>
+                            </div>
+
+                            {{-- Engagement rate --}}
+                            <div class="filter-group">
+                                <label class="filter-label">Tỷ lệ tương tác</label>
+                                <select name="engagement" class="filter-select">
+                                    <option value="any">Bất kỳ</option>
+                                    <option value="1" {{ request('engagement')=='1'?'selected':'' }}>Trên 1%</option>
+                                    <option value="3" {{ request('engagement')=='3'?'selected':'' }}>Trên 3%</option>
+                                    <option value="5" {{ request('engagement')=='5'?'selected':'' }}>Trên 5%</option>
+                                    <option value="8" {{ request('engagement')=='8'?'selected':'' }}>Trên 8%</option>
+                                    <option value="10" {{ request('engagement')=='10'?'selected':'' }}>Trên 10%</option>
+                                </select>
+                            </div>
+
+                            {{-- Thành phố --}}
+                            <div class="filter-group">
+                                <label class="filter-label">Khu vực</label>
+                                <select name="location_city" class="filter-select">
+                                    <option value="all">Tất cả khu vực</option>
+                                    <option value="Hà Nội" {{ request('location_city')=='Hà Nội'?'selected':'' }}>Hà Nội</option>
+                                    <option value="TP.HCM" {{ request('location_city')=='TP.HCM'?'selected':'' }}>TP.HCM</option>
+                                    <option value="Đà Nẵng" {{ request('location_city')=='Đà Nẵng'?'selected':'' }}>Đà Nẵng</option>
+                                    <option value="Khác" {{ request('location_city')=='Khác'?'selected':'' }}>Khác</option>
+                                </select>
+                            </div>
+
+                            {{-- Ngôn ngữ --}}
+                            <div class="filter-group">
+                                <label class="filter-label">Ngôn ngữ</label>
+                                <select name="language" class="filter-select">
+                                    <option value="all">Tất cả ngôn ngữ</option>
+                                    <option value="vi" {{ request('language')=='vi'?'selected':'' }}>Tiếng Việt</option>
+                                    <option value="en" {{ request('language')=='en'?'selected':'' }}>Tiếng Anh</option>
+                                    <option value="bi" {{ request('language')=='bi'?'selected':'' }}>Song ngữ</option>
+                                </select>
+                            </div>
+
+                            {{-- Verified --}}
+                            <div class="filter-group">
+                                <label class="filter-label">Trạng thái xác minh</label>
+                                <select name="is_verified" class="filter-select">
+                                    <option value="all">Tất cả</option>
+                                    <option value="verified" {{ request('is_verified')=='verified'?'selected':'' }}>Đã xác minh</option>
+                                    <option value="rising" {{ request('is_verified')=='rising'?'selected':'' }}>Ngôi sao đang lên</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="flex items-center gap-3 mt-4">
+                            <button class="btn btn-primary">Áp dụng bộ lọc</button>
+                            <a href="{{ route('kols') }}" class="btn btn-outline" style="height:41px">Xóa tất cả</a>
                         </div>
                     </div>
-                </div>
-                
-                <div class="filter-actions">
-                    <button class="btn btn-primary">Áp dụng</button>
-                    <button class="btn btn-outline">Xóa tất cả</button>
-                    <span style="margin-left: auto; color: var(--gray-600); font-size: 14px;">
-                        3 bộ lọc đang được áp dụng
-                    </span>
-                </div>
-            </div>
+                </form>
 
             <!-- Results Header -->
             <div class="results-header fade-in">
-                <div class="results-count">
-                    Hiển thị <strong>1-12</strong> trong tổng số <strong>2,847</strong> KOL
+                <div class="results-count fade-in">
+                    Hiển thị 
+                    <strong>{{ $kols->firstItem() ?? 0 }}–{{ $kols->lastItem() ?? 0 }}</strong> 
+                    trong tổng số 
+                    <strong>{{ $kols->total() }}</strong> KOL
                 </div>
                 <div class="results-controls">
                     <select class="sort-dropdown">
@@ -718,37 +712,48 @@
 
             <!-- KOL Cards Grid -->
             <div class="kol-grid">
-                @foreach(range(1,12) as $i)
+                @foreach($kols as $k)
                 <div class="kol-card fade-in">
                     <div class="kol-card-header">
-                        <img src="https://via.placeholder.com/400x200/FF0050/ffffff?text=TikTok+KOL+{{$i}}" alt="KOL Cover" class="kol-cover-image">
-                        <span class="kol-badge verified">Đã xác minh</span>
+                        <span class="kol-badge {{ $k->is_verified ? 'verified' : 'not-verified' }}">
+                            {{ $k->is_verified ? 'Đã xác minh' : 'Chưa xác minh' }}
+                        </span>
                         <div class="trending-tag">🔥 Thịnh hành</div>
                         <div class="kol-avatar-wrapper">
-                            <div class="kol-avatar">K{{$i}}</div>
+                            <div class="kol-avatar">
+                                <img src="{{ $k->getFirstMediaUrl('media') }}" alt="KOL Cover" class="kol-cover-image">
+                            </div>
                         </div>
                     </div>
                     <div class="kol-card-body">
                         <div class="kol-info">
                             <div class="kol-name">
-                                KOL Mẫu {{$i}}
+                                {{$k->display_name}}
                                 <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
                                 </svg>
                             </div>
-                            <div class="kol-handle">@kol{{$i}}</div>
-                            <span class="kol-category">Danh mục: Thời trang</span>
+                            <div class="kol-handle">{{ $k->username }}</div>
+                            <span class="kol-category">Danh mục:
+                                @if($k->categories->isEmpty())
+                                    --
+                                @else
+                                    @foreach($k->categories as $category)
+                                        {{ $category->name }}
+                                    @endforeach
+                                @endif
+                            </span>
                         </div>
                         <p class="kol-bio">
-                            Influencer chia sẻ nội dung hấp dẫn, có phong cách riêng và tương tác cao với khán giả.
+                            {{$k->bio}}
                         </p>
                         <div class="kol-stats">
                             <div class="kol-stat">
-                                <span class="kol-stat-value">{{ rand(10,100) }}K</span>
+                                <span class="kol-stat-value">{{$k->followers}}</span>
                                 <span class="kol-stat-label">Người theo dõi</span>
                             </div>
                             <div class="kol-stat">
-                                <span class="kol-stat-value">{{ rand(2,8) }}%</span>
+                                <span class="kol-stat-value">{{ $k->engagement }}%</span>
                                 <span class="kol-stat-label">Tương tác</span>
                             </div>
                             <div class="kol-stat">
@@ -758,7 +763,7 @@
                         </div>
                         <div class="kol-metrics">
                             <span class="metric-tag good">✨ Chất lượng cao</span>
-                            <span class="metric-tag">📍 Việt Nam</span>
+                            <span class="metric-tag">📍 {{ $k->location_country }}</span>
                             <span class="metric-tag">💰 Trung bình</span>
                         </div>
                         <div class="kol-actions">
@@ -775,13 +780,35 @@
             </div>
 
             <!-- Pagination -->
-            <div class="pagination fade-in">
-                <button class="btn btn-outline" disabled>← Trước</button>
-                <button class="btn btn-primary">1</button>
-                <button class="btn btn-outline">2</button>
-                <button class="btn btn-outline">3</button>
-                <button class="btn btn-outline">Tiếp →</button>
+            @if ($kols->hasPages())
+            <div class="pagination fade-in flex items-center justify-center gap-2 mt-6">
+
+                {{-- Nút Trước --}}
+                @if ($kols->onFirstPage())
+                    <button class="btn btn-outline opacity-50 cursor-not-allowed" disabled>← Trước</button>
+                @else
+                    <a href="{{ $kols->previousPageUrl() }}" class="btn btn-outline">← Trước</a>
+                @endif
+
+                {{-- Các trang --}}
+                @foreach (range(1, $kols->lastPage()) as $page)
+                    @if ($page == $kols->currentPage())
+                        <button class="btn btn-primary">{{ $page }}</button>
+                    @else
+                        <a href="{{ $kols->url($page) }}" class="btn btn-outline">{{ $page }}</a>
+                    @endif
+                @endforeach
+
+                {{-- Nút Tiếp --}}
+                @if ($kols->hasMorePages())
+                    <a href="{{ $kols->nextPageUrl() }}" class="btn btn-outline">Tiếp →</a>
+                @else
+                    <button class="btn btn-outline opacity-50 cursor-not-allowed" disabled>Tiếp →</button>
+                @endif
+
             </div>
+            @endif
+
         </div>
     </section>
 @endsection

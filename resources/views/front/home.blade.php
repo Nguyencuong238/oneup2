@@ -442,38 +442,16 @@
                 <div class="kol-showcase">
                     <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 KOLs thịnh hành hiện nay</h4>
                     <div class="kol-grid">
+                        @foreach($kols as $k)
                         <div class="kol-card-mini">
-                            <div class="kol-avatar">NT</div>
+                            <div class="kol-avatar">{{ $k->initials  }}</div>
                             <div class="kol-info-mini">
-                                <div class="kol-name-mini">Ngọc Trinh</div>
-                                <div class="kol-followers">2.8M người theo dõi</div>
+                                <div class="kol-name-mini">{{ $k->display_name }}</div>
+                                <div class="kol-followers">{{ $k->followers }} người theo dõi</div>
                             </div>
-                            <div class="kol-engagement">5.8%</div>
+                            <div class="kol-engagement">{{ $k->engagement }} %</div>
                         </div>
-                        <div class="kol-card-mini">
-                            <div class="kol-avatar">MH</div>
-                            <div class="kol-info-mini">
-                                <div class="kol-name-mini">Minh Hằng</div>
-                                <div class="kol-followers">1.5M người theo dõi</div>
-                            </div>
-                            <div class="kol-engagement">7.2%</div>
-                        </div>
-                        <div class="kol-card-mini">
-                            <div class="kol-avatar">TL</div>
-                            <div class="kol-info-mini">
-                                <div class="kol-name-mini">Thùy Linh</div>
-                                <div class="kol-followers">890K người theo dõi</div>
-                            </div>
-                            <div class="kol-engagement">9.1%</div>
-                        </div>
-                        <div class="kol-card-mini">
-                            <div class="kol-avatar">HA</div>
-                            <div class="kol-info-mini">
-                                <div class="kol-name-mini">Hương An</div>
-                                <div class="kol-followers">650K người theo dõi</div>
-                            </div>
-                            <div class="kol-engagement">8.5%</div>
-                        </div>
+                        @endforeach
                     </div>
                     <div style="text-align: center; margin-top: 1.5rem;">
                         <a href="#kol-list" style="color: var(--primary); font-weight: 600;">
@@ -569,14 +547,13 @@
                 </p>
             </div>
 
-            <div class="kol-filter-tabs">
-                <button class="filter-tab active">Tất cả danh mục</button>
-                <button class="filter-tab">Thời trang</button>
-                <button class="filter-tab">Làm đẹp</button>
-                <button class="filter-tab">Ẩm thực</button>
-                <button class="filter-tab">Công nghệ</button>
-                <button class="filter-tab">Du lịch</button>
-                <button class="filter-tab">Phong cách sống</button>
+            <div class="kol-filter-tabs flex flex-wrap gap-2 mb-8">
+                <button class="filter-tab active" data-category="">Tất cả danh mục</button>
+                <button class="filter-tab" data-category="beauty-fashion">Beauty & Fashion</button>
+                <button class="filter-tab" data-category="lifestyle">Lifestyle</button>
+                <button class="filter-tab" data-category="technology">Technology</button>
+                <button class="filter-tab" data-category="food-drink">Food & Drink</button>
+                <button class="filter-tab" data-category="travel">Travel</button>
             </div>
 
             <div class="kol-table">
@@ -593,109 +570,57 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="kol-profile">
-                                    <div class="kol-avatar-large">NT</div>
-                                    <div class="kol-details">
-                                        <div style="font-weight: 600;">Ngọc Trinh</div>
-                                        <div class="kol-handle">@ngoctrinh.official</div>
+                        @foreach($kols as $k)
+                            <tr data-category="{{ $k->categories->isEmpty() ? '' : $k->categories->pluck('slug')->join(' ') }}">
+                                <td>
+                                    <div class="kol-profile">
+                                        <div class="kol-avatar-large">{{ $k->initials }}</div>
+                                        <div class="kol-details">
+                                            <div style="font-weight: 600;">{{ $k->display_name }}</div>
+                                            <div class="kol-handle">{{$k->username }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>Thời trang</td>
-                            <td><strong>2.8M</strong></td>
-                            <td><span class="metric-badge high">5.8%</span></td>
-                            <td>450K</td>
-                            <td><span class="metric-badge high">92/100</span></td>
-                            <td>
-                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="kol-profile">
-                                    <div class="kol-avatar-large">ST</div>
-                                    <div class="kol-details">
-                                        <div style="font-weight: 600;">Sơn Tùng</div>
-                                        <div class="kol-handle">@sontung.mtp</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Âm nhạc</td>
-                            <td><strong>4.2M</strong></td>
-                            <td><span class="metric-badge high">7.2%</span></td>
-                            <td>850K</td>
-                            <td><span class="metric-badge high">95/100</span></td>
-                            <td>
-                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="kol-profile">
-                                    <div class="kol-avatar-large">CP</div>
-                                    <div class="kol-details">
-                                        <div style="font-weight: 600;">Chi Pu</div>
-                                        <div class="kol-handle">@chipupu</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Giải trí</td>
-                            <td><strong>1.5M</strong></td>
-                            <td><span class="metric-badge medium">3.2%</span></td>
-                            <td>220K</td>
-                            <td><span class="metric-badge medium">78/100</span></td>
-                            <td>
-                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="kol-profile">
-                                    <div class="kol-avatar-large">LH</div>
-                                    <div class="kol-details">
-                                        <div style="font-weight: 600;">Lan Hương</div>
-                                        <div class="kol-handle">@lanhuong.beauty</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Làm đẹp</td>
-                            <td><strong>890K</strong></td>
-                            <td><span class="metric-badge high">8.5%</span></td>
-                            <td>180K</td>
-                            <td><span class="metric-badge high">88/100</span></td>
-                            <td>
-                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="kol-profile">
-                                    <div class="kol-avatar-large">TN</div>
-                                    <div class="kol-details">
-                                        <div style="font-weight: 600;">Thanh Nam</div>
-                                        <div class="kol-handle">@thanhnam.tech</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Công nghệ</td>
-                            <td><strong>650K</strong></td>
-                            <td><span class="metric-badge high">9.2%</span></td>
-                            <td>150K</td>
-                            <td><span class="metric-badge high">90/100</span></td>
-                            <td>
-                                <button class="btn btn-primary btn-small">Xem hồ sơ</button>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    @if($k->categories->isEmpty())
+                                        --
+                                    @else
+                                        @foreach($k->categories as $category)
+                                            {{ $category->name }}
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td><strong>{{ $k->followers }}</strong></td>
+                                <td><span class="metric-badge high">{{ $k->engagement }}%</span></td>
+                                <td>{{ rand(100, 1000) }}K</td>
+                                <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
+                                <td>
+                                    @auth
+                                        <a href="{{ route('user.kolProfile', $k->id) }}" class="btn btn-primary btn-small" style="height:32px; width: 114px">
+                                            Xem hồ sơ
+                                        </a>
+                                    @else
+                                        <a href="{{ route('user.login', ['redirect' => route('user.kolProfile', $k->id)]) }}" class="btn btn-primary btn-small">
+                                            Đăng nhập để xem
+                                        </a>
+                                    @endauth
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="{{ route('user.register') }}" class="btn btn-primary btn-large">
-                    Xem tất cả hơn 10.000 KOL
-                </a>
+                @auth
+                    <a href="{{ route('user.kolExplorer') }}" class="btn btn-primary btn-large">
+                        Xem tất cả hơn 10.000 KOL
+                    </a>
+                @else
+                    <a href="{{ route('user.login', ['redirect' => route('user.kolExplorer')]) }}" class="btn btn-primary btn-large">
+                        Đăng nhập để xem tất cả KOL
+                    </a>
+                @endauth
             </div>
         </div>
     </section>
@@ -918,4 +843,30 @@
         //     });
         // });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.filter-tab');
+        const rows = document.querySelectorAll('.kol-table tbody tr');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Bỏ active các tab khác
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const category = tab.dataset.category;
+                
+                rows.forEach(row => {
+                    const rowCats = row.dataset.category?.split(' ') || [];
+                    if (category === '' || rowCats.includes(category)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+    </script>
+
 @endsection

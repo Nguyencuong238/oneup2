@@ -16,6 +16,36 @@ class Kol extends Model implements HasMedia
     use HasCategories;
     use InteractsWithMedia;
 
+     protected $fillable = [
+        'platform_id',
+        'username',
+        'display_name',
+        'bio',
+        'location_country',
+        'location_city',
+        'language',
+        'is_verified',
+        'tier',
+        'status',
+        'engagement',
+        'followers',
+        'trust_score',
+        'price',
+    ];
+
+    public function getInitialsAttribute()
+    {
+        $name = $this->display_name;
+        $words = preg_split('/\s+/', trim($name));
+
+        $initials = collect($words)
+            ->filter()
+            ->map(fn($w) => mb_strtoupper(mb_substr($w, 0, 1)))
+            ->join('');
+
+        return $initials;
+    }
+
     public function registerMediaCollections(Media $media = null): void
     {
         $this

@@ -27,7 +27,8 @@ class KolController extends Controller
                     $q->where('slug', request('category'));
                 });
             })
-            ->paginate();
+            ->take()
+            ->get();
 
         return view('backend.kols.index', compact('kols'));
     }
