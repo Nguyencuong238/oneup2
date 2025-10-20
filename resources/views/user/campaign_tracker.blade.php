@@ -1,8 +1,8 @@
 @extends('layouts.user')
 
 @section('meta')
-    <meta name="description" content="OneUp Campaign Tracker - Real-time campaign performance tracking">
-    <title>Campaign Tracker - OneUp KOL Analytics</title>
+    <meta name="description" content="OneUp Campaign Tracker - Theo dõi hiệu suất chiến dịch theo thời gian thực">
+    <title>Theo dõi chiến dịch - OneUp KOL Analytics</title>
 @endsection
 
 @section('css')
@@ -692,13 +692,13 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Campaign Tracker</h1>
-                <div class="date-range-selector">
+                <h1 class="page-title">Theo dõi chiến dịch</h1>
+                <div class="date-range-selector color-gray-600">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>Real-time</span>
+                    <span>Thời gian thực</span>
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -714,10 +714,10 @@
                             d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                    Export Data
+                    Xuất dữ liệu
                 </button>
                 <button class="btn btn-primary btn-small">
-                    Add Content Link
+                    Thêm liên kết nội dung
                 </button>
             </div>
         </div>
@@ -727,38 +727,38 @@
             <!-- Campaign Selector -->
             <div class="campaign-selector-card">
                 <div class="selector-header">
-                    <h2 class="selector-title">Select Campaign to Track</h2>
+                    <h2 class="selector-title">Chọn chiến dịch để theo dõi</h2>
                     <select class="campaign-dropdown">
-                        <option selected>Summer Fashion Collection 2024</option>
-                        <option>Beauty Product Launch</option>
-                        <option>Food Festival 2024</option>
-                        <option>Gaming Tournament</option>
+                        <option selected>Bộ sưu tập thời trang mùa hè 2024</option>
+                        <option>Ra mắt sản phẩm làm đẹp</option>
+                        <option>Lễ hội ẩm thực 2024</option>
+                        <option>Giải đấu game</option>
                     </select>
                 </div>
                 <div class="campaign-info">
                     <div class="info-item">
-                        <span class="info-label">Status</span>
-                        <span class="info-value" style="color: var(--success);">Active</span>
+                        <span class="info-label">Trạng thái</span>
+                        <span class="info-value" style="color: var(--success);">Đang hoạt động</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Start Date</span>
-                        <span class="info-value">Jun 15, 2024</span>
+                        <span class="info-label">Ngày bắt đầu</span>
+                        <span class="info-value">{{$campaign->created_at->format('d/m/Y')}}</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">End Date</span>
-                        <span class="info-value">Aug 30, 2024</span>
+                        <span class="info-label">Ngày kết thúc</span>
+                        <span class="info-value">{{$campaign->updated_at->format('d/m/Y')}}</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Total KOLs</span>
-                        <span class="info-value">8 KOLs</span>
+                        <span class="info-label">Tổng KOL</span>
+                        <span class="info-value">{{$campaign->kols->count()}} KOL</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Budget</span>
-                        <span class="info-value">₫80M</span>
+                        <span class="info-label">Ngân sách</span>
+                        <span class="info-value">₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Target Reach</span>
-                        <span class="info-value">15M views</span>
+                        <span class="info-label">Mục tiêu tiếp cận</span>
+                        <span class="info-value">{{ numberFormat($campaign->target_reach) }} lượt xem</span>
                     </div>
                 </div>
             </div>
@@ -767,10 +767,10 @@
             <div class="realtime-grid">
                 <div class="realtime-card">
                     <div class="realtime-header">
-                        <span class="realtime-title">Total Views</span>
+                        <span class="realtime-title">Tổng lượt xem</span>
                         <div class="live-indicator">
                             <span class="live-dot"></span>
-                            <span>LIVE</span>
+                            <span>TRỰC TIẾP</span>
                         </div>
                     </div>
                     <div class="realtime-value">12,547,823</div>
@@ -780,16 +780,16 @@
                                 d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span>+125.3K last hour</span>
+                        <span>+125.3K giờ qua</span>
                     </div>
                 </div>
 
                 <div class="realtime-card">
                     <div class="realtime-header">
-                        <span class="realtime-title">Total Likes</span>
+                        <span class="realtime-title">Tổng lượt thích</span>
                         <div class="live-indicator">
                             <span class="live-dot"></span>
-                            <span>LIVE</span>
+                            <span>TRỰC TIẾP</span>
                         </div>
                     </div>
                     <div class="realtime-value">856,342</div>
@@ -799,16 +799,16 @@
                                 d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span>+8.5K last hour</span>
+                        <span>+8.5K giờ qua</span>
                     </div>
                 </div>
 
                 <div class="realtime-card">
                     <div class="realtime-header">
-                        <span class="realtime-title">Comments</span>
+                        <span class="realtime-title">Bình luận</span>
                         <div class="live-indicator">
                             <span class="live-dot"></span>
-                            <span>LIVE</span>
+                            <span>TRỰC TIẾP</span>
                         </div>
                     </div>
                     <div class="realtime-value">45,678</div>
@@ -818,16 +818,16 @@
                                 d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span>+523 last hour</span>
+                        <span>+523 giờ qua</span>
                     </div>
                 </div>
 
                 <div class="realtime-card">
                     <div class="realtime-header">
-                        <span class="realtime-title">Shares</span>
+                        <span class="realtime-title">Chia sẻ</span>
                         <div class="live-indicator">
                             <span class="live-dot"></span>
-                            <span>LIVE</span>
+                            <span>TRỰC TIẾP</span>
                         </div>
                     </div>
                     <div class="realtime-value">23,456</div>
@@ -837,16 +837,16 @@
                                 d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span>+234 last hour</span>
+                        <span>+234 giờ qua</span>
                     </div>
                 </div>
 
                 <div class="realtime-card">
                     <div class="realtime-header">
-                        <span class="realtime-title">Eng. Rate</span>
+                        <span class="realtime-title">Tỷ lệ tương tác</span>
                         <div class="live-indicator">
                             <span class="live-dot"></span>
-                            <span>LIVE</span>
+                            <span>TRỰC TIẾP</span>
                         </div>
                     </div>
                     <div class="realtime-value">6.8%</div>
@@ -856,16 +856,16 @@
                                 d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span>+0.2% today</span>
+                        <span>+0.2% hôm nay</span>
                     </div>
                 </div>
 
                 <div class="realtime-card">
                     <div class="realtime-header">
-                        <span class="realtime-title">Conversions</span>
+                        <span class="realtime-title">Chuyển đổi</span>
                         <div class="live-indicator">
                             <span class="live-dot"></span>
-                            <span>LIVE</span>
+                            <span>TRỰC TIẾP</span>
                         </div>
                     </div>
                     <div class="realtime-value">2,847</div>
@@ -875,7 +875,7 @@
                                 d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span>+42 today</span>
+                        <span>+42 hôm nay</span>
                     </div>
                 </div>
             </div>
@@ -883,31 +883,31 @@
             <!-- Performance Chart -->
             <div class="chart-container">
                 <div class="chart-header">
-                    <h3 class="chart-title">Performance Trend (Last 7 Days)</h3>
+                    <h3 class="chart-title">Xu hướng hiệu suất (7 ngày gần nhất)</h3>
                     <div class="chart-tabs">
-                        <button class="chart-tab active">Views</button>
-                        <button class="chart-tab">Engagement</button>
-                        <button class="chart-tab">Conversions</button>
+                        <button class="chart-tab active">Lượt xem</button>
+                        <button class="chart-tab">Tương tác</button>
+                        <button class="chart-tab">Chuyển đổi</button>
                     </div>
                 </div>
                 <div class="chart-area">
-                    <span>Real-time chart will be rendered here</span>
+                    <span>Biểu đồ thời gian thực sẽ hiển thị ở đây</span>
                 </div>
             </div>
 
             <!-- Content Tracking Table -->
             <div class="tracking-container">
                 <div class="tracking-header">
-                    <h3 class="tracking-title">Content Performance Tracking</h3>
+                    <h3 class="tracking-title">Theo dõi hiệu suất nội dung</h3>
                     <div class="tracking-controls">
-                        <span style="font-size: 14px; color: var(--gray-600);">Auto-refresh in: <strong>45s</strong></span>
+                        <span style="font-size: 14px; color: var(--gray-600);">Tự động làm mới trong: <strong>45s</strong></span>
                         <button class="refresh-btn">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
                                     clip-rule="evenodd" />
                             </svg>
-                            Refresh Now
+                            Làm mới ngay
                         </button>
                     </div>
                 </div>
@@ -915,13 +915,13 @@
                 <table class="tracking-table">
                     <thead>
                         <tr>
-                            <th>Content</th>
-                            <th>Status</th>
-                            <th>Views</th>
-                            <th>Likes</th>
-                            <th>Comments</th>
-                            <th>Engagement</th>
-                            <th>Last Updated</th>
+                            <th>Nội dung</th>
+                            <th>Trạng thái</th>
+                            <th>Lượt xem</th>
+                            <th>Lượt thích</th>
+                            <th>Bình luận</th>
+                            <th>Tương tác</th>
+                            <th>Cập nhật</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -930,18 +930,18 @@
                                 <div class="content-info">
                                     <div class="content-thumbnail">🎬</div>
                                     <div class="content-details">
-                                        <div class="content-title">Summer Collection Showcase</div>
+                                        <div class="content-title">Giới thiệu bộ sưu tập mùa hè</div>
                                         <div class="content-creator">@linhnguyen_beauty</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <span class="status-badge status-live">Live</span>
+                                <span class="status-badge status-live">Trực tiếp</span>
                             </td>
-                            <td>
-                                <div class="metric-trend">
-                                    <span>3.2M</span>
-                                    <svg class="trend-icon" fill="var(--success)" viewBox="0 0 20 20">
+                                    <td>
+                                        <div class="metric-trend">
+                                            <span>3.2M</span>
+                                            <svg class="trend-icon" fill="var(--success)" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                             clip-rule="evenodd" />
@@ -962,21 +962,21 @@
                             <td>
                                 <span style="color: var(--success); font-weight: 600;">8.5%</span>
                             </td>
-                            <td>2 mins ago</td>
+                            <td>2 phút trước</td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="content-info">
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📸</div>
-                                    <div class="content-details">
-                                        <div class="content-title">Lifestyle Summer Tips</div>
+                                        <div class="content-details">
+                                        <div class="content-title">Mẹo mùa hè phong cách sống</div>
                                         <div class="content-creator">@minhtran_lifestyle</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <span class="status-badge status-live">Live</span>
+                                <span class="status-badge status-live">Trực tiếp</span>
                             </td>
                             <td>
                                 <div class="metric-trend">
@@ -1002,27 +1002,27 @@
                             <td>
                                 <span style="color: var(--primary); font-weight: 600;">6.2%</span>
                             </td>
-                            <td>5 mins ago</td>
+                            <td>5 phút trước</td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="content-info">
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🍜</div>
-                                    <div class="content-details">
-                                        <div class="content-title">Fashion Food Collab</div>
+                                        <div class="content-details">
+                                        <div class="content-title">Hợp tác Thời trang & Ẩm thực</div>
                                         <div class="content-creator">@anpham_food</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <span class="status-badge status-scheduled">Scheduled</span>
+                                <span class="status-badge status-scheduled">Lên lịch</span>
                             </td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>Posting at 7 PM</td>
+                                <td>Đăng vào 7 giờ tối</td>
                         </tr>
                         <tr>
                             <td>
@@ -1030,13 +1030,13 @@
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🎮</div>
                                     <div class="content-details">
-                                        <div class="content-title">Tech Fashion Review</div>
-                                        <div class="content-creator">@hoangvu_tech</div>
-                                    </div>
+                                            <div class="content-title">Đánh giá thời trang công nghệ</div>
+                                            <div class="content-creator">@hoangvu_tech</div>
+                                        </div>
                                 </div>
                             </td>
                             <td>
-                                <span class="status-badge status-completed">Completed</span>
+                                <span class="status-badge status-completed">Hoàn thành</span>
                             </td>
                             <td>1.5M</td>
                             <td>89K</td>
@@ -1044,7 +1044,7 @@
                             <td>
                                 <span style="color: var(--primary); font-weight: 600;">5.9%</span>
                             </td>
-                            <td>2 hours ago</td>
+                            <td>2 giờ trước</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1053,8 +1053,8 @@
             <!-- Alerts Section -->
             <div class="alerts-container">
                 <div class="alerts-header">
-                    <h3 class="alerts-title">Campaign Alerts</h3>
-                    <button class="btn btn-secondary btn-small">View All</button>
+                    <h3 class="alerts-title">Cảnh báo chiến dịch</h3>
+                    <button class="btn btn-secondary btn-small">Xem tất cả</button>
                 </div>
 
                 <div class="alert-item">
@@ -1066,9 +1066,9 @@
                         </svg>
                     </div>
                     <div class="alert-content">
-                        <div class="alert-title">Milestone Reached!</div>
-                        <div class="alert-description">Campaign has reached 10M total views - 83% of target achieved</div>
-                        <div class="alert-time">30 minutes ago</div>
+                        <div class="alert-title">Đã đạt cột mốc!</div>
+                        <div class="alert-description">Chiến dịch đã đạt 10M lượt xem tổng cộng - đạt 83% mục tiêu</div>
+                        <div class="alert-time">30 phút trước</div>
                     </div>
                 </div>
 
@@ -1081,10 +1081,9 @@
                         </svg>
                     </div>
                     <div class="alert-content">
-                        <div class="alert-title">Low Engagement Alert</div>
-                        <div class="alert-description">@hoangvu_tech's content engagement is below target (5.9% vs 7%
-                            target)</div>
-                        <div class="alert-time">2 hours ago</div>
+                        <div class="alert-title">Cảnh báo tương tác thấp</div>
+                        <div class="alert-description">Nội dung của @hoangvu_tech có mức tương tác thấp hơn mục tiêu (5.9% so với 7% mục tiêu)</div>
+                        <div class="alert-time">2 giờ trước</div>
                     </div>
                 </div>
 
@@ -1096,10 +1095,9 @@
                         </svg>
                     </div>
                     <div class="alert-content">
-                        <div class="alert-title">High Performing Content</div>
-                        <div class="alert-description">@linhnguyen_beauty's video is trending with 8.5% engagement rate
-                        </div>
-                        <div class="alert-time">3 hours ago</div>
+                        <div class="alert-title">Nội dung có hiệu suất cao</div>
+                        <div class="alert-description">Video của @linhnguyen_beauty đang thịnh hành với tỷ lệ tương tác 8.5%</div>
+                        <div class="alert-time">3 giờ trước</div>
                     </div>
                 </div>
             </div>
@@ -1156,11 +1154,11 @@
             // Show refresh animation
             const refreshBtn = document.querySelector('.refresh-btn');
             refreshBtn.innerHTML =
-                '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="animation: spin 1s linear infinite;"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Refreshing...';
+                '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="animation: spin 1s linear infinite;"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Đang làm mới...';
 
             setTimeout(() => {
                 refreshBtn.innerHTML =
-                    '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Refresh Now';
+                    '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Làm mới ngay';
             }, 1000);
         }
 

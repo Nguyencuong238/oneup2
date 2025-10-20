@@ -176,7 +176,9 @@ class UserController extends Controller
 
     public function campaignTracker($slug)
     {
-        return view('user.campaign_tracker');
+        $campaign = Campaign::with('kols')->where('slug', $slug)->firstOrFail();
+
+        return view('user.campaign_tracker', compact('campaign'));
     }
 
     public function campaignStore(Request $request)
