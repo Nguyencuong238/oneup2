@@ -46,46 +46,45 @@ class UserController extends Controller
 
     public function campaign()
     {
-        $campaigns = Campaign::paginate(12);
-            // Lấy tất cả chiến dịch
-            $campaigns = \App\Models\Campaign::with(['kols'])->get();
+        // Lấy tất cả chiến dịch
+        $campaigns = auth()->user()->campaigns;
 
-            // Tổng số chiến dịch
-            $totalCampaigns = $campaigns->count();
+        // Tổng số chiến dịch
+        $totalCampaigns = $campaigns->count();
 
-            // Chiến dịch đang hoạt động
-            $activeCampaigns = $campaigns->where('status', 'active');
-            $activeCount = $activeCampaigns->count();
+        // Chiến dịch đang hoạt động
+        $activeCampaigns = $campaigns->where('status', 'active');
+        $activeCount = $activeCampaigns->count();
 
-            // Tổng ngân sách
-            $totalBudget = $campaigns->sum('budget_amount');
+        // Tổng ngân sách
+        $totalBudget = $campaigns->sum('budget_amount');
 
-            // Đã chi (giả sử có trường spent_amount, nếu chưa có thì dùng budget_amount)
-            $spentBudget = $campaigns->sum('spent_amount') ?? $campaigns->sum('budget_amount');
+        // Đã chi (giả sử có trường spent_amount, nếu chưa có thì dùng budget_amount)
+        $spentBudget = $campaigns->sum('spent_amount') ?? $campaigns->sum('budget_amount');
 
-            // Tổng số KOL đã tham gia
-            $totalKols = $campaigns->pluck('kols')->flatten()->unique('id')->count();
+        // Tổng số KOL đã tham gia
+        $totalKols = $campaigns->pluck('kols')->flatten()->unique('id')->count();
 
-            // ROI trung bình (giả sử có trường roi, nếu chưa có thì hardcode)
-            $avgRoi = $campaigns->avg('roi');
+        // ROI trung bình (giả sử có trường roi, nếu chưa có thì hardcode)
+        $avgRoi = $campaigns->avg('roi');
 
-            // Các tab: nháp, hoàn thành, tạm dừng
-            $draftCount = $campaigns->where('status', 'draft')->count();
-            $completedCount = $campaigns->where('status', 'completed')->count();
-            $pausedCount = $campaigns->where('status', 'paused')->count();
+        // Các tab: nháp, hoàn thành, tạm dừng
+        $draftCount = $campaigns->where('status', 'draft')->count();
+        $completedCount = $campaigns->where('status', 'completed')->count();
+        $pausedCount = $campaigns->where('status', 'paused')->count();
 
-            return view('user.campaign', [
-                'campaigns' => $campaigns,
-                'totalCampaigns' => $totalCampaigns,
-                'activeCount' => $activeCount,
-                'totalBudget' => $totalBudget,
-                'spentBudget' => $spentBudget,
-                'totalKols' => $totalKols,
-                'avgRoi' => $avgRoi,
-                'draftCount' => $draftCount,
-                'completedCount' => $completedCount,
-                'pausedCount' => $pausedCount,
-            ]);
+        return view('user.campaign', [
+            'campaigns' => $campaigns,
+            'totalCampaigns' => $totalCampaigns,
+            'activeCount' => $activeCount,
+            'totalBudget' => $totalBudget,
+            'spentBudget' => $spentBudget,
+            'totalKols' => $totalKols,
+            'avgRoi' => $avgRoi,
+            'draftCount' => $draftCount,
+            'completedCount' => $completedCount,
+            'pausedCount' => $pausedCount,
+        ]);
     }
 
     public function campaignPlanner($slug = null)
@@ -93,9 +92,9 @@ class UserController extends Controller
         $campaignCategories = Category::where('type', 'campaigns')->tree()->get()->toTree();
         $kolCategories = Category::where('type', 'kols')->tree()->get()->toTree();
         $kols = Kol::all();
-        
+
         $campaign = Campaign::where('slug', $slug)->firstOrNew();
-        
+
 
         return view('user.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
     }
@@ -215,9 +214,9 @@ class UserController extends Controller
         $campaign->content_type = $request->content_type;
         $campaign->hashtag = $request->hashtag;
 
-        $campaign->roi = $campaign->budget_amount > 0 ? 
-            (($campaign->target_reach * ($campaign->target_engagement / 100)) / 
-            ($campaign->budget_amount / 1000000)) : 0;
+        $campaign->roi = $campaign->budget_amount > 0 ?
+            (($campaign->target_reach * ($campaign->target_engagement / 100)) /
+                ($campaign->budget_amount / 1000000)) : 0;
 
         $campaign->status = $request->status;
         $campaign->created_by = auth()->id();
@@ -231,7 +230,8 @@ class UserController extends Controller
         return redirect()->route('user.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
     }
 
-    public function changeStatus(Request $request) {
+    public function changeStatus(Request $request)
+    {
         $request->validate([
             'campaign_id' => 'required|integer|exists:campaigns,id',
             'status' => 'required|string|in:draft,active,paused,completed,cancelled',

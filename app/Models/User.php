@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->is_admin === true;
     }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class, 'created_by');
+    }
 }

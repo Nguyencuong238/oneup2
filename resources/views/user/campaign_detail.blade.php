@@ -703,7 +703,7 @@
                             </button>
                         </form>
                         @endif
-                        <button class="btn btn-secondary btn-small" id="clone-campaign">Nhân bản</button>
+                        <button class="btn btn-secondary btn-small" onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">Nhân bản</button>
                     </div>
                 </div>
 
@@ -749,14 +749,14 @@
                         <div>
                             <div class="metric-title">Tổng phạm vi tiếp cận</div>
                             <div class="metric-value">{{ $totalViews ? number_format($totalViews) : '0' }}</div>
-                            <div class="metric-change change-positive">
+                            {{-- <div class="metric-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+{{ isset($campaign->week_change_reach) ? number_format($campaign->week_change_reach) . ' tuần này' : '—' }}</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="metric-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -774,14 +774,14 @@
                         <div>
                             <div class="metric-title">Tỷ lệ tương tác</div>
                             <div class="metric-value">{{ $campaign->target_engagement }}%</div>
-                            <div class="metric-change change-positive">
+                            {{-- <div class="metric-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>{{ isset($campaign->week_change_engagement) ? '+' . $campaign->week_change_engagement . '%' : '—' }}</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="metric-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -798,14 +798,14 @@
                         <div>
                             <div class="metric-title">Tổng chuyển đổi</div>
                             <div class="metric-value">{{ $campaign->target_conversions - 0 }}</div>
-                            <div class="metric-change change-positive">
+                            {{-- <div class="metric-change change-positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>{{ isset($campaign->week_change_conversions) ? '+' . $campaign->week_change_conversions . ' mới' : '—' }}</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="metric-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -822,7 +822,7 @@
                             <div class="metric-title">Chi phí mỗi lượt xem</div>
                             <div class="metric-value">
                                 {{ $totalViews ? '₫' . number_format($spentBudget / max(1, $totalViews), 2) : '0' }}</div>
-                            <div class="metric-change change-negative">
+                            {{-- <div class="metric-change change-negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                                     style="transform: rotate(180deg);">
                                     <path fill-rule="evenodd"
@@ -830,7 +830,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>{{ isset($campaign->week_change_cpv) ? '-₫' . number_format($campaign->week_change_cpv, 2) . ' giảm' : '—' }}</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="metric-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -911,7 +911,7 @@
                                             <div class="bar-container">
                                                 <div class="bar-fill" style="width: {{ $engWidth }}%;"></div>
                                             </div>
-                                            <span>{{ is_numeric($eng) ? $eng . '%' : $eng }}</span>
+                                            <span class="color-gray-700">{{ is_numeric($eng) ? $eng . '%' : $eng }}</span>
                                         </div>
                                     </td>
                                     <td class="color-gray-700">{{ $k->conversions ?? 0 }}</td>

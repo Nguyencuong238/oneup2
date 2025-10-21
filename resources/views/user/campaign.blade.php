@@ -800,14 +800,14 @@
                         <div>
                             <div class="stat-title">Chiến dịch đang hoạt động</div>
                             <div class="stat-value">{{ $activeCount }}</div>
-                            <div class="stat-change positive">
+                            {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+{{ $activeCount }} tuần này</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -823,11 +823,11 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Tổng ngân sách</div>
-                            <div class="stat-value">₫{{ $totalBudget / 1000000 }}M</div>
-                            <div class="stat-change positive">
+                            <div class="stat-value">₫{{ round($totalBudget / 1000000, 2) }}M</div>
+                            {{-- <div class="stat-change positive">
                                 <span style="color: var(--gray-600);">Đã chi {{ numberFormat($spentBudget / 1000000, 3) }}
                                     triệu ₫</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -846,14 +846,14 @@
                         <div>
                             <div class="stat-title">KOL đã tham gia</div>
                             <div class="stat-value">{{ $totalKols }}</div>
-                            <div class="stat-change positive">
+                            {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+{{ $totalKols }} mới</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -868,15 +868,15 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">ROI trung bình</div>
-                            <div class="stat-value">{{ $avgRoi }}x</div>
-                            <div class="stat-change positive">
+                            <div class="stat-value">{{ round($avgRoi, 1) }}x</div>
+                            {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+0.5x</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -892,23 +892,23 @@
             <!-- Campaign Tabs -->
             <div class="campaign-tabs-container">
                 <div class="campaign-tabs">
-                    <div class="campaign-tab active" onclick="switchTab('all')">
+                    <div class="campaign-tab active" onclick="switchTab(this, 'all')">
                         Tất cả chiến dịch
                         <span class="tab-badge">{{ $totalCampaigns }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab('active')">
+                    <div class="campaign-tab" onclick="switchTab(this, 'active')">
                         Đang hoạt động
                         <span class="tab-badge">{{ $activeCount }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab('draft')">
+                    <div class="campaign-tab" onclick="switchTab(this, 'draft')">
                         Bản nháp
                         <span class="tab-badge">{{ $draftCount }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab('completed')">
+                    <div class="campaign-tab" onclick="switchTab(this, 'completed')">
                         Đã hoàn thành
                         <span class="tab-badge">{{ $completedCount }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab('paused')">
+                    <div class="campaign-tab" onclick="switchTab(this, 'paused')">
                         Tạm dừng
                         <span class="tab-badge">{{ $pausedCount }}</span>
                     </div>
@@ -917,7 +917,7 @@
                 <!-- Campaigns Grid -->
                 <div class="campaigns-grid" id="campaignsGrid">
                     @foreach ($campaigns as $campaign)
-                        <div class="campaign-card">
+                        <div class="campaign-card campaign-{{$campaign->status}}">
                             <div class="campaign-header">
                                 <span class="campaign-status status-{{ $campaign->status }}">
                                     {{ $campaign->status == 'active' ? 'Đang hoạt động' : ($campaign->status == 'draft' ? 'Bản nháp' : ($campaign->status == 'completed' ? 'Hoàn thành' : ($campaign->status == 'paused' ? 'Tạm dừng' : $campaign->status))) }}
@@ -1051,20 +1051,27 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script>
-        // Tab switching
-        function switchTab(tab) {
-            document.querySelectorAll('.campaign-tab').forEach(t => {
-                t.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        $(document).ready(function() {
 
-            // Filter campaigns based on tab
-            console.log('Switching to tab:', tab);
-        }
+            // ====== Tab switching ======
+            function switchTab(event, tab) {
+                $('.campaign-tab').removeClass('active');
+                $(event).addClass('active');
 
-        // Animate stats on load
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateValue = (element, start, end, duration) => {
+                if(tab == 'all') {
+                    $('.campaign-card').removeClass('d-none');
+                } else {
+                    $(`.campaign-card:not(.campaign-${tab})`).addClass('d-none');
+                    $('.campaign-' + tab).removeClass('d-none');
+                }
+            }
+
+            // Gắn hàm vào global scope (để HTML có thể gọi)
+            window.switchTab = switchTab;
+
+
+            // ====== Animate stats on load ======
+            function animateValue($element, start, end, duration) {
                 const range = end - start;
                 const increment = range / (duration / 10);
                 let current = start;
@@ -1076,72 +1083,83 @@
                         clearInterval(timer);
                     }
 
-                    if (element.textContent.includes('M')) {
-                        element.textContent = '₫' + Math.round(current) + 'M';
-                    } else if (element.textContent.includes('x')) {
-                        element.textContent = (current / 10).toFixed(1) + 'x';
+                    const text = $element.text();
+                    if (text.includes('M')) {
+                        $element.text('₫' + current.toFixed(2) + 'M');
+                    } else if (text.includes('x')) {
+                        $element.text(current.toFixed(1) + 'x');
                     } else {
-                        element.textContent = Math.round(current);
+                        $element.text(Math.round(current));
                     }
                 }, 10);
-            };
+            }
 
-            // Trigger animations for visible stat cards
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const statValue = entry.target.querySelector('.stat-value');
-                        if (statValue && !statValue.animated) {
-                            statValue.animated = true;
-                            const finalValue = statValue.textContent;
+            // Intersection Observer bằng jQuery (sử dụng window scroll detection)
+            const $statCards = $('.stat-card');
+            const animated = new WeakSet();
+
+            function checkVisible() {
+                $statCards.each(function() {
+                    const $card = $(this);
+                    const rect = this.getBoundingClientRect();
+
+                    if (
+                        rect.top >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                    ) {
+                        const $statValue = $card.find('.stat-value');
+                        if ($statValue.length && !animated.has($statValue[0])) {
+                            animated.add($statValue[0]);
+                            const finalValue = $statValue.text();
 
                             if (finalValue.includes('₫')) {
-                                const num = parseInt(finalValue.replace(/[^\d]/g, ''));
-                                animateValue(statValue, 0, num, 1000);
+                                const num = parseFloat(finalValue.replace(/[^\d.,]/g, ''));
+                                animateValue($statValue, 0, num, 1000);
                             } else if (finalValue.includes('x')) {
-                                const num = parseFloat(finalValue) * 10;
-                                console.log(num)
-                                animateValue(statValue, 0, num, 1000);
+                                const num = parseFloat(finalValue);
+                                animateValue($statValue, 0, num, 1000);
                             } else {
                                 const num = parseInt(finalValue);
-                                animateValue(statValue, 0, num, 1000);
+                                animateValue($statValue, 0, num, 1000);
                             }
                         }
                     }
                 });
-            });
+            }
 
-            document.querySelectorAll('.stat-card').forEach(card => {
-                observer.observe(card);
-            });
+            $(window).on('scroll', checkVisible);
+            checkVisible(); // chạy lần đầu khi load
 
-            // Animate progress bars
+
+            // ====== Animate progress bars ======
             setTimeout(() => {
-                document.querySelectorAll('.progress-fill').forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0';
+                $('.progress-fill').each(function() {
+                    const $bar = $(this);
+                    const width = $bar.css('width');
+                    $bar.css('width', '0');
                     setTimeout(() => {
-                        bar.style.width = width;
+                        $bar.css('width', width);
                     }, 100);
                 });
             }, 300);
-        });
 
-        // Campaign card interactions
-        document.querySelectorAll('.campaign-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Don't trigger if clicking on buttons
-                if (!e.target.classList.contains('action-btn')) {
+
+            // ====== Campaign card interactions ======
+            $('.campaign-card').on('click', function(e) {
+                if (!$(e.target).hasClass('action-btn')) {
                     console.log('Opening campaign details...');
                 }
             });
-        });
 
-        // Mobile sidebar toggle
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
-        }
+
+            // ====== Mobile sidebar toggle ======
+            window.toggleSidebar = function() {
+                $('.sidebar').toggleClass('active');
+            };
+
+        });
     </script>
+
     <script>
         $('.change-status-form').on('submit', function(e) {
             e.preventDefault();
@@ -1152,14 +1170,14 @@
             if (status == 'active') {
                 msg = 'Bạn có chắc chắn muốn chuyển chiến dịch sang trạng thái hoạt động?';
             } else {
-                msg = 'Bạn có chắc chắn muốn tạm dựng chiến dịch?';
+                msg = 'Bạn có chắc chắn muốn tạm dừng chiến dịch?';
             }
 
             if (confirm(msg)) {
                 // submit bằng phương thức native để tránh kích hoạt lại handler jQuery
                 this.submit();
             }
-            
+
         });
     </script>
 @endsection
