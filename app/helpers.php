@@ -133,15 +133,15 @@ function numberFormat($number, $decimal = 0, $decimal_separator = ',', $thousand
 }
 
 
-function formatDisplayNumber($number, $decimal = 1) {
-    if ($number >= 1000000) {
-        // Trên 1 triệu → M
-        return numberFormat($number / 1000000, $decimal) . 'M';
-    } elseif ($number >= 1000) {
-        // Trên 1 nghìn → K
-        return numberFormat($number / 1000, $decimal) . 'K';
-    } else {
-        // Dưới 1000 → giữ nguyên
-        return (string)$number;
+function formatDisplayNumber($num, $decimal = 2) {
+    if ($num >= 1000000000) {
+        return round($num / 1000000000, $decimal) - 0 . 'B';
     }
+    if ($num >= 1000000) {
+        return round($num / 1000000, $decimal) - 0 . 'M';
+    }
+    if ($num >= 1000) {
+        return round($num / 1000, $decimal) - 0 . 'K';
+    }
+    return strval($num);
 }

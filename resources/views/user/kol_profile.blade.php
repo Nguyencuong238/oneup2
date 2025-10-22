@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('meta')
-    <meta name="description" content="KOL Profile - OneUp KOL Analytics Dashboard">
+    <meta name="description" content="Hồ sơ KOL - Bảng điều khiển phân tích OneUp">
     <title>{{ $kol->display_name }} - OneUp KOL Analytics</title>
 @endsection
 
@@ -709,9 +709,9 @@
                         <h1 class="profile-name">{{ $kol->display_name }}</h1>
                         <div class="profile-badges">
                             @if ($kol->is_verified)
-                                <span class="badge badge-verified">Verified</span>
+                                <span class="badge badge-verified">Đã xác minh</span>
                             @endif
-                            <span class="badge badge-tier">Diamond Tier</span>
+                            <span class="badge badge-tier">Hạng Diamond</span>
                         </div>
                     </div>
 
@@ -743,7 +743,7 @@
 
                         <div class="stat-item">
                             <div class="stat-value">{{ $kol->engagement - 0 }}%</div>
-                            <div class="stat-label">Tham gia</div>
+                            <div class="stat-label">Tỷ lệ tương tác</div>
                             <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -756,7 +756,7 @@
 
                         <div class="stat-item">
                             <div class="stat-value">342</div>
-                            <div class="stat-label">Bài viết</div>
+                            <div class="stat-label">Bài đăng</div>
                             <div class="stat-change">
                                 <span style="color: var(--gray-600);">3.2 bài viết/tuần</span>
                             </div>
@@ -823,10 +823,10 @@
                 <div>
                     <!-- Engagement Metrics -->
                     <div class="metric-card">
-                        <div class="metric-header">
-                            <h2 class="metric-title">Chỉ số Tương tác</h2>
-                            <span class="metric-period">30 ngày gần đây</span>
-                        </div>
+                            <div class="metric-header">
+                                <h2 class="metric-title">Chỉ số Tương tác</h2>
+                                <span class="metric-period">30 ngày gần đây</span>
+                            </div>
 
                         <div class="engagement-grid">
                             <div class="engagement-item">
@@ -838,7 +838,7 @@
                                     </svg>
                                 </div>
                                 <div class="engagement-value">162K</div>
-                                <div class="engagement-label">Avg. Likes</div>
+                                <div class="engagement-label">TB Lượt thích</div>
                             </div>
 
                             <div class="engagement-item">
@@ -850,7 +850,7 @@
                                     </svg>
                                 </div>
                                 <div class="engagement-value">8.5K</div>
-                                <div class="engagement-label">Avg. Comments</div>
+                                <div class="engagement-label">TB Bình luận</div>
                             </div>
 
                             <div class="engagement-item">
@@ -861,7 +861,7 @@
                                     </svg>
                                 </div>
                                 <div class="engagement-value">3.2K</div>
-                                <div class="engagement-label">Avg. Shares</div>
+                                <div class="engagement-label">TB Chia sẻ</div>
                             </div>
 
                             <div class="engagement-item">
@@ -874,7 +874,7 @@
                                     </svg>
                                 </div>
                                 <div class="engagement-value">365K</div>
-                                <div class="engagement-label">Avg. Views</div>
+                                <div class="engagement-label">TB Lượt xem</div>
                             </div>
                         </div>
                     </div>
@@ -937,7 +937,7 @@
                             <div class="demo-title">Khu vực hàng đầu</div>
                             <div class="demo-bars">
                                 <div class="demo-bar">
-                                    <span class="demo-label">HCM City</span>
+                                    <span class="demo-label">TP HCM</span>
                                     <div class="demo-progress">
                                         <div class="demo-fill" style="width: 42%;">42%</div>
                                     </div>
@@ -955,7 +955,7 @@
                                     </div>
                                 </div>
                                 <div class="demo-bar">
-                                    <span class="demo-label">Others</span>
+                                    <span class="demo-label">khác</span>
                                     <div class="demo-progress">
                                         <div class="demo-fill" style="width: 15%;">15%</div>
                                     </div>
@@ -975,7 +975,7 @@
                             <div class="content-item">
                                 <div class="content-thumbnail"></div>
                                 <div class="content-details">
-                                    <div class="content-title">Summer Fashion Haul 2025 - Must Have Items for Your Wardrobe
+                                    <div class="content-title">Summer Fashion Haul 2025 - Những món cần có cho tủ đồ của bạn
                                     </div>
                                     <div class="content-stats">
                                         <span class="content-stat">
@@ -985,7 +985,7 @@
                                                     d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            523K views
+                                            523K lượt xem
                                         </span>
                                         <span class="content-stat">
                                             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
@@ -1003,7 +1003,7 @@
                             <div class="content-item">
                                 <div class="content-thumbnail"></div>
                                 <div class="content-details">
-                                    <div class="content-title">Beach Vacation Outfits - What I Packed for Phu Quoc</div>
+                                    <div class="content-title">Trang phục kỳ nghỉ bãi biển - Những gì tôi mang đến Phú Quốc</div>
                                     <div class="content-stats">
                                         <span class="content-stat">
                                             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
@@ -1012,7 +1012,7 @@
                                                     d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            892K views
+                                            892K lượt xem
                                         </span>
                                         <span class="content-stat">
                                             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
@@ -1030,7 +1030,7 @@
                             <div class="content-item">
                                 <div class="content-thumbnail"></div>
                                 <div class="content-details">
-                                    <div class="content-title">My Morning Skincare Routine - Products I'm Loving Right Now
+                                    <div class="content-title">Quy trình chăm sóc da buổi sáng của tôi - Sản phẩm tôi đang yêu thích
                                     </div>
                                     <div class="content-stats">
                                         <span class="content-stat">
@@ -1040,7 +1040,7 @@
                                                     d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            423K views
+                                            423K lượt xem
                                         </span>
                                         <span class="content-stat">
                                             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
@@ -1078,23 +1078,23 @@
 
                             <div class="trust-factors">
                                 <div class="trust-factor">
-                                    <span class="trust-factor-label">Authentic Followers</span>
+                                    <span class="trust-factor-label">Người theo dõi thật</span>
                                     <span class="trust-factor-value good">92%</span>
                                 </div>
                                 <div class="trust-factor">
-                                    <span class="trust-factor-label">Engagement Quality</span>
+                                    <span class="trust-factor-label">Chất lượng tương tác</span>
                                     <span class="trust-factor-value good">88%</span>
                                 </div>
                                 <div class="trust-factor">
-                                    <span class="trust-factor-label">Comment Authenticity</span>
+                                    <span class="trust-factor-label">Tính xác thực bình luận</span>
                                     <span class="trust-factor-value good">85%</span>
                                 </div>
                                 <div class="trust-factor">
-                                    <span class="trust-factor-label">Growth Consistency</span>
+                                    <span class="trust-factor-label">Độ ổn định tăng trưởng</span>
                                     <span class="trust-factor-value warning">78%</span>
                                 </div>
                                 <div class="trust-factor">
-                                    <span class="trust-factor-label">Content Quality</span>
+                                    <span class="trust-factor-label">Chất lượng nội dung</span>
                                     <span class="trust-factor-value good">91%</span>
                                 </div>
                             </div>
@@ -1110,8 +1110,8 @@
                         <table class="pricing-table">
                             <thead>
                                 <tr>
-                                    <th>Content Type</th>
-                                    <th>Price Range</th>
+                                    <th>Loại nội dung</th>
+                                    <th>Khoảng giá</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1119,28 +1119,28 @@
                                     <td>TikTok Video</td>
                                     <td>
                                         <div class="price-value">₫25M - 35M</div>
-                                        <div class="price-note">Per post</div>
+                                        <div class="price-note">Cho mỗi bài đăng</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Instagram Post</td>
                                     <td>
                                         <div class="price-value">₫15M - 20M</div>
-                                        <div class="price-note">Feed post</div>
+                                        <div class="price-note">Bài đăng feed</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Instagram Story</td>
                                     <td>
                                         <div class="price-value">₫8M - 12M</div>
-                                        <div class="price-note">24 hours</div>
+                                        <div class="price-note">24 giờ</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Campaign Package</td>
                                     <td>
                                         <div class="price-value">₫80M - 120M</div>
-                                        <div class="price-note">3 posts + 3 stories</div>
+                                        <div class="price-note">3 bài đăng + 3 story</div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1155,7 +1155,7 @@
                                         d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span>Prices are estimates based on market analysis</span>
+                                <span>Giá ước tính dựa trên phân tích thị trường</span>
                             </div>
                         </div>
                     </div>
@@ -1169,28 +1169,28 @@
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Avg. Completion Rate</span>
+                                    <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ hoàn thành TB</span>
                                     <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">68%</span>
                                 </div>
                             </div>
 
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Posts per Week</span>
+                                    <span style="font-size: 13px; color: var(--gray-600);">Bài/tuần</span>
                                     <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">3.2</span>
                                 </div>
                             </div>
 
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Response Rate</span>
+                                    <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ phản hồi</span>
                                     <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">85%</span>
                                 </div>
                             </div>
 
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Brand Safety Score</span>
+                                    <span style="font-size: 13px; color: var(--gray-600);">Điểm an toàn thương hiệu</span>
                                     <span style="font-size: 18px; font-weight: 600; color: var(--success);">92</span>
                                 </div>
                             </div>
@@ -1245,7 +1245,7 @@
             // Content item hover effect
             document.querySelectorAll('.content-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    console.log('Opening content details...');
+                    console.log('Mở chi tiết nội dung...');
                 });
             });
 
@@ -1253,7 +1253,7 @@
             document.querySelectorAll('.btn-action').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const action = this.textContent.trim();
-                    console.log(`Action clicked: ${action}`);
+                    console.log(`Đã nhấn hành động: ${action}`);
                 });
             });
         });

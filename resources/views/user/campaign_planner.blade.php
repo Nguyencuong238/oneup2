@@ -793,7 +793,7 @@
 
                         <div class="kol-selection-grid">
                             @foreach ($kols as $item)
-                                <div class="kol-select-card"
+                                <div class="kol-select-card {{ in_array($item->id, old('kols', $campaign->kols->pluck('id')->toArray())) ? 'selected' : '' }}"
                                     data-categories="{{ ',' . $item->categories->implode('id', ',') . ',' }}">
                                     <input type="checkbox" class="kol-checkbox" name="kols[]"
                                         value="{{ $item->id }}"
@@ -887,7 +887,7 @@
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Chi phí trung bình / KOL</span>
-                            <span class="preview-value preview-fee">₫{{formatDisplayNumber($campaign->kols->avg('price'))}}</span>
+                            <span class="preview-value preview-fee"></span>
                         </div>
                     </div>
 
@@ -969,235 +969,186 @@
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
-        // Initialize planner
-        $(document).ready(function() {
-            // KOL selection
-            initKOLSelection();
+        jQuery(function($) {
+            // Cached selectors
+            const $doc = $(document);
+            const $budgetInput = $('#budget_amount');
+            const $kolGrid = $('.kol-selection-grid');
+            const $previewKols = $('.preview-kols');
+            const $previewFee = $('.preview-fee');
+            const $previewBudget = $('.preview-budget');
+            const $previewDuration = $('.preview-duration');
+            const $previewCardList = $('.preview-card').eq(2).find('> div');
+            const $previewCardHeader = $('.preview-card').eq(2).find('h3');
 
-            // Budget calculator
-            initBudgetCalculator();
+            // Utility: debounce
+            function debounce(fn, wait) {
+                let t;
+                return function() {
+                    const args = arguments;
+                    clearTimeout(t);
+                    t = setTimeout(() => fn.apply(this, args), wait);
+                };
+            }
 
-            // Tags input
-            initTagsInput();
-
-            // Forecast inputs
-            ['target_reach', 'target_engagement', 'budget_amount'].forEach(function(name) {
-                $(`input[name="${name}"]`).on('input', updateForecastFromInputs);
-            });
-            updateForecastFromInputs();
-            campaignDuration();
-        });
-
-        function initKOLSelection() {
-            $('.kol-select-card').each(function() {
-                var card = $(this);
-                var checkbox = card.find('.kol-checkbox');
-
-                card.on('click', function(e) {
-                    if (!$(e.target).hasClass('kol-checkbox')) {
-                        checkbox.prop('checked', !checkbox.prop('checked'));
-                        card.toggleClass('selected', checkbox.prop('checked'));
-                        updateSelectedKOLs();
-                    }
-                });
-
-                checkbox.on('change', function() {
-                    card.toggleClass('selected', $(this).prop('checked'));
+            // Initialize handlers
+            function init() {
+                // Delegated KOL selection (single handler for grid)
+                $kolGrid.on('click', '.kol-select-card', function(e) {
+                    // If clicked directly on checkbox, let checkbox handler run
+                    if ($(e.target).is('.kol-checkbox')) return;
+                    const $card = $(this);
+                    const $checkbox = $card.find('.kol-checkbox');
+                    $checkbox.prop('checked', !$checkbox.prop('checked'));
+                    $card.toggleClass('selected', $checkbox.prop('checked'));
                     updateSelectedKOLs();
                 });
-            });
-        }
 
-        function initBudgetCalculator() {
-            $('#budget_amount').on('input', function() {
-                var budget = parseInt($(this).val()) || 0;
-
-                $('.kol-fee').text(
-                    `₫${numberFormat(budget * 0.7)}`
-                );
-                $('.produce-fee').text(
-                    `₫${numberFormat(budget * 0.2)}`
-                );
-                $('.manage-fee').text(
-                    `₫${numberFormat(budget * 0.1)}`
-                );
-                $('.totalBudget, .preview-budget').text(
-                    `₫${numberFormat(budget)}`
-                );
-            });
-        }
-
-        function initTagsInput() {
-            var tagInput = $('.tag-input-field');
-            var tagsContainer = $('.tags-input');
-
-            tagInput.on('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    var value = $(this).val().trim();
-                    if (value) {
-                        var tag = $(`<span class="tag">${value}<span class="tag-remove">×</span></span>`);
-                        tag.insertBefore(this);
-                        $(this).val('');
-
-                        tag.find('.tag-remove').on('click', function() {
-                            tag.remove();
-                        });
-                    }
-                }
-            });
-
-            // Remove existing tags
-            $('.tag-remove').on('click', function() {
-                $(this).parent().remove();
-            });
-        }
-
-        function animateValue(element, start, end, duration, suffix) {
-            var range = end - start;
-            var increment = range / (duration / 10);
-            var current = start;
-
-            var timer = setInterval(function() {
-                current += increment;
-                if (current >= end) {
-                    current = end;
-                    clearInterval(timer);
-                }
-                $(element).text(current.toFixed(1) + (suffix || ''));
-            }, 10);
-        }
-        // Tính toán hiệu suất dự kiến dựa trên input mục tiêu & ngân sách
-        function updateForecastFromInputs() {
-            // Lấy giá trị từ các input
-            const reach = parseInt($('input[name="target_reach"]').val()) || 0;
-            const engagement = parseFloat($('input[name="target_engagement"]').val()) || 0;
-            const budget = parseInt($('input[name="budget_amount"]').val()) || 0;
-
-            // Lượt tiếp cận ước tính
-            $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? numberFormat(reach) : '0');
-
-            // Tỷ lệ tương tác ước tính
-            $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) + '%' : '0%');
-
-            // Chi phí / lượt xem (CPV)
-            let cpv = reach > 0 ? (budget / reach) : 0;
-            $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + numberFormat(cpv) : '₫0');
-
-            // ROI ước tính (giả sử ROI = (reach * engagement / 100) / (budget/1000000))
-            let roi = budget > 0 ? ((reach * (engagement / 100)) / (budget / 1000000)) : 0;
-            $('.forecast-card').eq(3).find('.forecast-value').text(roi > 0 ? numberFormat(roi) + 'x' : '0x');
-        }
-
-        $('#start_date, #end_date').on('change', function() {
-            campaignDuration();
-        });
-        function campaignDuration() {
-            let date1 = new Date($('#start_date').val());
-            let date2 = new Date($('#end_date').val());
-
-            if (!isNaN(date1) && !isNaN(date2) && date2 > date1) {
-                // Tính số mili-giây chênh lệch
-                let diffTime = date2 - date1;
-
-                // Chuyển sang số ngày
-                let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                $('.preview-duration').text(diffDays + ' ngày');
-            } else {
-                $('.preview-duration').text('0 ngày');
-            }
-        }
-
-        function updateSelectedKOLs() {
-            var selectedCards = $('.kol-select-card.selected');
-            var selectedCount = selectedCards.length;
-            $('.preview-kols').text(`${selectedCount} KOL`);
-
-            // Update cost calculation
-            var totalKOLCost = 0;
-            var kolListHtml = '';
-            selectedCards.each(function() {
-                var avatar = $(this).find('.kol-avatar').clone().css({
-                    width: '36px',
-                    height: '36px',
-                    'font-size': '14px'
+                // Delegated checkbox change
+                $kolGrid.on('change', '.kol-checkbox', function() {
+                    const $card = $(this).closest('.kol-select-card');
+                    $card.toggleClass('selected', $(this).prop('checked'));
+                    updateSelectedKOLs();
                 });
-                var name = $(this).find('.kol-name').text();
-                var followers = $(this).find('.kol-stats span').first().text();
-                var priceText = $(this).find('.price-value').text();
-                var price = parseInt(priceText.replace(/[^\d]/g, ''));
-                totalKOLCost += price;
 
-                kolListHtml += `
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                        ${$('<div>').append(avatar).html()}
-                        <div style="flex: 1;">
-                            <div class="fw-600 fs-14 color-gray-700">${name}</div>
-                            <div class="fs-12 color-gray-600">${followers}</div>
-                        </div>
-                        <span style="font-weight: 600; color: var(--primary);">${priceText}</span>
-                    </div>
-                `;
-            });
-
-            $('.preview-card').eq(2).find('h3').text(`KOL đã chọn (${selectedCount})`);
-            $('.preview-card').eq(2).find('> div').html(kolListHtml);
-
-            if (selectedCount > 0) {
-                var avgCost = totalKOLCost / selectedCount;
-                $('.preview-fee').text(`₫${numberFormat(avgCost, 3)}`);
-            } else {
-                $('.preview-fee').text('₫0');
-                $('.preview-card').eq(2).find('> div').html('');
-                $('.preview-card').eq(2).find('h3').text('KOL đã chọn (0)');
-            }
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#select-kol-category').on('change', function() {
-                var selectedCat = $(this).val();
-                $('.kol-select-card').each(function() {
-                    var categories = $(this).data('categories') + '';
-                    if (selectedCat === '' || selectedCat === undefined || selectedCat ===
-                        'Tất cả danh mục') {
-                        $(this).show();
-                    } else {
-                        if (categories.indexOf(',' + selectedCat + ',') !== -1) {
+                // Category filter
+                $('#select-kol-category').on('change', function() {
+                    const selectedCat = $(this).val();
+                    $kolGrid.find('.kol-select-card').each(function() {
+                        const categories = ($(this).data('categories') || '') + '';
+                        if (!selectedCat || selectedCat === '' || selectedCat === 'Tất cả danh mục') {
                             $(this).show();
                         } else {
-                            $(this).hide();
+                            $(this).toggle(categories.indexOf(',' + selectedCat + ',') !== -1);
+                        }
+                    });
+                });
+
+                // Budget calculator (debounced)
+                $budgetInput.on('input', debounce(function() {
+                    const budget = parseInt($(this).val()) || 0;
+                    $('.kol-fee').text(`₫${formatDisplayNumber(budget * 0.7)}`);
+                    $('.produce-fee').text(`₫${formatDisplayNumber(budget * 0.2)}`);
+                    $('.manage-fee').text(`₫${formatDisplayNumber(budget * 0.1)}`);
+                    $('.totalBudget, .preview-budget').text(`₫${formatDisplayNumber(budget)}`);
+                }, 150));
+
+                // Forecast inputs (debounced)
+                ['target_reach', 'target_engagement'].forEach(function(name) {
+                    $(`input[name="${name}"]`).on('input', debounce(updateForecastFromInputs, 150));
+                });
+                $budgetInput.on('input', debounce(updateForecastFromInputs, 150));
+
+                // Tags input (delegated remove)
+                const $tagsInput = $('.tags-input');
+                $tagsInput.on('keypress', '.tag-input-field', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const value = $(this).val().trim();
+                        if (value) {
+                            const $tag = $(`<span class="tag">${value}<span class="tag-remove">×</span></span>`);
+                            $tag.insertBefore(this);
+                            $(this).val('');
                         }
                     }
                 });
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Xử lý submit cho 2 nút
-            $('.btn-draft, .btn-save').on('click', function(e) {
-                e.preventDefault();
+                $tagsInput.on('click', '.tag-remove', function() { $(this).parent().remove(); });
 
-                // Xác định status
-                let status = $(this).hasClass('btn-draft') ? 'draft' : 'active';
+                // Date change
+                $('#start_date, #end_date').on('change', campaignDuration);
 
-                // Lấy form
-                let $form = $(this).closest('form');
+                // Submit handling for draft/save buttons (delegated)
+                $doc.on('click', '.btn-draft, .btn-save', function(e) {
+                    e.preventDefault();
+                    const status = $(this).hasClass('btn-draft') ? 'draft' : 'active';
+                    const $form = $(this).closest('form');
+                    $form.find('input[name="status"]').remove();
+                    $('<input>').attr({ type: 'hidden', name: 'status', value: status }).appendTo($form);
+                    $form.submit();
+                });
 
-                // Xóa input status cũ nếu có
-                $form.find('input[name="status"]').remove();
+                // Initial calculations
+                updateForecastFromInputs();
+                campaignDuration();
+                updateSelectedKOLs();
+            }
 
-                // Thêm input status mới
-                $('<input>').attr({
-                    type: 'hidden',
-                    name: 'status',
-                    value: status
-                }).appendTo($form);
+            // Update selected KOLs preview and cost summary
+            function updateSelectedKOLs() {
+                const $selected = $kolGrid.find('.kol-select-card.selected');
+                const count = $selected.length;
+                $previewKols.text(`${count} KOL`);
 
-                // Submit form
-                $form.submit();
-            });
+                let totalKOLCost = 0;
+                const parts = [];
+
+                $selected.each(function() {
+                    const $this = $(this);
+                    const $avatar = $this.find('.kol-avatar').first();
+                    const avatarHtml = $avatar.length ? $avatar.prop('outerHTML') : '';
+                    const name = $this.find('.kol-name').text();
+                    const followers = $this.find('.kol-stats span').first().text();
+                    const priceText = $this.find('.price-value').text();
+                    const price = parseFloat((priceText || '').replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+                    totalKOLCost += price;
+
+                    parts.push(`
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            ${avatarHtml}
+                            <div style="flex: 1;">
+                                <div class="fw-600 fs-14 color-gray-700">${name}</div>
+                                <div class="fs-12 color-gray-600">${followers}</div>
+                            </div>
+                            <span style="font-weight: 600; color: var(--primary);">${priceText}</span>
+                        </div>
+                    `);
+                });
+
+                $previewCardHeader.text(`KOL đã chọn (${count})`);
+                $previewCardList.html(parts.join(''));
+
+                if (count > 0) {
+                    const avgCost = totalKOLCost / count;
+                    $previewFee.text(`₫${formatDisplayNumber(avgCost, 3)}M`);
+                } else {
+                    $previewFee.text('₫0');
+                    $previewCardList.html('');
+                    $previewCardHeader.text('KOL đã chọn (0)');
+                }
+            }
+
+            // Forecast calculation
+            function updateForecastFromInputs() {
+                const reach = parseInt($('input[name="target_reach"]').val()) || 0;
+                const engagement = parseFloat($('input[name="target_engagement"]').val()) || 0;
+                const budget = parseInt($budgetInput.val()) || 0;
+
+                $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? numberFormat(reach) : '0');
+                $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) + '%' : '0%');
+
+                const cpv = reach > 0 ? (budget / reach) : 0;
+                $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + numberFormat(cpv) : '₫0');
+
+                const roi = budget > 0 ? ((reach * (engagement / 100)) / (budget / 1000000)) : 0;
+                $('.forecast-card').eq(3).find('.forecast-value').text(roi > 0 ? numberFormat(roi) + 'x' : '0x');
+            }
+
+            // Campaign duration
+            function campaignDuration() {
+                const date1 = new Date($('#start_date').val());
+                const date2 = new Date($('#end_date').val());
+
+                if (!isNaN(date1) && !isNaN(date2) && date2 > date1) {
+                    const diffTime = date2 - date1;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    $previewDuration.text(diffDays + ' ngày');
+                } else {
+                    $previewDuration.text('0 ngày');
+                }
+            }
+
+            // Run initialization
+            init();
         });
     </script>
 @endsection

@@ -352,21 +352,35 @@
 
             return prefix + parts.join(decimal_separator);
         }
+
+        // Format number with K, M, B suffixes
+        function formatDisplayNumber(num, decimal = 2) {
+            if (num >= 1000000000) {
+                return (num / 1000000000).toFixed(decimal)-0 + 'B';
+            }
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(decimal)-0 + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(decimal)-0 + 'K';
+            }
+            return num.toString();
+        }
     </script>
     <script>
-        @if(session('success'))
+        @if (session('success'))
             toastr.success("{{ session('success') }}");
         @endif
-        @if(session('errors'))
+        @if (session('errors'))
             toastr.error("{{ session('errors')->first() }}");
         @endif
-        @if(session('error'))
+        @if (session('error'))
             toastr.error("{{ session('error') }}");
         @endif
-        @if(session('info'))
+        @if (session('info'))
             toastr.info("{{ session('info') }}");
         @endif
-        @if(session('warning'))
+        @if (session('warning'))
             toastr.warning("{{ session('warning') }}");
         @endif
     </script>

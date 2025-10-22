@@ -945,7 +945,7 @@
 
                                 <div class="kol-metrics">
                                     <div class="metric-item">
-                                        <div class="metric-value">{{ formatDisplayNumber($kol->followers) }}</div>
+                                        <div class="metric-value">{{ formatDisplayNumber($kol->followers, 2) }}</div>
                                         <div class="metric-label">Người theo dõi</div>
                                     </div>
                                     <div class="metric-item">
@@ -1135,25 +1135,14 @@
                 var $currentValue = $(this).find('.current-value');
 
                 // Hiển thị giá trị ban đầu
-                //$currentValue.text(formatNumber($slider.val()));
+                //$currentValue.text(formatDisplayNumber($slider.val()));
 
                 // Khi kéo slider
                 $slider.on('input', function() {
-                    $currentValue.text(formatNumber($(this).val()));
+                    $currentValue.text(formatDisplayNumber($(this).val()));
                 });
             });
 
-            // Hàm định dạng số
-            function formatNumber(num) {
-                num = parseInt(num);
-                if (num >= 1000000) {
-                    return (num / 1000000).toFixed(1) + 'M';
-                } else if (num >= 1000) {
-                    return (num / 1000).toFixed(0) + 'K';
-                } else {
-                    return num;
-                }
-            }
         });
     </script>
 @endsection

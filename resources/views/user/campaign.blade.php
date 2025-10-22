@@ -892,23 +892,23 @@
             <!-- Campaign Tabs -->
             <div class="campaign-tabs-container">
                 <div class="campaign-tabs">
-                    <div class="campaign-tab active" onclick="switchTab(this, 'all')">
+                    <div class="campaign-tab active" data-tab="all">
                         Tất cả chiến dịch
                         <span class="tab-badge">{{ $totalCampaigns }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab(this, 'active')">
+                    <div class="campaign-tab" data-tab="active">
                         Đang hoạt động
                         <span class="tab-badge">{{ $activeCount }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab(this, 'draft')">
+                    <div class="campaign-tab" data-tab="draft">
                         Bản nháp
                         <span class="tab-badge">{{ $draftCount }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab(this, 'completed')">
+                    <div class="campaign-tab" data-tab="completed">
                         Đã hoàn thành
                         <span class="tab-badge">{{ $completedCount }}</span>
                     </div>
-                    <div class="campaign-tab" onclick="switchTab(this, 'paused')">
+                    <div class="campaign-tab" data-tab="paused">
                         Tạm dừng
                         <span class="tab-badge">{{ $pausedCount }}</span>
                     </div>
@@ -917,7 +917,7 @@
                 <!-- Campaigns Grid -->
                 <div class="campaigns-grid" id="campaignsGrid">
                     @foreach ($campaigns as $campaign)
-                        <div class="campaign-card campaign-{{$campaign->status}}">
+                        <div class="campaign-card campaign-{{ $campaign->status }}">
                             <div class="campaign-header">
                                 <span class="campaign-status status-{{ $campaign->status }}">
                                     {{ $campaign->status == 'active' ? 'Đang hoạt động' : ($campaign->status == 'draft' ? 'Bản nháp' : ($campaign->status == 'completed' ? 'Hoàn thành' : ($campaign->status == 'paused' ? 'Tạm dừng' : $campaign->status))) }}
@@ -937,7 +937,7 @@
                                 <div class="campaign-metrics">
                                     <div class="metric">
                                         <span class="metric-label">Phạm vi tiếp cận</span>
-                                        <span class="metric-value">{{ numberFormat($campaign->target_reach) }}</span>
+                                        <span class="metric-value">{{ formatDisplayNumber($campaign->target_reach) }}</span>
                                     </div>
                                     <div class="metric">
                                         <span class="metric-label">Tương tác</span>
@@ -946,7 +946,7 @@
                                     <div class="metric">
                                         <span class="metric-label">Ngân sách</span>
                                         <span class="metric-value">
-                                            ₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M
+                                            ₫{{ formatDisplayNumber($campaign->budget_amount) }}
                                         </span>
                                     </div>
                                     <div class="metric">
@@ -987,19 +987,19 @@
                                 </div>
                                 <div class="campaign-actions">
                                     @if ($campaign->status == 'active')
-                                        <button class="action-btn"
-                                            onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
+                                        <button class="action-btn js-navigate"
+                                            data-href="{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}">
                                             Xem
                                         </button>
-                                        <button class="action-btn primary"
-                                            onclick="window.location.href='{{ route('user.campaign.tracker', ['slug' => $campaign->slug]) }}'">
+                                        <button class="action-btn primary js-navigate"
+                                            data-href="{{ route('user.campaign.tracker', ['slug' => $campaign->slug]) }}">
                                             Theo dõi
                                         </button>
                                     @endif
 
                                     @if ($campaign->status == 'draft')
-                                        <button class="action-btn"
-                                            onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug]) }}'">
+                                        <button class="action-btn js-navigate"
+                                            data-href="{{ route('user.campaign.planner', ['slug' => $campaign->slug]) }}">
                                             Sửa
                                         </button>
 
@@ -1014,8 +1014,8 @@
                                     @endif
 
                                     @if ($campaign->status == 'paused')
-                                        <button class="action-btn"
-                                            onclick="window.location.href='{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}'">
+                                        <button class="action-btn js-navigate"
+                                            data-href="{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}">
                                             Xem
                                         </button>
                                         <form action="{{ route('user.campaign.changeStatus') }}" method="post"
@@ -1032,8 +1032,8 @@
                                         <button class="action-btn">
                                             Báo cáo
                                         </button>
-                                        <button class="action-btn primary"
-                                            onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">
+                                        <button class="action-btn primary js-navigate"
+                                            data-href="{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}">
                                             Nhân bản
                                         </button>
                                     @endif
@@ -1058,7 +1058,7 @@
                 $('.campaign-tab').removeClass('active');
                 $(event).addClass('active');
 
-                if(tab == 'all') {
+                if (tab == 'all') {
                     $('.campaign-card').removeClass('d-none');
                 } else {
                     $(`.campaign-card:not(.campaign-${tab})`).addClass('d-none');
@@ -1157,6 +1157,20 @@
                 $('.sidebar').toggleClass('active');
             };
 
+            // Delegated navigation for buttons using data-href
+            $(document).on('click', '.js-navigate', function(e) {
+                const href = $(this).data('href');
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+
+            // Delegated tab switching for elements with data-tab
+            $(document).on('click', '.campaign-tab[data-tab]', function(e) {
+                const tab = $(this).data('tab');
+                switchTab(this, tab);
+            });
+
         });
     </script>
 
@@ -1174,7 +1188,6 @@
             }
 
             if (confirm(msg)) {
-                // submit bằng phương thức native để tránh kích hoạt lại handler jQuery
                 this.submit();
             }
 

@@ -1107,91 +1107,98 @@
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
-        // Real-time counter animation
-        let counters = {};
+        jQuery(function($) {
+            // Cached selectors
+            const $realtimeCards = $('.realtime-card');
+            const $refreshBtn = $('.refresh-btn');
+            const $countDisplay = $('.tracking-controls strong');
+            const $chartTabs = $('.chart-tab');
+            const $campaignDropdown = $('.campaign-dropdown');
 
-        function startRealtimeCounters() {
-            // Simulate real-time updates
-            setInterval(() => {
-                // Update views
-                const viewsElement = document.querySelector('.realtime-card:nth-child(1) .realtime-value');
-                const currentViews = parseInt(viewsElement.textContent.replace(/,/g, ''));
-                const newViews = currentViews + Math.floor(Math.random() * 100);
-                viewsElement.textContent = newViews.toLocaleString();
+            // Find realtime value elements (by index)
+            const $viewsVal = $realtimeCards.eq(0).find('.realtime-value');
+            const $likesVal = $realtimeCards.eq(1).find('.realtime-value');
+            const $commentsVal = $realtimeCards.eq(2).find('.realtime-value');
 
-                // Update likes
-                const likesElement = document.querySelector('.realtime-card:nth-child(2) .realtime-value');
-                const currentLikes = parseInt(likesElement.textContent.replace(/,/g, ''));
-                const newLikes = currentLikes + Math.floor(Math.random() * 10);
-                likesElement.textContent = newLikes.toLocaleString();
+            // Real-time counter animation (single interval)
+            let realtimeInterval = null;
+            function startRealtimeCounters() {
+                if (realtimeInterval) return; // already running
+                realtimeInterval = setInterval(() => {
+                    // Update views
+                    const currentViews = parseInt(($viewsVal.text() || '0').replace(/,/g, '')) || 0;
+                    const newViews = currentViews + Math.floor(Math.random() * 100);
+                    $viewsVal.text(newViews.toLocaleString());
 
-                // Update comments occasionally
-                if (Math.random() > 0.7) {
-                    const commentsElement = document.querySelector('.realtime-card:nth-child(3) .realtime-value');
-                    const currentComments = parseInt(commentsElement.textContent.replace(/,/g, ''));
-                    const newComments = currentComments + Math.floor(Math.random() * 5);
-                    commentsElement.textContent = newComments.toLocaleString();
-                }
-            }, 2000);
-        }
+                    // Update likes
+                    const currentLikes = parseInt(($likesVal.text() || '0').replace(/,/g, '')) || 0;
+                    const newLikes = currentLikes + Math.floor(Math.random() * 10);
+                    $likesVal.text(newLikes.toLocaleString());
 
-        // Auto-refresh countdown
-        let refreshCountdown = 45;
+                    // Update comments occasionally
+                    if (Math.random() > 0.7 && $commentsVal.length) {
+                        const currentComments = parseInt(($commentsVal.text() || '0').replace(/,/g, '')) || 0;
+                        const newComments = currentComments + Math.floor(Math.random() * 5);
+                        $commentsVal.text(newComments.toLocaleString());
+                    }
+                }, 2000);
+            }
 
-        function startRefreshCountdown() {
-            setInterval(() => {
-                refreshCountdown--;
-                if (refreshCountdown < 0) {
-                    refreshCountdown = 45;
-                    refreshData();
-                }
-                document.querySelector('.tracking-controls strong').textContent = refreshCountdown + 's';
-            }, 1000);
-        }
+            // Auto-refresh countdown
+            let refreshCountdown = 45;
+            let refreshInterval = null;
+            function startRefreshCountdown() {
+                if (refreshInterval) return;
+                refreshInterval = setInterval(() => {
+                    refreshCountdown--;
+                    if (refreshCountdown < 0) {
+                        refreshCountdown = 45;
+                        refreshData();
+                    }
+                    $countDisplay.text(refreshCountdown + 's');
+                }, 1000);
+            }
 
-        function refreshData() {
-            // Show refresh animation
-            const refreshBtn = document.querySelector('.refresh-btn');
-            refreshBtn.innerHTML =
-                '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="animation: spin 1s linear infinite;"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Đang làm mới...';
+            function refreshData() {
+                // Show refresh animation
+                $refreshBtn.html(
+                    '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="animation: spin 1s linear infinite;"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Đang làm mới...'
+                );
 
-            setTimeout(() => {
-                refreshBtn.innerHTML =
-                    '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Làm mới ngay';
-            }, 1000);
-        }
+                setTimeout(() => {
+                    $refreshBtn.html(
+                        '<svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Làm mới ngay'
+                    );
+                }, 1000);
+            }
 
-        // Chart tabs
-        document.querySelectorAll('.chart-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
+            // Chart tabs (delegated)
+            $(document).on('click', '.chart-tab', function() {
+                $chartTabs.removeClass('active');
+                $(this).addClass('active');
+                // TODO: trigger chart redraw if needed
             });
-        });
 
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', function() {
+            // Manual refresh button
+            $(document).on('click', '.refresh-btn', function() {
+                refreshCountdown = 45;
+                refreshData();
+            });
+
+            // Campaign dropdown navigation
+            $(document).on('change', '.campaign-dropdown', function() {
+                const val = $(this).val();
+                if (val) window.location.href = '/user/campaign-tracker/' + val;
+            });
+
+            // Add spinning animation style once
+            if (!$('head').find('#oneup-spin-style').length) {
+                $('<style id="oneup-spin-style">@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>').appendTo('head');
+            }
+
+            // Initialize
             startRealtimeCounters();
             startRefreshCountdown();
-
-            // Add spinning animation style
-            const style = document.createElement('style');
-            style.textContent =
-                '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
-            document.head.appendChild(style);
         });
-
-        // Manual refresh button
-        document.querySelector('.refresh-btn').addEventListener('click', function() {
-            refreshCountdown = 45;
-            refreshData();
-        });
-    </script>
-
-    <script>
-        $('.campaign-dropdown').on('change', function() {
-            let val = $(this).val();
-            window.location.href = '/user/campaign-tracker/' + val;
-        })
     </script>
 @endsection

@@ -450,20 +450,6 @@ function throttle(func, limit) {
     };
 }
 
-// Format number with K, M, B suffixes
-function formatNumber(num) {
-    if (num >= 1000000000) {
-        return (num / 1000000000).toFixed(1) + 'B';
-    }
-    if (num >= 1000000) {
-        return (num / 1000000).toFixed(1) + 'M';
-    }
-    if (num >= 1000) {
-        return (num / 1000).toFixed(1) + 'K';
-    }
-    return num.toString();
-}
-
 // Copy to clipboard
 async function copyToClipboard(text) {
     try {
@@ -513,7 +499,7 @@ window.OneUpKOL = {
     scrollToElement,
     debounce,
     throttle,
-    formatNumber,
+    formatDisplayNumber,
     copyToClipboard,
     getUrlParams,
     setCookie,

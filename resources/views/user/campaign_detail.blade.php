@@ -633,7 +633,7 @@
                         'paused' => 'Tạm dừng',
                         'completed' => 'Đã hoàn thành',
                         'cancelled' => 'Đã hủy',
-                        'draft' => 'Bản nháp'
+                        'draft' => 'Bản nháp',
                     ];
                 @endphp
                 <span class="campaign-status status-{{ $campaign->status }}">{{ $statusText[$campaign->status] }}</span>
@@ -691,19 +691,21 @@
                         </div>
                     </div>
                     <div class="campaign-actions">
-                        @if(in_array($campaign->status, ['active', 'paused']))
-                        <form action="{{ route('user.campaign.changeStatus') }}" method="post" id="change-status-form">
-                            @csrf
-                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
-                            <input type="hidden" name="status"
-                                value="{{ $campaign->status == 'active' ? 'paused' : 'active' }}">
+                        @if (in_array($campaign->status, ['active', 'paused']))
+                            <form action="{{ route('user.campaign.changeStatus') }}" method="post" id="change-status-form">
+                                @csrf
+                                <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+                                <input type="hidden" name="status"
+                                    value="{{ $campaign->status == 'active' ? 'paused' : 'active' }}">
 
-                            <button class="btn btn-secondary btn-small">
-                                {{ $campaign->status == 'active' ? 'Tạm dừng' : 'Tiếp tục' }}
-                            </button>
-                        </form>
+                                <button class="btn btn-secondary btn-small">
+                                    {{ $campaign->status == 'active' ? 'Tạm dừng' : 'Tiếp tục' }}
+                                </button>
+                            </form>
                         @endif
-                        <button class="btn btn-secondary btn-small" onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">Nhân bản</button>
+                        <button class="btn btn-secondary btn-small"
+                            onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">Nhân
+                            bản</button>
                     </div>
                 </div>
 
@@ -848,10 +850,10 @@
             <!-- Content Tabs -->
             <div class="content-tabs-container">
                 <div class="content-tabs">
-                    <div class="content-tab active" onclick="switchTab('kols')">Hiệu suất KOL</div>
-                    <div class="content-tab" onclick="switchTab('content')">Luồng nội dung</div>
-                    <div class="content-tab" onclick="switchTab('timeline')">Dòng thời gian</div>
-                    <div class="content-tab" onclick="switchTab('analytics')">Phân tích</div>
+                    <div class="content-tab active" data-tab="kols">Hiệu suất KOL</div>
+                    <div class="content-tab" data-tab="content">Luồng nội dung</div>
+                    <div class="content-tab" data-tab="timeline">Dòng thời gian</div>
+                    <div class="content-tab" data-tab="analytics">Phân tích</div>
                 </div>
 
                 <!-- Tab Content -->
@@ -1039,91 +1041,108 @@
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
-        // Tab switching
-        function switchTab(tab) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.style.display = 'none';
+        jQuery(function($) {
+            // Cache selectors
+            const $tabs = $('.content-tab[data-tab]');
+            const $tabContents = $('.tab-content');
+            const $progressFill = $('.progress-fill-large');
+            const progressValue = '{{ $progress }}';
+
+            // Switch tab by element + name
+            function switchTab(el, tab) {
+                $tabContents.hide();
+                $tabs.removeClass('active');
+                $('#' + tab + '-tab').show();
+                $(el).addClass('active');
+            }
+
+            // Bind delegated handler for tabs (in case tabs are dynamic)
+            $(document).on('click', '.content-tab[data-tab]', function() {
+                const tab = $(this).data('tab');
+                switchTab(this, tab);
             });
 
-            // Remove active class from all tabs
-            document.querySelectorAll('.content-tab').forEach(t => {
-                t.classList.remove('active');
-            });
-
-            // Show selected tab
-            document.getElementById(tab + '-tab').style.display = 'block';
-
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-        }
-
-        // Animate progress and metrics on load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate progress bar
+            // Animate progress bar after a short delay
             setTimeout(() => {
-                document.querySelector('.progress-fill-large').style.width = '{{ $progress }}%';
+                $progressFill.css('width', progressValue + '%');
             }, 300);
 
-            // Animate metric values
-            animateMetrics();
-        });
+            // Animate metric values when visible using IntersectionObserver when available
+            // Use requestAnimationFrame for smoother animations and reduce DOM thrashing
+            function animateValue($el, start, end, duration, suffix) {
+                const startTime = performance.now();
+                const range = end - start;
 
-        function animateMetrics() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const metricValue = entry.target.querySelector('.metric-value');
-                        if (metricValue && !metricValue.animated) {
-                            metricValue.animated = true;
-                            const finalValue = metricValue.textContent;
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const current = start + range * progress;
 
-                            if (finalValue.includes('M')) {
-                                const num = parseFloat(finalValue) * 1000000;
-                                animateValue(metricValue, 0, num, 1500, 'M');
-                            } else if (finalValue.includes('%')) {
-                                const num = parseFloat(finalValue);
-                                animateValue(metricValue, 0, num, 1500, '%');
-                            } else if (finalValue.includes('₫')) {
-                                const num = parseFloat(finalValue.replace('₫', ''));
-                                animateValue(metricValue, 0, num, 1500, '₫');
-                            } else if (finalValue.includes(',')) {
-                                const num = parseInt(finalValue.replace(/,/g, ''));
-                                animateValue(metricValue, 0, num, 1500, ',');
-                            }
-                        }
+                    // Write only when necessary, avoid layout reads here
+                    if (suffix === 'M') {
+                        $el.text((current / 1000000).toFixed(1) + 'M');
+                    } else if (suffix === '%') {
+                        $el.text(current.toFixed(1) + '%');
+                    } else if (suffix === '₫') {
+                        $el.text('₫' + current.toFixed(2));
+                    } else if (suffix === ',') {
+                        $el.text(Math.round(current).toLocaleString());
                     }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            function scheduleMetricAnimation($card) {
+                const $metric = $card.find('.metric-value');
+                if (!$metric.length || $metric[0].animated) return;
+                $metric[0].animated = true;
+                const finalValue = $metric.text().trim();
+
+                if (!finalValue) return;
+
+                if (finalValue.includes('M')) {
+                    const num = parseFloat(finalValue) * 1000000;
+                    animateValue($metric, 0, num, 1500, 'M');
+                } else if (finalValue.includes('%')) {
+                    const num = parseFloat(finalValue);
+                    animateValue($metric, 0, num, 1500, '%');
+                } else if (finalValue.includes('₫')) {
+                    const num = parseFloat(finalValue.replace(/[^\d.-]/g, ''));
+                    animateValue($metric, 0, num, 1500, '₫');
+                } else {
+                    // Try numeric parse with commas
+                    const cleaned = finalValue.replace(/,/g, '');
+                    const num = parseFloat(cleaned) || 0;
+                    animateValue($metric, 0, num, 1500, ',');
+                }
+            }
+
+            // Cache metric cards to avoid querying during observer callbacks
+            const $metricCards = $('.metric-card');
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) scheduleMetricAnimation($(entry.target));
+                    });
+                }, { threshold: 0.2 });
+
+                $metricCards.each(function() {
+                    observer.observe(this);
                 });
-            });
+            } else {
+                // Fallback: animate all immediately
+                $metricCards.each(function() {
+                    scheduleMetricAnimation($(this));
+                });
+            }
 
-            document.querySelectorAll('.metric-card').forEach(card => {
-                observer.observe(card);
-            });
-        }
-
-        function animateValue(element, start, end, duration, suffix) {
-            const range = end - start;
-            const increment = range / (duration / 10);
-            let current = start;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= end) {
-                    current = end;
-                    clearInterval(timer);
-                }
-
-                if (suffix === 'M') {
-                    element.textContent = (current / 1000000).toFixed(1) + 'M';
-                } else if (suffix === '%') {
-                    element.textContent = current.toFixed(1) + '%';
-                } else if (suffix === '₫') {
-                    element.textContent = '₫' + current.toFixed(2);
-                } else if (suffix === ',') {
-                    element.textContent = Math.round(current).toLocaleString();
-                }
-            }, 10);
-        }
+        });
     </script>
     <script>
         jQuery(function($) {
@@ -1136,7 +1155,7 @@
                 if (status == 'active') {
                     msg = 'Bạn có chắc chắn muốn chuyển chiến dịch sang trạng thái hoạt động?';
                 } else {
-                    msg = 'Bạn có chắc chắn muốn tạm dựng chiến dịch?';
+                    msg = 'Bạn có chắc chắn muốn tạm dừng chiến dịch?';
                 }
 
                 if (confirm(msg)) {
