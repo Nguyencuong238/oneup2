@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Front\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
@@ -9,12 +9,12 @@ use App\Models\Kol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class UserController extends Controller
+class BranchController extends Controller
 {
     public function dashboard()
     {
         $kols = Kol::where('status', 'active')->limit(10)->get();
-        return view('user.dashboard', compact('kols'));
+        return view('branch.dashboard', compact('kols'));
     }
 
     public function kolExplorer()
@@ -41,7 +41,7 @@ class UserController extends Controller
 
         $categories = Category::where('type', 'kols')->get();
 
-        return view('user.kol_explorer', compact('kols', 'categories'));
+        return view('branch.kol_explorer', compact('kols', 'categories'));
     }
 
     public function campaign()
@@ -73,7 +73,7 @@ class UserController extends Controller
         $completedCount = $campaigns->where('status', 'completed')->count();
         $pausedCount = $campaigns->where('status', 'paused')->count();
 
-        return view('user.campaign', [
+        return view('branch.campaign', [
             'campaigns' => $campaigns,
             'totalCampaigns' => $totalCampaigns,
             'activeCount' => $activeCount,
@@ -96,7 +96,7 @@ class UserController extends Controller
         $campaign = Campaign::where('slug', $slug)->firstOrNew();
 
 
-        return view('user.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
+        return view('branch.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
     }
 
     public function campaignDetail($slug)
@@ -159,7 +159,7 @@ class UserController extends Controller
             ];
         });
 
-        return view('user.campaign_detail', compact(
+        return view('branch.campaign_detail', compact(
             'campaign',
             'durationDays',
             'remainingDays',
@@ -178,7 +178,7 @@ class UserController extends Controller
         $campaigns = Campaign::all();
         $campaign = Campaign::with('kols')->where('slug', $slug)->firstOrFail();
 
-        return view('user.campaign_tracker', compact('campaign', 'campaigns'));
+        return view('branch.campaign_tracker', compact('campaign', 'campaigns'));
     }
 
     public function campaignStore(Request $request)
@@ -227,7 +227,7 @@ class UserController extends Controller
             $campaign->kols()->sync($request->kols);
         }
 
-        return redirect()->route('user.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
+        return redirect()->route('branch.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
     }
 
     public function changeStatus(Request $request)
@@ -257,33 +257,33 @@ class UserController extends Controller
 
     public function analytic()
     {
-        return view('user.analytic');
+        return view('branch.analytic');
     }
 
     public function report()
     {
-        return view('user.report');
+        return view('branch.report');
     }
 
     public function setting()
     {
-        return view('user.setting');
+        return view('branch.setting');
     }
 
     public function billing()
     {
-        return view('user.billing');
+        return view('branch.billing');
     }
 
     public function kolProfile($id)
     {
         $kol = Kol::find($id);
 
-        return view('user.kol_profile', compact('kol'));
+        return view('branch.kol_profile', compact('kol'));
     }
 
     public function leaderboard()
     {
-        return view('user.leaderboard');
+        return view('branch.leaderboard');
     }
 }

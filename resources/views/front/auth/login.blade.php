@@ -473,7 +473,7 @@
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember">Ghi nhớ mật khẩu</label>
                     </div>
-                    <a href="{{ route('user.forgotPassword') }}" class="link">Quên mật khẩu?</a>
+                    <a href="{{ route('forgotPassword') }}" class="link">Quên mật khẩu?</a>
                 </div>
 
                 <button type="submit" class="btn-auth btn-auth-primary">
@@ -518,7 +518,7 @@
             </div>
 
             <div class="signup-prompt">
-                Bạn chưa có tài khoản? <a href="{{ route('user.register') }}" class="link">Tạo tài khoản miễn phí</a>
+                Bạn chưa có tài khoản? <a href="{{ route('register') }}" class="link">Tạo tài khoản miễn phí</a>
             </div>
         </div>
 

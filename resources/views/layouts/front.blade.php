@@ -218,7 +218,7 @@
                             </svg>
                         </div>
                         <div class="dropdown-info">
-                            <a href="{{ route('user.dashboard') }}" class="nav-link">Bảng điều khiển</a>
+                            <a href="{{ auth()->user()->type == 'branch' ? route('branch.dashboard') : route('creator.dashboard') }}" class="nav-link" style="white-space: nowrap;">Bảng điều khiển</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}" class="nav-link"
@@ -229,8 +229,8 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('user.login') }}" class="btn btn-outline btn-small">{{ __('Log In') }}</a>
-                    <a href="{{ route('user.register') }}" class="btn btn-primary btn-small">Bắt đầu</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline btn-small">{{ __('Log In') }}</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-small">Bắt đầu</a>
                 @endauth
 
             </div>

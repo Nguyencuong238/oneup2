@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.branch_master')
 
 @section('meta')
     <meta name="description" content="Quản lý chiến dịch OneUp - Theo dõi và quản lý các chiến dịch KOL TikTok của bạn">
@@ -780,7 +780,7 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="{{ route('user.campaign.planner') }}" class="btn btn-primary btn-small">
+                <a href="{{ route('branch.campaign.planner') }}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -988,22 +988,22 @@
                                 <div class="campaign-actions">
                                     @if ($campaign->status == 'active')
                                         <button class="action-btn js-navigate"
-                                            data-href="{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}">
+                                            data-href="{{ route('branch.campaign.detail', ['slug' => $campaign->slug]) }}">
                                             Xem
                                         </button>
                                         <button class="action-btn primary js-navigate"
-                                            data-href="{{ route('user.campaign.tracker', ['slug' => $campaign->slug]) }}">
+                                            data-href="{{ route('branch.campaign.tracker', ['slug' => $campaign->slug]) }}">
                                             Theo dõi
                                         </button>
                                     @endif
 
                                     @if ($campaign->status == 'draft')
                                         <button class="action-btn js-navigate"
-                                            data-href="{{ route('user.campaign.planner', ['slug' => $campaign->slug]) }}">
+                                            data-href="{{ route('branch.campaign.planner', ['slug' => $campaign->slug]) }}">
                                             Sửa
                                         </button>
 
-                                        <form action="{{ route('user.campaign.changeStatus') }}" method="post"
+                                        <form action="{{ route('branch.campaign.changeStatus') }}" method="post"
                                             class="change-status-form">
                                             @csrf
                                             <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
@@ -1015,10 +1015,10 @@
 
                                     @if ($campaign->status == 'paused')
                                         <button class="action-btn js-navigate"
-                                            data-href="{{ route('user.campaign.detail', ['slug' => $campaign->slug]) }}">
+                                            data-href="{{ route('branch.campaign.detail', ['slug' => $campaign->slug]) }}">
                                             Xem
                                         </button>
-                                        <form action="{{ route('user.campaign.changeStatus') }}" method="post"
+                                        <form action="{{ route('branch.campaign.changeStatus') }}" method="post"
                                             class="change-status-form">
                                             @csrf
                                             <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
@@ -1033,7 +1033,7 @@
                                             Báo cáo
                                         </button>
                                         <button class="action-btn primary js-navigate"
-                                            data-href="{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}">
+                                            data-href="{{ route('branch.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}">
                                             Nhân bản
                                         </button>
                                     @endif

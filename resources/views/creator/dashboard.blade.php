@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.creator_master')
 
 @section('meta')
     <meta name="description" content="OneUp KOL Analytics Dashboard - Monitor your TikTok influencer campaigns">
@@ -511,75 +511,51 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="{{route('user.campaign.planner')}}" class="btn btn-primary btn-small">
+                {{-- <a href="{{route('creator.campaign.planner')}}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                             clip-rule="evenodd" />
                     </svg>
                     Chiến dịch mới
-                </a>
+                </a> --}}
             </div>
         </div>
 
         <!-- Dashboard Content -->
         <div class="dashboard-content">
             <!-- Quick Actions -->
-            <div class="quick-actions">
-                <a href="{{ route('user.kolExplorer') }}" class="quick-action">
+            {{-- <div class="quick-actions">
+                <a href="{{ route('creator.kolExplorer') }}" class="quick-action">
                     <div class="quick-action-icon">🔍</div>
                     <div class="quick-action-text">Tìm kiếm KOL</div>
                 </a>
 
-                <a href="{{ route('user.campaign.index') }}" class="quick-action">
+                <a href="{{ route('creator.campaign.index') }}" class="quick-action">
                     <div class="quick-action-icon">📊</div>
                     <div class="quick-action-text">Tạo chiến dịch</div>
                 </a>
 
-                <a href="{{ route('user.report') }}" class="quick-action">
+                <a href="{{ route('creator.report') }}" class="quick-action">
                     <div class="quick-action-icon">📈</div>
                     <div class="quick-action-text">Tạo báo cáo</div>
                 </a>
 
-                <a href="{{ route('user.analytic') }}" class="quick-action">
+                <a href="{{ route('creator.analytic') }}" class="quick-action">
                     <div class="quick-action-icon">💡</div>
                     <div class="quick-action-text">Xem thông tin chi tiết</div>
                 </a>
 
-            </div>
+            </div> --}}
 
             <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Phạm vi tiếp cận</div>
-                            <div class="stat-value">45.2M</div>
-                            <div class="stat-change positive">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>+28.7%</span>
-                                <span class="stat-period">so với tháng trước</span>
-                            </div>
-                        </div>
-                        <div class="stat-icon">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-title">Chiến dịch đang hoạt động</div>
-                            <div class="stat-value">18</div>
-                            <div class="stat-change positive">
+                            <div class="stat-title">Chiến dịch đang tham gia</div>
+                            <div class="stat-value">{{$kol->campaigns->count()}}</div>
+                            {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
@@ -587,7 +563,7 @@
                                 </svg>
                                 <span>+3</span>
                                 <span class="stat-period">mới tuần này</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -602,9 +578,33 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
+                            <div class="stat-title">Phạm vi tiếp cận</div>
+                            <div class="stat-value">45.2M</div>
+                            {{-- <div class="stat-change positive">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span>+28.7%</span>
+                                <span class="stat-period">so với tháng trước</span>
+                            </div> --}}
+                        </div>
+                        <div class="stat-icon">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
                             <div class="stat-title">Tương tác trung bình</div>
                             <div class="stat-value">4.8%</div>
-                            <div class="stat-change negative">
+                            {{-- <div class="stat-change negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                                     style="transform: rotate(180deg);">
                                     <path fill-rule="evenodd"
@@ -613,7 +613,7 @@
                                 </svg>
                                 <span>-0.3%</span>
                                 <span class="stat-period">so với tuần trước</span>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -625,7 +625,7 @@
                     </div>
                 </div>
 
-                <div class="stat-card">
+                {{-- <div class="stat-card">
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Tổng chi tiêu</div>
@@ -650,7 +650,7 @@
                             </svg>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Charts Row -->
@@ -732,10 +732,10 @@
             </div>
 
             <!-- Top Performing KOLs Table -->
-            <div class="dashboard-table" style="margin-top: 2rem;">
+            {{-- <div class="dashboard-table" style="margin-top: 2rem;">
                 <div class="table-header">
                     <h2 class="table-title">KOL có hiệu suất cao nhất</h2>
-                    <a href="{{ route('user.analytic') }}" class="table-action">
+                    <a href="{{ route('creator.analytic') }}" class="table-action">
                         Xem tất cả
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -790,7 +790,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
         </div>
     </main>
 @endsection

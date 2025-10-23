@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Kol;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KolController extends Controller
@@ -86,6 +87,13 @@ class KolController extends Controller
 
         $kol->categories()->sync(request('categories'));
 
+        User::create([
+            'name'      => $kol->display_name,
+            'email'     => $kol->username . '@gmail.com',
+            'password'  => bcrypt('12344321'),
+            'type'      => 'kols',
+            'kol_id'    => $kol->id,
+        ]);
 
         flash(__('Tạo thành công'), 'success');
 

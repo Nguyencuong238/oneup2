@@ -402,6 +402,15 @@
             color: var(--primary);
             transform: translateX(-5px);
         }
+        .form-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
 
         @media (max-width: 768px) {
             .auth-container {
@@ -434,6 +443,19 @@
 
             <form id="signupForm" method="POST" action="{{ route('register') }}">
                 @csrf
+
+                <div class="form-group">
+                    <label class="form-label" for="company">Loại tài khoản *</label>
+                    <select class="form-select" name="type">
+                        <option value="kols" @if (old('type') == 'kols') selected @endif>
+                            KOL / KOC
+                        </option>
+                        <option value="branch" @if (old('type') == 'branch') selected @endif>
+                            Nhãn hàng
+                        </option>
+                    </select>
+                </div>
+
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="fullName">
@@ -460,7 +482,7 @@
                     <span class="form-error">Vui lòng nhập địa chỉ email hợp lệ</span>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label class="form-label" for="company">Tên công ty</label>
                     <div class="input-group">
                         <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -469,7 +491,7 @@
                         </svg>
                         <input type="text" name="company" id="company" class="form-input" placeholder="Tên công ty">
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label class="form-label" for="password">
@@ -491,12 +513,12 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="password-strength">
+                    {{-- <div class="password-strength">
                         <div class="password-strength-bar" id="passwordStrength"></div>
-                    </div>
-                    <div class="password-requirements">
+                    </div> --}}
+                    {{-- <div class="password-requirements">
                         Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường và số
-                    </div>
+                    </div> --}}
                     <span class="form-error">Mật khẩu chưa đúng định dạng yêu cầu</span>
                 </div>
 
@@ -532,12 +554,12 @@
                     </label>
                 </div>
 
-                <div class="checkbox-group">
+                {{-- <div class="checkbox-group">
                     <input type="checkbox" id="newsletter" name="newsletter">
                     <label for="newsletter">
                         Gửi cho tôi các bản cập nhật sản phẩm và thông tin tiếp thị
                     </label>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn-auth btn-auth-primary" style="margin-top: 30px">
                     Tạo tài khoản
@@ -581,7 +603,7 @@
             </div>
 
             <div class="signup-prompt">
-                Bạn đã có tài khoản? <a href="{{ route('user.login') }}" class="link">Đăng nhập</a>
+                Bạn đã có tài khoản? <a href="{{ route('login') }}" class="link">Đăng nhập</a>
             </div>
         </div>
 
@@ -677,7 +699,7 @@
             document.querySelectorAll('.form-input').forEach(input => {
                 input.classList.remove('error');
             });
-            
+
             document.querySelectorAll('.form-error').forEach(element => {
                 element.classList.remove('error');
             });

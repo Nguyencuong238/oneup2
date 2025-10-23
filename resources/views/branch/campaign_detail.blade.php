@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.branch_master')
 
 @section('meta')
     <meta name="description" content="Chi tiết chiến dịch OneUp - Giám sát và quản lý hiệu suất chiến dịch">
@@ -692,7 +692,7 @@
                     </div>
                     <div class="campaign-actions">
                         @if (in_array($campaign->status, ['active', 'paused']))
-                            <form action="{{ route('user.campaign.changeStatus') }}" method="post" id="change-status-form">
+                            <form action="{{ route('branch.campaign.changeStatus') }}" method="post" id="change-status-form">
                                 @csrf
                                 <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
                                 <input type="hidden" name="status"
@@ -704,7 +704,7 @@
                             </form>
                         @endif
                         <button class="btn btn-secondary btn-small"
-                            onclick="window.location.href='{{ route('user.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">Nhân
+                            onclick="window.location.href='{{ route('branch.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">Nhân
                             bản</button>
                     </div>
                 </div>

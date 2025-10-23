@@ -940,7 +940,7 @@ footer {
 }
 
 /* Dark Mode Support (Optional) */
-@media (prefers-color-scheme: dark) {
+
     body {
         background: var(--dark-blue);
         color: var(--gray-200);
@@ -966,7 +966,7 @@ footer {
     p {
         color: var(--gray-400);
     }
-}
+
 
 /* Utilities */
 .text-center {

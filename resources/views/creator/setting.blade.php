@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.creator_master')
 
 @section('meta')
     <meta name="description" content="Account Settings - OneUp KOL Analytics Dashboard">

@@ -410,7 +410,7 @@
                 </p>
 
                 <div class="d-flex gap-2 mb-4">
-                    <a href="{{ route('user.register') }}" class="btn btn-primary btn-large">
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-large">
                         Bắt đầu dùng thử miễn phí
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path
@@ -596,11 +596,11 @@
                                 <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
                                 <td>
                                     @auth
-                                        <a href="{{ route('user.kolProfile', $k->id) }}" class="btn btn-primary btn-small" style="height:32px; width: 114px">
+                                        <a href="{{ route('branch.kolProfile', $k->id) }}" class="btn btn-primary btn-small" style="height:32px; width: 114px">
                                             Xem hồ sơ
                                         </a>
                                     @else
-                                        <a href="{{ route('user.login', ['redirect' => route('user.kolProfile', $k->id)]) }}" class="btn btn-primary btn-small">
+                                        <a href="{{ route('login', ['redirect' => route('branch.kolProfile', $k->id)]) }}" class="btn btn-primary btn-small">
                                             Đăng nhập để xem
                                         </a>
                                     @endauth
@@ -613,11 +613,11 @@
 
             <div style="text-align: center; margin-top: 2rem;">
                 @auth
-                    <a href="{{ route('user.kolExplorer') }}" class="btn btn-primary btn-large">
+                    <a href="{{ route('branch.kolExplorer') }}" class="btn btn-primary btn-large">
                         Xem tất cả hơn 10.000 KOL
                     </a>
                 @else
-                    <a href="{{ route('user.login', ['redirect' => route('user.kolExplorer')]) }}" class="btn btn-primary btn-large">
+                    <a href="{{ route('login', ['redirect' => route('branch.kolExplorer')]) }}" class="btn btn-primary btn-large">
                         Đăng nhập để xem tất cả KOL
                     </a>
                 @endauth
@@ -763,7 +763,7 @@
                     </ul>
 
                     <div class="d-flex gap-2" style="margin-top: 2rem;">
-                        <a href="{{ route('user.register') }}" class="btn"
+                        <a href="{{ route('register') }}" class="btn"
                             style="background: white; color: var(--primary);">
                             Bắt đầu dùng thử miễn phí
                         </a>

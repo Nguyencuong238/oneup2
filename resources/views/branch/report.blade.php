@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.branch_master')
 
 @section('meta')
     <meta name="description" content="OneUp Reports - Generate and export campaign reports">

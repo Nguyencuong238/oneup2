@@ -265,7 +265,7 @@
                         <li>Hỗ trợ qua email</li>
                         <li>Lịch sử dữ liệu 7 ngày</li>
                     </ul>
-                    <a href="{{ route('user.register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large" style="width: 100%;">
+                    <a href="{{ route('register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large" style="width: 100%;">
                         Dùng thử miễn phí
                     </a>
                 </div>
@@ -290,7 +290,7 @@
                         <li>Báo cáo tùy chỉnh</li>
                         <li>Làm việc nhóm (tối đa 5 thành viên)</li>
                     </ul>
-                    <a href="{{ route('user.register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large" style="width: 100%;">
+                    <a href="{{ route('register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large" style="width: 100%;">
                         Dùng thử miễn phí
                     </a>
                 </div>
@@ -493,7 +493,7 @@
                 Hơn 500+ thương hiệu đã tối ưu chiến dịch KOL TikTok của họ cùng chúng tôi
             </p>
             <div class="d-flex gap-2 justify-center">
-                <a href="{{ route('user.register') }}" class="btn btn-primary btn-large">
+                <a href="{{ route('register') }}" class="btn btn-primary btn-large">
                     Dùng thử miễn phí 14 ngày
                 </a>
                 <button class="btn btn-outline btn-large" onclick="openContactModal()">

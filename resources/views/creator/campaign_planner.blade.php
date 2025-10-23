@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.creator_master')
 
 @section('meta')
     <meta name="description" content="OneUp Campaign Planner - Plan and optimize your TikTok KOL campaigns">
@@ -636,7 +636,7 @@
 
 @section('page')
     <!-- Main Content -->
-    <form class="main-content" action="{{ route('user.campaign.store') }}" method="POST">
+    <form class="main-content" action="{{ route('creator.campaign.store') }}" method="POST">
         @csrf
 
         @if($campaign->id && !request('is_clone'))
@@ -718,7 +718,7 @@
                             <select class="form-select" name="campaign_category">
                                 <option>-- Chọn --</option>
                                 @foreach ($campaignCategories as $item)
-                                    <option value="{{ $item->id }}" @if (old('campaign_category', $campaign->category_id == $item->id)) selected @endif>
+                                    <option value="{{ $item->id }}" @if (old('campaign_category', $campaign->category_id) == $item->id) selected @endif>
                                         {{ $item->name }}</option>
                                 @endforeach
                             </select>

@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.creator_master')
 
 @section('meta')
     <meta name="description" content="OneUp KOL Explorer - Find and analyze TikTok influencers">
@@ -984,7 +984,7 @@
                                     </div>
                                     <div class="kol-actions">
                                         <button class="action-btn"
-                                            onclick="window.location.href='{{ route('user.kolProfile', $kol->id) }}'">Chi
+                                            onclick="window.location.href='{{ route('creator.kolProfile', $kol->id) }}'">Chi
                                             tiết</button>
                                         <button class="action-btn primary">Chọn</button>
                                     </div>

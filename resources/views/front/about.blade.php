@@ -545,7 +545,7 @@
                 Trở thành một phần của cuộc cách mạng tiếp thị người ảnh hưởng tại Đông Nam Á.
             </p>
             <div class="d-flex gap-2 justify-center">
-                <a href="{{ route('user.register') }}" class="btn" style="background: white; color: var(--primary);">
+                <a href="{{ route('register') }}" class="btn" style="background: white; color: var(--primary);">
                     Bắt Đầu Dùng Thử Miễn Phí
                 </a>
                 <a href="#" class="btn"
