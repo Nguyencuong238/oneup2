@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kol;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
@@ -70,6 +71,11 @@ class LoginController extends Controller
                 $user->save();
             }
         } else {
+            $kol = Kol::create([
+                'username' => explode('@', Str::slug($gUser->getNickname()) ?? $gUser->getEmail())[0],
+                'display_name' => $gUser->getName() ?? $gUser->getNickname() ?? 'Google User',
+            ]);
+
             // Create new user
             $user = User::create([
                 'name' => $gUser->getName() ?? $gUser->getNickname() ?? 'Google User',
@@ -79,6 +85,7 @@ class LoginController extends Controller
                 'provider_id' => $gUser->getId(),
                 'avatar' => $gUser->getAvatar(),
                 'email_verified_at' => now(),
+                'kol_id' => $kol->id,
             ]);
         }
 
