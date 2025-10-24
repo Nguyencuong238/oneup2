@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\Kol;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -33,11 +34,18 @@ class CreateNewUser implements CreatesNewUsers
             'type' => ['required', 'in:kols,branch'],
         ])->validate();
 
+        $kol = Kol::create([
+            'username' => explode('@', $input['email'])[0],
+            'display_name' => $input['name'],
+
+        ]);
+
         return User::create([
             'name'     => $input['name'],
             'email'    => $input['email'],
             'type'    => $input['type'],
             'password' => Hash::make($input['password']),
+            'kol_id' => $kol->id,
         ]);
     }
 }

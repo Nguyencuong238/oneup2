@@ -880,8 +880,7 @@
                                             Theo dõi
                                         </button> --}}
 
-                                        <form action="{{ route('creator.campaign.changeStatus') }}" method="post"
-                                            class="change-status-form">
+                                        <form action="" method="get" class="change-status-form">
                                             @csrf
                                             <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
                                             <input type="hidden" name="status" value="active">
