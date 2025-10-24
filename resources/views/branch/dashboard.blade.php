@@ -760,6 +760,7 @@
                         <tr>
                             <td>
                                 <div class="kol-cell">
+                                    
                                     <img class="kol-avatar-small" src="{{$kol->getFirstMediaUrl('media')}}">
                                     <div>
                                         <div class="kol-name-small">{{$kol->display_name}}</div>

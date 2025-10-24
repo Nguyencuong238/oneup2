@@ -13,13 +13,13 @@ class BranchController extends Controller
 {
     public function dashboard()
     {
-        $kols = Kol::where('status', 'active')->limit(10)->get();
+        $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(10)->get();
         return view('branch.dashboard', compact('kols'));
     }
 
     public function kolExplorer()
     {
-        $kols = Kol::where('status', 'active')
+        $kols = Kol::where('is_verified', 1)->where('status', 'active')
             ->when(request('categories'), function ($q) {
                 $q->whereHas('categories', function ($sub) {
                     $sub->whereIn('id', request('categories'));
@@ -91,7 +91,7 @@ class BranchController extends Controller
     {
         $campaignCategories = Category::where('type', 'campaigns')->tree()->get()->toTree();
         $kolCategories = Category::where('type', 'kols')->tree()->get()->toTree();
-        $kols = Kol::all();
+        $kols = Kol::where('is_verified', 1)->where('status', 'active')->get();
 
         $campaign = Campaign::where('slug', $slug)->firstOrNew();
 
@@ -275,9 +275,9 @@ class BranchController extends Controller
         return view('branch.billing');
     }
 
-    public function kolProfile($id)
+    public function profile($username)
     {
-        $kol = Kol::find($id);
+        $kol = Kol::where('username', $username)->firstOrFail();
 
         return view('branch.kol_profile', compact('kol'));
     }

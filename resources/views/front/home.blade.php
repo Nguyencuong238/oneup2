@@ -596,11 +596,11 @@
                                 <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
                                 <td>
                                     @auth
-                                        <a href="{{ route('branch.kolProfile', $k->id) }}" class="btn btn-primary btn-small" style="height:32px; width: 114px">
+                                        <a href="{{ route('branch.profile', $k->username) }}" class="btn btn-primary btn-small" style="height:32px; width: 114px">
                                             Xem hồ sơ
                                         </a>
                                     @else
-                                        <a href="{{ route('login', ['redirect' => route('branch.kolProfile', $k->id)]) }}" class="btn btn-primary btn-small">
+                                        <a href="{{ route('login', ['redirect' => route('branch.profile', $k->username)]) }}" class="btn btn-primary btn-small">
                                             Đăng nhập để xem
                                         </a>
                                     @endauth

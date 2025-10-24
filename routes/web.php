@@ -72,7 +72,7 @@ Route::prefix('branch/')->middleware(['auth', 'verified', IsBranch::class])->gro
 	Route::get('report', [BranchController::class, 'report'])->name('branch.report');
 	Route::get('setting', [BranchController::class, 'setting'])->name('branch.setting');
 	Route::get('billing', [BranchController::class, 'billing'])->name('branch.billing');
-	Route::get('kol-profile/{id}', [BranchController::class, 'kolProfile'])->name('branch.kolProfile');
+	Route::get('profile/{username}', [BranchController::class, 'profile'])->name('branch.profile');
 	Route::get('leaderboard', [BranchController::class, 'leaderboard'])->name('branch.leaderboard');
 	Route::post('campaign-status', [BranchController::class, 'changeStatus'])->name('branch.campaign.changeStatus');
 });
@@ -90,7 +90,7 @@ Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->grou
 	Route::get('report', [CreatorController::class, 'report'])->name('creator.report');
 	Route::get('setting', [CreatorController::class, 'setting'])->name('creator.setting');
 	Route::get('billing', [CreatorController::class, 'billing'])->name('creator.billing');
-	Route::get('kol-profile/{id}', [CreatorController::class, 'kolProfile'])->name('creator.kolProfile');
+	Route::get('profile/{username}', [CreatorController::class, 'profile'])->name('creator.profile');
 });
 Route::prefix('backend')
 	->middleware(['auth', 'verified', IsAdmin::class])

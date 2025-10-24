@@ -207,9 +207,9 @@ class CreatorController extends Controller
         return view('creator.billing');
     }
 
-    public function kolProfile($id)
+    public function profile($username)
     {
-        $kol = Kol::find($id);
+        $kol = Kol::where('username', $username)->firstOrFail();
 
         return view('creator.kol_profile', compact('kol'));
     }

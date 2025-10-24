@@ -984,7 +984,7 @@
                                     </div>
                                     <div class="kol-actions">
                                         <button class="action-btn"
-                                            onclick="window.location.href='{{ route('creator.kolProfile', $kol->id) }}'">Chi
+                                            onclick="window.location.href='{{ route('creator.profile', $kol->username) }}'">Chi
                                             tiết</button>
                                         <button class="action-btn primary">Chọn</button>
                                     </div>
