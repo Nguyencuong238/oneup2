@@ -28,8 +28,12 @@ class User extends Authenticatable
         'password',
         'company',
         'type',
-        'kol_id'
+        'kol_id',
+        'provider',
+        'provider_id',
+        'avatar'
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.

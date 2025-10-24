@@ -21,6 +21,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsBranch;
 use App\Http\Middleware\IsKols;
+use App\Http\Controllers\Auth\LoginController;
 
 
 /*
@@ -35,6 +36,8 @@ use App\Http\Middleware\IsKols;
 */
 
 Route::get('login', [HomeController::class, 'login'])->name('login')->middleware('guest');
+Route::get('auth/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
 Route::get('register', [HomeController::class, 'register'])->name('register')->middleware('guest');
 Route::get('forgot-password', [HomeController::class, 'forgotPassword'])->name('forgotPassword');
 
