@@ -17,33 +17,6 @@ class CreatorController extends Controller
         return view('creator.dashboard', compact('kol'));
     }
 
-    public function kolExplorer()
-    {
-        $kols = Kol::where('status', 'active')
-            ->when(request('categories'), function ($q) {
-                $q->whereHas('categories', function ($sub) {
-                    $sub->whereIn('id', request('categories'));
-                });
-            })
-            ->when(request('followers'), function ($q) {
-                $q->where('followers', '>=', request('followers'));
-            })
-            ->when(request('engagement'), function ($q) {
-                $q->where('engagement', '>=', request('engagement'));
-            })
-            ->when(request('trust_score'), function ($q) {
-                $q->where('trust_score', '>=', request('trust_score'));
-            })
-            ->when(request('sortBy'), function ($q) {
-                $q->orderBy(request('sortBy'));
-            })
-            ->paginate(12);
-
-        $categories = Category::where('type', 'kols')->get();
-
-        return view('creator.kol_explorer', compact('kols', 'categories'));
-    }
-
     public function campaign()
     {
         $kol = Kol::where('id', auth()->user()->kol_id)->first();
@@ -58,11 +31,8 @@ class CreatorController extends Controller
         $activeCampaigns = $campaigns->where('status', 'active');
         $activeCount = $activeCampaigns->count();
 
-
-        // Các tab: nháp, hoàn thành, tạm dừng
-        $draftCount = $campaigns->where('status', 'draft')->count();
+        // Chiến dịch đã hoàn thành
         $completedCount = $campaigns->where('status', 'completed')->count();
-        $pausedCount = $campaigns->where('status', 'paused')->count();
 
         return view('creator.campaign', [
             'campaigns' => $campaigns,
@@ -216,31 +186,7 @@ class CreatorController extends Controller
         return redirect()->route('creator.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
     }
 
-    public function changeStatus(Request $request)
-    {
-        $request->validate([
-            'campaign_id' => 'required|integer|exists:campaigns,id',
-            'status' => 'required|string|in:draft,active,paused,completed,cancelled',
-        ]);
-
-        $campaign = Campaign::find($request->campaign_id);
-
-        if (! $campaign) {
-            return back()->with('error', 'Chiến dịch không tồn tại!');
-        }
-
-        // Optionally check permission (uncomment if you want)
-        if (auth()->id() !== $campaign->created_by) {
-            return back()->with(['error', 'Không có quyền thay đổi trạng thái.'], 403);
-        }
-
-        $oldStatus = $campaign->status;
-        $campaign->status = $request->status;
-        $campaign->save();
-
-        return redirect()->back()->with('success', 'Cập nhật trạng thái thành công');
-    }
-
+    
     public function analytic()
     {
         return view('creator.analytic');
@@ -266,10 +212,5 @@ class CreatorController extends Controller
         $kol = Kol::find($id);
 
         return view('creator.kol_profile', compact('kol'));
-    }
-
-    public function leaderboard()
-    {
-        return view('creator.leaderboard');
     }
 }

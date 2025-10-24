@@ -72,7 +72,6 @@ Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->grou
 	Route::view('profile', 'profile.show')->name('profile.show');
 
 	Route::get('dashboard', [CreatorController::class, 'dashboard'])->name('creator.dashboard');
-	Route::get('kol-explorer', [CreatorController::class, 'kolExplorer'])->name('creator.kolExplorer');
 	Route::get('campaign', [CreatorController::class, 'campaign'])->name('creator.campaign.index');
 	Route::get('campaign-planner/{slug?}', [CreatorController::class, 'campaignPlanner'])->name('creator.campaign.planner');
 	Route::get('campaign-detail/{slug}', [CreatorController::class, 'campaignDetail'])->name('creator.campaign.detail');
@@ -83,8 +82,6 @@ Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->grou
 	Route::get('setting', [CreatorController::class, 'setting'])->name('creator.setting');
 	Route::get('billing', [CreatorController::class, 'billing'])->name('creator.billing');
 	Route::get('kol-profile/{id}', [CreatorController::class, 'kolProfile'])->name('creator.kolProfile');
-	Route::get('leaderboard', [CreatorController::class, 'leaderboard'])->name('creator.leaderboard');
-	Route::post('campaign-status', [CreatorController::class, 'changeStatus'])->name('creator.campaign.changeStatus');
 });
 Route::prefix('backend')
 	->middleware(['auth', 'verified', IsAdmin::class])

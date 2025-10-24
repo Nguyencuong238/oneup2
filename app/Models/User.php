@@ -27,7 +27,8 @@ class User extends Authenticatable
         'email',
         'password',
         'company',
-        'type'
+        'type',
+        'kol_id'
     ];
 
     /**
