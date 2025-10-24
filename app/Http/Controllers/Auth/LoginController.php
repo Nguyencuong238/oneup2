@@ -26,64 +26,76 @@ class LoginController extends Controller
 
 
     /**
-     * Redirect the user to the Google authentication page.
+     * Redirect the user to the OAuth provider authentication page.
+     * Supported providers: google, facebook
      *
+     * @param string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirectToGoogle()
+    public function redirectToProvider(string $provider)
     {
-        return Socialite::driver('google')->redirect();
+        if (! in_array($provider, ['google', 'facebook'])) {
+            abort(404);
+        }
+
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
-     * Obtain the user information from Google and log the user in (or create a new user).
+     * Handle callback from OAuth provider and login / create user.
      *
+     * @param string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handleGoogleCallback()
+    public function handleProviderCallback(string $provider)
     {
+        if (! in_array($provider, ['google', 'facebook'])) {
+            abort(404);
+        }
+
         try {
-            $gUser = Socialite::driver('google')->stateless()->user();
+            $sUser = Socialite::driver($provider)->stateless()->user();
         } catch (\Exception $e) {
-            return redirect()->route('login')->withErrors('Unable to login using Google. Please try again.');
+            return redirect()->route('login')->withErrors("Unable to login using {$provider}. Please try again.");
         }
 
-        if (! $gUser || ! $gUser->getEmail()) {
-            return redirect()->route('login')->withErrors('No email returned from Google.');
+        if (! $sUser || ! $sUser->getEmail()) {
+            return redirect()->route('login')->withErrors('No email returned from ' . ucfirst($provider) . '.');
         }
 
-        // Find user by email or provider_id
-        $user = User::where('email', $gUser->getEmail())->first();
+        // Find user by email
+        $user = User::where('email', $sUser->getEmail())->first();
 
         if ($user) {
             // Update provider info if missing
             $updated = false;
             if (empty($user->provider) || empty($user->provider_id)) {
-                $user->provider = 'google';
-                $user->provider_id = $gUser->getId();
+                $user->provider = $provider;
+                $user->provider_id = $sUser->getId();
                 $updated = true;
             }
-            if (empty($user->avatar) && $gUser->getAvatar()) {
-                $user->avatar = $gUser->getAvatar();
+            if (empty($user->avatar) && $sUser->getAvatar()) {
+                $user->avatar = $sUser->getAvatar();
                 $updated = true;
             }
             if ($updated) {
                 $user->save();
             }
         } else {
+            // create a Kol record if your flow requires it (keeps existing behavior)
             $kol = Kol::create([
-                'username' => explode('@', Str::slug($gUser->getNickname()) ?? $gUser->getEmail())[0],
-                'display_name' => $gUser->getName() ?? $gUser->getNickname() ?? 'Google User',
+                'username' => explode('@', $sUser->getEmail())[0],
+                'display_name' => $sUser->getName() ?? $sUser->getNickname() ?? ucfirst($provider) . ' User',
             ]);
 
             // Create new user
             $user = User::create([
-                'name' => $gUser->getName() ?? $gUser->getNickname() ?? 'Google User',
-                'email' => $gUser->getEmail(),
+                'name' => $sUser->getName() ?? $sUser->getNickname() ?? ucfirst($provider) . ' User',
+                'email' => $sUser->getEmail(),
                 'password' => Hash::make(Str::random(24)),
-                'provider' => 'google',
-                'provider_id' => $gUser->getId(),
-                'avatar' => $gUser->getAvatar(),
+                'provider' => $provider,
+                'provider_id' => $sUser->getId(),
+                'avatar' => $sUser->getAvatar(),
                 'email_verified_at' => now(),
                 'kol_id' => $kol->id,
             ]);

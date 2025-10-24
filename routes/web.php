@@ -36,8 +36,13 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('login', [HomeController::class, 'login'])->name('login')->middleware('guest');
-Route::get('auth/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
-Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
+// Social login (Google, Facebook)
+Route::get('auth/{provider}', [LoginController::class, 'redirectToProvider'])
+	->name('login.provider')
+	->where('provider', 'google|facebook');
+
+Route::get('auth/{provider}/callback', [LoginController::class, 'handleProviderCallback'])
+	->where('provider', 'google|facebook');
 Route::get('register', [HomeController::class, 'register'])->name('register')->middleware('guest');
 Route::get('forgot-password', [HomeController::class, 'forgotPassword'])->name('forgotPassword');
 
