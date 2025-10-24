@@ -84,6 +84,7 @@ class LoginController extends Controller
         } else {
             // create a Kol record if your flow requires it (keeps existing behavior)
             $kol = Kol::create([
+                'platform_id' => $provider,
                 'username' => explode('@', $sUser->getEmail())[0],
                 'display_name' => $sUser->getName() ?? $sUser->getNickname() ?? ucfirst($provider) . ' User',
             ]);
