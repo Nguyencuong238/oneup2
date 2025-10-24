@@ -164,8 +164,7 @@
     <nav>
         <div class="nav-container">
             <a href="/" class="logo">
-                <div class="logo-icon">📊</div>
-                <span class="gradient-text">OneUp KOL</span>
+                <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
             </a>
 
             <div class="nav-links">
@@ -251,7 +250,11 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-brand">
-                    <div class="footer-logo">📊 OneUp KOL</div>
+                    <div class="footer-logo">
+                        <a href="/">
+                            <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
+                        </a>
+                    </div>
                     <p class="footer-description">
                         Nền tảng phân tích KOL TikTok toàn diện nhất dành cho thị trường Việt Nam.
                     </p>
@@ -266,19 +269,17 @@
                 <div class="footer-column">
                     <h4>Sản phẩm</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Đặc trưng</a></li>
-                        <li><a href="pricing.html">Bảng giá</a></li>
-                        <li><a href="#">API</a></li>
-                        <li><a href="#">Tích hợp</a></li>
+                        <li><a href="#">Dịch vụ kết nối KOL/ KOC</a></li>
+                        <li><a href="#">Dịch vụ tư vấn và setup chiến dịch</a></li>
+                        <li><a href="#">Dịch vụ tư vấn Marketing toàn diện</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h4>Công ty</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">Về chúng tôi</a></li>
-                        <li><a href="#">Thành tựu</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="{{route('about')}}">Về chúng tôi</a></li>
+                        <li><a href="{{route('resources')}}">Tin tức</a></li>
                         <li><a href="#">Liên hệ</a></li>
                     </ul>
                 </div>
@@ -286,10 +287,10 @@
                 <div class="footer-column">
                     <h4>Hỗ trợ</h4>
                     <ul class="footer-links">
-                        <li><a href="help.html">Trung tâm trợ giúp</a></li>
+                        <li><a href="#">Trung tâm trợ giúp</a></li>
+                        <li><a href="#">Chính sách bảo mật </a></li>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
                         <li><a href="#">Tài liệu</a></li>
-                        <li><a href="#">Trạng thái</a></li>
-                        <li><a href="#">Điều khoản</a></li>
                     </ul>
                 </div>
             </div>

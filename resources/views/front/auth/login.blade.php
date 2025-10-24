@@ -425,8 +425,7 @@
         <!-- Left Side - Login Form -->
         <div class="auth-left">
             <div class="auth-logo">
-                <div class="auth-logo-icon">📊</div>
-                <div class="auth-logo-text">OneUp KOL</div>
+                <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
             </div>
 
             <h1 class="auth-title">Chào mừng trở lại!</h1>

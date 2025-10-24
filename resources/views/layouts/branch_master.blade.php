@@ -217,9 +217,8 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <a href="/" class="sidebar-logo">
-                    <div class="sidebar-logo-icon">📊</div>
-                    <div class="sidebar-logo-text">OneUp KOL</div>
+                <a href="/" class="sidebar-logo justify-center">
+                    <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
                 </a>
             </div>
 

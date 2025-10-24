@@ -14,7 +14,7 @@
         }
 
         .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: 3rem;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--dark-blue);
@@ -365,6 +365,7 @@
         .section-dark h6 {
             color: var(--dark-blue);
         }
+
         .section-dark p {
             color: var(--gray-600);
         }
@@ -402,11 +403,14 @@
             <div class="hero-text fade-in">
                 <div class="badge badge-primary mb-3">🚀 Nền tảng hỗ trợ AI</div>
                 <h1>
-                   Khám phá và phân tích <span class="gradient-text">TikTok KOLs</span>
-                    giúp bạn cải thiện hiệu xuất
+                    Khám phá & Phân tích <span class="gradient-text">TikTok KOLs</span>
+                    chuẩn dữ liệu – Tăng hiệu suất chiến dịch ngay hôm nay!
                 </h1>
-                <p style="font-size: 1.25rem; color: var(--gray-600); margin-bottom: 2rem;">
-                    Truy cập dữ liệu thời gian thực của hơn 10.000 nhà sáng tạo TikTok tại Việt Nam. Tự tin đưa ra quyết định dựa trên dữ liệu.
+                <p style="font-size: 18px; color: var(--gray-600); margin-bottom: 2rem;">
+                    Truy cập dữ liệu <strong>thời gian thực</strong> của hơn <strong>10.000 KOLs Việt Nam</strong>, khám phá
+                    hiệu suất – tương tác – lĩnh vực, tất cả trên <strong>một nền tảng AI duy nhất.
+                    Ra quyết định chính xác hơn, hiệu quả cao hơn.</strong>
+
                 </p>
 
                 <div class="d-flex gap-2 mb-4">
@@ -442,15 +446,15 @@
                 <div class="kol-showcase">
                     <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 KOLs thịnh hành hiện nay</h4>
                     <div class="kol-grid">
-                        @foreach($kols as $k)
-                        <div class="kol-card-mini">
-                            <div class="kol-avatar">{{ $k->initials  }}</div>
-                            <div class="kol-info-mini">
-                                <div class="kol-name-mini">{{ $k->display_name }}</div>
-                                <div class="kol-followers">{{ $k->followers }} người theo dõi</div>
+                        @foreach ($kols as $k)
+                            <div class="kol-card-mini">
+                                <div class="kol-avatar">{{ $k->initials }}</div>
+                                <div class="kol-info-mini">
+                                    <div class="kol-name-mini">{{ $k->display_name }}</div>
+                                    <div class="kol-followers">{{ $k->followers }} người theo dõi</div>
+                                </div>
+                                <div class="kol-engagement">{{ $k->engagement }} %</div>
                             </div>
-                            <div class="kol-engagement">{{ $k->engagement }} %</div>
-                        </div>
                         @endforeach
                     </div>
                     <div style="text-align: center; margin-top: 1.5rem;">
@@ -504,33 +508,33 @@
     <section class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">CÁCH THỨC HOẠT ĐỘNG</div>
-                <h2 class="section-title fade-in">Thành công của bạn trong 4 bước đơn giản</h2>
+                <div class="section-subtitle fade-in">Cách nền tảng hoạt động</div>
+                <h2 class="section-title fade-in">Tối ưu hiệu suất chiến dịch chỉ trong 4 bước đơn giản</h2>
             </div>
 
             <div class="grid grid-3">
                 <div class="feature-box fade-in">
                     <div class="feature-number">1</div>
-                    <h4>Tìm kiếm & Lọc</h4>
-                    <p>Sử dụng bộ lọc nâng cao để tìm KOL theo lĩnh vực, vị trí, người theo dõi, tỷ lệ tương tác, v.v.</p>
+                    <h4>Tìm & Lọc thông minh</h4>
+                    <p>Sử dụng bộ lọc AI nâng cao để tìm đúng KOL theo lĩnh vực, vị trí, lượng theo dõi và tỷ lệ tương tác thực — trong vài giây.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.1s;">
                     <div class="feature-number">2</div>
-                    <h4>Phân tích hiệu suất</h4>
-                    <p>Xem xét các số liệu chi tiết bao gồm thông tin nhân khẩu học của khán giả, hiệu suất nội dung và điểm xác thực.</p>
+                    <h4>Phân tích hiệu suất thực tế</h4>
+                    <p>Truy cập dữ liệu chi tiết: nhân khẩu học, hiệu suất nội dung, tỷ lệ tăng trưởng và điểm xác thực. Không còn chọn KOL theo cảm tính.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.2s;">
                     <div class="feature-number">3</div>
-                    <h4>Kế hoạch chiến dịch</h4>
-                    <p>Sử dụng các đề xuất của AI để lựa chọn hỗn hợp KOL tối ưu cho ngân sách và mục tiêu của bạn.</p>
+                    <h4>Lập kế hoạch chiến dịch tự động</h4>
+                    <p>Nhận đề xuất kết hợp KOL tối ưu dựa trên ngân sách, mục tiêu và tệp khách hàng — tất cả được tính toán bằng AI.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.3s;">
                     <div class="feature-number">4</div>
-                    <h4>Theo dõi kết quả</h4>
-                    <p>Theo dõi hiệu suất theo thời gian thực, ROI và nhận thông tin chi tiết hữu ích để tối ưu hóa chiến dịch của bạn.</p>
+                    <h4>Theo dõi & Tối ưu liên tục</h4>
+                    <p>Giám sát hiệu suất theo thời gian thực, xem ROI từng chiến dịch và đề xuất tối ưu để  cải thiện kết quả mỗi ngày.</p>
                 </div>
             </div>
         </div>
@@ -541,9 +545,9 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">Người đạt thành tích cao nhất</div>
-                <h2 class="section-title fade-in">KOL TikTok nổi bật</h2>
+                <h2 class="section-title fade-in">Khám phá Top KOL TikTok nổi bật</h2>
                 <p class="section-description fade-in">
-                    Khám phá những người có ảnh hưởng đã được xác minh với thành tích đã được chứng minh
+                    Theo dõi dữ liệu thực – hiệu suất thật – từ hơn 10.000+ người ảnh hưởng được xác minh.
                 </p>
             </div>
 
@@ -570,22 +574,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($kols as $k)
-                            <tr data-category="{{ $k->categories->isEmpty() ? '' : $k->categories->pluck('slug')->join(' ') }}">
+                        @foreach ($kols as $k)
+                            <tr
+                                data-category="{{ $k->categories->isEmpty() ? '' : $k->categories->pluck('slug')->join(' ') }}">
                                 <td>
                                     <div class="kol-profile">
                                         <div class="kol-avatar-large">{{ $k->initials }}</div>
                                         <div class="kol-details">
                                             <div style="font-weight: 600;">{{ $k->display_name }}</div>
-                                            <div class="kol-handle">{{$k->username }}</div>
+                                            <div class="kol-handle">{{ $k->username }}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    @if($k->categories->isEmpty())
+                                    @if ($k->categories->isEmpty())
                                         --
                                     @else
-                                        @foreach($k->categories as $category)
+                                        @foreach ($k->categories as $category)
                                             {{ $category->name }}
                                         @endforeach
                                     @endif
@@ -596,11 +601,13 @@
                                 <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
                                 <td>
                                     @auth
-                                        <a href="{{ route('branch.profile', $k->username) }}" class="btn btn-primary btn-small" style="height:32px; width: 114px">
+                                        <a href="{{ route('branch.profile', $k->username) }}"
+                                            class="btn btn-primary btn-small" style="height:32px; width: 114px">
                                             Xem hồ sơ
                                         </a>
                                     @else
-                                        <a href="{{ route('login', ['redirect' => route('branch.profile', $k->username)]) }}" class="btn btn-primary btn-small">
+                                        <a href="{{ route('login', ['redirect' => route('branch.profile', $k->username)]) }}"
+                                            class="btn btn-primary btn-small">
                                             Đăng nhập để xem
                                         </a>
                                     @endauth
@@ -617,7 +624,8 @@
                         Xem tất cả hơn 10.000 KOL
                     </a>
                 @else
-                    <a href="{{ route('login', ['redirect' => route('branch.kolExplorer')]) }}" class="btn btn-primary btn-large">
+                    <a href="{{ route('login', ['redirect' => route('branch.kolExplorer')]) }}"
+                        class="btn btn-primary btn-large">
                         Đăng nhập để xem tất cả KOL
                     </a>
                 @endauth
@@ -630,7 +638,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">TÍNH NĂNG MẠNH MẼ</div>
-                <h2 class="section-title color-gray-100 fade-in">Mọi thứ bạn cần để thành công</h2>
+                <h2 class="section-title color-gray-100 fade-in">Tăng tốc mọi chiến dịch của bạn</h2>
             </div>
 
             <div class="grid grid-2">
@@ -678,7 +686,7 @@
                     <div class="feature-icon">📈</div>
                     <h3 class="card-title">Theo dõi tăng trưởng</h3>
                     <p class="card-description color-gray-500">
-                       Theo dõi xu hướng tăng trưởng của KOL và sớm xác định những ngôi sao đang lên
+                        Theo dõi xu hướng tăng trưởng của KOL và sớm xác định những ngôi sao đang lên
                     </p>
                 </div>
             </div>
@@ -699,7 +707,8 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "OneUp KOL đã giúp chúng tôi tăng ROI lên 300% chỉ trong 3 tháng. Các khuyến nghị của AI cực kỳ chính xác."
+                        "OneUp KOL đã giúp chúng tôi tăng ROI lên 300% chỉ trong 3 tháng. Các khuyến nghị của AI cực kỳ
+                        chính xác."
                     </p>
                     <div class="d-flex align-center gap-2">
                         <div class="kol-avatar">NT</div>
@@ -715,7 +724,8 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "Tính năng phát hiện gian lận đã giúp chúng tôi tránh lãng phí ngân sách cho những người có sức ảnh hưởng giả mạo. Công cụ thiết yếu cho bất kỳ nhà tiếp thị nào."
+                        "Tính năng phát hiện gian lận đã giúp chúng tôi tránh lãng phí ngân sách cho những người có sức ảnh
+                        hưởng giả mạo. Công cụ thiết yếu cho bất kỳ nhà tiếp thị nào."
                     </p>
                     <div class="d-flex align-center gap-2">
                         <div class="kol-avatar">LM</div>
@@ -731,7 +741,8 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "Theo dõi thời gian thực giúp chúng tôi tối ưu hóa chiến dịch ngay lập tức. Chúng tôi đã thấy tỷ lệ tương tác tăng gấp 5 lần."
+                        "Theo dõi thời gian thực giúp chúng tôi tối ưu hóa chiến dịch ngay lập tức. Chúng tôi đã thấy tỷ lệ
+                        tương tác tăng gấp 5 lần."
                     </p>
                     <div class="d-flex align-center gap-2">
                         <div class="kol-avatar">PH</div>
@@ -752,7 +763,8 @@
                 <div class="cta-content">
                     <h2 style="color: white;">Bạn đã sẵn sàng chuyển đổi hoạt động tiếp thị trên TikTok chưa?</h2>
                     <p style="font-size: 1.25rem; opacity: 0.95; margin-bottom: 2rem; color: #fefefe;">
-                        Tham gia cùng hơn 500 thương hiệu sử dụng OneUp KOL để tối ưu hóa các chiến dịch có sức ảnh hưởng của họ
+                        Tham gia cùng hơn 500 thương hiệu sử dụng OneUp KOL để tối ưu hóa các chiến dịch có sức ảnh hưởng
+                        của họ
                     </p>
 
                     <ul class="cta-features">
@@ -844,29 +856,28 @@
         // });
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const tabs = document.querySelectorAll('.filter-tab');
-        const rows = document.querySelectorAll('.kol-table tbody tr');
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.filter-tab');
+            const rows = document.querySelectorAll('.kol-table tbody tr');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Bỏ active các tab khác
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Bỏ active các tab khác
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
 
-                const category = tab.dataset.category;
-                
-                rows.forEach(row => {
-                    const rowCats = row.dataset.category?.split(' ') || [];
-                    if (category === '' || rowCats.includes(category)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
+                    const category = tab.dataset.category;
+
+                    rows.forEach(row => {
+                        const rowCats = row.dataset.category?.split(' ') || [];
+                        if (category === '' || rowCats.includes(category)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
                 });
             });
         });
-    });
     </script>
-
 @endsection

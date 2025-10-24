@@ -49,8 +49,6 @@ Route::get('forgot-password', [HomeController::class, 'forgotPassword'])->name('
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [HomeController::class, 'about'])->name('about');
-Route::get('tin-tuc', [HomeController::class, 'news'])->name('news');
-Route::get('tin-tuc/{post:slug}', [HomeController::class, 'newsDetail'])->name('news_detail');
 Route::get('pricing', [HomeController::class, 'pricing'])->name('pricing');
 Route::get('resources', [HomeController::class, 'resources'])->name('resources');
 Route::get('/resources/{slug}', [HomeController::class, 'show'])->name('resources.show');

@@ -340,8 +340,7 @@
     <div class="auth-container">
         <!-- Logo -->
         <div class="auth-logo">
-            <div class="auth-logo-icon">📊</div>
-            <div class="auth-logo-text">OneUp KOL</div>
+            <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
         </div>
 
         <!-- Reset Form State -->
