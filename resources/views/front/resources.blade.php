@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>Tài nguyên - OneUp KOL Analytics</title>
+    <title>Tin tức - OneUp KOL Analytics</title>
     <meta name="description"
         content="Resources - Blog, guides, case studies and insights about TikTok influencer marketing">
 
@@ -261,7 +261,7 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 color-dark-blue fade-in">
-                    Tài Nguyên & <span class="gradient-text">Thông Tin Chiến Lược</span>
+                    Tin tức & <span class="gradient-text">Thông Tin Chiến Lược</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
                     Tìm hiểu mọi thứ về marketing influencer TikTok qua hướng dẫn, nghiên cứu điển hình và báo cáo ngành.
@@ -269,12 +269,14 @@
                 
                 <!-- Resource Tabs -->
                 <div class="resource-tabs fade-in">
-                    <button class="tab-btn active" onclick="filterResources('all')">Tất Cả</button>
-                    <button class="tab-btn" onclick="filterResources('blog')">Bài Viết</button>
-                    <button class="tab-btn" onclick="filterResources('guides')">Hướng Dẫn</button>
-                    <button class="tab-btn" onclick="filterResources('cases')">Nghiên Cứu Điển Hình</button>
-                    <button class="tab-btn" onclick="filterResources('reports')">Báo Cáo</button>
-                    <button class="tab-btn" onclick="filterResources('webinars')">Hội Thảo Trực Tuyến</button>
+                    <a href="{{ route('resources', ['category' => 'all']) }}" 
+                    class="tab-btn {{ $categorySlug == 'all' ? 'active' : '' }}" style="text-decoration: none">Tất Cả</a>
+
+                    <a href="{{ route('resources', ['category' => 'news']) }}" 
+                    class="tab-btn {{ $categorySlug == 'news' ? 'active' : '' }}" style="text-decoration: none">Tin tức</a>
+
+                    <a href="{{ route('resources', ['category' => 'travel']) }}" 
+                    class="tab-btn {{ $categorySlug == 'travel' ? 'active' : '' }}" style="text-decoration: none">Du lịch</a>
                 </div>
             </div>
         </div>
@@ -285,7 +287,7 @@
         <div class="container">
             <div class="resource-grid">
                 <!-- Featured Article -->
-                <div class="featured-resource resource-card fade-in">
+                {{-- <div class="featured-resource resource-card fade-in">
                     <div class="resource-image">
                         <span class="resource-category">Báo Cáo Nổi Bật</span>
                         <span style="font-size: 72px;">📈</span>
@@ -308,128 +310,36 @@
                             </svg>
                         </a>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Blog Posts -->
-                <div class="resource-card fade-in" data-category="blog">
-                    <div class="resource-image">
-                        <span class="resource-category">Bài Viết</span>
-                        <span>💡</span>
-                    </div>
-                    <div class="resource-content">
-                        <h3 class="resource-title">10 Dấu Hiệu Nhận Biết Follower Ảo Trên TikTok</h3>
-                        <div class="resource-meta">
-                            <span>12 Tháng 1, 2025</span>
-                            <span>8 phút đọc</span>
-                        </div>
-                        <p class="resource-excerpt">
-                            Học cách phát hiện follower ảo để đảm bảo bạn hợp tác với những người sáng tạo thật sự...
-                        </p>
-                        <a href="#" class="resource-link">
-                            Đọc Thêm →
-                        </a>
-                    </div>
-                </div>
+                @foreach($posts as $p)
+                    <div class="resource-card fade-in" data-category="blog">
+                        <div class="resource-image">
+                            <span class="resource-category"><span class="article-category">{{ $p->categories->first()?->name }}</span></span>
 
-                <div class="resource-card fade-in" data-category="guides">
-                    <div class="resource-image">
-                        <span class="resource-category">Hướng Dẫn</span>
-                        <span>📚</span>
-                    </div>
-                    <div class="resource-content">
-                        <h3 class="resource-title">Hướng Dẫn Toàn Diện Lên Kế Hoạch Chiến Dịch TikTok</h3>
-                        <div class="resource-meta">
-                            <span>10 Tháng 1, 2025</span>
-                            <span>20 phút đọc</span>
+                            <img src="{{ $p->getFirstMediaUrl('media') }}" alt="">
                         </div>
-                        <p class="resource-excerpt">
-                            Từng bước lập kế hoạch, thực thi và đo lường chiến dịch influencer TikTok thành công...
-                        </p>
-                        <a href="#" class="resource-link">
-                            Xem Hướng Dẫn →
-                        </a>
+                        <div class="resource-content">
+                            <h3 class="resource-title">
+                                <a href="{{ route('resources.show', $p->slug) }}" style="color: black; text-decoration: none">
+                                    {{ $p->title }}
+                                </a>   
+                            </h3>
+                            {{-- <div class="resource-meta">
+                                <span>12 Tháng 1, 2025</span>
+                                <span>8 phút đọc</span>
+                            </div> --}}
+                            <p class="resource-excerpt">
+                                {{ $p->excerpt }}
+                            </p>
+                            <a href="{{ route('resources.show', $p->slug) }}" class="resource-link">
+                                Đọc Thêm →
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="resource-card fade-in" data-category="cases">
-                    <div class="resource-image">
-                        <span class="resource-category">Nghiên Cứu Điển Hình</span>
-                        <span>🎯</span>
-                    </div>
-                    <div class="resource-content">
-                        <h3 class="resource-title">Cách Thương Hiệu X Đạt 500% ROI Với Micro-Influencer</h3>
-                        <div class="resource-meta">
-                            <span>8 Tháng 1, 2025</span>
-                            <span>12 phút đọc</span>
-                        </div>
-                        <p class="resource-excerpt">
-                            Tìm hiểu cách một thương hiệu thời trang địa phương tận dụng micro-influencer để tăng trưởng doanh số vượt bậc...
-                        </p>
-                        <a href="#" class="resource-link">
-                            Xem Chi Tiết →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="resource-card fade-in" data-category="blog">
-                    <div class="resource-image">
-                        <span class="resource-category">Bài Viết</span>
-                        <span>🚀</span>
-                    </div>
-                    <div class="resource-content">
-                        <h3 class="resource-title">Thay Đổi Thuật Toán TikTok: Marketer Cần Biết Gì</h3>
-                        <div class="resource-meta">
-                            <span>5 Tháng 1, 2025</span>
-                            <span>6 phút đọc</span>
-                        </div>
-                        <p class="resource-excerpt">
-                            Cập nhật mới nhất về thuật toán TikTok và cách nó ảnh hưởng đến chiến lược influencer marketing của bạn...
-                        </p>
-                        <a href="#" class="resource-link">
-                            Đọc Thêm →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="resource-card fade-in" data-category="reports">
-                    <div class="resource-image">
-                        <span class="resource-category">Báo Cáo</span>
-                        <span>📊</span>
-                    </div>
-                    <div class="resource-content">
-                        <h3 class="resource-title">Chỉ Số Hiệu Suất TikTok Quý 4/2024</h3>
-                        <div class="resource-meta">
-                            <span>28 Tháng 12, 2024</span>
-                            <span>25 phút đọc</span>
-                        </div>
-                        <p class="resource-excerpt">
-                            Thống kê ngành về tỷ lệ tương tác, CPM, và tỷ lệ chuyển đổi qua các lĩnh vực khác nhau...
-                        </p>
-                        <a href="#" class="resource-link">
-                            Tải Báo Cáo →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="resource-card fade-in" data-category="webinars">
-                    <div class="resource-image">
-                        <span class="resource-category">Hội Thảo Trực Tuyến</span>
-                        <span>🎥</span>
-                    </div>
-                    <div class="resource-content">
-                        <h3 class="resource-title">Làm Chủ Phân Tích TikTok: Workshop Trực Tiếp</h3>
-                        <div class="resource-meta">
-                            <span>1 Tháng 2, 2025</span>
-                            <span>2:00 PM GMT+7</span>
-                        </div>
-                        <p class="resource-excerpt">
-                            Tham gia workshop trực tiếp để học kỹ thuật phân tích nâng cao trong đo lường hiệu quả chiến dịch...
-                        </p>
-                        <a href="#" class="resource-link">
-                            Đăng Ký Ngay →
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

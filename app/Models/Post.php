@@ -21,9 +21,18 @@ class Post extends Model implements HasMedia
     use HasCategories;
     use InteractsWithMedia;
 
+    protected $fillable = [
+        'slug', 'title', 'body', 'excerpt', 'author_id', 'meta', 'type', 'is_featured', 'status'
+    ];
+
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
     }
 
     public function getSlugOptions(): SlugOptions
@@ -156,10 +165,10 @@ class Post extends Model implements HasMedia
         return route('news_detail', $this);
     }
 
-    public function projects()
-    {
-        return $this->belongsToMany(Project::class, 'project_post', 'post_id', 'project_id');
-    }
+    // public function projects()
+    // {
+    //     return $this->belongsToMany(Project::class, 'project_post', 'post_id', 'project_id');
+    // }
 
     public function scopeForCard($query)
     {

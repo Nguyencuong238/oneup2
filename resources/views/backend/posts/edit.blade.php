@@ -80,14 +80,14 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>{{ __('Relate Projects') }}</label>
                             <select multiple="multiple" class="form-control" id="select-projects" data-fouc name="projects[]">
                                 @foreach(old('projects', $post->projects()->pluck('id')->toArray()) as $projectId)
                                     <option value="{{ $projectId }}" selected></option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -159,7 +159,7 @@
     </form>
 
     @push('js')
-        <script>
+        {{-- <script>
             $(function() {
                 $('#select-tag').select2({
                     tags: true,
@@ -168,7 +168,7 @@
 
                 setSearchSelect2($('#select-projects'), "{{ route('projects.search') }}")
             })
-        </script>
+        </script> --}}
     @endpush
     
 </x-app-layout>

@@ -103,11 +103,45 @@ class HomeController extends Controller
         return view('front.help');
     }
 
-    public function resources(Request $req)
+    public function resources(Request $request)
     {
+        $posts = Post::where('status', 1)
+        ->orderByDesc('id')
+        ->take(6)
+        ->get();
 
-        return view('front.resources');
+        $categorySlug = $request->get('category', 'all');
+
+        if ($categorySlug === 'all') {
+            $posts = Post::latest()->get();
+        } else {
+            $category = Category::where('slug', $categorySlug)->first();
+
+            if ($category) {
+                $posts = $category->posts()->latest()->get();
+            } else {
+                $posts = collect(); // rỗng
+            }
+        }
+
+        return view('front.resources', compact('posts', 'categorySlug'));
     }
+
+    public function show($slug)
+    {
+        $post = Post::with('categories', 'media')->where('slug', $slug)->firstOrFail();
+
+        // Bài viết liên quan (same category)
+        $related = Post::whereHas('categories', function ($q) use ($post) {
+            $q->whereIn('categories.id', $post->categories->pluck('id'));
+        })
+        ->where('id', '!=', $post->id)
+        ->limit(3)
+        ->get();
+
+        return view('front.resources.show', compact('post', 'related'));
+    }
+
 
     public function kols(Request $req)
     {

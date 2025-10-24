@@ -176,7 +176,7 @@
                 <a href="{{ route('pricing') }}"
                     class="nav-link @if (request()->routeIs('pricing')) active @endif">Bảng giá</a>
                 <a href="{{ route('resources') }}"
-                    class="nav-link @if (request()->routeIs('resources')) active @endif">Nguồn lực</a>
+                    class="nav-link @if (request()->routeIs('resources')) active @endif">Tin tức</a>
                 <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Hỗ trợ</a>
 
                 {{-- <div class="language-dropdown">

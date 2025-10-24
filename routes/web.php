@@ -45,6 +45,7 @@ Route::get('tin-tuc', [HomeController::class, 'news'])->name('news');
 Route::get('tin-tuc/{post:slug}', [HomeController::class, 'newsDetail'])->name('news_detail');
 Route::get('pricing', [HomeController::class, 'pricing'])->name('pricing');
 Route::get('resources', [HomeController::class, 'resources'])->name('resources');
+Route::get('/resources/{slug}', [HomeController::class, 'show'])->name('resources.show');
 Route::get('kols', [HomeController::class, 'kols'])->name('kols');
 Route::get('help', [HomeController::class, 'help'])->name('help');
 Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsletters');
