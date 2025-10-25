@@ -763,15 +763,14 @@
                 <div class="cta-content">
                     <h2 style="color: white;">Bạn đã sẵn sàng chuyển đổi hoạt động tiếp thị trên TikTok chưa?</h2>
                     <p style="font-size: 1.25rem; opacity: 0.95; margin-bottom: 2rem; color: #fefefe;">
-                        Tham gia cùng hơn 500 thương hiệu sử dụng OneUp KOL để tối ưu hóa các chiến dịch có sức ảnh hưởng
-                        của họ
+                        Hơn 500+ thương hiệu đã tin dùng OneUp KOL để tìm đúng đối tác Influencer và đo lường hiệu quả chiến dịch một cách chính xác.
                     </p>
 
                     <ul class="cta-features">
-                        <li>Truy cập hơn 10.000 hồ sơ KOL đã được xác minh</li>
-                        <li>Phân tích theo thời gian thực và theo dõi ROI</li>
-                        <li>Đề xuất hỗ trợ bởi AI</li>
-                        <li>Hỗ trợ khách hàng tận tâm</li>
+                        <li>Tiếp cận 10.000+ hồ sơ KOL đã được xác minh </li>
+                        <li>Theo dõi ROI và hiệu suất chiến dịch theo thời gian thực</li>
+                        <li>Nhận gợi ý KOL phù hợp từ AI </li>
+                        <li>Hỗ trợ 1-1 từ chuyên gia khi bạn cần</li>
                     </ul>
 
                     <div class="d-flex gap-2" style="margin-top: 2rem;">
