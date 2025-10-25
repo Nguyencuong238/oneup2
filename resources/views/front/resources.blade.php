@@ -25,6 +25,8 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 13.5px;
+            line-height: 1;
         }
         
         .tab-btn:hover {

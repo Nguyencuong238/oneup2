@@ -1123,7 +1123,7 @@ footer {
 }
 
 /* Focus Styles for Better Accessibility */
-*:focus {
+/* *:focus {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
@@ -1132,7 +1132,7 @@ button:focus,
 a:focus {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-}
+} */
 
 /* Skip to Content Link */
 .skip-to-content {

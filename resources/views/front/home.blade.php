@@ -646,7 +646,7 @@
                     <div class="feature-icon">🔍</div>
                     <h3 class="card-title">Khám phá thông minh</h3>
                     <p class="card-description color-gray-500">
-                        Tìm kiếm hỗ trợ AI với hơn 50 bộ lọc để tìm KOL hoàn hảo cho thương hiệu của bạn
+                        Tìm KOL hoàn hảo chỉ trong vài giây — với AI hỗ trợ + hơn 50 bộ lọc chi tiết, giúp bạn chọn đúng người, đúng mục tiêu.
                     </p>
                 </div>
 
@@ -654,39 +654,39 @@
                     <div class="feature-icon">📊</div>
                     <h3 class="card-title">Phân tích thời gian thực</h3>
                     <p class="card-description color-gray-500">
-                        Theo dõi số liệu hiệu suất, tỷ lệ tương tác và ROI theo thời gian thực
+                        Theo dõi tỷ lệ tương tác, hiệu suất và ROI ngay khi chiến dịch đang chạy — không bỏ lỡ bất kỳ biến động nào.
                     </p>
                 </div>
 
                 <div class="feature-card fade-in" style="animation-delay: 0.2s">
                     <div class="feature-icon">🎯</div>
-                    <h3 class="card-title">Người lập kế hoạch chiến dịch</h3>
+                    <h3 class="card-title">Trình lập kế hoạch chiến dịch</h3>
                     <p class="card-description color-gray-500">
-                        Lập kế hoạch, thực hiện và tối ưu hóa các chiến dịch với thông tin chi tiết dựa trên dữ liệu
+                        Lên kế hoạch – quản lý – tối ưu toàn bộ chiến dịch trên một bảng điều khiển duy nhất, có dữ liệu gợi ý từ AI.
                     </p>
                 </div>
 
                 <div class="feature-card fade-in" style="animation-delay: 0.3s">
                     <div class="feature-icon">🛡️</div>
-                    <h3 class="card-title">Phát hiện gian lận</h3>
+                    <h3 class="card-title">Phát hiện gian lận tự động</h3>
                     <p class="card-description color-gray-500">
-                        AI tiên tiến phát hiện người theo dõi giả mạo và thao túng tương tác
+                        Công nghệ AI tiên tiến phát hiện follower ảo và tương tác giả, giúp bạn đầu tư đúng chỗ, an toàn tuyệt đối.
                     </p>
                 </div>
 
                 <div class="feature-card fade-in" style="animation-delay: 0.4s">
                     <div class="feature-icon">💰</div>
-                    <h3 class="card-title">Máy tính ROI</h3>
+                    <h3 class="card-title">Máy tính ROI thông minh</h3>
                     <p class="card-description color-gray-500">
-                        Tính toán và dự đoán ROI của chiến dịch trước khi bạn chi tiêu
+                        Ước tính hiệu quả và lợi nhuận chiến dịch trước khi chi tiêu, hỗ trợ ra quyết định dựa trên dữ liệu thực.
                     </p>
                 </div>
 
                 <div class="feature-card fade-in" style="animation-delay: 0.5s">
                     <div class="feature-icon">📈</div>
-                    <h3 class="card-title">Theo dõi tăng trưởng</h3>
+                    <h3 class="card-title">Theo dõi tăng trưởng KOL</h3>
                     <p class="card-description color-gray-500">
-                        Theo dõi xu hướng tăng trưởng của KOL và sớm xác định những ngôi sao đang lên
+                        Phân tích tốc độ tăng trưởng và phát hiện sớm những ngôi sao đang lên để hợp tác trước khi quá muộn.
                     </p>
                 </div>
             </div>
