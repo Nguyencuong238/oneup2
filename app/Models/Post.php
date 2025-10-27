@@ -162,7 +162,7 @@ class Post extends Model implements HasMedia
 
     public function showUrl()
     {
-        return route('news_detail', $this);
+        return route('resources.show', $this);
     }
 
     // public function projects()
