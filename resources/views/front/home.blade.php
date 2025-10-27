@@ -370,6 +370,13 @@
             color: var(--gray-600);
         }
 
+        .text-header{
+            width: 590px;
+        }
+
+        .section-kol{
+            width: 755px;
+        }
 
         @media (max-width: 768px) {
             .hero-content {
@@ -392,6 +399,14 @@
             .kol-table table {
                 min-width: 600px;
             }
+
+            .text-header{
+                width: 380px;
+            }
+
+            .section-kol{
+                width: 320px;
+            }
         }
     </style>
 @endsection
@@ -402,7 +417,7 @@
         <div class="hero-content">
             <div class="hero-text fade-in">
                 <div class="badge badge-primary mb-3">🚀 Nền tảng hỗ trợ AI</div>
-                <h1>
+                <h1 class="text-header">
                     Khám phá & Phân tích <span class="gradient-text">TikTok KOLs</span>
                     chuẩn dữ liệu – Tăng hiệu suất chiến dịch ngay hôm nay!
                 </h1>
@@ -527,7 +542,7 @@
 
                 <div class="feature-box fade-in" style="animation-delay: 0.2s;">
                     <div class="feature-number">3</div>
-                    <h4>Lập kế hoạch chiến dịch tự động</h4>
+                    <h4>Lập chiến dịch tự động</h4>
                     <p>Nhận đề xuất kết hợp KOL tối ưu dựa trên ngân sách, mục tiêu và tệp khách hàng — tất cả được tính toán bằng AI.</p>
                 </div>
 
@@ -545,7 +560,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">Người đạt thành tích cao nhất</div>
-                <h2 class="section-title fade-in">Khám phá Top KOL TikTok nổi bật</h2>
+                <h2 class="section-title section-kol fade-in">Khám phá Top KOL TikTok nổi bật</h2>
                 <p class="section-description fade-in">
                     Theo dõi dữ liệu thực – hiệu suất thật – từ hơn 10.000+ người ảnh hưởng được xác minh.
                 </p>
@@ -638,7 +653,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">TÍNH NĂNG MẠNH MẼ</div>
-                <h2 class="section-title color-gray-100 fade-in">Tăng tốc mọi chiến dịch của bạn</h2>
+                <h2 class="section-title section-kol color-gray-100 fade-in">Tăng tốc mọi chiến dịch của bạn</h2>
             </div>
 
             <div class="grid grid-2">
