@@ -162,7 +162,7 @@ class Post extends Model implements HasMedia
 
     public function showUrl()
     {
-        return route('resources.show', $this);
+        return route('resources.show', $this->slug);
     }
 
     // public function projects()
