@@ -731,48 +731,48 @@
                         <div class="stat-item">
                             <div class="stat-value">{{ formatDisplayNumber($kol->followers) }}</div>
                             <div class="stat-label">Người theo dõi</div>
-                            <div class="stat-change positive">
+                            {{-- <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+12.5% (30d)</span>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="stat-item">
                             <div class="stat-value">{{ $kol->engagement - 0 }}%</div>
                             <div class="stat-label">Tỷ lệ tương tác</div>
-                            <div class="stat-change positive">
+                            {{-- <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+0.8% (7d)</span>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="stat-item">
-                            <div class="stat-value">342</div>
+                            <div class="stat-value">{{ $totalPosts }}</div>
                             <div class="stat-label">Bài đăng</div>
-                            <div class="stat-change">
+                            {{-- <div class="stat-change">
                                 <span style="color: var(--gray-600);">3.2 bài viết/tuần</span>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="stat-item">
-                            <div class="stat-value">125M</div>
+                            <div class="stat-value">{{ formatDisplayNumber($totalViews) }}</div>
                             <div class="stat-label">Lượt xem</div>
-                            <div class="stat-change positive">
+                            {{-- <div class="stat-change positive">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+28% (30d)</span>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -837,7 +837,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <div class="engagement-value">162K</div>
+                                <div class="engagement-value">{{ $avgLikesText }}</div>
                                 <div class="engagement-label">TB Lượt thích</div>
                             </div>
 
@@ -849,7 +849,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <div class="engagement-value">8.5K</div>
+                                <div class="engagement-value">{{ $avgLikesText }}</div>
                                 <div class="engagement-label">TB Bình luận</div>
                             </div>
 
@@ -860,7 +860,7 @@
                                             d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                                     </svg>
                                 </div>
-                                <div class="engagement-value">3.2K</div>
+                                <div class="engagement-value">{{ $avgSharesText }}</div>
                                 <div class="engagement-label">TB Chia sẻ</div>
                             </div>
 
@@ -873,7 +873,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <div class="engagement-value">365K</div>
+                                <div class="engagement-value">{{ $avgViewsText }}</div>
                                 <div class="engagement-label">TB Lượt xem</div>
                             </div>
                         </div>

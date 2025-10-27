@@ -757,8 +757,8 @@
                                 <span class="kol-stat-label">Tương tác</span>
                             </div>
                             <div class="kol-stat">
-                                <span class="kol-stat-value">{{ rand(50,500) }}K</span>
-                                <span class="kol-stat-label">Lượt xem TB</span>
+                                <span class="kol-stat-value">{{ formatDisplayNumber($k->total_likes) }}</span>
+                                <span class="kol-stat-label">Tổng số lượt thích</span>
                             </div>
                         </div>
                         <div class="kol-metrics">

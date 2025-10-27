@@ -583,7 +583,7 @@
                             <th>Danh mục</th>
                             <th>Người theo dõi</th>
                             <th>Mức độ tương tác</th>
-                            <th>Lượt xem trung bình</th>
+                            <th>Tổng lượt thích</th>
                             <th>Điểm tin cậy</th>
                             <th>Hành động</th>
                         </tr>
@@ -612,7 +612,7 @@
                                 </td>
                                 <td><strong>{{ $k->followers }}</strong></td>
                                 <td><span class="metric-badge high">{{ $k->engagement }}%</span></td>
-                                <td>{{ rand(100, 1000) }}K</td>
+                                <td>{{ $k->total_likes }}</td>
                                 <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
                                 <td>
                                     @auth

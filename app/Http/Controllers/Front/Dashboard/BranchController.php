@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\Kol;
+use App\Models\KolContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -278,9 +279,36 @@ class BranchController extends Controller
     public function profile($username)
     {
         $kol = Kol::where('username', $username)->firstOrFail();
+        $kolId = $kol->id;
 
-        return view('branch.kol_profile', compact('kol'));
+        $totalPosts = KolContent::where('kol_id', $kolId)->count();
+
+        if ($totalPosts > 0) {
+            $totalLikes = KolContent::where('kol_id', $kolId)->sum('likes_count');
+            $totalComments = KolContent::where('kol_id', $kolId)->sum('comments_count');
+            $totalShares = KolContent::where('kol_id', $kolId)->sum('shares_count');
+            $totalViews = KolContent::where('kol_id', $kolId)->sum('views_count');
+
+            // Tính trung bình
+            $avgLikesText = round($totalLikes / $totalPosts / 1000, 1) . 'K';
+            $avgCommentsText = round($totalComments / $totalPosts / 1000, 1) . 'K';
+            $avgSharesText = round($totalShares / $totalPosts / 1000, 1) . 'K';
+            $avgViewsText = round($totalViews / $totalPosts / 1000, 1) . 'K';
+        } else {
+            $avgLikesText = $avgCommentsText = $avgSharesText = $avgViewsText = '0K';
+        }
+
+        return view('branch.kol_profile', compact(
+            'kol',
+            'totalPosts',
+            'totalViews',
+            'avgLikesText',
+            'avgCommentsText',
+            'avgSharesText',
+            'avgViewsText'
+        ));
     }
+
 
     public function leaderboard()
     {
