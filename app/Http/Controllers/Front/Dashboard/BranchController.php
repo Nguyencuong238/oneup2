@@ -282,7 +282,7 @@ class BranchController extends Controller
         $kol = Kol::where('username', $username)
             ->with(['contents' => function ($query) {
                 $query->where('content_type', 'video')
-                    ->latest()
+                    ->latest('posted_at')
                     ->take(5);
             }])
             ->firstOrFail();
