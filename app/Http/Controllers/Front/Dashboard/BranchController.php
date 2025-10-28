@@ -282,6 +282,11 @@ class BranchController extends Controller
         $kolId = $kol->id;
 
         $totalPosts = KolContent::where('kol_id', $kolId)->count();
+        $totalViews = 0;
+        $avgLikesText = 0;
+        $avgCommentsText = 0;
+        $avgSharesText = 0;
+        $avgViewsText = 0;
 
         if ($totalPosts > 0) {
             $totalLikes = KolContent::where('kol_id', $kolId)->sum('likes_count');

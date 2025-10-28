@@ -463,7 +463,7 @@
                     <div class="kol-grid">
                         @foreach ($kols as $k)
                             <div class="kol-card-mini">
-                                <div class="kol-avatar">{{ $k->initials }}</div>
+                                <img class="kol-avatar" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                 <div class="kol-info-mini">
                                     <div class="kol-name-mini">{{ $k->display_name }}</div>
                                     <div class="kol-followers">{{ $k->followers }} người theo dõi</div>
@@ -594,7 +594,7 @@
                                 data-category="{{ $k->categories->isEmpty() ? '' : $k->categories->pluck('slug')->join(' ') }}">
                                 <td>
                                     <div class="kol-profile">
-                                        <div class="kol-avatar-large">{{ $k->initials }}</div>
+                                        <img class="kol-avatar-large" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                         <div class="kol-details">
                                             <div style="font-weight: 600;">{{ $k->display_name }}</div>
                                             <div class="kol-handle">{{ $k->username }}</div>

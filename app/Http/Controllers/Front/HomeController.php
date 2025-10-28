@@ -3,20 +3,16 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Album;
 use App\Models\Category;
-use App\Models\Channel;
-use App\Models\Partner;
 use App\Models\Kol;
 use App\Models\Post;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Kol::where('status', 'active')->where('is_verified', 1)->latest()->with('categories');
+        $query = Kol::where('status', 'active')->where('is_verified', 1)->latest()->take(10)->with('categories');
 
         // Nếu có danh mục được chọn
         if ($request->filled('category') && $request->category !== '') {
@@ -25,7 +21,7 @@ class HomeController extends Controller
             });
         }
 
-        $kols = $query->paginate(10);
+        $kols = $query->paginate(8);
 
         if ($request->ajax()) {
             return view('front.partials.kol_table_body', compact('kols'))->render();
