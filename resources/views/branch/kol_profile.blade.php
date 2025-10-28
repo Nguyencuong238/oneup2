@@ -151,6 +151,18 @@
         .profile-info {
             flex: 1;
         }
+        .score-value {
+            font-weight: 600;
+        }
+        .score-value.green {
+            color: #16a34a; /* xanh lá */
+        }
+        .score-value.yellow {
+            color: #eab308; /* vàng */
+        }
+        .score-value.red {
+            color: #dc2626; /* đỏ */
+        }
 
         .profile-top-row {
             display: flex;
@@ -644,6 +656,10 @@
             margin-top: 0.25rem;
         }
 
+        .trust-factor{
+            color: #475569;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .sidebar {
@@ -659,6 +675,10 @@
                 margin-left: 0;
             }
 
+            .trust-factor{
+                color: #475569;
+            }
+
             .content-grid {
                 grid-template-columns: 1fr;
             }
@@ -669,6 +689,10 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+            }
+
+            .trust-factor{
+                color: #475569;
             }
 
             .profile-stats {
@@ -880,7 +904,7 @@
                     </div>
 
                     <!-- Audience Demographics -->
-                    <div class="metric-card" style="margin-top: 2rem;">
+                    {{-- <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
                             <h2 class="metric-title">Nhân khẩu học của khán giả</h2>
                         </div>
@@ -962,7 +986,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Recent Content -->
                     <div class="metric-card" style="margin-top: 2rem;">
@@ -972,10 +996,18 @@
                         </div>
 
                         <div class="content-list">
+                            @foreach($videos as $v)
                             <div class="content-item">
-                                <div class="content-thumbnail"></div>
-                                <div class="content-details">
-                                    <div class="content-title">Summer Fashion Haul 2025 - Những món cần có cho tủ đồ của bạn
+                                <div class="">
+                                    <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}" 
+                                        target="_blank" rel="noopener">
+                                        <img src="{{ $v->thumbnail_url }}" alt="" style="width: 200px; height: 180px; border-radius: 10px">
+                                    </a>
+                                </div>
+                                <div class="content-details" >
+                                    <div class="content-title">
+                                        <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}" 
+                                        target="_blank" rel="noopener" style="text-decoration: none; color:black">{{ $v->title }}</a>
                                     </div>
                                     <div class="content-stats">
                                         <span class="content-stat">
@@ -985,7 +1017,7 @@
                                                     d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            523K lượt xem
+                                            {{ formatDisplayNumber($v->views_count) }} lượt xem
                                         </span>
                                         <span class="content-stat">
                                             <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
@@ -993,67 +1025,13 @@
                                                     d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            42.3K
+                                            {{ formatDisplayNumber($v->likes_count) }}
                                         </span>
-                                        <span class="content-stat">2 days ago</span>
+                                        <span class="content-stat">{{ $v->posted_at->diffForHumans() }}</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="content-item">
-                                <div class="content-thumbnail"></div>
-                                <div class="content-details">
-                                    <div class="content-title">Trang phục kỳ nghỉ bãi biển - Những gì tôi mang đến Phú Quốc</div>
-                                    <div class="content-stats">
-                                        <span class="content-stat">
-                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd"
-                                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            892K lượt xem
-                                        </span>
-                                        <span class="content-stat">
-                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            68.5K
-                                        </span>
-                                        <span class="content-stat">5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-item">
-                                <div class="content-thumbnail"></div>
-                                <div class="content-details">
-                                    <div class="content-title">Quy trình chăm sóc da buổi sáng của tôi - Sản phẩm tôi đang yêu thích
-                                    </div>
-                                    <div class="content-stats">
-                                        <span class="content-stat">
-                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd"
-                                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            423K lượt xem
-                                        </span>
-                                        <span class="content-stat">
-                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            35.2K
-                                        </span>
-                                        <span class="content-stat">1 week ago</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1061,41 +1039,62 @@
                 <!-- Right Column -->
                 <div>
                     <!-- Trust Score -->
-                    <div class="metric-card">
+                    <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
                             <h2 class="metric-title">Điểm uy tín</h2>
                         </div>
 
                         <div class="trust-score-container">
                             <div class="trust-score-circle">
-                                <svg width="150" height="150" class="trust-score-svg">
+                                <svg width="150" height="150">
                                     <circle cx="75" cy="75" r="60" class="trust-score-bg"></circle>
                                     <circle cx="75" cy="75" r="60" class="trust-score-fill"
-                                        stroke-dasharray="377" stroke-dashoffset="47"></circle>
+                                        stroke-dasharray="377"
+                                        stroke-dashoffset="{{ 377 - (377 * $trustScore / 100) }}"></circle>
                                 </svg>
-                                <div class="trust-score-text">87</div>
+                                <div class="trust-score-text">{{ $trustScore }}</div>
                             </div>
 
-                            <div class="trust-factors">
-                                <div class="trust-factor">
-                                    <span class="trust-factor-label">Người theo dõi thật</span>
-                                    <span class="trust-factor-value good">92%</span>
+                            <div class="trust-factors space-y-1">
+                                <div class="trust-factor flex justify-between">
+                                    <span>Người theo dõi thật</span>
+                                    <span class="score-value @if($realFollowersScore >= 80) green 
+                                                @elseif($realFollowersScore >= 50) yellow  
+                                                @else red @endif">
+                                        {{ $realFollowersScore }}%
+                                    </span>
                                 </div>
-                                <div class="trust-factor">
-                                    <span class="trust-factor-label">Chất lượng tương tác</span>
-                                    <span class="trust-factor-value good">88%</span>
+                                <div class="trust-factor flex justify-between">
+                                    <span>Chất lượng tương tác</span>
+                                    <span class="score-value @if($engagementQuality >= 80) green 
+                                                @elseif($engagementQuality >= 50) yellow 
+                                                @else red @endif">
+                                        {{ $engagementQuality }}%
+                                    </span>
                                 </div>
-                                <div class="trust-factor">
-                                    <span class="trust-factor-label">Tính xác thực bình luận</span>
-                                    <span class="trust-factor-value good">85%</span>
+                                <div class="trust-factor flex justify-between">
+                                    <span>Tính xác thực bình luận</span>
+                                    <span class="score-value @if($authenticComments >= 80) green 
+                                                @elseif($authenticComments >= 50) yellow 
+                                                @else red @endif">
+                                        {{ $authenticComments }}%
+                                    </span>
                                 </div>
-                                <div class="trust-factor">
-                                    <span class="trust-factor-label">Độ ổn định tăng trưởng</span>
-                                    <span class="trust-factor-value warning">78%</span>
+                                <div class="trust-factor flex justify-between">
+                                    <span>Độ ổn định tăng trưởng</span>
+                                    <span class="score-value @if($growthStability >= 80) green 
+                                                @elseif($growthStability >= 50) yellow 
+                                                @else red @endif">
+                                        {{ $growthStability }}%
+                                    </span>
                                 </div>
-                                <div class="trust-factor">
-                                    <span class="trust-factor-label">Chất lượng nội dung</span>
-                                    <span class="trust-factor-value good">91%</span>
+                                <div class="trust-factor flex justify-between">
+                                    <span>Chất lượng nội dung</span>
+                                    <span class="score-value @if($contentQuality >= 80) green 
+                                                @elseif($contentQuality >= 50) yellow 
+                                                @else red @endif">
+                                        {{ $contentQuality }}%
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -1116,28 +1115,28 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>TikTok Video</td>
+                                    <td style="color: black">TikTok Video</td>
                                     <td>
                                         <div class="price-value">₫25M - 35M</div>
                                         <div class="price-note">Cho mỗi bài đăng</div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Instagram Post</td>
+                                    <td style="color: black">Instagram Post</td>
                                     <td>
                                         <div class="price-value">₫15M - 20M</div>
                                         <div class="price-note">Bài đăng feed</div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Instagram Story</td>
+                                    <td style="color: black">Instagram Story</td>
                                     <td>
                                         <div class="price-value">₫8M - 12M</div>
                                         <div class="price-note">24 giờ</div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Campaign Package</td>
+                                    <td style="color: black">Campaign Package</td>
                                     <td>
                                         <div class="price-value">₫80M - 120M</div>
                                         <div class="price-note">3 bài đăng + 3 story</div>
@@ -1167,31 +1166,39 @@
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
+                            {{-- <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ hoàn thành TB</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">68%</span>
+                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
+                                        {{ round($avgCompletionRate, 1) }}%
+                                    </span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span style="font-size: 13px; color: var(--gray-600);">Bài/tuần</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">3.2</span>
+                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
+                                        {{ $postsPerWeek }}
+                                    </span>
                                 </div>
                             </div>
 
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ phản hồi</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">85%</span>
+                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
+                                        {{ round($avgEngagementRate, 1) }}%
+                                    </span>
                                 </div>
                             </div>
 
                             <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span style="font-size: 13px; color: var(--gray-600);">Điểm an toàn thương hiệu</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--success);">92</span>
+                                    <span style="font-size: 18px; font-weight: 600; color: var(--success);">
+                                        {{ $brandSafetyScore }}
+                                    </span>
                                 </div>
                             </div>
                         </div>

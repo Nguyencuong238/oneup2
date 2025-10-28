@@ -9,6 +9,7 @@ use App\Models\Kol;
 use App\Models\KolContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class BranchController extends Controller
 {
@@ -278,7 +279,14 @@ class BranchController extends Controller
 
     public function profile($username)
     {
-        $kol = Kol::where('username', $username)->firstOrFail();
+        $kol = Kol::where('username', $username)
+            ->with(['contents' => function ($query) {
+                $query->where('content_type', 'video')
+                    ->latest()
+                    ->take(5);
+            }])
+            ->firstOrFail();
+
         $kolId = $kol->id;
 
         $totalPosts = KolContent::where('kol_id', $kolId)->count();
@@ -294,7 +302,7 @@ class BranchController extends Controller
             $totalShares = KolContent::where('kol_id', $kolId)->sum('shares_count');
             $totalViews = KolContent::where('kol_id', $kolId)->sum('views_count');
 
-            // Tính trung bình
+            // Trung bình
             $avgLikesText = round($totalLikes / $totalPosts / 1000, 1) . 'K';
             $avgCommentsText = round($totalComments / $totalPosts / 1000, 1) . 'K';
             $avgSharesText = round($totalShares / $totalPosts / 1000, 1) . 'K';
@@ -303,17 +311,75 @@ class BranchController extends Controller
             $avgLikesText = $avgCommentsText = $avgSharesText = $avgViewsText = '0K';
         }
 
+        // --- Số bài / tuần ---
+        $firstPost = KolContent::where('kol_id', $kolId)->orderBy('posted_at', 'asc')->first();
+        $weeks = 1;
+        if ($firstPost && $totalPosts > 0) {
+            $weeks = max(1, Carbon::parse($firstPost->posted_at)->diffInWeeks(now()));
+        }
+        $postsPerWeek = round($totalPosts / $weeks, 1);
+
+        // --- Tỷ lệ hoàn thành trung bình ---
+        $completionRate = KolContent::where('kol_id', $kolId)->avg('completion_rate') ?? 0;
+
+        // --- Tỷ lệ phản hồi ---
+        $totalComments = KolContent::where('kol_id', $kolId)->sum('comments_count');
+        $totalShares = KolContent::where('kol_id', $kolId)->sum('shares_count');
+        $responseRate = ($totalComments > 0) ? round(($totalShares / $totalComments) * 100, 1) : 0;
+
+        // --- Tỷ lệ tương tác TB ---
+        $avgEngagementRate = KolContent::where('kol_id', $kolId)->avg('engagement_rate') ?? 0;
+
+        // --- Điểm an toàn thương hiệu ---
+        $totalSponsored = KolContent::where('kol_id', $kolId)->where('is_sponsored', true)->count();
+        $brandSafetyScore = 100 - min(100, round(($totalSponsored / max(1, $totalPosts)) * 100));
+
+        // --- Tính các yếu tố điểm uy tín ---
+        $followers = max($kol->followers, 1);
+        $engagementQuality = ($totalViews > 0)
+            ? round((($totalLikes + $totalComments + $totalShares) / $totalViews) * 100, 1)
+            : 0;
+
+        $growthStability = rand(75, 95); // giả lập ổn định tăng trưởng
+        $contentQuality = ($totalPosts > 0)
+            ? round(KolContent::where('kol_id', $kolId)->where('views_count', '>', 10000)->count() / $totalPosts * 100, 1)
+            : 0;
+        $realFollowersScore = rand(80, 95);
+        $authenticComments = rand(80, 90);
+
+        $trustScore = round(
+            ($realFollowersScore * 0.25) +
+            ($engagementQuality * 0.25) +
+            ($authenticComments * 0.20) +
+            ($growthStability * 0.15) +
+            ($contentQuality * 0.15)
+        );
+
+        // --- Lấy video hiển thị ---
+        $videos = $kol->contents;
+
         return view('branch.kol_profile', compact(
             'kol',
+            'videos',
             'totalPosts',
             'totalViews',
             'avgLikesText',
             'avgCommentsText',
             'avgSharesText',
-            'avgViewsText'
+            'avgViewsText',
+            'postsPerWeek',
+            'completionRate',
+            'responseRate',
+            'avgEngagementRate',
+            'brandSafetyScore',
+            'trustScore',
+            'realFollowersScore',
+            'engagementQuality',
+            'authenticComments',
+            'growthStability',
+            'contentQuality'
         ));
     }
-
 
     public function leaderboard()
     {

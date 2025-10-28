@@ -466,7 +466,7 @@
                                 <img class="kol-avatar" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                 <div class="kol-info-mini">
                                     <div class="kol-name-mini">{{ $k->display_name }}</div>
-                                    <div class="kol-followers">{{ $k->followers }} người theo dõi</div>
+                                    <div class="kol-followers">{{ formatDisplayNumber($k->followers) }} người theo dõi</div>
                                 </div>
                                 <div class="kol-engagement">{{ $k->engagement }} %</div>
                             </div>
@@ -610,9 +610,9 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                <td><strong>{{ $k->followers }}</strong></td>
+                                <td><strong>{{ formatDisplayNumber($k->followers) }}</strong></td>
                                 <td><span class="metric-badge high">{{ $k->engagement }}%</span></td>
-                                <td>{{ $k->total_likes }}</td>
+                                <td>{{ formatDisplayNumber($k->total_likes) }}</td>
                                 <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
                                 <td>
                                     @auth

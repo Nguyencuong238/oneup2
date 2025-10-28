@@ -94,9 +94,10 @@ class Kol extends Model implements HasMedia
         return $this->hasMany(KolStat::class);
     }
 
+    // app/Models/Kol.php
     public function contents()
     {
-        return $this->hasMany(KolContent::class);
+        return $this->hasMany(KolContent::class, 'kol_id');
     }
 
 }

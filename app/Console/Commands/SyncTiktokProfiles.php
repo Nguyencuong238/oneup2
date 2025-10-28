@@ -75,7 +75,6 @@ class SyncTiktokProfiles extends Command
                 $kol->update([
                     'display_name' => $user['nickname'] ?? $kol->display_name,
                     'bio' => $user['signature'] ?? $kol->bio,
-                    'is_verified' => $user['verified'] ?? $kol->is_verified,
                     'followers' => $statsProfile['followerCount'] ?? 0,
                     'following' => $statsProfile['followingCount'] ?? 0,
                     'total_likes' => $statsProfile['heartCount'] ?? 0,     

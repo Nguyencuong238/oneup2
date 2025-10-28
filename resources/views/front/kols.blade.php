@@ -749,11 +749,11 @@
                         </p>
                         <div class="kol-stats">
                             <div class="kol-stat">
-                                <span class="kol-stat-value">{{$k->followers}}</span>
+                                <span class="kol-stat-value">{{formatDisplayNumber($k->followers)}}</span>
                                 <span class="kol-stat-label">Người theo dõi</span>
                             </div>
                             <div class="kol-stat">
-                                <span class="kol-stat-value">{{ $k->engagement }}%</span>
+                                <span class="kol-stat-value">{{ formatDisplayNumber($k->engagement) }}%</span>
                                 <span class="kol-stat-label">Tương tác</span>
                             </div>
                             <div class="kol-stat">
@@ -767,7 +767,17 @@
                             <span class="metric-tag">💰 Trung bình</span>
                         </div>
                         <div class="kol-actions">
-                            <button class="btn btn-primary" style="flex: 1;">Xem hồ sơ</button>
+                            @auth
+                                <a href="{{ route('branch.profile', $k->username) }}"
+                                    class="btn btn-primary" style="flex: 1;">
+                                    Xem hồ sơ
+                                </a>
+                            @else
+                                <a href="{{ route('login', ['redirect' => route('branch.profile', $k->username)]) }}"
+                                    class="btn btn-primary" style="flex: 1;">
+                                    Đăng nhập để xem
+                                </a>
+                            @endauth
                             <button class="btn btn-outline btn-icon">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
