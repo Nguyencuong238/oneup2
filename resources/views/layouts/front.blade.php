@@ -256,7 +256,7 @@
                         </a>
                     </div>
                     <p class="footer-description">
-                        Nền tảng phân tích KOL TikTok toàn diện nhất dành cho thị trường Việt Nam.
+                        Nền tảng phân tích KOL Creator Community toàn diện nhất dành cho thị trường Việt Nam.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link">f</a>
@@ -264,15 +264,6 @@
                         <a href="#" class="social-link">in</a>
                         <a href="#" class="social-link">@</a>
                     </div>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Sản phẩm</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Dịch vụ kết nối KOL/ KOC</a></li>
-                        <li><a href="#">Dịch vụ tư vấn và setup chiến dịch</a></li>
-                        <li><a href="#">Dịch vụ tư vấn Marketing toàn diện</a></li>
-                    </ul>
                 </div>
 
                 <div class="footer-column">
@@ -293,6 +284,16 @@
                         <li><a href="#">Tài liệu</a></li>
                     </ul>
                 </div>
+
+                <div class="footer-column">
+                    <h4>Sản phẩm</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Dịch vụ kết nối KOL/ KOC</a></li>
+                        <li><a href="#">Dịch vụ tư vấn và setup chiến dịch</a></li>
+                        <li><a href="#">Dịch vụ tư vấn Marketing toàn diện</a></li>
+                    </ul>
+                </div>
+
             </div>
 
             <div class="footer-bottom">

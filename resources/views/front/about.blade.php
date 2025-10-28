@@ -246,7 +246,7 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 color-dark-blue fade-in">
-                    Trao Quyền Cho Thương Hiệu Với <span class="gradient-text">Dữ Liệu Thông Minh</span><br>
+                    Trao Quyền Cho Thương Hiệu Với <span class="gradient-text">Dữ Liệu Thông Minh</span>
                     Trong Tiếp Thị Người Ảnh Hưởng
                 </h1>
                 <p class="section-description mb-4 fade-in">
@@ -261,7 +261,7 @@
         <div class="container">
             <div class="stats-container">
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-counter="2019">0</div>
+                    <div class="stat-number" data-counter="2025">0</div>
                     <div class="stat-label">Thành lập</div>
                 </div>
                 <div class="stat-item fade-in" style="animation-delay: 0.1s;">
@@ -298,7 +298,7 @@
                         Nhóm sáng lập của chúng tôi — với nền tảng khoa học dữ liệu, tiếp thị số và kỹ thuật phần mềm — đã cùng nhau xây dựng tầm nhìn từ năm 2019: dân chủ hóa khả năng tiếp cận dữ liệu trong lĩnh vực tiếp thị người ảnh hưởng.
                     </p>
                     <p style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        Ngày nay, chúng tôi tự hào là nền tảng phân tích KOL TikTok hàng đầu Việt Nam, giúp hàng trăm thương hiệu ra quyết định dựa trên dữ liệu và đạt được ROI vượt trội trong các chiến dịch người ảnh hưởng.
+                        Ngày nay, chúng tôi tự hào là nền tảng phân tích KOL Creator Community hàng đầu Việt Nam, giúp hàng trăm thương hiệu ra quyết định dựa trên dữ liệu và đạt được ROI vượt trội trong các chiến dịch người ảnh hưởng.
                     </p>
                 </div>
                 <div class="slide-in-right">
@@ -362,7 +362,7 @@
                     <div class="timeline-content">
                         <h3>2023</h3>
                         <h4>Dẫn đầu thị trường</h4>
-                        <p>Trở thành nền tảng phân tích KOL TikTok số 1 tại Việt Nam.</p>
+                        <p>Trở thành nền tảng phân tích KOL Creator Community số 1 tại Việt Nam.</p>
                     </div>
                 </div>
 

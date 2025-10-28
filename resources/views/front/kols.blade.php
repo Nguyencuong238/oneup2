@@ -563,7 +563,7 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 fade-in color-dark-blue">
-                    Khám phá <span class="gradient-text">10,000+ KOL TikTok</span>
+                    Khám phá <span class="gradient-text">10,000+ KOLs TikTok</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
                     Duyệt qua các influencer đã được xác minh với phân tích chi tiết và theo dõi theo thời gian thực

@@ -418,7 +418,7 @@
             <div class="hero-text fade-in">
                 <div class="badge badge-primary mb-3">🚀 Nền tảng hỗ trợ AI</div>
                 <h1 class="text-header">
-                    Khám phá & Phân tích <span class="gradient-text">TikTok KOLs</span>
+                    Khám phá & Phân tích <span class="gradient-text">Creator Community</span>
                     chuẩn dữ liệu – Tăng hiệu suất chiến dịch ngay hôm nay!
                 </h1>
                 <p style="font-size: 18px; color: var(--gray-600); margin-bottom: 2rem;">
@@ -560,8 +560,8 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">Người đạt thành tích cao nhất</div>
-                <h2 class="section-title section-kol fade-in">Khám phá Top KOL TikTok nổi bật</h2>
-                <p class="section-description fade-in">
+                <h2 class="section-title section-kol fade-in">Khám phá Top KOL nổi bật</h2>
+                <p class="section-description fade-in" style="font-size: 16px">
                     Theo dõi dữ liệu thực – hiệu suất thật – từ hơn 10.000+ người ảnh hưởng được xác minh.
                 </p>
             </div>
