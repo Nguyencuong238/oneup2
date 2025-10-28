@@ -14,7 +14,22 @@ class CreatorController extends Controller
     public function dashboard()
     {
         $kol = Kol::where('id', auth()->user()->kol_id)->first();
-        return view('creator.dashboard', compact('kol'));
+        $invitedCampaignCount = $kol->campaigns()
+            ->whereIn('campaigns.status', ['active', 'paused', 'completed'])
+            ->wherePivot('status', 'invited')
+            ->count();
+
+        $confirmedCampaignCount = $kol->campaigns()
+            ->whereIn('campaigns.status', ['active', 'paused', 'completed'])
+            ->wherePivot('status', 'confirmed')
+            ->count();
+            
+        $completedCampaignCount = $kol->campaigns()
+            ->whereIn('campaigns.status', ['active', 'paused', 'completed'])
+            ->wherePivot('status', 'completed')
+            ->count();
+
+        return view('creator.dashboard', compact('kol', 'invitedCampaignCount', 'confirmedCampaignCount', 'completedCampaignCount'));
     }
 
     public function campaign()
