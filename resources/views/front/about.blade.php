@@ -247,10 +247,10 @@
             <div class="text-center">
                 <h1 class="mb-3 color-dark-blue fade-in">
                     Trao Quyền Cho Thương Hiệu Với <span class="gradient-text">Dữ Liệu Thông Minh</span>
-                    Trong Tiếp Thị Người Ảnh Hưởng
+                    Kiến Tạo Ảnh Hưởng Từ Những Quyết Định Chính Xác
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    Chúng tôi đang thực hiện sứ mệnh cách mạng hóa cách các thương hiệu kết nối với nhà sáng tạo TikTok tại Việt Nam.
+                    Từ phân tích hiệu suất đến dự đoán xu hướng, ONEUP giúp thương hiệu ra quyết định dựa trên dữ liệu — không dựa vào cảm tính.
                 </p>
             </div>
         </div>
