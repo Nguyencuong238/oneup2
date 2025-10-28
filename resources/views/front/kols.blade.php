@@ -194,7 +194,7 @@
             position: relative;
             height: 200px;
             background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--secondary) 100%);
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         
         .kol-cover-image {

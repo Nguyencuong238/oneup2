@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Campaign::class, 'created_by');
     }
+
+    public function kol()
+    {
+        return $this->belongsTo(kol::class, 'kol_id');
+    }
 }

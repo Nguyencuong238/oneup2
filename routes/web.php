@@ -80,14 +80,9 @@ Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->grou
 
 	Route::get('dashboard', [CreatorController::class, 'dashboard'])->name('creator.dashboard');
 	Route::get('campaign', [CreatorController::class, 'campaign'])->name('creator.campaign.index');
-	Route::get('campaign-planner/{slug?}', [CreatorController::class, 'campaignPlanner'])->name('creator.campaign.planner');
 	Route::get('campaign-detail/{slug}', [CreatorController::class, 'campaignDetail'])->name('creator.campaign.detail');
-	Route::get('campaign-tracker/{slug}', [CreatorController::class, 'campaignTracker'])->name('creator.campaign.tracker');
-	Route::post('campaign-store', [CreatorController::class, 'campaignStore'])->name('creator.campaign.store');
-	Route::get('analytic', [CreatorController::class, 'analytic'])->name('creator.analytic');
-	Route::get('report', [CreatorController::class, 'report'])->name('creator.report');
+	Route::post('campaign-join', [CreatorController::class, 'joinCampaign'])->name('creator.campaign.join');
 	Route::get('setting', [CreatorController::class, 'setting'])->name('creator.setting');
-	Route::get('billing', [CreatorController::class, 'billing'])->name('creator.billing');
 	Route::get('profile/{username}', [CreatorController::class, 'profile'])->name('creator.profile');
 });
 Route::prefix('backend')

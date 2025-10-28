@@ -639,8 +639,8 @@
     <form class="main-content" action="{{ route('branch.campaign.store') }}" method="POST">
         @csrf
 
-        @if($campaign->id && !request('is_clone'))
-        <input type="hidden" name="campaign_id" value="{{$campaign->id}}">
+        @if ($campaign->id && !request('is_clone'))
+            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
         @endif
         <!-- Thanh trên cùng -->
         <div class="topbar">
@@ -649,10 +649,10 @@
             </div>
 
             <div class="topbar-right">
-                <button class="btn btn-secondary btn-small btn-draft">
+                <button type="button" class="btn btn-secondary btn-small btn-draft">
                     Lưu nháp
                 </button>
-                <button class="btn btn-primary btn-small btn-save">
+                <button type="button" class="btn btn-primary btn-small btn-save">
                     Khởi chạy chiến dịch
                 </button>
             </div>
@@ -696,19 +696,21 @@
 
                         <div class="form-group">
                             <label class="form-label">Tên chiến dịch *</label>
-                            <input type="text" name="name" value="{{ old('name', $campaign->name) }}" class="form-input"
-                                placeholder="Tên chiến dịch..." required>
+                            <input type="text" name="name" value="{{ old('name', $campaign->name) }}"
+                                class="form-input" placeholder="Tên chiến dịch..." required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Ngày bắt đầu *</label>
-                                <input type="date" name="start_date" value="{{ old('start_date', $campaign->start_date?->format('Y-m-d')) }}" id="start_date"
+                                <input type="date" name="start_date"
+                                    value="{{ old('start_date', $campaign->start_date?->format('Y-m-d')) }}" id="start_date"
                                     class="form-input" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Ngày kết thúc *</label>
-                                <input type="date" name="end_date" value="{{ old('end_date', $campaign->end_date?->format('Y-m-d')) }}" id="end_date"
+                                <input type="date" name="end_date"
+                                    value="{{ old('end_date', $campaign->end_date?->format('Y-m-d')) }}" id="end_date"
                                     class="form-input" required>
                             </div>
                         </div>
@@ -737,21 +739,24 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Phạm vi tiếp cận mục tiêu</label>
-                                <input type="number" name="target_reach" value="{{ old('target_reach', $campaign->target_reach) }}"
-                                    class="form-input" placeholder="0">
+                                <input type="number" name="target_reach"
+                                    value="{{ old('target_reach', $campaign->target_reach) }}" class="form-input"
+                                    placeholder="0">
                                 <span class="form-help">Lượng người xem dự kiến</span>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Tỷ lệ tương tác mục tiêu</label>
-                                <input type="number" name="target_engagement" value="{{ old('target_engagement', $campaign->target_engagement) }}"
-                                    class="form-input" placeholder="0" step="0.1">
+                                <input type="number" name="target_engagement"
+                                    value="{{ old('target_engagement', $campaign->target_engagement) }}" class="form-input"
+                                    placeholder="0" step="0.1">
                                 <span class="form-help">Tỷ lệ tương tác tối thiểu (%)</span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Tổng ngân sách (VNĐ)</label>
-                            <input type="number" name="budget_amount" value="{{ old('budget_amount', $campaign->budget_amount-0) }}" id="budget_amount"
+                            <input type="number" name="budget_amount"
+                                value="{{ old('budget_amount', $campaign->budget_amount - 0) }}" id="budget_amount"
                                 class="form-input" placeholder="0">
                             <span class="form-help">Bao gồm chi phí KOL và sản xuất nội dung</span>
                         </div>
@@ -759,19 +764,23 @@
                         <div class="budget-calculator">
                             <div class="budget-item">
                                 <span class="budget-label">Chi phí KOL (70%)</span>
-                                <span class="budget-value kol-fee">₫{{formatDisplayNumber($campaign->budget_amount * 0.7)}}</span>
+                                <span
+                                    class="budget-value kol-fee">₫{{ formatDisplayNumber($campaign->budget_amount * 0.7) }}</span>
                             </div>
                             <div class="budget-item">
                                 <span class="budget-label">Sản xuất nội dung (20%)</span>
-                                <span class="budget-value produce-fee">₫{{formatDisplayNumber($campaign->budget_amount * 0.2)}}</span>
+                                <span
+                                    class="budget-value produce-fee">₫{{ formatDisplayNumber($campaign->budget_amount * 0.2) }}</span>
                             </div>
                             <div class="budget-item">
                                 <span class="budget-label">Phí quản lý (10%)</span>
-                                <span class="budget-value manage-fee">₫{{formatDisplayNumber($campaign->budget_amount * 0.1)}}</span>
+                                <span
+                                    class="budget-value manage-fee">₫{{ formatDisplayNumber($campaign->budget_amount * 0.1) }}</span>
                             </div>
                             <div class="budget-item budget-total">
                                 <span class="budget-label">Tổng ngân sách</span>
-                                <span class="budget-value totalBudget">₫{{formatDisplayNumber($campaign->budget_amount)}}</span>
+                                <span
+                                    class="budget-value totalBudget">₫{{ formatDisplayNumber($campaign->budget_amount) }}</span>
                             </div>
                         </div>
                     </div>
@@ -812,7 +821,7 @@
                                     </div>
                                     <div class="kol-price">
                                         <div class="price-label">Giá ước tính</div>
-                                        <div class="price-value">₫{{ formatDisplayNumber($item->price,2) }}</div>
+                                        <div class="price-value">₫{{ formatDisplayNumber($item->price, 2) }}</div>
                                     </div>
                                 </div>
                             @endforeach
@@ -842,27 +851,21 @@
 
                         <div class="form-group">
                             <label class="form-label">Thông điệp chính</label>
-                            <div class="tags-input">
-                                {{-- <span class="tag">
-                                    Thời trang bền vững
-                                    <span class="tag-remove">×</span>
-                                </span>
-                                <span class="tag">
-                                    Bộ sưu tập mùa hè
-                                    <span class="tag-remove">×</span>
-                                </span>
-                                <span class="tag">
-                                    Phong cách trẻ
-                                    <span class="tag-remove">×</span>
-                                </span> --}}
-                                <input type="text" class="tag-input-field" placeholder="Thêm thẻ...">
-                            </div>
+                            <textarea type="text" name="content" placeholder="Thêm thông điệp ..." rows="5" class="form-input">{{ old('content', $campaign->content) }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Hashtag</label>
-                            <input type="text" class="form-input" name="hashtag"
-                                value="" placeholder="#hashtag1 #hashtag2">
+                            <div class="tags-input">
+                                @foreach ($campaign->tags as $tag)
+                                    <span class="tag">
+                                        {{ $tag->name }}
+                                        <span class="tag-remove">&times;</span>
+                                    </span>
+                                    <input type="hidden" name="tags[]" id="tag-input-{{$loop->index}}" value="{{ $tag->name }}">
+                                @endforeach
+                                <input type="text" class="tag-input-field" placeholder="Enter để thêm thẻ...">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -879,11 +882,12 @@
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Số KOL đã chọn</span>
-                            <span class="preview-value preview-kols">{{$campaign->kols->count()}} KOL</span>
+                            <span class="preview-value preview-kols">{{ $campaign->kols->count() }} KOL</span>
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Tổng ngân sách</span>
-                            <span class="preview-value preview-budget">₫{{formatDisplayNumber($campaign->budget_amount)}}</span>
+                            <span
+                                class="preview-value preview-budget">₫{{ formatDisplayNumber($campaign->budget_amount) }}</span>
                         </div>
                         <div class="preview-item">
                             <span class="preview-label">Chi phí trung bình / KOL</span>
@@ -920,46 +924,22 @@
                         <h3 class="preview-title">KOL đã chọn (0)</h3>
 
                         <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                            @forEach($campaign->kols as $item)
-                            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <img class="kol-avatar" style="width: 36px; height: 36px; font-size: 14px;" src="{{$item->getFirstMediaUrl('media')}}">
-                                <div style="flex: 1;">
-                                    <div class="fw-600 fs-14 color-gray-700">{{$item->display_name}}</div>
-                                    <div class="fs-12 color-gray-600">
-                                        {{formatDisplayNumber($item->followers,2)}} người theo dõi
+                            @foreach ($campaign->kols as $item)
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <img class="kol-avatar" style="width: 36px; height: 36px; font-size: 14px;"
+                                        src="{{ $item->getFirstMediaUrl('media') }}">
+                                    <div style="flex: 1;">
+                                        <div class="fw-600 fs-14 color-gray-700">{{ $item->display_name }}</div>
+                                        <div class="fs-12 color-gray-600">
+                                            {{ formatDisplayNumber($item->followers, 2) }} người theo dõi
+                                        </div>
                                     </div>
+                                    <span
+                                        style="font-weight: 600; color: var(--primary);">₫{{ formatDisplayNumber($item->price) }}</span>
                                 </div>
-                                <span style="font-weight: 600; color: var(--primary);">₫{{formatDisplayNumber($item->price)}}</span>
-                            </div>
                             @endforeach
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Nút hành động -->
-            <div class="planner-actions d-none">
-                <button class="btn btn-secondary">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
-                        style="margin-right: 0.5rem;">
-                        <path fill-rule="evenodd"
-                            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    Bước trước
-                </button>
-
-                <div class="action-buttons">
-                    <button class="btn btn-secondary">Lưu nháp</button>
-                    <button class="btn btn-primary">
-                        Bước tiếp theo
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
-                            style="margin-left: 0.5rem;">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </button>
                 </div>
             </div>
         </div>
@@ -1016,7 +996,8 @@
                     const selectedCat = $(this).val();
                     $kolGrid.find('.kol-select-card').each(function() {
                         const categories = ($(this).data('categories') || '') + '';
-                        if (!selectedCat || selectedCat === '' || selectedCat === 'Tất cả danh mục') {
+                        if (!selectedCat || selectedCat === '' || selectedCat ===
+                            'Tất cả danh mục') {
                             $(this).show();
                         } else {
                             $(this).toggle(categories.indexOf(',' + selectedCat + ',') !== -1);
@@ -1041,18 +1022,33 @@
 
                 // Tags input (delegated remove)
                 const $tagsInput = $('.tags-input');
+                let tagIndex = {{$campaign->tags->count()}};
                 $tagsInput.on('keypress', '.tag-input-field', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
                         const value = $(this).val().trim();
                         if (value) {
-                            const $tag = $(`<span class="tag">${value}<span class="tag-remove">×</span></span>`);
+                            tagIndex++;
+                            $('<input>').attr({
+                                type: 'hidden',
+                                name: 'tags[]',
+                                id: 'tag-input-' + tagIndex,
+                                value
+                            }).appendTo($tagsInput);
+
+                            const $tag = $(
+                                `<span class="tag">${value}<span class="tag-remove" data-index="${tagIndex}">×</span></span>`
+                                );
                             $tag.insertBefore(this);
                             $(this).val('');
                         }
                     }
                 });
-                $tagsInput.on('click', '.tag-remove', function() { $(this).parent().remove(); });
+                $tagsInput.on('click', '.tag-remove', function() {
+                    const index = $(this).data('index');
+                    $(`#tag-input-${index}`).remove();
+                    $(this).parent().remove();
+                });
 
                 // Date change
                 $('#start_date, #end_date').on('change', campaignDuration);
@@ -1060,10 +1056,14 @@
                 // Submit handling for draft/save buttons (delegated)
                 $doc.on('click', '.btn-draft, .btn-save', function(e) {
                     e.preventDefault();
-                    const status = $(this).hasClass('btn-draft') ? 'draft' : 'active';
+                    const status = $(this).hasClass('btn-draft') ? 'draft' : 'pending';
                     const $form = $(this).closest('form');
                     $form.find('input[name="status"]').remove();
-                    $('<input>').attr({ type: 'hidden', name: 'status', value: status }).appendTo($form);
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: 'status',
+                        value: status
+                    }).appendTo($form);
                     $form.submit();
                 });
 
@@ -1089,7 +1089,8 @@
                     const name = $this.find('.kol-name').text();
                     const followers = $this.find('.kol-stats span').first().text();
                     const priceText = $this.find('.price-value').text();
-                    const price = parseFloat((priceText || '').replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+                    const price = parseFloat((priceText || '').replace(/[^\d.,]/g, '').replace(',', '.')) ||
+                        0;
                     totalKOLCost += price;
 
                     parts.push(`
@@ -1124,7 +1125,8 @@
                 const budget = parseInt($budgetInput.val()) || 0;
 
                 $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? numberFormat(reach) : '0');
-                $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) + '%' : '0%');
+                $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) +
+                    '%' : '0%');
 
                 const cpv = reach > 0 ? (budget / reach) : 0;
                 $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + numberFormat(cpv) : '₫0');

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTags;
 
 class Campaign extends Model
 {
     use HasFactory;
+    use HasTags;
 
     protected $casts = [
         'start_date' => 'date',

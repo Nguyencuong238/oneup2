@@ -191,13 +191,10 @@ class BranchController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'category' => 'integer',
-            'description' => 'nullable|string',
             'target_reach' => 'nullable|integer',
             'target_engagement' => 'nullable|integer',
             'budget_amount' => 'nullable|numeric',
             'kols' => 'nullable|array',
-            'content_type' => 'nullable|string',
-            'hashtag' => 'nullable|string',
             'status' => 'required|string',
         ]);
 
@@ -214,7 +211,7 @@ class BranchController extends Controller
         $campaign->target_engagement = $request->target_engagement;
         $campaign->budget_amount = $request->budget_amount;
         $campaign->content_type = $request->content_type;
-        $campaign->hashtag = $request->hashtag;
+        $campaign->content = $request->content;
 
         $campaign->roi = $campaign->budget_amount > 0 ?
             (($campaign->target_reach * ($campaign->target_engagement / 100)) /
@@ -228,6 +225,9 @@ class BranchController extends Controller
         if (!empty($request->kols)) {
             $campaign->kols()->sync($request->kols);
         }
+
+
+        $campaign->syncTagsWithType(request('tags'), 'campaign');
 
         return redirect()->route('branch.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
     }

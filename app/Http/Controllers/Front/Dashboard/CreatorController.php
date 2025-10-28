@@ -22,37 +22,38 @@ class CreatorController extends Controller
         $kol = Kol::where('id', auth()->user()->kol_id)->first();
 
         // Lấy tất cả chiến dịch
-        $campaigns = Campaign::where('status', '!=', 'draft')->get();
+        $campaigns = Campaign::whereIn('status', ['active', 'paused', 'completed'])
+            ->latest()
+            ->paginate();
 
-        // Tổng số chiến dịch
-        $totalCampaigns = $campaigns->count();
+        // Chiến dịch đã tham gia
+        $comfirmedCampaignIds = $kol->campaigns()
+            ->whereIn('campaigns.status', ['active', 'paused', 'completed'])
+            ->wherePivot('status', 'confirmed')
+            ->withPivot('status')
+            ->withPivot('status')
+            ->get()
+            ->pluck('pivot.status', 'pivot.campaign_id')
+            ->toArray();
 
-        // Chiến dịch đang hoạt động
-        $activeCampaigns = $campaigns->where('status', 'active');
-        $activeCount = $activeCampaigns->count();
+        // Chiến dịch đuợc mời tham gia
+        $invitedCampaignIds = $kol->campaigns()
+            ->whereIn('campaigns.status', ['active', 'paused', 'completed'])
+            ->wherePivot('status', 'invited')
+            ->withPivot('status')
+            ->get()
+            ->pluck('pivot.status', 'pivot.campaign_id')
+            ->toArray();
 
-        // Chiến dịch đã hoàn thành
-        $completedCount = $campaigns->where('status', 'completed')->count();
+        $myStatusCampaigns = $comfirmedCampaignIds + $invitedCampaignIds;
 
-        return view('creator.campaign', [
-            'campaigns' => $campaigns,
-            'totalCampaigns' => $totalCampaigns,
-            'activeCount' => $activeCount,
-            'completedCount' => $completedCount,
-            'kol' => $kol,
-        ]);
-    }
-
-    public function campaignPlanner($slug = null)
-    {
-        $campaignCategories = Category::where('type', 'campaigns')->tree()->get()->toTree();
-        $kolCategories = Category::where('type', 'kols')->tree()->get()->toTree();
-        $kols = Kol::all();
-
-        $campaign = Campaign::where('slug', $slug)->firstOrNew();
-
-
-        return view('creator.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
+        return view('creator.campaign', compact(
+            'campaigns',
+            'comfirmedCampaignIds',
+            'invitedCampaignIds',
+            'kol',
+            'myStatusCampaigns'
+        ));
     }
 
     public function campaignDetail($slug)
@@ -129,82 +130,28 @@ class CreatorController extends Controller
         ));
     }
 
-    public function campaignTracker($slug)
+    public function joinCampaign(Request $request)
     {
-        $campaigns = Campaign::all();
-        $campaign = Campaign::with('kols')->where('slug', $slug)->firstOrFail();
-
-        return view('creator.campaign_tracker', compact('campaign', 'campaigns'));
-    }
-
-    public function campaignStore(Request $request)
-    {
-        // Validate input (add more rules as needed)
         $request->validate([
-            'name' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'category' => 'integer',
-            'description' => 'nullable|string',
-            'target_reach' => 'nullable|integer',
-            'target_engagement' => 'nullable|integer',
-            'budget_amount' => 'nullable|numeric',
-            'kols' => 'nullable|array',
-            'content_type' => 'nullable|string',
-            'hashtag' => 'nullable|string',
-            'status' => 'required|string',
+            'campaign_id' => 'required|exists:campaigns,id',
         ]);
 
-        // Create campaign
+        $kol = Kol::where('id', auth()->user()->kol_id)->first();
 
-        $campaign = Campaign::where('id', $request->campaign_id)->firstOrNew();
-        $campaign->name = $request->name;
-        $campaign->slug = Str::slug($request->name);
-        $campaign->start_date = $request->start_date;
-        $campaign->end_date = $request->end_date;
-        $campaign->category_id = $request->campaign_category;
-        $campaign->description = $request->description;
-        $campaign->target_reach = $request->target_reach;
-        $campaign->target_engagement = $request->target_engagement;
-        $campaign->budget_amount = $request->budget_amount;
-        $campaign->content_type = $request->content_type;
-        $campaign->hashtag = $request->hashtag;
+        // Attach the kol to the campaign with 'confirmed' status
+        $kol->campaigns()->syncWithoutDetaching([
+            $request->campaign_id => ['status' => 'confirmed']
+        ]);
 
-        $campaign->roi = $campaign->budget_amount > 0 ?
-            (($campaign->target_reach * ($campaign->target_engagement / 100)) /
-                ($campaign->budget_amount / 1000000)) : 0;
-
-        $campaign->status = $request->status;
-        $campaign->created_by = auth()->id();
-        $campaign->save();
-
-        // Attach KOLs if provided (assuming many-to-many)
-        if (!empty($request->kols)) {
-            $campaign->kols()->sync($request->kols);
-        }
-
-        return redirect()->route('creator.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
-    }
-
-    
-    public function analytic()
-    {
-        return view('creator.analytic');
-    }
-
-    public function report()
-    {
-        return view('creator.report');
+        return redirect()->route('creator.campaign.index', [
+            'tab' => 'confirmed'
+        ])
+            ->with('success', 'Bạn đã tham gia chiến dịch thành công!');
     }
 
     public function setting()
     {
         return view('creator.setting');
-    }
-
-    public function billing()
-    {
-        return view('creator.billing');
     }
 
     public function profile($username)

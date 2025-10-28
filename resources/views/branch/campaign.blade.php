@@ -411,6 +411,11 @@
             color: var(--primary);
         }
 
+        .status-pending {
+            background: rgba(180, 16, 232, 0.1);
+            color: #a900e0;
+        }
+
         .status-draft {
             background: rgba(156, 163, 175, 0.1);
             color: var(--gray-600);
@@ -913,14 +918,23 @@
                         <span class="tab-badge">{{ $pausedCount }}</span>
                     </div>
                 </div>
-
+                @php
+                    $statusText = [
+                        'active' => 'Đang hoạt động',
+                        'paused' => 'Tạm dừng',
+                        'completed' => 'Đã hoàn thành',
+                        'cancelled' => 'Đã hủy',
+                        'draft' => 'Bản nháp',
+                        'pending' => 'Chờ duyệt',
+                    ];
+                @endphp
                 <!-- Campaigns Grid -->
                 <div class="campaigns-grid" id="campaignsGrid">
                     @foreach ($campaigns as $campaign)
                         <div class="campaign-card campaign-{{ $campaign->status }}">
                             <div class="campaign-header">
                                 <span class="campaign-status status-{{ $campaign->status }}">
-                                    {{ $campaign->status == 'active' ? 'Đang hoạt động' : ($campaign->status == 'draft' ? 'Bản nháp' : ($campaign->status == 'completed' ? 'Hoàn thành' : ($campaign->status == 'paused' ? 'Tạm dừng' : $campaign->status))) }}
+                                    {{ @$statusText[$campaign->status] }}
                                 </span>
                                 <h3 class="campaign-name">{{ $campaign->name }}</h3>
                                 <div class="campaign-dates">
@@ -937,7 +951,8 @@
                                 <div class="campaign-metrics">
                                     <div class="metric">
                                         <span class="metric-label">Phạm vi tiếp cận</span>
-                                        <span class="metric-value">{{ formatDisplayNumber($campaign->target_reach) }}</span>
+                                        <span
+                                            class="metric-value">{{ formatDisplayNumber($campaign->target_reach) }}</span>
                                     </div>
                                     <div class="metric">
                                         <span class="metric-label">Tương tác</span>
@@ -1035,6 +1050,16 @@
                                         <button class="action-btn primary js-navigate"
                                             data-href="{{ route('branch.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}">
                                             Nhân bản
+                                        </button>
+                                    @endif
+
+                                    @if ($campaign->status == 'pending')
+                                        <button class="action-btn js-navigate"
+                                            data-href="{{ route('branch.campaign.planner', ['slug' => $campaign->slug]) }}">
+                                            Sửa
+                                        </button>
+                                        <button class="action-btn primary">
+                                            Chờ duyệt
                                         </button>
                                     @endif
                                 </div>
