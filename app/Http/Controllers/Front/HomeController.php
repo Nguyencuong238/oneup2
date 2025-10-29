@@ -27,8 +27,9 @@ class HomeController extends Controller
             return view('front.partials.kol_table_body', compact('kols'))->render();
         }
 
+        $categories = Category::where('type', 'kols')->get();
         // Nếu load trang bình thường
-        return view('front.home', compact('kols'));
+        return view('front.home', compact('kols', 'categories'));
     }
 
     public function about(Request $req)

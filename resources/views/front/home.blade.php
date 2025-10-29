@@ -568,11 +568,9 @@
 
             <div class="kol-filter-tabs flex flex-wrap gap-2 mb-8">
                 <button class="filter-tab active" data-category="">Tất cả danh mục</button>
-                <button class="filter-tab" data-category="beauty-fashion">Beauty & Fashion</button>
-                <button class="filter-tab" data-category="lifestyle">Lifestyle</button>
-                <button class="filter-tab" data-category="technology">Technology</button>
-                <button class="filter-tab" data-category="food-drink">Food & Drink</button>
-                <button class="filter-tab" data-category="travel">Travel</button>
+                @foreach ($categories as $category)
+                    <button class="filter-tab" data-category="{{ $category->slug }}">{{ $category->name }}</button>
+                @endforeach
             </div>
 
             <div class="kol-table">
