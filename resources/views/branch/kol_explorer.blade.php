@@ -894,7 +894,7 @@
                 <div class="kol-list-container">
                     <div class="list-header">
                         <div class="results-info">
-                            Đang hiển thị <span class="results-count">{{ $kols->count() }}</span> KOL
+                            Tổng số: <span class="results-count">{{$kols->total()}}</span> KOL
                         </div>
 
                         <div class="view-controls">
