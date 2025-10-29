@@ -16,7 +16,9 @@ class BranchController extends Controller
     public function dashboard()
     {
         $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(10)->get();
-        return view('branch.dashboard', compact('kols'));
+        $activeCampaigns = auth()->user()->campaigns()->where('status', 'active')->get();
+
+        return view('branch.dashboard', compact('kols', 'activeCampaigns'));
     }
 
     public function kolExplorer()
@@ -36,14 +38,21 @@ class BranchController extends Controller
             ->when(request('trust_score'), function ($q) {
                 $q->where('trust_score', '>=', request('trust_score'));
             })
+            ->when(request('location'), function ($q) {
+                $q->where('location_country', request('location'));
+            })
             ->when(request('sortBy'), function ($q) {
                 $q->orderBy(request('sortBy'));
             })
             ->paginate(12);
 
         $categories = Category::where('type', 'kols')->get();
+        $countries = Kol::select('location_country')
+            ->distinct()
+            ->whereNotNull('location_country')
+            ->pluck('location_country');
 
-        return view('branch.kol_explorer', compact('kols', 'categories'));
+        return view('branch.kol_explorer', compact('kols', 'categories', 'countries'));
     }
 
     public function campaign()

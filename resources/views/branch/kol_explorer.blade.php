@@ -780,13 +780,13 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <button class="btn btn-primary btn-small" onclick="openCompareDrawer()">
+                {{-- <button class="btn btn-primary btn-small" onclick="openCompareDrawer()">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
                     </svg>
                     So sánh KOL
-                </button>
+                </button> --}}
             </div>
         </div>
 
@@ -849,21 +849,14 @@
                     <div class="filter-section">
                         <h3 class="filter-title">Quốc gia</h3>
                         <div class="filter-group">
+                            @foreach ($countries as $country)
                             <div class="filter-checkbox">
-                                <input type="checkbox" id="loc-vn">
-                                <label for="loc-vn">Vietnam</label>
+                                <input type="checkbox" id="loc-vn" name="location" value="{{$country}}"
+                                    @if (request()->location == $country) checked @endif>
+                                <label for="loc-vn">{{$country}}</label>
                                 {{-- <span class="filter-count">567</span> --}}
                             </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="loc-sg">
-                                <label for="loc-sg">Singapore</label>
-                                {{-- <span class="filter-count">89</span> --}}
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="loc-th">
-                                <label for="loc-th">Thailand</label>
-                                {{-- <span class="filter-count">123</span> --}}
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -983,10 +976,10 @@
                                         </span>
                                     </div>
                                     <div class="kol-actions">
-                                        <button class="action-btn"
+                                        <button class="action-btn primary"
                                             onclick="window.location.href='{{ route('branch.profile', $kol->username) }}'">Chi
                                             tiết</button>
-                                        <button class="action-btn primary">Chọn</button>
+                                        {{-- <button class="action-btn primary">Chọn</button> --}}
                                     </div>
                                 </div>
                             </div>
