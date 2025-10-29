@@ -68,9 +68,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Giá:</label>
-                            <input type="number" name="price" value="{{ old('price') }}" class="form-control @error('price')is-invalid @enderror" placeholder="">
-                            @error('price')
+                            <label>Giá 1 video Tiktok:</label>
+                            <input type="number" name="price_tiktok" value="{{ old('price_tiktok') }}" class="form-control @error('price_tiktok')is-invalid @enderror" placeholder="">
+                            @error('price_tiktok')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Giá gói Campagin:</label>
+                            <input type="number" name="price_campaign" value="{{ old('price_campaign') }}" class="form-control @error('price_campaign')is-invalid @enderror" placeholder="">
+                            @error('price_campaign')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>

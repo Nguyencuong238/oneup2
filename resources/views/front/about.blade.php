@@ -291,14 +291,14 @@
             <div class="grid grid-2 align-center gap-5">
                 <div class="slide-in-left">
                     <p class="mb-3" style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        OneUp KOL Analytics ra đời từ một quan sát đơn giản: các thương hiệu Việt Nam đang gặp khó khăn trong việc định hướng thị trường người ảnh hưởng TikTok đang phát triển nhanh chóng. 
-                        Các phương pháp truyền thống để tìm kiếm và đánh giá KOL tốn nhiều thời gian, chi phí và thường không hiệu quả.
+                        OneUp Analytics ra đời với tầm nhìn giúp thương hiệu Việt Nam ra quyết định tiếp thị thông minh hơn bằng sức mạnh của dữ liệu.
                     </p>
                     <p class="mb-3" style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        Nhóm sáng lập của chúng tôi — với nền tảng khoa học dữ liệu, tiếp thị số và kỹ thuật phần mềm — đã cùng nhau xây dựng tầm nhìn từ năm 2019: dân chủ hóa khả năng tiếp cận dữ liệu trong lĩnh vực tiếp thị người ảnh hưởng.
+                        Trong kỷ nguyên sáng tạo nội dung bùng nổ, việc tìm đúng người kể câu chuyện thương hiệu trở nên phức tạp hơn bao giờ hết, trong khi các phương pháp truyền thống lại tốn kém và thiếu hiệu quả.
                     </p>
                     <p style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        Ngày nay, chúng tôi tự hào là nền tảng phân tích KOL Creator Community hàng đầu Việt Nam, giúp hàng trăm thương hiệu ra quyết định dựa trên dữ liệu và đạt được ROI vượt trội trong các chiến dịch người ảnh hưởng.
+                        Dựa trên nền tảng khoa học dữ liệu và công nghệ phân tích hiện đại, OneUp giúp thương hiệu kết nối chính xác hơn với KOL, KOC và Creator, biến dữ liệu thành lợi thế cạnh tranh thực sự.
+                        Chúng tôi tiên phong trong việc ứng dụng dữ liệu thông minh vào influencer marketing tại Việt Nam, đồng hành cùng hàng trăm thương hiệu tối ưu hiệu quả đầu tư và mở rộng tầm ảnh hưởng trên mạng xã hội.
                     </p>
                 </div>
                 <div class="slide-in-right">
@@ -492,14 +492,27 @@
             </div>
 
             <div class="partner-logos">
-                <div class="partner-logo">Vingroup</div>
-                <div class="partner-logo">FPT</div>
-                <div class="partner-logo">Viettel</div>
-                <div class="partner-logo">Shopee</div>
-                <div class="partner-logo">Grab</div>
-                <div class="partner-logo">Unilever</div>
-                <div class="partner-logo">L'Oréal</div>
-                <div class="partner-logo">Samsung</div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/vingroup-logo.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/fpt.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/viettel.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/Shopee-logo.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/logo-grab.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/unilever.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/samsung.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                </div>
             </div>
         </div>
     </section>

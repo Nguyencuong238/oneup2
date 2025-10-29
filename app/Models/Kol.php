@@ -30,7 +30,8 @@ class Kol extends Model implements HasMedia
         'engagement',
         'followers',
         'trust_score',
-        'price',
+        'price_tiktok',
+        'price_campaign',
     ];
 
     public function getInitialsAttribute()

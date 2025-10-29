@@ -76,7 +76,8 @@ class KolController extends Controller
             'followers'         => request('followers'),
             'trust_score'       => request('trust_score'),
             'engagement'        => request('engagement'),
-            'price'             => request('price')
+            'price_tiktok'      => request('price_tiktok'),
+            'price_campaign'    => request('price_campaign')
         ]);
 
         $kol
@@ -159,7 +160,8 @@ class KolController extends Controller
             'followers'         => request('followers'),
             'trust_score'       => request('trust_score'),
             'engagement'        => request('engagement'),
-            'price'             => request('price')
+            'price_tiktok'      => request('price_tiktok'),
+            'price_campaign'    => request('price_campaign')
         ])->save();
 
         $kol

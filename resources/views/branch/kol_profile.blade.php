@@ -1117,11 +1117,11 @@
                                 <tr>
                                     <td style="color: black">TikTok Video</td>
                                     <td>
-                                        <div class="price-value">₫25M - 35M</div>
+                                        <div class="price-value">{{ numberFormat($kol->price_tiktok) }}</div>
                                         <div class="price-note">Cho mỗi bài đăng</div>
                                     </td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td style="color: black">Instagram Post</td>
                                     <td>
                                         <div class="price-value">₫15M - 20M</div>
@@ -1134,11 +1134,11 @@
                                         <div class="price-value">₫8M - 12M</div>
                                         <div class="price-note">24 giờ</div>
                                     </td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td style="color: black">Campaign Package</td>
                                     <td>
-                                        <div class="price-value">₫80M - 120M</div>
+                                        <div class="price-value">{{ numberFormat($kol->price_campaign) }}</div>
                                         <div class="price-note">3 bài đăng + 3 story</div>
                                     </td>
                                 </tr>
