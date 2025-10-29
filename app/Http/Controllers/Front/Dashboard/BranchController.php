@@ -283,7 +283,7 @@ class BranchController extends Controller
             ->with(['contents' => function ($query) {
                 $query->where('content_type', 'video')
                     ->latest('posted_at')
-                    ->take(5);
+                    ->take(12);
             }])
             ->firstOrFail();
 
