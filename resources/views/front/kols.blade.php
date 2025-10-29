@@ -8,6 +8,9 @@
 
 @section('css')
     <style>
+        a {
+            text-decoration: none;
+        }
         /* KOL List Page Specific Styles */
         .filters-section {
             background: white;
@@ -602,11 +605,12 @@
                                 <label class="filter-label">Danh mục</label>
                                 <select name="category" class="filter-select">
                                     <option value="all">Tất cả danh mục</option>
-                                    <option value="beauty-fashion" {{ request('category') == 'beauty-fashion' ? 'selected' : '' }}>Beauty & Fashion</option>
-                                    <option value="food-drink" {{ request('category') == 'food-drink' ? 'selected' : '' }}>Food & Drink</option>
-                                    <option value="travel" {{ request('category') == 'travel' ? 'selected' : '' }}>Travel</option>
-                                    <option value="technology" {{ request('category') == 'technology' ? 'selected' : '' }}>Technology</option>
-                                    <option value="lifestyle" {{ request('category') == 'lifestyle' ? 'selected' : '' }}>Lifestyle</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->slug }}" {{ request('category') == $category->slug ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>   
+                                        @endforeach
+                                    
                                 </select>
                             </div>
 
@@ -790,34 +794,7 @@
             </div>
 
             <!-- Pagination -->
-            @if ($kols->hasPages())
-            <div class="pagination fade-in flex items-center justify-center gap-2 mt-6">
-
-                {{-- Nút Trước --}}
-                @if ($kols->onFirstPage())
-                    <button class="btn btn-outline opacity-50 cursor-not-allowed" disabled>← Trước</button>
-                @else
-                    <a href="{{ $kols->previousPageUrl() }}" class="btn btn-outline">← Trước</a>
-                @endif
-
-                {{-- Các trang --}}
-                @foreach (range(1, $kols->lastPage()) as $page)
-                    @if ($page == $kols->currentPage())
-                        <button class="btn btn-primary">{{ $page }}</button>
-                    @else
-                        <a href="{{ $kols->url($page) }}" class="btn btn-outline">{{ $page }}</a>
-                    @endif
-                @endforeach
-
-                {{-- Nút Tiếp --}}
-                @if ($kols->hasMorePages())
-                    <a href="{{ $kols->nextPageUrl() }}" class="btn btn-outline">Tiếp →</a>
-                @else
-                    <button class="btn btn-outline opacity-50 cursor-not-allowed" disabled>Tiếp →</button>
-                @endif
-
-            </div>
-            @endif
+            {{$kols->links('vendor.pagination.custom')}}
 
         </div>
     </section>

@@ -799,9 +799,10 @@
         <!-- Profile Header -->
         <div class="profile-header">
             <div class="profile-header-content">
+                <div class="profile-avatar verified">
                 {{-- <div class="profile-avatar verified">NT</div> --}}
                 <img class="profile-avatar verified" src="{{ $kol->getFirstMediaUrl('media') }}">
-
+                </div>
                 <div class="profile-info">
                     <div class="profile-top-row">
                         <h1 class="profile-name">{{ $kol->display_name }}</h1>

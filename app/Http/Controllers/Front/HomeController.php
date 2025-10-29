@@ -95,15 +95,15 @@ class HomeController extends Controller
             $search = trim($req->search);
             $query->where(function ($q) use ($search) {
                 $q->where('display_name', 'like', "%{$search}%")
-                ->orWhere('username', 'like', "%{$search}%")
-                ->orWhere('bio', 'like', "%{$search}%");
+                ->orWhere('username', 'like', "%{$search}%");
+                //->orWhere('bio', 'like', "%{$search}%")
             });
         }
 
         if ($req->filled('category') && $req->category !== 'all') {
             $query->whereHas('categories', function ($q) use ($req) {
-                $q->where('slug', $req->category)
-                ->orWhere('name', 'like', "%{$req->category}%");
+                $q->where('slug', $req->category);
+                //->orWhere('name', 'like', "%{$req->category}%")
             });
         }
 
@@ -157,7 +157,9 @@ class HomeController extends Controller
 
         $kols = $query->paginate(12)->withQueryString();
 
-        return view('front.kols', compact('kols'));
+        $categories = Category::where('type', 'kols')->get();
+
+        return view('front.kols', compact('kols', 'categories'));
     }
 
     public function login(Request $req)
