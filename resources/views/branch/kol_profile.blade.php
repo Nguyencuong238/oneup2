@@ -717,6 +717,74 @@
             }
         }
     </style>
+    <style>
+    .tiktok-video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+    }
+
+    .tiktok-video-item {
+        position: relative;
+    }
+
+    .video-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .video-thumb {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        filter: brightness(0.8);
+        transition: all 0.3s ease;
+    }
+
+    .video-thumb:hover {
+        transform: scale(1.05);
+        filter: brightness(1);
+    }
+
+    .video-overlay-text {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        color: white;
+        font-size: 14px;
+        line-height: 1.3;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+        font-weight: 500;
+    }
+
+    .pinned-tag {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background-color: #ff3355;
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .video-stats {
+        position: absolute;
+        bottom: 8px;
+        left: 10px;
+        color: white;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    </style>
+
 @endsection
 
 @section('page')
@@ -990,50 +1058,40 @@
 
                     <!-- Recent Content -->
                     <div class="metric-card" style="margin-top: 2rem;">
-                        <div class="metric-header">
-                            <h2 class="metric-title">Nội dung gần đây</h2>
+                        <div class="metric-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h2 class="metric-title" style="font-weight: bold; font-size: 20px;">Nội dung gần đây</h2>
                             <a href="#" style="color: var(--primary); font-size: 14px; text-decoration: none;">Xem tất cả →</a>
                         </div>
 
-                        <div class="content-list">
+                        <div class="tiktok-video-grid">
                             @foreach($videos as $v)
-                            <div class="content-item">
-                                <div class="">
-                                    <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}" 
-                                        target="_blank" rel="noopener">
-                                        <img src="{{ $v->thumbnail_url }}" alt="" style="width: 200px; height: 180px; border-radius: 10px">
-                                    </a>
-                                </div>
-                                <div class="content-details" >
-                                    <div class="content-title">
-                                        <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}" 
-                                        target="_blank" rel="noopener" style="text-decoration: none; color:black">{{ $v->title }}</a>
+                                <div class="tiktok-video-item">
+                                    <div class="video-wrapper">
+                                        <a href="https://www.tiktok.com/@{{ $kol->username }}/video/{{ $v->platform_post_id }}"
+                                            target="_blank" rel="noopener">
+                                            <img src="{{ $v->thumbnail_url }}" alt="video thumbnail" class="video-thumb">
+                                            @if($v->is_pinned ?? false)
+                                                <span class="pinned-tag">Đã ghim</span>
+                                            @endif
+                                            <div class="video-overlay-text">
+                                                {{ $v->title }}
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="content-stats">
-                                        <span class="content-stat">
-                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd"
-                                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            {{ formatDisplayNumber($v->views_count) }} lượt xem
-                                        </span>
-                                        <span class="content-stat">
-                                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            {{ formatDisplayNumber($v->likes_count) }}
-                                        </span>
-                                        <span class="content-stat">{{ $v->posted_at->diffForHumans() }}</span>
+                                    <div class="video-stats">
+                                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        {{ formatDisplayNumber($v->views_count) }}
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Right Column -->
