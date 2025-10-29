@@ -809,7 +809,7 @@
                             @if ($kol->is_verified)
                                 <span class="badge badge-verified">Đã xác minh</span>
                             @endif
-                            <span class="badge badge-tier">Hạng Diamond</span>
+                            {{-- <span class="badge badge-tier">Hạng Diamond</span> --}}
                         </div>
                     </div>
 
@@ -875,7 +875,7 @@
                     </div>
                 </div>
 
-                <div class="profile-actions">
+                {{-- <div class="profile-actions">
                     <button class="btn-action btn-primary">
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -898,7 +898,7 @@
                         </svg>
                         Chia sẻ
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -1073,7 +1073,7 @@
                             @foreach($videos as $v)
                                 <div class="tiktok-video-item">
                                     <div class="video-wrapper">
-                                        <a href="https://www.tiktok.com/@{{ $kol->username }}/video/{{ $v->platform_post_id }}"
+                                        <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}"
                                             target="_blank" rel="noopener">
                                             <img src="{{ $v->thumbnail_url }}" alt="video thumbnail" class="video-thumb">
                                             @if($v->is_pinned ?? false)
