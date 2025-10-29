@@ -251,7 +251,7 @@
                     {{-- <span class="nav-badge">3</span> --}}
                 </a>
 
-                <a href="{{ route('branch.analytic') }}" class="nav-item @if (request()->routeIs('branch.analytic')) active @endif">
+                {{-- <a href="{{ route('branch.analytic') }}" class="nav-item @if (request()->routeIs('branch.analytic')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -265,7 +265,7 @@
                             d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1m3-2V8a2 2 0 00-2-2H8a2 2 0 00-2 2v8m5-4h4" />
                     </svg>
                     <span>Báo cáo</span>
-                </a>
+                </a> --}}
 
                 <a href="{{ route('branch.leaderboard') }}"
                     class="nav-item @if (request()->routeIs('branch.leaderboard')) active @endif">
@@ -286,13 +286,13 @@
                     <span>Cài đặt</span>
                 </a>
 
-                <a href="{{ route('branch.billing') }}" class="nav-item @if (request()->routeIs('branch.billing')) active @endif">
+                {{-- <a href="{{ route('branch.billing') }}" class="nav-item @if (request()->routeIs('branch.billing')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                     <span>Thanh toán</span>
-                </a>
+                </a> --}}
             </nav>
 
             <div class="sidebar-footer">

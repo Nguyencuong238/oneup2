@@ -553,8 +553,8 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Chiến dịch đang tham gia</div>
-                            <div class="stat-value">{{$kol->campaigns->count()}}</div>
+                            <div class="stat-title">Chiến dịch đã tham gia</div>
+                            <div class="stat-value">{{$confirmedCampaignCount}}</div>
                             {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -578,8 +578,8 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Phạm vi tiếp cận</div>
-                            <div class="stat-value">45.2M</div>
+                            <div class="stat-title">Chiến dịch được mời tham gia</div>
+                            <div class="stat-value">{{$invitedCampaignCount}}</div>
                             {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -602,8 +602,8 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">Tương tác trung bình</div>
-                            <div class="stat-value">4.8%</div>
+                            <div class="stat-title">Chiến dịch đã hoàn thành</div>
+                            <div class="stat-value">{{$completedCampaignCount}}</div>
                             {{-- <div class="stat-change negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                                     style="transform: rotate(180deg);">

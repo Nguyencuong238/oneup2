@@ -130,6 +130,11 @@
             color: var(--primary);
         }
 
+        .status-pending {
+            background: rgba(180, 16, 232, 0.1);
+            color: #a900e0;
+        }
+
         .status-draft {
             background: rgba(156, 163, 175, 0.1);
             color: var(--gray-600);
@@ -634,6 +639,7 @@
                         'completed' => 'Đã hoàn thành',
                         'cancelled' => 'Đã hủy',
                         'draft' => 'Bản nháp',
+                        'pending' => 'Chờ duyệt',
                     ];
                 @endphp
                 <span class="campaign-status status-{{ $campaign->status }}">{{ $statusText[$campaign->status] }}</span>
@@ -648,9 +654,9 @@
                     </svg>
                     Xuất báo cáo
                 </button>
-                <button class="btn btn-primary btn-small">
+                {{-- <button class="btn btn-primary btn-small">
                     Chỉnh sửa chiến dịch
-                </button>
+                </button> --}}
             </div>
         </div>
 

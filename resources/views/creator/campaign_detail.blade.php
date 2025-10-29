@@ -690,23 +690,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="campaign-actions">
-                        @if (in_array($campaign->status, ['active', 'paused']))
-                            <form action="{{ route('creator.campaign.changeStatus') }}" method="post" id="change-status-form">
-                                @csrf
-                                <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
-                                <input type="hidden" name="status"
-                                    value="{{ $campaign->status == 'active' ? 'paused' : 'active' }}">
-
-                                <button class="btn btn-secondary btn-small">
-                                    {{ $campaign->status == 'active' ? 'Tạm dừng' : 'Tiếp tục' }}
-                                </button>
-                            </form>
-                        @endif
-                        <button class="btn btn-secondary btn-small"
-                            onclick="window.location.href='{{ route('creator.campaign.planner', ['slug' => $campaign->slug, 'is_clone' => true]) }}'">Nhân
-                            bản</button>
-                    </div>
                 </div>
 
                 <!-- Progress Overview -->

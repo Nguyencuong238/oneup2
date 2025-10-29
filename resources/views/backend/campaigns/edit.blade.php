@@ -122,8 +122,10 @@
                                 class="form-control form-control-select2 @error('status')is-invalid @enderror"
                                 data-fouc>
                                 <option></option>
-                                <option {{ old('status', $campaign->status) == 'draft' ? 'selected' : null }} value="draft">
-                                    Nháp</option>
+                                {{-- <option {{ old('status', $campaign->status) == 'draft' ? 'selected' : null }} value="draft">
+                                    Nháp</option> --}}
+                                <option {{ old('status', $campaign->status) == 'pending' ? 'selected' : null }} value="pending">
+                                    Chờ duyệt</option>
                                 <option {{ old('status', $campaign->status) == 'active' ? 'selected' : null }} value="active">
                                     Kích hoạt</option>
                                 <option {{ old('status', $campaign->status) == 'paused' ? 'selected' : null }} value="paused">

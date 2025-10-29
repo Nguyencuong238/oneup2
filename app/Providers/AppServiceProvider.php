@@ -41,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
             'category'   => 'App\Models\Category',
             'kol'   => 'App\Models\Kol',
             'organization'   => 'App\Models\Organization',
+            'campaign'   => 'App\Models\Campaign',
         ]);
     }
 }

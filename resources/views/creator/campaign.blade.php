@@ -793,28 +793,42 @@
 
         <!-- Campaigns Content -->
         <div class="campaigns-content">
-            
+
 
             <!-- Campaign Tabs -->
             <div class="campaign-tabs-container">
                 <div class="campaign-tabs">
                     <div class="campaign-tab active" data-tab="all">
                         Tất cả chiến dịch
-                        <span class="tab-badge">{{ $totalCampaigns }}</span>
                     </div>
-                    <div class="campaign-tab" data-tab="active">
+                    <div class="campaign-tab" data-tab="confirmed">
                         Đã tham gia
-                        <span class="tab-badge">{{ $kol->campaigns->where('status', '!=', 'draft')->count() }}</span>
+                        <span class="tab-badge">{{ count($comfirmedCampaignIds) }}</span>
+                    </div>
+                    <div class="campaign-tab" data-tab="invited">
+                        Được mời tham gia
+                        <span class="tab-badge">{{ count($invitedCampaignIds) }}</span>
                     </div>
                 </div>
+
+                @php
+                    $statusText = [
+                        'active' => 'Đang hoạt động',
+                        'paused' => 'Tạm dừng',
+                        'completed' => 'Đã kết thúc',
+                        'cancelled' => 'Đã hủy',
+                        'draft' => 'Bản nháp',
+                        'pending' => 'Chờ duyệt',
+                    ];
+                @endphp
 
                 <!-- Campaigns Grid -->
                 <div class="campaigns-grid" id="campaignsGrid">
                     @foreach ($campaigns as $campaign)
-                        <div class="campaign-card campaign-{{ $campaign->status }}">
+                        <div class="campaign-card campaign-{{ @$myStatusCampaigns[$campaign->id] }}">
                             <div class="campaign-header">
                                 <span class="campaign-status status-{{ $campaign->status }}">
-                                    {{ $campaign->status == 'active' ? 'Đang hoạt động' : ($campaign->status == 'draft' ? 'Bản nháp' : ($campaign->status == 'completed' ? 'Hoàn thành' : ($campaign->status == 'paused' ? 'Tạm dừng' : $campaign->status))) }}
+                                    {{ @$statusText[$campaign->status] }}
                                 </span>
                                 <h3 class="campaign-name">{{ $campaign->name }}</h3>
                                 <div class="campaign-dates">
@@ -829,7 +843,7 @@
                             </div>
                             <div class="campaign-body">
                                 <div class="campaign-metrics">
-                                    <div class="metric">
+                                    {{-- <div class="metric">
                                         <span class="metric-label">Phạm vi tiếp cận</span>
                                         <span class="metric-value">{{ formatDisplayNumber($campaign->target_reach) }}</span>
                                     </div>
@@ -842,11 +856,11 @@
                                         <span class="metric-value">
                                             ₫{{ formatDisplayNumber($campaign->budget_amount) }}
                                         </span>
-                                    </div>
-                                    <div class="metric">
+                                    </div> --}}
+                                    {{-- <div class="metric">
                                         <span class="metric-label">ROI</span>
                                         <span class="metric-value">{{ numberFormat($campaign->roi, 1) }}x</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="campaign-progress">
                                     <div class="progress-header">
@@ -863,14 +877,14 @@
                                 </div>
                             </div>
                             <div class="campaign-footer">
-                                <div class="campaign-budget">
+                                {{-- <div class="campaign-budget">
                                     Ngân sách:
                                     <span class="budget-amount">
                                         ₫{{ numberFormat($campaign->budget_amount / 1000000, 3) }}M
                                     </span>
-                                </div>
+                                </div> --}}
                                 <div class="campaign-actions">
-                                    @if ($campaign->status == 'active')
+                                    @if ($campaign->status == 'active' && @$myStatusCampaigns[$campaign->id] != 'confirmed')
                                         {{-- <button class="action-btn js-navigate"
                                             data-href="{{ route('creator.campaign.detail', ['slug' => $campaign->slug]) }}">
                                             Xem
@@ -880,20 +894,22 @@
                                             Theo dõi
                                         </button> --}}
 
-                                        <form action="" method="get" class="change-status-form">
+                                        <form action="{{ route('creator.campaign.join') }}" method="post"
+                                            class="change-status-form">
                                             @csrf
-                                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
-                                            <input type="hidden" name="status" value="active">
+                                            @method('post')
 
-                                            <button class="action-btn primary">Tham gia</button>
+                                            <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
+
+                                            <button
+                                                class="action-btn primary">{{ @$myStatusCampaigns[$campaign->id] == 'invited' ? 'Đồng ý tham gia' : 'Tham gia' }}</button>
                                         </form>
                                     @endif
 
-                                    @if ($campaign->status == 'completed')
+                                    @if (@$myStatusCampaigns[$campaign->id] == 'confirmed')
                                         <button class="action-btn">
-                                            Đã kết thúc
+                                            Đã tham gia
                                         </button>
-                                        
                                     @endif
                                 </div>
                             </div>
@@ -1029,16 +1045,17 @@
                 switchTab(this, tab);
             });
 
+            @if (request()->input('tab') && in_array(request()->input('tab'), ['all', 'confirmed', 'invited']))
+                switchTab($('.campaign-tab[data-tab="{{ request()->input('tab') }}"]'),
+                    '{{ request()->input('tab') }}');
+            @endif
         });
     </script>
 
     <script>
         $('.change-status-form').on('submit', function(e) {
             e.preventDefault();
-
-            var status = $(this).find('input[name="status"]').val();
             var msg = 'Bạn có chắc chắn muốn tham gia chiến dịch';
-
 
             if (confirm(msg)) {
                 this.submit();
