@@ -754,10 +754,16 @@
         left: 12px;
         right: 12px;
         color: white;
-        font-size: 14px;
-        line-height: 1.3;
+        font-size: 17px; /* tăng cỡ chữ */
+        line-height: 1.4;
+        font-weight: 600;
         text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-        font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* chỉ hiển thị 2 dòng */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
     }
 
     .pinned-tag {
