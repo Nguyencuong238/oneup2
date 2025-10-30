@@ -56,8 +56,9 @@ Route::get('kols', [HomeController::class, 'kols'])->name('kols');
 Route::get('help', [HomeController::class, 'help'])->name('help');
 Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsletters');
 
+Route::view('profile', 'profile.show')->name('profile.show')->middleware('auth');
+
 Route::prefix('branch/')->middleware(['auth', 'verified', IsBranch::class])->group(function () {
-	Route::view('profile', 'profile.show')->name('profile.show');
 
 	Route::get('dashboard', [BranchController::class, 'dashboard'])->name('branch.dashboard');
 	Route::get('kol-explorer', [BranchController::class, 'kolExplorer'])->name('branch.kolExplorer');
@@ -69,6 +70,7 @@ Route::prefix('branch/')->middleware(['auth', 'verified', IsBranch::class])->gro
 	Route::get('analytic', [BranchController::class, 'analytic'])->name('branch.analytic');
 	Route::get('report', [BranchController::class, 'report'])->name('branch.report');
 	Route::get('setting', [BranchController::class, 'setting'])->name('branch.setting');
+	Route::post('setting-update', [BranchController::class, 'saveSettings'])->name('branch.setting.update');
 	Route::get('billing', [BranchController::class, 'billing'])->name('branch.billing');
 	Route::get('profile/{username}', [BranchController::class, 'profile'])->name('branch.profile');
 	Route::get('leaderboard', [BranchController::class, 'leaderboard'])->name('branch.leaderboard');
@@ -76,7 +78,6 @@ Route::prefix('branch/')->middleware(['auth', 'verified', IsBranch::class])->gro
 });
 
 Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->group(function () {
-	Route::view('profile', 'profile.show')->name('profile.show');
 
 	Route::get('dashboard', [CreatorController::class, 'dashboard'])->name('creator.dashboard');
 	Route::get('campaign', [CreatorController::class, 'campaign'])->name('creator.campaign.index');
