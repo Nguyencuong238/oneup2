@@ -170,7 +170,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: var(--gradient-blue);
+            /* background: var(--gradient-blue); */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -717,7 +717,7 @@
                     <div class="form-group">
                         <div class="avatar-upload">
                             <div class="avatar-preview" id="avatar-dropzone" style="position: relative;">
-                                <img src="{{ asset($user->avatar) }}" alt="Avatar" class="avatar-image"
+                                <img src="{{ asset($user->avatar ? $user->avatar : 'assets/default-avatar.jpg') }}" alt="Avatar" class="avatar-image"
                                     style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                                 <div class="avatar-upload-btn"
                                     style="position: absolute; right: 8px; bottom: 8px; cursor: pointer;">
