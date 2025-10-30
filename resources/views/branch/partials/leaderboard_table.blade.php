@@ -22,9 +22,15 @@
                     </td>
                     <td>
                         <div class="kol-cell">
-                            <img class="kol-avatar-small" src="{{ $kol->getFirstMediaUrl('media') }}" alt="{{ $kol->display_name }}">
+                            <img class="kol-avatar-small" src="{{ $kol->getFirstMediaUrl('media') }}"
+                                alt="{{ $kol->display_name }}">
                             <div class="kol-details">
-                                <div class="kol-name">{{ $kol->display_name }}</div>
+                                <div class="kol-name">
+                                    <a href="{{ route('branch.profile', ['username' => trim($kol->username, '@')]) }}"
+                                        class="color-dark-blue">
+                                        {{ $kol->display_name }}
+                                    </a>
+                                </div>
                                 <div class="kol-category">{{ $kol->categories->first()?->name }}</div>
                             </div>
                         </div>

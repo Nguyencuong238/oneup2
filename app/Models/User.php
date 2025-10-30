@@ -31,7 +31,10 @@ class User extends Authenticatable
         'kol_id',
         'provider',
         'provider_id',
-        'avatar'
+        'avatar',
+        'phone',
+        'description',
+        'job_title',
     ];
 
 
@@ -67,6 +70,6 @@ class User extends Authenticatable
 
     public function kol()
     {
-        return $this->belongsTo(kol::class, 'kol_id');
+        return $this->belongsTo(Kol::class, 'kol_id');
     }
 }

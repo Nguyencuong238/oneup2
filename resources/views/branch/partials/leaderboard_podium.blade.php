@@ -4,11 +4,16 @@
             @php
                 $kol = $topKols[$i] ?? null;
             @endphp
-            @if($kol)
+            @if ($kol)
                 <div class="podium-card">
                     <div class="podium-rank rank-{{ $i + 1 }}">{{ $i + 1 }}</div>
                     <img class="podium-avatar" src="{{ $kol->getFirstMediaUrl('media') }}" alt="{{ $kol->display_name }}">
-                    <h3 class="podium-name">{{ $kol->display_name }}</h3>
+                    <h3 class="podium-name">
+                        <a href="{{ route('branch.profile', ['username' => trim($kol->username, '@')]) }}"
+                            class="color-dark-blue">
+                            {{ $kol->display_name }}
+                        </a>
+                    </h3>
                     <p class="podium-handle">{{ '@' . trim($kol->username, '@') }}</p>
                     <div class="podium-stats">
                         <div class="podium-stat">
