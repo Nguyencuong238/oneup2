@@ -358,10 +358,10 @@ class BranchController extends Controller
 
         $trustScore = round(
             ($realFollowersScore * 0.25) +
-            ($engagementQuality * 0.25) +
-            ($authenticComments * 0.20) +
-            ($growthStability * 0.15) +
-            ($contentQuality * 0.15)
+                ($engagementQuality * 0.25) +
+                ($authenticComments * 0.20) +
+                ($growthStability * 0.15) +
+                ($contentQuality * 0.15)
         );
 
         // --- Lấy video hiển thị ---
@@ -392,6 +392,48 @@ class BranchController extends Controller
 
     public function leaderboard()
     {
-        return view('branch.leaderboard');
+        $categoryId = request()->query('category');
+
+        $query = Kol::where('is_verified', 1)
+            ->where('status', 'active');
+
+        // If a specific category is selected (id or 'all'), filter kols
+        if ($categoryId && $categoryId !== 'all') {
+            $query = $query->whereHas('categories', function ($q) use ($categoryId) {
+                $q->where('id', $categoryId);
+            });
+        }
+
+        $topKols = $query->orderByDesc('followers')
+            ->limit(10)
+            ->get();
+
+        $topCategory = Category::where('type', 'kols')
+            ->withCount(['kols' => function ($q) {
+                $q->where('is_verified', 1)->where('status', 'active');
+            }])
+            ->orderByDesc('kols_count')
+            ->first();
+
+        $totalKols = $query->count();
+        $avgEngagement = $query->avg('engagement');
+        $totalTargetReach = $query->sum('followers');
+
+        $categories = Category::where('type', 'kols')->get();
+
+        // If AJAX request, return rendered partials as JSON so frontend can replace sections
+        if (request()->ajax()) {
+            $podiumHtml = view('branch.partials.leaderboard_podium', compact('topKols'))->render();
+            $tableHtml = view('branch.partials.leaderboard_table', compact('topKols'))->render();
+            $statsHtml = view('branch.partials.leaderboard_stats', compact('totalKols', 'avgEngagement', 'topCategory', 'totalTargetReach'))->render();
+
+            return response()->json([
+                'podium' => $podiumHtml,
+                'table' => $tableHtml,
+                'stats' => $statsHtml,
+            ]);
+        }
+
+        return view('branch.leaderboard', compact('topKols', 'categories', 'totalKols', 'topCategory', 'avgEngagement', 'totalTargetReach'));
     }
 }

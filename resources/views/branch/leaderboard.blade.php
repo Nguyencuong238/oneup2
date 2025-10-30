@@ -619,7 +619,7 @@
         <div class="topbar">
             <div class="topbar-left">
                 <h1 class="page-title">Bảng xếp hạng KOL</h1>
-                <div class="date-range-selector">
+                <div class="date-range-selector color-gray-600">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -633,7 +633,7 @@
                 </div>
             </div>
 
-            <div class="topbar-right">
+            {{-- <div class="topbar-right">
                 <button class="btn btn-secondary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -650,19 +650,19 @@
                     </svg>
                     Xuất file xếp hạng
                 </button>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Leaderboards Content -->
         <div class="leaderboards-content">
             <!-- Stats Summary -->
-            <div class="stats-summary">
+            <div class="stats-summary d-none">
                 <div class="summary-card">
                     <div class="summary-header">
                         <div>
                             <div class="summary-title">Tổng số KOL được theo dõi</div>
-                            <div class="summary-value">1,234</div>
-                            <div class="summary-change">+123 mới trong tháng này</div>
+                            <div class="summary-value">{{ $totalKols }}</div>
+                            {{-- <div class="summary-change">+123 mới trong tháng này</div> --}}
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -677,8 +677,8 @@
                     <div class="summary-header">
                         <div>
                             <div class="summary-title">Mức độ tương tác trung bình</div>
-                            <div class="summary-value">7.2%</div>
-                            <div class="summary-change">+0,8% so với tháng trước</div>
+                            <div class="summary-value">{{ round($avgEngagement, 2) }}%</div>
+                            {{-- <div class="summary-change">+0,8% so với tháng trước</div> --}}
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -694,8 +694,9 @@
                     <div class="summary-header">
                         <div>
                             <div class="summary-title">Danh mục hàng đầu</div>
-                            <div class="summary-value">Thời trang</div>
-                            <div class="summary-change">234 KOL đang hoạt động</div>
+                            <div class="summary-value">{{ $topCategory->name }}</div>
+                            <div class="summary-change">{{ formatDisplayNumber($topCategory->kols_count) }} KOL đang hoạt
+                                động</div>
                         </div>
                         <div class="summary-icon">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
@@ -711,7 +712,7 @@
                     <div class="summary-header">
                         <div>
                             <div class="summary-title">Tổng phạm vi tiếp cận</div>
-                            <div class="summary-value">458M</div>
+                            <div class="summary-value">{{ formatDisplayNumber($totalTargetReach) }}</div>
                             <div class="summary-change">Người theo dõi kết hợp</div>
                         </div>
                         <div class="summary-icon">
@@ -728,291 +729,27 @@
 
             <!-- Category Tabs -->
             <div class="category-tabs">
-                <button class="category-tab active">Tất cả danh mục</button>
-                <button class="category-tab">Thời trang & Làm đẹp</button>
-                <button class="category-tab">Phong cách sống</button>
-                <button class="category-tab">Ẩm thực & Đồ uống</button>
-                <button class="category-tab">Công nghệ</button>
-                <button class="category-tab">Du lịch</button>
-                <button class="category-tab">Chơi game</button>
-                <button class="category-tab">Thể dục</button>
+                <button class="category-tab active" data-category="all">Tất cả danh mục</button>
+                @foreach ($categories as $category)
+                    <button class="category-tab" data-category="{{ $category->id }}">{{ $category->name }}</button>
+                @endforeach
             </div>
 
-            <!-- Top 3 Podium -->
-            <div class="podium-section">
-                <div class="podium-container">
-                    <!-- 2nd Place -->
-                    <div class="podium-card">
-                        <div class="podium-rank rank-2">2</div>
-                        <div class="podium-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MT
-                        </div>
-                        <h3 class="podium-name">Minh Trần</h3>
-                        <p class="podium-handle">@minhtran_lifestyle</p>
-                        <div class="podium-stats">
-                            <div class="podium-stat">
-                                <div class="stat-value">1.8M</div>
-                                <div class="stat-label">Người theo dõi</div>
-                            </div>
-                            <div class="podium-stat">
-                                <div class="stat-value">9.2%</div>
-                                <div class="stat-label">Lượt tương tác</div>
-                            </div>
-                            <div class="podium-stat">
-                                <div class="stat-value">94</div>
-                                <div class="stat-label">Điểm</div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Stats Summary (rendered as a partial so we can update via AJAX) -->
+            @include('branch.partials.leaderboard_stats', [
+                'totalKols' => $totalKols,
+                'avgEngagement' => $avgEngagement,
+                'topCategory' => $topCategory,
+                'totalTargetReach' => $totalTargetReach,
+            ])
 
-                    <!-- 1st Place -->
-                    <div class="podium-card podium-1">
-                        <div class="podium-rank rank-1">1</div>
-                        <div class="podium-avatar">LN</div>
-                        <h3 class="podium-name">Linh Nguyễn</h3>
-                        <p class="podium-handle">@linhnguyen_beauty</p>
-                        <div class="podium-stats">
-                            <div class="podium-stat">
-                                <div class="stat-value">2.3M</div>
-                                <div class="stat-label">Người theo dõi</div>
-                            </div>
-                            <div class="podium-stat">
-                                <div class="stat-value">10.5%</div>
-                                <div class="stat-label">Lượt tương tác</div>
-                            </div>
-                            <div class="podium-stat">
-                                <div class="stat-value">98</div>
-                                <div class="stat-label">Điểm</div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Podium (partial) -->
+            @include('branch.partials.leaderboard_podium', ['topKols' => $topKols])
 
-                    <!-- 3rd Place -->
-                    <div class="podium-card">
-                        <div class="podium-rank rank-3">3</div>
-                        <div class="podium-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            AP</div>
-                        <h3 class="podium-name">An Phạm</h3>
-                        <p class="podium-handle">@anpham_food</p>
-                        <div class="podium-stats">
-                            <div class="podium-stat">
-                                <div class="stat-value">987K</div>
-                                <div class="stat-label">Người theo dõi</div>
-                            </div>
-                            <div class="podium-stat">
-                                <div class="stat-value">11.2%</div>
-                                <div class="stat-label">Lượt tương tác</div>
-                            </div>
-                            <div class="podium-stat">
-                                <div class="stat-value">92</div>
-                                <div class="stat-label">Điểm</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Ranking Table -->
-            <div class="ranking-container">
-                <div class="ranking-header">
-                    <h2 class="ranking-title">Xếp hạng đầy đủ</h2>
-                    <div class="filter-controls">
-                        <select class="filter-select">
-                            <option>Sắp xếp theo: Tổng điểm</option>
-                            <option>Sắp xếp theo: Phần trăm lượt tương tác</option>
-                            <option>Sắp xếp theo: Người theo dõi</option>
-                            <option>Sắp xếp theo: Tốc độ tăng trưởng</option>
-                        </select>
-                        <select class="filter-select">
-                            <option>Tất cả các địa điểm</option>
-                            <option>Vietnam</option>
-                            <option>Singapore</option>
-                            <option>Thailand</option>
-                        </select>
-                    </div>
-                </div>
+            <!-- Ranking Table (partial) -->
+            @include('branch.partials.leaderboard_table', ['topKols' => $topKols])
 
-                <table class="ranking-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 80px;">Thứ hạng</th>
-                            <th>KOL</th>
-                            <th>Người theo dõi</th>
-                            <th>Lượt tương tác</th>
-                            <th>Sự phát triển</th>
-                            <th>Điểm</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <span class="rank-number">4</span>
-                                <span class="rank-change change-up">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    2
-                                </span>
-                            </td>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">HV</div>
-                                    <div class="kol-details">
-                                        <div class="kol-name">Hoàng Vũ</div>
-                                        <div class="kol-category">Công nghệ</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">765K</td>
-                            <td style="color: black">8.4%</td>
-                            <td class="change-up">+15.2%</td>
-                            <td>
-                                <div class="score-bar">
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 88%;"></div>
-                                    </div>
-                                    <span class="score-value">88</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="rank-number">5</span>
-                                <span class="rank-change change-down">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"
-                                        style="transform: rotate(180deg);">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    1
-                                </span>
-                            </td>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">TL</div>
-                                    <div class="kol-details">
-                                        <div class="kol-name">Thảo Lê</div>
-                                        <div class="kol-category">Thể dục & Sức khỏe</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">543K</td>
-                            <td style="color: black">9.1%</td>
-                            <td class="change-up">+8.7%</td>
-                            <td>
-                                <div class="score-bar">
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 85%;"></div>
-                                    </div>
-                                    <span class="score-value">85</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="rank-number">6</span>
-                                <span class="rank-change change-same">
-                                    <span style="font-size: 16px;">—</span>
-                                </span>
-                            </td>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">DN</div>
-                                    <div class="kol-details">
-                                        <div class="kol-name">Đức Nguyễn</div>
-                                        <div class="kol-category">Hài kịch & Giải trí</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">3.1M</td>
-                            <td style="color: black">6.2%</td>
-                            <td class="change-up">+5.3%</td>
-                            <td>
-                                <div class="score-bar">
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 82%;"></div>
-                                    </div>
-                                    <span class="score-value">82</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="rank-number">7</span>
-                                <span class="rank-change change-up">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    3
-                                </span>
-                            </td>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">TH</div>
-                                    <div class="kol-details">
-                                        <div class="kol-name">Thu Hương</div>
-                                        <div class="kol-category">Du lịch & Phong cách sống</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">892K</td>
-                            <td style="color: black">7.8%</td>
-                            <td class="change-up">+12.1%</td>
-                            <td>
-                                <div class="score-bar">
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 80%;"></div>
-                                    </div>
-                                    <span class="score-value">80</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="rank-number">8</span>
-                                <span class="rank-change change-down">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"
-                                        style="transform: rotate(180deg);">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    2
-                                </span>
-                            </td>
-                            <td>
-                                <div class="kol-cell">
-                                    <div class="kol-avatar-small"
-                                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">NH</div>
-                                    <div class="kol-details">
-                                        <div class="kol-name">Nam Hoàng</div>
-                                        <div class="kol-category">Gaming</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="color: black">1.2M</td>
-                            <td style="color: black">5.9%</td>
-                            <td class="change-down">-2.1%</td>
-                            <td>
-                                <div class="score-bar">
-                                    <div class="bar-container">
-                                        <div class="bar-fill" style="width: 78%;"></div>
-                                    </div>
-                                    <span class="score-value">78</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </main>
 @endsection
@@ -1020,21 +757,87 @@
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
-        // Category tabs
-        document.querySelectorAll('.category-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
+        // AJAX category tabs
+        (function() {
+            const ajaxUrl = "{{ route('branch.leaderboard') }}";
+
+            function setActiveTab(el) {
                 document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
+                el.classList.add('active');
+            }
 
-                // Filter leaderboard by category
-                filterByCategory(this.textContent);
+            async function loadCategory(categoryId, clickedEl) {
+                setActiveTab(clickedEl);
+
+                try {
+                    // simple loading indicator
+                    clickedEl.disabled = true;
+
+                    const res = await fetch(ajaxUrl + '?category=' + encodeURIComponent(categoryId), {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+
+                    if (!res.ok) throw new Error('Network response was not ok');
+
+                    const data = await res.json();
+
+                    if (data.stats) {
+                        const statsWrap = document.querySelector('.leaderboards-content');
+                        // replace stats summary
+                        const oldStats = document.getElementById('leaderboard-stats');
+                        if (oldStats) oldStats.outerHTML = data.stats;
+                    }
+
+                    if (data.podium) {
+                        const oldPodium = document.getElementById('leaderboard-podium');
+                        if (oldPodium) oldPodium.outerHTML = data.podium;
+                    }
+
+                    if (data.table) {
+                        const oldTable = document.getElementById('leaderboard-table');
+                        if (oldTable) oldTable.outerHTML = data.table;
+                    }
+
+                    // re-run animations for new elements
+                    setTimeout(() => {
+                        const bars = document.querySelectorAll('.bar-fill');
+                        bars.forEach(bar => {
+                            const width = bar.style.width;
+                            bar.style.width = '0';
+                            setTimeout(() => {
+                                bar.style.transition = 'width 1s ease';
+                                bar.style.width = width;
+                            }, 50);
+                        });
+
+                        const podiumCards = document.querySelectorAll('.podium-card');
+                        podiumCards.forEach((card, index) => {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.transition = 'all 0.5s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, index * 200);
+                        });
+                    }, 100);
+
+                } catch (err) {
+                    console.error('Failed to load category:', err);
+                } finally {
+                    clickedEl.disabled = false;
+                }
+            }
+
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const cat = this.getAttribute('data-category') || 'all';
+                    loadCategory(cat, this);
+                });
             });
-        });
-
-        function filterByCategory(category) {
-            console.log('Filtering by category:', category);
-            // Implement category filtering logic
-        }
+        })();
 
         // Animate score bars on load
         document.addEventListener('DOMContentLoaded', function() {
