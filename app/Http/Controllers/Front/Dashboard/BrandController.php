@@ -284,11 +284,6 @@ class BrandController extends Controller
         return view('brand.setting', compact('user', 'notifications'));
     }
 
-    /**
-     * Save arbitrary settings sent from brand settings page.
-     * Expects a payload like: settings: { key1: value1, key2: value2 }
-     * Uses the global settings() helper (Spatie Valuestore) to persist values.
-     */
     public function saveSettings(Request $request)
     {
         $request->validate([

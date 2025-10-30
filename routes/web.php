@@ -84,6 +84,7 @@ Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->grou
 	Route::get('campaign-detail/{slug}', [CreatorController::class, 'campaignDetail'])->name('creator.campaign.detail');
 	Route::post('campaign-join', [CreatorController::class, 'joinCampaign'])->name('creator.campaign.join');
 	Route::get('setting', [CreatorController::class, 'setting'])->name('creator.setting');
+	Route::post('setting-update', [BrandController::class, 'saveSettings'])->name('creator.setting.update');
 	Route::get('profile/{username}', [CreatorController::class, 'profile'])->name('creator.profile');
 });
 Route::prefix('backend')

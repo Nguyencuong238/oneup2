@@ -166,8 +166,51 @@ class CreatorController extends Controller
 
     public function setting()
     {
-        return view('creator.setting');
+        $user = auth()->user();
+        $notifications = settings()->get('notifications', []);
+
+        return view('creator.setting', compact('user', 'notifications'));
     }
+
+    public function saveSettings(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'avatar' => 'nullable|image|max:2048',
+            'phone' => 'nullable|string|max:20',
+        ]);
+
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->description = $request->description;
+        $user->job_title = $request->job_title;
+        $user->company = $request->company;
+
+        if ($request->hasFile('avatar')) {
+            $avatarFile = $request->file('avatar');
+
+            // remove old avatar if exists
+            if (!empty($user->avatar)) {
+                $oldPath = preg_replace('#^/storage/#', '', $user->avatar);
+                \Storage::disk('public')->delete($oldPath);
+            }
+
+            // store in storage/app/public/avatars
+            $storedPath = $avatarFile->store('avatars', 'public');
+
+            // public access via /storage symlink
+            $user->avatar = '/storage/' . $storedPath;
+        }
+        $user->save();
+
+        settings()->put('notifications', $request->input('notifications', []));
+
+        return redirect()->back()->with('success', 'Cài đặt đã được lưu');
+    }
+
 
     public function profile($username)
     {

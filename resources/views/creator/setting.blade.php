@@ -7,106 +7,7 @@
 
 @section('css')
     <style>
-        /* Settings Specific Styles */
-        body {
-            background: #F8F9FA;
-            min-height: 100vh;
-        }
-
-        .dashboard-layout {
-            display: block;
-            min-height: 100vh;
-        }
-
-        /* Reuse sidebar styles */
-        .sidebar {
-            background: white;
-            border-right: 1px solid var(--gray-200);
-            padding: 1.5rem 0;
-            position: fixed;
-            height: 100vh;
-            width: 260px;
-            overflow-y: auto;
-            z-index: 100;
-        }
-
-        .sidebar-header {
-            padding: 0 1.5rem 1.5rem;
-            border-bottom: 1px solid var(--gray-200);
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .sidebar-logo-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--gradient-blue);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: white;
-        }
-
-        .sidebar-logo-text {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .sidebar-nav {
-            padding: 0 1rem;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 10px;
-            color: var(--gray-600);
-            text-decoration: none;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .nav-item:hover {
-            background: var(--gray-100);
-            color: var(--primary);
-        }
-
-        .nav-item.active {
-            background: var(--primary-lighter);
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        .nav-item.active::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 24px;
-            background: var(--primary);
-            border-radius: 0 3px 3px 0;
-        }
-
-        .nav-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
+        /* Main Content */
         .main-content {
             margin-left: 260px;
             padding: 0;
@@ -767,17 +668,17 @@
                             d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
                     <span>Bảo vệ</span>
-                </a>
+                </a> --}}
 
-                <a href="#api" class="settings-nav-item">
+                {{-- <a href="#api" class="settings-nav-item">
                     <svg class="settings-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                     <span>API Keys</span>
-                </a>
+                </a> --}}
 
-                <a href="#integrations" class="settings-nav-item">
+                {{-- <a href="#integrations" class="settings-nav-item">
                     <svg class="settings-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-3-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
@@ -803,7 +704,10 @@
             </aside>
 
             <!-- Settings Content -->
-            <div class="settings-content">
+            <form class="settings-content" action="{{ route('creator.setting.update') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+
                 <!-- Profile Section -->
                 <div class="settings-section" id="profile">
                     <h2 class="section-title">Thông tin hồ sơ</h2>
@@ -812,26 +716,35 @@
                     <!-- Avatar Upload -->
                     <div class="form-group">
                         <div class="avatar-upload">
-                            <div class="avatar-preview">
-                                JD
-                                <div class="avatar-upload-btn">
+                            <div class="avatar-preview" id="avatar-dropzone" style="position: relative;">
+                                <img src="{{ asset($user->avatar ? $user->avatar : 'assets/default-avatar.jpg') }}" alt="Avatar" class="avatar-image"
+                                    style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                                <div class="avatar-upload-btn"
+                                    style="position: absolute; right: 8px; bottom: 8px; cursor: pointer;">
                                     <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
                                         <path
                                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                     </svg>
                                 </div>
+                                
+                                <input type="file" name="avatar" id="avatarFileInput"
+                                    accept="image/png, image/jpeg, image/gif" style="display:none">
                             </div>
                             <div class="avatar-info">
                                 <div class="avatar-title">Ảnh đại diện</div>
                                 <div class="avatar-description">JPG, GIF or PNG. Max size 2MB</div>
-                                <button class="btn btn-secondary">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                    </svg>
-                                    Tải ảnh mới lên
-                                </button>
+                                <div style="display:flex;gap:.5rem;align-items:center;">
+                                    <button type="button" class="btn btn-secondary" id="avatarChooseBtn">
+                                        <svg width="16" height="16" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                        </svg>
+                                        Tải ảnh mới lên
+                                    </button>
+                                    <div class="avatar-error text-danger"
+                                        style="display:none;font-size:13px;margin-left:.5rem;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -840,39 +753,38 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Tên</label>
-                            <input type="text" class="form-input" value="John">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Họ</label>
-                            <input type="text" class="form-input" value="Doe">
+                            <input type="text" class="form-input" value="{{old('name', $user->name)}}" name='name'>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Địa chỉ email</label>
-                        <input type="email" class="form-input" value="john.doe@company.com">
+                        <input type="email" name='email' class="form-input" value="{{ old('email', $user->email) }}">
                         <span class="form-helper">Email này sẽ được sử dụng để đăng nhập và nhận thông báo</span>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Số điện thoại</label>
-                        <input type="tel" class="form-input" value="+84 90 123 4567">
+                        <input type="tel" name='phone' class="form-input" value="{{ old('phone', $user->phone) }}">
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Công ty</label>
-                            <input type="text" class="form-input" value="OneUp Digital Marketing">
+                            <input type="text" name="company" class="form-input"
+                                value="{{ old('company', $user->company) }}">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Chức danh công việc</label>
-                            <input type="text" class="form-input" value="Marketing Manager">
+                            <input type="text" name="job_title" class="form-input"
+                                value="{{ old('job_title', $user->job_title) }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Tiểu sử</label>
-                        <textarea class="form-input" rows="4" placeholder="Tell us about yourself...">Chuyên gia tiếp thị giàu kinh nghiệm, chuyên về tiếp thị người có sức ảnh hưởng và các chiến dịch kỹ thuật số.</textarea>
+                        <textarea class="form-input" name="description" rows="4" 
+                            placeholder="Giới thiệu bản thân...">{{ old('description', $user->description) }}</textarea>
                     </div>
                 </div>
 
@@ -887,7 +799,8 @@
                             <div class="toggle-description">Nhận cập nhật qua email về các chiến dịch của bạn</div>
                         </div>
                         <label class="toggle-switch">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" name="notifications[email_notifications]" 
+                                @if(@$notifications['email_notifications']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -898,7 +811,8 @@
                             <div class="toggle-description">Nhận thông báo khi chiến dịch đạt đến cột mốc</div>
                         </div>
                         <label class="toggle-switch">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" name="notifications[campaign_alerts]"
+                                @if(@$notifications['campaign_alerts']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -909,7 +823,8 @@
                             <div class="toggle-description">Thông báo về KOL đã lưu và hiệu suất của họ</div>
                         </div>
                         <label class="toggle-switch">
-                            <input type="checkbox">
+                            <input type="checkbox" name="notifications[kol_updates]"
+                                @if(@$notifications['kol_updates']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -920,7 +835,8 @@
                             <div class="toggle-description">Nhận tóm tắt hàng tuần về các chiến dịch của bạn</div>
                         </div>
                         <label class="toggle-switch">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" name="notifications[weekly_reports]"
+                                @if(@$notifications['weekly_reports']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -931,14 +847,15 @@
                             <div class="toggle-description">Tin tức về các tính năng mới và cải tiến</div>
                         </div>
                         <label class="toggle-switch">
-                            <input type="checkbox">
+                            <input type="checkbox" name="notifications[product_updates]"
+                                @if(@$notifications['product_updates']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Security Section -->
-                <div class="settings-section" id="security">
+                {{-- <div class="settings-section" id="security">
                     <h2 class="section-title">Cài đặt bảo mật</h2>
                     <p class="section-description">Giữ tài khoản của bạn an toàn với các cài đặt này</p>
 
@@ -1019,10 +936,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- API Keys Section -->
-                <div class="settings-section" id="api">
+                {{-- <div class="settings-section" id="api">
                     <h2 class="section-title">API Keys</h2>
                     <p class="section-description">Quản lý khóa API của bạn để tích hợp với bên thứ ba</p>
 
@@ -1107,10 +1024,10 @@
                         </svg>
                        Tạo khóa API mới
                     </button>
-                </div>
+                </div> --}}
 
                 <!-- Billing Section -->
-                <div class="settings-section" id="billing">
+                {{-- <div class="settings-section" id="billing">
                     <h2 class="section-title">Thanh toán & Gói cước</h2>
                     <p class="section-description">Quản lý thông tin đăng ký và thanh toán của bạn</p>
 
@@ -1231,18 +1148,15 @@
                             <button class="btn btn-secondary" style="width: 100%;">Liên hệ bán hàng</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Save Button -->
                 <div class="btn-group">
                     <button class="btn btn-primary">
                         Lưu thay đổi
                     </button>
-                    <button class="btn btn-secondary">
-                        Hủy bỏ
-                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
 @endsection
@@ -1291,13 +1205,78 @@
                 });
             });
 
-            // Avatar upload
-            const avatarUploadBtn = document.querySelector('.avatar-upload-btn');
-            if (avatarUploadBtn) {
-                avatarUploadBtn.addEventListener('click', function() {
-                    console.log('Opening file picker...');
+            // Avatar upload (jQuery preview only)
+            // This uses jQuery to handle file selection and preview into <img class="avatar-image">.
+            
+            (function($) {
+                const $file = $('#avatarFileInput');
+                const $img = $('.avatar-image');
+                const $error = $('.avatar-error');
+                const $drop = $('#avatar-dropzone');
+                const maxSize = 2 * 1024 * 1024; // 2MB
+
+                function showError(msg) {
+                    if ($error.length) {
+                        $error.text(msg).show();
+                    } else {
+                        alert(msg);
+                    }
+                }
+
+                function clearError() {
+                    if ($error.length) $error.hide().text('');
+                }
+
+                // Click handlers to open file picker
+                $(document).on('click', '#avatarChooseBtn, .avatar-upload-btn', function(e) {
+                    e.preventDefault();
+                    $file.trigger('click');
                 });
-            }
+
+                // Drag & drop support
+                $drop.on('dragover', function(e) {
+                    e.preventDefault();
+                    $(this).addClass('drag-over');
+                });
+                $drop.on('dragleave drop', function(e) {
+                    e.preventDefault();
+                    $(this).removeClass('drag-over');
+                });
+                $drop.on('drop', function(e) {
+                    e.preventDefault();
+                    const dt = e.originalEvent.dataTransfer;
+                    if (dt && dt.files && dt.files.length) {
+                        handleFile(dt.files[0]);
+                    }
+                });
+
+                // Handle file input change
+                $file.on('change', function() {
+                    if (this.files && this.files[0]) {
+                        handleFile(this.files[0]);
+                    }
+                    // clear input so selecting same file again triggers change
+                    // $(this).val('');
+                });
+
+                function handleFile(file) {
+                    clearError();
+                    if (!file.type.match('image.*')) {
+                        showError('Vui lòng chọn file ảnh (jpg, png, gif).');
+                        return;
+                    }
+                    if (file.size > maxSize) {
+                        showError('Kích thước ảnh vượt quá 2MB.');
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $img.attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            })(jQuery);
 
             // Save changes button
             const saveBtn = document.querySelector('.btn-primary');
