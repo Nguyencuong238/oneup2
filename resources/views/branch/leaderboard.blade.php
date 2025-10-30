@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="OneUp Leaderboards - Top performing KOLs rankings">
@@ -588,7 +588,7 @@
             </div>
 
             <!-- Stats Summary (rendered as a partial so we can update via AJAX) -->
-            @include('branch.partials.leaderboard_stats', [
+            @include('brand.partials.leaderboard_stats', [
                 'totalKols' => $totalKols,
                 'avgEngagement' => $avgEngagement,
                 'topCategory' => $topCategory,
@@ -596,11 +596,11 @@
             ])
 
             <!-- Podium (partial) -->
-            @include('branch.partials.leaderboard_podium', ['topKols' => $topKols])
+            @include('brand.partials.leaderboard_podium', ['topKols' => $topKols])
 
 
             <!-- Ranking Table (partial) -->
-            @include('branch.partials.leaderboard_table', ['topKols' => $topKols])
+            @include('brand.partials.leaderboard_table', ['topKols' => $topKols])
 
         </div>
     </main>
@@ -611,7 +611,7 @@
     <script>
         // AJAX category tabs
         (function() {
-            const ajaxUrl = "{{ route('branch.leaderboard') }}";
+            const ajaxUrl = "{{ route('brand.leaderboard') }}";
 
             function setActiveTab(el) {
                 document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));

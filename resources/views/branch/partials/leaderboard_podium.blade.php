@@ -9,7 +9,7 @@
                     <div class="podium-rank rank-{{ $i + 1 }}">{{ $i + 1 }}</div>
                     <img class="podium-avatar" src="{{ $kol->getFirstMediaUrl('media') }}" alt="{{ $kol->display_name }}">
                     <h3 class="podium-name">
-                        <a href="{{ route('branch.profile', ['username' => trim($kol->username, '@')]) }}"
+                        <a href="{{ route('brand.profile', ['username' => trim($kol->username, '@')]) }}"
                             class="color-dark-blue">
                             {{ $kol->display_name }}
                         </a>

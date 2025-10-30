@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="OneUp Campaign Tracker - Theo dõi hiệu suất chiến dịch theo thời gian thực">
@@ -1040,7 +1040,7 @@
             // Campaign dropdown navigation
             $(document).on('change', '.campaign-dropdown', function() {
                 const val = $(this).val();
-                if (val) window.location.href = '/branch/campaign-tracker/' + val;
+                if (val) window.location.href = '/brand/campaign-tracker/' + val;
             });
 
             // Add spinning animation style once

@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="OneUp KOL Analytics Dashboard - Monitor your TikTok influencer campaigns">
@@ -511,7 +511,7 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="{{ route('branch.campaign.planner') }}" class="btn btn-primary btn-small">
+                <a href="{{ route('brand.campaign.planner') }}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -526,22 +526,22 @@
         <div class="dashboard-content">
             <!-- Quick Actions -->
             <div class="quick-actions">
-                <a href="{{ route('branch.kolExplorer') }}" class="quick-action">
+                <a href="{{ route('brand.kolExplorer') }}" class="quick-action">
                     <div class="quick-action-icon">🔍</div>
                     <div class="quick-action-text">Tìm kiếm KOL</div>
                 </a>
 
-                <a href="{{ route('branch.campaign.index') }}" class="quick-action">
+                <a href="{{ route('brand.campaign.index') }}" class="quick-action">
                     <div class="quick-action-icon">📊</div>
                     <div class="quick-action-text">Tạo chiến dịch</div>
                 </a>
 
-                {{-- <a href="{{ route('branch.report') }}" class="quick-action">
+                {{-- <a href="{{ route('brand.report') }}" class="quick-action">
                     <div class="quick-action-icon">📈</div>
                     <div class="quick-action-text">Tạo báo cáo</div>
                 </a>
 
-                <a href="{{ route('branch.analytic') }}" class="quick-action">
+                <a href="{{ route('brand.analytic') }}" class="quick-action">
                     <div class="quick-action-icon">💡</div>
                     <div class="quick-action-text">Xem thông tin chi tiết</div>
                 </a> --}}
@@ -737,7 +737,7 @@
             <div class="dashboard-table" style="margin-top: 2rem;">
                 <div class="table-header">
                     <h2 class="table-title">KOL có hiệu suất cao nhất</h2>
-                    {{-- <a href="{{ route('branch.analytic') }}" class="table-action">
+                    {{-- <a href="{{ route('brand.analytic') }}" class="table-action">
                         Xem tất cả
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -766,7 +766,7 @@
                                         <img class="kol-avatar-small" src="{{ $kol->getFirstMediaUrl('media') }}">
                                         <div>
                                             <div class="kol-name-small">
-                                                <a href="{{ route('branch.profile', ['username' => trim($kol->username, '@')]) }}"
+                                                <a href="{{ route('brand.profile', ['username' => trim($kol->username, '@')]) }}"
                                                     class="color-dark-blue">
                                                     {{ $kol->display_name }}
                                                 </a>

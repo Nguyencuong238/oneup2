@@ -217,7 +217,7 @@
                             </svg>
                         </div>
                         <div class="dropdown-info">
-                            <a href="{{ auth()->user()->type == 'branch' ? route('branch.dashboard') : route('creator.dashboard') }}" class="nav-link" style="white-space: nowrap;">Bảng điều khiển</a>
+                            <a href="{{ auth()->user()->type == 'brand' ? route('brand.dashboard') : route('creator.dashboard') }}" class="nav-link" style="white-space: nowrap;">Bảng điều khiển</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}" class="nav-link"

@@ -225,8 +225,8 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="{{ route('branch.dashboard') }}"
-                    class="nav-item @if (request()->routeIs('branch.dashboard')) active @endif">
+                <a href="{{ route('brand.dashboard') }}"
+                    class="nav-item @if (request()->routeIs('brand.dashboard')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -234,8 +234,8 @@
                     <span>Bảng điều khiển</span>
                 </a>
 
-                <a href="{{ route('branch.kolExplorer') }}"
-                    class="nav-item @if (request()->routeIs('branch.kolExplorer')) active @endif">
+                <a href="{{ route('brand.kolExplorer') }}"
+                    class="nav-item @if (request()->routeIs('brand.kolExplorer')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -243,8 +243,8 @@
                     <span>Khám phá KOL</span>
                 </a>
 
-                <a href="{{ route('branch.campaign.index') }}"
-                    class="nav-item @if (request()->routeIs('branch.campaign.index')) active @endif">
+                <a href="{{ route('brand.campaign.index') }}"
+                    class="nav-item @if (request()->routeIs('brand.campaign.index')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -253,7 +253,7 @@
                     {{-- <span class="nav-badge">3</span> --}}
                 </a>
 
-                {{-- <a href="{{ route('branch.analytic') }}" class="nav-item @if (request()->routeIs('branch.analytic')) active @endif">
+                {{-- <a href="{{ route('brand.analytic') }}" class="nav-item @if (request()->routeIs('brand.analytic')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -261,7 +261,7 @@
                     <span>Phân tích</span>
                 </a>
 
-                <a href="{{ route('branch.report') }}" class="nav-item @if (request()->routeIs('branch.report')) active @endif">
+                <a href="{{ route('brand.report') }}" class="nav-item @if (request()->routeIs('brand.report')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1m3-2V8a2 2 0 00-2-2H8a2 2 0 00-2 2v8m5-4h4" />
@@ -269,8 +269,8 @@
                     <span>Báo cáo</span>
                 </a> --}}
 
-                <a href="{{ route('branch.leaderboard') }}"
-                    class="nav-item @if (request()->routeIs('branch.leaderboard')) active @endif">
+                <a href="{{ route('brand.leaderboard') }}"
+                    class="nav-item @if (request()->routeIs('brand.leaderboard')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -278,7 +278,7 @@
                     <span>Bảng xếp hạng</span>
                 </a>
 
-                <a href="{{ route('branch.setting') }}" class="nav-item @if (request()->routeIs('branch.setting')) active @endif">
+                <a href="{{ route('brand.setting') }}" class="nav-item @if (request()->routeIs('brand.setting')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -288,7 +288,7 @@
                     <span>Cài đặt</span>
                 </a>
 
-                {{-- <a href="{{ route('branch.billing') }}" class="nav-item @if (request()->routeIs('branch.billing')) active @endif">
+                {{-- <a href="{{ route('brand.billing') }}" class="nav-item @if (request()->routeIs('brand.billing')) active @endif">
                     <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />

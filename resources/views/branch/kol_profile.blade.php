@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="Hồ sơ KOL - Bảng điều khiển phân tích OneUp">

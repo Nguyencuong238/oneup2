@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 
-class BranchController extends Controller
+class BrandController extends Controller
 {
     public function dashboard()
     {
         $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(10)->get();
         $activeCampaigns = auth()->user()->campaigns()->where('status', 'active')->get();
 
-        return view('branch.dashboard', compact('kols', 'activeCampaigns'));
+        return view('brand.dashboard', compact('kols', 'activeCampaigns'));
     }
 
     public function kolExplorer()
@@ -52,7 +52,7 @@ class BranchController extends Controller
             ->whereNotNull('location_country')
             ->pluck('location_country');
 
-        return view('branch.kol_explorer', compact('kols', 'categories', 'countries'));
+        return view('brand.kol_explorer', compact('kols', 'categories', 'countries'));
     }
 
     public function campaign()
@@ -84,7 +84,7 @@ class BranchController extends Controller
         $completedCount = $campaigns->where('status', 'completed')->count();
         $pausedCount = $campaigns->where('status', 'paused')->count();
 
-        return view('branch.campaign', [
+        return view('brand.campaign', [
             'campaigns' => $campaigns,
             'totalCampaigns' => $totalCampaigns,
             'activeCount' => $activeCount,
@@ -107,7 +107,7 @@ class BranchController extends Controller
         $campaign = Campaign::where('slug', $slug)->firstOrNew();
 
 
-        return view('branch.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
+        return view('brand.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
     }
 
     public function campaignDetail($slug)
@@ -170,7 +170,7 @@ class BranchController extends Controller
             ];
         });
 
-        return view('branch.campaign_detail', compact(
+        return view('brand.campaign_detail', compact(
             'campaign',
             'durationDays',
             'remainingDays',
@@ -189,7 +189,7 @@ class BranchController extends Controller
         $campaigns = Campaign::all();
         $campaign = Campaign::with('kols')->where('slug', $slug)->firstOrFail();
 
-        return view('branch.campaign_tracker', compact('campaign', 'campaigns'));
+        return view('brand.campaign_tracker', compact('campaign', 'campaigns'));
     }
 
     public function campaignStore(Request $request)
@@ -238,7 +238,7 @@ class BranchController extends Controller
 
         $campaign->syncTagsWithType(request('tags'), 'campaign');
 
-        return redirect()->route('branch.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
+        return redirect()->route('brand.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
     }
 
     public function changeStatus(Request $request)
@@ -268,12 +268,12 @@ class BranchController extends Controller
 
     public function analytic()
     {
-        return view('branch.analytic');
+        return view('brand.analytic');
     }
 
     public function report()
     {
-        return view('branch.report');
+        return view('brand.report');
     }
 
     public function setting()
@@ -281,11 +281,11 @@ class BranchController extends Controller
         $user = auth()->user();
         $notifications = settings()->get('notifications', []);
 
-        return view('branch.setting', compact('user', 'notifications'));
+        return view('brand.setting', compact('user', 'notifications'));
     }
 
     /**
-     * Save arbitrary settings sent from branch settings page.
+     * Save arbitrary settings sent from brand settings page.
      * Expects a payload like: settings: { key1: value1, key2: value2 }
      * Uses the global settings() helper (Spatie Valuestore) to persist values.
      */
@@ -330,7 +330,7 @@ class BranchController extends Controller
 
     public function billing()
     {
-        return view('branch.billing');
+        return view('brand.billing');
     }
 
     public function profile($username)
@@ -414,7 +414,7 @@ class BranchController extends Controller
         // --- Lấy video hiển thị ---
         $videos = $kol->contents;
 
-        return view('branch.kol_profile', compact(
+        return view('brand.kol_profile', compact(
             'kol',
             'videos',
             'totalPosts',
@@ -470,9 +470,9 @@ class BranchController extends Controller
 
         // If AJAX request, return rendered partials as JSON so frontend can replace sections
         if (request()->ajax()) {
-            $podiumHtml = view('branch.partials.leaderboard_podium', compact('topKols'))->render();
-            $tableHtml = view('branch.partials.leaderboard_table', compact('topKols'))->render();
-            $statsHtml = view('branch.partials.leaderboard_stats', compact('totalKols', 'avgEngagement', 'topCategory', 'totalTargetReach'))->render();
+            $podiumHtml = view('brand.partials.leaderboard_podium', compact('topKols'))->render();
+            $tableHtml = view('brand.partials.leaderboard_table', compact('topKols'))->render();
+            $statsHtml = view('brand.partials.leaderboard_stats', compact('totalKols', 'avgEngagement', 'topCategory', 'totalTargetReach'))->render();
 
             return response()->json([
                 'podium' => $podiumHtml,
@@ -481,6 +481,6 @@ class BranchController extends Controller
             ]);
         }
 
-        return view('branch.leaderboard', compact('topKols', 'categories', 'totalKols', 'topCategory', 'avgEngagement', 'totalTargetReach'));
+        return view('brand.leaderboard', compact('topKols', 'categories', 'totalKols', 'topCategory', 'avgEngagement', 'totalTargetReach'));
     }
 }

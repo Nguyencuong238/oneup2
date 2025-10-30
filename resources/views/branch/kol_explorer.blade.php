@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="OneUp KOL Explorer - Find and analyze TikTok influencers">
@@ -820,7 +820,7 @@
                                     </div>
                                     <div class="kol-actions">
                                         <button class="action-btn primary"
-                                            onclick="window.location.href='{{ route('branch.profile', $kol->username) }}'">Chi
+                                            onclick="window.location.href='{{ route('brand.profile', $kol->username) }}'">Chi
                                             tiết</button>
                                         {{-- <button class="action-btn primary">Chọn</button> --}}
                                     </div>

@@ -12,14 +12,14 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Front\Dashboard\BranchController;
+use App\Http\Controllers\Front\Dashboard\BrandController;
 use App\Http\Controllers\Front\Dashboard\CreatorController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Middleware\IsAdmin;
-use App\Http\Middleware\IsBranch;
+use App\Http\Middleware\IsBrand;
 use App\Http\Middleware\IsKols;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -58,23 +58,23 @@ Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsle
 
 Route::view('profile', 'profile.show')->name('profile.show')->middleware('auth');
 
-Route::prefix('branch/')->middleware(['auth', 'verified', IsBranch::class])->group(function () {
+Route::prefix('brand/')->middleware(['auth', 'verified', IsBrand::class])->group(function () {
 
-	Route::get('dashboard', [BranchController::class, 'dashboard'])->name('branch.dashboard');
-	Route::get('kol-explorer', [BranchController::class, 'kolExplorer'])->name('branch.kolExplorer');
-	Route::get('campaign', [BranchController::class, 'campaign'])->name('branch.campaign.index');
-	Route::get('campaign-planner/{slug?}', [BranchController::class, 'campaignPlanner'])->name('branch.campaign.planner');
-	Route::get('campaign-detail/{slug}', [BranchController::class, 'campaignDetail'])->name('branch.campaign.detail');
-	Route::get('campaign-tracker/{slug}', [BranchController::class, 'campaignTracker'])->name('branch.campaign.tracker');
-	Route::post('campaign-store', [BranchController::class, 'campaignStore'])->name('branch.campaign.store');
-	Route::get('analytic', [BranchController::class, 'analytic'])->name('branch.analytic');
-	Route::get('report', [BranchController::class, 'report'])->name('branch.report');
-	Route::get('setting', [BranchController::class, 'setting'])->name('branch.setting');
-	Route::post('setting-update', [BranchController::class, 'saveSettings'])->name('branch.setting.update');
-	Route::get('billing', [BranchController::class, 'billing'])->name('branch.billing');
-	Route::get('profile/{username}', [BranchController::class, 'profile'])->name('branch.profile');
-	Route::get('leaderboard', [BranchController::class, 'leaderboard'])->name('branch.leaderboard');
-	Route::post('campaign-status', [BranchController::class, 'changeStatus'])->name('branch.campaign.changeStatus');
+	Route::get('dashboard', [BrandController::class, 'dashboard'])->name('brand.dashboard');
+	Route::get('kol-explorer', [BrandController::class, 'kolExplorer'])->name('brand.kolExplorer');
+	Route::get('campaign', [BrandController::class, 'campaign'])->name('brand.campaign.index');
+	Route::get('campaign-planner/{slug?}', [BrandController::class, 'campaignPlanner'])->name('brand.campaign.planner');
+	Route::get('campaign-detail/{slug}', [BrandController::class, 'campaignDetail'])->name('brand.campaign.detail');
+	Route::get('campaign-tracker/{slug}', [BrandController::class, 'campaignTracker'])->name('brand.campaign.tracker');
+	Route::post('campaign-store', [BrandController::class, 'campaignStore'])->name('brand.campaign.store');
+	Route::get('analytic', [BrandController::class, 'analytic'])->name('brand.analytic');
+	Route::get('report', [BrandController::class, 'report'])->name('brand.report');
+	Route::get('setting', [BrandController::class, 'setting'])->name('brand.setting');
+	Route::post('setting-update', [BrandController::class, 'saveSettings'])->name('brand.setting.update');
+	Route::get('billing', [BrandController::class, 'billing'])->name('brand.billing');
+	Route::get('profile/{username}', [BrandController::class, 'profile'])->name('brand.profile');
+	Route::get('leaderboard', [BrandController::class, 'leaderboard'])->name('brand.leaderboard');
+	Route::post('campaign-status', [BrandController::class, 'changeStatus'])->name('brand.campaign.changeStatus');
 });
 
 Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->group(function () {

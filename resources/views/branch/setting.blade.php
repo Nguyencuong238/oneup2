@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="Account Settings - OneUp KOL Analytics Dashboard">
@@ -704,7 +704,7 @@
             </aside>
 
             <!-- Settings Content -->
-            <form class="settings-content" action="{{ route('branch.setting.update') }}" method="POST"
+            <form class="settings-content" action="{{ route('brand.setting.update') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
 

@@ -449,7 +449,7 @@
                         <option value="kols" @if (old('type') == 'kols') selected @endif>
                             KOL / KOC
                         </option>
-                        <option value="branch" @if (old('type') == 'branch') selected @endif>
+                        <option value="brand" @if (old('type') == 'brand') selected @endif>
                             Nhãn hàng
                         </option>
                     </select>

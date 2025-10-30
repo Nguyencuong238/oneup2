@@ -26,7 +26,7 @@
                                 alt="{{ $kol->display_name }}">
                             <div class="kol-details">
                                 <div class="kol-name">
-                                    <a href="{{ route('branch.profile', ['username' => trim($kol->username, '@')]) }}"
+                                    <a href="{{ route('brand.profile', ['username' => trim($kol->username, '@')]) }}"
                                         class="color-dark-blue">
                                         {{ $kol->display_name }}
                                     </a>

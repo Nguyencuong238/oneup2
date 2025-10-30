@@ -5,11 +5,11 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsBranch
+class IsBrand
 {
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->type === 'branch') {
+        if (auth()->user()->type === 'brand') {
             return $next($request);
         }
 

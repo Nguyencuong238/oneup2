@@ -31,7 +31,7 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-            'type' => ['required', 'in:kols,branch'],
+            'type' => ['required', 'in:kols,brand'],
         ])->validate();
 
         $kol = Kol::create([

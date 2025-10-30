@@ -772,12 +772,12 @@
                         </div>
                         <div class="kol-actions">
                             @auth
-                                <a href="{{ route('branch.profile', $k->username) }}"
+                                <a href="{{ route('brand.profile', $k->username) }}"
                                     class="btn btn-primary" style="flex: 1;">
                                     Xem hồ sơ
                                 </a>
                             @else
-                                <a href="{{ route('login', ['redirect' => route('branch.profile', $k->username)]) }}"
+                                <a href="{{ route('login', ['redirect' => route('brand.profile', $k->username)]) }}"
                                     class="btn btn-primary" style="flex: 1;">
                                     Đăng nhập để xem
                                 </a>

@@ -614,12 +614,12 @@
                                 <td><span class="metric-badge high">{{ $k->trust_score }}/100</span></td>
                                 <td>
                                     @auth
-                                        <a href="{{ route('branch.profile', $k->username) }}"
+                                        <a href="{{ route('brand.profile', $k->username) }}"
                                             class="btn btn-primary btn-small" style="height:32px; width: 114px">
                                             Xem hồ sơ
                                         </a>
                                     @else
-                                        <a href="{{ route('login', ['redirect' => route('branch.profile', $k->username)]) }}"
+                                        <a href="{{ route('login', ['redirect' => route('brand.profile', $k->username)]) }}"
                                             class="btn btn-primary btn-small">
                                             Đăng nhập để xem
                                         </a>
@@ -633,11 +633,11 @@
 
             <div style="text-align: center; margin-top: 2rem;">
                 @auth
-                    <a href="{{ route('branch.kolExplorer') }}" class="btn btn-primary btn-large">
+                    <a href="{{ route('brand.kolExplorer') }}" class="btn btn-primary btn-large">
                         Xem tất cả hơn 10.000 KOL
                     </a>
                 @else
-                    <a href="{{ route('login', ['redirect' => route('branch.kolExplorer')]) }}"
+                    <a href="{{ route('login', ['redirect' => route('brand.kolExplorer')]) }}"
                         class="btn btn-primary btn-large">
                         Đăng nhập để xem tất cả KOL
                     </a>

@@ -1,4 +1,4 @@
-@extends('layouts.branch_master')
+@extends('layouts.brand_master')
 
 @section('meta')
     <meta name="description" content="OneUp Campaign Planner - Plan and optimize your TikTok KOL campaigns">
@@ -487,7 +487,7 @@
 
 @section('page')
     <!-- Main Content -->
-    <form class="main-content" action="{{ route('branch.campaign.store') }}" method="POST">
+    <form class="main-content" action="{{ route('brand.campaign.store') }}" method="POST">
         @csrf
 
         @if ($campaign->id && !request('is_clone'))
