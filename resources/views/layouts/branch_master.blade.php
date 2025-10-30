@@ -29,7 +29,7 @@
 
         /* Sidebar */
         .sidebar {
-            background: white;
+            background: #1d1d1d;
             border-right: 1px solid var(--gray-200);
             padding: 1.5rem 0;
             position: fixed;
@@ -41,7 +41,7 @@
 
         .sidebar-header {
             padding: 0 1.5rem 1.5rem;
-            border-bottom: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-900);
             margin-bottom: 1rem;
         }
 
@@ -74,8 +74,10 @@
             color: var(--primary);
         }
 
-        .sidebar-nav {
+        .sidebar-nav, .sidebar-nav.scrolled {
             padding: 0 1rem;
+            background: inherit;
+            border-color: var(--gray-800);
         }
 
         .nav-item {
@@ -85,19 +87,18 @@
             padding: 12px 16px;
             margin-bottom: 4px;
             border-radius: 10px;
-            color: var(--gray-600);
+            color: var(--gray-400);
             text-decoration: none;
             transition: all 0.2s;
             position: relative;
         }
 
         .nav-item:hover {
-            background: var(--gray-100);
-            color: var(--primary);
+            color: #fff;
         }
 
         .nav-item.active {
-            background: var(--primary-lighter);
+            background: inherit;
             color: var(--primary);
             font-weight: 500;
         }
@@ -133,7 +134,7 @@
         .sidebar-footer {
             margin-top: auto;
             padding: 1.5rem;
-            border-top: 1px solid var(--gray-200);
+            border-top: 1px solid var(--gray-800);
         }
 
         .user-profile {
@@ -141,14 +142,14 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: var(--gray-100);
+            background: #19191a;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .user-profile:hover {
-            background: var(--gray-200);
+            background: #131415;
         }
 
         .user-avatar {
@@ -169,7 +170,7 @@
 
         .user-name {
             font-weight: 600;
-            color: var(--dark-blue);
+            color: var(--gray-200);
             font-size: 14px;
         }
 
@@ -181,7 +182,7 @@
 
         .sidebar-footer .dropdown-info {
             display: none;
-            background: #fff;
+            background: #1b1a1a;
             width: 100%;
             border-radius: 4px;
             box-shadow: var(--shadow-lg);
@@ -196,6 +197,7 @@
             padding: 10px 15px;
             display: block;
             white-space: nowrap;
+            color: var(--gray-200);
         }
 
         .dropdown-info .nav-link:hover::after {
@@ -307,7 +309,7 @@
                         <div class="user-name">{{ $name }}</div>
                         <div class="user-role color-gray-600">Nhãn hàng</div>
                     </div>
-                    <svg width="20" height="20" fill="" viewBox="0 0 20 20">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
