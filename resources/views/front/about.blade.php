@@ -153,9 +153,10 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            justify-items: center;
         }
 
         .value-card {
@@ -164,6 +165,8 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 0, 80, 0.1);
             transition: var(--transition);
+            height: 100%;
+            text-align: center;
         }
 
         .value-card:hover {
@@ -173,15 +176,65 @@
         }
 
         .value-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 16px;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 1.5rem;
+            font-size: 32px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        /* 🌟 ép 5 cột khi màn hình lớn */
+        @media (min-width: 1200px) {
+            .values-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+
+        .value-card:hover .value-icon {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 132, 255, 0.3);
+        }
+
+        /* text */
+        .value-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* hover màu icon gradient riêng */
+        .value-card:nth-child(1) .value-icon {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        }
+        .value-card:nth-child(2) .value-icon {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+        .value-card:nth-child(3) .value-icon {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+        }
+        .value-card:nth-child(4) .value-icon {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+        }
+        .value-card:nth-child(5) .value-icon {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
         }
 
         .partner-logos {
@@ -245,8 +298,8 @@
     <section class="hero" style="padding: 120px 0 80px;">
         <div class="container">
             <div class="text-center">
-                <h1 class="mb-3 color-dark-blue fade-in">
-                    Trao Quyền Cho Thương Hiệu Với <span class="gradient-text">Dữ Liệu Thông Minh</span>
+                <h1 class="mb-3 color-dark-blue fade-in" style="font-size: 61px">
+                    <span class="gradient-text">Dữ Liệu Thông Minh</span>
                     Kiến Tạo Ảnh Hưởng Từ Những Quyết Định Chính Xác
                 </h1>
                 <p class="section-description mb-4 fade-in">
@@ -374,6 +427,15 @@
                         <p>Mở rộng sang Thái Lan, Philippines và Indonesia.</p>
                     </div>
                 </div>
+
+                <div class="timeline-item fade-in" style="animation-delay: 0.4s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2025</h3>
+                        <h4>OneUp Analytics</h4>
+                        <p>Ra mắt OneUp Analytics.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -382,45 +444,44 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <div class="section-subtitle fade-in">GIÁ TRỊ CỐT LÕI</div>
-                <h2 class="section-title color-gray-100 fade-in">Điều Thôi Thúc Chúng Tôi</h2>
+                <p class="section-subtitle fade-in" style="font-size: 38px; font-weight:700">ĐẶC ĐIỂM NỔI BẬT VỀ ONEUP.VN</p>
+                <p class="section-title color-gray-100 fade-in">"ONEUP tin rằng nội dung chân thật là nền tảng của niềm tin thương hiệu."</p>
             </div>
 
             <div class="values-grid">
                 <div class="value-card fade-in">
                     <div class="value-icon">🎯</div>
-                    <h3>Dựa Trên Dữ Liệu</h3>
-                    <p>Chúng tôi tin vào sức mạnh của dữ liệu để ra quyết định tốt hơn. Mọi tính năng đều được thiết kế để cung cấp thông tin hành động cụ thể.</p>
+                    <h3>Authenticity</h3>
+                    <h4>Tính xác thực</h4>
+                    <p>Review thật / Người thật / Sản phẩm thật / Trải nghiệm thật</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.1s;">
                     <div class="value-icon">🤝</div>
-                    <h3>Thành Công Của Khách Hàng</h3>
-                    <p>Thành công của bạn là thành công của chúng tôi. Cam kết hỗ trợ mọi khách hàng đạt được mục tiêu tiếp thị người ảnh hưởng.</p>
+                    <h3>Creativity</h3>
+                    <h4>Sáng tạo</h4>
+                    <p>Concept video độc đáo / Phù hợp GenZ</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.2s;">
                     <div class="value-icon">💡</div>
-                    <h3>Đổi Mới</h3>
-                    <p>Liên tục đổi mới để bắt kịp xu hướng mạng xã hội phát triển không ngừng.</p>
+                    <h3>Collaboration</h3>
+                    <h4>Hợp tác</h4>
+                    <p>Win-win giữa Brand / Creator / Audience</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.3s;">
                     <div class="value-icon">🔍</div>
-                    <h3>Minh Bạch</h3>
-                    <p>Chúng tôi tin tưởng vào sự minh bạch về giá, chỉ số và giao tiếp rõ ràng với mọi đối tác.</p>
+                    <h3>Data-driven</h3>
+                    <h4>Dựa trên số liệu</h4>
+                    <p>Theo dõi KPI, Reach, ROI rõ ràng</p>
                 </div>
 
                 <div class="value-card fade-in" style="animation-delay: 0.4s;">
                     <div class="value-icon">⚡</div>
-                    <h3>Tốc Độ</h3>
-                    <p>Trong thế giới mạng xã hội nhanh chóng, tốc độ là yếu tố then chốt. Chúng tôi giúp bạn hành động nhanh mà vẫn đảm bảo chất lượng.</p>
-                </div>
-
-                <div class="value-card fade-in" style="animation-delay: 0.5s;">
-                    <div class="value-icon">🌟</div>
-                    <h3>Xuất Sắc</h3>
-                    <p>Không ngừng nỗ lực để đạt sự xuất sắc trong mọi lĩnh vực — từ phát triển sản phẩm đến chăm sóc khách hàng.</p>
+                    <h3>Sustainability</h3>
+                    <h4>Bền vững</h4>
+                    <p>Phát triển cộng đồng và creator bền vững</p>
                 </div>
             </div>
         </div>
@@ -431,7 +492,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">ĐỘI NGŨ CỦA CHÚNG TÔI</div>
-                <h2 class="section-title fade-in">Những Con Người Đằng Sau OneUp</h2>
+                <h2 class="section-title fade-in" style="font-size: 40px">Những Con Người Đằng Sau OneUp</h2>
                 <p class="section-description fade-in">
                     Đội ngũ đa dạng các chuyên gia đam mê tiếp thị người ảnh hưởng
                 </p>
@@ -502,7 +563,7 @@
                     <img src="{{ asset('assets/viettel.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
                 <div class="partner-logo">
-                    <img src="{{ asset('assets/Shopee-logo.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                    <img src="{{ asset('assets/shope.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
                 <div class="partner-logo">
                     <img src="{{ asset('assets/logo-grab.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
