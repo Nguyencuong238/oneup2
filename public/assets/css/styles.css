@@ -116,7 +116,9 @@ p {
     color: var(--gray-700);
     line-height: 1.8;
 }
-
+a {
+    text-decoration: none;
+}
 .gradient-text {
     background: var(--gradient);
     -webkit-background-clip: text;

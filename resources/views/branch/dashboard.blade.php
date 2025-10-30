@@ -511,7 +511,7 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="{{route('branch.campaign.planner')}}" class="btn btn-primary btn-small">
+                <a href="{{ route('branch.campaign.planner') }}" class="btn btn-primary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -554,7 +554,8 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Phạm vi tiếp cận</div>
-                            <div class="stat-value">{{formatDisplayNumber($activeCampaigns->avg('target_reach') ?? 0)}}</div>
+                            <div class="stat-value">{{ formatDisplayNumber($activeCampaigns->avg('target_reach') ?? 0) }}
+                            </div>
                             {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -578,7 +579,7 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Chiến dịch đang hoạt động</div>
-                            <div class="stat-value">{{$activeCampaigns->count()}}</div>
+                            <div class="stat-value">{{ $activeCampaigns->count() }}</div>
                             {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -603,7 +604,7 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Tương tác trung bình</div>
-                            <div class="stat-value">{{$activeCampaigns->avg('target_engagement') ?? 0}}%</div>
+                            <div class="stat-value">{{ $activeCampaigns->avg('target_engagement') ?? 0 }}%</div>
                             {{-- <div class="stat-change negative">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
                                     style="transform: rotate(180deg);">
@@ -629,7 +630,8 @@
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">Tổng chi tiêu</div>
-                            <div class="stat-value">{{formatDisplayNumber($activeCampaigns->sum('budget_amount') ?? 0)}}</div>
+                            <div class="stat-value">{{ formatDisplayNumber($activeCampaigns->sum('budget_amount') ?? 0) }}
+                            </div>
                             {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
@@ -756,38 +758,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($kols as $kol)
-                        <tr>
-                            <td>
-                                <div class="kol-cell">
-                                    
-                                    <img class="kol-avatar-small" src="{{$kol->getFirstMediaUrl('media')}}">
-                                    <div>
-                                        <div class="kol-name-small">{{$kol->display_name}}</div>
-                                        <div class="kol-handle-small">{{ '@' . trim($kol->username, '@') }}</div>
+                        @foreach ($kols as $kol)
+                            <tr>
+                                <td>
+                                    <div class="kol-cell">
+
+                                        <img class="kol-avatar-small" src="{{ $kol->getFirstMediaUrl('media') }}">
+                                        <div>
+                                            <div class="kol-name-small">
+                                                <a href="{{ route('branch.profile', ['username' => trim($kol->username, '@')]) }}"
+                                                    class="color-dark-blue">
+                                                    {{ $kol->display_name }}
+                                                </a>
+                                            </div>
+                                            <div class="kol-handle-small">{{ '@' . trim($kol->username, '@') }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td style="color: black">
-                                {{$kol->categories->pluck('name')->implode(', ')}}
-                            </td>
-                            <td style="color: black">{{ formatDisplayNumber($kol->followers) }}</td>
-                            <td>
-                                <span class="trend-up">{{$kol->engagement}}%</span>
-                            </td>
-                            <td style="color: black">{{$kol->campaigns->count()}}</td>
-                            <td>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <span style="color: var(--success);">+42%</span>
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
-                                        style="color: var(--success);">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                                <td style="color: black">
+                                    {{ $kol->categories->pluck('name')->implode(', ') }}
+                                </td>
+                                <td style="color: black">{{ formatDisplayNumber($kol->followers) }}</td>
+                                <td>
+                                    <span class="trend-up">{{ $kol->engagement }}%</span>
+                                </td>
+                                <td style="color: black">{{ $kol->campaigns->count() }}</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span style="color: var(--success);">+42%</span>
+                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
+                                            style="color: var(--success);">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
