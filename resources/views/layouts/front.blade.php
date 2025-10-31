@@ -278,10 +278,10 @@
                 <div class="footer-column">
                     <h4>Hỗ trợ</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Trung tâm trợ giúp</a></li>
-                        <li><a href="#">Chính sách bảo mật </a></li>
-                        <li><a href="#">Điều khoản dịch vụ</a></li>
-                        <li><a href="#">Tài liệu</a></li>
+                        <li><a href="{{ route('help') }}">Trung tâm trợ giúp</a></li>
+                        <li><a href="{{ route('privacy') }}">Chính sách bảo mật </a></li>
+                        <li><a href="{{ route('terms') }}">Điều khoản dịch vụ</a></li>
+                        <li><a href="{{ route('resources') }}">Tài liệu</a></li>
                     </ul>
                 </div>
 

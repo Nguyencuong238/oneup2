@@ -54,6 +54,8 @@ Route::get('resources', [HomeController::class, 'resources'])->name('resources')
 Route::get('/resources/{slug}', [HomeController::class, 'show'])->name('resources.show');
 Route::get('kols', [HomeController::class, 'kols'])->name('kols');
 Route::get('help', [HomeController::class, 'help'])->name('help');
+Route::get('privacy', [HomeController::class, 'privacy'])->name('privacy');
+Route::get('terms', [HomeController::class, 'terms'])->name('terms');
 Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsletters');
 
 Route::view('profile', 'profile.show')->name('profile.show')->middleware('auth');

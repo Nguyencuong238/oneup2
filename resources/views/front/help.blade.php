@@ -280,7 +280,7 @@
         
         .quick-links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
         }
@@ -582,7 +582,7 @@
             <div class="quick-links">
                 <h3 class="mb-3 color-dark-blue">Liên kết nhanh</h3>
                 <div class="quick-links-grid">
-                    <a href="#" class="quick-link">
+                    <a href="{{ route('resources') }}" class="quick-link">
                         <span>📚</span> Tài liệu
                     </a>
                     <a href="#" class="quick-link">

@@ -162,6 +162,16 @@ class HomeController extends Controller
         return view('front.kols', compact('kols', 'categories'));
     }
 
+    public function privacy()
+    {
+        return view('front.privacy_policy');
+    }
+
+    public function terms()
+    {
+        return view('front.terms_of_service');
+    }
+
     public function login(Request $req)
     {
         return view('front.auth.login');
