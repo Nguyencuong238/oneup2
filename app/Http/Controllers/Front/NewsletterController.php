@@ -49,15 +49,13 @@ class NewsletterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'product' => $request->product,
-                'budget' => $request->budget,
+                'company' => $request->company,
                 'message' => $request->message,
-                'schedule' => $request->schedule,
             ]);
         //}
         return response()->json([
             'success' => true,
-            'msg' => '<span class="contact_success">Đăng ký thành công.</span>'
+            'msg' => '<span class="contact_success">Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi bạn trong vòng 24 giờ.</span>'
         ]);
     }
 

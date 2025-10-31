@@ -499,7 +499,7 @@ window.OneUpKOL = {
     scrollToElement,
     debounce,
     throttle,
-    formatDisplayNumber,
+    // formatDisplayNumber,
     copyToClipboard,
     getUrlParams,
     setCookie,

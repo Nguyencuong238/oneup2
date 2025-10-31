@@ -59,9 +59,9 @@ Route::get('terms', [HomeController::class, 'terms'])->name('terms');
 Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsletters');
 
 Route::view('profile', 'profile.show')->name('profile.show')->middleware('auth');
+Route::post('set-type', [HomeController::class, 'setType'])->name('setType')->middleware('auth');
 
 Route::prefix('brand/')->middleware(['auth', 'verified', IsBrand::class])->group(function () {
-
 	Route::get('dashboard', [BrandController::class, 'dashboard'])->name('brand.dashboard');
 	Route::get('kol-explorer', [BrandController::class, 'kolExplorer'])->name('brand.kolExplorer');
 	Route::get('campaign', [BrandController::class, 'campaign'])->name('brand.campaign.index');

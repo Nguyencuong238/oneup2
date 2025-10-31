@@ -34,11 +34,14 @@ class CreateNewUser implements CreatesNewUsers
             'type' => ['required', 'in:kols,brand'],
         ])->validate();
 
-        $kol = Kol::create([
-            'username' => explode('@', $input['email'])[0],
-            'display_name' => $input['name'],
+        if ($input['type'] === 'kols') {
+            $kol = Kol::create([
+                'username' => explode('@', $input['email'])[0],
+                'display_name' => $input['name'],
 
-        ]);
+            ]);
+        }
+
 
         return User::create([
             'name'     => $input['name'],

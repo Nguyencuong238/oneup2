@@ -16,7 +16,7 @@
             gap: 1rem;
             margin: 2rem 0;
         }
-        
+
         .toggle-switch {
             position: relative;
             width: 60px;
@@ -26,11 +26,11 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-        
+
         .toggle-switch.active {
             background: var(--gradient);
         }
-        
+
         .toggle-slider {
             position: absolute;
             top: 3px;
@@ -40,13 +40,13 @@
             background: white;
             border-radius: 50%;
             transition: transform 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-        
+
         .toggle-switch.active .toggle-slider {
             transform: translateX(30px);
         }
-        
+
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
@@ -54,9 +54,9 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
-        
+
         .comparison-table th,
         .comparison-table td {
             padding: 1rem;
@@ -64,26 +64,26 @@
             border-bottom: 1px solid #E0E0E0;
             color: var(--dark-blue);
         }
-        
+
         .comparison-table th {
             background: #F8F9FA;
             font-weight: 600;
         }
-        
+
         .comparison-table tr:hover {
             background: #F8F9FA;
         }
-        
+
         .check-icon {
             color: var(--success);
             font-size: 20px;
         }
-        
+
         .x-icon {
             color: #CCC;
             font-size: 20px;
         }
-        
+
         .faq-item {
             border: 1px solid #E0E0E0;
             border-radius: 12px;
@@ -91,7 +91,7 @@
             overflow: hidden;
             background: white;
         }
-        
+
         .faq-question {
             padding: 1.5rem;
             display: flex;
@@ -100,13 +100,13 @@
             cursor: pointer;
             transition: background 0.3s;
             font-weight: 600;
-    color: var(--dark-blue);
+            color: var(--dark-blue);
         }
-        
+
         .faq-question:hover {
             background: #F8F9FA;
         }
-        
+
         .faq-answer {
             padding: 0 1.5rem;
             max-height: 0;
@@ -115,82 +115,27 @@
             color: var(--gray-light);
             line-height: 1.8;
         }
-        
+
         .faq-item.active .faq-answer {
             max-height: 500px;
             padding: 0 1.5rem 1.5rem;
         }
+
         .faq-answer p {
             color: var(--gray-700)
         }
+
         .faq-icon {
             transition: transform 0.3s;
             color: var(--gray-light);
         }
-        
+
         .faq-item.active .faq-icon {
             transform: rotate(180deg);
         }
+
         
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        
-        .modal-content {
-            position: relative;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            z-index: 1;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #999;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        
-        .modal-close:hover {
-            background: #F0F0F0;
-        }
-        
+
         .filter-input {
             width: 100%;
             padding: 12px 16px;
@@ -199,19 +144,21 @@
             font-size: 15px;
             transition: border-color 0.3s;
         }
-        
+
         .filter-input:focus {
             outline: none;
             border-color: var(--primary);
         }
-        
+
         textarea.filter-input {
             resize: vertical;
             font-family: inherit;
         }
+
         .pricing-name {
             color: var(--gray-100);
         }
+
         .pricing-features li {
             color: var(--gray-400)
         }
@@ -265,7 +212,8 @@
                         <li>Hỗ trợ qua email</li>
                         <li>Lịch sử dữ liệu 7 ngày</li>
                     </ul>
-                    <a href="{{ route('register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large" style="width: 100%;">
+                    <a href="{{ route('register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large"
+                        style="width: 100%;">
                         Dùng thử miễn phí
                     </a>
                 </div>
@@ -290,7 +238,8 @@
                         <li>Báo cáo tùy chỉnh</li>
                         <li>Làm việc nhóm (tối đa 5 thành viên)</li>
                     </ul>
-                    <a href="{{ route('register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large" style="width: 100%;">
+                    <a href="{{ route('register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large"
+                        style="width: 100%;">
                         Dùng thử miễn phí
                     </a>
                 </div>
@@ -438,7 +387,8 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Bạn có thể nâng cấp hoặc hạ cấp gói bất kỳ lúc nào. Khi nâng cấp, bạn sẽ được mở khóa ngay các tính năng mới. Khi hạ cấp, thay đổi sẽ áp dụng từ chu kỳ thanh toán tiếp theo.</p>
+                        <p>Có! Bạn có thể nâng cấp hoặc hạ cấp gói bất kỳ lúc nào. Khi nâng cấp, bạn sẽ được mở khóa ngay
+                            các tính năng mới. Khi hạ cấp, thay đổi sẽ áp dụng từ chu kỳ thanh toán tiếp theo.</p>
                     </div>
                 </div>
 
@@ -448,7 +398,8 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Tất cả các gói đều có thời gian dùng thử 14 ngày miễn phí, không cần thẻ tín dụng. Bạn có thể trải nghiệm mọi tính năng và hủy bất kỳ lúc nào trong thời gian thử.</p>
+                        <p>Có! Tất cả các gói đều có thời gian dùng thử 14 ngày miễn phí, không cần thẻ tín dụng. Bạn có thể
+                            trải nghiệm mọi tính năng và hủy bất kỳ lúc nào trong thời gian thử.</p>
                     </div>
                 </div>
 
@@ -458,7 +409,8 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Chúng tôi chấp nhận các loại thẻ quốc tế (Visa, MasterCard, American Express), chuyển khoản ngân hàng, và các phương thức phổ biến tại Việt Nam như MoMo, ZaloPay, VNPay.</p>
+                        <p>Chúng tôi chấp nhận các loại thẻ quốc tế (Visa, MasterCard, American Express), chuyển khoản ngân
+                            hàng, và các phương thức phổ biến tại Việt Nam như MoMo, ZaloPay, VNPay.</p>
                     </div>
                 </div>
 
@@ -468,7 +420,8 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Chúng tôi có chính sách hoàn tiền 30 ngày cho khách hàng mới. Nếu bạn không hài lòng, hãy liên hệ trong vòng 30 ngày sau khi mua để được hoàn 100%.</p>
+                        <p>Có! Chúng tôi có chính sách hoàn tiền 30 ngày cho khách hàng mới. Nếu bạn không hài lòng, hãy
+                            liên hệ trong vòng 30 ngày sau khi mua để được hoàn 100%.</p>
                     </div>
                 </div>
 
@@ -478,7 +431,8 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Chúng tôi có chính sách giá đặc biệt cho các agency quản lý nhiều thương hiệu. Hãy liên hệ đội ngũ kinh doanh để nhận báo giá và ưu đãi riêng.</p>
+                        <p>Có! Chúng tôi có chính sách giá đặc biệt cho các agency quản lý nhiều thương hiệu. Hãy liên hệ
+                            đội ngũ kinh doanh để nhận báo giá và ưu đãi riêng.</p>
                     </div>
                 </div>
             </div>
@@ -511,117 +465,106 @@
         <div class="modal-overlay" onclick="closeContactModal()"></div>
         <div class="modal-content">
             <button class="modal-close" onclick="closeContactModal()">×</button>
-            <h3 class="mb-3">Liên hệ đội ngũ kinh doanh</h3>
-            <form onsubmit="handleContactForm(event)">
+            <h3 class="mb-3 color-dark-blue">Liên hệ đội ngũ kinh doanh</h3>
+            <form id="contactForm">
+
                 <div class="mb-3">
-                    <input type="text" class="filter-input" placeholder="Tên của bạn" required>
+                    <input type="text" name="name" id="name" class="filter-input" placeholder="Tên của bạn" required>
                 </div>
                 <div class="mb-3">
-                    <input type="email" class="filter-input" placeholder="Địa chỉ email" required>
+                    <input type="email" name="email" id="email" class="filter-input" placeholder="Địa chỉ email" required>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="filter-input" placeholder="Tên công ty">
+                    <input type="text" name="company" id="company" class="filter-input" placeholder="Tên công ty">
                 </div>
                 <div class="mb-3">
-                    <textarea class="filter-input" rows="4" placeholder="Mô tả nhu cầu của bạn"></textarea>
+                    <textarea class="filter-input" name="message" id="message" rows="4" placeholder="Mô tả nhu cầu của bạn"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Gửi tin nhắn</button>
+                <button type="submit" class="btn btn-primary justify-center" style="width: 100%;">Gửi tin nhắn</button>
             </form>
         </div>
     </div>
 @endsection
 
 @section('js')
-<script>
-        // Billing Toggle
-        const billingToggle = document.getElementById('billingToggle');
-        const monthlyPrices = document.querySelectorAll('.monthly-price');
-        const annualPrices = document.querySelectorAll('.annual-price');
-        
-        billingToggle?.addEventListener('click', function() {
-            this.classList.toggle('active');
-            
-            if (this.classList.contains('active')) {
-                monthlyPrices.forEach(price => price.style.display = 'none');
-                annualPrices.forEach(price => price.style.display = 'block');
-            } else {
-                monthlyPrices.forEach(price => price.style.display = 'block');
-                annualPrices.forEach(price => price.style.display = 'none');
-            }
-        });
-        
-        // FAQ Toggle
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            
-            // Close other FAQs
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove('active');
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Billing Toggle
+            $('#billingToggle').on('click', function() {
+                $(this).toggleClass('active');
+
+                if ($(this).hasClass('active')) {
+                    $('.monthly-price').hide();
+                    $('.annual-price').show();
+                } else {
+                    $('.monthly-price').show();
+                    $('.annual-price').hide();
                 }
             });
-            
-            // Toggle current FAQ
-            faqItem.classList.toggle('active');
-        }
-        
-        // Modal Functions
-        function openContactModal() {
-            document.getElementById('contactModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeContactModal() {
-            document.getElementById('contactModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        function handleContactForm(event) {
-            event.preventDefault();
-            // Simulate form submission
-            alert('Thank you for contacting us! We will get back to you within 24 hours.');
-            closeContactModal();
-            event.target.reset();
-        }
-        
-        // Close modal on ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeContactModal();
-            }
+
+            // FAQ Toggle
+            window.toggleFAQ = function(element) {
+                const $faqItem = $(element).parent();
+
+                // Close other FAQs
+                $('.faq-item').not($faqItem).removeClass('active');
+
+                // Toggle current FAQ
+                $faqItem.toggleClass('active');
+            };
+
+            // Modal Functions
+            window.openContactModal = function() {
+                $('#contactModal').addClass('active');
+                $('body').css('overflow', 'hidden');
+            };
+
+            window.closeContactModal = function() {
+                $('#contactModal').removeClass('active');
+                $('body').css('overflow', '');
+            };
+
+            // Close modal on ESC key
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeContactModal();
+                }
+            });
         });
     </script>
-    
-    <script>
 
+    <script>
         $(function() {
             $('#contactForm').on('submit', function(e) {
                 e.preventDefault();
 
                 $(this).find('button').prop('disabled', true);
-                
+
                 var data = {
-                        name: $('#name').val(),
-                        phone: $('#phone').val(),
-                        email: $('#email').val(),
-                        product: $('#product').val(),
-                        schedule: $('#schedule').val(),
-                        message: $('#message').val()
-                    };
-                    
+                    name: $('#name').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    company: $('#company').val(),
+                    message: $('#message').val(),
+                    _token: '{{ csrf_token() }}'
+                };
+
                 $.ajax({
                     type: 'post',
                     url: "{{ route('newsletters') }}",
                     data: data,
                 }).then(function(res) {
-                    
+
                     if (res.success) {
-                        toastr.success('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ với bạn sớm nhất.');
+                        toastr.success(res.msg);
                         $('#contactForm')[0].reset();
                     } else {
                         toastr.error(res.msg);
                     }
-                    
+
 
                 });
                 $(this).find('button').prop('disabled', false);
