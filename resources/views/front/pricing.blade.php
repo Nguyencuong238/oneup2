@@ -200,7 +200,7 @@
                         <h3 class="pricing-name">Starter</h3>
                         <div class="pricing-price">
                             <span class="monthly-price">0₫</span>
-                            <span class="annual-price" style="display: none;">₫2.3 triệu</span>
+                            <span class="annual-price" style="display: none;">0₫</span>
                         </div>
                         <div class="pricing-period">mỗi tháng</div>
                     </div>
@@ -222,7 +222,7 @@
                         <h3 class="pricing-name">Professional</h3>
                         <div class="pricing-price">
                             <span class="monthly-price">0₫</span>
-                            <span class="annual-price" style="display: none;">₫7.9 triệu</span>
+                            <span class="annual-price" style="display: none;">0₫</span>
                         </div>
                         <div class="pricing-period">mỗi tháng</div>
                     </div>

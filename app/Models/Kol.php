@@ -101,4 +101,14 @@ class Kol extends Model implements HasMedia
         return $this->hasMany(KolContent::class, 'kol_id');
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(KolFavorite::class);
+    }
+
+    public function isFavoritedBy($userId)
+    {
+        return $this->favorites()->where('user_id', $userId)->exists();
+    }
+
 }

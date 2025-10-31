@@ -18,6 +18,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\NewsletterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\KolFavoriteController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsBrand;
 use App\Http\Middleware\IsKols;
@@ -45,7 +46,7 @@ Route::get('auth/{provider}/callback', [LoginController::class, 'handleProviderC
 	->where('provider', 'google|facebook');
 Route::get('register', [HomeController::class, 'register'])->name('register')->middleware('guest');
 Route::get('forgot-password', [HomeController::class, 'forgotPassword'])->name('forgotPassword');
-
+Route::post('/kol/favorite', [KolFavoriteController::class, 'toggleFavorite'])->name('kol.favorite');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [HomeController::class, 'about'])->name('about');

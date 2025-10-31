@@ -732,7 +732,9 @@
                     <div class="kol-card-body">
                         <div class="kol-info">
                             <div class="kol-name">
+                                <a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">
                                 {{$k->display_name}}
+                                </a>
                                 <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
                                 </svg>
@@ -782,8 +784,9 @@
                                     Đăng nhập để xem
                                 </a>
                             @endauth
-                            <button class="btn btn-outline btn-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <button class="btn btn-outline btn-icon btn-favorite" data-kol-id="{{ $k->id }}">
+                                <svg width="20" height="20" fill="{{ $k->isFavoritedBy(auth()->id()) ? 'blue' : 'none' }}" 
+                                    viewBox="0 0 20 20" stroke="currentColor">
                                     <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
                                 </svg>
                             </button>
@@ -800,9 +803,41 @@
     </section>
 @endsection
 
-
 @section('js')
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-favorite').forEach(button => {
+        button.addEventListener('click', function () {
+            const kolId = this.dataset.kolId;
+
+            fetch("{{ route('kol.favorite') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({ kol_id: kolId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data); // 👉 kiểm tra phản hồi trong console
+                if (data.success) {
+                    const svg = this.querySelector('svg');
+                    if (data.favorited) {
+                        svg.setAttribute('fill', 'blue');
+                    } else {
+                        svg.setAttribute('fill', 'none');
+                    }
+                } else {
+                    alert(data.message || 'Có lỗi xảy ra');
+                }
+            })
+            .catch(err => {
+                console.error('Fetch error:', err);
+            });
+        });
+    });
+});
         // Toggle Filters
         function toggleFilters() {
             const filtersContent = document.getElementById('filtersContent');
@@ -816,6 +851,7 @@
                 toggleText.textContent = 'Show Filters';
             }
         }
+
         
         // Filter chips functionality
         document.querySelectorAll('.filter-chip').forEach(chip => {
