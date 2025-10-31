@@ -1155,9 +1155,6 @@
                     <button class="btn btn-primary">
                         Lưu thay đổi
                     </button>
-                    <button class="btn btn-secondary">
-                        Hủy bỏ
-                    </button>
                 </div>
             </form>
         </div>
