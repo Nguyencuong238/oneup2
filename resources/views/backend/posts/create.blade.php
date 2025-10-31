@@ -132,16 +132,16 @@
     </form>
 
     @push('js')
-        <script>
+        {{-- <script>
             $(function() {
                 $('#select-tag').select2({
                     tags: true,
                     tokenSeparators: [',']
                 });
 
-                //setSearchSelect2($('#select-projects'), "{{ route('projects.search') }}")
+                setSearchSelect2($('#select-projects'), "{{ route('projects.search') }}")
             })
-        </script>
+        </script> --}}
     @endpush
     
 </x-app-layout>

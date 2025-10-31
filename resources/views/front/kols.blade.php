@@ -765,11 +765,11 @@
                                 <span class="kol-stat-label">Tổng số lượt thích</span>
                             </div>
                         </div>
-                        <div class="kol-metrics">
+                        {{-- <div class="kol-metrics">
                             <span class="metric-tag good">✨ Chất lượng cao</span>
                             <span class="metric-tag">📍 {{ $k->location_country }}</span>
                             <span class="metric-tag">💰 Trung bình</span>
-                        </div>
+                        </div> --}}
                         <div class="kol-actions">
                             @auth
                                 <a href="{{ route('brand.profile', $k->username) }}"

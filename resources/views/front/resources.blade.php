@@ -347,7 +347,7 @@
     </section>
 
     <!-- Download Section -->
-    <section class="section" style="background: #F8F9FA;">
+    {{-- <section class="section" style="background: #F8F9FA;">
         <div class="container">
             <div class="grid grid-3">
                 <div class="download-card fade-in">
@@ -384,10 +384,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Newsletter Section -->
-    <section class="section">
+    {{-- <section class="section">
         <div class="container text-center">
             <div class="section-header">
                 <div class="section-subtitle fade-in">CẬP NHẬT MỚI NHẤT</div>
@@ -407,10 +407,10 @@
                 Không spam. Bạn có thể hủy đăng ký bất cứ lúc nào.
             </p>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Popular Topics -->
-    <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
+    {{-- <section class="section" style="background: linear-gradient(135deg, #FFF5F7 0%, #F0FFFE 100%);">
         <div class="container">
             <h2 class="text-center color-dark-blue mb-4">Chủ Đề Phổ Biến</h2>
             
@@ -441,7 +441,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 

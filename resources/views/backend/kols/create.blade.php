@@ -129,6 +129,13 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="is_featured" {{ old('is_featured') == '1' ? 'checked' : null }} id="is_featured" value="1">
+                                <label class="custom-control-label" for="is_featured">{{ __('Nổi bật') }}?</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label>{{ __('Tier') }}:</label>
                             <select name="tier" data-placeholder="{{ __('Chọn tier') }}"
                                 class="form-control form-control-select2 @error('tier')is-invalid @enderror" data-fouc>

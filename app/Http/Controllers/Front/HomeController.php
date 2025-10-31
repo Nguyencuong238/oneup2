@@ -21,7 +21,7 @@ class HomeController extends Controller
             });
         }
 
-        $kols = $query->paginate(8);
+        $kols = $query->where('is_featured', 1)->paginate(8);
 
         if ($request->ajax()) {
             return view('front.partials.kol_table_body', compact('kols'))->render();

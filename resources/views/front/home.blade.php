@@ -370,9 +370,6 @@
             color: var(--gray-600);
         }
 
-        .text-header{
-            width: 590px;
-        }
 
         .section-kol{
             width: 755px;
@@ -399,11 +396,6 @@
             .kol-table table {
                 min-width: 600px;
             }
-
-            .text-header{
-                width: 380px;
-            }
-
             .section-kol{
                 width: 320px;
             }
@@ -436,18 +428,15 @@
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
                         </svg>
                     </a>
-                    <a href="#demo" class="btn btn-outline btn-large">
-                        Xem bản demo
-                    </a>
                 </div>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <div class="hero-stat-value">10,000+</div>
+                        <div class="hero-stat-value">1000+</div>
                         <div class="hero-stat-label">KOL đã được xác minh</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="hero-stat-value">2.5B+</div>
+                        <div class="hero-stat-value">100M+</div>
                         <div class="hero-stat-label">Tổng phạm vi tiếp cận</div>
                     </div>
                     <div class="hero-stat">
@@ -465,7 +454,7 @@
                             <div class="kol-card-mini">
                                 <img class="kol-avatar" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                 <div class="kol-info-mini">
-                                    <div class="kol-name-mini">{{ $k->display_name }}</div>
+                                    <div class="kol-name-mini"><a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">{{ $k->display_name }}</a></div>
                                     <div class="kol-followers">{{ formatDisplayNumber($k->followers) }} người theo dõi</div>
                                 </div>
                                 <div class="kol-engagement">{{ $k->engagement }} %</div>
@@ -594,7 +583,7 @@
                                     <div class="kol-profile">
                                         <img class="kol-avatar-large" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                         <div class="kol-details">
-                                            <div style="font-weight: 600;">{{ $k->display_name }}</div>
+                                            <div style="font-weight: 600;"><a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">{{ $k->display_name }}</a></div>
                                             <div class="kol-handle">{{ $k->username }}</div>
                                         </div>
                                     </div>
@@ -787,10 +776,10 @@
                     </ul>
 
                     <div class="d-flex gap-2" style="margin-top: 2rem;">
-                        <a href="{{ route('register') }}" class="btn"
+                        {{-- <a href="{{ route('register') }}" class="btn"
                             style="background: white; color: var(--primary);">
                             Bắt đầu dùng thử miễn phí
-                        </a>
+                        </a> --}}
                         <a href="{{ route('pricing') }}" class="btn"
                             style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
                             Xem giá

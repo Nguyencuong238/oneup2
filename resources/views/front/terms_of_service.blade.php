@@ -11,7 +11,7 @@
         font-family: "Segoe UI", Arial, sans-serif;
         background-color: #f8f9fa;
         color: #333;
-        line-height: 1.7;
+        line-height: 1.7;   
     }
 
     .terms-wrapper {

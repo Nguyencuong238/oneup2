@@ -314,7 +314,7 @@
         <div class="container">
             <div class="stats-container">
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-counter="2025">0</div>
+                    <div class="stat-number" >2025</div>
                     <div class="stat-label">Thành lập</div>
                 </div>
                 <div class="stat-item fade-in" style="animation-delay: 0.1s;">
@@ -326,8 +326,8 @@
                     <div class="stat-label">Khách hàng hài lòng</div>
                 </div>
                 <div class="stat-item fade-in" style="animation-delay: 0.3s;">
-                    <div class="stat-number">₫50B+</div>
-                    <div class="stat-label">Giá trị chiến dịch được theo dõi</div>
+                    <div class="stat-number">100M+</div>
+                    <div class="stat-label">Giá trị chiến dịch theo dõi</div>
                 </div>
             </div>
         </div>
@@ -527,19 +527,19 @@
                     <div class="team-bio">Tiến sĩ Khoa học Dữ liệu. Chuyên gia phân tích mạng xã hội.</div>
                 </div>
 
-                <div class="team-member fade-in" style="animation-delay: 0.4s;">
+                {{-- <div class="team-member fade-in" style="animation-delay: 0.4s;">
                     <div class="team-avatar">VL</div>
                     <div class="team-name">Vũ Linh</div>
                     <div class="team-role">Trưởng Bộ Phận Thành Công Khách Hàng</div>
                     <div class="team-bio">Đam mê giúp thương hiệu thành công cùng tiếp thị người ảnh hưởng.</div>
-                </div>
+                </div> --}}
 
-                <div class="team-member fade-in" style="animation-delay: 0.5s;">
+                {{-- <div class="team-member fade-in" style="animation-delay: 0.5s;">
                     <div class="team-avatar">HN</div>
                     <div class="team-name">Hoàng Nam</div>
                     <div class="team-role">Trưởng Bộ Phận Tiếp Thị</div>
                     <div class="team-bio">Chuyên gia tăng trưởng với thành tích mở rộng các công ty SaaS B2B.</div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -579,7 +579,7 @@
     </section>
 
     <!-- Awards Section -->
-    <section class="section" style="background: #F8F9FA;">
+    {{-- <section class="section" style="background: #F8F9FA;">
         <div class="container text-center">
             <h2 class="mb-4">Giải Thưởng & Sự Công Nhận</h2>
 
@@ -609,7 +609,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- CTA Section -->
     <section class="section" style="background: var(--gradient); color: white;">
@@ -619,13 +619,19 @@
                 Trở thành một phần của cuộc cách mạng tiếp thị người ảnh hưởng tại Đông Nam Á.
             </p>
             <div class="d-flex gap-2 justify-center">
-                <a href="{{ route('register') }}" class="btn" style="background: white; color: var(--primary);">
-                    Bắt Đầu Dùng Thử Miễn Phí
-                </a>
-                <a href="#" class="btn"
-                    style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
-                    Xem Vị Trí Tuyển Dụng
-                </a>
+                @auth
+                    <a href="{{ auth()->user()->type == 'brand' ? route('brand.dashboard') : route('creator.dashboard') }}" class="btn" style="background: white; color: var(--primary);">
+                        Bảng điều khiển
+                    </a>
+                @else
+                    <a href="{{ route('register') }}" class="btn" style="background: white; color: var(--primary);">
+                        Đăng ký
+                    </a>
+                    <a href="{{ route('login') }}" class="btn"
+                        style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
+                        Đăng nhập
+                    </a>
+                @endauth
             </div>
         </div>
     </section>

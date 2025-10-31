@@ -250,11 +250,11 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-brand">
-                    <div class="footer-logo">
+                    {{-- <div class="footer-logo">
                         <a href="/">
                             <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
                         </a>
-                    </div>
+                    </div> --}}
                     <p class="footer-description">
                         Nền tảng phân tích KOL Creator Community toàn diện nhất dành cho thị trường Việt Nam.
                     </p>
@@ -301,8 +301,8 @@
                     © 2025 OneUp.vn. Mọi quyền được bảo lưu.
                 </div>
                 <div class="footer-legal">
-                    <a href="#">Chính sách bảo mật</a>
-                    <a href="#">Điều khoản dịch vụ</a>
+                    <a href="{{ route('privacy') }}">Chính sách bảo mật</a>
+                    <a href="{{ route('terms') }}">Điều khoản dịch vụ</a>
                     <a href="#">Chính sách Cookie</a>
                 </div>
             </div>

@@ -329,7 +329,6 @@
                 
                 <div class="fade-in" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <span style="opacity: 0.9;">Tìm kiếm phổ biến:</span>
-                    <a href="#" style="color: white; text-decoration: underline;">Tài liệu API</a>
                     <a href="#" style="color: white; text-decoration: underline;">Thiết lập chiến dịch</a>
                     <a href="#" style="color: white; text-decoration: underline;">Câu hỏi thanh toán</a>
                     <a href="#" style="color: white; text-decoration: underline;">Xác minh KOL</a>
@@ -360,11 +359,11 @@
                     <p class="help-description">Tạo, quản lý và theo dõi chiến dịch influencer của bạn</p>
                 </div>
                 
-                <div class="help-category fade-in" style="animation-delay: 0.3s;" onclick="showCategory('analytics')">
+                {{-- <div class="help-category fade-in" style="animation-delay: 0.3s;" onclick="showCategory('analytics')">
                     <div class="help-icon">📊</div>
                     <h3 class="help-title">Phân tích & Báo cáo</h3>
                     <p class="help-description">Hiểu rõ các chỉ số, thông tin chi tiết và cách tạo báo cáo</p>
-                </div>
+                </div> --}}
                 
                 <div class="help-category fade-in" style="animation-delay: 0.4s;" onclick="showCategory('kol-discovery')">
                     <div class="help-icon">🔍</div>
@@ -372,11 +371,11 @@
                     <p class="help-description">Tìm và đánh giá influencer phù hợp với thương hiệu của bạn</p>
                 </div>
                 
-                <div class="help-category fade-in" style="animation-delay: 0.5s;" onclick="showCategory('api')">
+                {{-- <div class="help-category fade-in" style="animation-delay: 0.5s;" onclick="showCategory('api')">
                     <div class="help-icon">⚙️</div>
                     <h3 class="help-title">API & Tích hợp</h3>
                     <p class="help-description">Kết nối OneUp với các công cụ và quy trình hiện có của bạn</p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -440,24 +439,6 @@
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>API cung cấp những tính năng gì?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Quyền truy cập API bao gồm:</p>
-                        <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>API RESTful cho hầu hết các tính năng chính</li>
-                            <li>Webhook thời gian thực cho sự kiện chiến dịch</li>
-                            <li>Giới hạn tốc độ dựa trên gói đăng ký của bạn</li>
-                            <li>Tài liệu chi tiết và ví dụ mã nguồn</li>
-                            <li>Thư viện SDK cho Python, JavaScript và PHP</li>
-                        </ul>
-                        <p style="margin-top: 10px;">Xem thêm trong <a href="#" style="color: var(--primary);">Tài liệu API</a>.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
                         <span>Làm sao để nâng cấp hoặc hạ cấp gói dịch vụ?</span>
                         <span class="faq-icon">▼</span>
                     </div>
@@ -514,16 +495,6 @@
                         <div class="video-duration">12 phút • Nâng cao</div>
                     </div>
                 </div>
-                
-                <div class="video-card fade-in" style="animation-delay: 0.3s;">
-                    <div class="video-thumbnail">
-                        <div class="play-btn">▶</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Sử dụng API</div>
-                        <div class="video-duration">15 phút • Dành cho lập trình viên</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -556,7 +527,7 @@
                         Gửi cho chúng tôi tin nhắn chi tiết
                     </p>
                     <p style="font-weight: 600; margin-bottom: 1rem;color: var(--gray-500);">
-                        support@oneup.vn
+                        contact@oneup.vn
                     </p>
                     <button class="btn btn-outline">Gửi Email</button>
                 </div>
@@ -577,7 +548,7 @@
     </section>
 
     <!-- Quick Links -->
-    <section class="section">
+    {{-- <section class="section">
         <div class="container">
             <div class="quick-links">
                 <h3 class="mb-3 color-dark-blue">Liên kết nhanh</h3>
@@ -609,7 +580,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 

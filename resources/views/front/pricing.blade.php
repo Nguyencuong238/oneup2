@@ -252,7 +252,7 @@
                     <div class="pricing-header">
                         <h3 class="pricing-name">Starter</h3>
                         <div class="pricing-price">
-                            <span class="monthly-price">₫2.9 triệu</span>
+                            <span class="monthly-price">0₫</span>
                             <span class="annual-price" style="display: none;">₫2.3 triệu</span>
                         </div>
                         <div class="pricing-period">mỗi tháng</div>
@@ -261,9 +261,7 @@
                         <li>Tối đa 100 lượt tìm kiếm KOL/tháng</li>
                         <li>Bảng phân tích cơ bản</li>
                         <li>5 chiến dịch hoạt động</li>
-                        <li>Xuất dữ liệu ra CSV</li>
                         <li>Hỗ trợ qua email</li>
-                        <li>Lịch sử dữ liệu 7 ngày</li>
                     </ul>
                     <a href="{{ route('register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large" style="width: 100%;">
                         Dùng thử miễn phí
@@ -275,7 +273,7 @@
                     <div class="pricing-header">
                         <h3 class="pricing-name">Professional</h3>
                         <div class="pricing-price">
-                            <span class="monthly-price">₫9.9 triệu</span>
+                            <span class="monthly-price">0₫</span>
                             <span class="annual-price" style="display: none;">₫7.9 triệu</span>
                         </div>
                         <div class="pricing-period">mỗi tháng</div>
@@ -284,11 +282,7 @@
                         <li>Tìm kiếm KOL không giới hạn</li>
                         <li>Phân tích nâng cao & gợi ý từ AI</li>
                         <li>20 chiến dịch hoạt động</li>
-                        <li>Truy cập API (1000 lượt/ngày)</li>
                         <li>Hỗ trợ ưu tiên</li>
-                        <li>Lịch sử dữ liệu 90 ngày</li>
-                        <li>Báo cáo tùy chỉnh</li>
-                        <li>Làm việc nhóm (tối đa 5 thành viên)</li>
                     </ul>
                     <a href="{{ route('register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large" style="width: 100%;">
                         Dùng thử miễn phí
@@ -305,12 +299,8 @@
                     <ul class="pricing-features">
                         <li>Tất cả tính năng trong Professional</li>
                         <li>Chiến dịch không giới hạn</li>
-                        <li>Lượt API không giới hạn</li>
                         <li>Quản lý tài khoản riêng</li>
                         <li>Tích hợp tùy chỉnh</li>
-                        <li>Lịch sử dữ liệu không giới hạn</li>
-                        <li>Cam kết SLA</li>
-                        <li>Không giới hạn thành viên nhóm</li>
                     </ul>
                     <button class="btn btn-secondary btn-large" style="width: 100%;" onclick="openContactModal()">
                         Liên hệ tư vấn
@@ -372,12 +362,12 @@
                             <td>Nâng cao</td>
                             <td>Nâng cao</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td>Phát hiện gian lận</td>
                             <td>✕</td>
                             <td>✓</td>
                             <td>✓</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <td>Phân tích đối thủ</td>
                             <td>✕</td>
@@ -399,12 +389,12 @@
                             <td>✓</td>
                             <td>✓</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td>Tính toán ROI</td>
                             <td>Cơ bản</td>
                             <td>Nâng cao</td>
                             <td>Tùy chỉnh</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Hỗ trợ & Dịch vụ</td>
                         </tr>
@@ -414,12 +404,12 @@
                             <td>Email & Chat ưu tiên</td>
                             <td>24/7 - Quản lý riêng</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td>Đào tạo sử dụng</td>
                             <td>Tự học</td>
                             <td>Webinar</td>
                             <td>Hướng dẫn tùy chỉnh</td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
@@ -493,16 +483,20 @@
                 Hơn 500+ thương hiệu đã tối ưu chiến dịch KOL TikTok của họ cùng chúng tôi
             </p>
             <div class="d-flex gap-2 justify-center">
-                <a href="{{ route('register') }}" class="btn btn-primary btn-large">
-                    Dùng thử miễn phí 14 ngày
-                </a>
-                <button class="btn btn-outline btn-large" onclick="openContactModal()">
-                    Đặt lịch demo
-                </button>
+                @auth
+                    <a href="{{ auth()->user()->type == 'brand' ? route('brand.dashboard') : route('creator.dashboard') }}" class="btn" style="background: #0066FF; color:white;">
+                        Bảng điều khiển
+                    </a>
+                @else
+                    <a href="{{ route('register') }}" class="btn" style="background: white; color: var(--primary);">
+                        Đăng ký
+                    </a>
+                    <a href="{{ route('login') }}" class="btn"
+                        style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
+                        Đăng nhập
+                    </a>
+                @endauth
             </div>
-            <p class="mt-3" style="color: var(--gray-light);">
-                Không cần thẻ tín dụng • Hủy bất cứ lúc nào
-            </p>
         </div>
     </section>
 
