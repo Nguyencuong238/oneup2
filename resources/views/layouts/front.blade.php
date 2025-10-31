@@ -9,6 +9,7 @@
     <title>OneUp KOL Analytics - TikTok Influencer Marketing Platform</title>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
     <!-- Fonts -->
@@ -93,68 +94,132 @@
     </style>
 
     <style>
-.language-dropdown {
-    position: relative;
-    display: inline-block;
-    font-family: Arial, sans-serif;
-}
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+        }
 
-.language-btn {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 6px 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+        .language-btn {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 6px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
 
-.language-btn img {
-    width: 20px;
-    height: 15px;
-    border-radius: 2px;
-}
+        .language-btn img {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
 
-.language-btn .arrow {
-    font-size: 12px;
-    margin-left: 4px;
-    color: #777;
-}
+        .language-btn .arrow {
+            font-size: 12px;
+            margin-left: 4px;
+            color: #777;
+        }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 8px;
-    min-width: 140px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    margin-top: 6px;
-    z-index: 99;
-    overflow: hidden;
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border-radius: 8px;
+            min-width: 140px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            margin-top: 6px;
+            z-index: 99;
+            overflow: hidden;
+        }
 
-.dropdown-content a {
-    color: #333;
-    padding: 8px 12px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+        .dropdown-content a {
+            color: #333;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-.dropdown-content a:hover {
-    background-color: #f5f5f5;
-}
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
 
-.dropdown-content img {
-    width: 20px;
-    height: 15px;
-    border-radius: 2px;
-}
-</style>
+        .dropdown-content img {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+    </style>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #F0F0F0;
+        }
+    </style>
 
     @yield('css')
 </head>
@@ -170,13 +235,14 @@
             <div class="nav-links">
                 <a href="/" class="nav-link @if (request()->routeIs('home')) active @endif">Trang chủ</a>
                 <a href="{{ route('kols') }}" class="nav-link @if (request()->routeIs('kols')) active @endif">KOLs</a>
-                <a href="{{ route('about') }}"
-                    class="nav-link @if (request()->routeIs('about')) active @endif">Về chúng tôi</a>
-                <a href="{{ route('pricing') }}"
-                    class="nav-link @if (request()->routeIs('pricing')) active @endif">Bảng giá</a>
-                <a href="{{ route('resources') }}"
-                    class="nav-link @if (request()->routeIs('resources')) active @endif">Tin tức</a>
-                <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Hỗ trợ</a>
+                <a href="{{ route('about') }}" class="nav-link @if (request()->routeIs('about')) active @endif">Về chúng
+                    tôi</a>
+                <a href="{{ route('pricing') }}" class="nav-link @if (request()->routeIs('pricing')) active @endif">Bảng
+                    giá</a>
+                <a href="{{ route('resources') }}" class="nav-link @if (request()->routeIs('resources')) active @endif">Tin
+                    tức</a>
+                <a href="{{ route('help') }}" class="nav-link @if (request()->routeIs('help')) active @endif">Hỗ
+                    trợ</a>
 
                 {{-- <div class="language-dropdown">
                     <button class="language-btn" onclick="toggleDropdown()">
@@ -217,7 +283,8 @@
                             </svg>
                         </div>
                         <div class="dropdown-info">
-                            <a href="{{ auth()->user()->type == 'brand' ? route('brand.dashboard') : route('creator.dashboard') }}" class="nav-link" style="white-space: nowrap;">Bảng điều khiển</a>
+                            <a href="{{ auth()->user()->type == 'brand' ? route('brand.dashboard') : route('creator.dashboard') }}"
+                                class="nav-link" style="white-space: nowrap;">Bảng điều khiển</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}" class="nav-link"
@@ -269,8 +336,8 @@
                 <div class="footer-column">
                     <h4>Công ty</h4>
                     <ul class="footer-links">
-                        <li><a href="{{route('about')}}">Về chúng tôi</a></li>
-                        <li><a href="{{route('resources')}}">Tin tức</a></li>
+                        <li><a href="{{ route('about') }}">Về chúng tôi</a></li>
+                        <li><a href="{{ route('resources') }}">Tin tức</a></li>
                         <li><a href="#">Liên hệ</a></li>
                     </ul>
                 </div>
@@ -309,7 +376,29 @@
         </div>
     </footer>
 
+    <div id="typeAccountModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <h3 class="mb-3 color-dark-blue fs-30">Bạn là Nhà sáng tạo nội dung hay Nhãn hàng?</h3>
+            <form id="typeAccountForm" action="{{ route('setType') }}" method="POST">
+                @csrf
+
+                <div class="mb-3">
+                    <input type="radio" name="type" id="type-kols" value="kols" class="filter-input" required>
+                    <label for="type-kols" class="color-gray-600">Tôi là Nhà sáng tạo nội dung</label>
+                </div>
+                <div class="mb-3">
+                    <input type="radio" name="type" id="type-brand" value="brand" class="filter-input" required>
+                    <label for="type-brand" class="color-gray-600">Tôi là Nhãn hàng</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary justify-center" style="width: 100%;">Gửi</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         // Smooth scroll
@@ -327,16 +416,23 @@
         });
     </script>
     <script>
-    function toggleDropdown() {
-        const dropdown = document.getElementById("dropdown");
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-        document.addEventListener("click", function hideDropdown(e) {
-            if (!e.target.closest(".language-dropdown")) {
-                dropdown.style.display = "none";
-                document.removeEventListener("click", hideDropdown);
-            }
-        });
-    }
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            document.addEventListener("click", function hideDropdown(e) {
+                if (!e.target.closest(".language-dropdown")) {
+                    dropdown.style.display = "none";
+                    document.removeEventListener("click", hideDropdown);
+                }
+            });
+        }
+    </script>
+    <script>
+        // Modal Functions
+        @if (auth()->check() && !auth()->user()->type)
+            $('#typeAccountModal').show();
+            $('body').css('overflow', 'hidden');
+        @endif
     </script>
     @yield('js')
 </body>

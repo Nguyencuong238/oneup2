@@ -38,6 +38,10 @@ class LoginController extends Controller
             abort(404);
         }
 
+        if (isset(request()->redirect)) {
+            $this->redirectTo = request()->redirect;
+        }
+        
         return Socialite::driver($provider)->redirect();
     }
 
@@ -82,13 +86,6 @@ class LoginController extends Controller
                 $user->save();
             }
         } else {
-            // create a Kol record if your flow requires it (keeps existing behavior)
-            $kol = Kol::create([
-                'platform_id' => $provider,
-                'username' => explode('@', $sUser->getEmail())[0],
-                'display_name' => $sUser->getName() ?? $sUser->getNickname() ?? ucfirst($provider) . ' User',
-            ]);
-
             // Create new user
             $user = User::create([
                 'name' => $sUser->getName() ?? $sUser->getNickname() ?? ucfirst($provider) . ' User',
@@ -98,7 +95,6 @@ class LoginController extends Controller
                 'provider_id' => $sUser->getId(),
                 'avatar' => $sUser->getAvatar(),
                 'email_verified_at' => now(),
-                'kol_id' => $kol->id,
             ]);
         }
 

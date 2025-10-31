@@ -186,4 +186,26 @@ class HomeController extends Controller
     {
         return view('front.auth.forgot_password');
     }
+
+    public function setType(Request $request)
+    {
+        $request->validate([
+            'type' => 'required|in:kols,brand',
+        ]);
+
+        $user = auth()->user();
+
+        if($request->type === 'kols') {
+            $kol = Kol::create([
+                'username' => explode('@', $user->email)[0],
+                'display_name' => $user->name,
+            ]);
+        }
+
+        $user->type = $request->type;
+        $user->kol_id = $request->type === 'kols' ? $kol->id : null;
+        $user->save();
+
+        return redirect()->route('home')->with('success', 'Cập nhật loại tài khoản thành công.');
+    }
 }
