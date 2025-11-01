@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Thêm KOLs</h5>
+                            <h5 class="card-title">Thêm nhà sáng tạo nội dung</h5>
                         </div>
                     </div>
                     <div class="card-body">

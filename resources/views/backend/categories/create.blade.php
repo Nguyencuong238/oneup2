@@ -43,7 +43,7 @@
                                 <option {{ old('type') == 'post' ? 'selected' : null }} value="post">
                                     {{ __('Post') }}</option>
                                 <option {{ old('type') == 'kols' ? 'selected' : null }} value="kols">
-                                    {{ __('KOLs') }}</option>
+                                    {{ __('Nhà sáng tạo nội dung') }}</option>
                                 <option {{ old('type') == 'campaigns' ? 'selected' : null }} value="campaigns">
                                     {{ __('Chiến dịch') }}</option>
                             </select>

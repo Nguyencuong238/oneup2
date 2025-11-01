@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>Giới thiệu về chúng tôi - OneUp KOL Analytics</title>
+    <title>Giới thiệu về chúng tôi - OneUp Nhà sáng tạo Analytics</title>
     <meta name="description" content="About OneUp KOL Analytics - Leading TikTok influencer marketing platform in Vietnam">
 @endsection
 
@@ -350,7 +350,7 @@
                         Trong kỷ nguyên sáng tạo nội dung bùng nổ, việc tìm đúng người kể câu chuyện thương hiệu trở nên phức tạp hơn bao giờ hết, trong khi các phương pháp truyền thống lại tốn kém và thiếu hiệu quả.
                     </p>
                     <p style="font-size: 18px; line-height: 1.8; color: var(--gray-light);">
-                        Dựa trên nền tảng khoa học dữ liệu và công nghệ phân tích hiện đại, OneUp giúp thương hiệu kết nối chính xác hơn với KOL, KOC và Creator, biến dữ liệu thành lợi thế cạnh tranh thực sự.
+                        Dựa trên nền tảng khoa học dữ liệu và công nghệ phân tích hiện đại, OneUp giúp thương hiệu kết nối chính xác hơn với nhà sáng tạo nội dung, KOC và Creator, biến dữ liệu thành lợi thế cạnh tranh thực sự.
                         Chúng tôi tiên phong trong việc ứng dụng dữ liệu thông minh vào influencer marketing tại Việt Nam, đồng hành cùng hàng trăm thương hiệu tối ưu hiệu quả đầu tư và mở rộng tầm ảnh hưởng trên mạng xã hội.
                     </p>
                 </div>
@@ -378,53 +378,35 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2019</h3>
-                        <h4>Thành lập công ty</h4>
-                        <p>Bắt đầu với 3 nhà sáng lập cùng tầm nhìn thay đổi ngành tiếp thị người ảnh hưởng.</p>
+                        <h4>Thành lập công ty AnyTech</h4>
+                        <p> Hoạt động trong lĩnh vực thiết kế phần mềm và marketing trực tuyến.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item fade-in" style="animation-delay: 0.1s;">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>2020</h3>
-                        <h4>Ra mắt phiên bản Beta</h4>
-                        <p>Ra mắt bản thử nghiệm với 50 thương hiệu đầu tiên.</p>
+                        <h3>2021</h3>
+                        <h4>Triển khai các dịch vụ marketing trong lĩnh vực web3</h4>
+                        {{-- <p>Ra mắt bản thử nghiệm với 50 thương hiệu đầu tiên.</p> --}}
                     </div>
                 </div>
 
                 <div class="timeline-item fade-in" style="animation-delay: 0.2s;">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>2021</h3>
-                        <h4>Gọi vốn Series A</h4>
-                        <p>Gọi vốn 2 triệu USD để mở rộng năng lực nền tảng và đội ngũ.</p>
+                        <h3>2022-2023</h3>
+                        <h4>Mở rộng dịch vụ Marketing sang lĩnh vực chăm sức sức khoẻ và thực phẩm</h4>
+                        {{-- <p>Gọi vốn 2 triệu USD để mở rộng năng lực nền tảng và đội ngũ.</p> --}}
                     </div>
                 </div>
 
                 <div class="timeline-item fade-in" style="animation-delay: 0.3s;">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>2022</h3>
-                        <h4>Tích hợp AI</h4>
-                        <p>Ra mắt gợi ý KOL và phát hiện gian lận dựa trên trí tuệ nhân tạo.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in" style="animation-delay: 0.4s;">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>2023</h3>
-                        <h4>Dẫn đầu thị trường</h4>
-                        <p>Trở thành nền tảng phân tích KOL Creator Community số 1 tại Việt Nam.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in" style="animation-delay: 0.5s;">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
                         <h3>2024</h3>
-                        <h4>Mở rộng khu vực</h4>
-                        <p>Mở rộng sang Thái Lan, Philippines và Indonesia.</p>
+                        <h4>Nghiên cứu và triển khai mảng Marketing cho lĩnh vực FnB</h4>
+                        {{-- <p>Ra mắt gợi ý các nhà sáng tạo nội dung và phát hiện gian lận dựa trên trí tuệ nhân tạo.</p> --}}
                     </div>
                 </div>
 
@@ -432,8 +414,26 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>2025</h3>
-                        <h4>OneUp Analytics</h4>
-                        <p>Ra mắt OneUp Analytics.</p>
+                        <h4>Nghiên cứu và phân tích dữ liệu liên quan tới Tiktok và Youtube</h4>
+                        {{-- <p>Trở thành nền tảng phân tích KOL Creator Community số 1 tại Việt Nam.</p> --}}
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in" style="animation-delay: 0.5s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Tháng 9/2025</h3>
+                        <h4>Thành lập công ty AnyMedia Hoạt động trong lĩnh vực truyền thông và giải trí trực tuyến.</h4>
+                        {{-- <p>Mở rộng sang Thái Lan, Philippines và Indonesia.</p> --}}
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in" style="animation-delay: 0.4s;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3> Tháng 10/2025</h3>
+                        <h4>Ra mắt OneUp Analytics</h4>
+                        {{-- <p>Ra mắt OneUp Analytics.</p> --}}
                     </div>
                 </div>
             </div>

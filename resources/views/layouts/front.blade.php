@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="OneUp KOL Analytics - Platform phân tích và quản lý TikTok KOL Marketing hàng đầu Việt Nam">
-    <title>OneUp KOL Analytics - TikTok Influencer Marketing Platform</title>
+        content="OneUp KOL Analytics - Platform phân tích và quản lý TikTok Nhà sáng tạo nội dung Marketing hàng đầu Việt Nam">
+    <title>OneUp Nhà sáng tạo nội dung Analytics - TikTok Influencer Marketing Platform</title>
+
+    {{-- <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;"> --}}
+    <link rel="icon" type="image/png" href="{{  asset('assets/logo.png') }}">
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
@@ -234,7 +238,7 @@
 
             <div class="nav-links">
                 <a href="/" class="nav-link @if (request()->routeIs('home')) active @endif">Trang chủ</a>
-                <a href="{{ route('kols') }}" class="nav-link @if (request()->routeIs('kols')) active @endif">KOLs</a>
+                <a href="{{ route('kols') }}" class="nav-link @if (request()->routeIs('kols')) active @endif">Nhà sáng tạo nội dung</a>
                 <a href="{{ route('about') }}" class="nav-link @if (request()->routeIs('about')) active @endif">Về chúng
                     tôi</a>
                 <a href="{{ route('pricing') }}" class="nav-link @if (request()->routeIs('pricing')) active @endif">Bảng
@@ -323,7 +327,7 @@
                         </a>
                     </div> --}}
                     <p class="footer-description">
-                        Nền tảng phân tích KOL Creator Community toàn diện nhất dành cho thị trường Việt Nam.
+                        Nền tảng phân tích Nhà sáng tạo nội dung Creator Community toàn diện nhất dành cho thị trường Việt Nam.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link">f</a>
@@ -355,7 +359,7 @@
                 <div class="footer-column">
                     <h4>Sản phẩm</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Dịch vụ kết nối KOL/ KOC</a></li>
+                        <li><a href="#">Dịch vụ kết nối nhà sáng tạo nội dung</a></li>
                         <li><a href="#">Dịch vụ tư vấn và setup chiến dịch</a></li>
                         <li><a href="#">Dịch vụ tư vấn Marketing toàn diện</a></li>
                     </ul>

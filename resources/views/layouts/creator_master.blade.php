@@ -292,7 +292,7 @@
                     <div class="user-avatar">{{ getFirstCharacter($name) }}</div>
                     <div class="user-info">
                         <div class="user-name">{{ $name }}</div>
-                        <div class="user-role color-gray-600">Nhà sáng tạo</div>
+                        <div class="user-role color-gray-600">Nhà sáng tạo nội dung</div>
                     </div>
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"

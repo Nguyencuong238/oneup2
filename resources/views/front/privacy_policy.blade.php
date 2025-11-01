@@ -172,7 +172,7 @@
             <h2>QUY ĐỊNH TRUYỀN THÔNG</h2>
             <h3>1. Nguyên tắc chung</h3>
             <ul>
-                <li>Mọi hoạt động truyền thông, quảng bá, PR hoặc hợp tác KOL do OneUp hoặc đối tác triển khai đều phải tuân thủ:</li>
+                <li>Mọi hoạt động truyền thông, quảng bá, PR hoặc hợp tác Nhà sáng tạo nội dung do OneUp hoặc đối tác triển khai đều phải tuân thủ:</li>
                 <li>Quy định pháp luật Việt Nam</li>
                 <li>Chính sách đạo đức và bảo mật của OneUp</li>
             </ul>
@@ -189,7 +189,7 @@
 
         <section id="section7">
             <h3>3. Trách nhiệm của đối tác</h3>
-            <p>Đối tác và người sáng tạo nội dung (KOL, agency, cộng tác viên) có trách nhiệm đảm bảo nội dung đăng tải không vi phạm quyền sở hữu trí tuệ, không bịa đặt, xuyên tạc hoặc gây ảnh hưởng tiêu cực đến uy tín của OneUp.</p>
+            <p>Đối tác và người sáng tạo nội dung (Nhà sáng tạo nội dung, agency, cộng tác viên) có trách nhiệm đảm bảo nội dung đăng tải không vi phạm quyền sở hữu trí tuệ, không bịa đặt, xuyên tạc hoặc gây ảnh hưởng tiêu cực đến uy tín của OneUp.</p>
 
             <div class="contact-info">
                 <p><strong>Thông tin liên hệ</strong></p>

@@ -160,7 +160,7 @@
 
         <h3 id="definition">2. Định nghĩa chung</h3>
         <ul>
-            <li><strong>OneUp:</strong> Nền tảng phân tích KOL Creator Community tại Việt Nam.</li>
+            <li><strong>OneUp:</strong> Nền tảng phân tích Nhà sáng tạo nội dung Creator Community tại Việt Nam.</li>
             <li><strong>Tài khoản:</strong> Là tài khoản định danh do người dùng đăng ký bằng email hoặc số điện thoại.</li>
         </ul>
 

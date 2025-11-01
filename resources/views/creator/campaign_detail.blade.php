@@ -599,7 +599,7 @@
                                     <path
                                         d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                                 </svg>
-                                <span>{{ $campaign->kols->count() }} KOL</span>
+                                <span>{{ $campaign->kols->count() }} Nhà sáng tạo nội dung</span>
                             </div>
                             <div class="meta-item">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -756,7 +756,7 @@
             <!-- Content Tabs -->
             <div class="content-tabs-container">
                 <div class="content-tabs">
-                    <div class="content-tab active" data-tab="kols">Hiệu suất KOL</div>
+                    <div class="content-tab active" data-tab="kols">Hiệu suất nhà sáng tạo nội dung</div>
                     <div class="content-tab" data-tab="content">Luồng nội dung</div>
                     <div class="content-tab" data-tab="timeline">Dòng thời gian</div>
                     <div class="content-tab" data-tab="analytics">Phân tích</div>
@@ -767,7 +767,7 @@
                     <table class="kol-performance-table">
                         <thead>
                             <tr>
-                                <th>KOL</th>
+                                <th>nhà sáng tạo nội dung</th>
                                 <th>Nội dung đã đăng</th>
                                 <th>Tổng lượt xem</th>
                                 <th>Tương tác</th>
@@ -913,7 +913,7 @@
                                 <div class="timeline-date">25 Tháng 7, 2024 - 14:30</div>
                                 <div class="timeline-title">Mốc chiến dịch đạt được</div>
                                 <div class="timeline-description">Chiến dịch đạt 10M lượt xem tổng cộng trên tất cả nội
-                                    dung KOL
+                                    dung nhà sáng tạo nội dungOL
                                 </div>
                             </div>
                         </div>

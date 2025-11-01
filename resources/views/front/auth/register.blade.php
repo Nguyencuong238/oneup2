@@ -447,7 +447,7 @@
                     <label class="form-label" for="company">Loại tài khoản *</label>
                     <select class="form-select" name="type">
                         <option value="kols" @if (old('type') == 'kols') selected @endif>
-                            KOL / KOC
+                            Nhà sáng tạo nội dung                        
                         </option>
                         <option value="brand" @if (old('type') == 'brand') selected @endif>
                             Nhãn hàng
@@ -619,7 +619,7 @@
                     <h3 style="margin-bottom: 1rem;">Bao gồm:</h3>
                     <ul style="list-style: none;">
                         <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: var(--success);">✓</span> Tiếp cận hơn 10.000 KOL uy tín
+                            <span style="color: var(--success);">✓</span> Tiếp cận hơn 10.000 nhà sáng tạo nội dung uy tín
                         </li>
                         <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
                             <span style="color: var(--success);">✓</span> Bảng thống kê theo thời gian thực

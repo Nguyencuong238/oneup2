@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('meta')
-    <title>Danh mục KOL - Phân tích KOL OneUp</title>
+    <title>Danh mục Nhà sáng tạo nội dung - Phân tích Nhà sáng tạo nội dung OneUp</title>
     <meta name="description" content="Browse and discover 10,000+ verified TikTok KOLs in Vietnam">
 
 @endsection
@@ -566,7 +566,7 @@
         <div class="container">
             <div class="text-center">
                 <h1 class="mb-3 fade-in color-dark-blue">
-                    Khám phá <span class="gradient-text">10,000+ KOLs TikTok</span>
+                    Khám phá <span class="gradient-text">10,000+ Nhà sáng tạo nội dung TikTok</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
                     Duyệt qua các influencer đã được xác minh với phân tích chi tiết và theo dõi theo thời gian thực
@@ -688,7 +688,7 @@
                     Hiển thị 
                     <strong>{{ $kols->firstItem() ?? 0 }}–{{ $kols->lastItem() ?? 0 }}</strong> 
                     trong tổng số 
-                    <strong>{{ $kols->total() }}</strong> KOL
+                    <strong>{{ $kols->total() }}</strong> Nhà sáng tạo nội dung
                 </div>
                 <div class="results-controls">
                     <select class="sort-dropdown">

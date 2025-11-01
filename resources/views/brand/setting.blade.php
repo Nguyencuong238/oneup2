@@ -819,8 +819,8 @@
 
                     <div class="toggle-group">
                         <div class="toggle-info">
-                            <div class="toggle-label">Cập nhật KOL</div>
-                            <div class="toggle-description">Thông báo về KOL đã lưu và hiệu suất của họ</div>
+                            <div class="toggle-label">Cập nhật nhà sáng tạo nội dung</div>
+                            <div class="toggle-description">Thông báo về nhà sáng tạo nội dung đã lưu và hiệu suất của họ</div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" name="notifications[kol_updates]"

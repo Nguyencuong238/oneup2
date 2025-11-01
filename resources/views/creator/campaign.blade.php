@@ -714,7 +714,7 @@
                                     </div>
                                 </div>
                                 <div class="campaign-kols">
-                                    <span class="kol-count">{{ $campaign->kols->count() }} KOL tham gia</span>
+                                    <span class="kol-count">{{ $campaign->kols->count() }} Nhà sáng tạo nội dung tham gia</span>
                                 </div>
                             </div>
                             <div class="campaign-footer">

@@ -638,7 +638,7 @@
 
                     <!-- Chọn KOL -->
                     <div class="form-section" style="margin-top: 1.5rem;">
-                        <h2 class="section-title">Chọn KOL</h2>
+                        <h2 class="section-title">Chọn nhà sáng tạo nội dung</h2>
 
                         <div class="form-group">
                             <label class="form-label">Lọc theo danh mục</label>

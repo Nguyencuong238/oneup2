@@ -429,7 +429,7 @@
             </div>
 
             <h1 class="auth-title">Chào mừng trở lại!</h1>
-            <p class="auth-subtitle">Đăng nhập để xem bảng phân tích KOL của bạn</p>
+            <p class="auth-subtitle">Đăng nhập để xem bảng phân tích Nhà sáng tạo nội dung của bạn</p>
 
             <form id="loginForm" method="POST" action="{{ route('login') }}">
                 @csrf
@@ -526,7 +526,7 @@
             <div class="auth-visual">
                 <h2 style="font-size: 28px; margin-bottom: 1rem;">Mở khóa sức mạnh phân tích vượt trội</h2>
                 <p style="font-size: 16px; opacity: 0.9; margin-bottom: 2rem;">
-                    Tham gia cùng hơn 500 thương hiệu đang sử dụng OneUp KOL để tối ưu hóa các chiến dịch influencer trên
+                    Tham gia cùng hơn 500 thương hiệu đang sử dụng OneUp Nhà sáng tạo nội dung để tối ưu hóa các chiến dịch influencer trên
                     TikTok
                 </p>
 
@@ -534,7 +534,7 @@
                     <li>
                         <div class="feature-icon">🎯</div>
                         <div class="feature-text">
-                            <h4>Tìm kiếm KOL thông minh</h4>
+                            <h4>Tìm kiếm nhà sáng tạo nội dung thông minh</h4>
                             <p>Tìm đúng influencer nhờ gợi ý thông minh từ AI</p>
                         </div>
                     </li>
@@ -558,7 +558,7 @@
                 <div class="auth-stats">
                     <div class="auth-stat">
                         <span class="auth-stat-value">10K+</span>
-                        <span class="auth-stat-label">KOLs</span>
+                        <span class="auth-stat-label">Nhà sáng tạo nội dung</span>
                     </div>
                     <div class="auth-stat">
                         <span class="auth-stat-value">500+</span>

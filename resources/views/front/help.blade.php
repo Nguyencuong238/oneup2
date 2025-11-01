@@ -331,7 +331,7 @@
                     <span style="opacity: 0.9;">Tìm kiếm phổ biến:</span>
                     <a href="#" style="color: white; text-decoration: underline;">Thiết lập chiến dịch</a>
                     <a href="#" style="color: white; text-decoration: underline;">Câu hỏi thanh toán</a>
-                    <a href="#" style="color: white; text-decoration: underline;">Xác minh KOL</a>
+                    <a href="#" style="color: white; text-decoration: underline;">Xác minh nhà sáng tạo nội dung</a>
                 </div>
             </div>
         </div>
@@ -367,7 +367,7 @@
                 
                 <div class="help-category fade-in" style="animation-delay: 0.4s;" onclick="showCategory('kol-discovery')">
                     <div class="help-icon">🔍</div>
-                    <h3 class="help-title">Khám phá KOL</h3>
+                    <h3 class="help-title">Khám phá nhà sáng tạo nội dung</h3>
                     <p class="help-description">Tìm và đánh giá influencer phù hợp với thương hiệu của bạn</p>
                 </div>
                 
@@ -397,7 +397,7 @@
                             <li>Đi đến mục Chiến dịch trong trang quản trị</li>
                             <li>Nhấn “Tạo chiến dịch mới”</li>
                             <li>Đặt mục tiêu và ngân sách cho chiến dịch</li>
-                            <li>Sử dụng công cụ Khám phá KOL để tìm influencer phù hợp</li>
+                            <li>Sử dụng công cụ Khám phá nhà sáng tạo nội dung để tìm influencer phù hợp</li>
                             <li>Xem lại và khởi chạy chiến dịch</li>
                         </ol>
                         <p style="margin-top: 10px;">Xem chi tiết trong <a href="#" style="color: var(--primary);">Hướng dẫn thiết lập chiến dịch</a>.</p>
@@ -462,7 +462,7 @@
         <div class="container">
             <h2 class="text-center mb-4">Video hướng dẫn</h2>
             <p class="text-center mb-4" style="color: var(--gray-light);">
-                Học cách sử dụng OneUp KOL Analytics qua các video hướng dẫn chi tiết
+                Học cách sử dụng OneUp nhà sáng tạo nội dung Analytics qua các video hướng dẫn chi tiết
             </p>
             
             <div class="video-grid">

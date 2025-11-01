@@ -414,7 +414,7 @@
                     chuẩn dữ liệu – Tăng hiệu suất chiến dịch ngay hôm nay!
                 </h1>
                 <p style="font-size: 18px; color: var(--gray-600); margin-bottom: 2rem;">
-                    Truy cập dữ liệu <strong>thời gian thực</strong> của hơn <strong>10.000 KOLs Việt Nam</strong>, khám phá
+                    Truy cập dữ liệu <strong>thời gian thực</strong> của hơn <strong>10.000 nhà sáng tạo nội dung Việt Nam</strong>, khám phá
                     hiệu suất – tương tác – lĩnh vực, tất cả trên <strong>một nền tảng AI duy nhất.
                     Ra quyết định chính xác hơn, hiệu quả cao hơn.</strong>
 
@@ -433,7 +433,7 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-value">1000+</div>
-                        <div class="hero-stat-label">KOL đã được xác minh</div>
+                        <div class="hero-stat-label">nhà sáng tạo nội dung đã được xác minh</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value">100M+</div>
@@ -448,7 +448,7 @@
 
             <div class="hero-visual fade-in" style="animation-delay: 0.2s;">
                 <div class="kol-showcase">
-                    <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 KOLs thịnh hành hiện nay</h4>
+                    <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 nhà sáng tạo nội dung thịnh hành hiện nay</h4>
                     <div class="kol-grid">
                         @foreach ($kols as $k)
                             <div class="kol-card-mini">
@@ -463,7 +463,7 @@
                     </div>
                     <div style="text-align: center; margin-top: 1.5rem;">
                         <a href="#kol-list" style="color: var(--primary); font-weight: 600;">
-                            Xem tất cả KOL →
+                            Xem tất cả nhà sáng tạo nội dung →
                         </a>
                     </div>
                 </div>
@@ -520,7 +520,7 @@
                 <div class="feature-box fade-in">
                     <div class="feature-number">1</div>
                     <h4>Tìm & Lọc thông minh</h4>
-                    <p>Sử dụng bộ lọc AI nâng cao để tìm đúng KOL theo lĩnh vực, vị trí, lượng theo dõi và tỷ lệ tương tác thực — trong vài giây.</p>
+                    <p>Sử dụng bộ lọc AI nâng cao để tìm đúng nhà sáng tạo nội dung theo lĩnh vực, vị trí, lượng theo dõi và tỷ lệ tương tác thực — trong vài giây.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.1s;">
@@ -532,7 +532,7 @@
                 <div class="feature-box fade-in" style="animation-delay: 0.2s;">
                     <div class="feature-number">3</div>
                     <h4>Lập chiến dịch tự động</h4>
-                    <p>Nhận đề xuất kết hợp KOL tối ưu dựa trên ngân sách, mục tiêu và tệp khách hàng — tất cả được tính toán bằng AI.</p>
+                    <p>Nhận đề xuất kết hợp nhà sáng tạo nội dung tối ưu dựa trên ngân sách, mục tiêu và tệp khách hàng — tất cả được tính toán bằng AI.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.3s;">
@@ -549,7 +549,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">Người đạt thành tích cao nhất</div>
-                <h2 class="section-title section-kol fade-in">Khám phá Top KOL nổi bật</h2>
+                <h2 class="section-title section-kol fade-in">Khám phá Top nhà sáng tạo nội dung nổi bật</h2>
                 <p class="section-description fade-in" style="font-size: 16px">
                     Theo dõi dữ liệu thực – hiệu suất thật – từ hơn 10.000+ người ảnh hưởng được xác minh.
                 </p>
@@ -566,7 +566,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Hồ sơ KOL</th>
+                            <th>Hồ sơ nhà sáng tạo nội dung</th>
                             <th>Danh mục</th>
                             <th>Người theo dõi</th>
                             <th>Mức độ tương tác</th>
@@ -623,12 +623,12 @@
             <div style="text-align: center; margin-top: 2rem;">
                 @auth
                     <a href="{{ route('brand.kolExplorer') }}" class="btn btn-primary btn-large">
-                        Xem tất cả hơn 10.000 KOL
+                        Xem tất cả hơn 10.000 nhà sáng tạo nội dung
                     </a>
                 @else
                     <a href="{{ route('login', ['redirect' => route('brand.kolExplorer')]) }}"
                         class="btn btn-primary btn-large">
-                        Đăng nhập để xem tất cả KOL
+                        Đăng nhập để xem tất cả nhà sáng tạo nội dung
                     </a>
                 @endauth
             </div>
@@ -648,7 +648,7 @@
                     <div class="feature-icon">🔍</div>
                     <h3 class="card-title">Khám phá thông minh</h3>
                     <p class="card-description color-gray-500">
-                        Tìm KOL hoàn hảo chỉ trong vài giây — với AI hỗ trợ + hơn 50 bộ lọc chi tiết, giúp bạn chọn đúng người, đúng mục tiêu.
+                        Tìm nhà sáng tạo nội dung hoàn hảo chỉ trong vài giây — với AI hỗ trợ + hơn 50 bộ lọc chi tiết, giúp bạn chọn đúng người, đúng mục tiêu.
                     </p>
                 </div>
 
@@ -686,7 +686,7 @@
 
                 <div class="feature-card fade-in" style="animation-delay: 0.5s">
                     <div class="feature-icon">📈</div>
-                    <h3 class="card-title">Theo dõi tăng trưởng KOL</h3>
+                    <h3 class="card-title">Theo dõi tăng trưởng nhà sáng tạo nội dung</h3>
                     <p class="card-description color-gray-500">
                         Phân tích tốc độ tăng trưởng và phát hiện sớm những ngôi sao đang lên để hợp tác trước khi quá muộn.
                     </p>
@@ -709,7 +709,7 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "OneUp KOL đã giúp chúng tôi tăng ROI lên 300% chỉ trong 3 tháng. Các khuyến nghị của AI cực kỳ
+                        "OneUp nhà sáng tạo nội dung đã giúp chúng tôi tăng ROI lên 300% chỉ trong 3 tháng. Các khuyến nghị của AI cực kỳ
                         chính xác."
                     </p>
                     <div class="d-flex align-center gap-2">
@@ -765,13 +765,13 @@
                 <div class="cta-content">
                     <h2 style="color: white;">Bạn đã sẵn sàng chuyển đổi hoạt động tiếp thị trên TikTok chưa?</h2>
                     <p style="font-size: 1.25rem; opacity: 0.95; margin-bottom: 2rem; color: #fefefe;">
-                        Hơn 500+ thương hiệu đã tin dùng OneUp KOL để tìm đúng đối tác Influencer và đo lường hiệu quả chiến dịch một cách chính xác.
+                        Hơn 500+ thương hiệu đã tin dùng OneUp nhà sáng tạo nội dung để tìm đúng đối tác Influencer và đo lường hiệu quả chiến dịch một cách chính xác.
                     </p>
 
                     <ul class="cta-features">
-                        <li>Tiếp cận 10.000+ hồ sơ KOL đã được xác minh </li>
+                        <li>Tiếp cận 10.000+ hồ sơ nhà sáng tạo nội dung đã được xác minh </li>
                         <li>Theo dõi ROI và hiệu suất chiến dịch theo thời gian thực</li>
-                        <li>Nhận gợi ý KOL phù hợp từ AI </li>
+                        <li>Nhận gợi ý nhà sáng tạo nội dung phù hợp từ AI </li>
                         <li>Hỗ trợ 1-1 từ chuyên gia khi bạn cần</li>
                     </ul>
 
@@ -799,7 +799,7 @@
                             <div
                                 style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--gray-200);">
                                 <span style="color: var(--primary); font-size: 24px; font-weight: 700;">2</span>
-                                <span style="color: var(--gray-700);">Tìm kiếm và phân tích KOL</span>
+                                <span style="color: var(--gray-700);">Tìm kiếm và phân tích nhà sáng tạo nội dung</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0;">
                                 <span style="color: var(--primary); font-size: 24px; font-weight: 700;">3</span>

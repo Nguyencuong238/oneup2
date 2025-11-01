@@ -121,7 +121,7 @@
                             <a href="{{ route('kols.index') }}" class="nav-link">
                                 <i class="icon-grid6"></i>
                                 <span>
-                                    KOLs
+                                    Nhà sáng tạo nội dung
                                 </span>
                             </a>
                         </li>

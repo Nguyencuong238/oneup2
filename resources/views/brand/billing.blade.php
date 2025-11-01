@@ -603,7 +603,7 @@
                             <span class="plan-detail-value">3 / 5 chỗ đã dùng</span>
                         </div>
                         <div class="plan-detail-item">
-                            <span class="plan-detail-label">Theo dõi KOL</span>
+                            <span class="plan-detail-label">Theo dõi nhà sáng tạo nội dung</span>
                             <span class="plan-detail-value">Không giới hạn</span>
                         </div>
                     </div>

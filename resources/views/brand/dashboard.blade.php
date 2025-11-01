@@ -1,7 +1,7 @@
 @extends('layouts.brand_master')
 
 @section('meta')
-    <meta name="description" content="OneUp KOL Analytics Dashboard - Monitor your TikTok influencer campaigns">
+    <meta name="description" content="OneUp  Analytics Dashboard - Monitor your TikTok influencer campaigns">
     <title>Bảng điều khiển - OneUp KOL Analytics</title>
 @endsection
 
@@ -749,7 +749,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>KOL</th>
+                            <th>Nhà sáng tạo nội dung</th>
                             <th>Danh mục</th>
                             <th>Nười theo dõi</th>
                             <th>Tương tác</th>

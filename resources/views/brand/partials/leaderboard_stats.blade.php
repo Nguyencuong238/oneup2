@@ -2,7 +2,7 @@
     <div class="summary-card">
         <div class="summary-header">
             <div>
-                <div class="summary-title">Tổng số KOL được theo dõi</div>
+                <div class="summary-title">Tổng số nhà sáng tạo nội dung được theo dõi</div>
                 <div class="summary-value">{{ $totalKols }}</div>
             </div>
             <div class="summary-icon">
@@ -32,7 +32,7 @@
             <div>
                 <div class="summary-title">Danh mục hàng đầu</div>
                 <div class="summary-value">{{ $topCategory->name }}</div>
-                <div class="summary-change">{{ formatDisplayNumber($topCategory->kols_count) }} KOL đang hoạt động</div>
+                <div class="summary-change">{{ formatDisplayNumber($topCategory->kols_count) }} Nhà sáng tạo nội dung đang hoạt động</div>
             </div>
             <div class="summary-icon">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">

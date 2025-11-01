@@ -547,7 +547,7 @@
                         <label class="form-label">Loại báo cáo</label>
                         <select class="form-select">
                             <option>Báo cáo hiệu suất chiến dịch</option>
-                            <option>Báo cáo phân tích KOL</option>
+                            <option>Báo cáo phân tích nhà sáng tạo nội dung</option>
                             <option>Tổng hợp tài chính</option>
                             <option>Phân tích tương tác</option>
                             <option>Báo cáo ROI</option>
@@ -636,8 +636,8 @@
                             👥
                         </div>
                         <div class="template-body">
-                            <h3 class="template-name">So sánh hiệu suất KOL</h3>
-                            <p class="template-description">So sánh và phân tích các chỉ số hiệu suất giữa nhiều KOL</p>
+                            <h3 class="template-name">So sánh hiệu suất nhà sáng tạo nội dung</h3>
+                            <p class="template-description">So sánh và phân tích các chỉ số hiệu suất giữa nhiều nhà sáng tạo nội dung</p>
                             <div class="template-footer">
                                 <span class="template-badge">Phân tích</span>
                                 <a href="#" class="template-action">Dùng mẫu →</a>
@@ -733,12 +733,12 @@
                                 <div class="report-info">
                                     <div class="report-icon">📄</div>
                                     <div class="report-details">
-                                        <div class="report-name">Phân tích hiệu suất KOL hàng đầu</div>
+                                        <div class="report-name">Phân tích hiệu suất nhà sáng tạo nội dung hàng đầu</div>
                                         <div class="report-campaign">Ra mắt sản phẩm làm đẹp</div>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="report-type type-kol">Phân tích KOL</span></td>
+                            <td><span class="report-type type-kol">Phân tích nhà sáng tạo nội dung</span></td>
                             <td style="color:black">18 Tháng 7, 2024</td>
                             <td style="color:black">3.1 MB</td>
                             <td>

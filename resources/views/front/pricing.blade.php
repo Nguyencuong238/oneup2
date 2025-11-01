@@ -175,7 +175,7 @@
                     Bảng giá <span class="gradient-text">Đơn giản & Minh bạch</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    Chọn gói phù hợp nhất cho nhu cầu marketing KOL TikTok của bạn
+                    Chọn gói phù hợp nhất cho nhu cầu marketing nhà sáng tạo nội dung TikTok của bạn
                 </p>
 
                 <!-- Pricing Toggle -->
@@ -205,7 +205,7 @@
                         <div class="pricing-period">mỗi tháng</div>
                     </div>
                     <ul class="pricing-features">
-                        <li>Tối đa 100 lượt tìm kiếm KOL/tháng</li>
+                        <li>Tối đa 100 lượt tìm kiếm nhà sáng tạo nội dung/tháng</li>
                         <li>Bảng phân tích cơ bản</li>
                         <li>5 chiến dịch hoạt động</li>
                         <li>Hỗ trợ qua email</li>
@@ -227,7 +227,7 @@
                         <div class="pricing-period">mỗi tháng</div>
                     </div>
                     <ul class="pricing-features">
-                        <li>Tìm kiếm KOL không giới hạn</li>
+                        <li>Tìm kiếm nhà sáng tạo nội dung không giới hạn</li>
                         <li>Phân tích nâng cao & gợi ý từ AI</li>
                         <li>20 chiến dịch hoạt động</li>
                         <li>Hỗ trợ ưu tiên</li>
@@ -276,10 +276,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Khám phá KOL</td>
+                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Khám phá nhà sáng tạo nội dung</td>
                         </tr>
                         <tr>
-                            <td>Tìm kiếm KOL</td>
+                            <td>Tìm kiếm Nhà sáng tạo nội dung</td>
                             <td>100/tháng</td>
                             <td>Không giới hạn</td>
                             <td>Không giới hạn</td>
@@ -434,7 +434,7 @@
         <div class="container text-center">
             <h2 class="mb-3 color-dark-blue">Sẵn sàng bắt đầu ngay?</h2>
             <p class="mb-4 color-gray-600" style="font-size: 18px;">
-                Hơn 500+ thương hiệu đã tối ưu chiến dịch KOL TikTok của họ cùng chúng tôi
+                Hơn 500+ thương hiệu đã tối ưu chiến dịch nhà sáng tạo nội dung TikTok của họ cùng chúng tôi
             </p>
             <div class="d-flex gap-2 justify-center">
                 @auth

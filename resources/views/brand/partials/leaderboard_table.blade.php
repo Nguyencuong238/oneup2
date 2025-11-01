@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th style="width: 80px;">Thứ hạng</th>
-                <th>KOL</th>
+                <th>Nhà sáng tạo nội dung</th>
                 <th>Người theo dõi</th>
                 <th>Tỷ lệ tham gia</th>
                 <th>Điểm</th>

@@ -696,7 +696,7 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Đã thêm KOL mới: @fashionista.vn</div>
+                            <div class="activity-title">Đã thêm nhà sáng tạo nội dung mới: @fashionista.vn</div>
                             <div class="activity-time">5 giờ trước</div>
                         </div>
                     </div>
