@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label>{{ __('Username') }}:</label>
-                            <input type="text" name="username" value="{{ old('username') }}" class="form-control @error('username')is-invalid @enderror" placeholder="Nhập username">
+                            <input type="text" name="username" value="{{ old('username') }}" class="form-control @error('username')is-invalid @enderror" placeholder="Nhập username" required>
                             @error('username')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -123,7 +123,7 @@
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="is_verified" {{ old('is_verified') == '1' ? 'checked' : null }} id="is_verified" value="1">
+                                <input type="checkbox" class="custom-control-input" name="is_verified" {{ old('is_verified',1) == '1' ? 'checked' : null }} id="is_verified" value="1">
                                 <label class="custom-control-label" for="is_verified">{{ __('Đã xác minh') }}?</label>
                             </div>
                         </div>
