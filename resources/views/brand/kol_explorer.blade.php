@@ -769,7 +769,11 @@
 
                                     <img class="kol-avatar" src="{{ $kol->getFirstMediaUrl('media') }}">
                                     <div class="kol-info">
-                                        <div class="kol-name">{{ $kol->display_name }}</div>
+                                        <div class="kol-name">
+                                            <a href="{{ route('brand.profile', $kol->username) }}" class="color-dark-blue">
+                                            {{ $kol->display_name }}
+                                            </a>
+                                        </div>
                                         <div class="kol-handle">{{ '@' . trim($kol->username, '@') }}</div>
                                         <div class="kol-categories">
                                             @foreach ($kol->categories as $kc)
