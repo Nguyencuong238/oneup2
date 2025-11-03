@@ -344,7 +344,7 @@
                 <div class="help-category fade-in" onclick="showCategory('getting-started')">
                     <div class="help-icon">🚀</div>
                     <h3 class="help-title">Bắt đầu sử dụng</h3>
-                    <p class="help-description">Tìm hiểu những kiến thức cơ bản khi sử dụng nền tảng OneUp KOL Analytics</p>
+                    <p class="help-description">Tìm hiểu những kiến thức cơ bản khi sử dụng nền tảng OneUp nhà sáng tạo nội dung Analytics</p>
                 </div>
                 
                 <div class="help-category fade-in" style="animation-delay: 0.1s;" onclick="showCategory('account')">
@@ -388,42 +388,35 @@
             <div class="faq-section">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Làm thế nào để bắt đầu chiến dịch đầu tiên?</span>
+                        <span>🧩 HƯỚNG DẪN DÀNH CHO KOL / KOC / CREATOR?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Để bắt đầu chiến dịch đầu tiên của bạn:</p>
-                        <ol style="margin-left: 20px; margin-top: 10px;">
-                            <li>Đi đến mục Chiến dịch trong trang quản trị</li>
-                            <li>Nhấn “Tạo chiến dịch mới”</li>
-                            <li>Đặt mục tiêu và ngân sách cho chiến dịch</li>
-                            <li>Sử dụng công cụ Khám phá nhà sáng tạo nội dung để tìm influencer phù hợp</li>
-                            <li>Xem lại và khởi chạy chiến dịch</li>
-                        </ol>
-                        <p style="margin-top: 10px;">Xem chi tiết trong <a href="#" style="color: var(--primary);">Hướng dẫn thiết lập chiến dịch</a>.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Hệ thống phát hiện gian lận có chính xác không?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Hệ thống phát hiện gian lận của chúng tôi sử dụng AI nâng cao để phân tích nhiều tín hiệu như:</p>
                         <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>Mô hình tăng trưởng người theo dõi</li>
-                            <li>Tính nhất quán của tỷ lệ tương tác</li>
-                            <li>Tính xác thực của bình luận</li>
-                            <li>Phân bố nhân khẩu học của khán giả</li>
+                            <li>Bước 1. Đăng ký tài khoản Brand
+                                Vào ONEUP.VN
+                                → chọn “Đăng ký Brand”.
+                                Điền thông tin công ty, ngành hàng và mục tiêu truyền thông.
+                            </li>
+                            <li>Bước 2. Tạo chiến dịch
+                                Chọn “Tạo chiến dịch mới” → nhập thông tin: mục tiêu, thời gian, ngân sách, yêu cầu nội dung.
+                                ONEUP sẽ gợi ý danh sách KOL/KOC phù hợp theo dữ liệu.
+                            </li>
+                            <li>Bước 3. Duyệt & Ký hợp đồng
+                                Xem hồ sơ Creator, duyệt danh sách.
+                                Xác nhận brief và ký MOU điện tử (qua hệ thống ONEUP).
+                            </li>
+                            <li>Bước 4. Theo dõi & Báo cáo
+                                Dashboard hiển thị tiến độ, hiệu suất, reach và ROI theo thời gian thực.
+                                Sau khi hoàn thành, tải báo cáo tổng hợp và hóa đơn thanh toán trực tiếp.
+                            </li>
                         </ul>
-                        <p style="margin-top: 10px;">Hệ thống đạt độ chính xác 95% trong việc phát hiện người theo dõi giả và tương tác ảo.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Tôi có thể xuất dữ liệu sang Excel hoặc CSV không?</span>
+                        <span>🏢 HƯỚNG DẪN DÀNH CHO THƯƠNG HIỆU (BRAND)</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
@@ -439,18 +432,21 @@
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Làm sao để nâng cấp hoặc hạ cấp gói dịch vụ?</span>
+                        <span>🚀 HƯỚNG DẪN TẠO CHIẾN DỊCH TRÊN ONEUP.VN</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Bạn có thể thay đổi gói dịch vụ bất kỳ lúc nào trong phần Cài đặt tài khoản:</p>
                         <ol style="margin-left: 20px; margin-top: 10px;">
-                            <li>Vào Cài đặt → Thanh toán</li>
-                            <li>Nhấn “Thay đổi gói”</li>
-                            <li>Chọn gói mới của bạn</li>
-                            <li>Xác nhận thay đổi</li>
+                            <li>Bước 1. Đăng nhập tài khoản Brand tại ONEUP.VN → Nếu chưa có, chọn “Đăng ký thương hiệu”.
+                            </li>
+                            <li>Bước 2. Chọn “Tạo chiến dịch mới” → Nhập mục tiêu, ngân sách, thời gian và brief nội dung.</li>
+                            <li>Bước 3. ONEUP đề xuất KOL/KOC phù hợp → Lọc theo ngành hàng, vị trí và tệp người theo dõi.</li>
+                            <li>Bước 4. Duyệt & ký hợp đồng điện tử → Mọi quy trình được lưu trữ minh bạch trên hệ thống.</li>
+                            <li>Bước 5. Theo dõi & nhận báo cáo
+                                → Dashboard hiển thị tiến độ, hiệu suất, ROI real-time.
+                                → Tải báo cáo & hóa đơn sau khi hoàn tất chiến dịch.
+                            </li>
                         </ol>
-                        <p style="margin-top: 10px;">Nâng cấp có hiệu lực ngay lập tức. Hạ cấp sẽ áp dụng từ chu kỳ thanh toán tiếp theo. Tín dụng chưa dùng sẽ được tính theo tỷ lệ tương ứng.</p>
                     </div>
                 </div>
             </div>
@@ -515,7 +511,7 @@
                         Trao đổi trực tiếp với đội ngũ hỗ trợ
                     </p>
                     <p style="color: var(--success); font-weight: 600; margin-bottom: 1rem;">
-                        Hoạt động Thứ 2 - Thứ 6, 9:00 - 18:00 (GMT+7)
+                        Hoạt động Thứ 2 - Thứ 7, 9:00 - 18:00 (GMT+7)
                     </p>
                     <button class="btn btn-primary">Bắt đầu trò chuyện</button>
                 </div>
@@ -539,7 +535,7 @@
                         Nói chuyện trực tiếp với đội ngũ của chúng tôi
                     </p>
                     <p style="font-weight: 600; margin-bottom: 1rem;color: var(--gray-500);">
-                        +84 28 1234 5678
+                        0787288386
                     </p>
                     <button class="btn btn-outline">Gọi ngay</button>
                 </div>

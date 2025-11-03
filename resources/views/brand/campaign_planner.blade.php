@@ -609,12 +609,12 @@
                             <input type="number" name="budget_amount"
                                 value="{{ old('budget_amount', $campaign->budget_amount - 0) }}" id="budget_amount"
                                 class="form-input" placeholder="0">
-                            <span class="form-help">Bao gồm chi phí KOL và sản xuất nội dung</span>
+                            <span class="form-help">Bao gồm chi phí nhà sáng tạo nội dung và sản xuất nội dung</span>
                         </div>
 
                         <div class="budget-calculator">
                             <div class="budget-item">
-                                <span class="budget-label">Chi phí KOL (70%)</span>
+                                <span class="budget-label">Chi phí nhà sáng tạo nội dung (70%)</span>
                                 <span
                                     class="budget-value kol-fee">₫{{ formatDisplayNumber($campaign->budget_amount * 0.7) }}</span>
                             </div>
@@ -732,7 +732,7 @@
                             <span class="preview-value preview-duration">0 ngày</span>
                         </div>
                         <div class="preview-item">
-                            <span class="preview-label">Số KOL đã chọn</span>
+                            <span class="preview-label">Số người sáng tạo nội dung đã chọn</span>
                             <span class="preview-value preview-kols">{{ $campaign->kols->count() }} KOL</span>
                         </div>
                         <div class="preview-item">
@@ -741,7 +741,7 @@
                                 class="preview-value preview-budget">₫{{ formatDisplayNumber($campaign->budget_amount) }}</span>
                         </div>
                         <div class="preview-item">
-                            <span class="preview-label">Chi phí trung bình / KOL</span>
+                            <span class="preview-label">Chi phí trung bình / Nhà sáng tạo nội dung</span>
                             <span class="preview-value preview-fee"></span>
                         </div>
                     </div>
@@ -772,7 +772,7 @@
 
                     <!-- Danh sách KOL đã chọn -->
                     <div class="preview-card">
-                        <h3 class="preview-title">KOL đã chọn (0)</h3>
+                        <h3 class="preview-title">Nhà sáng tạo nội dung đã chọn (0)</h3>
 
                         <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
                             @foreach ($campaign->kols as $item)
@@ -956,7 +956,7 @@
                     `);
                 });
 
-                $previewCardHeader.text(`KOL đã chọn (${count})`);
+                $previewCardHeader.text(`Nhà sáng tạo nội dung đã chọn (${count})`);
                 $previewCardList.html(parts.join(''));
 
                 if (count > 0) {
@@ -965,7 +965,7 @@
                 } else {
                     $previewFee.text('₫0');
                     $previewCardList.html('');
-                    $previewCardHeader.text('KOL đã chọn (0)');
+                    $previewCardHeader.text('Nhà sáng tạo nội dung đã chọn (0)');
                 }
             }
 

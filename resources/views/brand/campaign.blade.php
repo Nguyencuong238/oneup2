@@ -691,7 +691,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div>
-                            <div class="stat-title">KOL đã tham gia</div>
+                            <div class="stat-title">Nhà sáng tạo nội dung đã tham gia</div>
                             <div class="stat-value">{{ $totalKols }}</div>
                             {{-- <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -832,7 +832,7 @@
                                                 +{{ $campaign->kols->count() - 3 }}</div>
                                         @endif
                                     </div>
-                                    <span class="kol-count">{{ $campaign->kols->count() }} KOL tham gia</span>
+                                    <span class="kol-count">{{ $campaign->kols->count() }} Nhà sáng tạo nội dung tham gia</span>
                                 </div>
                             </div>
                             <div class="campaign-footer">

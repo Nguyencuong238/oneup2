@@ -470,7 +470,7 @@
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-left">
-                <h1 class="page-title">Bảng xếp hạng KOL</h1>
+                <h1 class="page-title">Bảng xếp hạng các nhà sáng tạo nội dung</h1>
                 <div class="date-range-selector color-gray-600">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -512,7 +512,7 @@
                 <div class="summary-card">
                     <div class="summary-header">
                         <div>
-                            <div class="summary-title">Tổng số KOL được theo dõi</div>
+                            <div class="summary-title">Tổng số nhà sáng tạo nội dung được theo dõi</div>
                             <div class="summary-value">{{ $totalKols }}</div>
                             {{-- <div class="summary-change">+123 mới trong tháng này</div> --}}
                         </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @yield('meta')
-
+    <link rel="icon" type="image/png" href="{{  asset('assets/logo.png') }}">
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">

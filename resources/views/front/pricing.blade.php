@@ -3,7 +3,7 @@
 @section('meta')
     <title>Bảng giá - OneUp KOL Analytics</title>
     <meta name="description"
-        content="Bảng giá OneUp KOL Analytics - Chọn gói hoàn hảo cho nhu cầu tiếp thị người ảnh hưởng trên TikTok của bạn">
+        content="Bảng giá OneUp Analytics - Chọn gói hoàn hảo cho nhu cầu tiếp thị người ảnh hưởng trên TikTok của bạn">
 @endsection
 
 @section('css')
@@ -373,56 +373,51 @@
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Tôi có thể thay đổi gói bất cứ lúc nào không?</span>
+                        <span>ONEUP.VN là gì?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Bạn có thể nâng cấp hoặc hạ cấp gói bất kỳ lúc nào. Khi nâng cấp, bạn sẽ được mở khóa ngay
-                            các tính năng mới. Khi hạ cấp, thay đổi sẽ áp dụng từ chu kỳ thanh toán tiếp theo.</p>
+                        <p>Nền tảng kết nối thông minh giữa thương hiệu và KOL/KOC/Creator, giúp triển khai – đo lường – tối ưu chiến dịch hiệu quả.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Có bản dùng thử miễn phí không?</span>
+                        <span>ONEUP khác gì so với nền tảng khác?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Tất cả các gói đều có thời gian dùng thử 14 ngày miễn phí, không cần thẻ tín dụng. Bạn có thể
-                            trải nghiệm mọi tính năng và hủy bất kỳ lúc nào trong thời gian thử.</p>
+                        <p>ONEUP dựa trên dữ liệu real-time, quy trình minh bạch và hỗ trợ phát triển Creator bền vững, không chỉ là nền tảng booking.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Bạn chấp nhận phương thức thanh toán nào?</span>
+                        <span>Thương hiệu sử dụng ONEUP thế nào?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Chúng tôi chấp nhận các loại thẻ quốc tế (Visa, MasterCard, American Express), chuyển khoản ngân
-                            hàng, và các phương thức phổ biến tại Việt Nam như MoMo, ZaloPay, VNPay.</p>
+                        <p>Gửi brief → ONEUP đề xuất KOL → ký hợp đồng → đăng tải → theo dõi KPI → nhận báo cáo & thanh toán minh bạch.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Tôi có thể được hoàn tiền không?</span>
+                        <span>Creator tham gia bằng cách nào?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Chúng tôi có chính sách hoàn tiền 30 ngày cho khách hàng mới. Nếu bạn không hài lòng, hãy
-                            liên hệ trong vòng 30 ngày sau khi mua để được hoàn 100%.</p>
+                        <p>Đăng ký hồ sơ trên website, xét duyệt – đào tạo – nhận job – được xếp hạng theo hiệu suất (Rookie → Elite).</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Có ưu đãi cho agency không?</span>
+                        <span>ONEUP có bản dùng thử không?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Chúng tôi có chính sách giá đặc biệt cho các agency quản lý nhiều thương hiệu. Hãy liên hệ
-                            đội ngũ kinh doanh để nhận báo giá và ưu đãi riêng.</p>
+                        <p>Oneup có bản dùng thử. Brand có thể trải nghiệm bản dùng thử miễn phí để khám phá dashboard, dữ liệu KOL/KOC và quy trình quản lý chiến dịch trước khi nâng cấp.</p>
                     </div>
                 </div>
             </div>

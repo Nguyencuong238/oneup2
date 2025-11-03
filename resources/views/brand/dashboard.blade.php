@@ -528,7 +528,7 @@
             <div class="quick-actions">
                 <a href="{{ route('brand.kolExplorer') }}" class="quick-action">
                     <div class="quick-action-icon">🔍</div>
-                    <div class="quick-action-text">Tìm kiếm KOL</div>
+                    <div class="quick-action-text">Tìm kiếm nhà sáng tạo nội dung</div>
                 </a>
 
                 <a href="{{ route('brand.campaign.index') }}" class="quick-action">
@@ -698,7 +698,7 @@
                             </svg>
                         </div>
                         <div class="activity-content">
-                            <div class="activity-title">Đã thêm KOL mới: @fashionista.vn</div>
+                            <div class="activity-title">Đã thêm nhà sáng tạo nội dung mới: @fashionista.vn</div>
                             <div class="activity-time">5 giờ trước</div>
                         </div>
                     </div>
@@ -736,7 +736,7 @@
             <!-- Top Performing KOLs Table -->
             <div class="dashboard-table" style="margin-top: 2rem;">
                 <div class="table-header">
-                    <h2 class="table-title">KOL có hiệu suất cao nhất</h2>
+                    <h2 class="table-title">Nhà sáng tạo nội dung có hiệu suất cao nhất</h2>
                     {{-- <a href="{{ route('brand.analytic') }}" class="table-action">
                         Xem tất cả
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -751,7 +751,7 @@
                         <tr>
                             <th>Nhà sáng tạo nội dung</th>
                             <th>Danh mục</th>
-                            <th>Nười theo dõi</th>
+                            <th>Người theo dõi</th>
                             <th>Tương tác</th>
                             <th>Chiến dịch</th>
                             <th>Hiệu suất</th>

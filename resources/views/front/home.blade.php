@@ -433,7 +433,7 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-value">1000+</div>
-                        <div class="hero-stat-label">nhà sáng tạo nội dung đã được xác minh</div>
+                        <div class="hero-stat-label">Nhà sáng tạo nội dung đã được xác minh</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-value">100M+</div>
@@ -448,7 +448,7 @@
 
             <div class="hero-visual fade-in" style="animation-delay: 0.2s;">
                 <div class="kol-showcase">
-                    <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 nhà sáng tạo nội dung thịnh hành hiện nay</h4>
+                    <h4 style="margin-bottom: 1.5rem; color: var(--dark-blue);">🔥 Nhà sáng tạo nội dung thịnh hành hiện nay</h4>
                     <div class="kol-grid">
                         @foreach ($kols as $k)
                             <div class="kol-card-mini">
@@ -526,7 +526,7 @@
                 <div class="feature-box fade-in" style="animation-delay: 0.1s;">
                     <div class="feature-number">2</div>
                     <h4>Phân tích hiệu suất thực tế</h4>
-                    <p>Truy cập dữ liệu chi tiết: nhân khẩu học, hiệu suất nội dung, tỷ lệ tăng trưởng và điểm xác thực. Không còn chọn KOL theo cảm tính.</p>
+                    <p>Truy cập dữ liệu chi tiết: nhân khẩu học, hiệu suất nội dung, tỷ lệ tăng trưởng và điểm xác thực. Không còn chọn nhà sáng tạo nội dung theo cảm tính.</p>
                 </div>
 
                 <div class="feature-box fade-in" style="animation-delay: 0.2s;">

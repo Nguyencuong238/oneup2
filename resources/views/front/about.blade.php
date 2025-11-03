@@ -500,31 +500,31 @@
 
             <div class="team-grid">
                 <div class="team-member fade-in">
-                    <div class="team-avatar">NT</div>
-                    <div class="team-name">Nguyễn Thành</div>
-                    <div class="team-role">CEO & Đồng Sáng Lập</div>
-                    <div class="team-bio">Hơn 10 năm trong lĩnh vực tiếp thị số. Cựu Trưởng phòng Digital tại Unilever Việt Nam.</div>
+                    <div class="team-avatar">AV</div>
+                    <div class="team-name">Alex Vu</div>
+                    <div class="team-role">CEO</div>
+                    {{-- <div class="team-bio">Hơn 10 năm trong lĩnh vực tiếp thị số. Cựu Trưởng phòng Digital tại Unilever Việt Nam.</div> --}}
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.1s;">
-                    <div class="team-avatar">LH</div>
-                    <div class="team-name">Lê Hương</div>
-                    <div class="team-role">CTO & Đồng Sáng Lập</div>
-                    <div class="team-bio">Chuyên gia AI/ML. Cựu kỹ sư cấp cao tại Google Singapore.</div>
+                    <div class="team-avatar">PT</div>
+                    <div class="team-name">Pham Thao</div>
+                    <div class="team-role">CTO</div>
+                    {{-- <div class="team-bio">Chuyên gia AI/ML. Cựu kỹ sư cấp cao tại Google Singapore.</div> --}}
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.2s;">
-                    <div class="team-avatar">PM</div>
-                    <div class="team-name">Phạm Minh</div>
-                    <div class="team-role">Trưởng Bộ Phận Sản Phẩm</div>
-                    <div class="team-bio">Tầm nhìn sản phẩm với kinh nghiệm tại Grab và Shopee.</div>
+                    <div class="team-avatar">TV</div>
+                    <div class="team-name">Thuy Vu</div>
+                    <div class="team-role">Kols Manager</div>
+                    {{-- <div class="team-bio">Tầm nhìn sản phẩm với kinh nghiệm tại Grab và Shopee.</div> --}}
                 </div>
 
                 <div class="team-member fade-in" style="animation-delay: 0.3s;">
-                    <div class="team-avatar">TD</div>
-                    <div class="team-name">Trần Dung</div>
-                    <div class="team-role">Trưởng Bộ Phận Khoa Học Dữ Liệu</div>
-                    <div class="team-bio">Tiến sĩ Khoa học Dữ liệu. Chuyên gia phân tích mạng xã hội.</div>
+                    <div class="team-avatar">TT</div>
+                    <div class="team-name">Thu Trang</div>
+                    <div class="team-role">Account</div>
+                    {{-- <div class="team-bio">Tiến sĩ Khoa học Dữ liệu. Chuyên gia phân tích mạng xã hội.</div> --}}
                 </div>
 
                 {{-- <div class="team-member fade-in" style="animation-delay: 0.4s;">
@@ -554,25 +554,19 @@
 
             <div class="partner-logos">
                 <div class="partner-logo">
-                    <img src="{{ asset('assets/vingroup-logo.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                    <img src="{{ asset('assets/bia.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
                 <div class="partner-logo">
-                    <img src="{{ asset('assets/fpt.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                    <img src="{{ asset('assets/megasea.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
                 <div class="partner-logo">
-                    <img src="{{ asset('assets/viettel.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                    <img src="{{ asset('assets/d-one.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
                 <div class="partner-logo">
-                    <img src="{{ asset('assets/shope.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                    <img src="{{ asset('assets/hansky.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
                 <div class="partner-logo">
-                    <img src="{{ asset('assets/logo-grab.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
-                </div>
-                <div class="partner-logo">
-                    <img src="{{ asset('assets/unilever.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
-                </div>
-                <div class="partner-logo">
-                    <img src="{{ asset('assets/samsung.png') }}"  style="height:80px; width: 120px; border-radius: 5px">
+                    <img src="{{ asset('assets/bep.jpg') }}"  style="height:80px; width: 120px; border-radius: 5px">
                 </div>
             </div>
         </div>

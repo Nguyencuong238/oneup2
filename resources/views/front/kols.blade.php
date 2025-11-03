@@ -693,11 +693,11 @@
                 <div class="results-controls">
                     <select class="sort-dropdown">
                         <option>Phù hợp nhất</option>
-                        <option>Tỷ lệ tương tác cao nhất</option>
-                        <option>Nhiều người theo dõi nhất</option>
+                        <option>Yêu thích</option>
+                        {{-- <option>Nhiều người theo dõi nhất</option>
                         <option>Hoạt động gần đây</option>
                         <option>Tăng trưởng nhanh nhất</option>
-                        <option>Giá trị tốt nhất</option>
+                        <option>Giá trị tốt nhất</option> --}}
                     </select>
                     <div class="view-toggle">
                         <button class="view-btn active" title="Dạng lưới">
