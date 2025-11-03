@@ -133,6 +133,13 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="blue_tick" {{ old('blue_tick', $kol->blue_tick) == '1' ? 'checked' : null }} id="blue_tick" value="1">
+                                <label class="custom-control-label" for="blue_tick">{{ __('Tích xanh') }}?</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label>{{ __('Tier') }}:</label>
                             <select name="tier" data-placeholder="{{ __('Chọn tier') }}"
                                 class="form-control form-control-select2 @error('tier')is-invalid @enderror" data-fouc>

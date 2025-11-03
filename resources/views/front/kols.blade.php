@@ -691,26 +691,13 @@
                     <strong>{{ $kols->total() }}</strong> Nhà sáng tạo nội dung
                 </div>
                 <div class="results-controls">
-                    <select class="sort-dropdown">
-                        <option>Phù hợp nhất</option>
-                        <option>Yêu thích</option>
-                        {{-- <option>Nhiều người theo dõi nhất</option>
-                        <option>Hoạt động gần đây</option>
-                        <option>Tăng trưởng nhanh nhất</option>
-                        <option>Giá trị tốt nhất</option> --}}
+                    <select class="sort-dropdown" onchange="window.location.href=this.value">
+                        <option value="{{ route('kols') }}">Phù hợp nhất</option>
+                        <option value="{{ route('kols', ['favorite' => 1]) }}" 
+                            {{ request('favorite') == 1 ? 'selected' : '' }}>
+                            Yêu thích
+                        </option>
                     </select>
-                    <div class="view-toggle">
-                        <button class="view-btn active" title="Dạng lưới">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM13 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z"/>
-                            </svg>
-                        </button>
-                        <button class="view-btn" title="Dạng danh sách">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
-                            </svg>
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -735,9 +722,15 @@
                                 <a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">
                                 {{$k->display_name}}
                                 </a>
-                                <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                                </svg>
+                                @if($k->blue_tick == 1)
+                                    <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                    </svg>
+                                @else
+                                    <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20" style="display:none">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                    </svg>
+                                @endif
                             </div>
                             <div class="kol-handle">{{ $k->username }}</div>
                             <span class="kol-category">Danh mục:
