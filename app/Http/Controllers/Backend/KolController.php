@@ -62,6 +62,12 @@ class KolController extends Controller
         //     abort(403);
         // }
 
+        $request->validate([
+            'username'          => 'required|string|max:255|unique:kols,username',
+            'display_name'      => 'required|string|max:255',
+            
+        ]);
+
         $kol = Kol::create([
             'platform_id'       => request('platform_id'),
             'username'          => request('username'),
