@@ -71,13 +71,26 @@ class SyncTiktokProfiles extends Command
                     continue;
                 }
 
+                if($statsProfile['followerCount'] >= 500000) {
+                    $rank = 'legend';
+                } elseif($statsProfile['followerCount'] >= 100000) {
+                    $rank = 'star';
+                } elseif($statsProfile['followerCount'] >= 20000) {
+                    $rank = 'rising';
+                } elseif($statsProfile['followerCount'] >= 5000) {
+                    $rank = 'taste_maker';
+                } else {
+                    $rank = 'food_lover';
+                }
+
                 // ✅ Cập nhật thông tin KOL
                 $kol->update([
                     'display_name' => $user['nickname'] ?? $kol->display_name,
                     'bio' => $user['signature'] ?? $kol->bio,
                     'followers' => $statsProfile['followerCount'] ?? 0,
                     'following' => $statsProfile['followingCount'] ?? 0,
-                    'total_likes' => $statsProfile['heartCount'] ?? 0,     
+                    'total_likes' => $statsProfile['heartCount'] ?? 0,
+                    'rank' => $rank,
                 ]);
 
                 if (empty($kol->sec_uid) && isset($user['secUid'])) {

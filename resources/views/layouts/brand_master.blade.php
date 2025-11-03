@@ -208,6 +208,9 @@
         a:focus {
             outline: none;
         }
+        .date-range-selector {
+            color: var(--gray-600);
+        }
     </style>
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
