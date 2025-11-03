@@ -46,6 +46,19 @@
             color: var(--gray-600);
         }
 
+        .verified-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+            margin-left: 6px;
+            margin-top: 6px;
+        }
+
+        .verified-icon-top {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
         .kol-showcase {
             background: white;
             border-radius: 16px;
@@ -454,7 +467,17 @@
                             <div class="kol-card-mini">
                                 <img class="kol-avatar" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                 <div class="kol-info-mini">
-                                    <div class="kol-name-mini"><a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">{{ $k->display_name }}</a></div>
+                                    <div class="kol-name-mini"><a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">{{ $k->display_name }}</a>
+                                        @if($k->blue_tick == 1)
+                                            <svg class="verified-icon-top" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                            </svg>
+                                        @else
+                                            <svg class="verified-icon-top" fill="currentColor" viewBox="0 0 20 20" style="display:none">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                            </svg>
+                                        @endif
+                                    </div>
                                     <div class="kol-followers">{{ formatDisplayNumber($k->followers) }} người theo dõi</div>
                                 </div>
                                 <div class="kol-engagement">{{ $k->engagement }} %</div>
@@ -566,11 +589,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Hồ sơ nhà sáng tạo nội dung</th>
+                            <th>Nhà sáng tạo nội dung</th>
                             <th>Danh mục</th>
                             <th>Người theo dõi</th>
                             <th>Mức độ tương tác</th>
-                            <th>Tổng lượt thích</th>
+                            <th>Lượt thích</th>
                             <th>Điểm tin cậy</th>
                             <th>Hành động</th>
                         </tr>
@@ -583,7 +606,17 @@
                                     <div class="kol-profile">
                                         <img class="kol-avatar-large" src="{{ $k->getFirstMediaUrl('media') }}" alt="Avatar of {{ $k->display_name }}">
                                         <div class="kol-details">
-                                            <div style="font-weight: 600;"><a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">{{ $k->display_name }}</a></div>
+                                            <div style="font-weight: 600; display: flex"><a href="{{ route('brand.profile', $k->username) }}" style="text-decoration:none; color: black">{{ $k->display_name }}</a>
+                                                @if($k->blue_tick == 1)
+                                                    <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                                    </svg>
+                                                @else
+                                                    <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20" style="display:none">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                                    </svg>
+                                                @endif
+                                            </div>
                                             <div class="kol-handle">{{ $k->username }}</div>
                                         </div>
                                     </div>

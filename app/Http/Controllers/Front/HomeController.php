@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Kol::where('status', 'active')->where('is_verified', 1)->where('blue_tick', 1)->latest()->take(10)->with('categories');
+        $query = Kol::where('status', 'active')->where('is_verified', 1)->latest()->take(10)->with('categories');
 
         // Nếu có danh mục được chọn
         if ($request->filled('category') && $request->category !== '') {
