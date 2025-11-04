@@ -655,12 +655,12 @@
                     <div class="filter-section">
                         <h3 class="filter-title">Người theo dõi</h3>
                         <div class="range-slider">
-                            <input type="range" name="followers" class="range-input" min="0" max="10000000"
-                                step="100000" value="{{ request()->followers ?? 0 }}">
+                            <input type="range" name="followers" class="range-input" min="0" max="500000"
+                                step="10000" value="{{ request()->followers ?? 0 }}">
                             <div class="range-values">
                                 <span class="min-value">0</span>
                                 <span class="current-value">{{ formatDisplayNumber(request()->followers ?? 0) }}</span>
-                                <span class="max-value">10M+</span>
+                                <span class="max-value">500K+</span>
                             </div>
                         </div>
                     </div>
