@@ -742,14 +742,13 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "OneUp nhà sáng tạo nội dung đã giúp chúng tôi tăng ROI lên 300% chỉ trong 3 tháng. Các khuyến nghị của AI cực kỳ
-                        chính xác."
+                        "Chiến dịch 'Chill Cùng Sành' đạt hơn 1,2 triệu lượt tiếp cận chỉ sau 2 tuần. OneUp giúp chúng tôi tối ưu bài đăng và lịch chạy cực hiệu quả."
                     </p>
                     <div class="d-flex align-center gap-2">
-                        <div class="kol-avatar">NT</div>
+                        <div class="kol-avatar">NVN</div>
                         <div>
-                            <strong>Nguyễn Thảo</strong><br>
-                            <small class="color-gray-500">Giám đốc Tiếp thị, Thương hiệu Thời trang</small>
+                            <strong>Nguyễn Văn Nam</strong><br>
+                            <small class="color-gray-500">Chủ thương hiệu Bia Hơi Ông Sành</small>
                         </div>
                     </div>
                 </div>
@@ -759,14 +758,13 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "Tính năng phát hiện gian lận đã giúp chúng tôi tránh lãng phí ngân sách cho những người có sức ảnh
-                        hưởng giả mạo. Công cụ thiết yếu cho bất kỳ nhà tiếp thị nào."
+                        "Từ khi dùng OneUp, ROI của D.One tăng ổn định. Quản lý KOL, báo cáo và đo lường đều nhanh, rõ ràng và minh bạch."
                     </p>
                     <div class="d-flex align-center gap-2">
-                        <div class="kol-avatar">LM</div>
+                        <div class="kol-avatar">LMD</div>
                         <div>
-                            <strong>Lê Minh</strong><br>
-                            <small class="color-gray-500">CEO, Tech Startup</small>
+                            <strong>Lê Minh Duy</strong><br>
+                            <small class="color-gray-500">Giám đốc Marketing, D.One</small>
                         </div>
                     </div>
                 </div>
@@ -776,14 +774,13 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="mb-3" style="font-style: italic; color: var(--gray-400);">
-                        "Theo dõi thời gian thực giúp chúng tôi tối ưu hóa chiến dịch ngay lập tức. Chúng tôi đã thấy tỷ lệ
-                        tương tác tăng gấp 5 lần."
+                        "OneUp giúp Hansky theo dõi hiệu quả nội dung theo thời gian thực. Báo cáo AI chính xác, dễ hiểu và rất hữu ích."
                     </p>
                     <div class="d-flex align-center gap-2">
-                        <div class="kol-avatar">PH</div>
+                        <div class="kol-avatar">PTH</div>
                         <div>
-                            <strong>Phạm Hương</strong><br>
-                            <small class="color-gray-500">CMO, Công ty làm đẹp</small>
+                            <strong>Phạm Thanh Hà</strong><br>
+                            <small class="color-gray-500">CMO, Hansky Garden</small>
                         </div>
                     </div>
                 </div>
