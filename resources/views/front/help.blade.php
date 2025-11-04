@@ -420,13 +420,25 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Có! Bạn có thể xuất dữ liệu theo nhiều định dạng:</p>
                         <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>CSV để phân tích dữ liệu thô</li>
-                            <li>Excel (XLSX) cho báo cáo định dạng sẵn</li>
-                            <li>PDF cho báo cáo trình bày chuyên nghiệp</li>
+                            <li>Bước 1. Đăng ký tài khoản Brand
+                                Vào ONEUP.VN
+                                → chọn “Đăng ký Brand”.
+                                Điền thông tin công ty, ngành hàng và mục tiêu truyền thông.
+                            </li>
+                            <li>Bước 2. Tạo chiến dịch
+                                Chọn “Tạo chiến dịch mới” → nhập thông tin: mục tiêu, thời gian, ngân sách, yêu cầu nội dung.
+                                ONEUP sẽ gợi ý danh sách KOL/KOC phù hợp theo dữ liệu.
+                            </li>
+                            <li>Bước 3. Duyệt & Ký hợp đồng
+                                Xem hồ sơ Creator, duyệt danh sách.
+                                Xác nhận brief và ký MOU điện tử (qua hệ thống ONEUP).
+                            </li>
+                            <li>Bước 4. Theo dõi & Báo cáo
+                                Dashboard hiển thị tiến độ, hiệu suất, reach và ROI theo thời gian thực.
+                                Sau khi hoàn thành, tải báo cáo tổng hợp và hóa đơn thanh toán trực tiếp.
+                            </li>
                         </ul>
-                        <p style="margin-top: 10px;">Chỉ cần nhấn nút “Xuất” trên bảng dữ liệu hoặc trang báo cáo và chọn định dạng mong muốn.</p>
                     </div>
                 </div>
                 
