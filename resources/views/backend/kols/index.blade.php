@@ -10,6 +10,13 @@
                 <a href="{{ route('kols.create') }}" class="btn btn-primary"><i class="icon-plus-circle2 mr-1"></i> {{ __('Create') }}</a>
             </div>
         </div>
+        @php
+            $statusTexts = [
+                'active' => 'Kích hoạt',
+                'inactive' => 'Chưa kích hoạt',
+                'banned' => 'Bị cấm',
+            ];   
+        @endphp
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -19,7 +26,7 @@
                         <th>{{ __('Username') }}</th>
                         <th>{{ __('Avatar') }}</th>
                         <th>{{ __('Categories') }}</th>
-                        <th>{{ __('Status') }}</th>
+                        <th>Trạng thái</th>
                         <th>{{ __('Date') }}</th>
                         <th class="text-center">{{ __('Action') }}</th>
                     </tr>
@@ -40,7 +47,7 @@
                                 @endforeach
                             @endif
                         </td>
-                        <td>{{ $kol->status }}</td>
+                        <td>{{ $statusTexts[$kol->status] ?? '' }}</td>
                         <td>{{ formatDate($kol->created_at) }}</td>
                         <td class="text-center">
                             <div class="list-icons">

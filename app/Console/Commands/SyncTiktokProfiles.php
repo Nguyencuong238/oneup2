@@ -25,7 +25,7 @@ class SyncTiktokProfiles extends Command
             'started_at' => now(),
         ]);
 
-        $kols = Kol::where('platform_id', 'Tiktok')
+        $kols = Kol::where('platform', 'tiktok')
             ->whereNotNull('username')
             ->get();
 

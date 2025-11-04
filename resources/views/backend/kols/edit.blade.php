@@ -7,20 +7,21 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Thêm KOLs</h5>
+                            <h5 class="card-title">Chỉnh sửa nhà sáng tạo nội dung</h5>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label>{{ __('Nền tảng') }}:</label>
-                            <input type="text" name="platform_id" value="{{ old('platform_id', $kol->platform_id) }}" class="form-control @error('platform_id')is-invalid @enderror" placeholder="Nhập nền tảng">
-                            @error('platform_id')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <select name="platform" data-placeholder="{{ __('Chọn nền tảng') }}"
+                                class="form-control form-control-select2 @error('platform')is-invalid @enderror">
+                                <option {{ old('platform', $kol->platform) == 'tiktok' ? 'selected' : null }} value="tiktok">
+                                    TikTok</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>{{ __('Username') }}:</label>
-                            <input type="text" name="username" value="{{ old('username', $kol->username) }}" class="form-control @error('username')is-invalid @enderror" placeholder="Nhập username">
+                            <input type="text" name="username" value="{{ old('username', $kol->username) }}" class="form-control @error('username')is-invalid @enderror" placeholder="Nhập username" required>
                             @error('username')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -41,6 +42,7 @@
                             @enderror
                         </div>
 
+
                         <div class="form-group">
                             <label>Người theo dõi:</label>
                             <input type="number" name="followers" value="{{ old('followers', $kol->followers) }}" class="form-control @error('followers')is-invalid @enderror" placeholder="">
@@ -51,36 +53,25 @@
 
 
                         <div class="form-group">
-                            <label>Tỷ lệ tương tác: (%)</label>
-                            <input type="number" name="engagement" value="{{ old('engagement', $kol->engagement) }}" class="form-control @error('engagement')is-invalid @enderror" placeholder="">
-                            @error('engagement')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <label>Tỷ lệ tuơng tác: (%)</label>
+                            <input type="number" name="engagement" value="{{ old('engagement', $kol->engagement) }}" class="form-control">
                         </div>
 
 
                         <div class="form-group">
                             <label>Điểm uy tín:</label>
-                            <input type="number" name="trust_score" value="{{ old('trust_score', $kol->trust_score) }}" class="form-control @error('trust_score')is-invalid @enderror" placeholder="">
-                            @error('trust_score')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <input type="number" name="trust_score" value="{{ old('trust_score', $kol->trust_score) }}" class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
                             <label>Giá 1 video Tiktok:</label>
-                            <input type="number" name="price_tiktok" value="{{ old('price_tiktok', $kol->price_tiktok) }}" class="form-control @error('price_tiktok')is-invalid @enderror" placeholder="">
-                            @error('price_tiktok')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <input type="number" name="price_tiktok" value="{{ old('price_tiktok', $kol->price_tiktok-0) }}" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label>Giá gói Campagin:</label>
-                            <input type="number" name="price_campaign" value="{{ old('price_campaign', $kol->price_campaign) }}" class="form-control @error('price_campaign')is-invalid @enderror" placeholder="">
-                            @error('price_campaign')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <input type="number" name="price_campaign" class="form-control"
+                                value="{{ old('price_campaign', $kol->price_campaign-0) }}">
                         </div>
 
                         <div class="form-group">
@@ -96,31 +87,32 @@
 
                         <div class="form-group">
                             <label>Quốc gia:</label>
-                            <input type="text" name="location_country" value="{{ old('location_country', $kol->location_country) }}" class="form-control @error('location_country')is-invalid @enderror" placeholder="Nhập quốc gia">
-                            @error('location_country')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <select name="location_country" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
+                                class="form-control form-control-select2 @error('location_country')is-invalid @enderror">
+                                <option {{ old('location_country', $kol->location_country) == 'vn' ? 'selected' : null }} value="vn">
+                                    Việt Nam</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Thành phố:</label>
-                            <input type="text" name="location_city" value="{{ old('location_city', $kol->location_city) }}" class="form-control @error('location_city')is-invalid @enderror" placeholder="Nhập thành phố">
-                            @error('location_city')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <input type="text" name="location_city" value="{{ old('location_city', $kol->location_city) }}" class="form-control" placeholder="Nhập thành phố">
                         </div>
 
                         <div class="form-group">
                             <label>Ngôn ngữ:</label>
-                            <input type="text" name="language" value="{{ old('language', $kol->language) }}" class="form-control @error('language')is-invalid @enderror" placeholder="Nhập ngôn ngữ">
-                            @error('language')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <select name="language" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
+                                class="form-control form-control-select2 @error('language')is-invalid @enderror">
+                                <option {{ old('language', $kol->language) == 'vn' ? 'selected' : null }} value="vn">
+                                    Tiếng Việt</option>
+                                <option {{ old('language', $kol->language) == 'en' ? 'selected' : null }} value="en">
+                                    Tiếng Anh</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="is_verified" {{ old('is_verified', $kol->is_verified) == '1' ? 'checked' : null }} id="is_verified" value="1">
+                                <input type="checkbox" class="custom-control-input" name="is_verified" {{ old('is_verified', $kol->is_verified,1) == '1' ? 'checked' : null }} id="is_verified" value="1">
                                 <label class="custom-control-label" for="is_verified">{{ __('Đã xác minh') }}?</label>
                             </div>
                         </div>
@@ -142,8 +134,7 @@
                         <div class="form-group">
                             <label>{{ __('Tier') }}:</label>
                             <select name="tier" data-placeholder="{{ __('Chọn tier') }}"
-                                class="form-control form-control-select2 @error('tier')is-invalid @enderror" data-fouc>
-                                <option></option>
+                                class="form-control form-control-select2">
                                 <option {{ old('tier', $kol->tier) == 'nano' ? 'selected' : null }} value="nano">
                                     {{ __('Nano') }}</option>
                                 <option {{ old('tier', $kol->tier) == 'micro' ? 'selected' : null }} value="micro">
@@ -155,26 +146,19 @@
                                 <option {{ old('tier', $kol->tier) == 'mega' ? 'selected' : null }} value="mega">
                                     {{ __('Mega') }}</option>
                             </select>
-                            @error('tier')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('Trạng thái') }}:</label>
                             <select name="status" data-placeholder="{{ __('Chọn') }}"
-                                class="form-control form-control-select2 @error('status')is-invalid @enderror" data-fouc>
-                                <option></option>
+                                class="form-control form-control-select2">
                                 <option {{ old('status', $kol->status) == 'active' ? 'selected' : null }} value="active">
-                                    {{ __('Active') }}</option>
+                                    Kích hoạt</option>
                                 <option {{ old('status', $kol->status) == 'inactive' ? 'selected' : null }} value="inactive">
-                                    {{ __('Inactive') }}</option>
+                                    Chưa kích hoạt</option>
                                 <option {{ old('status', $kol->status) == 'banned' ? 'selected' : null }} value="banned">
-                                    {{ __('Banned') }}</option>
+                                    Bị cấm</option>
                             </select>
-                            @error('status')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
                         </div>
                     </div>
                 </div>
@@ -210,7 +194,7 @@
 
                     <div class="collapse show" id="category">
                         <div class="card-body">
-                            @include('backend.kols._categories', ['categories' => $categories, 'selected' => old('categories', $kol->categories()->pluck('id')->toArray())])
+                            @include('backend.kols._categories', ['categories' => $categories, 'selected' => old('categories', $kol->categories, [])])
                         </div>
                     </div>
                 </div>
