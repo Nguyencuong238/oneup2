@@ -12,10 +12,11 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>{{ __('Nền tảng') }}:</label>
-                            <input type="text" name="platform_id" value="{{ old('platform_id') }}" class="form-control @error('platform_id')is-invalid @enderror" placeholder="Nhập nền tảng">
-                            @error('platform_id')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <select name="platform" data-placeholder="{{ __('Chọn nền tảng') }}"
+                                class="form-control form-control-select2 @error('platform')is-invalid @enderror">
+                                <option {{ old('platform') == 'tiktok' ? 'selected' : null }} value="tiktok">
+                                    TikTok</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>{{ __('Username') }}:</label>
@@ -99,26 +100,27 @@
 
                         <div class="form-group">
                             <label>Quốc gia:</label>
-                            <input type="text" name="location_country" value="{{ old('location_country') }}" class="form-control @error('location_country')is-invalid @enderror" placeholder="Nhập quốc gia">
-                            @error('location_country')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <select name="location_country" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
+                                class="form-control form-control-select2 @error('location_country')is-invalid @enderror">
+                                <option {{ old('location_country') == 'vn' ? 'selected' : null }} value="vn">
+                                    Việt Nam</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Thành phố:</label>
-                            <input type="text" name="location_city" value="{{ old('location_city') }}" class="form-control @error('location_city')is-invalid @enderror" placeholder="Nhập thành phố">
-                            @error('location_city')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <input type="text" name="location_city" value="{{ old('location_city') }}" class="form-control" placeholder="Nhập thành phố">
                         </div>
 
                         <div class="form-group">
                             <label>Ngôn ngữ:</label>
-                            <input type="text" name="language" value="{{ old('language') }}" class="form-control @error('language')is-invalid @enderror" placeholder="Nhập ngôn ngữ">
-                            @error('language')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <select name="language" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
+                                class="form-control form-control-select2 @error('language')is-invalid @enderror">
+                                <option {{ old('language') == 'vn' ? 'selected' : null }} value="vn">
+                                    Tiếng Việt</option>
+                                <option {{ old('language') == 'en' ? 'selected' : null }} value="en">
+                                    Tiếng Anh</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -145,8 +147,7 @@
                         <div class="form-group">
                             <label>{{ __('Tier') }}:</label>
                             <select name="tier" data-placeholder="{{ __('Chọn tier') }}"
-                                class="form-control form-control-select2 @error('tier')is-invalid @enderror" data-fouc>
-                                <option></option>
+                                class="form-control form-control-select2">
                                 <option {{ old('tier') == 'nano' ? 'selected' : null }} value="nano">
                                     {{ __('Nano') }}</option>
                                 <option {{ old('tier') == 'micro' ? 'selected' : null }} value="micro">
@@ -158,26 +159,19 @@
                                 <option {{ old('tier') == 'mega' ? 'selected' : null }} value="mega">
                                     {{ __('Mega') }}</option>
                             </select>
-                            @error('tier')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('Trạng thái') }}:</label>
                             <select name="status" data-placeholder="{{ __('Chọn') }}"
-                                class="form-control form-control-select2 @error('status')is-invalid @enderror" data-fouc>
-                                <option></option>
+                                class="form-control form-control-select2">
                                 <option {{ old('status') == 'active' ? 'selected' : null }} value="active">
-                                    {{ __('Active') }}</option>
+                                    Kích hoạt</option>
                                 <option {{ old('status') == 'inactive' ? 'selected' : null }} value="inactive">
-                                    {{ __('Inactive') }}</option>
+                                    Chưa kích hoạt</option>
                                 <option {{ old('status') == 'banned' ? 'selected' : null }} value="banned">
-                                    {{ __('Banned') }}</option>
+                                    Bị cấm</option>
                             </select>
-                            @error('status')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
                         </div>
                     </div>
                 </div>

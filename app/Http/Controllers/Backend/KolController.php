@@ -44,7 +44,8 @@ class KolController extends Controller
         //     abort(403);
         // }
 
-        $categories = Category::where('type', 'kols')->tree()->get()->toTree();
+        // $categories = Category::where('type', 'kols')->tree()->get()->toTree();
+        $categories = Category::where('type', 'kols')->get();
 
 
         return view('backend.kols.create', compact('categories'));
@@ -69,7 +70,7 @@ class KolController extends Controller
         ]);
 
         $kol = Kol::create([
-            'platform_id'       => request('platform_id'),
+            'platform'       => request('platform'),
             'username'          => request('username'),
             'display_name'      => request('display_name'),
             'bio'               => request('bio'),
@@ -155,7 +156,7 @@ class KolController extends Controller
         $kol = Kol::findOrFail($id);
 
         $kol->fill([
-            'platform_id'       => request('platform_id'),
+            'platform'       => request('platform'),
             'username'          => request('username'),
             'display_name'      => request('display_name'),
             'bio'               => request('bio'),

@@ -17,7 +17,7 @@ class Kol extends Model implements HasMedia
     use InteractsWithMedia;
 
      protected $fillable = [
-        'platform_id',
+        'platform',
         'username',
         'display_name',
         'bio',
