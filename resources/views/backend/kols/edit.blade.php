@@ -103,7 +103,7 @@
                             <label>Ngôn ngữ:</label>
                             <select name="language" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
                                 class="form-control form-control-select2 @error('language')is-invalid @enderror">
-                                <option {{ old('language', $kol->language) == 'vn' ? 'selected' : null }} value="vn">
+                                <option {{ old('language', $kol->language) == 'vi' ? 'selected' : null }} value="vi">
                                     Tiếng Việt</option>
                                 <option {{ old('language', $kol->language) == 'en' ? 'selected' : null }} value="en">
                                     Tiếng Anh</option>

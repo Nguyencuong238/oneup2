@@ -694,9 +694,9 @@
                         <div class="filter-group">
                             @foreach ($countries as $country)
                             <div class="filter-checkbox">
-                                <input type="checkbox" id="loc-vn" name="location" value="{{$country}}"
-                                    @if (request()->location == $country) checked @endif>
-                                <label for="loc-vn">{{$country}}</label>
+                                <input type="checkbox" id="loc-vn" name="location" value="{{$country->code}}"
+                                    @if (request()->location == $country->code) checked @endif>
+                                <label for="loc-vn">{{$country->name}}</label>
                                 {{-- <span class="filter-count">567</span> --}}
                             </div>
                             @endforeach

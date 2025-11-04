@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Category;
+use App\Models\Country;
 use App\Models\Kol;
 use App\Models\KolContent;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class BrandController extends Controller
 
     public function kolExplorer()
     {
-        $kols = Kol::where('is_verified', 1)->where('status', 'active')
+        $kols = Kol::where('is_verified', 1)
+            ->where('status', 'active')
             ->when(request('categories'), function ($q) {
                 $q->whereHas('categories', function ($sub) {
                     $sub->whereIn('id', request('categories'));
@@ -47,10 +49,12 @@ class BrandController extends Controller
             ->paginate(12);
 
         $categories = Category::where('type', 'kols')->get();
-        $countries = Kol::select('location_country')
+        $countryCodes = Kol::select('location_country')
             ->distinct()
             ->whereNotNull('location_country')
             ->pluck('location_country');
+
+        $countries = Country::whereIn('code', $countryCodes)->get();
 
         return view('brand.kol_explorer', compact('kols', 'categories', 'countries'));
     }

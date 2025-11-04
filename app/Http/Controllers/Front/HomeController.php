@@ -89,7 +89,7 @@ class HomeController extends Controller
 
     public function kols(Request $req)
     {
-        $query = Kol::query();
+        $query = Kol::where('status', 'active')->where('is_verified', 1);
 
         // 🩵 Lọc KOL yêu thích
         if ($req->filled('favorite') && $req->favorite == '1' && auth()->check()) {
@@ -113,6 +113,22 @@ class HomeController extends Controller
             $query->whereHas('categories', function ($q) use ($req) {
                 $q->where('slug', $req->category);
             });
+        }
+        
+        if ($req->filled('rank') && $req->rank !== 'all') {
+            $query->where('rank', $req->rank);
+        }
+
+        if ($req->filled('language') && $req->language !== 'all') {
+            $query->where('language', $req->language);
+        }
+
+        if ($req->filled('location_city') && $req->location_city !== 'all') {
+            $query->where('location_city', $req->location_city);
+        }
+
+        if ($req->filled('engagement') && $req->engagement !== 'all') {
+            $query->where('engagement', '>=', $req->engagement);
         }
 
         // ... (phần còn lại không thay đổi)
