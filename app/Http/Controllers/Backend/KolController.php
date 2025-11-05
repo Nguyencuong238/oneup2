@@ -44,9 +44,7 @@ class KolController extends Controller
         //     abort(403);
         // }
 
-        // $categories = Category::where('type', 'kols')->tree()->get()->toTree();
-        $categories = Category::where('type', 'kols')->get();
-
+        $categories = Category::where('type', 'kols')->tree()->get()->toTree();
 
         return view('backend.kols.create', compact('categories'));
     }
@@ -66,7 +64,7 @@ class KolController extends Controller
         $request->validate([
             'username'          => 'required|string|max:255|unique:kols,username',
             'display_name'      => 'required|string|max:255',
-            
+
         ]);
 
         $kol = Kol::create([
@@ -77,16 +75,16 @@ class KolController extends Controller
             'location_country'  => request('location_country'),
             'location_city'     => request('location_city'),
             'language'          => request('language'),
-            'is_verified'       => request('is_verified'),
-            'is_featured'       => request('is_featured'),
-            'blue_tick'       => request('blue_tick'),
-            'status'            => request('status'),
+            'is_verified'       => request('is_verified') ?? 0,
+            'is_featured'       => request('is_featured') ?? 0,
+            'blue_tick'       => request('blue_tick') ?? 0,
+            'status'            => request('status') ?? 'active',
             'tier'              => request('tier'),
-            'followers'         => request('followers'),
-            'trust_score'       => request('trust_score'),
-            'engagement'        => request('engagement'),
-            'price_tiktok'      => request('price_tiktok'),
-            'price_campaign'    => request('price_campaign')
+            'followers'         => request('followers') ?? 0,
+            'trust_score'       => request('trust_score') - 0,
+            'engagement'        => request('engagement') - 0,
+            'price_tiktok'      => request('price_tiktok') - 0,
+            'price_campaign'    => request('price_campaign') - 0
         ]);
 
         $kol
@@ -163,16 +161,16 @@ class KolController extends Controller
             'location_country'  => request('location_country'),
             'location_city'     => request('location_city'),
             'language'          => request('language'),
-            'is_verified'       => request('is_verified'),
-            'is_featured'       => request('is_featured'),
-            'blue_tick'         => request('blue_tick'),
-            'status'            => request('status'),
+            'is_verified'       => request('is_verified') ?? 0,
+            'is_featured'       => request('is_featured') ?? 0,
+            'blue_tick'       => request('blue_tick') ?? 0,
+            'status'            => request('status') ?? 'active',
             'tier'              => request('tier'),
-            'followers'         => request('followers'),
-            'trust_score'       => request('trust_score'),
-            'engagement'        => request('engagement'),
-            'price_tiktok'      => request('price_tiktok'),
-            'price_campaign'    => request('price_campaign')
+            'followers'         => request('followers') ?? 0,
+            'trust_score'       => request('trust_score') - 0,
+            'engagement'        => request('engagement') - 0,
+            'price_tiktok'      => request('price_tiktok') - 0,
+            'price_campaign'    => request('price_campaign') - 0
         ])->save();
 
         $kol

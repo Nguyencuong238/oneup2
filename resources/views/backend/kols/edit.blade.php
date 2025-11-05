@@ -194,7 +194,7 @@
 
                     <div class="collapse show" id="category">
                         <div class="card-body">
-                            @include('backend.kols._categories', ['categories' => $categories, 'selected' => old('categories', $kol->categories, [])])
+                            @include('backend.kols._categories', ['categories' => $categories, 'selected' => old('categories', $kol->categories()->pluck('id')->toArray())])
                         </div>
                     </div>
                 </div>

@@ -100,10 +100,11 @@
 
                         <div class="form-group">
                             <label>Quốc gia:</label>
-                            <select name="location_country" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
-                                class="form-control form-control-select2 @error('location_country')is-invalid @enderror">
+                            <select name="location_country" data-placeholder="{{ __('Chọn quốc gia') }}"
+                                class="form-control form-control-select2">
                                 <option {{ old('location_country') == 'vn' ? 'selected' : null }} value="vn">
-                                    Việt Nam</option>
+                                    Việt Nam
+                                </option>
                             </select>
                         </div>
 
@@ -115,11 +116,13 @@
                         <div class="form-group">
                             <label>Ngôn ngữ:</label>
                             <select name="language" data-placeholder="{{ __('Chọn ngôn ngữ') }}"
-                                class="form-control form-control-select2 @error('language')is-invalid @enderror">
+                                class="form-control form-control-select2">
                                 <option {{ old('language') == 'vi' ? 'selected' : null }} value="vi">
-                                    Tiếng Việt</option>
+                                    Tiếng Việt
+                                </option>
                                 <option {{ old('language') == 'en' ? 'selected' : null }} value="en">
-                                    Tiếng Anh</option>
+                                    Tiếng Anh
+                                </option>
                             </select>
                         </div>
 

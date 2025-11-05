@@ -16,23 +16,10 @@ class Kol extends Model implements HasMedia
     use HasCategories;
     use InteractsWithMedia;
 
-     protected $fillable = [
-        'platform',
-        'username',
-        'display_name',
-        'bio',
-        'location_country',
-        'location_city',
-        'language',
-        'is_verified',
-        'tier',
-        'status',
-        'engagement',
-        'followers',
-        'trust_score',
-        'price_tiktok',
-        'price_campaign',
-    ];
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
+    } 
 
     public function getInitialsAttribute()
     {
