@@ -42,7 +42,7 @@
         .topbar-right {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 10px;
         }
 
         .topbar-btn {
@@ -117,7 +117,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
         }
 
         .stat-title {
@@ -184,7 +184,6 @@
             cursor: pointer;
             transition: all 0.2s;
             border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
         }
 
         .campaign-tab:hover {
@@ -592,6 +591,64 @@
             .search-input {
                 width: 180px;
             }
+
+            .campaign-tabs {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+                gap: 1rem;
+                padding: 0 0.75rem;
+                white-space: nowrap;
+            }
+            /* thinner / auto-hide scrollbar for campaign-tabs */
+            .campaign-tabs {
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin; /* Firefox */
+                scrollbar-color: rgba(0,0,0,0.12) transparent;
+            }
+
+            /* WebKit browsers */
+            .campaign-tabs::-webkit-scrollbar {
+                height: 6px;
+            }
+            .campaign-tabs::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .campaign-tabs::-webkit-scrollbar-thumb {
+                background: rgba(0,0,0,0.12);
+                border-radius: 999px;
+                transition: opacity .25s, background .25s;
+                opacity: 0; /* hidden when not interacting */
+            }
+
+            /* Reveal scrollbar when user hovers, focuses, or drags */
+            .campaign-tabs:hover::-webkit-scrollbar-thumb,
+            .campaign-tabs:focus-within::-webkit-scrollbar-thumb,
+            .campaign-tabs:active::-webkit-scrollbar-thumb {
+                opacity: 1;
+            }
+
+            /* Firefox: make thumb appear only on hover */
+            .campaign-tabs:not(:hover) {
+                scrollbar-color: transparent transparent;
+            }
+            .campaign-tabs:hover {
+                scrollbar-color: rgba(0,0,0,0.12) transparent;
+            }
+            .campaign-tab {
+                white-space: nowrap;
+            }
+
+            /* Optional: nicer thin scrollbar on webkit */
+            .campaign-tabs::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .campaign-tabs::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.12);
+                border-radius: 3px;
+            }
         }
     </style>
 @endsection
@@ -603,6 +660,7 @@
         <div class="topbar">
             <div class="topbar-left">
                 <h1 class="page-title">Quản lý chiến dịch</h1>
+
             </div>
 
             <div class="topbar-right">
@@ -621,14 +679,11 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                {{-- <a href="{{ route('creator.campaign.planner') }}" class="btn btn-primary btn-small">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    Chiến dịch mới
-                </a> --}}
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
 
@@ -714,7 +769,8 @@
                                     </div>
                                 </div>
                                 <div class="campaign-kols">
-                                    <span class="kol-count">{{ $campaign->kols->count() }} Nhà sáng tạo nội dung tham gia</span>
+                                    <span class="kol-count">{{ $campaign->kols->count() }} Nhà sáng tạo nội dung tham
+                                        gia</span>
                                 </div>
                             </div>
                             <div class="campaign-footer">

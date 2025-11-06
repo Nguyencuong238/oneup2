@@ -19,14 +19,16 @@
         .settings-header {
             background: white;
             border-bottom: 1px solid var(--gray-200);
-            padding: 2rem;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
         }
 
         .settings-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
         }
 
         .settings-subtitle {
@@ -639,7 +641,11 @@
         <!-- Settings Header -->
         <div class="settings-header">
             <h1 class="settings-title">Cài đặt tài khoản</h1>
-            <p class="settings-subtitle">Quản lý cài đặt và tùy chọn tài khoản của bạn</p>
+            <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
 
         <!-- Settings Layout -->

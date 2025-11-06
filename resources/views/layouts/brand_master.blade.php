@@ -301,7 +301,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <div class="user-profile" onclick="this.parentElement.classList.toggle('active')">
+                <div class="user-profile" onclick="$(this).parent().toggleClass('active');">
                     @php
                         $auth = auth()->user();
                         $name = $auth->name;

@@ -72,6 +72,7 @@ class KolController extends Controller
             'username'          => request('username'),
             'display_name'      => request('display_name'),
             'bio'               => request('bio'),
+            'content_type'      => request('content_type'),
             'location_country'  => request('location_country'),
             'location_city'     => request('location_city'),
             'language'          => request('language'),
@@ -154,16 +155,17 @@ class KolController extends Controller
         $kol = Kol::findOrFail($id);
 
         $kol->fill([
-            'platform'       => request('platform'),
+            'platform'          => request('platform'),
             'username'          => request('username'),
             'display_name'      => request('display_name'),
             'bio'               => request('bio'),
+            'content_type'      => request('content_type'),
             'location_country'  => request('location_country'),
             'location_city'     => request('location_city'),
             'language'          => request('language'),
             'is_verified'       => request('is_verified') ?? 0,
             'is_featured'       => request('is_featured') ?? 0,
-            'blue_tick'       => request('blue_tick') ?? 0,
+            'blue_tick'         => request('blue_tick') ?? 0,
             'status'            => request('status') ?? 'active',
             'tier'              => request('tier'),
             'followers'         => request('followers') ?? 0,
