@@ -708,6 +708,117 @@
         gap: 4px;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
     }
+
+    .tab-content.hidden { display: none; }
+    .tab.active { border-bottom: 2px solid var(--primary); color: var(--primary); }
+
+    .service-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .service-table th, .service-table td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+    }
+    .service-table th {
+        background: #f9f9f9;
+        text-align: left;
+    }
+    .btn-edit {
+        background: #3b82f6;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .btn-delete {
+        background: #ef4444;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+
+    .btn-select-service {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 14px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+    }
+    .btn-select-service:hover {
+        background-color: #1e40af;
+    }
+
+    /* Responsive: nút sẽ xuống hàng dưới */
+    @media (max-width: 768px) {
+        .btn-select-service {
+            width: 100%;
+            text-align: center;
+            margin-top: 6px;
+        }
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+    }
+    .modal-overlay.hidden {
+        display: none;
+    }
+    .modal-box {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    .modal-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #222;
+    }
+    .modal-box textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        resize: none;
+        font-size: 14px;
+    }
+    .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 15px;
+        gap: 10px;
+    }
+    .btn-cancel {
+        background: #e5e7eb;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .btn-submit {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .btn-submit:hover {
+        background: #1e40af;
+    }
+
     </style>
 
 @endsection
@@ -834,12 +945,10 @@
         <!-- Tabs -->
         <div class="profile-tabs">
             <div class="tabs-container">
-                <a href="#overview" class="tab active">Tổng quan</a>
-                <a href="#audience" class="tab">Khán giả</a>
-                <a href="#content" class="tab">Nội dung</a>
-                <a href="#performance" class="tab">Hiệu suất</a>
-                <a href="#pricing" class="tab">Bảng giá</a>
-                <a href="#history" class="tab">Lịch sử chiến dịch</a>
+                <a href="#overview" class="tab active" onclick="showTab('overview')">Tổng quan</a>
+                <a href="#content" class="tab" onclick="showTab('content')">Nội dung</a>
+                <a href="#pricing" class="tab" onclick="showTab('pricing')">Bảng giá dịch vụ</a>
+                <a href="#history" class="tab" onclick="showTab('history')">Lịch sử chiến dịch</a>
             </div>
         </div>
 
@@ -847,9 +956,9 @@
         <div class="profile-content">
             <div class="content-grid">
                 <!-- Left Column -->
-                <div>
+                <div id="overview" class="tab-content active">
                     <!-- Engagement Metrics -->
-                    <div class="metric-card">
+                    <div  class="metric-card">
                             <div class="metric-header">
                                 <h2 class="metric-title">Chỉ số Tương tác</h2>
                                 <span class="metric-period">30 ngày gần đây</span>
@@ -905,93 +1014,81 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Audience Demographics -->
-                    {{-- <div class="metric-card" style="margin-top: 2rem;">
+                <!-- Bảng giá dịch vụ -->
+                <div id="pricing" class="tab-content hidden">
+                    <div class="metric-card">
                         <div class="metric-header">
-                            <h2 class="metric-title">Nhân khẩu học của khán giả</h2>
+                            <h2 class="metric-title">Bảng giá dịch vụ</h2>
+                            <p class="metric-subtitle" style="color: #666; font-size: 14px;">
+                                Các dịch vụ mà bạn đang cung cấp
+                            </p>
                         </div>
 
-                        <div class="demo-section">
-                            <div class="demo-title">Giới tính</div>
-                            <div class="demo-bars">
-                                <div class="demo-bar">
-                                    <span class="demo-label">Nữ</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 72%;">72%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">Nam</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 28%; background: var(--gray-600);">28%</div>
-                                    </div>
-                                </div>
+                        <div class="table-wrapper">
+                            <table class="service-table">
+                                <thead>
+                                    <tr>
+                                        <th style="color:black">Hình ảnh</th>
+                                        <th style="color:black">Mô tả</th>
+                                        <th style="color:black">Giá (VNĐ)</th>
+                                        <th style="color:black">Ngày tạo</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($services as $service)
+                                        <tr>
+                                            <td style="width: 100px;">
+                                                @if ($service->image)
+                                                    <img src="{{ $service->image }}" alt="Ảnh dịch vụ" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                                                @else
+                                                    <span style="color: #888;">(Không có ảnh)</span>
+                                                @endif
+                                            </td>
+                                            <td style="color:black">{{ $service->description }}</td>
+                                            <td  style="color:black">{{ number_format($service->price) }}₫</td>
+                                            <td style="color:black">{{ $service->created_at->format('d/m/Y') }}</td>
+                                            <td>
+                                                @if(in_array($service->id, $bookedServiceIds))
+                                                    <button class="btn-selected" disabled style="width: 70px; height: 40px; border-radius: 5px">Đã chọn</button>
+                                                @else
+                                                    <button class="btn-select-service" data-id="{{ $service->id }}">
+                                                        Chọn dịch vụ
+                                                    </button>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" style="text-align: center; padding: 20px; color: black;">
+                                                Chưa có dịch vụ nào được thêm
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal đặt dịch vụ -->
+                <div id="serviceModal" class="modal-overlay hidden">
+                    <div class="modal-box">
+                        <h3 class="modal-title">Bạn có muốn thêm yêu cầu gì không?</h3>
+                        <form id="serviceForm">
+                            <textarea name="note" placeholder="Nhập yêu cầu thêm (nếu có)..." rows="4"></textarea>
+                            <input type="hidden" name="service_id" id="modalServiceId">
+                            <div class="modal-actions">
+                                <button type="button" class="btn-cancel" id="closeModal">Hủy</button>
+                                <button type="submit" class="btn-submit">Gửi yêu cầu</button>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
 
-                        <div class="demo-section">
-                            <div class="demo-title">Độ tuổi trung bình</div>
-                            <div class="demo-bars">
-                                <div class="demo-bar">
-                                    <span class="demo-label">13-17</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 15%;">15%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">18-24</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 45%;">45%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">25-34</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 28%;">28%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">35+</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 12%;">12%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="demo-section">
-                            <div class="demo-title">Khu vực hàng đầu</div>
-                            <div class="demo-bars">
-                                <div class="demo-bar">
-                                    <span class="demo-label">TP HCM</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 42%;">42%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">Hanoi</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 28%;">28%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">Da Nang</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 15%;">15%</div>
-                                    </div>
-                                </div>
-                                <div class="demo-bar">
-                                    <span class="demo-label">khác</span>
-                                    <div class="demo-progress">
-                                        <div class="demo-fill" style="width: 15%;">15%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-
-                    <!-- Recent Content -->
+                 <div id="content" class="tab-content hidden">
                     <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                             <h2 class="metric-title" style="font-weight: bold; font-size: 20px;">Nội dung gần đây</h2>
@@ -1026,7 +1123,62 @@
                             @endforeach
                         </div>
                     </div>
+                </div>
 
+                <div id="history" class="tab-content hidden">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h2 class="metric-title">Lịch sử chiến dịch</h2>
+                            <p class="metric-subtitle" style="color: #666; font-size: 14px;">
+                                Các chiến dịch mà bạn đã tham gia
+                            </p>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="service-table">
+                                <thead>
+                                    <tr>
+                                        <th style="color:black">Tên chiến dịch</th>
+                                        <th style="color:black">Trạng thái</th>
+                                        <th style="color:black">Số tiền hợp đồng</th>
+                                        <th style="color:black">Thưởng hiệu suất</th>
+                                        <th style="color:black">Ngày tham gia</th>
+                                        <th style="color:black">Ngày hoàn thành</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($campaigns as $item)
+                                        <tr>
+                                            <td style="color:black">{{ $item->campaign_name }}</td>
+                                            <td>
+                                                @switch($item->status)
+                                                    @case('pending')
+                                                        <span class="badge badge-warning">Chờ duyệt</span>
+                                                        @break
+                                                    @case('approved')
+                                                        <span class="badge badge-success">Đã chấp nhận</span>
+                                                        @break
+                                                    @case('rejected')
+                                                        <span class="badge badge-danger">Từ chối</span>
+                                                        @break
+                                                    @default
+                                                        <span class="badge badge-secondary" style="color: black">{{ ucfirst($item->status) }}</span>
+                                                @endswitch
+                                            </td>
+                                            <td style="color:black">{{ number_format($item->contracted_amount, 0, ',', '.') }} ₫</td>
+                                            <td style="color:black">{{ number_format($item->performance_bonus, 0, ',', '.') }} ₫</td>
+                                            <td style="color:black">{{ $item->added_at ? \Carbon\Carbon::parse($item->added_at)->format('d/m/Y') : '-' }}</td>
+                                            <td style="color:black">{{ $item->completed_at ? \Carbon\Carbon::parse($item->completed_at)->format('d/m/Y') : '-' }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="8" style="text-align:center; color:black;">Chưa có chiến dịch nào</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Right Column -->
@@ -1255,6 +1407,50 @@
                     const action = this.textContent.trim();
                     console.log(`Đã nhấn hành động: ${action}`);
                 });
+            });
+        });
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            document.querySelector(`a[href="#${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.remove('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('serviceModal');
+            const closeModal = document.getElementById('closeModal');
+            const form = document.getElementById('serviceForm');
+
+            document.querySelectorAll('.btn-select-service').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    document.getElementById('modalServiceId').value = id;
+                    modal.classList.remove('hidden');
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+
+                fetch('{{ route('creator.book.service') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.reload();
+                })
+                .catch(() => alert('Có lỗi xảy ra, vui lòng thử lại.'));
             });
         });
     </script>

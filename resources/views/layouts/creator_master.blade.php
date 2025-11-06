@@ -152,7 +152,6 @@
         .user-profile:hover {
             background: #131415;
         }
-
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -209,6 +208,26 @@
         a:focus {
             outline: none;
         }
+
+        @media (max-width: 1024px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+        }
     </style>
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -246,6 +265,24 @@
                     @if ($pendingCount = auth()->user()->kol->campaigns()->wherePivot('status', 'invited')->count())
                         <span class="nav-badge">{{ $pendingCount }}</span>
                     @endif
+                </a>
+
+                <a href="{{ route('creator.services.index') }}"
+                    class="nav-item @if (request()->routeIs('creator.services.*')) active @endif">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8c1.1 0 2 .9 2 2v6m0 0a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h4a2 2 0 012 2zm8 0h-6" />
+                    </svg>
+                    <span>Dịch vụ</span>
+                </a>
+
+                <a href="{{ route('creator.bookings.index') }}"
+                    class="nav-item @if (request()->routeIs('creator.bookings.*')) active @endif">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 7h18M3 12h18M3 17h18" />
+                    </svg>
+                    <span>Booking</span>
                 </a>
 
                 {{-- <a href="{{ route('creator.analytic') }}" class="nav-item @if (request()->routeIs('creator.analytic')) active @endif">

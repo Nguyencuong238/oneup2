@@ -98,4 +98,9 @@ class Kol extends Model implements HasMedia
         return $this->favorites()->where('user_id', $userId)->exists();
     }
 
+    public function services()
+    {
+        return $this->hasMany(KolService::class, 'kol_id');
+    }
+
 }

@@ -7,7 +7,11 @@ use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Kol;
+use App\Models\KolService;
+use App\Models\KolBooking;
 use App\Models\KolContent;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -311,7 +315,7 @@ class BrandController extends Controller
             // remove old avatar if exists
             if (!empty($user->avatar)) {
                 $oldPath = preg_replace('#^/storage/#', '', $user->avatar);
-                \Storage::disk('public')->delete($oldPath);
+                Storage::disk('public')->delete($oldPath);
             }
 
             // store in storage/app/public/avatars
@@ -343,6 +347,25 @@ class BrandController extends Controller
             ->firstOrFail();
 
         $kolId = $kol->id;
+
+        $services = KolService::where('kol_id', $kolId)->get();
+
+        $campaigns = DB::table('campaign_kols')
+        ->join('campaigns', 'campaigns.id', '=', 'campaign_kols.campaign_id')
+        ->select(
+            'campaign_kols.*',
+            'campaigns.name as campaign_name'
+        )
+        ->where('campaign_kols.kol_id', $kolId)
+        ->orderByDesc('campaign_kols.added_at')
+        ->paginate(10);
+
+        $bookedServiceIds = [];
+        if (auth()->check()) {
+            $bookedServiceIds = KolBooking::where('user_id', auth()->id())
+                ->pluck('service_id')
+                ->toArray();
+        }
 
         $totalPosts = KolContent::where('kol_id', $kolId)->count();
         $totalViews = 0;
@@ -432,7 +455,10 @@ class BrandController extends Controller
             'engagementQuality',
             'authenticComments',
             'growthStability',
-            'contentQuality'
+            'contentQuality',
+            'services',
+            'campaigns',
+            'bookedServiceIds'
         ));
     }
 
@@ -482,4 +508,25 @@ class BrandController extends Controller
 
         return view('brand.leaderboard', compact('topKols', 'categories', 'totalKols', 'topCategory', 'avgEngagement', 'totalTargetReach'));
     }
+
+    public function bookService(Request $request)
+    {
+        $request->validate([
+            'service_id' => 'required|exists:kol_services,id',
+            'note' => 'nullable|string|max:500',
+        ]);
+
+        $service = KolService::findOrFail($request->service_id);
+
+        KolBooking::create([
+            'user_id' => auth()->id(),
+            'kol_id' => $service->kol_id,
+            'service_id' => $service->id,
+            'note' => $request->note,
+            'status' => 'pending',
+        ]); 
+
+        return response()->json(['success' => true, 'message' => 'Đặt dịch vụ thành công!']);
+    }
+
 }

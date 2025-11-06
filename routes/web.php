@@ -78,6 +78,7 @@ Route::prefix('brand/')->middleware(['auth', 'verified', IsBrand::class])->group
 	Route::get('profile/{username}', [BrandController::class, 'profile'])->name('brand.profile');
 	Route::get('leaderboard', [BrandController::class, 'leaderboard'])->name('brand.leaderboard');
 	Route::post('campaign-status', [BrandController::class, 'changeStatus'])->name('brand.campaign.changeStatus');
+	Route::post('/book-service', [BrandController::class, 'bookService'])->name('creator.book.service');
 });
 
 Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->group(function () {
@@ -89,7 +90,14 @@ Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->grou
 	Route::get('setting', [CreatorController::class, 'setting'])->name('creator.setting');
 	Route::post('setting-update', [BrandController::class, 'saveSettings'])->name('creator.setting.update');
 	Route::get('profile/{username}', [CreatorController::class, 'profile'])->name('creator.profile');
+	Route::get('/services', [CreatorController::class, 'services'])->name('creator.services.index');
+    Route::post('/services', [CreatorController::class, 'storeService'])->name('creator.services.store');
+    Route::post('/services/{id}/update', [CreatorController::class, 'updateService'])->name('creator.services.update');
+    Route::delete('/services/{id}', [CreatorController::class, 'deleteService'])->name('creator.services.delete');
+	Route::get('/bookings', [CreatorController::class, 'creatorBooking'])->name('creator.bookings.index');
+	Route::patch('/bookings/{id}', [CreatorController::class, 'updateBooking'])->name('creator.bookings.update');
 });
+
 Route::prefix('backend')
 	->middleware(['auth', 'verified', IsAdmin::class])
 	->group(function () {

@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Front\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Category;
+use App\Models\KolService;
 use App\Models\Kol;
+use App\Models\KolBooking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CreatorController extends Controller
 {
@@ -195,7 +198,7 @@ class CreatorController extends Controller
             // remove old avatar if exists
             if (!empty($user->avatar)) {
                 $oldPath = preg_replace('#^/storage/#', '', $user->avatar);
-                \Storage::disk('public')->delete($oldPath);
+                Storage::disk('public')->delete($oldPath);
             }
 
             // store in storage/app/public/avatars
@@ -218,4 +221,118 @@ class CreatorController extends Controller
 
         return view('creator.kol_profile', compact('kol'));
     }
+
+    public function services()
+    {
+        $kol = Kol::where('id', auth()->user()->kol_id)->firstOrFail();
+        $services = $kol->services()->latest()->get();
+
+        return view('creator.services.index', compact('kol', 'services'));
+    }
+
+    public function storeService(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        $kol = Kol::where('id', auth()->user()->kol_id)->firstOrFail();
+        $data = $request->only(['name', 'price', 'description']);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('kol_services', 'public');
+            $data['image'] = '/storage/' . $path;
+        }
+
+        $kol->services()->create($data);
+
+        return redirect()->back()->with('success', 'Đã thêm dịch vụ thành công!');
+    }
+
+    public function updateService(Request $request, $id)
+    {
+        $kol = Kol::where('id', auth()->user()->kol_id)->firstOrFail();
+        $service = $kol->services()->findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        $data = $request->only(['name', 'price', 'description']);
+
+        if ($request->hasFile('image')) {
+            // xóa ảnh cũ nếu có
+            if ($service->image) {
+                $oldPath = str_replace('/storage/', '', $service->image);
+                Storage::disk('public')->delete($oldPath);
+            }
+            $path = $request->file('image')->store('kol_services', 'public');
+            $data['image'] = '/storage/' . $path;
+        }
+
+        $service->update($data);
+
+        return redirect()->back()->with('success', 'Cập nhật dịch vụ thành công!');
+    }
+
+    public function deleteService($id)
+    {
+        $kol = Kol::where('id', auth()->user()->kol_id)->firstOrFail();
+        $service = $kol->services()->findOrFail($id);
+
+        if ($service->image) {
+            $oldPath = str_replace('/storage/', '', $service->image);
+            Storage::disk('public')->delete($oldPath);
+        }
+
+        $service->delete();
+
+        return redirect()->back()->with('success', 'Đã xóa dịch vụ.');
+    }
+
+    public function creatorBooking()
+    {
+        $kolId = auth()->user()->kol?->id;
+
+        if (!$kolId) {
+            abort(403, 'Bạn không phải là KOL.');
+        }
+
+        $bookings = KolBooking::with(['user', 'service'])
+            ->where('kol_id', $kolId)
+            ->latest()
+            ->paginate(10);
+
+        return view('creator.booking.index', compact('bookings'));
+    }
+
+    public function updateBooking(Request $request, $id)
+    {
+        $kolId = auth()->user()->kol?->id;
+
+        if (!$kolId) {
+            abort(403, 'Bạn không phải là KOL.');
+        }
+
+        $request->validate([
+            'status' => 'required|in:approved,rejected',
+        ]);
+
+        $booking = KolBooking::where('kol_id', $kolId)->findOrFail($id);
+
+        $booking->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()
+            ->route('creator.bookings.index')
+            ->with('success', 'Cập nhật trạng thái thành công!');
+    }
+
 }
