@@ -30,7 +30,8 @@
         .topbar-left {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .page-title {
@@ -97,6 +98,8 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .campaign-title-section {
@@ -112,6 +115,7 @@
 
         .campaign-meta {
             display: flex;
+            flex-wrap: wrap;
             gap: 1.5rem;
             color: var(--gray-600);
             font-size: 14px;
@@ -266,9 +270,11 @@
             gap: 2rem;
             padding: 0 1.5rem;
             border-bottom: 1px solid var(--gray-200);
+            overflow-x: auto;
         }
 
         .content-tab {
+            white-space: nowrap;
             padding: 1rem 0;
             position: relative;
             color: var(--gray-600);
@@ -290,6 +296,7 @@
 
         .tab-content {
             padding: 1.5rem;
+            overflow: auto;
         }
 
         /* KOL Performance Table */
@@ -544,6 +551,11 @@
                 grid-template-columns: 1fr;
             }
         }
+        @media (max-width: 480px) {
+            .campaign-header-info {
+                flex-direction: column-reverse;
+            }
+        }
     </style>
 @endsection
 
@@ -568,17 +580,20 @@
             </div>
 
             <div class="topbar-right">
-                <button class="btn btn-secondary btn-small">
+                {{-- <button class="btn btn-secondary btn-small">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
                     Xuất báo cáo
-                </button>
-                {{-- <button class="btn btn-primary btn-small">
-                    Chỉnh sửa chiến dịch
                 </button> --}}
+
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
 
@@ -778,9 +793,9 @@
             <!-- Content Tabs -->
             <div class="content-tabs-container">
                 <div class="content-tabs">
-                    <div class="content-tab active" data-tab="kols">Hiệu suất nhà sáng tạo nội dung</div>
-                    <div class="content-tab" data-tab="content">Luồng nội dung</div>
-                    <div class="content-tab" data-tab="timeline">Dòng thời gian</div>
+                    <div class="content-tab active" data-tab="kols">Hiệu suất</div>
+                    <div class="content-tab" data-tab="content">Nội dung</div>
+                    <div class="content-tab" data-tab="timeline">Thời gian</div>
                     <div class="content-tab" data-tab="analytics">Phân tích</div>
                 </div>
 

@@ -7,8 +7,6 @@
 
 @section('css')
     <style>
-        
-
         /* Main Content */
         .main-content {
             margin-left: 260px;
@@ -185,6 +183,8 @@
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid var(--gray-200);
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .results-info {
@@ -550,6 +550,75 @@
             margin-left: 0.5rem;
         }
 
+        .filter-kols {
+            display: none;
+            width: 30px;
+            border-radius: 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 1;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #F0F0F0;
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .dashboard-layout {
@@ -576,6 +645,18 @@
             .filter-sidebar {
                 position: static;
             }
+
+            .pagination {
+                flex-wrap: wrap;
+            }
+
+            .filter-kols {
+                display: block;
+            }
+
+            .mobile-hidden {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
@@ -593,6 +674,16 @@
 
             .page-title {
                 font-size: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .view-controls {
+                width: 100%;
+            }
+
+            .sort-dropdown {
+                flex: 1
             }
         }
     </style>
@@ -623,6 +714,12 @@
                     <span class="notification-dot"></span>
                 </button>
 
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
                 {{-- <button class="btn btn-primary btn-small" onclick="openCompareDrawer()">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path
@@ -637,7 +734,7 @@
         <div class="explorer-content">
             <div class="explorer-container">
                 <!-- Filter Sidebar -->
-                <form class="filter-sidebar" id="filter-form">
+                <form class="filter-sidebar mobile-hidden" id="filter-form">
                     <div class="filter-section">
                         <h3 class="filter-title">Danh mục</h3>
                         <div class="filter-group">
@@ -693,12 +790,12 @@
                         <h3 class="filter-title">Quốc gia</h3>
                         <div class="filter-group">
                             @foreach ($countries as $country)
-                            <div class="filter-checkbox">
-                                <input type="checkbox" id="loc-vn" name="location" value="{{$country->code}}"
-                                    @if (request()->location == $country->code) checked @endif>
-                                <label for="loc-vn">{{$country->name}}</label>
-                                {{-- <span class="filter-count">567</span> --}}
-                            </div>
+                                <div class="filter-checkbox">
+                                    <input type="checkbox" id="loc-{{ $country->code }}" name="location" value="{{ $country->code }}"
+                                        @if (request()->location == $country->code) checked @endif>
+                                    <label for="loc-{{ $country->code }}">{{ $country->name }}</label>
+                                    {{-- <span class="filter-count">567</span> --}}
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -730,7 +827,7 @@
                 <div class="kol-list-container">
                     <div class="list-header">
                         <div class="results-info">
-                            Tổng số: <span class="results-count">{{$kols->total()}}</span> Nhà sáng tạo nội dung
+                            Tổng số: <span class="results-count">{{ $kols->total() }}</span> Nhà sáng tạo nội dung
                         </div>
 
                         <div class="view-controls">
@@ -741,7 +838,10 @@
                                 <option value="trust_score">Điểm uy tín</option>
                             </select>
 
-                            <div class="view-toggle">
+                            <img src="{{ asset('assets/filter.svg') }}" alt="Filter Banner" class="filter-kols"
+                                onclick="openContactModal()">
+
+                            <div class="view-toggle d-none">
                                 <button class="view-btn active" onclick="switchView('grid')">
                                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                         <path
@@ -770,8 +870,9 @@
                                     <img class="kol-avatar" src="{{ $kol->getFirstMediaUrl('media') }}">
                                     <div class="kol-info">
                                         <div class="kol-name">
-                                            <a href="{{ route('brand.profile', $kol->username) }}" class="color-dark-blue">
-                                            {{ $kol->display_name }}
+                                            <a href="{{ route('brand.profile', $kol->username) }}"
+                                                class="color-dark-blue">
+                                                {{ $kol->display_name }}
                                             </a>
                                         </div>
                                         <div class="kol-handle">{{ '@' . trim($kol->username, '@') }}</div>
@@ -837,7 +938,7 @@
                     </div>
 
                     <!-- Table View (Hidden by default) -->
-                    <div class="kol-table-container" id="kolTable" style="display: none;">
+                    <div class="kol-table-container d-none" id="kolTable" style="display: none;">
                         <table class="kol-table">
                             <thead>
                                 <tr>
@@ -904,6 +1005,102 @@
                 <button class="btn btn-primary btn-small">Bắt đầu so sánh</button>
                 <button class="btn btn-secondary btn-small" onclick="closeCompareDrawer()">Đóng</button>
             </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-overlay" onclick="closeContactModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header p-20">
+                <h3 class="mb-2 color-dark-blue">Lọc</h3>
+                <button class="modal-close" onclick="closeContactModal()">×</button>
+            </div>
+            <form class="filter-sidebar">
+                <div class="filter-section">
+                    <h3 class="filter-title">Danh mục</h3>
+                    <div class="filter-group">
+                        @foreach ($categories as $c)
+                            <div class="filter-checkbox">
+                                <input type="checkbox" name="categories[]" id="category-{{ $c->id }}"
+                                    value="{{ $c->id }}" @if (in_array($c->id, request('categories', []))) checked @endif>
+                                <label for="category-{{ $c->id }}">{{ $c->name }}</label>
+                                {{-- <span class="filter-count">{{ $c->kols()->count() }}</span> --}}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Người theo dõi</h3>
+                    <div class="range-slider">
+                        <input type="range" name="followers" class="range-input" min="0" max="500000"
+                            step="10000" value="{{ request()->followers ?? 0 }}">
+                        <div class="range-values">
+                            <span class="min-value">0</span>
+                            <span class="current-value">{{ formatDisplayNumber(request()->followers ?? 0) }}</span>
+                            <span class="max-value">500K+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Tỷ lệ tương tác</h3>
+                    <div class="filter-group">
+                        <div class="filter-checkbox">
+                            <input type="checkbox" name="engagement" id="engagement-excellent"
+                                @if (request()->engagement >= 8) checked @endif>
+                            <label for="engagement-excellent">Xuất sắc (8%+)</label>
+                            {{-- <span class="filter-count">45</span> --}}
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" name="engagement" id="engagement-good"
+                                @if (request()->engagement >= 5) checked @endif>
+                            <label for="engagement-good">Tốt (5-8%)</label>
+                            {{-- <span class="filter-count">112</span> --}}
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" name="engagement" id="engagement-average"
+                                @if (request()->engagement >= 2.5) checked @endif>
+                            <label for="engagement-average">Trung bình (2-5%)</label>
+                            {{-- <span class="filter-count">234</span> --}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Quốc gia</h3>
+                    <div class="filter-group">
+                        @foreach ($countries as $country)
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="location-{{ $country->code }}" name="location" value="{{ $country->code }}" @if (request()->location == $country->code) checked @endif>
+                                <label for="location-{{ $country->code }}">{{ $country->name }}</label>
+                                {{-- <span class="filter-count">567</span> --}}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Điểm uy tín</h3>
+                    <div class="range-slider">
+                        <input type="range" name="trust_score" class="range-input" min="0" max="100"
+                            value="{{ request()->trust_score ?? 0 }}">
+                        <div class="range-values">
+                            <span class="min-value">0</span>
+                            <span class="current-value">{{ request()->trust_score - 0 }}</span>
+                            <span class="max-value">100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary justify-center" style="width: 100%; margin-top: 1rem;">
+                    Áp dụng
+                </button>
+                <button type="button" class="btn btn-secondary justify-center" style="width: 100%; margin-top: 0.5rem;"
+                    onclick="window.location.href='{{ request()->url('') }}'">
+                    Đặt lại
+                </button>
+            </form>
         </div>
     </div>
 @endsection
@@ -983,6 +1180,24 @@
                 });
             });
 
+        });
+
+        // Modal Functions
+        window.openContactModal = function() {
+            $('#contactModal').addClass('active');
+            $('body').css('overflow', 'hidden');
+        };
+
+        window.closeContactModal = function() {
+            $('#contactModal').removeClass('active');
+            $('body').css('overflow', '');
+        };
+
+        // Close modal on ESC key
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
         });
     </script>
 @endsection

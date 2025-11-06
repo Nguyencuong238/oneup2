@@ -25,6 +25,8 @@
             position: sticky;
             top: 0;
             z-index: 50;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .topbar-left {
@@ -481,6 +483,23 @@
             .stepper {
                 overflow-x: auto;
             }
+
+            .topbar-right {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                background: #fff;
+                z-index: 1000;
+                padding: 10px 20px;
+                width: 100%;
+                justify-content: end;
+                border-top: 1px solid var(--gray-300);
+            }
+
+            .topbar-left {
+                width: 100%;
+                justify-content: space-between;
+            }
         }
     </style>
 @endsection
@@ -497,6 +516,12 @@
         <div class="topbar">
             <div class="topbar-left">
                 <h1 class="page-title">Trình lập kế hoạch chiến dịch</h1>
+
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
             <div class="topbar-right">
@@ -713,7 +738,8 @@
                                         {{ $tag->name }}
                                         <span class="tag-remove">&times;</span>
                                     </span>
-                                    <input type="hidden" name="tags[]" id="tag-input-{{$loop->index}}" value="{{ $tag->name }}">
+                                    <input type="hidden" name="tags[]" id="tag-input-{{ $loop->index }}"
+                                        value="{{ $tag->name }}">
                                 @endforeach
                                 <input type="text" class="tag-input-field" placeholder="Enter để thêm thẻ...">
                             </div>
@@ -873,7 +899,7 @@
 
                 // Tags input (delegated remove)
                 const $tagsInput = $('.tags-input');
-                let tagIndex = {{$campaign->tags->count()}};
+                let tagIndex = {{ $campaign->tags->count() }};
                 $tagsInput.on('keypress', '.tag-input-field', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
@@ -889,7 +915,7 @@
 
                             const $tag = $(
                                 `<span class="tag">${value}<span class="tag-remove" data-index="${tagIndex}">×</span></span>`
-                                );
+                            );
                             $tag.insertBefore(this);
                             $(this).val('');
                         }

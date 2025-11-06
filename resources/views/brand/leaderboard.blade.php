@@ -221,7 +221,7 @@
             background: white;
             border-radius: 12px;
             border: 1px solid var(--gray-200);
-            overflow: hidden;
+            overflow: auto;
         }
 
         .ranking-header {
@@ -389,6 +389,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
+            gap: 1rem;
         }
 
         .summary-title {
@@ -471,7 +472,13 @@
         <div class="topbar">
             <div class="topbar-left">
                 <h1 class="page-title">Bảng xếp hạng các nhà sáng tạo nội dung</h1>
-                <div class="date-range-selector color-gray-600">
+
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                {{-- <div class="date-range-selector color-gray-600">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -482,7 +489,7 @@
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
                     </svg>
-                </div>
+                </div> --}}
             </div>
 
             {{-- <div class="topbar-right">

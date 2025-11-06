@@ -518,7 +518,7 @@
         }
 
         .page-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.85;
             cursor: not-allowed;
         }
 
@@ -535,6 +535,9 @@
             font-size: 11px;
             font-weight: 600;
             color: var(--danger);
+        }
+        .pagination {
+            flex-wrap: wrap;
         }
 
         @media (max-width: 1200px) {

@@ -7,7 +7,6 @@
 
 @section('css')
     <style>
-        
         /* Main Content */
         .main-content {
             margin-left: 260px;
@@ -43,7 +42,7 @@
         .topbar-right {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 10px;
         }
 
         .topbar-btn {
@@ -119,6 +118,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 0;
+            gap: 5px;
         }
 
         .stat-title {
@@ -144,7 +144,6 @@
             font-size: 32px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 0.5rem;
         }
 
         .stat-change {
@@ -185,7 +184,6 @@
             cursor: pointer;
             transition: all 0.2s;
             border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
         }
 
         .campaign-tab:hover {
@@ -402,6 +400,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .campaign-budget {
@@ -598,6 +598,93 @@
             .search-input {
                 width: 180px;
             }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-value {
+                font-size: 26px;
+            }
+
+            .campaign-tabs {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+                gap: 1rem;
+                padding: 0 0.75rem;
+                white-space: nowrap;
+            }
+
+            /* thinner / auto-hide scrollbar for campaign-tabs */
+            .campaign-tabs {
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                /* Firefox */
+                scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
+            }
+
+            /* WebKit browsers */
+            .campaign-tabs::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .campaign-tabs::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            .campaign-tabs::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.12);
+                border-radius: 999px;
+                transition: opacity .25s, background .25s;
+                opacity: 0;
+                /* hidden when not interacting */
+            }
+
+            /* Reveal scrollbar when user hovers, focuses, or drags */
+            .campaign-tabs:hover::-webkit-scrollbar-thumb,
+            .campaign-tabs:focus-within::-webkit-scrollbar-thumb,
+            .campaign-tabs:active::-webkit-scrollbar-thumb {
+                opacity: 1;
+            }
+
+            /* Firefox: make thumb appear only on hover */
+            .campaign-tabs:not(:hover) {
+                scrollbar-color: transparent transparent;
+            }
+
+            .campaign-tabs:hover {
+                scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
+            }
+
+            .campaign-tab {
+                white-space: nowrap;
+            }
+
+            /* Optional: nicer thin scrollbar on webkit */
+            .campaign-tabs::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .campaign-tabs::-webkit-scrollbar-thumb {
+                background: rgba(0, 0, 0, 0.12);
+                border-radius: 3px;
+            }
+        }
+        @media (max-width: 480px) {
+            .campaign-metrics {
+                grid-template-columns: 1fr;
+            }
+            .campaign-actions {
+                width: 100%;
+            }
+            .campaign-budget {
+                display: none;
+            }
+            .campaign-actions button {
+                width: 100%;
+            }
         }
     </style>
 @endsection
@@ -627,7 +714,17 @@
                     <span class="notification-dot"></span>
                 </button>
 
-                <a href="{{ route('brand.campaign.planner') }}" class="btn btn-primary btn-small">
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campaigns Content -->
+        <div class="campaigns-content">
+            <a href="{{ route('brand.campaign.planner') }}" class="btn btn-primary btn-small mb-3">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -635,11 +732,6 @@
                     </svg>
                     Chiến dịch mới
                 </a>
-            </div>
-        </div>
-
-        <!-- Campaigns Content -->
-        <div class="campaigns-content">
             <!-- Campaign Stats -->
             <div class="campaign-stats">
                 <div class="stat-card">
@@ -711,19 +803,19 @@
                     </div>
                 </div>
 
-                <div class="stat-card">
+                {{-- <div class="stat-card">
                     <div class="stat-header">
                         <div>
                             <div class="stat-title">ROI trung bình</div>
                             <div class="stat-value">{{ round($avgRoi, 1) }}x</div>
-                            {{-- <div class="stat-change positive">
+                            <div class="stat-change positive">
                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd" />
                                 </svg>
                                 <span>+0.5x</span>
-                            </div> --}}
+                            </div>
                         </div>
                         <div class="stat-icon">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
@@ -733,7 +825,7 @@
                             </svg>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Campaign Tabs -->
@@ -832,7 +924,8 @@
                                                 +{{ $campaign->kols->count() - 3 }}</div>
                                         @endif
                                     </div>
-                                    <span class="kol-count">{{ $campaign->kols->count() }} Nhà sáng tạo nội dung tham gia</span>
+                                    <span class="kol-count">{{ $campaign->kols->count() }} Nhà sáng tạo nội dung tham
+                                        gia</span>
                                 </div>
                             </div>
                             <div class="campaign-footer">
