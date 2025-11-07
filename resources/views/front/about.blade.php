@@ -290,6 +290,18 @@
                 left: 30px;
             }
         }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px !important;
+                line-height: 1.3;
+            }
+            .stat-number {
+                font-size: 40px !important;
+            }
+            .oneup-feature{
+                font-size: 28px !important;
+            }
+        }
     </style>
 @endsection
 
@@ -444,7 +456,7 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <p class="section-subtitle fade-in" style="font-size: 38px; font-weight:700">ĐẶC ĐIỂM NỔI BẬT VỀ ONEUP.VN</p>
+                <p class="section-subtitle fade-in oneup-feature" style="font-size: 38px; font-weight:700">ĐẶC ĐIỂM NỔI BẬT VỀ ONEUP.VN</p>
                 <p class="section-title color-gray-100 fade-in">"ONEUP tin rằng nội dung chân thật là nền tảng của niềm tin thương hiệu."</p>
             </div>
 
@@ -492,7 +504,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle fade-in">ĐỘI NGŨ CỦA CHÚNG TÔI</div>
-                <h2 class="section-title fade-in" style="font-size: 40px">Những Con Người Đằng Sau OneUp</h2>
+                <h2 class="section-title fade-in" >Những Con Người Đằng Sau OneUp</h2>
                 <p class="section-description fade-in">
                     Đội ngũ đa dạng các chuyên gia đam mê tiếp thị người ảnh hưởng
                 </p>

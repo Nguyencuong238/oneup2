@@ -14,19 +14,23 @@
             justify-content: center;
             gap: 1rem;
             margin-bottom: 3rem;
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
+            overflow-x: auto;
+            padding: 5px 0;
         }
         
         .tab-btn {
+            white-space: nowrap;
             padding: 12px 24px;
             background: white;
-            border: 2px solid #E0E0E0;
+            border: 1px solid #E0E0E0;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 13.5px;
             line-height: 1;
+            color: var(--gray-800);
         }
         
         .tab-btn:hover {
@@ -37,7 +41,7 @@
         .tab-btn.active {
             background: var(--gradient);
             color: white;
-            border-color: transparent;
+            /* border-color: transparent; */
         }
         
         .resource-grid {
@@ -272,13 +276,13 @@
                 <!-- Resource Tabs -->
                 <div class="resource-tabs fade-in">
                     <a href="{{ route('resources', ['category' => 'all']) }}" 
-                    class="tab-btn {{ $categorySlug == 'all' ? 'active' : '' }}" style="text-decoration: none">Tất Cả</a>
+                    class="tab-btn {{ $categorySlug == 'all' ? 'active' : '' }}">Tất Cả</a>
 
                     <a href="{{ route('resources', ['category' => 'news']) }}" 
-                    class="tab-btn {{ $categorySlug == 'news' ? 'active' : '' }}" style="text-decoration: none">Tin tức</a>
+                    class="tab-btn {{ $categorySlug == 'news' ? 'active' : '' }}">Tin tức</a>
 
                     <a href="{{ route('resources', ['category' => 'travel']) }}" 
-                    class="tab-btn {{ $categorySlug == 'travel' ? 'active' : '' }}" style="text-decoration: none">Du lịch</a>
+                    class="tab-btn {{ $categorySlug == 'travel' ? 'active' : '' }}">Du lịch</a>
                 </div>
             </div>
         </div>

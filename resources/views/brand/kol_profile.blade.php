@@ -103,6 +103,7 @@
             color: var(--primary);
             margin-bottom: 6px;
         }
+
         .profile-header-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -146,17 +147,24 @@
         .profile-info {
             flex: 1;
         }
+
         .score-value {
             font-weight: 600;
         }
+
         .score-value.green {
-            color: #16a34a; /* xanh lá */
+            color: #16a34a;
+            /* xanh lá */
         }
+
         .score-value.yellow {
-            color: #eab308; /* vàng */
+            color: #eab308;
+            /* vàng */
         }
+
         .score-value.red {
-            color: #dc2626; /* đỏ */
+            color: #dc2626;
+            /* đỏ */
         }
 
         .profile-top-row {
@@ -164,6 +172,8 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+
         }
 
         .profile-name {
@@ -261,6 +271,7 @@
         /* Profile Stats */
         .profile-stats {
             display: flex;
+            flex-wrap: wrap;
             gap: 3rem;
             margin-top: 2rem;
             padding-top: 2rem;
@@ -371,11 +382,14 @@
 
         .metric-header {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-
+.tab-content {
+    overflow: auto;
+}
         .metric-title {
             font-size: 18px;
             font-weight: 600;
@@ -651,7 +665,7 @@
             margin-top: 0.25rem;
         }
 
-        .trust-factor{
+        .trust-factor {
             color: #475569;
         }
 
@@ -670,7 +684,7 @@
                 margin-left: 0;
             }
 
-            .trust-factor{
+            .trust-factor {
                 color: #475569;
             }
 
@@ -686,7 +700,7 @@
                 text-align: center;
             }
 
-            .trust-factor{
+            .trust-factor {
                 color: #475569;
             }
 
@@ -713,190 +727,231 @@
         }
     </style>
     <style>
-    .tiktok-video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 16px;
-    }
-
-    .tiktok-video-item {
-        position: relative;
-    }
-
-    .video-wrapper {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-    }
-
-    .video-thumb {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 10px;
-        filter: brightness(0.8);
-        transition: all 0.3s ease;
-    }
-
-    .video-thumb:hover {
-        transform: scale(1.05);
-        filter: brightness(1);
-    }
-
-    .video-overlay-text {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        right: 12px;
-        color: white;
-        font-size: 17px; /* tăng cỡ chữ */
-        line-height: 1.4;
-        font-weight: 600;
-        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* chỉ hiển thị 2 dòng */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal;
-    }
-
-    .pinned-tag {
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background-color: #ff3355;
-        color: white;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 2px 6px;
-        border-radius: 4px;
-    }
-
-    .video-stats {
-        position: absolute;
-        bottom: 8px;
-        left: 10px;
-        color: white;
-        font-size: 13px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-    }
-
-    .tab-content.hidden { display: none; }
-    .tab.active { border-bottom: 2px solid var(--primary); color: var(--primary); }
-
-    .service-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .service-table th, .service-table td {
-        padding: 12px;
-        border-bottom: 1px solid #eee;
-    }
-    .service-table th {
-        background: #f9f9f9;
-        text-align: left;
-    }
-    .btn-edit {
-        background: #3b82f6;
-        color: white;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .btn-delete {
-        background: #ef4444;
-        color: white;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-
-    .btn-select-service {
-        background-color: #2563eb;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        padding: 8px 14px;
-        font-size: 14px;
-        cursor: pointer;
-        transition: background-color 0.25s ease;
-    }
-    .btn-select-service:hover {
-        background-color: #1e40af;
-    }
-
-    /* Responsive: nút sẽ xuống hàng dưới */
-    @media (max-width: 768px) {
-        .btn-select-service {
-            width: 100%;
-            text-align: center;
-            margin-top: 6px;
+        .tiktok-video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
         }
-    }
 
-    .modal-overlay {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 999;
-    }
-    .modal-overlay.hidden {
-        display: none;
-    }
-    .modal-box {
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        width: 90%;
-        max-width: 400px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    }
-    .modal-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: #222;
-    }
-    .modal-box textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        resize: none;
-        font-size: 14px;
-    }
-    .modal-actions {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 15px;
-        gap: 10px;
-    }
-    .btn-cancel {
-        background: #e5e7eb;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .btn-submit {
-        background: #2563eb;
-        color: white;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .btn-submit:hover {
-        background: #1e40af;
-    }
+        .tiktok-video-item {
+            position: relative;
+        }
 
+        .video-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .video-thumb {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            filter: brightness(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .video-thumb:hover {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .video-overlay-text {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            color: white;
+            font-size: 17px;
+            /* tăng cỡ chữ */
+            line-height: 1.4;
+            font-weight: 600;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* chỉ hiển thị 2 dòng */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+        }
+
+        .pinned-tag {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #ff3355;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .video-stats {
+            position: absolute;
+            bottom: 8px;
+            left: 10px;
+            color: white;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .tab-content.hidden {
+            display: none;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .service-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .service-table th,
+        .service-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-table th {
+            background: #f9f9f9;
+            text-align: left;
+        }
+
+        .btn-edit {
+            background: #3b82f6;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+
+        .btn-select-service {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+        }
+
+        .btn-select-service:hover {
+            background-color: #1e40af;
+        }
+
+        /* Responsive: nút sẽ xuống hàng dưới */
+        @media (max-width: 768px) {
+            .btn-select-service {
+                width: 100%;
+                text-align: center;
+                margin-top: 6px;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .modal-box textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .btn-cancel {
+            background: #e5e7eb;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: #1e40af;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        @media (max-width: 768px) {
+            .profile-top-row {
+                justify-content: center;
+            }
+            .topbar {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .profile-content {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
     </style>
-
 @endsection
 
 @section('page')
@@ -922,19 +977,21 @@
         <div class="profile-header">
             <div class="profile-header-content">
                 <div class="profile-avatar verified">
-                {{-- <div class="profile-avatar verified">NT</div> --}}
-                <img class="profile-avatar verified" src="{{ $kol->getFirstMediaUrl('media') }}">
+                    {{-- <div class="profile-avatar verified">NT</div> --}}
+                    <img class="profile-avatar verified" src="{{ $kol->getFirstMediaUrl('media') }}">
                 </div>
                 <div class="profile-info">
                     <div class="profile-top-row">
                         <h1 class="profile-name">{{ $kol->display_name }}</h1>
-                        @if($kol->blue_tick == 1)
+                        @if ($kol->blue_tick == 1)
                             <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                             </svg>
                         @else
                             <svg class="verified-icon" fill="currentColor" viewBox="0 0 20 20" style="display:none">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                             </svg>
                         @endif
                         <div class="profile-badges">
@@ -1050,11 +1107,11 @@
                 <!-- Left Column -->
                 <div id="overview" class="tab-content active">
                     <!-- Engagement Metrics -->
-                    <div  class="metric-card">
-                            <div class="metric-header">
-                                <h2 class="metric-title">Chỉ số Tương tác</h2>
-                                <span class="metric-period">30 ngày gần đây</span>
-                            </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <h2 class="metric-title">Chỉ số Tương tác</h2>
+                            <span class="metric-period">30 ngày gần đây</span>
+                        </div>
 
                         <div class="engagement-grid">
                             <div class="engagement-item">
@@ -1134,17 +1191,20 @@
                                         <tr>
                                             <td style="width: 100px;">
                                                 @if ($service->image)
-                                                    <img src="{{ $service->image }}" alt="Ảnh dịch vụ" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                                                    <img src="{{ $service->image }}" alt="Ảnh dịch vụ"
+                                                        style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
                                                 @else
                                                     <span style="color: #888;">(Không có ảnh)</span>
                                                 @endif
                                             </td>
                                             <td style="color:black">{{ $service->description }}</td>
-                                            <td  style="color:black">{{ number_format($service->price) }}₫</td>
+                                            <td style="color:black">{{ number_format($service->price) }}₫</td>
                                             <td style="color:black">{{ $service->created_at->format('d/m/Y') }}</td>
                                             <td>
-                                                @if(in_array($service->id, $bookedServiceIds))
-                                                    <button class="btn-selected" disabled style="width: 70px; height: 40px; border-radius: 5px">Đã chọn</button>
+                                                @if (in_array($service->id, $bookedServiceIds))
+                                                    <button class="btn-selected" disabled
+                                                        style="width: 70px; height: 40px; border-radius: 5px">Đã
+                                                        chọn</button>
                                                 @else
                                                     <button class="btn-select-service" data-id="{{ $service->id }}">
                                                         Chọn dịch vụ
@@ -1180,21 +1240,24 @@
                     </div>
                 </div>
 
-                 <div id="content" class="tab-content hidden">
+                <div id="content" class="tab-content hidden">
                     <div class="metric-card" style="margin-top: 2rem;">
-                        <div class="metric-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div class="metric-header"
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                             <h2 class="metric-title" style="font-weight: bold; font-size: 20px;">Nội dung gần đây</h2>
-                            <a href="#" style="color: var(--primary); font-size: 14px; text-decoration: none;">Xem tất cả →</a>
+                            <a href="#" style="color: var(--primary); font-size: 14px; text-decoration: none;">Xem
+                                tất cả →</a>
                         </div>
 
                         <div class="tiktok-video-grid">
-                            @foreach($videos as $v)
+                            @foreach ($videos as $v)
                                 <div class="tiktok-video-item">
                                     <div class="video-wrapper">
                                         <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}"
                                             target="_blank" rel="noopener">
-                                            <img src="{{ $v->thumbnail_url }}" alt="video thumbnail" class="video-thumb">
-                                            @if($v->is_pinned ?? false)
+                                            <img src="{{ $v->thumbnail_url }}" alt="video thumbnail"
+                                                class="video-thumb">
+                                            @if ($v->is_pinned ?? false)
                                                 <span class="pinned-tag">Đã ghim</span>
                                             @endif
                                             <div class="video-overlay-text">
@@ -1246,119 +1309,135 @@
                                                 @switch($item->status)
                                                     @case('pending')
                                                         <span class="badge badge-warning">Chờ duyệt</span>
-                                                        @break
+                                                    @break
+
                                                     @case('approved')
                                                         <span class="badge badge-success">Đã chấp nhận</span>
-                                                        @break
+                                                    @break
+
                                                     @case('rejected')
                                                         <span class="badge badge-danger">Từ chối</span>
-                                                        @break
+                                                    @break
+
                                                     @default
-                                                        <span class="badge badge-secondary" style="color: black">{{ ucfirst($item->status) }}</span>
+                                                        <span class="badge badge-secondary"
+                                                            style="color: black">{{ ucfirst($item->status) }}</span>
                                                 @endswitch
                                             </td>
-                                            <td style="color:black">{{ number_format($item->contracted_amount, 0, ',', '.') }} ₫</td>
-                                            <td style="color:black">{{ number_format($item->performance_bonus, 0, ',', '.') }} ₫</td>
-                                            <td style="color:black">{{ $item->added_at ? \Carbon\Carbon::parse($item->added_at)->format('d/m/Y') : '-' }}</td>
-                                            <td style="color:black">{{ $item->completed_at ? \Carbon\Carbon::parse($item->completed_at)->format('d/m/Y') : '-' }}</td>
+                                            <td style="color:black">
+                                                {{ number_format($item->contracted_amount, 0, ',', '.') }} ₫</td>
+                                            <td style="color:black">
+                                                {{ number_format($item->performance_bonus, 0, ',', '.') }} ₫</td>
+                                            <td style="color:black">
+                                                {{ $item->added_at ? \Carbon\Carbon::parse($item->added_at)->format('d/m/Y') : '-' }}
+                                            </td>
+                                            <td style="color:black">
+                                                {{ $item->completed_at ? \Carbon\Carbon::parse($item->completed_at)->format('d/m/Y') : '-' }}
+                                            </td>
                                         </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="8" style="text-align:center; color:black;">Chưa có chiến dịch nào</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                                        @empty
+                                            <tr>
+                                                <td colspan="8" style="text-align:center; color:black;">Chưa có chiến dịch
+                                                    nào</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Right Column -->
-                <div>
-                    <!-- Trust Score -->
-                    <div class="metric-card" style="margin-top: 2rem;">
-                        <div class="metric-header">
-                            <h2 class="metric-title">Điểm uy tín</h2>
-                        </div>
-
-                        <div class="trust-score-container">
-                            <div class="trust-score-circle">
-                                <svg width="150" height="150">
-                                    <circle cx="75" cy="75" r="60" class="trust-score-bg"></circle>
-                                    <circle cx="75" cy="75" r="60" class="trust-score-fill"
-                                        stroke-dasharray="377"
-                                        stroke-dashoffset="{{ 377 - (377 * $trustScore / 100) }}"></circle>
-                                </svg>
-                                <div class="trust-score-text">{{ $trustScore }}</div>
+                    <!-- Right Column -->
+                    <div>
+                        <!-- Trust Score -->
+                        <div class="metric-card" style="margin-top: 2rem;">
+                            <div class="metric-header">
+                                <h2 class="metric-title">Điểm uy tín</h2>
                             </div>
 
-                            <div class="trust-factors space-y-1">
-                                <div class="trust-factor flex justify-between">
-                                    <span>Người theo dõi thật</span>
-                                    <span class="score-value @if($realFollowersScore >= 80) green 
+                            <div class="trust-score-container">
+                                <div class="trust-score-circle">
+                                    <svg width="150" height="150">
+                                        <circle cx="75" cy="75" r="60" class="trust-score-bg"></circle>
+                                        <circle cx="75" cy="75" r="60" class="trust-score-fill"
+                                            stroke-dasharray="377" stroke-dashoffset="{{ 377 - (377 * $trustScore) / 100 }}">
+                                        </circle>
+                                    </svg>
+                                    <div class="trust-score-text">{{ $trustScore }}</div>
+                                </div>
+
+                                <div class="trust-factors space-y-1">
+                                    <div class="trust-factor flex justify-between">
+                                        <span>Người theo dõi thật</span>
+                                        <span
+                                            class="score-value @if ($realFollowersScore >= 80) green 
                                                 @elseif($realFollowersScore >= 50) yellow  
                                                 @else red @endif">
-                                        {{ $realFollowersScore }}%
-                                    </span>
-                                </div>
-                                <div class="trust-factor flex justify-between">
-                                    <span>Chất lượng tương tác</span>
-                                    <span class="score-value @if($engagementQuality >= 80) green 
+                                            {{ $realFollowersScore }}%
+                                        </span>
+                                    </div>
+                                    <div class="trust-factor flex justify-between">
+                                        <span>Chất lượng tương tác</span>
+                                        <span
+                                            class="score-value @if ($engagementQuality >= 80) green 
                                                 @elseif($engagementQuality >= 50) yellow 
                                                 @else red @endif">
-                                        {{ $engagementQuality }}%
-                                    </span>
-                                </div>
-                                <div class="trust-factor flex justify-between">
-                                    <span>Tính xác thực bình luận</span>
-                                    <span class="score-value @if($authenticComments >= 80) green 
+                                            {{ $engagementQuality }}%
+                                        </span>
+                                    </div>
+                                    <div class="trust-factor flex justify-between">
+                                        <span>Tính xác thực bình luận</span>
+                                        <span
+                                            class="score-value @if ($authenticComments >= 80) green 
                                                 @elseif($authenticComments >= 50) yellow 
                                                 @else red @endif">
-                                        {{ $authenticComments }}%
-                                    </span>
-                                </div>
-                                <div class="trust-factor flex justify-between">
-                                    <span>Độ ổn định tăng trưởng</span>
-                                    <span class="score-value @if($growthStability >= 80) green 
+                                            {{ $authenticComments }}%
+                                        </span>
+                                    </div>
+                                    <div class="trust-factor flex justify-between">
+                                        <span>Độ ổn định tăng trưởng</span>
+                                        <span
+                                            class="score-value @if ($growthStability >= 80) green 
                                                 @elseif($growthStability >= 50) yellow 
                                                 @else red @endif">
-                                        {{ $growthStability }}%
-                                    </span>
-                                </div>
-                                <div class="trust-factor flex justify-between">
-                                    <span>Chất lượng nội dung</span>
-                                    <span class="score-value @if($contentQuality >= 80) green 
+                                            {{ $growthStability }}%
+                                        </span>
+                                    </div>
+                                    <div class="trust-factor flex justify-between">
+                                        <span>Chất lượng nội dung</span>
+                                        <span
+                                            class="score-value @if ($contentQuality >= 80) green 
                                                 @elseif($contentQuality >= 50) yellow 
                                                 @else red @endif">
-                                        {{ $contentQuality }}%
-                                    </span>
+                                            {{ $contentQuality }}%
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Pricing -->
-                    <div class="metric-card" style="margin-top: 2rem;">
-                        <div class="metric-header">
-                            <h2 class="metric-title">Giá ước tính</h2>
-                        </div>
+                        <!-- Pricing -->
+                        <div class="metric-card" style="margin-top: 2rem;">
+                            <div class="metric-header">
+                                <h2 class="metric-title">Giá ước tính</h2>
+                            </div>
 
-                        <table class="pricing-table">
-                            <thead>
-                                <tr>
-                                    <th>Loại nội dung</th>
-                                    <th>Khoảng giá</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="color: black">TikTok Video</td>
-                                    <td>
-                                        <div class="price-value">{{ numberFormat($kol->price_tiktok) }}</div>
-                                        <div class="price-note">Cho mỗi bài đăng</div>
-                                    </td>
-                                </tr>
-                                {{-- <tr>
+                            <table class="pricing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Loại nội dung</th>
+                                        <th>Khoảng giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: black">TikTok Video</td>
+                                        <td>
+                                            <div class="price-value">{{ numberFormat($kol->price_tiktok) }}</div>
+                                            <div class="price-note">Cho mỗi bài đăng</div>
+                                        </td>
+                                    </tr>
+                                    {{-- <tr>
                                     <td style="color: black">Instagram Post</td>
                                     <td>
                                         <div class="price-value">₫15M - 20M</div>
@@ -1372,38 +1451,38 @@
                                         <div class="price-note">24 giờ</div>
                                     </td>
                                 </tr> --}}
-                                <tr>
-                                    <td style="color: black">Campaign Package</td>
-                                    <td>
-                                        <div class="price-value">{{ numberFormat($kol->price_campaign) }}</div>
-                                        <div class="price-note">3 bài đăng + 3 story</div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <tr>
+                                        <td style="color: black">Campaign Package</td>
+                                        <td>
+                                            <div class="price-value">{{ numberFormat($kol->price_campaign) }}</div>
+                                            <div class="price-note">3 bài đăng + 3 story</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <div
-                            style="margin-top: 1rem; padding: 1rem; background: var(--primary-lighter); border-radius: 8px;">
                             <div
-                                style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 14px;">
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>Giá ước tính dựa trên phân tích thị trường</span>
+                                style="margin-top: 1rem; padding: 1rem; background: var(--primary-lighter); border-radius: 8px;">
+                                <div
+                                    style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 14px;">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Giá ước tính dựa trên phân tích thị trường</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Quick Stats -->
-                    <div class="metric-card" style="margin-top: 2rem;">
-                        <div class="metric-header">
-                            <h2 class="metric-title">Chỉ số hiệu suất</h2>
-                        </div>
+                        <!-- Quick Stats -->
+                        <div class="metric-card" style="margin-top: 2rem;">
+                            <div class="metric-header">
+                                <h2 class="metric-title">Chỉ số hiệu suất</h2>
+                            </div>
 
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            {{-- <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                {{-- <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
                                     <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ hoàn thành TB</span>
                                     <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
@@ -1412,138 +1491,138 @@
                                 </div>
                             </div> --}}
 
-                            <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Bài/tuần</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
-                                        {{ $postsPerWeek }}
-                                    </span>
+                                <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 13px; color: var(--gray-600);">Bài/tuần</span>
+                                        <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
+                                            {{ $postsPerWeek }}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ phản hồi</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
-                                        {{ round($avgEngagementRate, 1) }}%
-                                    </span>
+                                <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 13px; color: var(--gray-600);">Tỷ lệ phản hồi</span>
+                                        <span style="font-size: 18px; font-weight: 600; color: var(--dark-blue);">
+                                            {{ round($avgEngagementRate, 1) }}%
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 13px; color: var(--gray-600);">Điểm an toàn thương hiệu</span>
-                                    <span style="font-size: 18px; font-weight: 600; color: var(--success);">
-                                        {{ $brandSafetyScore }}
-                                    </span>
+                                <div style="padding: 1rem; background: var(--gray-50); border-radius: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 13px; color: var(--gray-600);">Điểm an toàn thương hiệu</span>
+                                        <span style="font-size: 18px; font-weight: 600; color: var(--success);">
+                                            {{ $brandSafetyScore }}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-@endsection
+        </main>
+    @endsection
 
-@section('js')
-    <script>
-        // Tab switching
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
+    @section('js')
+        <script>
+            // Tab switching
+            document.addEventListener('DOMContentLoaded', function() {
+                const tabs = document.querySelectorAll('.tab');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        tabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
                 });
-            });
 
-            // Animate Trust Score on scroll
-            const animateTrustScore = () => {
-                const scoreCircle = document.querySelector('.trust-score-fill');
-                if (scoreCircle) {
-                    const score = 87;
-                    const circumference = 2 * Math.PI * 60;
-                    const offset = circumference - (score / 100) * circumference;
-                    scoreCircle.style.strokeDashoffset = offset;
-                }
-            };
-
-            // Intersection Observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('trust-score-circle')) {
-                            animateTrustScore();
-                        }
+                // Animate Trust Score on scroll
+                const animateTrustScore = () => {
+                    const scoreCircle = document.querySelector('.trust-score-fill');
+                    if (scoreCircle) {
+                        const score = 87;
+                        const circumference = 2 * Math.PI * 60;
+                        const offset = circumference - (score / 100) * circumference;
+                        scoreCircle.style.strokeDashoffset = offset;
                     }
+                };
+
+                // Intersection Observer for animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (entry.target.classList.contains('trust-score-circle')) {
+                                animateTrustScore();
+                            }
+                        }
+                    });
+                });
+
+                const trustScoreElement = document.querySelector('.trust-score-circle');
+                if (trustScoreElement) {
+                    observer.observe(trustScoreElement);
+                }
+
+                // Content item hover effect
+                document.querySelectorAll('.content-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        console.log('Mở chi tiết nội dung...');
+                    });
+                });
+
+                // Action buttons
+                document.querySelectorAll('.btn-action').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const action = this.textContent.trim();
+                        console.log(`Đã nhấn hành động: ${action}`);
+                    });
                 });
             });
 
-            const trustScoreElement = document.querySelector('.trust-score-circle');
-            if (trustScoreElement) {
-                observer.observe(trustScoreElement);
+            function showTab(tabId) {
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                document.querySelector(`a[href="#${tabId}"]`).classList.add('active');
+                document.getElementById(tabId).classList.remove('hidden');
             }
 
-            // Content item hover effect
-            document.querySelectorAll('.content-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    console.log('Mở chi tiết nội dung...');
+            document.addEventListener('DOMContentLoaded', function() {
+                const modal = document.getElementById('serviceModal');
+                const closeModal = document.getElementById('closeModal');
+                const form = document.getElementById('serviceForm');
+
+                document.querySelectorAll('.btn-select-service').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        document.getElementById('modalServiceId').value = id;
+                        modal.classList.remove('hidden');
+                    });
+                });
+
+                closeModal.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                });
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(this);
+
+                    fetch('{{ route('creator.book.service') }}', {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                            body: formData
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            alert(data.message);
+                            window.location.reload();
+                        })
+                        .catch(() => alert('Có lỗi xảy ra, vui lòng thử lại.'));
                 });
             });
-
-            // Action buttons
-            document.querySelectorAll('.btn-action').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const action = this.textContent.trim();
-                    console.log(`Đã nhấn hành động: ${action}`);
-                });
-            });
-        });
-
-        function showTab(tabId) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            document.querySelector(`a[href="#${tabId}"]`).classList.add('active');
-            document.getElementById(tabId).classList.remove('hidden');
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const modal = document.getElementById('serviceModal');
-            const closeModal = document.getElementById('closeModal');
-            const form = document.getElementById('serviceForm');
-
-            document.querySelectorAll('.btn-select-service').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    document.getElementById('modalServiceId').value = id;
-                    modal.classList.remove('hidden');
-                });
-            });
-
-            closeModal.addEventListener('click', () => {
-                modal.classList.add('hidden');
-            });
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(this);
-
-                fetch('{{ route('creator.book.service') }}', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    body: formData
-                })
-                .then(res => res.json())
-                .then(data => {
-                    alert(data.message);
-                    window.location.reload();
-                })
-                .catch(() => alert('Có lỗi xảy ra, vui lòng thử lại.'));
-            });
-        });
-    </script>
-@endsection
+        </script>
+    @endsection

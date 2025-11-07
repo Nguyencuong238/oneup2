@@ -551,6 +551,7 @@
                 grid-template-columns: 1fr;
             }
         }
+
         @media (max-width: 480px) {
             .campaign-header-info {
                 flex-direction: column-reverse;
@@ -635,7 +636,8 @@
                     </div>
                     <div class="campaign-actions">
                         @if (in_array($campaign->status, ['active', 'paused']))
-                            <form action="{{ route('brand.campaign.changeStatus') }}" method="post" id="change-status-form">
+                            <form action="{{ route('brand.campaign.changeStatus') }}" method="post"
+                                id="change-status-form">
                                 @csrf
                                 <input type="hidden" name="campaign_id" value="{{ $campaign->id }}">
                                 <input type="hidden" name="status"
@@ -1073,7 +1075,9 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) scheduleMetricAnimation($(entry.target));
                     });
-                }, { threshold: 0.2 });
+                }, {
+                    threshold: 0.2
+                });
 
                 $metricCards.each(function() {
                     observer.observe(this);

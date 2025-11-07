@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('media-library:delete-old-temporary-uploads')->daily();
         $schedule->command('tiktok:sync-profiles')->dailyAt('03:00');
+        $schedule->command('tiktok:sync-profiles 1')->everyThirtyMinutes();
     }
 
     /**

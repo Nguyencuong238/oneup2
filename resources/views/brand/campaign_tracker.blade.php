@@ -7,7 +7,6 @@
 
 @section('css')
     <style>
-        
         /* Main Content */
         .main-content {
             margin-left: 260px;
@@ -225,6 +224,7 @@
             border-radius: 12px;
             border: 1px solid var(--gray-200);
             margin-bottom: 2rem;
+            overflow: auto;
         }
 
         .tracking-header {
@@ -537,6 +537,17 @@
             .realtime-grid {
                 grid-template-columns: 1fr;
             }
+
+            .topbar {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .campaign-dropdown {
+                width: 100%;
+                min-width: auto;
+            }
         }
     </style>
 @endsection
@@ -590,8 +601,9 @@
                 <div class="selector-header">
                     <h2 class="selector-title">Chọn chiến dịch để theo dõi</h2>
                     <select class="campaign-dropdown">
-                        @foreach($campaigns as $c)
-                        <option @if($c->id == $campaign->id) selected @endif value="{{$c->slug}}">{{$c->name}}</option>
+                        @foreach ($campaigns as $c)
+                            <option @if ($c->id == $campaign->id) selected @endif value="{{ $c->slug }}">
+                                {{ $c->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -602,15 +614,15 @@
                     </div>
                     <div class="info-item">
                         <span class="info-label">Ngày bắt đầu</span>
-                        <span class="info-value">{{$campaign->created_at->format('d/m/Y')}}</span>
+                        <span class="info-value">{{ $campaign->created_at->format('d/m/Y') }}</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Ngày kết thúc</span>
-                        <span class="info-value">{{$campaign->updated_at->format('d/m/Y')}}</span>
+                        <span class="info-value">{{ $campaign->updated_at->format('d/m/Y') }}</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Tổng KOL</span>
-                        <span class="info-value">{{$campaign->kols->count()}} KOL</span>
+                        <span class="info-value">{{ $campaign->kols->count() }} KOL</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Ngân sách</span>
@@ -760,7 +772,8 @@
                 <div class="tracking-header">
                     <h3 class="tracking-title">Theo dõi hiệu suất nội dung</h3>
                     <div class="tracking-controls">
-                        <span style="font-size: 14px; color: var(--gray-600);">Tự động làm mới trong: <strong>45s</strong></span>
+                        <span style="font-size: 14px; color: var(--gray-600);">Tự động làm mới trong:
+                            <strong>45s</strong></span>
                         <button class="refresh-btn">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -798,10 +811,10 @@
                             <td>
                                 <span class="status-badge status-live">Trực tiếp</span>
                             </td>
-                                    <td>
-                                        <div class="metric-trend">
-                                            <span>3.2M</span>
-                                            <svg class="trend-icon" fill="var(--success)" viewBox="0 0 20 20">
+                            <td>
+                                <div class="metric-trend">
+                                    <span>3.2M</span>
+                                    <svg class="trend-icon" fill="var(--success)" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
                                             clip-rule="evenodd" />
@@ -829,7 +842,7 @@
                                 <div class="content-info">
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📸</div>
-                                        <div class="content-details">
+                                    <div class="content-details">
                                         <div class="content-title">Mẹo mùa hè phong cách sống</div>
                                         <div class="content-creator">@minhtran_lifestyle</div>
                                     </div>
@@ -869,7 +882,7 @@
                                 <div class="content-info">
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🍜</div>
-                                        <div class="content-details">
+                                    <div class="content-details">
                                         <div class="content-title">Hợp tác Thời trang & Ẩm thực</div>
                                         <div class="content-creator">@anpham_food</div>
                                     </div>
@@ -882,7 +895,7 @@
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
-                                <td>Đăng vào 7 giờ tối</td>
+                            <td>Đăng vào 7 giờ tối</td>
                         </tr>
                         <tr>
                             <td>
@@ -890,9 +903,9 @@
                                     <div class="content-thumbnail"
                                         style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🎮</div>
                                     <div class="content-details">
-                                            <div class="content-title">Đánh giá thời trang công nghệ</div>
-                                            <div class="content-creator">@hoangvu_tech</div>
-                                        </div>
+                                        <div class="content-title">Đánh giá thời trang công nghệ</div>
+                                        <div class="content-creator">@hoangvu_tech</div>
+                                    </div>
                                 </div>
                             </td>
                             <td>
@@ -942,7 +955,8 @@
                     </div>
                     <div class="alert-content">
                         <div class="alert-title">Cảnh báo tương tác thấp</div>
-                        <div class="alert-description">Nội dung của @hoangvu_tech có mức tương tác thấp hơn mục tiêu (5.9% so với 7% mục tiêu)</div>
+                        <div class="alert-description">Nội dung của @hoangvu_tech có mức tương tác thấp hơn mục tiêu (5.9%
+                            so với 7% mục tiêu)</div>
                         <div class="alert-time">2 giờ trước</div>
                     </div>
                 </div>
@@ -956,7 +970,8 @@
                     </div>
                     <div class="alert-content">
                         <div class="alert-title">Nội dung có hiệu suất cao</div>
-                        <div class="alert-description">Video của @linhnguyen_beauty đang thịnh hành với tỷ lệ tương tác 8.5%</div>
+                        <div class="alert-description">Video của @linhnguyen_beauty đang thịnh hành với tỷ lệ tương tác
+                            8.5%</div>
                         <div class="alert-time">3 giờ trước</div>
                     </div>
                 </div>
@@ -983,6 +998,7 @@
 
             // Real-time counter animation (single interval)
             let realtimeInterval = null;
+
             function startRealtimeCounters() {
                 if (realtimeInterval) return; // already running
                 realtimeInterval = setInterval(() => {
@@ -998,7 +1014,8 @@
 
                     // Update comments occasionally
                     if (Math.random() > 0.7 && $commentsVal.length) {
-                        const currentComments = parseInt(($commentsVal.text() || '0').replace(/,/g, '')) || 0;
+                        const currentComments = parseInt(($commentsVal.text() || '0').replace(/,/g, '')) ||
+                            0;
                         const newComments = currentComments + Math.floor(Math.random() * 5);
                         $commentsVal.text(newComments.toLocaleString());
                     }
@@ -1008,6 +1025,7 @@
             // Auto-refresh countdown
             let refreshCountdown = 45;
             let refreshInterval = null;
+
             function startRefreshCountdown() {
                 if (refreshInterval) return;
                 refreshInterval = setInterval(() => {
@@ -1054,7 +1072,8 @@
 
             // Add spinning animation style once
             if (!$('head').find('#oneup-spin-style').length) {
-                $('<style id="oneup-spin-style">@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>').appendTo('head');
+                $('<style id="oneup-spin-style">@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>')
+                    .appendTo('head');
             }
 
             // Initialize

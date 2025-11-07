@@ -223,6 +223,19 @@
         .modal-close:hover {
             background: #F0F0F0;
         }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 1rem;
+            }
+            .footer-brand {
+                max-width: 100%;
+            }
+            .nav-container .nav-links {
+                gap: 20px;
+                align-items: start;
+            }
+        }
     </style>
 
     @yield('css')

@@ -22,6 +22,9 @@
             padding: 2rem;
             display: flex;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
 
         .settings-title {
@@ -631,6 +634,16 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .settings-header {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .settings-layout {
+                padding: 0;
+            }
         }
     </style>
 @endsection
@@ -643,11 +656,11 @@
             <h1 class="settings-title">Cài đặt tài khoản</h1>
 
 
-                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+            <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             {{-- <p class="settings-subtitle">Quản lý cài đặt và tùy chọn tài khoản của bạn</p> --}}
         </div>
 
@@ -726,7 +739,8 @@
                     <div class="form-group">
                         <div class="avatar-upload">
                             <div class="avatar-preview" id="avatar-dropzone" style="position: relative;">
-                                <img src="{{ asset($user->avatar ? $user->avatar : 'assets/default-avatar.jpg') }}" alt="Avatar" class="avatar-image"
+                                <img src="{{ asset($user->avatar ? $user->avatar : 'assets/default-avatar.jpg') }}"
+                                    alt="Avatar" class="avatar-image"
                                     style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                                 <div class="avatar-upload-btn"
                                     style="position: absolute; right: 8px; bottom: 8px; cursor: pointer;">
@@ -735,7 +749,7 @@
                                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                     </svg>
                                 </div>
-                                
+
                                 <input type="file" name="avatar" id="avatarFileInput"
                                     accept="image/png, image/jpeg, image/gif" style="display:none">
                             </div>
@@ -762,7 +776,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Tên</label>
-                            <input type="text" class="form-input" value="{{old('name', $user->name)}}" name='name'>
+                            <input type="text" class="form-input" value="{{ old('name', $user->name) }}" name='name'>
                         </div>
                     </div>
 
@@ -792,8 +806,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Tiểu sử</label>
-                        <textarea class="form-input" name="description" rows="4" 
-                            placeholder="Giới thiệu bản thân...">{{ old('description', $user->description) }}</textarea>
+                        <textarea class="form-input" name="description" rows="4" placeholder="Giới thiệu bản thân...">{{ old('description', $user->description) }}</textarea>
                     </div>
                 </div>
 
@@ -808,8 +821,8 @@
                             <div class="toggle-description">Nhận cập nhật qua email về các chiến dịch của bạn</div>
                         </div>
                         <label class="toggle-switch">
-                            <input type="checkbox" name="notifications[email_notifications]" 
-                                @if(@$notifications['email_notifications']) checked @endif>
+                            <input type="checkbox" name="notifications[email_notifications]"
+                                @if (@$notifications['email_notifications']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -821,7 +834,7 @@
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" name="notifications[campaign_alerts]"
-                                @if(@$notifications['campaign_alerts']) checked @endif>
+                                @if (@$notifications['campaign_alerts']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -829,11 +842,12 @@
                     <div class="toggle-group">
                         <div class="toggle-info">
                             <div class="toggle-label">Cập nhật nhà sáng tạo nội dung</div>
-                            <div class="toggle-description">Thông báo về nhà sáng tạo nội dung đã lưu và hiệu suất của họ</div>
+                            <div class="toggle-description">Thông báo về nhà sáng tạo nội dung đã lưu và hiệu suất của họ
+                            </div>
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" name="notifications[kol_updates]"
-                                @if(@$notifications['kol_updates']) checked @endif>
+                                @if (@$notifications['kol_updates']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -845,7 +859,7 @@
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" name="notifications[weekly_reports]"
-                                @if(@$notifications['weekly_reports']) checked @endif>
+                                @if (@$notifications['weekly_reports']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -857,7 +871,7 @@
                         </div>
                         <label class="toggle-switch">
                             <input type="checkbox" name="notifications[product_updates]"
-                                @if(@$notifications['product_updates']) checked @endif>
+                                @if (@$notifications['product_updates']) checked @endif>
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
@@ -1216,7 +1230,7 @@
 
             // Avatar upload (jQuery preview only)
             // This uses jQuery to handle file selection and preview into <img class="avatar-image">.
-            
+
             (function($) {
                 const $file = $('#avatarFileInput');
                 const $img = $('.avatar-image');

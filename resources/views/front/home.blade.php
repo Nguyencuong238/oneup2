@@ -15,7 +15,7 @@
 
         .hero-text h1 {
             font-size: 3rem;
-            line-height: 1.1;
+            line-height: 1.3;
             margin-bottom: 1.5rem;
             color: var(--dark-blue);
         }
@@ -413,6 +413,23 @@
                 width: 320px;
             }
         }
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .kol-grid {
+            grid-template-columns: 1fr;
+            }
+            .btn-trial {
+                width: 100%;
+            }
+            .cta-content h2 {
+                font-size: 28px;
+            }
+            .hero {
+                padding-top: 80px !important;
+            }
+        }
     </style>
 @endsection
 
@@ -434,7 +451,7 @@
                 </p>
 
                 <div class="d-flex gap-2 mb-4">
-                    <a href="{{ route('register') }}" class="btn btn-primary btn-large">
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-large btn-trial">
                         Bắt đầu dùng thử miễn phí
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                             <path
@@ -486,7 +503,7 @@
                     </div>
                     <div style="text-align: center; margin-top: 1.5rem;">
                         <a href="#kol-list" style="color: var(--primary); font-weight: 600;">
-                            Xem tất cả nhà sáng tạo nội dung →
+                            Xem tất cả →
                         </a>
                     </div>
                 </div>
@@ -578,7 +595,7 @@
                 </p>
             </div>
 
-            <div class="kol-filter-tabs flex flex-wrap gap-2 mb-8">
+            <div class="kol-filter-tabs flex gap-2 mb-8">
                 <button class="filter-tab active" data-category="">Tất cả danh mục</button>
                 @foreach ($categories as $category)
                     <button class="filter-tab" data-category="{{ $category->slug }}">{{ $category->name }}</button>
@@ -656,7 +673,7 @@
             <div style="text-align: center; margin-top: 2rem;">
                 @auth
                     <a href="{{ route('brand.kolExplorer') }}" class="btn btn-primary btn-large">
-                        Xem tất cả hơn 10.000 nhà sáng tạo nội dung
+                        Xem tất cả hơn 1.000 nhà sáng tạo nội dung
                     </a>
                 @else
                     <a href="{{ route('login', ['redirect' => route('brand.kolExplorer')]) }}"

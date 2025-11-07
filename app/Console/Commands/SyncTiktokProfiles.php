@@ -13,7 +13,7 @@ use Carbon\Carbon;
 
 class SyncTiktokProfiles extends Command
 {
-    protected $signature = 'tiktok:sync-profiles';
+    protected $signature = 'tiktok:sync-profiles {oftenUpdate?}';
     protected $description = 'Đồng bộ thông tin hồ sơ TikTok (profile + posts) từ RapidAPI và lưu video thumbnail.';
 
     public function handle()
@@ -25,9 +25,13 @@ class SyncTiktokProfiles extends Command
             'started_at' => now(),
         ]);
 
-        $kols = Kol::where('platform', 'tiktok')
-            ->whereNotNull('username')
-            ->get();
+        $query = Kol::where('platform', 'tiktok')->whereNotNull('username');
+
+        if ($this->argument('oftenUpdate') == 1) {
+            $query->where('followers', '<=', 100);
+        }
+
+        $kols = $query->get();
 
         $total = $kols->count();
         $success = 0;
@@ -71,13 +75,13 @@ class SyncTiktokProfiles extends Command
                     continue;
                 }
 
-                if($statsProfile['followerCount'] >= 500000) {
+                if ($statsProfile['followerCount'] >= 500000) {
                     $rank = 'legend';
-                } elseif($statsProfile['followerCount'] >= 100000) {
+                } elseif ($statsProfile['followerCount'] >= 100000) {
                     $rank = 'star';
-                } elseif($statsProfile['followerCount'] >= 20000) {
+                } elseif ($statsProfile['followerCount'] >= 20000) {
                     $rank = 'rising';
-                } elseif($statsProfile['followerCount'] >= 5000) {
+                } elseif ($statsProfile['followerCount'] >= 5000) {
                     $rank = 'taste_maker';
                 } else {
                     $rank = 'food_lover';

@@ -150,6 +150,8 @@ nav {
 nav.scrolled {
     background: var(--white);
     box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
 }
 
 .nav-container {

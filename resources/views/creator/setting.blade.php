@@ -631,6 +631,13 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .settings-header {
+                padding: 1rem;
+            }
+            .settings-layout {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
     </style>
 @endsection

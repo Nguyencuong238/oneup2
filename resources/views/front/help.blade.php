@@ -131,6 +131,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            gap: 0.5rem;
         }
         
         .faq-question:hover {
@@ -144,7 +145,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: var(--gradient);
+            /* background: var(--gradient); */
             color: white;
             display: flex;
             align-items: center;

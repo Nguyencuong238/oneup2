@@ -39,28 +39,11 @@
             gap: 0.5rem;
         }
 
-        .filters-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gray-600);
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .filters-toggle:hover {
-            color: var(--primary);
-        }
-
         .filters-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             transition: all 0.3s ease;
-        }
-
-        .filters-content.collapsed {
-            display: none;
         }
 
         .filter-group {
@@ -97,34 +80,6 @@
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
-        }
-
-        .filter-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .filter-chip {
-            padding: 6px 14px;
-            background: white;
-            border: 1px solid var(--gray-300);
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .filter-chip:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .filter-chip.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
         }
 
         .filter-actions {
@@ -195,9 +150,7 @@
 
         .kol-card-header {
             position: relative;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--secondary) 100%);
-            /* overflow: hidden; */
+            box-shadow: var(--shadow-md);
         }
 
         .kol-cover-image {
@@ -377,8 +330,8 @@
         }
 
         .btn-icon {
-            width: 36px;
-            height: 36px;
+            width: 48px;
+            height: 48px;
             padding: 0;
             display: flex;
             align-items: center;
@@ -440,34 +393,6 @@
             align-items: center;
         }
 
-        .view-toggle {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .view-btn {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border: 1px solid var(--gray-300);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .view-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .view-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
 
         .sort-dropdown {
             padding: 8px 16px;
@@ -536,8 +461,24 @@
             font-weight: 600;
             color: var(--danger);
         }
+
         .pagination {
             flex-wrap: wrap;
+        }
+
+        #filtersSection {
+            transition: all 0.28s ease;
+            opacity: 1;
+        }
+
+
+        .filter-icon {
+            
+            display: none;
+        }
+
+        .mobile-hide {
+            display: block;
         }
 
         @media (max-width: 1200px) {
@@ -558,6 +499,26 @@
             .results-header {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .filter-icon {
+                display: flex;
+            }
+
+            .mobile-hide {
+                display: none;
+            }
+            #filtersSection {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .search-bar button,
+            .search-bar a {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -584,7 +545,7 @@
         <div class="container">
             <!-- Search Bar -->
             <div class="search-bar fade-in">
-                <form method="GET" action="{{ route('kols') }}" class="search-input-group">
+                <form method="GET" action="{{ route('kols') }}" class="search-input-group flex-wrap">
                     <input type="text" name="search" value="{{ request('search') }}" class="search-input"
                         placeholder="Tìm theo tên, tài khoản hoặc từ khóa...">
                     <button class="btn btn-primary" type="submit">
@@ -598,8 +559,15 @@
                 </form>
             </div>
             <form method="GET" action="{{ route('kols') }}" class="search-bar fade-in mb-6">
-                <div class="filters-section mt-6">
-                    <div class="filters-content" id="filtersContent">
+                <div class="filter-icon" onclick="$('#filtersSection').toggleClass('mobile-hide');">
+                    <img src="{{ asset('assets/filter.svg') }}" alt="Filter Icon" width="24" height="24"
+                        class="mr-2" role="button" aria-label="Toggle filters" style="cursor:pointer">
+                    <h3 class="color-gray-800 ml-10 mb-0"> Bộ lọc</h3>
+                </div>
+
+                <div class="filters-section mb-0 p-0 border-0 mobile-hide" id="filtersSection">
+                    <div class="filters-content">
+
                         <div class="filter-group">
                             <label class="filter-label">Danh mục</label>
                             <select name="category" class="filter-select">
@@ -621,12 +589,15 @@
                                 <option value="all">Tất cả</option>
                                 <option value="food_lover" {{ request('rank') == 'food_lover' ? 'selected' : '' }}>
                                     Food Lover (&lt;5K)
-                                    </option>
-                                <option value="tase_maker" {{ request('rank') == 'tase_maker' ? 'selected' : '' }}>Taste Maker
-                                    (5K–20K)</option>
-                                <option value="rising" {{ request('rank') == 'rising' ? 'selected' : '' }}>Rising (20K–100K)
                                 </option>
-                                <option value="star" {{ request('rank') == 'star' ? 'selected' : '' }}>Star (100K–500K)</option>
+                                <option value="tase_maker" {{ request('rank') == 'tase_maker' ? 'selected' : '' }}>Taste
+                                    Maker
+                                    (5K–20K)</option>
+                                <option value="rising" {{ request('rank') == 'rising' ? 'selected' : '' }}>Rising
+                                    (20K–100K)
+                                </option>
+                                <option value="star" {{ request('rank') == 'star' ? 'selected' : '' }}>Star (100K–500K)
+                                </option>
                                 <option value="legend" {{ request('rank') == 'legend' ? 'selected' : '' }}>Legend (500K+)
                                 </option>
                             </select>
@@ -637,11 +608,16 @@
                             <label class="filter-label">Tỷ lệ tương tác</label>
                             <select name="engagement" class="filter-select">
                                 <option value="any">Bất kỳ</option>
-                                <option value="1" {{ request('engagement') == '1' ? 'selected' : '' }}>Trên 1%</option>
-                                <option value="3" {{ request('engagement') == '3' ? 'selected' : '' }}>Trên 3%</option>
-                                <option value="5" {{ request('engagement') == '5' ? 'selected' : '' }}>Trên 5%</option>
-                                <option value="8" {{ request('engagement') == '8' ? 'selected' : '' }}>Trên 8%</option>
-                                <option value="10" {{ request('engagement') == '10' ? 'selected' : '' }}>Trên 10%</option>
+                                <option value="1" {{ request('engagement') == '1' ? 'selected' : '' }}>Trên 1%
+                                </option>
+                                <option value="3" {{ request('engagement') == '3' ? 'selected' : '' }}>Trên 3%
+                                </option>
+                                <option value="5" {{ request('engagement') == '5' ? 'selected' : '' }}>Trên 5%
+                                </option>
+                                <option value="8" {{ request('engagement') == '8' ? 'selected' : '' }}>Trên 8%
+                                </option>
+                                <option value="10" {{ request('engagement') == '10' ? 'selected' : '' }}>Trên 10%
+                                </option>
                             </select>
                         </div>
 
@@ -654,9 +630,11 @@
                                 </option>
                                 <option value="TP.HCM" {{ request('location_city') == 'TP.HCM' ? 'selected' : '' }}>TP.HCM
                                 </option>
-                                <option value="Đà Nẵng" {{ request('location_city') == 'Đà Nẵng' ? 'selected' : '' }}>Đà Nẵng
+                                <option value="Đà Nẵng" {{ request('location_city') == 'Đà Nẵng' ? 'selected' : '' }}>Đà
+                                    Nẵng
                                 </option>
-                                <option value="Khác" {{ request('location_city') == 'Khác' ? 'selected' : '' }}>Khác</option>
+                                <option value="Khác" {{ request('location_city') == 'Khác' ? 'selected' : '' }}>Khác
+                                </option>
                             </select>
                         </div>
 
@@ -665,8 +643,10 @@
                             <label class="filter-label">Ngôn ngữ</label>
                             <select name="language" class="filter-select">
                                 <option value="all">Tất cả ngôn ngữ</option>
-                                <option value="vi" {{ request('language') == 'vi' ? 'selected' : '' }}>Tiếng Việt</option>
-                                <option value="en" {{ request('language') == 'en' ? 'selected' : '' }}>Tiếng Anh</option>
+                                <option value="vi" {{ request('language') == 'vi' ? 'selected' : '' }}>Tiếng Việt
+                                </option>
+                                <option value="en" {{ request('language') == 'en' ? 'selected' : '' }}>Tiếng Anh
+                                </option>
                             </select>
                         </div>
 
@@ -684,7 +664,7 @@
 
                     </div>
 
-                    <div class="flex items-center gap-3 mt-4">
+                    <div class="d-flex justify-center gap-2 mt-4 flex-wrap">
                         <button class="btn btn-primary">Áp dụng bộ lọc</button>
                         <a href="{{ route('kols') }}" class="btn btn-outline" style="height:41px">Xóa tất cả</a>
                     </div>
@@ -715,6 +695,8 @@
                 @foreach ($kols as $k)
                     <div class="kol-card fade-in">
                         <div class="kol-card-header">
+                            <img src="{{ asset('assets/cover-default.jpg') }}" alt="KOL Cover"
+                                class="kol-cover-image">
                             <span class="kol-badge {{ $k->is_verified ? 'verified' : 'not-verified' }}">
                                 {{ $k->is_verified ? 'Đã xác minh' : 'Chưa xác minh' }}
                             </span>
@@ -814,98 +796,47 @@
 
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.btn-favorite').forEach(button => {
-                button.addEventListener('click', function() {
-                    const kolId = this.dataset.kolId;
+        $(document).ready(function() {
 
-                    fetch("{{ route('kol.favorite') }}", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                            },
-                            body: JSON.stringify({
-                                kol_id: kolId
-                            })
+            // Favorite button
+            $('.btn-favorite').on('click', function() {
+                const kolId = $(this).data('kol-id');
+
+                fetch("{{ route('kol.favorite') }}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        },
+                        body: JSON.stringify({
+                            kol_id: kolId
                         })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Response:',
-                            data); // 👉 kiểm tra phản hồi trong console
-                            if (data.success) {
-                                const svg = this.querySelector('svg');
-                                if (data.favorited) {
-                                    svg.setAttribute('fill', 'blue');
-                                } else {
-                                    svg.setAttribute('fill', 'none');
-                                }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const $svg = $(this).find('svg');
+                            if (data.favorited) {
+                                $svg.attr('fill', 'blue');
                             } else {
-                                alert(data.message || 'Có lỗi xảy ra');
+                                $svg.attr('fill', 'none');
                             }
-                        })
-                        .catch(err => {
-                            console.error('Fetch error:', err);
-                        });
-                });
+                        } else {
+                            alert(data.message || 'Có lỗi xảy ra');
+                        }
+                    })
+                    .catch(err => console.error('Fetch error:', err));
             });
-        });
-        // Toggle Filters
-        function toggleFilters() {
-            const filtersContent = document.getElementById('filtersContent');
-            const toggleText = document.getElementById('filterToggleText');
-
-            if (filtersContent.classList.contains('collapsed')) {
-                filtersContent.classList.remove('collapsed');
-                toggleText.textContent = 'Hide Filters';
-            } else {
-                filtersContent.classList.add('collapsed');
-                toggleText.textContent = 'Show Filters';
-            }
-        }
 
 
-        // Filter chips functionality
-        document.querySelectorAll('.filter-chip').forEach(chip => {
-            chip.addEventListener('click', function() {
-                // Clear other chips in the same group
-                const siblings = this.parentElement.querySelectorAll('.filter-chip');
-                siblings.forEach(s => s.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Remove filter tag
-        function removeFilter(button) {
-            button.parentElement.remove();
-        }
-
-        // View toggle
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Pagination
-        document.querySelectorAll('.page-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (!this.disabled) {
-                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
+            // Apply filters
+            $('.filter-select').on('change', function() {
+                const defaultValue = $(this).find('option:first').val();
+                if ($(this).val() !== defaultValue) {
+                    $('.active-filters').css('display', 'flex');
                 }
             });
-        });
 
-        // Apply filters
-        document.querySelectorAll('.filter-select').forEach(select => {
-            select.addEventListener('change', function() {
-                // Show active filters section when filters are applied
-                if (this.value !== this.options[0].value) {
-                    document.querySelector('.active-filters').style.display = 'flex';
-                }
-            });
         });
     </script>
 @endsection

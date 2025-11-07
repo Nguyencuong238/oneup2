@@ -7,7 +7,6 @@
 
 @section('css')
     <style>
-
         /* Main Content */
         .main-content {
             margin-left: 260px;
@@ -460,6 +459,10 @@
             .category-tabs {
                 flex-wrap: nowrap;
                 overflow-x: auto;
+            }
+
+            .topbar {
+                padding: 1rem;
             }
         }
     </style>

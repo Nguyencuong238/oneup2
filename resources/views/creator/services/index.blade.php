@@ -9,7 +9,6 @@
 <div class="creator-container">
     <div class="page-header">
         <h2>Danh sách dịch vụ</h2>
-        <button class="btn btn-primary" onclick="openModal()">+ Thêm dịch vụ</button>
         <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
             <span></span>
             <span></span>
@@ -18,6 +17,7 @@
     </div>
 
     <div class="table-wrapper">
+        <button class="btn btn-primary pt-10 pb-10 mb-20" onclick="openModal()">+ Thêm dịch vụ</button>
         <table class="service-table">
             <thead>
                 <tr>
@@ -257,11 +257,6 @@
         font-size: 18px;
     }
 
-    .btn.btn-primary {
-        width: 100%;
-        font-size: 14px;
-        padding: 10px;
-    }
 
     /* Table scroll */
     .table-wrapper {

@@ -192,6 +192,7 @@
 
         .chart-header {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
@@ -421,6 +422,7 @@
             font-weight: 500;
         }
 
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .dashboard-layout {
@@ -469,6 +471,9 @@
             .date-range-selector {
                 display: none;
             }
+        .charts-row {
+            grid-template-columns: 1fr;
+        }
 
         }
     </style>
@@ -644,7 +649,7 @@
             </div>
 
             <!-- Charts Row -->
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+            <div class="charts-row">
                 <!-- Performance Chart -->
                 <div class="chart-container">
                     <div class="chart-header">
