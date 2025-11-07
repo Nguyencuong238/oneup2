@@ -118,6 +118,46 @@ class BrandController extends Controller
         return view('brand.campaign_planner', compact('campaignCategories', 'kolCategories', 'kols', 'campaign'));
     }
 
+    public function ajaxFilter(Request $req)
+    {
+        $query = \App\Models\Kol::query()
+            ->where('is_verified', 1)
+            ->where('status', 'active');
+
+        if ($req->filled('filter')) {
+            [$type, $value] = explode(':', $req->filter);
+
+            switch ($type) {
+                case 'category':
+                    $query->whereHas('categories', fn($q) => $q->where('categories.id', $value));
+                    break;
+
+                case 'price':
+                    match ($value) {
+                        'low' => $query->where('price_campaign', '<', 1000000),
+                        'medium' => $query->whereBetween('price_campaign', [1000000, 5000000]),
+                        'high' => $query->where('price_campaign', '>', 5000000),
+                    };
+                    break;
+
+                case 'eng':
+                    match ($value) {
+                        'low' => $query->where('engagement', '<', 1),
+                        'medium' => $query->whereBetween('engagement', [1, 5]),
+                        'high' => $query->where('engagement', '>', 5),
+                    };
+                    break;
+            }
+        }
+
+        $kols = $query->limit(30)->get(['id', 'display_name', 'followers', 'engagement', 'price_campaign']);
+
+        $html = view('brand.partials.kol_grid', compact('kols'))->render();
+
+        return response()->json(['html' => $html]);
+    }
+
+
     public function campaignDetail($slug)
     {
         // Try find by id or slug

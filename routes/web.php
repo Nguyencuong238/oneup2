@@ -79,6 +79,8 @@ Route::prefix('brand/')->middleware(['auth', 'verified', IsBrand::class])->group
 	Route::get('leaderboard', [BrandController::class, 'leaderboard'])->name('brand.leaderboard');
 	Route::post('campaign-status', [BrandController::class, 'changeStatus'])->name('brand.campaign.changeStatus');
 	Route::post('/book-service', [BrandController::class, 'bookService'])->name('creator.book.service');
+	Route::get('/kols/ajax-filter', [BrandController::class, 'ajaxFilter'])->name('kols.ajaxFilter');
+
 });
 
 Route::prefix('creator/')->middleware(['auth', 'verified', IsKols::class])->group(function () {
