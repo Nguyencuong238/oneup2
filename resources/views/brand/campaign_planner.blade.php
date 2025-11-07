@@ -1030,25 +1030,16 @@
                 e.preventDefault();
                 const status = $(this).hasClass('btn-draft') ? 'draft' : 'pending';
                 const $form = $(this).closest('form');
-                // ensure checkboxes reflect Map: in case any selectedKOL doesn't have checkbox in DOM (e.g., filtered out),
-                // we can't create hidden inputs here because earlier we avoided duplication; instead we must ensure checkboxes exist.
-                // However normally the grid contains all KOL options; if some selectedKOLs are currently filtered out (not in DOM),
-                // we append hidden inputs here for those missing IDs so server still receives them.
-                $form.find('input[name="kols_hidden[]"]').remove(); // cleanup previous
+                
+                $form.find('input[name="kols[]"]').remove();
                 selectedKOLs.forEach((info, id) => {
-                    // if checkbox for this id not present in DOM currently, add a hidden input to submit it
-                    if ($form.find(`input[name="kols[]"][value="${id}"]`).length === 0) {
-                        $form.append(`<input type="hidden" name="kols_hidden[]" value="${id}">`);
-                    }
+                        $form.append(`<input type="hidden" name="kols[]" value="${id}">`);
                 });
 
                 $form.find('input[name="status"]').remove();
                 $('<input>').attr({ type: 'hidden', name: 'status', value: status }).appendTo($form);
                 $form.submit();
             });
-
-            // On submit in controller, merge kols_hidden into kols: in PHP you can do:
-            // $kols = array_merge($request->input('kols', []), $request->input('kols_hidden', []));
 
             // Init: read existing checked boxes => populate Map, render preview, run forecast/duration
             initSelectedFromDOM();
