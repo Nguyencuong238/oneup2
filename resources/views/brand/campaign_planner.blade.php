@@ -25,8 +25,6 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .topbar-left {
@@ -483,23 +481,6 @@
             .stepper {
                 overflow-x: auto;
             }
-
-            .topbar-right {
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                background: #fff;
-                z-index: 1000;
-                padding: 10px 20px;
-                width: 100%;
-                justify-content: end;
-                border-top: 1px solid var(--gray-300);
-            }
-
-            .topbar-left {
-                width: 100%;
-                justify-content: space-between;
-            }
         }
     </style>
 @endsection
@@ -516,12 +497,6 @@
         <div class="topbar">
             <div class="topbar-left">
                 <h1 class="page-title">Trình lập kế hoạch chiến dịch</h1>
-
-                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
 
             <div class="topbar-right">
@@ -749,8 +724,7 @@
                                         {{ $tag->name }}
                                         <span class="tag-remove">&times;</span>
                                     </span>
-                                    <input type="hidden" name="tags[]" id="tag-input-{{ $loop->index }}"
-                                        value="{{ $tag->name }}">
+                                    <input type="hidden" name="tags[]" id="tag-input-{{$loop->index}}" value="{{ $tag->name }}">
                                 @endforeach
                                 <input type="text" class="tag-input-field" placeholder="Enter để thêm thẻ...">
                             </div>
@@ -871,70 +845,19 @@
                 selectedKOLs.clear();
                 $(`#kol-grid .kol-select-card`).each(function() {
                     const $card = $(this);
-                    const $checkbox = $card.find('.kol-checkbox');
-                    $checkbox.prop('checked', !$checkbox.prop('checked'));
-                    $card.toggleClass('selected', $checkbox.prop('checked'));
-                    updateSelectedKOLs();
-                });
-
-                // Delegated checkbox change
-                $kolGrid.on('change', '.kol-checkbox', function() {
-                    const $card = $(this).closest('.kol-select-card');
-                    $card.toggleClass('selected', $(this).prop('checked'));
-                    updateSelectedKOLs();
-                });
-
-                // Category filter
-                $('#select-kol-category').on('change', function() {
-                    const selectedCat = $(this).val();
-                    $kolGrid.find('.kol-select-card').each(function() {
-                        const categories = ($(this).data('categories') || '') + '';
-                        if (!selectedCat || selectedCat === '' || selectedCat ===
-                            'Tất cả danh mục') {
-                            $(this).show();
-                        } else {
-                            $(this).toggle(categories.indexOf(',' + selectedCat + ',') !== -1);
-                        }
-                    });
-                });
-
-                // Budget calculator (debounced)
-                $budgetInput.on('input', debounce(function() {
-                    const budget = parseInt($(this).val()) || 0;
-                    $('.kol-fee').text(`₫${formatDisplayNumber(budget * 0.7)}`);
-                    $('.produce-fee').text(`₫${formatDisplayNumber(budget * 0.2)}`);
-                    $('.manage-fee').text(`₫${formatDisplayNumber(budget * 0.1)}`);
-                    $('.totalBudget, .preview-budget').text(`₫${formatDisplayNumber(budget)}`);
-                }, 150));
-
-                // Forecast inputs (debounced)
-                ['target_reach', 'target_engagement'].forEach(function(name) {
-                    $(`input[name="${name}"]`).on('input', debounce(updateForecastFromInputs, 150));
-                });
-                $budgetInput.on('input', debounce(updateForecastFromInputs, 150));
-
-                // Tags input (delegated remove)
-                const $tagsInput = $('.tags-input');
-                let tagIndex = {{ $campaign->tags->count() }};
-                $tagsInput.on('keypress', '.tag-input-field', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        const value = $(this).val().trim();
-                        if (value) {
-                            tagIndex++;
-                            $('<input>').attr({
-                                type: 'hidden',
-                                name: 'tags[]',
-                                id: 'tag-input-' + tagIndex,
-                                value
-                            }).appendTo($tagsInput);
-
-                            const $tag = $(
-                                `<span class="tag">${value}<span class="tag-remove" data-index="${tagIndex}">×</span></span>`
-                            );
-                            $tag.insertBefore(this);
-                            $(this).val('');
-                        }
+                    const $chk = $card.find('.kol-checkbox').first();
+                    if ($chk.length && $chk.prop('checked')) {
+                        const id = String($card.data('id'));
+                        const info = {
+                            name: $card.find('.kol-name').text().trim(),
+                            followers: $card.find('.kol-stats span').first().text().trim(),
+                            price: $card.find('.price-value').text().trim(),
+                            avatar: $card.find('.kol-avatar').prop('outerHTML') || ''
+                        };
+                        selectedKOLs.set(id, info);
+                        $card.addClass('selected');
+                    } else {
+                        $card.removeClass('selected');
                     }
                 });
             }
