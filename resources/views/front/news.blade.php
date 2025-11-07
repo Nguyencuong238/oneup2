@@ -188,6 +188,7 @@
             justify-content: center;
             gap: 10px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .pagination button {
