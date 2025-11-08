@@ -39,7 +39,12 @@ class BrandController extends Controller
                 $q->where('followers', '>=', request('followers'));
             })
             ->when(request('engagement'), function ($q) {
-                $q->where('engagement', '>=', request('engagement'));
+                match (request('engagement')) {
+                    'excellent' => $q->where('engagement', '>=', 8),
+                    'good' => $q->whereBetween('engagement', [5, 8]),
+                    'average' => $q->whereBetween('engagement', [2, 5]),
+                    default     => $q,
+                };
             })
             ->when(request('trust_score'), function ($q) {
                 $q->where('trust_score', '>=', request('trust_score'));
@@ -49,6 +54,9 @@ class BrandController extends Controller
             })
             ->when(request('content_type'), function ($q) {
                 $q->where('content_type', request('content_type'));
+            })
+            ->when(request('platform'), function ($q) {
+                $q->whereIn('platform', request('platform'));
             })
             ->when(request('sortBy'), function ($q) {
                 $q->orderBy(request('sortBy'));
@@ -390,14 +398,14 @@ class BrandController extends Controller
         $services = KolService::where('kol_id', $kolId)->get();
 
         $campaigns = DB::table('campaign_kols')
-        ->join('campaigns', 'campaigns.id', '=', 'campaign_kols.campaign_id')
-        ->select(
-            'campaign_kols.*',
-            'campaigns.name as campaign_name'
-        )
-        ->where('campaign_kols.kol_id', $kolId)
-        ->orderByDesc('campaign_kols.added_at')
-        ->paginate(10);
+            ->join('campaigns', 'campaigns.id', '=', 'campaign_kols.campaign_id')
+            ->select(
+                'campaign_kols.*',
+                'campaigns.name as campaign_name'
+            )
+            ->where('campaign_kols.kol_id', $kolId)
+            ->orderByDesc('campaign_kols.added_at')
+            ->paginate(10);
 
         $bookedServiceIds = [];
         if (auth()->check()) {
@@ -563,9 +571,8 @@ class BrandController extends Controller
             'service_id' => $service->id,
             'note' => $request->note,
             'status' => 'pending',
-        ]); 
+        ]);
 
         return response()->json(['success' => true, 'message' => 'Đặt dịch vụ thành công!']);
     }
-
 }

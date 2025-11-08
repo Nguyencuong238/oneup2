@@ -770,24 +770,35 @@
                     <div class="filter-section">
                         <h3 class="filter-title">Tỷ lệ tương tác</h3>
                         <div class="filter-group">
-                            <div class="filter-checkbox">
-                                <input type="checkbox" name="engagement" id="eng-excellent"
-                                    @if (request()->engagement >= 8) checked @endif>
-                                <label for="eng-excellent">Xuất sắc (8%+)</label>
-                                {{-- <span class="filter-count">45</span> --}}
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" name="engagement" id="eng-good"
-                                    @if (request()->engagement >= 5) checked @endif>
-                                <label for="eng-good">Tốt (5-8%)</label>
-                                {{-- <span class="filter-count">112</span> --}}
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" name="engagement" id="eng-average"
-                                    @if (request()->engagement >= 2.5) checked @endif>
-                                <label for="eng-average">Trung bình (2-5%)</label>
-                                {{-- <span class="filter-count">234</span> --}}
-                            </div>
+                            @php
+                                $engagements = [
+                                    'excellent' => 'Xuất sắc (8%+)',
+                                    'good' => 'Tốt (5-8%)',
+                                    'average' => 'Trung bình (2-5%)',
+                                ];
+                            @endphp
+                            @foreach ($engagements as $key=> $val)
+                                <div class="filter-checkbox">
+                                    <input type="radio" name="engagement" id="eng-{{ $key }}"
+                                        value="{{ $key }}" @if (request()->engagement == $key) checked @endif>
+                                    <label for="eng-{{ $key }}">{{$val}}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Nền tảng</h3>
+                        <div class="filter-group filter-city">
+                            @foreach (['tiktok', 'facebook', 'youtube'] as $p)
+                                <div class="filter-checkbox">
+                                    <input type="checkbox" id="platform-{{ $p }}" name="platform[]"
+                                        value="{{ $p }}" @if (in_array($p, request('platform') ?? [])) checked @endif>
+                                    <label for="platform-{{ $p }}" class="text-transform-capitalize">
+                                        {{ $p }}
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 
