@@ -792,6 +792,19 @@
                     </div>
 
                     <div class="filter-section">
+                        <h3 class="filter-title">Dạng video</h3>
+                        <div class="filter-group filter-city">
+                            @foreach ($contentTypes as $type)
+                                <div class="filter-checkbox">
+                                    <input type="checkbox" id="content-type-{{ $loop->index }}" name="content_type"
+                                        value="{{ $type }}" @if (request('content_type') == $type) checked @endif>
+                                    <label for="content-type-{{ $loop->index }}">{{ $type }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
                         <h3 class="filter-title">Tỉnh thành</h3>
                         <div class="filter-group filter-city">
                             @foreach ($cities as $city)
@@ -1068,6 +1081,19 @@
                             <label for="engagement-average">Trung bình (2-5%)</label>
                             {{-- <span class="filter-count">234</span> --}}
                         </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Dạng video</h3>
+                    <div class="filter-group filter-city">
+                        @foreach ($contentTypes as $type)
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="content-{{ $loop->index }}" name="content_type"
+                                    value="{{ $type }}" @if (request('content_type') == $type) checked @endif>
+                                <label for="content-{{ $loop->index }}">{{ $type }}</label>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 

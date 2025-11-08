@@ -47,15 +47,19 @@ class BrandController extends Controller
             ->when(request('location_city'), function ($q) {
                 $q->where('location_city', request('location_city'));
             })
+            ->when(request('content_type'), function ($q) {
+                $q->where('content_type', request('content_type'));
+            })
             ->when(request('sortBy'), function ($q) {
                 $q->orderBy(request('sortBy'));
             })
             ->paginate(12);
 
         $categories = Category::where('type', 'kols')->get();
-        $cities = Kol::distinct()->whereNotNull('location_city')->pluck('location_city');
+        $cities = Kol::distinct('location')->whereNotNull('location_city')->orderBy('location_city')->pluck('location_city');
+        $contentTypes = Kol::distinct('content_type')->whereNotNull('content_type')->pluck('content_type');
 
-        return view('brand.kol_explorer', compact('kols', 'categories', 'cities'));
+        return view('brand.kol_explorer', compact('kols', 'categories', 'cities', 'contentTypes'));
     }
 
     public function campaign()
