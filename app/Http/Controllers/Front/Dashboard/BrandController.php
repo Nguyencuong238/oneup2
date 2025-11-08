@@ -44,8 +44,8 @@ class BrandController extends Controller
             ->when(request('trust_score'), function ($q) {
                 $q->where('trust_score', '>=', request('trust_score'));
             })
-            ->when(request('location'), function ($q) {
-                $q->where('location_country', request('location'));
+            ->when(request('location_city'), function ($q) {
+                $q->where('location_city', request('location_city'));
             })
             ->when(request('sortBy'), function ($q) {
                 $q->orderBy(request('sortBy'));
@@ -53,14 +53,9 @@ class BrandController extends Controller
             ->paginate(12);
 
         $categories = Category::where('type', 'kols')->get();
-        $countryCodes = Kol::select('location_country')
-            ->distinct()
-            ->whereNotNull('location_country')
-            ->pluck('location_country');
+        $cities = Kol::distinct()->whereNotNull('location_city')->pluck('location_city');
 
-        $countries = Country::whereIn('code', $countryCodes)->get();
-
-        return view('brand.kol_explorer', compact('kols', 'categories', 'countries'));
+        return view('brand.kol_explorer', compact('kols', 'categories', 'cities'));
     }
 
     public function campaign()
@@ -110,7 +105,7 @@ class BrandController extends Controller
     {
         $campaignCategories = Category::where('type', 'campaigns')->tree()->get()->toTree();
         $kolCategories = Category::where('type', 'kols')->tree()->get()->toTree();
-        $kols = Kol::where('is_verified', 1)->where('status', 'active')->get();
+        $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(50)->get();
 
         $campaign = Campaign::where('slug', $slug)->firstOrNew();
 
@@ -150,7 +145,7 @@ class BrandController extends Controller
             }
         }
 
-        $kols = $query->limit(30)->get(['id', 'display_name', 'followers', 'engagement', 'price_campaign']);
+        $kols = $query->limit(50)->get(['id', 'display_name', 'followers', 'engagement', 'price_campaign']);
 
         $html = view('brand.partials.kol_grid', compact('kols'))->render();
 

@@ -61,6 +61,7 @@
 
         .stepper {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             position: relative;
         }
@@ -260,6 +261,8 @@
             cursor: pointer;
             transition: all 0.2s;
             border: 2px solid transparent;
+            overflow: auto;
+            flex-wrap: wrap
         }
 
         .kol-select-card:hover {
@@ -437,6 +440,13 @@
             font-size: 14px;
         }
 
+            .kol-info-box {
+                display: flex;
+                flex: 1;
+                gap: 20px;
+                align-items: center;
+            }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .dashboard-layout {
@@ -480,7 +490,31 @@
 
             .stepper {
                 overflow-x: auto;
+                gap: 1rem;
             }
+
+            .step {
+                width: 100%;
+                flex: unset;
+                flex-direction: row;
+            }
+
+            .topbar-right {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background: #fff;
+                z-index: 100;
+                justify-content: end;
+                right: 0;
+                padding: 10px 20px;
+                border-top: 1px solid var(--gray-200);
+            }
+
+            .topbar {
+                padding: 1rem;
+            }
+
         }
     </style>
 @endsection
@@ -497,6 +531,12 @@
         <div class="topbar">
             <div class="topbar-left">
                 <h1 class="page-title">Trình lập kế hoạch chiến dịch</h1>
+
+                <div class="menu-toggle" onclick="$('.sidebar').toggleClass('active');">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
             <div class="topbar-right">
@@ -668,21 +708,24 @@
                             @foreach ($kols as $item)
                                 <div class="kol-select-card {{ in_array($item->id, old('kols', $campaign->kols->pluck('id')->toArray())) ? 'selected' : '' }}"
                                     data-id="{{ $item->id }}">
-                                    <input type="checkbox" class="kol-checkbox" name="kols[]"
-                                        value="{{ $item->id }}"
-                                        {{ in_array($item->id, old('kols', $campaign->kols->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                    <img class="kol-avatar" src="{{ $item->getFirstMediaUrl('media') }}">
-                                    <div class="kol-info">
-                                        <div class="kol-name">{{ $item->display_name }}</div>
-                                        <div class="kol-stats">
-                                            <span>{{ formatDisplayNumber($item->followers, 3) }} người theo dõi</span>
-                                            <span>•</span>
-                                            <span>{{ $item->engagement }}% tương tác</span>
+                                    <div class="kol-info-box">
+                                        <input type="checkbox" class="kol-checkbox" name="kols[]"
+                                            value="{{ $item->id }}"
+                                            {{ in_array($item->id, old('kols', $campaign->kols->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                        <img class="kol-avatar" src="{{ $item->getFirstMediaUrl('media') }}">
+                                        <div class="kol-info">
+                                            <div class="kol-name">{{ $item->display_name }}</div>
+                                            <div class="kol-stats">
+                                                <span>{{ formatDisplayNumber($item->followers, 3) }} người theo dõi</span>
+                                                <span>•</span>
+                                                <span>{{ $item->engagement }}% tương tác</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="kol-price">
                                         <div class="price-label">Giá ước tính</div>
-                                        <div class="price-value">₫{{ formatDisplayNumber($item->price_campaign, 2) }}</div>
+                                        <div class="price-value">₫{{ formatDisplayNumber($item->price_campaign, 2) }}
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -724,7 +767,8 @@
                                         {{ $tag->name }}
                                         <span class="tag-remove">&times;</span>
                                     </span>
-                                    <input type="hidden" name="tags[]" id="tag-input-{{$loop->index}}" value="{{ $tag->name }}">
+                                    <input type="hidden" name="tags[]" id="tag-input-{{ $loop->index }}"
+                                        value="{{ $tag->name }}">
                                 @endforeach
                                 <input type="text" class="tag-input-field" placeholder="Enter để thêm thẻ...">
                             </div>
@@ -787,9 +831,11 @@
                             Nhà sáng tạo nội dung đã chọn (<span id="selected-count">{{ count($campaign->kols) }}</span>)
                         </h3>
 
-                        <div id="selected-kols" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <div id="selected-kols"
+                            style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
                             @foreach ($campaign->kols as $item)
-                                <div class="selected-kol" data-id="{{ $item->id }}" style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div class="selected-kol" data-id="{{ $item->id }}"
+                                    style="display: flex; align-items: center; gap: 0.75rem;">
                                     <img class="kol-avatar" style="width: 36px; height: 36px; font-size: 14px;"
                                         src="{{ $item->getFirstMediaUrl('media') }}">
                                     <div style="flex: 1;">
@@ -813,7 +859,7 @@
 
 @section('js')
     <script src="{{ asset('assets/js/main.js') }}"></script>
-        <script>
+    <script>
         jQuery(function($) {
             // Cached selectors
             const $doc = $(document);
@@ -831,13 +877,22 @@
             // Utility
             function debounce(fn, wait = 150) {
                 let t;
-                return function() { clearTimeout(t); t = setTimeout(() => fn.apply(this, arguments), wait); };
+                return function() {
+                    clearTimeout(t);
+                    t = setTimeout(() => fn.apply(this, arguments), wait);
+                };
             }
 
-            function numberFormat(n) { return (n||0).toLocaleString('vi-VN'); }
+            function numberFormat(n) {
+                return (n || 0).toLocaleString('vi-VN');
+            }
+
             function formatDisplayNumber(num, digits = 0) {
                 if (num === null || num === undefined || isNaN(num)) return '0';
-                return Number(num).toLocaleString('vi-VN', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+                return Number(num).toLocaleString('vi-VN', {
+                    minimumFractionDigits: digits,
+                    maximumFractionDigits: digits
+                });
             }
 
             // Initialize selectedKOLs from checkboxes already checked (server-rendered)
@@ -871,7 +926,8 @@
                 const parts = [];
                 let totalCost = 0;
                 selectedKOLs.forEach((info, id) => {
-                    const priceNum = parseFloat((info.price||'').replace(/[^\d.,]/g,'').replace(',', '.')) || 0;
+                    const priceNum = parseFloat((info.price || '').replace(/[^\d.,]/g, '').replace(',',
+                        '.')) || 0;
                     totalCost += priceNum;
                     parts.push(`
                         <div class="selected-kol" data-id="${id}" style="display:flex;align-items:center;gap:0.75rem;">
@@ -948,8 +1004,12 @@
                 $.ajax({
                     url: "{{ route('kols.ajaxFilter') }}",
                     type: "GET",
-                    data: { filter: value },
-                    beforeSend() { $('#kol-grid').html('<p>Đang tải dữ liệu...</p>'); },
+                    data: {
+                        filter: value
+                    },
+                    beforeSend() {
+                        $('#kol-grid').html('<p>Đang tải dữ liệu...</p>');
+                    },
                     success(res) {
                         $('#kol-grid').html(res.html);
 
@@ -965,7 +1025,9 @@
                         // also initialize any checkbox listeners remain delegated so no rebind needed
                         updateSelectedKOLs();
                     },
-                    error() { $('#kol-grid').html('<p>Lỗi khi tải dữ liệu.</p>'); }
+                    error() {
+                        $('#kol-grid').html('<p>Lỗi khi tải dữ liệu.</p>');
+                    }
                 });
             });
 
@@ -987,7 +1049,8 @@
                 const engagement = parseFloat($('input[name="target_engagement"]').val()) || 0;
                 const budget = parseInt($budgetInput.val()) || 0;
                 $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? numberFormat(reach) : '0');
-                $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) + '%' : '0%');
+                $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) +
+                    '%' : '0%');
                 const cpv = reach > 0 ? (budget / reach) : 0;
                 $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + numberFormat(cpv) : '₫0');
                 const roi = budget > 0 ? ((reach * (engagement / 100)) / (budget / 1000000)) : 0;
@@ -1003,8 +1066,15 @@
                     const value = $(this).val().trim();
                     if (!value) return;
                     tagIndex++;
-                    $('<input>').attr({ type: 'hidden', name: 'tags[]', id: 'tag-input-' + tagIndex, value }).appendTo($tagsInput);
-                    const $tag = $(`<span class="tag">${value}<span class="tag-remove" data-index="${tagIndex}">×</span></span>`);
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: 'tags[]',
+                        id: 'tag-input-' + tagIndex,
+                        value
+                    }).appendTo($tagsInput);
+                    const $tag = $(
+                        `<span class="tag">${value}<span class="tag-remove" data-index="${tagIndex}">×</span></span>`
+                    );
                     $tag.insertBefore(this);
                     $(this).val('');
                 }
@@ -1016,11 +1086,15 @@
             });
 
             // Duration
-            $('#start_date, #end_date').on('change', function(){ campaignDuration(); });
+            $('#start_date, #end_date').on('change', function() {
+                campaignDuration();
+            });
+
             function campaignDuration() {
-                const d1 = new Date($('#start_date').val()), d2 = new Date($('#end_date').val());
+                const d1 = new Date($('#start_date').val()),
+                    d2 = new Date($('#end_date').val());
                 if (!isNaN(d1) && !isNaN(d2) && d2 > d1) {
-                    const diffDays = Math.ceil((d2 - d1)/(1000*60*60*24));
+                    const diffDays = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
                     $previewDuration.text(diffDays + ' ngày');
                 } else $previewDuration.text('0 ngày');
             }
@@ -1030,14 +1104,18 @@
                 e.preventDefault();
                 const status = $(this).hasClass('btn-draft') ? 'draft' : 'pending';
                 const $form = $(this).closest('form');
-                
+
                 $form.find('input[name="kols[]"]').remove();
                 selectedKOLs.forEach((info, id) => {
-                        $form.append(`<input type="hidden" name="kols[]" value="${id}">`);
+                    $form.append(`<input type="hidden" name="kols[]" value="${id}">`);
                 });
 
                 $form.find('input[name="status"]').remove();
-                $('<input>').attr({ type: 'hidden', name: 'status', value: status }).appendTo($form);
+                $('<input>').attr({
+                    type: 'hidden',
+                    name: 'status',
+                    value: status
+                }).appendTo($form);
                 $form.submit();
             });
 
@@ -1049,5 +1127,3 @@
         });
     </script>
 @endsection
-
-

@@ -619,6 +619,11 @@
             box-shadow: var(--shadow-md);
         }
 
+        .filter-city {
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .dashboard-layout {
@@ -787,14 +792,13 @@
                     </div>
 
                     <div class="filter-section">
-                        <h3 class="filter-title">Quốc gia</h3>
-                        <div class="filter-group">
-                            @foreach ($countries as $country)
+                        <h3 class="filter-title">Tỉnh thành</h3>
+                        <div class="filter-group filter-city">
+                            @foreach ($cities as $city)
                                 <div class="filter-checkbox">
-                                    <input type="checkbox" id="loc-{{ $country->code }}" name="location"
-                                        value="{{ $country->code }}" @if (request()->location == $country->code) checked @endif>
-                                    <label for="loc-{{ $country->code }}">{{ $country->name }}</label>
-                                    {{-- <span class="filter-count">567</span> --}}
+                                    <input type="checkbox" id="city-{{ $loop->index }}" name="location_city"
+                                        value="{{ $city }}" @if (request('location_city') == $city) checked @endif>
+                                    <label for="city-{{ $loop->index }}">{{ $city }}</label>
                                 </div>
                             @endforeach
                         </div>
@@ -1068,13 +1072,13 @@
                 </div>
 
                 <div class="filter-section">
-                    <h3 class="filter-title">Quốc gia</h3>
-                    <div class="filter-group">
-                        @foreach ($countries as $country)
+                    <h3 class="filter-title">Tỉnh thành</h3>
+                    <div class="filter-group filter-city">
+                        @foreach ($cities as $city)
                             <div class="filter-checkbox">
-                                <input type="checkbox" id="location-{{ $country->code }}" name="location"
-                                    value="{{ $country->code }}" @if (request()->location == $country->code) checked @endif>
-                                <label for="location-{{ $country->code }}">{{ $country->name }}</label>
+                                <input type="checkbox" id="cities-{{ $city }}" name="location_city"
+                                    value="{{ $city }}" @if (request()->location_city == $city) checked @endif>
+                                <label for="cities-{{ $city }}">{{ $city }}</label>
                                 {{-- <span class="filter-count">567</span> --}}
                             </div>
                         @endforeach

@@ -634,7 +634,7 @@
                                                     </svg>
                                                 @endif
                                             </div>
-                                            <div class="kol-handle">{{ $k->username }}</div>
+                                            <div class="kol-handle">{{ '@' . trim($k->username, '@') }}</div>
                                         </div>
                                     </div>
                                 </td>
