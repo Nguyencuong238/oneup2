@@ -809,8 +809,8 @@
                         <div class="filter-group filter-city">
                             @foreach ($cities as $city)
                                 <div class="filter-checkbox">
-                                    <input type="checkbox" id="city-{{ $loop->index }}" name="location_city"
-                                        value="{{ $city }}" @if (request('location_city') == $city) checked @endif>
+                                    <input type="checkbox" id="city-{{ $loop->index }}" name="location_city[]"
+                                        value="{{ $city }}" @if (in_array($city, request('location_city') ?? [])) checked @endif>
                                     <label for="city-{{ $loop->index }}">{{ $city }}</label>
                                 </div>
                             @endforeach
@@ -1102,8 +1102,8 @@
                     <div class="filter-group filter-city">
                         @foreach ($cities as $city)
                             <div class="filter-checkbox">
-                                <input type="checkbox" id="cities-{{ $city }}" name="location_city"
-                                    value="{{ $city }}" @if (request()->location_city == $city) checked @endif>
+                                <input type="checkbox" id="cities-{{ $city }}" name="location_city[]"
+                                    value="{{ $city }}" @if (in_array($city, request('location_city') ?? [])) checked @endif>
                                 <label for="cities-{{ $city }}">{{ $city }}</label>
                                 {{-- <span class="filter-count">567</span> --}}
                             </div>

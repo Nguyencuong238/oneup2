@@ -45,7 +45,7 @@ class BrandController extends Controller
                 $q->where('trust_score', '>=', request('trust_score'));
             })
             ->when(request('location_city'), function ($q) {
-                $q->where('location_city', request('location_city'));
+                $q->whereIn('location_city', request('location_city'));
             })
             ->when(request('content_type'), function ($q) {
                 $q->where('content_type', request('content_type'));
