@@ -21,9 +21,9 @@ class SyncTiktokProfiles extends Command
         $this->info('=== 🚀 Bắt đầu đồng bộ thông tin TikTok ===');
 
         // ✅ Tạo bản ghi log cho lần chạy này
-        $log = TiktokSyncLog::create([
-            'started_at' => now(),
-        ]);
+            // $log = TiktokSyncLog::create([
+            //     'started_at' => now(),
+            // ]);
 
         $query = Kol::where('platform', 'tiktok')->whereNotNull('username');
 
@@ -38,7 +38,7 @@ class SyncTiktokProfiles extends Command
         $failed = 0;
         $errors = [];
 
-        $log->update(['total_kols' => $total]);
+        // $log->update(['total_kols' => $total]);
 
         foreach ($kols as $kol) {
             $this->info("➡️  Đang xử lý: {$kol->username}");
@@ -88,13 +88,48 @@ class SyncTiktokProfiles extends Command
                 }
 
                 // ✅ Cập nhật thông tin KOL
-                $kol->update([
+               $kol->update([
                     'display_name' => $user['nickname'] ?? $kol->display_name,
                     'bio' => $user['signature'] ?? $kol->bio,
                     'followers' => $statsProfile['followerCount'] ?? 0,
                     'following' => $statsProfile['followingCount'] ?? 0,
                     'total_likes' => $statsProfile['heartCount'] ?? 0,
                     'rank' => $rank,
+                ]);
+
+                if (empty($kol->sec_uid) && isset($user['secUid'])) {
+                    $kol->sec_uid = $user['secUid'];
+                    $kol->save();
+                }
+
+                sleep(1);
+
+                // 2️⃣ Lấy danh sách video
+                $cursor = 0;
+                $hasMore = true;
+                $totalVideos = 0;
+
+                // ... (vòng while lấy video ở đây)
+
+                KolStat::updateOrCreate(
+                    ['kol_id' => $kol->id],
+                    [
+                        'followers_count' => $statsProfile['followerCount'] ?? 0,
+                        'following_count' => $statsProfile['followingCount'] ?? 0,
+                        'recorded_at' => now(),
+                    ]
+                );
+
+                // ✅ Tạo log sau khi đã tính được tổng video
+                TiktokSyncLog::create([
+                    'kol_id' => $kol->id,
+                    'followers' => $statsProfile['followerCount'] ?? 0,
+                    'likes_count' => $statsProfile['heartCount'] ?? 0,
+                    'comments_count' => $statsProfile['videoCommentCount'] ?? 0,
+                    'shares_count' => $statsProfile['shareCount'] ?? 0,
+                    'videos_count' => $totalVideos,
+                    'started_at' => now(),
+                    'finished_at' => now(),
                 ]);
 
                 if (empty($kol->sec_uid) && isset($user['secUid'])) {
@@ -202,13 +237,6 @@ class SyncTiktokProfiles extends Command
             }
         }
 
-        // ✅ Cập nhật lại log sau khi hoàn tất
-        $log->update([
-            'finished_at' => now(),
-            'success_count' => $success,
-            'failed_count' => $failed,
-            'error_messages' => $errors,
-        ]);
 
         $this->info('=== ✅ Hoàn tất đồng bộ TikTok ===');
     }
