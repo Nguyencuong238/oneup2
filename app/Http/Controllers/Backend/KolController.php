@@ -78,11 +78,11 @@ class KolController extends Controller
             'language'          => request('language'),
             'is_verified'       => request('is_verified') ?? 0,
             'is_featured'       => request('is_featured') ?? 0,
-            'blue_tick'       => request('blue_tick') ?? 0,
+            'blue_tick'         => request('blue_tick') ?? 0,
             'status'            => request('status') ?? 'active',
             'tier'              => request('tier'),
             'followers'         => request('followers') ?? 0,
-            'trust_score'       => request('trust_score') - 0,
+            'trust_score'       => min(request('trust_score') - 0, 100),
             'engagement'        => request('engagement') - 0,
             'price_tiktok'      => request('price_tiktok') - 0,
             'price_campaign'    => request('price_campaign') - 0
@@ -169,7 +169,7 @@ class KolController extends Controller
             'status'            => request('status') ?? 'active',
             'tier'              => request('tier'),
             'followers'         => request('followers') ?? 0,
-            'trust_score'       => request('trust_score') - 0,
+            'trust_score'       => min(request('trust_score') - 0, 100),
             'engagement'        => request('engagement') - 0,
             'price_tiktok'      => request('price_tiktok') - 0,
             'price_campaign'    => request('price_campaign') - 0

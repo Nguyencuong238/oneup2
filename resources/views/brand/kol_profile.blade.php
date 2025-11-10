@@ -387,9 +387,11 @@
             align-items: center;
             margin-bottom: 1.5rem;
         }
-.tab-content {
-    overflow: auto;
-}
+
+        .tab-content {
+            overflow: auto;
+        }
+
         .metric-title {
             font-size: 18px;
             font-weight: 600;
@@ -933,18 +935,21 @@
         .btn-submit:hover {
             background: #1e40af;
         }
+
         .table-wrapper {
             overflow-x: auto;
         }
+
         @media (max-width: 768px) {
             .profile-top-row {
                 justify-content: center;
             }
+
             .topbar {
                 padding: 1rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .profile-content {
                 padding-left: 1rem;
@@ -1002,7 +1007,12 @@
                         </div>
                     </div>
 
-                    <div class="profile-handle">{{ '@' . trim($kol->username, '@') }}</div>
+                    <div class="profile-handle">
+                        <a href="https://www.tiktok.com/{{ '@' . trim($kol->username, '@') }}" target="blank">
+                            {{ '@' . trim($kol->username, '@') }}
+                        </a>
+
+                    </div>
 
                     <div class="profile-bio">
                         {{ $kol->bio }}

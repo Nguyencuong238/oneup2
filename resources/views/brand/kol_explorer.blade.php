@@ -619,6 +619,11 @@
             box-shadow: var(--shadow-md);
         }
 
+        .filter-city {
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .dashboard-layout {
@@ -765,36 +770,59 @@
                     <div class="filter-section">
                         <h3 class="filter-title">Tỷ lệ tương tác</h3>
                         <div class="filter-group">
-                            <div class="filter-checkbox">
-                                <input type="checkbox" name="engagement" id="eng-excellent"
-                                    @if (request()->engagement >= 8) checked @endif>
-                                <label for="eng-excellent">Xuất sắc (8%+)</label>
-                                {{-- <span class="filter-count">45</span> --}}
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" name="engagement" id="eng-good"
-                                    @if (request()->engagement >= 5) checked @endif>
-                                <label for="eng-good">Tốt (5-8%)</label>
-                                {{-- <span class="filter-count">112</span> --}}
-                            </div>
-                            <div class="filter-checkbox">
-                                <input type="checkbox" name="engagement" id="eng-average"
-                                    @if (request()->engagement >= 2.5) checked @endif>
-                                <label for="eng-average">Trung bình (2-5%)</label>
-                                {{-- <span class="filter-count">234</span> --}}
-                            </div>
+                            @php
+                                $engagements = [
+                                    'excellent' => 'Xuất sắc (8%+)',
+                                    'good' => 'Tốt (5-8%)',
+                                    'average' => 'Trung bình (2-5%)',
+                                ];
+                            @endphp
+                            @foreach ($engagements as $key=> $val)
+                                <div class="filter-checkbox">
+                                    <input type="radio" name="engagement" id="eng-{{ $key }}"
+                                        value="{{ $key }}" @if (request()->engagement == $key) checked @endif>
+                                    <label for="eng-{{ $key }}">{{$val}}</label>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 
                     <div class="filter-section">
-                        <h3 class="filter-title">Quốc gia</h3>
-                        <div class="filter-group">
-                            @foreach ($countries as $country)
+                        <h3 class="filter-title">Nền tảng</h3>
+                        <div class="filter-group filter-city">
+                            @foreach (['tiktok', 'facebook', 'youtube'] as $p)
                                 <div class="filter-checkbox">
-                                    <input type="checkbox" id="loc-{{ $country->code }}" name="location"
-                                        value="{{ $country->code }}" @if (request()->location == $country->code) checked @endif>
-                                    <label for="loc-{{ $country->code }}">{{ $country->name }}</label>
-                                    {{-- <span class="filter-count">567</span> --}}
+                                    <input type="checkbox" id="platform-{{ $p }}" name="platform[]"
+                                        value="{{ $p }}" @if (in_array($p, request('platform') ?? [])) checked @endif>
+                                    <label for="platform-{{ $p }}" class="text-transform-capitalize">
+                                        {{ $p }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Dạng video</h3>
+                        <div class="filter-group filter-city">
+                            @foreach ($contentTypes as $type)
+                                <div class="filter-checkbox">
+                                    <input type="checkbox" id="content-type-{{ $loop->index }}" name="content_type"
+                                        value="{{ $type }}" @if (request('content_type') == $type) checked @endif>
+                                    <label for="content-type-{{ $loop->index }}">{{ $type }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Tỉnh thành</h3>
+                        <div class="filter-group filter-city">
+                            @foreach ($cities as $city)
+                                <div class="filter-checkbox">
+                                    <input type="checkbox" id="city-{{ $loop->index }}" name="location_city[]"
+                                        value="{{ $city }}" @if (in_array($city, request('location_city') ?? [])) checked @endif>
+                                    <label for="city-{{ $loop->index }}">{{ $city }}</label>
                                 </div>
                             @endforeach
                         </div>
@@ -1068,13 +1096,26 @@
                 </div>
 
                 <div class="filter-section">
-                    <h3 class="filter-title">Quốc gia</h3>
-                    <div class="filter-group">
-                        @foreach ($countries as $country)
+                    <h3 class="filter-title">Dạng video</h3>
+                    <div class="filter-group filter-city">
+                        @foreach ($contentTypes as $type)
                             <div class="filter-checkbox">
-                                <input type="checkbox" id="location-{{ $country->code }}" name="location"
-                                    value="{{ $country->code }}" @if (request()->location == $country->code) checked @endif>
-                                <label for="location-{{ $country->code }}">{{ $country->name }}</label>
+                                <input type="checkbox" id="content-{{ $loop->index }}" name="content_type"
+                                    value="{{ $type }}" @if (request('content_type') == $type) checked @endif>
+                                <label for="content-{{ $loop->index }}">{{ $type }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Tỉnh thành</h3>
+                    <div class="filter-group filter-city">
+                        @foreach ($cities as $city)
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="cities-{{ $city }}" name="location_city[]"
+                                    value="{{ $city }}" @if (in_array($city, request('location_city') ?? [])) checked @endif>
+                                <label for="cities-{{ $city }}">{{ $city }}</label>
                                 {{-- <span class="filter-count">567</span> --}}
                             </div>
                         @endforeach
