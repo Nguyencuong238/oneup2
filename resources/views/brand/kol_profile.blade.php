@@ -1224,7 +1224,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <div class="engagement-value">{{ $avgLikesText }}</div>
+                                <div class="engagement-value">{{ $avgCommentsText }}</div>
                                 <div class="engagement-label">TB Bình luận</div>
                             </div>
 
