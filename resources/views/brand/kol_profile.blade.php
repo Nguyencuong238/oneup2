@@ -405,6 +405,10 @@
             grid-template-columns: 2fr 1fr;
             gap: 2rem;
         }
+        /* Khi tab khác overview -> ẩn cột phải và cho cột trái full width */
+        .content-grid.full-width {
+            grid-template-columns: 1fr !important;
+        }
 
         /* Engagement Metrics */
         .metric-card {
@@ -891,6 +895,10 @@
             background-color: #1e40af;
         }
 
+        .hidden {
+            display: none !important;
+        }
+
         /* Responsive: nút sẽ xuống hàng dưới */
         @media (max-width: 768px) {
             .btn-select-service {
@@ -1249,7 +1257,7 @@
                 </div>
 
                      <!-- Bảng giá dịch vụ -->
-                 <div id="pricing" class="tab-content hidden">
+                <div id="pricing" class="tab-content hidden">
                     <div class="metric-card">
                         <div class="metric-header">
                             <h2 class="metric-title">Bảng giá dịch vụ</h2>
@@ -1431,7 +1439,7 @@
                     </div>
 
                     <!-- Right Column -->
-                    <div>
+                    <div id="right-column">
                         <!-- Trust Score -->
                         <div class="metric-card" style="margin-top: 2rem;">
                             <div class="metric-header">
@@ -1605,7 +1613,8 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
     @endsection
 
     @section('js')
@@ -1864,5 +1873,40 @@
                         .catch(() => alert('Có lỗi xảy ra, vui lòng thử lại.'));
                 });
             });
+
+            function showTab(tabName) {
+            // 1️⃣ Ẩn tất cả các tab-content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.add('hidden'));
+
+            // 2️⃣ Hiện tab được chọn
+            const activeTab = document.getElementById(tabName);
+            if (activeTab) activeTab.classList.remove('hidden');
+
+            // 3️⃣ Cập nhật class 'active' cho tab menu
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            const clickedTab = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+            if (clickedTab) clickedTab.classList.add('active');
+
+            // 4️⃣ Hiện hoặc ẩn cột phải
+            const rightColumn = document.getElementById('right-column');
+            const contentGrid = document.querySelector('.content-grid'); // 👈 thêm dòng này
+
+            if (rightColumn) {
+                if (tabName === 'overview') {
+                    rightColumn.classList.remove('hidden');
+
+                    // 👇 thêm dòng này để trở lại layout 2 cột
+                    contentGrid?.classList.remove('full-width');
+                } else {
+                    rightColumn.classList.add('hidden');
+
+                    // 👇 thêm dòng này để chuyển sang layout 1 cột full width
+                    contentGrid?.classList.add('full-width');
+                }
+            }
+        }
+
         </script>
     @endsection

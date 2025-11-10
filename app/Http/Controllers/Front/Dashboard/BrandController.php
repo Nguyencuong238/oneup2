@@ -390,7 +390,7 @@ class BrandController extends Controller
             ->with(['contents' => function ($query) {
                 $query->where('content_type', 'video')
                     ->latest('posted_at')
-                    ->take(12);
+                    ->take(30);
             }])
             ->firstOrFail();
 
@@ -484,7 +484,7 @@ class BrandController extends Controller
         // --- Lấy video hiển thị ---
         $videos = $kol->contents;
 
-        $video = $kol->contents->take(6);
+        $video = $kol->contents->take(12);
 
         // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ (30 ngày gần đây) ---
         $syncLogs = TiktokSyncLog::where('kol_id', $kolId)
