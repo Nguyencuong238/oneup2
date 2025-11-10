@@ -20,11 +20,6 @@ class SyncTiktokProfiles extends Command
     {
         $this->info('=== 🚀 Bắt đầu đồng bộ thông tin TikTok ===');
 
-        // ✅ Tạo bản ghi log cho lần chạy này
-            // $log = TiktokSyncLog::create([
-            //     'started_at' => now(),
-            // ]);
-
         $query = Kol::where('platform', 'tiktok')->whereNotNull('username');
 
         if ($this->argument('oftenUpdate') == 1) {
@@ -121,16 +116,6 @@ class SyncTiktokProfiles extends Command
                 );
 
                 // ✅ Tạo log sau khi đã tính được tổng video
-                TiktokSyncLog::create([
-                    'kol_id' => $kol->id,
-                    'followers' => $statsProfile['followerCount'] ?? 0,
-                    'likes_count' => $statsProfile['heartCount'] ?? 0,
-                    'comments_count' => $statsProfile['videoCommentCount'] ?? 0,
-                    'shares_count' => $statsProfile['shareCount'] ?? 0,
-                    'videos_count' => $totalVideos,
-                    'started_at' => now(),
-                    'finished_at' => now(),
-                ]);
 
                 if (empty($kol->sec_uid) && isset($user['secUid'])) {
                     $kol->sec_uid = $user['secUid'];
@@ -143,6 +128,9 @@ class SyncTiktokProfiles extends Command
                 $cursor = 0;
                 $hasMore = true;
                 $totalVideos = 0;
+                $totalLikes = 0;
+                $totalComments = 0;
+                $totalShares = 0;
 
                 while ($hasMore) {
                     $params = ['count' => 35, 'cursor' => $cursor];
@@ -208,6 +196,9 @@ class SyncTiktokProfiles extends Command
                         );
 
                         $totalVideos++;
+                        $totalLikes += $likes;
+                        $totalComments += $comments;
+                        $totalShares += $shares;
                     }
 
                     $this->info("📄 Lấy được " . count($posts) . " video (cursor: {$cursor})");
@@ -215,6 +206,18 @@ class SyncTiktokProfiles extends Command
 
                     if (!$hasMore) break;
                 }
+
+                TiktokSyncLog::create([
+                    'kol_id' => $kol->id,
+                    'followers' => $statsProfile['followerCount'] ?? 0,
+                    'likes_count' => $totalLikes,
+                    'comments_count' => $totalComments,
+                    'shares_count' => $totalShares,
+                    'videos_count' => $totalVideos,
+                    'started_at' => now(),
+                    'finished_at' => now(),
+                ]);
+
 
                 // 3️⃣ Cập nhật followers/following
                 KolStat::updateOrCreate(
