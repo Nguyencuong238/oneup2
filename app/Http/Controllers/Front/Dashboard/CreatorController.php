@@ -220,8 +220,9 @@ class CreatorController extends Controller
     {
         $kol = Kol::where('username', $username)->firstOrFail();
 
-        // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ ---
+        // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ (30 ngày gần đây) ---
         $syncLogs = TiktokSyncLog::where('kol_id', $kol->id)
+            ->where('created_at', '>=', \Carbon\Carbon::now()->subDays(30))
             ->orderBy('created_at', 'asc')
             ->get()
             ->groupBy(function ($item) {

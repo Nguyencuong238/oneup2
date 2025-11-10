@@ -484,8 +484,11 @@ class BrandController extends Controller
         // --- Lấy video hiển thị ---
         $videos = $kol->contents;
 
-        // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ ---
+        $video = $kol->contents->take(6);
+
+        // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ (30 ngày gần đây) ---
         $syncLogs = TiktokSyncLog::where('kol_id', $kolId)
+            ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->orderBy('created_at', 'asc')
             ->get()
             ->groupBy(function ($item) {
@@ -507,7 +510,9 @@ class BrandController extends Controller
         return view('brand.kol_profile', compact(
             'kol',
             'videos',
+            'video',
             'totalPosts',
+            'totalLikes',
             'totalViews',
             'avgLikesText',
             'avgCommentsText',

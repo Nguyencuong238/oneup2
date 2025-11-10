@@ -108,7 +108,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             align-items: flex-start;
         }
 
@@ -269,50 +269,84 @@
         }
 
         /* Profile Stats */
+        /* Container giới hạn & căn giữa toàn bộ khối thống kê */
         .profile-stats {
+            margin-right: 150px !important;
             display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--gray-200);
+            flex-wrap: nowrap;              
+            justify-content: space-evenly; 
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem auto 0;           
+            max-width: 1100px;              
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
+        /* Mỗi ô có kích thước cố định/đều nhau */
         .stat-item {
+            flex: 0 0 22%;                  /* chiếm ~22% mỗi ô -> 4 ô + gap vừa khít */
+            min-width: 180px;               /* ngăn quá nhỏ */
+            max-width: 260px;               /* giới hạn lớn nhất (trên màn to) */
+            background-color: #2f6cfb;      /* màu blue giống mẫu */
+            color: #fff;
+            border-radius: 12px;
+            padding: 18px 14px;
             text-align: center;
+            box-shadow: 0 6px 18px rgba(47,108,251,0.18);
         }
 
+        /* Giá trị + nhãn */
         .stat-value {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--dark-blue);
+            color: #fff;
+            margin-bottom: 6px;
         }
 
         .stat-label {
             font-size: 13px;
-            color: var(--gray-600);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 0.25rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 0;
         }
 
-        .stat-change {
-            font-size: 12px;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
+        /* Thanh progress ô cuối (nếu cần) */
+        .stat-item:last-child .trust-bar {
+            margin-top: 8px;
+            height: 6px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .stat-item:last-child .trust-bar > i {
+            display: block;
+            height: 100%;
+            width: 60%; /* đổi bằng inline style hoặc class theo điểm thực tế */
+            background: linear-gradient(90deg, #2ff2a3, #00c2ff);
         }
 
-        .stat-change.positive {
-            color: var(--success);
+        /* Responsive: trên mobile cho 2 ô 1 hàng */
+        @media (max-width: 900px) {
+            .profile-stats {
+                margin-right: 0px !important;  
+                flex-wrap: wrap;
+                justify-content: center;     /* căn giữa khi xuống dòng */
+                gap: 0.75rem;
+                max-width: 1000px;
+            }
+            .stat-item {
+                flex: 0 0 calc(50% - 0.75rem);
+                min-width: 140px;
+            }
         }
 
-        .stat-change.negative {
-            color: var(--danger);
+        /* Responsive nhỏ hơn nữa: 1 ô 1 hàng */
+        @media (max-width: 420px) {
+            .stat-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
-
         /* Tabs */
         .profile-tabs {
             background: white;
@@ -1039,24 +1073,16 @@
                         </div>
 
                         <div class="stat-item">
-                            <div class="stat-value">{{ $kol->engagement - 0 }}%</div>
-                            <div class="stat-label">Tỷ lệ tương tác</div>
-                            {{-- <div class="stat-change positive">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span>+0.8% (7d)</span>
-                            </div> --}}
-                        </div>
-
-                        <div class="stat-item">
                             <div class="stat-value">{{ $totalPosts }}</div>
                             <div class="stat-label">Bài đăng</div>
                             {{-- <div class="stat-change">
                                 <span style="color: var(--gray-600);">3.2 bài viết/tuần</span>
                             </div> --}}
+                        </div>
+
+                         <div class="stat-item">
+                            <div class="stat-value">{{ formatDisplayNumber($totalLikes) }}</div>
+                            <div class="stat-label">Tổng lượt like</div>
                         </div>
 
                         <div class="stat-item">
@@ -1116,8 +1142,54 @@
             <div class="content-grid">
                 <!-- Left Column -->
                 <div id="overview" class="tab-content active">
+                    <div class="metric-card" style="margin-top: 2rem;">
+                        <div class="metric-header">
+                            <h2 class="metric-title">Dữ liệu TikTok theo ngày</h2>
+                            <span class="metric-period">Theo dõi hiệu suất</span>
+                        </div>
+                        <div id="tiktok-chart" style="width: 100%; height: 400px;"></div>
+                    </div>
+
+                    <div class="metric-card" style="margin-top: 2rem;">
+                        <div class="metric-header"
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h2 class="metric-title" style="font-weight: bold; font-size: 20px;">Nội dung gần đây</h2>
+                            <a href="#" style="color: var(--primary); font-size: 14px; text-decoration: none;">Xem
+                                tất cả →</a>
+                        </div>
+
+                        <div class="tiktok-video-grid">
+                            @foreach ($video as $v)
+                                <div class="tiktok-video-item">
+                                    <div class="video-wrapper">
+                                        <a href="https://www.tiktok.com/@ {{ $kol->username }}/video/{{ $v->platform_post_id }}"
+                                            target="_blank" rel="noopener">
+                                            <img src="{{ $v->thumbnail_url }}" alt="video thumbnail"
+                                                class="video-thumb">
+                                            @if ($v->is_pinned ?? false)
+                                                <span class="pinned-tag">Đã ghim</span>
+                                            @endif
+                                            <div class="video-overlay-text">
+                                                {{ $v->title }}
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="video-stats">
+                                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        {{ formatDisplayNumber($v->views_count) }}
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
                     <!-- Engagement Metrics -->
-                    <div class="metric-card">
+                    {{-- <div class="metric-card">
                         <div class="metric-header">
                             <h2 class="metric-title">Chỉ số Tương tác</h2>
                             <span class="metric-period">30 ngày gần đây</span>
@@ -1172,17 +1244,9 @@
                                 <div class="engagement-label">TB Lượt xem</div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+        
                 </div>
-
-                <!-- Biểu đồ dữ liệu TikTok -->
-                    <div class="metric-card" style="margin-top: 2rem;">
-                         <div class="metric-header">
-                             <h2 class="metric-title">Dữ liệu TikTok theo ngày</h2>
-                             <span class="metric-period">Theo dõi hiệu suất</span>
-                         </div>
-                         <div id="tiktok-chart" style="width: 100%; height: 400px;"></div>
-                     </div>
 
                      <!-- Bảng giá dịch vụ -->
                  <div id="pricing" class="tab-content hidden">
