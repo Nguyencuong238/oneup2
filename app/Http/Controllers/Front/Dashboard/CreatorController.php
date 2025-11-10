@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\KolService;
 use App\Models\Kol;
 use App\Models\KolBooking;
+use App\Models\TiktokSyncLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -219,7 +220,26 @@ class CreatorController extends Controller
     {
         $kol = Kol::where('username', $username)->firstOrFail();
 
-        return view('creator.kol_profile', compact('kol'));
+        // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ ---
+        $syncLogs = TiktokSyncLog::where('kol_id', $kol->id)
+            ->orderBy('created_at', 'asc')
+            ->get()
+            ->groupBy(function ($item) {
+                return $item->created_at->format('Y-m-d');
+            });
+
+        $chartData = [];
+        foreach ($syncLogs as $date => $logs) {
+            $chartData[] = [
+                'date' => $date,
+                'followers' => $logs->last()->followers ?? 0,
+                'likes_count' => $logs->sum('likes_count'),
+                'comments_count' => $logs->sum('comments_count'),
+                'shares_count' => $logs->sum('shares_count'),
+            ];
+        }
+
+        return view('creator.kol_profile', compact('kol', 'chartData'));
     }
 
     public function services()

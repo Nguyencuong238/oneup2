@@ -543,17 +543,6 @@
                     <div class="quick-action-icon">📊</div>
                     <div class="quick-action-text">Tạo chiến dịch</div>
                 </a>
-
-                {{-- <a href="{{ route('brand.report') }}" class="quick-action">
-                    <div class="quick-action-icon">📈</div>
-                    <div class="quick-action-text">Tạo báo cáo</div>
-                </a>
-
-                <a href="{{ route('brand.analytic') }}" class="quick-action">
-                    <div class="quick-action-icon">💡</div>
-                    <div class="quick-action-text">Xem thông tin chi tiết</div>
-                </a> --}}
-
             </div>
 
             <!-- Stats Grid -->

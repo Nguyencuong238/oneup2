@@ -792,6 +792,15 @@
                         </div>
                     </div>
 
+                    <!-- Biểu đồ dữ liệu TikTok -->
+                    <div class="metric-card" style="margin-top: 2rem;">
+                        <div class="metric-header">
+                            <h2 class="metric-title">Dữ liệu TikTok theo ngày</h2>
+                            <span class="metric-period">Theo dõi hiệu suất</span>
+                        </div>
+                        <div id="tiktok-chart" style="width: 100%; height: 400px;"></div>
+                    </div>
+
                     <!-- Audience Demographics -->
                     <div class="metric-card" style="margin-top: 2rem;">
                         <div class="metric-header">
@@ -1116,9 +1125,166 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('plugins/visualization/echarts/echarts.min.js') }}"></script>
     <script>
+        // Initialize TikTok Chart
+        function initTiktokChart() {
+            const chartData = @json($chartData ?? []);
+            
+            if (!chartData || chartData.length === 0) {
+                console.log('No chart data available');
+                return;
+            }
+
+            const dates = chartData.map(item => item.date);
+            const followers = chartData.map(item => item.followers);
+            const likes = chartData.map(item => item.likes_count);
+            const comments = chartData.map(item => item.comments_count);
+            const shares = chartData.map(item => item.shares_count);
+
+            const chartDom = document.getElementById('tiktok-chart');
+            if (!chartDom) return;
+
+            const myChart = echarts.init(chartDom);
+            
+            const option = {
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    borderColor: '#333',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                legend: {
+                    data: ['Followers', 'Likes', 'Comments', 'Shares'],
+                    bottom: 10,
+                    textStyle: {
+                        color: '#666'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '15%',
+                    top: '10%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: dates,
+                    axisLabel: {
+                        color: '#999'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: 'Followers',
+                        position: 'left',
+                        axisLabel: {
+                            color: '#999'
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#f0f0f0'
+                            }
+                        }
+                    },
+                    {
+                        type: 'value',
+                        name: 'Count',
+                        position: 'right',
+                        axisLabel: {
+                            color: '#999'
+                        },
+                        splitLine: {
+                            show: false
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: 'Followers',
+                        data: followers,
+                        type: 'line',
+                        smooth: true,
+                        yAxisIndex: 0,
+                        lineStyle: {
+                            width: 2,
+                            color: '#667eea'
+                        },
+                        itemStyle: {
+                            color: '#667eea'
+                        },
+                        areaStyle: {
+                            color: 'rgba(102, 126, 234, 0.1)'
+                        }
+                    },
+                    {
+                        name: 'Likes',
+                        data: likes,
+                        type: 'line',
+                        smooth: true,
+                        yAxisIndex: 1,
+                        lineStyle: {
+                            width: 2,
+                            color: '#f093d0'
+                        },
+                        itemStyle: {
+                            color: '#f093d0'
+                        }
+                    },
+                    {
+                        name: 'Comments',
+                        data: comments,
+                        type: 'line',
+                        smooth: true,
+                        yAxisIndex: 1,
+                        lineStyle: {
+                            width: 2,
+                            color: '#ffa500'
+                        },
+                        itemStyle: {
+                            color: '#ffa500'
+                        }
+                    },
+                    {
+                        name: 'Shares',
+                        data: shares,
+                        type: 'line',
+                        smooth: true,
+                        yAxisIndex: 1,
+                        lineStyle: {
+                            width: 2,
+                            color: '#52c41a'
+                        },
+                        itemStyle: {
+                            color: '#52c41a'
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+        }
+
         // Tab switching
         document.addEventListener('DOMContentLoaded', function() {
+            initTiktokChart();
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => {
                 tab.addEventListener('click', function(e) {

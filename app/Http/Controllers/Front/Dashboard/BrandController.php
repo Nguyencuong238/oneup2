@@ -10,6 +10,7 @@ use App\Models\Kol;
 use App\Models\KolService;
 use App\Models\KolBooking;
 use App\Models\KolContent;
+use App\Models\TiktokSyncLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -483,6 +484,26 @@ class BrandController extends Controller
         // --- Lấy video hiển thị ---
         $videos = $kol->contents;
 
+        // --- Lấy dữ liệu TiktokSyncLog cho biểu đồ ---
+        $syncLogs = TiktokSyncLog::where('kol_id', $kolId)
+            ->orderBy('created_at', 'asc')
+            ->get()
+            ->groupBy(function ($item) {
+                return $item->created_at->format('Y-m-d');
+            });
+
+
+        $chartData = [];
+        foreach ($syncLogs as $date => $logs) {
+            $chartData[] = [
+                'date' => $date,
+                'followers' => $logs->last()->followers ?? 0,
+                'likes_count' => $logs->sum('likes_count'),
+                'comments_count' => $logs->sum('comments_count'),
+                'shares_count' => $logs->sum('shares_count'),
+            ];
+        }
+
         return view('brand.kol_profile', compact(
             'kol',
             'videos',
@@ -505,7 +526,8 @@ class BrandController extends Controller
             'contentQuality',
             'services',
             'campaigns',
-            'bookedServiceIds'
+            'bookedServiceIds',
+            'chartData'
         ));
     }
 

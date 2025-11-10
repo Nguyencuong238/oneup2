@@ -14,7 +14,8 @@ class TiktokSyncLog extends Model
         'shares_count',
         'videos_count',
         'error_message',
-        'recorded_date',
+        'started_at',
+        'finished_at'
     ];
 
     protected $casts = [
