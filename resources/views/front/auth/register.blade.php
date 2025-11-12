@@ -72,6 +72,7 @@
         .auth-logo {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             margin-bottom: 2rem;
         }
@@ -100,12 +101,14 @@
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .auth-subtitle {
             color: var(--gray-600);
             margin-bottom: 2rem;
             font-size: 16px;
+            text-align: center;
         }
 
         .form-group {
@@ -192,12 +195,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             margin-bottom: 1.5rem;
         }
 
         .checkbox-group {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
         }
 
@@ -402,6 +405,7 @@
             color: var(--primary);
             transform: translateX(-5px);
         }
+
         .form-select {
             width: 100%;
             padding: 10px 14px;
@@ -413,6 +417,10 @@
         }
 
         @media (max-width: 768px) {
+            .back-to-home {
+                display: none;
+            }
+
             .auth-container {
                 grid-template-columns: 1fr;
                 max-width: 400px;
@@ -421,9 +429,23 @@
             .auth-right {
                 display: none;
             }
+            .auth-title {
+                font-size: 28px;
+            }
+        }
 
-            .social-login {
-                grid-template-columns: 1fr;
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+
+            .auth-title {
+                font-size: 24px;
+                line-height: 1.4;
+            }
+
+            .auth-left {
+                padding: 1.5em;
             }
         }
     </style>
@@ -447,7 +469,7 @@
                     <label class="form-label" for="company">Loại tài khoản *</label>
                     <select class="form-select" name="type">
                         <option value="kols" @if (old('type') == 'kols') selected @endif>
-                            Nhà sáng tạo nội dung                        
+                            Nhà sáng tạo nội dung
                         </option>
                         <option value="brand" @if (old('type') == 'brand') selected @endif>
                             Nhãn hàng

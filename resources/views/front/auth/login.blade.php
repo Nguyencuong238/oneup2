@@ -72,6 +72,7 @@
         .auth-logo {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             margin-bottom: 2rem;
         }
@@ -100,12 +101,14 @@
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .auth-subtitle {
             color: var(--gray-600);
             margin-bottom: 2rem;
             font-size: 16px;
+            text-align: center;
         }
 
         .form-group {
@@ -192,12 +195,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             margin-bottom: 1.5rem;
+            gap: 1rem;
         }
 
         .checkbox-group {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
         }
 
@@ -321,7 +325,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
             color: white;
         }
 
@@ -334,6 +338,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
+            margin: 0;
         }
 
         .feature-text h4 {
@@ -349,7 +354,7 @@
         .auth-visual {
             position: relative;
             z-index: 1;
-            text-align: center;
+            /* text-align: center; */
         }
 
         .auth-visual img {
@@ -404,6 +409,10 @@
         }
 
         @media (max-width: 768px) {
+            .back-to-home {
+                display: none;
+            }
+
             .auth-container {
                 grid-template-columns: 1fr;
                 max-width: 400px;
@@ -412,9 +421,23 @@
             .auth-right {
                 display: none;
             }
+            .auth-title {
+                font-size: 28px;
+            }
+        }
 
-            .social-login {
-                grid-template-columns: 1fr;
+        @media (max-width: 480px) {
+
+            body {
+                padding: 1rem;
+            }
+
+            .auth-left {
+                padding: 1.5rem;
+            }
+
+            .auth-title {
+                font-size: 24px;
             }
         }
     </style>
@@ -425,7 +448,9 @@
         <!-- Left Side - Login Form -->
         <div class="auth-left">
             <div class="auth-logo">
-                <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
+                <a href="/">
+                    <img src="{{ asset('assets/logo.png') }}" alt="OneUp KOL Logo" style="max-height:65px;">
+                </a>
             </div>
 
             <h1 class="auth-title">Chào mừng trở lại!</h1>
@@ -490,7 +515,8 @@
             </div>
 
             <div class="social-login">
-                <button class="btn-social" onclick="window.location='{{ route('login.provider', ['provider' => 'google', 'redirect' => request('redirect')]) }}'">
+                <button class="btn-social"
+                    onclick="window.location='{{ route('login.provider', ['provider' => 'google', 'redirect' => request('redirect')]) }}'">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -507,7 +533,8 @@
                     </svg>
                     Google
                 </button>
-                <button class="btn-social" onclick="window.location='{{ route('login.provider', ['provider' => 'facebook', 'redirect' => request('redirect')]) }}'">
+                <button class="btn-social"
+                    onclick="window.location='{{ route('login.provider', ['provider' => 'facebook', 'redirect' => request('redirect')]) }}'">
                     <svg width="20" height="20" fill="#1877F2" viewBox="0 0 24 24">
                         <path
                             d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -526,7 +553,8 @@
             <div class="auth-visual">
                 <h2 style="font-size: 28px; margin-bottom: 1rem;">Mở khóa sức mạnh phân tích vượt trội</h2>
                 <p style="font-size: 16px; opacity: 0.9; margin-bottom: 2rem;">
-                    Tham gia cùng hơn 500 thương hiệu đang sử dụng OneUp Nhà sáng tạo nội dung để tối ưu hóa các chiến dịch influencer trên
+                    Tham gia cùng hơn 500 thương hiệu đang sử dụng OneUp Nhà sáng tạo nội dung để tối ưu hóa các chiến dịch
+                    influencer trên
                     TikTok
                 </p>
 

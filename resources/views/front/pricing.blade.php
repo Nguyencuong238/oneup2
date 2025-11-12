@@ -437,11 +437,10 @@
                         Bảng điều khiển
                     </a>
                 @else
-                    <a href="{{ route('register') }}" class="btn" style="background: white; color: var(--primary);">
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-small">
                         Đăng ký
                     </a>
-                    <a href="{{ route('login') }}" class="btn"
-                        style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
+                    <a href="{{ route('login') }}" class="btn btn-outline btn-small">
                         Đăng nhập
                     </a>
                 @endauth
