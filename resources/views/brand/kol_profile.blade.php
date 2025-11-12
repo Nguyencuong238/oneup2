@@ -1043,7 +1043,7 @@
                         @endif
                         <div class="profile-badges">
                             @if ($kol->is_verified)
-                                <span class="badge badge-verified">Đã xác minh</span>
+                                <span class="badge badge-verified" style="background: #3b82f6">Đang chờ xác minh</span>
                             @endif
                             {{-- <span class="badge badge-tier">Hạng Diamond</span> --}}
                         </div>

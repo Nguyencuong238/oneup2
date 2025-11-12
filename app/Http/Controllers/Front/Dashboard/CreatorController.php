@@ -9,6 +9,7 @@ use App\Models\KolService;
 use App\Models\Kol;
 use App\Models\KolBooking;
 use App\Models\TiktokSyncLog;
+use App\Models\ActionLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -162,6 +163,12 @@ class CreatorController extends Controller
             $request->campaign_id => ['status' => 'confirmed']
         ]);
 
+        ActionLog::create([
+            'user_id' => auth()->id(),
+            'action' => "KOL '{$kol->display_name}' đã tham gia chiến dịch '{$campaign->name}'",
+            'record_at' => now(),
+        ]);
+
         return redirect()->route('creator.campaign.index', [
             'tab' => 'confirmed'
         ])
@@ -299,6 +306,12 @@ class CreatorController extends Controller
 
         $service->update($data);
 
+        ActionLog::create([
+            'user_id' => auth()->id(),
+            'action' => "KOL '{$kol->display_name}' đã tạo dịch vụ '{$service->name}'",
+            'record_at' => now(),
+        ]);
+
         return redirect()->back()->with('success', 'Cập nhật dịch vụ thành công!');
     }
 
@@ -307,12 +320,20 @@ class CreatorController extends Controller
         $kol = Kol::where('id', auth()->user()->kol_id)->firstOrFail();
         $service = $kol->services()->findOrFail($id);
 
+        $serviceName = $service->name;
+
         if ($service->image) {
             $oldPath = str_replace('/storage/', '', $service->image);
             Storage::disk('public')->delete($oldPath);
         }
 
         $service->delete();
+
+        ActionLog::create([
+            'user_id' => auth()->id(),
+            'action' => "KOL '{$kol->display_name}' đã xóa dịch vụ '{$serviceName}'",
+            'record_at' => now(),
+        ]);
 
         return redirect()->back()->with('success', 'Đã xóa dịch vụ.');
     }
@@ -349,6 +370,14 @@ class CreatorController extends Controller
 
         $booking->update([
             'status' => $request->status,
+        ]);
+
+        ActionLog::create([
+            'user_id' => auth()->id(),
+            'action' => "KOL '" . auth()->user()->name . "' đã " . 
+                        ($request->status === 'approved' ? 'duyệt' : 'từ chối') . 
+                        " booking #{$booking->id}",
+            'record_at' => now(),
         ]);
 
         return redirect()

@@ -11,6 +11,7 @@ use App\Models\KolService;
 use App\Models\KolBooking;
 use App\Models\KolContent;
 use App\Models\TiktokSyncLog;
+use App\Models\ActionLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -24,7 +25,12 @@ class BrandController extends Controller
         $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(10)->get();
         $activeCampaigns = auth()->user()->campaigns()->where('status', 'active')->get();
 
-        return view('brand.dashboard', compact('kols', 'activeCampaigns'));
+        $recentLogs = ActionLog::with('user')
+        ->latest('record_at')
+        ->take(5)
+        ->get();
+
+        return view('brand.dashboard', compact('kols', 'activeCampaigns', 'recentLogs'));
     }
 
     public function kolExplorer()
@@ -294,6 +300,12 @@ class BrandController extends Controller
 
         $campaign->syncTagsWithType(request('tags'), 'campaign');
 
+        ActionLog::create([
+        'user_id' => auth()->id(),
+        'action' => "Chiến dịch '{$campaign->name}' đã được tạo",
+        'record_at' => now(),
+    ]);
+
         return redirect()->route('brand.campaign.index')->with('success', 'Chiến dịch đã được tạo thành công!');
     }
 
@@ -318,6 +330,12 @@ class BrandController extends Controller
         $oldStatus = $campaign->status;
         $campaign->status = $request->status;
         $campaign->save();
+
+        ActionLog::create([
+            'user_id' => auth()->id(),
+            'action' => "Trạng thái chiến dịch '{$campaign->name}' đã thay đổi từ '{$oldStatus}' sang '{$campaign->status}'",
+            'record_at' => now(),
+        ]);
 
         return redirect()->back()->with('success', 'Cập nhật trạng thái thành công');
     }
@@ -598,6 +616,15 @@ class BrandController extends Controller
             'service_id' => $service->id,
             'note' => $request->note,
             'status' => 'pending',
+        ]);
+
+        // 🔥 Ghi log hành động
+        ActionLog::create([
+            'user_id' => auth()->id(),
+            'action' => "Người dùng '" . auth()->user()->name . 
+                        "' đã đặt dịch vụ '" . $service->name . 
+                        "' của KOL '" . $service->kol->display_name . "'",
+            'record_at' => now(),
         ]);
 
         return response()->json(['success' => true, 'message' => 'Đặt dịch vụ thành công!']);
