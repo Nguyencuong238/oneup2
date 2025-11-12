@@ -319,18 +319,35 @@
             transform: translateX(-5px);
         }
 
-        @media (max-width: 540px) {
-            .auth-container {
-                padding: 2rem;
-                margin: 1rem;
+        @media (max-width: 768px) {
+
+            .back-to-home {
+                display: none;
+            }
+            .auth-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            body {
+                padding: 1rem;
+            }
+
+            .back-to-home {
+                display: none;
+            }
+
+            .auth-left {
+                padding: 1.5rem;
             }
 
             .auth-title {
                 font-size: 24px;
             }
-
-            .reset-steps {
-                padding: 1rem;
+            .auth-container {
+                padding: 1.5rem;
             }
         }
     </style>

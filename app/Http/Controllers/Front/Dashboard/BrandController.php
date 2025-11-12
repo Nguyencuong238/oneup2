@@ -439,6 +439,10 @@ class BrandController extends Controller
         $avgCommentsText = 0;
         $avgSharesText = 0;
         $avgViewsText = 0;
+        $totalLikes = 0;
+        $totalComments = 0;
+        $totalShares = 0;
+        $totalViews = 0;
 
         if ($totalPosts > 0) {
             $totalLikes = KolContent::where('kol_id', $kolId)->sum('likes_count');

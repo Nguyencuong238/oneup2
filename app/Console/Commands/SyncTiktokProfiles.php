@@ -23,7 +23,7 @@ class SyncTiktokProfiles extends Command
         $query = Kol::where('platform', 'tiktok')->whereNotNull('username');
 
         if ($this->argument('oftenUpdate') == 1) {
-            $query->where('followers', '<=', 100);
+            $query->where('followers', '=', 0);
         }
 
         $kols = $query->get();
