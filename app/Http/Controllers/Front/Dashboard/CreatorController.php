@@ -163,6 +163,8 @@ class CreatorController extends Controller
             $request->campaign_id => ['status' => 'confirmed']
         ]);
 
+        $campaign = Campaign::find($request->campaign_id);
+        
         ActionLog::create([
             'user_id' => auth()->id(),
             'action' => "KOL '{$kol->display_name}' đã tham gia chiến dịch '{$campaign->name}'",
