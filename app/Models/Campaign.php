@@ -11,9 +11,20 @@ class Campaign extends Model
     use HasFactory;
     use HasTags;
 
+    protected $fillable = [
+        'zalo_phone',
+        'fb_link',
+        'campaign_area',
+        'campaign_image',
+        'priority_content_type',
+        'sales_link',
+        'free_sample_order'
+    ];
+
     protected $casts = [
         'start_date' => 'date',
-        'end_date' => 'date'
+        'end_date' => 'date',
+        'free_sample_order' => 'boolean'
     ];
 
     public function author()

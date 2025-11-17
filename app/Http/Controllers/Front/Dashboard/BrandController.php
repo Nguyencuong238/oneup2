@@ -12,11 +12,13 @@ use App\Models\KolBooking;
 use App\Models\KolContent;
 use App\Models\TiktokSyncLog;
 use App\Models\ActionLog;
+use App\Exports\CampaignCreatorsExport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BrandController extends Controller
 {
@@ -124,7 +126,7 @@ class BrandController extends Controller
     {
         $campaignCategories = Category::where('type', 'campaigns')->tree()->get()->toTree();
         $kolCategories = Category::where('type', 'kols')->tree()->get()->toTree();
-        $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(50)->get();
+        $kols = Kol::where('is_verified', 1)->where('status', 'active')->limit(10)->get();
 
         $campaign = Campaign::where('slug', $slug)->firstOrNew();
 
@@ -164,11 +166,19 @@ class BrandController extends Controller
             }
         }
 
-        $kols = $query->limit(50)->get(['id', 'display_name', 'followers', 'engagement', 'price_campaign']);
+        $page = $req->input('page', 1);
+        $perPage = 10;
+        $kols = $query->paginate($perPage, page: $page);
 
         $html = view('brand.partials.kol_grid', compact('kols'))->render();
+        $pagination = view('brand.partials.kol_pagination', compact('kols'))->render();
 
-        return response()->json(['html' => $html]);
+        return response()->json([
+            'html' => $html,
+            'pagination' => $pagination,
+            'total' => $kols->total(),
+            'has_more' => $kols->hasMorePages()
+        ]);
     }
 
 
@@ -267,6 +277,13 @@ class BrandController extends Controller
             'budget_amount' => 'nullable|numeric',
             'kols' => 'nullable|array',
             'status' => 'required|string',
+            'zalo_phone' => 'nullable|string',
+            'fb_link' => 'nullable|url',
+            'campaign_area' => 'nullable|string',
+            'campaign_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'priority_content_type' => 'nullable|string',
+            'sales_link' => 'nullable|url',
+            'free_sample_order' => 'nullable|boolean',
         ]);
 
         // Create campaign
@@ -283,6 +300,21 @@ class BrandController extends Controller
         $campaign->budget_amount = $request->budget_amount;
         $campaign->content_type = $request->content_type;
         $campaign->content = $request->content;
+        
+        // New fields
+        $campaign->zalo_phone = $request->zalo_phone;
+        $campaign->fb_link = $request->fb_link;
+        $campaign->campaign_area = $request->campaign_area;
+        $campaign->priority_content_type = $request->priority_content_type;
+        $campaign->sales_link = $request->sales_link;
+        $campaign->free_sample_order = $request->has('free_sample_order') ? 1 : 0;
+        
+        // Handle file upload
+        if ($request->hasFile('campaign_image')) {
+            $file = $request->file('campaign_image');
+            $path = $file->store('campaigns', 'public');
+            $campaign->campaign_image = $path;
+        }
 
         $campaign->roi = $campaign->budget_amount > 0 ?
             (($campaign->target_reach * ($campaign->target_engagement / 100)) /
@@ -632,5 +664,18 @@ class BrandController extends Controller
         ]);
 
         return response()->json(['success' => true, 'message' => 'Đặt dịch vụ thành công!']);
+    }
+
+    public function exportCampaignCreators($campaignId)
+    {
+        $campaign = Campaign::findOrFail($campaignId);
+        
+        // Check authorization
+        if ($campaign->created_by !== auth()->id()) {
+            abort(403);
+        }
+
+        $fileName = 'creators_' . $campaign->slug . '_' . date('Y-m-d') . '.xlsx';
+        return Excel::download(new CampaignCreatorsExport($campaign), $fileName);
     }
 }

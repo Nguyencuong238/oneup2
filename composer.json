@@ -18,6 +18,7 @@
         "laravelium/sitemap": "^8.0",
         "league/glide-laravel": "^1.0",
         "livewire/livewire": "^2.8",
+        "maatwebsite/excel": "^3.1",
         "mpyw/eloquent-has-by-non-dependent-subquery": "^2.0",
         "spatie/laravel-flash": "^1.8",
         "spatie/laravel-google-fonts": "^1.0",

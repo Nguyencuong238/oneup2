@@ -60,7 +60,7 @@ class CampaignController extends Controller
             'name'  => ['required'],
         ]);
 
-        $campaign = Campaign::create([
+        $data = [
             'organization_id' => request('organization_id'),
             'name' => request('name'),
             'description' => request('description'),
@@ -73,8 +73,23 @@ class CampaignController extends Controller
             'target_engagement' => request('target_engagement'),
             'target_conversions' => request('target_conversions'),
             'status' => request('status'),
-            'created_by' => auth()->id()
-        ]);
+            'created_by' => auth()->id(),
+            'zalo_phone' => request('zalo_phone'),
+            'fb_link' => request('fb_link'),
+            'campaign_area' => request('campaign_area'),
+            'priority_content_type' => request('priority_content_type'),
+            'sales_link' => request('sales_link'),
+            'free_sample_order' => request('free_sample_order') ? 1 : 0
+        ];
+
+        // Handle file upload
+        if ($request->hasFile('campaign_image')) {
+            $file = $request->file('campaign_image');
+            $path = $file->store('campaigns', 'public');
+            $data['campaign_image'] = $path;
+        }
+
+        $campaign = Campaign::create($data);
 
         flash(__('Record ":model" created', ['model' => $campaign->name]), 'success');
 
@@ -119,7 +134,7 @@ class CampaignController extends Controller
             'name'  => ['required'],
         ]);
 
-        $campaign->fill([
+        $data = [
             'organization_id' => request('organization_id'),
             'name' => request('name'),
             'description' => request('description'),
@@ -132,7 +147,22 @@ class CampaignController extends Controller
             'target_engagement' => request('target_engagement'),
             'target_conversions' => request('target_conversions'),
             'status' => request('status'),
-        ])->save();
+            'zalo_phone' => request('zalo_phone'),
+            'fb_link' => request('fb_link'),
+            'campaign_area' => request('campaign_area'),
+            'priority_content_type' => request('priority_content_type'),
+            'sales_link' => request('sales_link'),
+            'free_sample_order' => request('free_sample_order') ? 1 : 0
+        ];
+
+        // Handle file upload
+        if ($request->hasFile('campaign_image')) {
+            $file = $request->file('campaign_image');
+            $path = $file->store('campaigns', 'public');
+            $data['campaign_image'] = $path;
+        }
+
+        $campaign->fill($data)->save();
 
         flash(__('Record ":model" updated', ['model' => $campaign->name]), 'success');
 

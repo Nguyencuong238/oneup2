@@ -80,6 +80,7 @@ Route::prefix('brand/')->middleware(['auth', 'verified', IsBrand::class])->group
 	Route::post('campaign-status', [BrandController::class, 'changeStatus'])->name('brand.campaign.changeStatus');
 	Route::post('/book-service', [BrandController::class, 'bookService'])->name('creator.book.service');
 	Route::get('/kols/ajax-filter', [BrandController::class, 'ajaxFilter'])->name('kols.ajaxFilter');
+	Route::get('campaign/{campaignId}/export-creators', [BrandController::class, 'exportCampaignCreators'])->name('brand.campaign.export.creators');
 
 });
 

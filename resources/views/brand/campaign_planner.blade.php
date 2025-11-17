@@ -521,7 +521,7 @@
 
 @section('page')
     <!-- Main Content -->
-    <form class="main-content" action="{{ route('brand.campaign.store') }}" method="POST">
+    <form class="main-content" action="{{ route('brand.campaign.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         @if ($campaign->id && !request('is_clone'))
@@ -540,6 +540,11 @@
             </div>
 
             <div class="topbar-right">
+                @if($campaign->id && $campaign->kols->count() > 0)
+                    <a href="{{ route('brand.campaign.export.creators', $campaign->id) }}" class="btn btn-success btn-small" title="Xuất thông tin người sáng tạo">
+                        <span style="margin-right: 0.5rem;">📊</span>Xuất Excel
+                    </a>
+                @endif
                 <button type="button" class="btn btn-secondary btn-small btn-draft">
                     Lưu nháp
                 </button>
@@ -712,7 +717,7 @@
                                         <input type="checkbox" class="kol-checkbox" name="kols[]"
                                             value="{{ $item->id }}"
                                             {{ in_array($item->id, old('kols', $campaign->kols->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                        <img class="kol-avatar" src="{{ $item->getFirstMediaUrl('media') }}">
+                                         <img class="kol-avatar" src="{{ $item->getFirstMediaUrl('media') }}">
                                         <div class="kol-info">
                                             <div class="kol-name">{{ $item->display_name }}</div>
                                             <div class="kol-stats">
@@ -730,12 +735,90 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
+                        
+                        {{-- Pagination --}}
+                        <div id="kol-pagination-container" style="margin-top: 2rem;">
+                            {{-- Pagination will be loaded here via AJAX --}}
+                        </div>
+                        </div>
 
+
+                    <!-- Thông tin liên hệ thương hiệu -->
+                    <div class="form-section" style="margin-top: 1.5rem;">
+                        <h2 class="section-title">Thông tin liên hệ thương hiệu</h2>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Số điện thoại Zalo</label>
+                                <input type="text" name="zalo_phone" 
+                                    value="{{ old('zalo_phone', $campaign->zalo_phone ?? '') }}" 
+                                    class="form-input" placeholder="VD: 0901234567">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Liên kết Facebook</label>
+                                <input type="url" name="fb_link" 
+                                    value="{{ old('fb_link', $campaign->fb_link ?? '') }}" 
+                                    class="form-input" placeholder="VD: https://facebook.com/...">
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Yêu cầu nội dung -->
                     <div class="form-section" style="margin-top: 1.5rem;">
                         <h2 class="section-title">Yêu cầu nội dung</h2>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Phạm vi chiến dịch</label>
+                                <input type="text" name="campaign_area" 
+                                    value="{{ old('campaign_area', $campaign->campaign_area ?? '') }}" 
+                                    class="form-input" placeholder="VD: Toàn quốc, TP.HCM, Hà Nội">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hình ảnh chiến dịch</label>
+                                <input type="file" name="campaign_image" 
+                                    class="form-input" accept="image/*">
+                                @if(!empty($campaign->campaign_image))
+                                    <small class="form-help">Hình ảnh hiện tại: {{ $campaign->campaign_image }}</small>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Loại nội dung ưu tiên</label>
+                            <select class="form-select" name="priority_content_type" id="priority_content_type">
+                                <option value="no_priority" @if (old('priority_content_type', $campaign->priority_content_type ?? '') == 'no_priority') selected @endif>
+                                    Không ưu tiên
+                                </option>
+                                <option value="regular_review" @if (old('priority_content_type', $campaign->priority_content_type ?? '') == 'regular_review') selected @endif>
+                                    Review thường xuyên
+                                </option>
+                                <option value="video_sales" @if (old('priority_content_type', $campaign->priority_content_type ?? '') == 'video_sales') selected @endif>
+                                    Video bán hàng
+                                </option>
+                                <option value="live_sales" @if (old('priority_content_type', $campaign->priority_content_type ?? '') == 'live_sales') selected @endif>
+                                    Live bán hàng
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="sales_link_group" style="display: none;">
+                            <label class="form-label">Liên kết bán hàng</label>
+                            <input type="url" name="sales_link" 
+                                value="{{ old('sales_link', $campaign->sales_link ?? '') }}" 
+                                class="form-input" placeholder="Dán liên kết bán hàng của bạn tại đây">
+                            <span class="form-help">Nhập liên kết sản phẩm hoặc livestream</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" name="free_sample_order" 
+                                    value="1" 
+                                    {{ old('free_sample_order', $campaign->free_sample_order ?? false) ? 'checked' : '' }}
+                                    style="width: 18px; height: 18px; margin-right: 0.5rem; cursor: pointer; accent-color: var(--primary);">
+                                Hỗ trợ mẫu miễn phí
+                            </label>
+                        </div>
 
                         <div class="form-group">
                             <label class="form-label">Loại nội dung</label>
@@ -778,6 +861,18 @@
 
                 <!-- Cột phải - Xem trước -->
                 <div class="preview-panel">
+                    <!-- Hình ảnh chiến dịch -->
+                    <div class="preview-card" id="campaign-image-preview-card">
+                        <h3 class="preview-title">Hình ảnh chiến dịch</h3>
+                        <div id="campaign-image-preview" style="text-align: center; padding: 1rem 0;">
+                            @if(!empty($campaign->campaign_image))
+                                <img src="{{ asset('storage/' . $campaign->campaign_image) }}" style="max-width: 100%; height: auto; border-radius: 8px; max-height: 300px;">
+                            @else
+                                <p style="color: var(--gray-500); font-size: 14px;">Chưa có hình ảnh</p>
+                            @endif
+                        </div>
+                    </div>
+
                     <!-- Tóm tắt chiến dịch -->
                     <div class="preview-card">
                         <h3 class="preview-title">Tóm tắt chiến dịch</h3>
@@ -864,197 +959,202 @@
             // Cached selectors
             const $doc = $(document);
             const $budgetInput = $('#budget_amount');
-            const $kolGrid = $('#kol-grid'); // use #kol-grid container
-            const $previewCardList = $('.preview-card').eq(2).find('> div');
-            const $previewCardHeader = $('.preview-card').eq(2).find('h3');
+            const $kolGrid = $('#kol-grid');
+            const $previewCardList = $('#selected-kols');
+            const $previewCardHeader = $('#selected-kols').closest('.preview-card').find('h3');
             const $previewFee = $('.preview-fee');
             const $previewDuration = $('.preview-duration');
             const $previewKols = $('.preview-kols');
 
-            // Map: id (string) => info object
             let selectedKOLs = new Map();
 
-            // Utility
-            function debounce(fn, wait = 150) {
-                let t;
-                return function() {
-                    clearTimeout(t);
-                    t = setTimeout(() => fn.apply(this, arguments), wait);
+            // Utility helpers
+            const fmt = n => (n || 0).toLocaleString('vi-VN');
+            const fmtNum = (n, d=0) => !n || isNaN(n) ? '0' : Number(n).toLocaleString('vi-VN', {minimumFractionDigits:d, maximumFractionDigits:d});
+            const formatDisplayNumber = (n, decimals = 0) => {
+                if (!n || isNaN(n)) return '0';
+                const num = Number(n);
+                if (num >= 1000000) return (num / 1000000).toFixed(decimals) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(decimals) + 'K';
+                return num.toFixed(decimals);
+            };
+            const debounce = (fn, w=150) => {let t; return function() {clearTimeout(t); t = setTimeout(() => fn.apply(this, arguments), w);}};
+            
+            // Get KOL info from card
+            const getKolInfo = ($card) => {
+                const $avatar = $card.find('img.kol-avatar');
+                const avatarUrl = $avatar.attr('src') || '';
+                const name = $card.find('.kol-name').text().trim();
+                const followersText = $card.find('.kol-stats span').eq(0).text().trim();
+                const price = $card.find('.kol-price .price-value').text().trim();
+                
+                return {
+                    name: name || 'N/A',
+                    followers: followersText || '0 người theo dõi',
+                    price: price || '₫0',
+                    avatarUrl: avatarUrl
                 };
-            }
+            };
 
-            function numberFormat(n) {
-                return (n || 0).toLocaleString('vi-VN');
-            }
-
-            function formatDisplayNumber(num, digits = 0) {
-                if (num === null || num === undefined || isNaN(num)) return '0';
-                return Number(num).toLocaleString('vi-VN', {
-                    minimumFractionDigits: digits,
-                    maximumFractionDigits: digits
-                });
-            }
-
-            // Initialize selectedKOLs from checkboxes already checked (server-rendered)
+            // Initialize from DOM
             function initSelectedFromDOM() {
                 selectedKOLs.clear();
-                $(`#kol-grid .kol-select-card`).each(function() {
+                
+                // First: Extract info from initial preview panel (has all selected KOLs)
+                $('#selected-kols .selected-kol').each(function() {
+                    const $item = $(this);
+                    const id = String($item.data('id'));
+                    const $img = $item.find('img.kol-avatar');
+                    const name = $item.find('.fw-600').text().trim();
+                    const followers = $item.find('.fs-12').text().trim();
+                    // Get price - look for span with primary color or containing ₫
+                    const $priceSpan = $item.find('span[style*="var(--primary)"]').length ? 
+                                      $item.find('span[style*="var(--primary)"]') :
+                                      $item.find('span:contains("₫")').first();
+                    let priceText = $priceSpan.text().trim();
+                    // Extract numeric value and format it
+                    const priceNum = parseFloat(priceText.replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+                    const price = '₫' + formatDisplayNumber(priceNum);
+                    const avatarUrl = $img.attr('src') || '';
+                    
+                    selectedKOLs.set(id, {name, followers, price, avatarUrl});
+                });
+                
+                // Second: Update with fresh info from visible grid cards
+                $('#kol-grid .kol-select-card').each(function() {
                     const $card = $(this);
-                    const $chk = $card.find('.kol-checkbox').first();
-                    if ($chk.length && $chk.prop('checked')) {
-                        const id = String($card.data('id'));
-                        const info = {
-                            name: $card.find('.kol-name').text().trim(),
-                            followers: $card.find('.kol-stats span').first().text().trim(),
-                            price: $card.find('.price-value').text().trim(),
-                            avatar: $card.find('.kol-avatar').prop('outerHTML') || ''
-                        };
-                        selectedKOLs.set(id, info);
-                        $card.addClass('selected');
-                    } else {
-                        $card.removeClass('selected');
+                    const id = String($card.data('id'));
+                    if (selectedKOLs.has(id)) {
+                        $card.addClass('selected').find('.kol-checkbox').prop('checked', true);
+                        // Update with fresh info from grid
+                        const freshInfo = getKolInfo($card);
+                        if (freshInfo.name && freshInfo.name !== 'N/A') {
+                            selectedKOLs.set(id, freshInfo);
+                        }
                     }
                 });
             }
 
-            // Update preview (render from selectedKOLs Map)
+            // Update preview
             function updateSelectedKOLs() {
                 const count = selectedKOLs.size;
                 $previewCardHeader.text(`Nhà sáng tạo nội dung đã chọn (${count})`);
                 $previewKols.text(`${count} KOL`);
-
-                const parts = [];
-                let totalCost = 0;
+                
+                let totalCost = 0, html = '';
                 selectedKOLs.forEach((info, id) => {
-                    const priceNum = parseFloat((info.price || '').replace(/[^\d.,]/g, '').replace(',',
-                        '.')) || 0;
-                    totalCost += priceNum;
-                    parts.push(`
-                        <div class="selected-kol" data-id="${id}" style="display:flex;align-items:center;gap:0.75rem;">
-                            ${info.avatar}
-                            <div style="flex:1;">
-                                <div class="fw-600 fs-14 color-gray-700">${info.name}</div>
-                                <div class="fs-12 color-gray-600">${info.followers}</div>
-                            </div>
-                            <span style="font-weight:600;color:var(--primary);">${info.price}</span>
-                            <button type="button" class="remove-selected-kol" data-id="${id}" style="background:none;border:none;color:#999;font-size:18px;cursor:pointer;">✕</button>
+                    const price = parseFloat(info.price.replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+                    totalCost += price;
+                    html += `<div class="selected-kol" data-id="${id}" style="display:flex;align-items:center;gap:0.75rem;">
+                        <img class="kol-avatar" src="${info.avatarUrl || ''}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
+                        <div style="flex:1;">
+                            <div class="fw-600 fs-14 color-gray-700">${info.name}</div>
+                            <div class="fs-12 color-gray-600">${info.followers}</div>
                         </div>
-                    `);
+                        <span style="font-weight:600;color:var(--primary);">${info.price}</span>
+                        <button type="button" class="remove-selected-kol" data-id="${id}" style="background:none;border:none;color:#999;font-size:18px;cursor:pointer;">✕</button>
+                    </div>`;
                 });
-
-                $previewCardList.html(parts.join(''));
-
-                if (count > 0) {
-                    const avg = totalCost / count;
-                    $previewFee.text(`₫${formatDisplayNumber(avg, 3)}M`);
-                } else {
-                    $previewFee.text('₫0');
-                    $previewCardList.html('');
-                }
+                
+                $previewCardList.html(html);
+                $previewFee.text(count > 0 ? `₫${fmtNum(totalCost/count, 3)}M` : '₫0');
             }
 
-            // When user clicks card (toggle)
+            // Event: Card click
             $doc.on('click', '#kol-grid .kol-select-card', function(e) {
-                // allow clicking directly on checkbox to also trigger change
                 if ($(e.target).is('.kol-checkbox')) return;
-                const $card = $(this);
-                const $chk = $card.find('.kol-checkbox').first();
-                if (!$chk.length) return;
-                $chk.prop('checked', !$chk.prop('checked')).trigger('change');
+                $(this).find('.kol-checkbox').prop('checked', !$(this).find('.kol-checkbox').prop('checked')).trigger('change');
             });
 
-            // When checkbox change -> update Map and preview
+            // Event: Checkbox change
             $doc.on('change', '#kol-grid .kol-checkbox', function() {
-                const $chk = $(this);
-                const $card = $chk.closest('.kol-select-card');
+                const $card = $(this).closest('.kol-select-card');
                 const id = String($card.data('id'));
-                if ($chk.prop('checked')) {
-                    // add
-                    const info = {
-                        name: $card.find('.kol-name').text().trim(),
-                        followers: $card.find('.kol-stats span').first().text().trim(),
-                        price: $card.find('.price-value').text().trim(),
-                        avatar: $card.find('.kol-avatar').prop('outerHTML') || ''
-                    };
-                    selectedKOLs.set(id, info);
+                if ($(this).is(':checked')) {
+                    selectedKOLs.set(id, getKolInfo($card));
                     $card.addClass('selected');
                 } else {
-                    // remove
                     selectedKOLs.delete(id);
                     $card.removeClass('selected');
                 }
                 updateSelectedKOLs();
             });
 
-            // Remove from preview (click ✕)
+            // Event: Remove from preview
             $doc.on('click', '.remove-selected-kol', function() {
                 const id = String($(this).data('id'));
-                // remove from Map
                 selectedKOLs.delete(id);
-                // uncheck checkbox in grid if present
-                const $card = $(`#kol-grid .kol-select-card[data-id="${id}"]`);
-                $card.removeClass('selected');
-                $card.find('.kol-checkbox').prop('checked', false);
+                $(`#kol-grid .kol-select-card[data-id="${id}"]`).removeClass('selected').find('.kol-checkbox').prop('checked', false);
                 updateSelectedKOLs();
             });
 
-            // AJAX filter - reload grid html then restore checks from Map
-            $doc.on('change', '#kol-filter', function() {
-                const value = $(this).val();
+            // Store current filter
+            let currentFilter = '';
+
+            // Load KOL with filter & pagination
+            function loadKols(page = 1) {
                 $.ajax({
                     url: "{{ route('kols.ajaxFilter') }}",
                     type: "GET",
-                    data: {
-                        filter: value
-                    },
-                    beforeSend() {
-                        $('#kol-grid').html('<p>Đang tải dữ liệu...</p>');
-                    },
-                    success(res) {
-                        $('#kol-grid').html(res.html);
-
-                        // restore checked from map (only set checkboxes; don't alter Map)
+                    data: {filter: currentFilter, page: page},
+                    beforeSend: () => $kolGrid.html('<p style="text-align:center;padding:2rem;">Đang tải dữ liệu...</p>'),
+                    success: (res) => {
+                        $kolGrid.html(res.html);
+                        $('#kol-pagination-container').html(res.pagination);
+                        // Restore selections for KOLs in the filtered grid
+                        // Only update info for KOLs that are actually present in the new grid
                         selectedKOLs.forEach((info, id) => {
-                            const $card = $(`#kol-grid .kol-select-card[data-id="${id}"]`);
-                            if ($card.length) {
-                                $card.find('.kol-checkbox').prop('checked', true);
-                                $card.addClass('selected');
+                            const $c = $(`#kol-grid .kol-select-card[data-id="${id}"]`);
+                            if ($c.length) {
+                                $c.find('.kol-checkbox').prop('checked', true).closest('.kol-select-card').addClass('selected');
+                                // Update info only if found in grid (in case it changed)
+                                const newInfo = getKolInfo($c);
+                                if (newInfo.name && newInfo.name !== 'N/A') {
+                                    selectedKOLs.set(id, newInfo);
+                                }
+                                // Otherwise keep the previously stored info
                             }
                         });
-
-                        // also initialize any checkbox listeners remain delegated so no rebind needed
                         updateSelectedKOLs();
                     },
-                    error() {
-                        $('#kol-grid').html('<p>Lỗi khi tải dữ liệu.</p>');
-                    }
+                    error: () => $kolGrid.html('<p style="color:red;text-align:center;">Lỗi khi tải dữ liệu.</p>')
                 });
+            }
+
+            // Event: Filter change
+            $doc.on('change', '#kol-filter', function() {
+                currentFilter = $(this).val();
+                loadKols(1);
             });
 
-            // Budget & forecast (reuse your original logic)
+            // Event: Pagination
+            $doc.on('click', '.kol-prev-page, .kol-next-page, .kol-goto-page', function() {
+                const page = $(this).data('page');
+                loadKols(page);
+                window.scrollTo(0, $kolGrid.offset().top - 100);
+            });
+
+            // Budget & forecast
             $budgetInput.on('input', debounce(function() {
-                const budget = parseInt($(this).val()) || 0;
-                $('.kol-fee').text(`₫${formatDisplayNumber(budget * 0.7)}`);
-                $('.produce-fee').text(`₫${formatDisplayNumber(budget * 0.2)}`);
-                $('.manage-fee').text(`₫${formatDisplayNumber(budget * 0.1)}`);
-                $('.totalBudget, .preview-budget').text(`₫${formatDisplayNumber(budget)}`);
+                const b = parseInt($(this).val()) || 0;
+                $('.kol-fee').text(`₫${fmtNum(b * 0.7)}`);
+                $('.produce-fee').text(`₫${fmtNum(b * 0.2)}`);
+                $('.manage-fee').text(`₫${fmtNum(b * 0.1)}`);
+                $('.totalBudget, .preview-budget').text(`₫${fmtNum(b)}`);
             }, 150));
 
-            $doc.on('input', 'input[name="target_reach"], input[name="target_engagement"]', debounce(function() {
-                updateForecastFromInputs();
-            }, 150));
+            $doc.on('input', 'input[name="target_reach"], input[name="target_engagement"]', debounce(updateForecast, 150));
 
-            function updateForecastFromInputs() {
+            function updateForecast() {
                 const reach = parseInt($('input[name="target_reach"]').val()) || 0;
-                const engagement = parseFloat($('input[name="target_engagement"]').val()) || 0;
+                const eng = parseFloat($('input[name="target_engagement"]').val()) || 0;
                 const budget = parseInt($budgetInput.val()) || 0;
-                $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? numberFormat(reach) : '0');
-                $('.forecast-card').eq(1).find('.forecast-value').text(engagement > 0 ? numberFormat(engagement) +
-                    '%' : '0%');
+                $('.forecast-card').eq(0).find('.forecast-value').text(reach > 0 ? fmt(reach) : '0');
+                $('.forecast-card').eq(1).find('.forecast-value').text(eng > 0 ? fmt(eng) + '%' : '0%');
                 const cpv = reach > 0 ? (budget / reach) : 0;
-                $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + numberFormat(cpv) : '₫0');
-                const roi = budget > 0 ? ((reach * (engagement / 100)) / (budget / 1000000)) : 0;
-                $('.forecast-card').eq(3).find('.forecast-value').text(roi > 0 ? numberFormat(roi) + 'x' : '0x');
+                $('.forecast-card').eq(2).find('.forecast-value').text(cpv > 0 ? '₫' + fmt(cpv) : '₫0');
+                const roi = budget > 0 ? ((reach * (eng / 100)) / (budget / 1000000)) : 0;
+                $('.forecast-card').eq(3).find('.forecast-value').text(roi > 0 ? fmt(roi) + 'x' : '0x');
             }
 
             // Tag input (as original)
@@ -1119,10 +1219,34 @@
                 $form.submit();
             });
 
-            // Init: read existing checked boxes => populate Map, render preview, run forecast/duration
+            // Handle priority content type visibility for sales link
+            $('#priority_content_type').on('change', function() {
+                const value = $(this).val();
+                if (value === 'video_sales' || value === 'live_sales') {
+                    $('#sales_link_group').show();
+                } else {
+                    $('#sales_link_group').hide();
+                }
+            }).trigger('change');
+
+            // Handle campaign image preview
+            $('input[name="campaign_image"]').on('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        $('#campaign-image-preview').html(
+                            `<img src="${event.target.result}" style="max-width: 100%; height: auto; border-radius: 8px; max-height: 300px;">`
+                        );
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Init
             initSelectedFromDOM();
             updateSelectedKOLs();
-            updateForecastFromInputs();
+            updateForecast();
             campaignDuration();
         });
     </script>
