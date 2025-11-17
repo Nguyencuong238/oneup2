@@ -81,6 +81,8 @@ Route::prefix('brand/')->middleware(['auth', 'verified', IsBrand::class])->group
 	Route::post('/book-service', [BrandController::class, 'bookService'])->name('creator.book.service');
 	Route::get('/kols/ajax-filter', [BrandController::class, 'ajaxFilter'])->name('kols.ajaxFilter');
 	Route::get('campaign/{campaignId}/export-creators', [BrandController::class, 'exportCampaignCreators'])->name('brand.campaign.export.creators');
+	Route::post('campaign/import-kols', [BrandController::class, 'importCampaignKols'])->name('brand.campaign.import.kols');
+	Route::get('campaign/download-kol-template', [BrandController::class, 'downloadKolImportTemplate'])->name('brand.campaign.download.template');
 
 });
 

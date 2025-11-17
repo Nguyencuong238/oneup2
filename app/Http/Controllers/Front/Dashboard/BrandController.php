@@ -13,6 +13,7 @@ use App\Models\KolContent;
 use App\Models\TiktokSyncLog;
 use App\Models\ActionLog;
 use App\Exports\CampaignCreatorsExport;
+use App\Exports\KolImportTemplateExport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -677,5 +678,94 @@ class BrandController extends Controller
 
         $fileName = 'creators_' . $campaign->slug . '_' . date('Y-m-d') . '.xlsx';
         return Excel::download(new CampaignCreatorsExport($campaign), $fileName);
+    }
+
+    public function downloadKolImportTemplate()
+    {
+        $fileName = 'kol_import_template_' . date('Y-m-d') . '.xlsx';
+        return Excel::download(new KolImportTemplateExport(), $fileName);
+    }
+
+    public function importCampaignKols(Request $request)
+    {
+        // Validate file
+        $validated = $request->validate([
+            'excel_file' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ], [
+            'excel_file.required' => 'Vui lòng chọn file',
+            'excel_file.file' => 'File phải là file hợp lệ',
+            'excel_file.mimes' => 'File phải có định dạng .xlsx, .xls hoặc .csv',
+            'excel_file.max' => 'File không được vượt quá 5MB',
+        ]);
+
+        try {
+            $file = $request->file('excel_file');
+            
+            // Load spreadsheet
+            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file->getRealPath());
+            $sheet = $spreadsheet->getActiveSheet();
+            $rows = $sheet->toArray();
+
+            if (empty($rows)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'File không có dữ liệu. Vui lòng kiểm tra file của bạn.',
+                ], 422);
+            }
+
+            $matchedKols = [];
+            $notFound = [];
+
+            // Skip header (first row) and process data
+            foreach (array_slice($rows, 1) as $row) {
+                if (empty($row[0])) continue;
+
+                $searchTerm = trim($row[0]);
+
+                // Try to match by display_name or username
+                $kol = Kol::where('is_verified', 1)
+                    ->where('status', 'active')
+                    ->where(function ($q) use ($searchTerm) {
+                        $q->whereRaw('LOWER(display_name) = ?', [strtolower($searchTerm)])
+                          ->orWhereRaw('LOWER(username) = ?', [strtolower($searchTerm)]);
+                    })
+                    ->first();
+
+                if ($kol) {
+                    $matchedKols[] = [
+                        'id' => $kol->id,
+                        'name' => $kol->display_name,
+                        'followers' => formatDisplayNumber($kol->followers, 2),
+                        'followers_raw' => $kol->followers,
+                        'engagement' => $kol->engagement ?? 0,
+                        'price' => formatDisplayNumber($kol->price_campaign ?? 0, 0),
+                        'price_raw' => $kol->price_campaign ?? 0,
+                        'avatar' => $kol->getFirstMediaUrl('media') ?? '',
+                    ];
+                } else {
+                    $notFound[] = $searchTerm;
+                }
+            }
+
+            return response()->json([
+                'success' => true,
+                'matched' => $matchedKols,
+                'not_found' => $notFound,
+                'total_matched' => count($matchedKols),
+                'total_not_found' => count($notFound),
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('KOL Import Error', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Lỗi xử lý file: ' . $e->getMessage(),
+            ], 422);
+        }
     }
 }

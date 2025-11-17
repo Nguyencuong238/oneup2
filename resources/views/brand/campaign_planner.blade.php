@@ -683,7 +683,18 @@
 
                     <!-- Chọn KOL -->
                     <div class="form-section" style="margin-top: 1.5rem;">
-                        <h2 class="section-title">Chọn nhà sáng tạo nội dung</h2>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h2 class="section-title" style="margin-bottom: 0;">Chọn nhà sáng tạo nội dung</h2>
+                            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                                <a href="{{ route('brand.campaign.download.template') }}" style="padding: 0.5rem 1rem; font-size: 13px; border: 1px solid var(--gray-300); color: var(--gray-700); background: white; border-radius: 6px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+                                    ⬇ Template
+                                </a>
+                                <button type="button" id="btn-import-kols" class="btn btn-sm btn-outline-primary" style="padding: 0.5rem 1rem; font-size: 13px; border: 1px solid var(--primary); color: var(--primary); background: white; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem;">
+                                    📥 Import Excel
+                                </button>
+                                <input type="file" id="kol-import-file" accept=".xlsx,.xls,.csv" style="display: none;">
+                            </div>
+                        </div>
 
                         {{-- Ô lọc --}}
                         <div class="form-group">
@@ -706,6 +717,18 @@
                                     <option value="eng:high">Trên 5%</option>
                                 </optgroup>
                             </select>
+                        </div>
+
+                        {{-- Import Results Modal --}}
+                        <div id="import-results-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; flex-items: center; justify-content: center;">
+                            <div style="background: white; border-radius: 12px; padding: 2rem; max-width: 600px; max-height: 80vh; overflow-y: auto; margin: auto;">
+                                <h3 id="import-results-title" style="font-size: 18px; font-weight: 600; margin-bottom: 1rem; color: var(--dark-blue);">Kết quả Import</h3>
+                                <div id="import-results-content"></div>
+                                <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: flex-end;">
+                                    <button type="button" id="btn-cancel-import" class="btn btn-outline-secondary" style="padding: 0.5rem 1.5rem; border: 1px solid var(--gray-300); background: white; border-radius: 6px; cursor: pointer;">Hủy</button>
+                                    <button type="button" id="btn-confirm-import" class="btn btn-primary" style="padding: 0.5rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Xác nhận Import</button>
+                                </div>
+                            </div>
                         </div>
 
                         {{-- Grid hiển thị KOL --}}
@@ -1241,6 +1264,131 @@
                     };
                     reader.readAsDataURL(file);
                 }
+            });
+
+            // Import KOLs from Excel
+            let pendingImportKols = [];
+
+            $doc.on('click', '#btn-import-kols', function() {
+                $('#kol-import-file').click();
+            });
+
+            $doc.on('change', '#kol-import-file', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('excel_file', file);
+                formData.append('_token', '{{ csrf_token() }}');
+
+                $.ajax({
+                    url: "{{ route('brand.campaign.import.kols') }}",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: () => {
+                        $('#import-results-modal').find('#import-results-content').html('<p style="text-align: center; padding: 2rem;">Đang xử lý file...</p>');
+                        $('#import-results-modal').show();
+                    },
+                    success: (res) => {
+                        if (res.success) {
+                            pendingImportKols = res.matched;
+                            renderImportResults(res);
+                        } else {
+                            alert('Lỗi: ' + res.message);
+                            $('#import-results-modal').hide();
+                        }
+                    },
+                    error: (xhr, status, error) => {
+                        let errorMsg = 'Lỗi khi tải file. Vui lòng thử lại.';
+                        
+                        // Check if there's JSON error response from server
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMsg = xhr.responseJSON.message;
+                        } else if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+                            // Validation errors
+                            const errors = xhr.responseJSON.errors;
+                            const errorList = Object.values(errors).flat();
+                            errorMsg = errorList.length > 0 ? errorList[0] : errorMsg;
+                        }
+                        
+                        alert('Lỗi: ' + errorMsg);
+                        $('#import-results-modal').hide();
+                        console.error('Import error:', xhr);
+                    },
+                    complete: () => {
+                        $('#kol-import-file').val('');
+                    }
+                });
+            });
+
+            function renderImportResults(res) {
+                let html = '';
+                
+                if (res.total_matched > 0) {
+                    html += '<div style="margin-bottom: 1.5rem;">';
+                    html += '<h4 style="font-weight: 600; color: var(--success); margin-bottom: 0.75rem;">✓ Tìm thấy ' + res.total_matched + ' nhà sáng tạo nội dung</h4>';
+                    html += '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
+                    
+                    res.matched.forEach(kol => {
+                        html += `<div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: var(--gray-50); border-radius: 8px;">
+                            <img src="${kol.avatar}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 500; color: var(--dark-blue);">${kol.name}</div>
+                                <div style="font-size: 12px; color: var(--gray-600);">${kol.followers} người theo dõi • ${kol.engagement}% tương tác</div>
+                            </div>
+                            <div style="text-align: right; font-weight: 600; color: var(--primary);">₫${kol.price}</div>
+                        </div>`;
+                    });
+                    
+                    html += '</div>';
+                    html += '</div>';
+                }
+
+                if (res.total_not_found > 0) {
+                    html += '<div>';
+                    html += '<h4 style="font-weight: 600; color: var(--warning); margin-bottom: 0.75rem;">⚠ Không tìm thấy (' + res.total_not_found + ')</h4>';
+                    html += '<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">';
+                    
+                    res.not_found.forEach(name => {
+                        html += `<span style="padding: 0.5rem 0.75rem; background: var(--gray-100); border-radius: 6px; font-size: 13px; color: var(--gray-600);">${name}</span>`;
+                    });
+                    
+                    html += '</div>';
+                    html += '</div>';
+                }
+
+                $('#import-results-content').html(html);
+                $('#btn-confirm-import').prop('disabled', res.total_matched === 0);
+            }
+
+            $doc.on('click', '#btn-cancel-import', function() {
+                $('#import-results-modal').hide();
+                pendingImportKols = [];
+            });
+
+            $doc.on('click', '#btn-confirm-import', function() {
+                if (pendingImportKols.length === 0) return;
+
+                const importCount = pendingImportKols.length;
+
+                // Add imported KOLs to selection
+                pendingImportKols.forEach(kolData => {
+                    selectedKOLs.set(String(kolData.id), {
+                        name: kolData.name,
+                        followers: kolData.followers + ' người theo dõi',
+                        price: '₫' + kolData.price,
+                        avatarUrl: kolData.avatar
+                    });
+                });
+
+                updateSelectedKOLs();
+                $('#import-results-modal').hide();
+                pendingImportKols = [];
+
+                // Show success message
+                alert('Đã import thành công ' + importCount + ' nhà sáng tạo nội dung');
             });
 
             // Init
