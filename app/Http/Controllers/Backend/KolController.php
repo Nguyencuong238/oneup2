@@ -21,7 +21,7 @@ class KolController extends Controller
             ->latest()
             ->with('categories')
             ->when(request('search'), function ($q) {
-                $q->where('title', 'like', '%' . request('search') . '%');
+                $q->where('display_name', 'like', '%' . request('search') . '%');
             })
             ->when(request('category'), function ($q) {
                 $q->whereHas('categories', function ($q) {
