@@ -14,7 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}?v=1">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -561,8 +561,12 @@
                         Nền tảng phân tích Nhà sáng tạo nội dung Creator Community toàn diện nhất dành cho thị trường Việt Nam.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link">f</a>
-                        <a href="#" class="social-link">t</a>
+                        <a href="https://www.facebook.com/profile.php?id=61582616327097&ref=embed_page#" class="social-link">
+                            <img src="{{ asset('icons/facebook.svg') }}" alt="Facebook">
+                        </a>
+                        <a href="https://zalo.me/0787288386" class="social-link">
+                            <img src="{{ asset('icons/zalo.svg') }}" alt="Zalo">
+                        </a>
                     </div>
                 </div>
 
