@@ -345,8 +345,6 @@
                     <div class="social-links">
                         <a href="#" class="social-link">f</a>
                         <a href="#" class="social-link">t</a>
-                        <a href="#" class="social-link">in</a>
-                        <a href="#" class="social-link">@</a>
                     </div>
                 </div>
 
@@ -376,6 +374,24 @@
                         <li><a href="#">Dịch vụ tư vấn và setup chiến dịch</a></li>
                         <li><a href="#">Dịch vụ tư vấn Marketing toàn diện</a></li>
                     </ul>
+                </div>
+
+                <div class="footer-column footer-facebook">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="fb-page"
+                         data-href="https://www.facebook.com/profile.php?id=61582616327097"
+                         data-tabs="timeline"
+                         data-width="340"
+                         data-height="300"
+                         data-small-header="false"
+                         data-adapt-container-width="true"
+                         data-hide-cover="false"
+                         data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/profile.php?id=61582616327097"
+                                    class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/profile.php?id=61582616327097">OneUp Vietnam</a>
+                        </blockquote>
+                    </div>
                 </div>
 
             </div>
@@ -413,6 +429,11 @@
             </form>
         </div>
     </div>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

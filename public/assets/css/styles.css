@@ -633,7 +633,7 @@ footer {
 
 .footer-container {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
     gap: 3rem;
     margin-bottom: 3rem;
 }
@@ -732,6 +732,29 @@ footer {
 
 .footer-legal a:hover {
     color: var(--primary-light);
+}
+
+/* Facebook Widget in Footer */
+.footer-facebook {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-facebook h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-facebook .fb-page {
+    width: 100%;
+}
+
+.footer-facebook .fb-page,
+.footer-facebook .fb-page > span,
+.footer-facebook .fb-page iframe {
+    width: 100% !important;
+    max-width: 100%;
 }
 
 /* Animations */
@@ -843,6 +866,10 @@ footer {
     .footer-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .footer-facebook {
+        grid-column: span 2;
+    }
 }
 
 @media (max-width: 768px) {
@@ -899,6 +926,15 @@ footer {
 
     .social-links {
         justify-content: center;
+    }
+
+    .footer-facebook {
+        grid-column: auto;
+        padding: 1rem;
+    }
+
+    .footer-facebook .fb-page {
+        margin: 0 auto;
     }
 }
 
