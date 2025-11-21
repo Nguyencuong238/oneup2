@@ -16,6 +16,7 @@ use App\Http\Controllers\Front\Dashboard\BrandController;
 use App\Http\Controllers\Front\Dashboard\CreatorController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\NewsletterController;
+use App\Http\Controllers\Front\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\KolFavoriteController;
@@ -58,6 +59,7 @@ Route::get('help', [HomeController::class, 'help'])->name('help');
 Route::get('privacy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('terms', [HomeController::class, 'terms'])->name('terms');
 Route::post('newsletters', [NewsletterController::class, 'store'])->name('newsletters');
+Route::post('contacts', [ContactController::class, 'store'])->name('contacts.store');
 
 Route::view('profile', 'profile.show')->name('profile.show')->middleware('auth');
 Route::post('set-type', [HomeController::class, 'setType'])->name('setType')->middleware('auth');
@@ -130,6 +132,9 @@ Route::prefix('backend')
 
 		Route::get('newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');
 		Route::delete('newsletters/destroy/{id}', [NewsletterController::class, 'destroy'])->name('newsletters.destroy');
+
+		Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
+		Route::delete('contacts/destroy/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 		Route::mediaLibrary();
 	});

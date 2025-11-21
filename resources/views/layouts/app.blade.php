@@ -131,7 +131,18 @@
                                 <a href="{{ route('newsletters.index') }}" class="nav-link">
                                     <i class="icon-shield2"></i>
                                     <span>
-                                        Liên hệ
+                                        Newsletter
+                                    </span>
+                                </a>
+                            </li>
+                        @endcan
+
+                        @canany('contacts.view', 'contacts.create', 'contacts.edit', 'contacts.delete')
+                            <li class="nav-item">
+                                <a href="{{ route('contacts.index') }}" class="nav-link">
+                                    <i class="icon-phone2"></i>
+                                    <span>
+                                        Tư vấn
                                     </span>
                                 </a>
                             </li>

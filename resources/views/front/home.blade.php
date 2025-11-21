@@ -858,6 +858,8 @@
             </div>
         </div>
     </section>
+
+    @include('front.partials.contact-form')
 @endsection
 
 @section('js')
