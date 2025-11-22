@@ -517,7 +517,7 @@
                         <thead>
                             <tr>
                                 <th>Quyền lợi</th>
-                                <th>Gói cơ bản<br><span class="price">99.000/ tháng</span><br><small>Được trải nghiệm 1 tháng thử nghiệm free</small></th>
+                                <th>Gói cơ bản<br><span class="price">99.000/ tháng</span><br><small>Trải nghiệm 1 tháng miễn phí</small></th>
                                 <th>Gói phổ biến<br><span class="price">199.000/ tháng</span></th>
                                 <th>Gói nâng cao<br><span class="price">319.000/ tháng</span></th>
                             </tr>
