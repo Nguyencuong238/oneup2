@@ -14,7 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}?v=1">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}?v=1.1">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
