@@ -555,7 +555,7 @@
                         </thead>
                         <tbody>
                             <tr><td>GIÁ</td><td>10.000.000</td><td>25.000.000</td><td>30.000.000</td><td>Tư vấn thêm</td></tr>
-                            <tr><td>Số lượng kols (1 video/kols)<br>Mức follower kols<br>Độ dài video<br>Dạng video<br>Nền tảng được đăng lại<br>SDHA (1 tháng)<br>Demo & feedback chỉnh sửa<br>Air video</td><td>5<br>10-50k<br>30-60s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Không<br>2 lần<br>Không giới hạn ngày giờ</td><td>5<br>50-100k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>7<br>50-300k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>Gói này sẽ được tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Số lượng kols (1 video/kols)<br>Mức follower kols<br>Độ dài video<br>Dạng video<br>Nền tảng được đăng lại<br>SDHA (1 tháng)<br>Demo & feedback chỉnh sửa<br>Air video</td><td>5<br>10-50k<br>30-60s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Không<br>2 lần<br>Không giới hạn ngày giờ</td><td>5<br>50-100k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>7<br>50-300k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
                             <tr><td colspan="5" style="background: #F0F0F0; font-weight: 600; padding: 15px;">GÓI TĂNG KÈM</td></tr>
                             <tr><td>Hỗ trợ hình ảnh social fanpage cho brand<br>Hỗ trợ bài viết trên nhóm cộng đồng<br>Bó hình ảnh<br>Brand hashtag/ địa điểm</td><td>5<br>Không<br>Có (10 tấm)<br>Có</td><td>5<br>Có<br>Có (20 tấm)<br>Có</td><td>7<br>Có<br>Có (30 tấm)<br>Có</td><td></td></tr>
                         </tbody>
@@ -583,7 +583,7 @@
                         </thead>
                         <tbody>
                             <tr><td>GIÁ</td><td>3.000.000</td><td>4.500.000</td><td>7.000.000</td><td>Tư vấn thêm</td></tr>
-                            <tr><td>Số lượng koc<br>Độ dài video<br>Dạng video</td><td>30<br>30-45s<br>Video ngắn</td><td>50<br>30-60s<br>Video ngắn</td><td>100<br>30-60s<br>Video ngắn</td><td>Gói này sẽ được tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Số lượng koc<br>Độ dài video<br>Dạng video</td><td>30<br>30-45s<br>Video ngắn</td><td>50<br>30-60s<br>Video ngắn</td><td>100<br>30-60s<br>Video ngắn</td><td>Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
                         </tbody>
                     </table>
                 </div>
