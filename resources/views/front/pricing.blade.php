@@ -555,9 +555,19 @@
                         </thead>
                         <tbody>
                             <tr><td>GIÁ</td><td>10.000.000</td><td>25.000.000</td><td>30.000.000</td><td>Tư vấn thêm</td></tr>
-                            <tr><td>Số lượng kols (1 video/kols)<br>Mức follower kols<br>Độ dài video<br>Dạng video<br>Nền tảng được đăng lại<br>SDHA (1 tháng)<br>Demo & feedback chỉnh sửa<br>Air video</td><td>5<br>10-50k<br>30-60s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Không<br>2 lần<br>Không giới hạn ngày giờ</td><td>5<br>50-100k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>7<br>50-300k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Số lượng kols (1 video/kols)</td><td>5</td><td>5</td><td>7</td><td rowspan="8">Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Mức follower kols</td><td>10-50k</td><td>50-100k</td><td>50-300k</td></tr>
+                            <tr><td>Độ dài video</td><td>30-60s</td><td>60-90s</td><td>60-90s</td></tr>
+                            <tr><td>Dạng video</td><td>Hình ảnh/ nhạc/ voice</td><td>Hình ảnh/ nhạc/ voice</td><td>Hình ảnh/ nhạc/ voice</td></tr>
+                            <tr><td>Nền tảng được đăng lại</td><td>Tiktok/ FB/ Instagram</td><td>Tiktok/ FB/ Instagram</td><td>Tiktok/ FB/ Instagram</td></tr>
+                            <tr><td>SDHA (1 tháng)</td><td>Không</td><td>Có</td><td>Có</td></tr>
+                            <tr><td>Demo & feedback chỉnh sửa</td><td>2 lần</td><td>2 lần</td><td>2 lần</td></tr>
+                            <tr><td>Air video</td><td>Không giới hạn ngày giờ</td><td>Không giới hạn ngày giờ</td><td>Không giới hạn ngày giờ</td></tr>
                             <tr><td colspan="5" style="background: #F0F0F0; font-weight: 600; padding: 15px;">GÓI TĂNG KÈM</td></tr>
-                            <tr><td>Hỗ trợ hình ảnh social fanpage cho brand<br>Hỗ trợ bài viết trên nhóm cộng đồng<br>Bó hình ảnh<br>Brand hashtag/ địa điểm</td><td>5<br>Không<br>Có (10 tấm)<br>Có</td><td>5<br>Có<br>Có (20 tấm)<br>Có</td><td>7<br>Có<br>Có (30 tấm)<br>Có</td><td></td></tr>
+                            <tr><td>Hỗ trợ hình ảnh social fanpage cho brand</td><td>5</td><td>5</td><td>7</td><td rowspan="4"></td></tr>
+                            <tr><td>Hỗ trợ bài viết trên nhóm cộng đồng</td><td>Không</td><td>Có</td><td>Có</td></tr>
+                            <tr><td>Bó hình ảnh</td><td>Có (10 tấm)</td><td>Có (20 tấm)</td><td>Có (30 tấm)</td></tr>
+                            <tr><td>Brand hashtag/ địa điểm</td><td>Có</td><td>Có</td><td>Có</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -583,7 +593,9 @@
                         </thead>
                         <tbody>
                             <tr><td>GIÁ</td><td>3.000.000</td><td>4.500.000</td><td>7.000.000</td><td>Tư vấn thêm</td></tr>
-                            <tr><td>Số lượng koc<br>Độ dài video<br>Dạng video</td><td>30<br>30-45s<br>Video ngắn</td><td>50<br>30-60s<br>Video ngắn</td><td>100<br>30-60s<br>Video ngắn</td><td>Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Số lượng koc</td><td>30</td><td>50</td><td>100</td><td rowspan="3">Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Độ dài video</td><td>30-45s</td><td>30-60s</td><td>30-60s</td></tr>
+                            <tr><td>Dạng video</td><td>Video ngắn</td><td>Video ngắn</td><td>Video ngắn</td></tr>
                         </tbody>
                     </table>
                 </div>
