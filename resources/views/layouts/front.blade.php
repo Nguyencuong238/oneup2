@@ -14,7 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/utilities.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}?v=1.1">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}?v=1.2">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -598,7 +598,7 @@
                     </ul>
                 </div>
 
-                <div class="footer-column footer-facebook">
+                <!-- <div class="footer-column footer-facebook">
                     <h4>Theo dõi chúng tôi</h4>
                     <div class="fb-page"
                          data-href="https://www.facebook.com/profile.php?id=61582616327097"
@@ -614,7 +614,7 @@
                             <a href="https://www.facebook.com/profile.php?id=61582616327097">OneUp Vietnam</a>
                         </blockquote>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
