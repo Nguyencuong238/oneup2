@@ -344,6 +344,142 @@
                 gap: 20px;
             }
         }
+
+        /* Contact Modal Styles */
+        .contact-modal-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .contact-modal-form .form-row-modal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .contact-modal-form .form-group-modal {
+            margin-bottom: 20px;
+        }
+
+        .contact-modal-form label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .contact-modal-form label .required {
+            color: #e74c3c;
+        }
+
+        .contact-modal-form .form-control-modal {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .contact-modal-form .form-control-modal:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .contact-modal-form .form-control-modal::placeholder {
+            color: #aaa;
+        }
+
+        .contact-modal-form textarea.form-control-modal {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .contact-modal-form .form-message-modal {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .contact-modal-form .form-message-modal.show {
+            display: block;
+        }
+
+        .contact-modal-form .form-message-modal .contact_success {
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .contact-modal-form .form-message-modal .contact_error {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+
+        .contact-modal-form .btn-submit-modal {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .contact-modal-form .btn-submit-modal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-modal-form .btn-submit-modal:active {
+            transform: translateY(0);
+        }
+
+        .contact-modal-form .btn-submit-modal:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .contact-modal-form .privacy-notice-modal {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-modal-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .contact-modal-form .form-row-modal {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .contact-modal-form .btn-submit-modal {
+                padding: 15px;
+                font-size: 15px;
+            }
+        }
     </style>
 @endsection
 
@@ -604,9 +740,10 @@
                         </div>
                     </div>
                 </div>
-                <div style="margin-top: 30px; text-align: center;">
-                    <button class="btn btn-primary btn-large" onclick="openContactModal()">TƯ VẤN THÊM</button>
-                </div>
+
+            </div>
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn btn-primary btn-large" onclick="openContactModal()">TƯ VẤN THÊM</button>
             </div>
         </div>
     </section>
@@ -697,24 +834,56 @@
     <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-overlay" onclick="closeContactModal()"></div>
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 700px;">
             <button class="modal-close" onclick="closeContactModal()">×</button>
-            <h3 class="mb-3 color-dark-blue">Liên hệ đội ngũ kinh doanh</h3>
-            <form id="contactForm">
+            <h3 class="contact-modal-title">NHẬN TƯ VẤN NGAY</h3>
+            <form id="contactForm" class="contact-modal-form">
+                @csrf
+                <div class="form-row-modal">
+                    <div class="form-group-modal">
+                        <label for="contact_name">Họ & Tên</label>
+                        <input type="text"
+                               id="contact_name"
+                               name="name"
+                               class="form-control-modal"
+                               placeholder="Họ & Tên"
+                               required>
+                    </div>
+                    <div class="form-group-modal">
+                        <label for="contact_phone">Số điện thoại</label>
+                        <input type="tel"
+                               id="contact_phone"
+                               name="phone"
+                               class="form-control-modal"
+                               placeholder="Số điện thoại"
+                               required>
+                    </div>
+                </div>
 
-                <div class="mb-3">
-                    <input type="text" name="name" id="name" class="filter-input" placeholder="Tên của bạn" required>
+                <div class="form-group-modal">
+                    <label for="contact_email">Email <span class="required">*</span></label>
+                    <input type="email"
+                           id="contact_email"
+                           name="email"
+                           class="form-control-modal"
+                           placeholder="Nhập email của bạn"
+                           required>
                 </div>
-                <div class="mb-3">
-                    <input type="email" name="email" id="email" class="filter-input" placeholder="Địa chỉ email" required>
+
+                <div class="form-group-modal">
+                    <label for="contact_message">Lời nhắn</label>
+                    <textarea id="contact_message"
+                              name="message"
+                              class="form-control-modal"
+                              rows="4"
+                              placeholder="Lời nhắn"></textarea>
                 </div>
-                <div class="mb-3">
-                    <input type="text" name="company" id="company" class="filter-input" placeholder="Tên công ty">
-                </div>
-                <div class="mb-3">
-                    <textarea class="filter-input" name="message" id="message" rows="4" placeholder="Mô tả nhu cầu của bạn"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary justify-center" style="width: 100%;">Gửi tin nhắn</button>
+
+                <div class="form-message-modal" id="contactFormMessage"></div>
+
+                <button type="submit" class="btn-submit-modal">GỬI YÊU CẦU</button>
+
+                <p class="privacy-notice-modal">* Mọi thông tin của bạn đều được cam kết bảo mật</p>
             </form>
         </div>
     </div>
@@ -775,33 +944,50 @@
             $('#contactForm').on('submit', function(e) {
                 e.preventDefault();
 
-                $(this).find('button').prop('disabled', true);
+                const submitBtn = $(this).find('.btn-submit-modal');
+                const messageDiv = $('#contactFormMessage');
+                const formData = new FormData(this);
 
-                var data = {
-                    name: $('#name').val(),
-                    phone: $('#phone').val(),
-                    email: $('#email').val(),
-                    company: $('#company').val(),
-                    message: $('#message').val(),
-                    _token: '{{ csrf_token() }}'
-                };
+                // Disable submit button
+                submitBtn.prop('disabled', true);
+                submitBtn.text('ĐANG GỬI...');
 
-                $.ajax({
-                    type: 'post',
-                    url: "{{ route('newsletters') }}",
-                    data: data,
-                }).then(function(res) {
+                // Hide previous messages
+                messageDiv.removeClass('show');
+                messageDiv.html('');
 
-                    if (res.success) {
-                        toastr.success(res.msg);
+                fetch('{{ route("contacts.store") }}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    messageDiv.html(data.msg);
+                    messageDiv.addClass('show');
+
+                    if (data.success) {
                         $('#contactForm')[0].reset();
-                    } else {
-                        toastr.error(res.msg);
+                        // Scroll to message
+                        messageDiv[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }
 
+                    // Re-enable submit button
+                    submitBtn.prop('disabled', false);
+                    submitBtn.text('GỬI YÊU CẦU');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    messageDiv.html('<span class="contact_error">Có lỗi xảy ra. Vui lòng thử lại sau.</span>');
+                    messageDiv.addClass('show');
 
+                    // Re-enable submit button
+                    submitBtn.prop('disabled', false);
+                    submitBtn.text('GỬI YÊU CẦU');
                 });
-                $(this).find('button').prop('disabled', false);
             });
         });
     </script>
