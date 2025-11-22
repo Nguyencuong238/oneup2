@@ -162,6 +162,188 @@
         .pricing-features li {
             color: var(--gray-400)
         }
+
+        /* Tab Navigation Styles */
+        .pricing-tabs-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pricing-tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: var(--dark-blue);
+            white-space: nowrap;
+        }
+
+        .pricing-tab-btn:hover {
+            border-color: var(--primary);
+            background: #F8F9FA;
+        }
+
+        .pricing-tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Tab Content Styles */
+        .pricing-tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .pricing-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Pricing Table Styles */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #E0E0E0;
+            color: var(--dark-blue);
+        }
+
+        .pricing-table thead th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .pricing-table thead .price {
+            font-size: 20px;
+            font-weight: 700;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .pricing-table tbody tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+
+        .pricing-table tbody tr:hover {
+            background: #F0F0F0;
+        }
+
+        .pricing-table tbody td:first-child {
+            font-weight: 600;
+            background: #F8F9FA;
+        }
+
+        /* Services Grid Styles */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .service-content {
+            color: #4a4a4a;
+            line-height: 1.8;
+        }
+
+        .service-content strong {
+            color: #1a1a2e;
+        }
+
+        /* Two Column Layout for Tab 3 */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .pricing-tabs-nav {
+                flex-direction: column;
+            }
+
+            .pricing-tab-btn {
+                width: 100%;
+            }
+
+            .pricing-tab-content {
+                padding: 20px;
+            }
+
+            .pricing-table {
+                font-size: 14px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 10px;
+            }
+
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 @endsection
 
@@ -170,197 +352,261 @@
     <section class="hero" style="padding: 120px 0 60px;">
         <div class="container">
             <div class="text-center">
-                <div class="badge badge-success mb-3 fade-in">💰 Tiết kiệm 20% với gói trả theo năm</div>
                 <h1 class="mb-3 color-dark-blue fade-in">
-                    Bảng giá <span class="gradient-text">Đơn giản & Minh bạch</span>
+                    Bảng Giá Dịch Vụ <span class="gradient-text">ONEUP.VN</span>
                 </h1>
                 <p class="section-description mb-4 fade-in">
-                    Chọn gói phù hợp nhất cho nhu cầu marketing nhà sáng tạo nội dung TikTok của bạn
+                    Chọn gói dịch vụ phù hợp với nhu cầu của bạn
                 </p>
-
-                <!-- Pricing Toggle -->
-                <div class="pricing-toggle fade-in">
-                    <span class="color-dark-blue">Theo tháng</span>
-                    <div class="toggle-switch" id="billingToggle">
-                        <div class="toggle-slider"></div>
-                    </div>
-                    <span class="color-dark-blue">Theo năm <span class="badge badge-success">-20%</span></span>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Cards -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <div class="pricing-container">
-                <!-- Starter Plan -->
-                <div class="pricing-card fade-in">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Starter</h3>
-                        <div class="pricing-price">
-                            <span class="monthly-price">0₫</span>
-                            <span class="annual-price" style="display: none;">0₫</span>
-                        </div>
-                        <div class="pricing-period">mỗi tháng</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Tối đa 100 lượt tìm kiếm nhà sáng tạo nội dung/tháng</li>
-                        <li>Bảng phân tích cơ bản</li>
-                        <li>5 chiến dịch hoạt động</li>
-                        <li>Hỗ trợ qua email</li>
-                    </ul>
-                    <a href="{{ route('register', ['plan' => 'starter']) }}" class="btn btn-outline btn-large"
-                        style="width: 100%;">
-                        Dùng thử miễn phí
-                    </a>
-                </div>
+    <!-- Tab Navigation -->
+    <section class="section" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 600px;">
+        <div class="container" style="max-width: unset;">
+            <div class="pricing-tabs-nav">
+                <button class="pricing-tab-btn active" data-tab="tab1">Dịch vụ Website</button>
+                <button class="pricing-tab-btn" data-tab="tab2">Booking KOLs - Nhà hàng</button>
+                <button class="pricing-tab-btn" data-tab="tab3">Booking KOLs - Sản phẩm</button>
+                <button class="pricing-tab-btn" data-tab="tab4">Hợp tác KOL/KOC</button>
+                <button class="pricing-tab-btn" data-tab="tab5">Dịch vụ khác</button>
+            </div>
 
-                <!-- Professional Plan -->
-                <div class="pricing-card featured fade-in" style="animation-delay: 0.1s;">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Professional</h3>
-                        <div class="pricing-price">
-                            <span class="monthly-price">0₫</span>
-                            <span class="annual-price" style="display: none;">0₫</span>
-                        </div>
-                        <div class="pricing-period">mỗi tháng</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Tìm kiếm nhà sáng tạo nội dung không giới hạn</li>
-                        <li>Phân tích nâng cao & gợi ý từ AI</li>
-                        <li>20 chiến dịch hoạt động</li>
-                        <li>Hỗ trợ ưu tiên</li>
-                    </ul>
-                    <a href="{{ route('register', ['plan' => 'professional']) }}" class="btn btn-primary btn-large"
-                        style="width: 100%;">
-                        Dùng thử miễn phí
-                    </a>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="pricing-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Enterprise</h3>
-                        <div class="pricing-price">Tùy chỉnh</div>
-                        <div class="pricing-period">theo nhu cầu của bạn</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Tất cả tính năng trong Professional</li>
-                        <li>Chiến dịch không giới hạn</li>
-                        <li>Quản lý tài khoản riêng</li>
-                        <li>Tích hợp tùy chỉnh</li>
-                    </ul>
-                    <button class="btn btn-secondary btn-large" style="width: 100%;" onclick="openContactModal()">
-                        Liên hệ tư vấn
-                    </button>
+            <!-- Tab 1: Dịch vụ phân tích và đăng ký chiến dịch -->
+            <div class="pricing-tab-content active" id="tab1">
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Giá gói dịch vụ phân tích và đăng ký chiến dịch trên website ONEUP.VN</h2>
+                <div style="overflow-x: auto;">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Quyền lợi</th>
+                                <th>Gói cơ bản<br><span class="price">99.000/ tháng</span><br><small>Được trải nghiệm 1 tháng thử nghiệm free</small></th>
+                                <th>Gói phổ biến<br><span class="price">199.000/ tháng</span></th>
+                                <th>Gói nâng cao<br><span class="price">319.000/ tháng</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Giá</td><td>99.000</td><td>199.000</td><td>319.000</td></tr>
+                            <tr><td>Phạm vi thời gian xem dữ liệu</td><td>28 ngày</td><td>90 ngày</td><td>không giới hạn</td></tr>
+                            <tr><td>Xuất dữ liệu</td><td>không</td><td>không</td><td>150 lượt/ tháng, 3000 kg đầu</td></tr>
+                            <tr><td>Số lượt tạo chiến dịch</td><td>5 chiến dịch/ tháng</td><td>15 chiến dịch/ tháng</td><td>không giới hạn</td></tr>
+                            <tr><td>Xem thông tin liên hệ nhà sáng tạo</td><td>không</td><td>250 lần/ ngày</td><td>250 lần/ ngày</td></tr>
+                            <tr><td>Dữ liệu thị trường</td><td>không</td><td>chỉ hôm qua</td><td>7 ngày trước</td></tr>
+                            <tr><td>Xuất thông tin liên hệ nhà sáng tạo</td><td>không</td><td>không</td><td>2 lượt/ ngày, 3000 kg/lượt</td></tr>
+                            <tr><td>Số lượt tìm kiếm</td><td>100 lần/ ngày</td><td>250 lần/ ngày</td><td>500 lần/ ngày</td></tr>
+                            <tr><td>xem dữ liệu Kết quả tìm kiếm</td><td>Top 200</td><td>Top 1000</td><td>không giới hạn</td></tr>
+                            <tr><td>số lượt xem trang chi tiết</td><td>100 lần/ ngày</td><td>100 lần/ ngày</td><td>không giới hạn</td></tr>
+                            <tr><td>xem dữ liệu xếp hạng</td><td>Top 100</td><td>Top 300</td><td>không giới hạn</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Feature Comparison -->
-    <section class="section" style="background: #F8F9FA;">
-        <div class="container">
-            <h2 class="text-center color-dark-blue mb-4">So sánh chi tiết các gói</h2>
+            <!-- Tab 2: Booking KOLs - Nhà hàng/địa điểm -->
+            <div class="pricing-tab-content" id="tab2">
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Giá gói dịch vụ BOOKING KOLS<br><small>(review nhà hàng/ địa điểm ăn uống)</small><br><small style="font-size: 14px;">(Giá chưa bao gồm VAT & 10% phí quản lý)</small></h2>
+                <div style="overflow-x: auto;">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Quyền lợi</th>
+                                <th>Gói Basic<br><span class="price">10.000.000</span></th>
+                                <th>Gói Popular<br><span class="price">25.000.000</span></th>
+                                <th>Gói Premium<br><span class="price">30.000.000</span></th>
+                                <th>Tư Vấn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>GIÁ</td><td>10.000.000</td><td>25.000.000</td><td>30.000.000</td><td>Tư vấn thêm</td></tr>
+                            <tr><td>Số lượng kols (1 video/kols)<br>Mức follower kols<br>Độ dài video<br>Dạng video<br>Nền tảng được đăng lại<br>SDHA (1 tháng)<br>Demo & feedback chỉnh sửa<br>Air video</td><td>5<br>10-50k<br>30-60s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Không<br>2 lần<br>Không giới hạn ngày giờ</td><td>5<br>50-100k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>7<br>50-300k<br>60-90s<br>Hình ảnh/ nhạc/ voice<br>Tiktok/ FB/ Instagram<br>Có<br>2 lần<br>Không giới hạn ngày giờ</td><td>Gói này sẽ được tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td colspan="5" style="background: #F0F0F0; font-weight: 600; padding: 15px;">GÓI TĂNG KÈM</td></tr>
+                            <tr><td>Hỗ trợ hình ảnh social fanpage cho brand<br>Hỗ trợ bài viết trên nhóm cộng đồng<br>Bó hình ảnh<br>Brand hashtag/ địa điểm</td><td>5<br>Không<br>Có (10 tấm)<br>Có</td><td>5<br>Có<br>Có (20 tấm)<br>Có</td><td>7<br>Có<br>Có (30 tấm)<br>Có</td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #FFF5F7; border-radius: 8px;">
+                    <p style="font-weight: 600; margin-bottom: 10px; color: #1a1a2e;">*Hỗ trợ BOOST ADS tăng hiển thị và tăng độ phủ với phí dịch vụ HẤP DẪN.</p>
+                    <p style="color: #4a4a4a; font-size: 15px;">(nhận tư vấn, set up và báo cáo số liệu dựa trên ngân sách của khách hàng)</p>
+                </div>
+            </div>
 
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Tính năng</th>
-                            <th>Starter</th>
-                            <th>Professional</th>
-                            <th>Enterprise</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Khám phá nhà sáng tạo nội dung</td>
-                        </tr>
-                        <tr>
-                            <td>Tìm kiếm Nhà sáng tạo nội dung</td>
-                            <td>100/tháng</td>
-                            <td>Không giới hạn</td>
-                            <td>Không giới hạn</td>
-                        </tr>
-                        <tr>
-                            <td>Bộ lọc nâng cao</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <td>Gợi ý từ AI</td>
-                            <td>✕</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Phân tích dữ liệu</td>
-                        </tr>
-                        <tr>
-                            <td>Chỉ số cơ bản</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <td>Nhân khẩu học khán giả</td>
-                            <td>Cơ bản</td>
-                            <td>Nâng cao</td>
-                            <td>Nâng cao</td>
-                        </tr>
-                        {{-- <tr>
-                            <td>Phát hiện gian lận</td>
-                            <td>✕</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr> --}}
-                        <tr>
-                            <td>Phân tích đối thủ</td>
-                            <td>✕</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Quản lý chiến dịch</td>
-                        </tr>
-                        <tr>
-                            <td>Chiến dịch hoạt động</td>
-                            <td>5</td>
-                            <td>20</td>
-                            <td>Không giới hạn</td>
-                        </tr>
-                        <tr>
-                            <td>Theo dõi theo thời gian thực</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        {{-- <tr>
-                            <td>Tính toán ROI</td>
-                            <td>Cơ bản</td>
-                            <td>Nâng cao</td>
-                            <td>Tùy chỉnh</td>
-                        </tr> --}}
-                        <tr>
-                            <td colspan="4" style="background: #F0F0F0; font-weight: 600;">Hỗ trợ & Dịch vụ</td>
-                        </tr>
-                        <tr>
-                            <td>Hỗ trợ kỹ thuật</td>
-                            <td>Email</td>
-                            <td>Email & Chat ưu tiên</td>
-                            <td>24/7 - Quản lý riêng</td>
-                        </tr>
-                        {{-- <tr>
-                            <td>Đào tạo sử dụng</td>
-                            <td>Tự học</td>
-                            <td>Webinar</td>
-                            <td>Hướng dẫn tùy chỉnh</td>
-                        </tr> --}}
-                    </tbody>
-                </table>
+            <!-- Tab 3: Booking KOLs - Sản phẩm -->
+            <div class="pricing-tab-content" id="tab3">
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Giá gói dịch vụ BOOKING KOLS<br><small>(review sản phẩm)</small><br><small style="font-size: 14px;">(Giá chưa bao gồm VAT)</small></h2>
+                <div style="overflow-x: auto;">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Quyền lợi</th>
+                                <th>Gói Basic<br><span class="price">3.000.000</span></th>
+                                <th>Gói Popular<br><span class="price">4.500.000</span></th>
+                                <th>Gói Premium<br><span class="price">7.000.000</span></th>
+                                <th>Tư Vấn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>GIÁ</td><td>3.000.000</td><td>4.500.000</td><td>7.000.000</td><td>Tư vấn thêm</td></tr>
+                            <tr><td>Số lượng koc<br>Độ dài video<br>Dạng video</td><td>30<br>30-45s<br>Video ngắn</td><td>50<br>30-60s<br>Video ngắn</td><td>100<br>30-60s<br>Video ngắn</td><td>Gói này sẽ được tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="two-column-layout">
+                    <!-- Left Column -->
+                    <div style="border-left: 3px solid #667eea; padding-left: 20px;">
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-weight: 700; margin-bottom: 15px; color: #1a1a2e; font-size: 18px;">Áp dụng</h3>
+                            <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
+                                <li>Khác có mục tiêu giai đoạn rõ ràng và có thể đo lường.</li>
+                                <li>Khách có ngân sách rõ ràng và KPI tương ứng</li>
+                                <li>Khách cần marketing tích hợp ở cấp độ thương hiệu</li>
+                                <li>Khách có nhu cầu tạo ra sản phẩm bán chạy.</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-weight: 700; margin-bottom: 15px; color: #1a1a2e; font-size: 18px;">Hình thức</h3>
+                            <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
+                                <li>Khách cung cấp: Ngân sách, KPI</li>
+                                <li>Oneup cung cấp: Phương án chạy doanh số</li>
+                                <li>Confirm phương án, bắt đầu tiền hành.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 style="font-weight: 700; margin-bottom: 15px; color: #1a1a2e; font-size: 18px;">Ghi chú</h3>
+                            <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
+                                <li>KPI không cam kết GMV</li>
+                                <li>kol/koc liên quan đến kế hoạch trong gói này brand không được lựa chọn.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <div style="background: #1a1a2e; color: white; padding: 30px; border-radius: 8px; margin-bottom: 20px;">
+                            <h3 style="font-weight: 700; margin-bottom: 15px; font-size: 20px;">*CAM KẾT:</h3>
+                            <ol style="margin-left: 20px; line-height: 2; color: white; font-size: 15px;">
+                                <li>Gắn link vĩnh viễn trên kênh.</li>
+                                <li>Chuẩn kịch bản chuyển đổi</li>
+                                <li>Video sắc nét, âm thanh rõ ràng</li>
+                                <li>Chuẩn ngành hàng, chuẩn tệp khách</li>
+                            </ol>
+                        </div>
+
+                        <div style="background: #1a1a2e; color: white; padding: 30px; border-radius: 8px;">
+                            <p style="font-weight: 700; margin-bottom: 15px; font-size: 16px;">*Hỗ trợ BOOST ADS tăng hiển thị và tăng độ phủ với phí dịch vụ HẤP DẪN.</p>
+                            <p style="font-size: 14px; line-height: 1.8;">(nhận tư vấn, set up và báo cáo số liệu dựa trên ngân sách của khách hàng)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Hợp tác KOL/KOC -->
+            <div class="pricing-tab-content" id="tab4">
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Hợp tác KOL/KOC<br><small>(booking kol lẻ)</small></h2>
+                <div style="overflow-x: auto;">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Nhóm creator</th>
+                                <th>Phân loại</th>
+                                <th>Follower</th>
+                                <th>Video</th>
+                                <th>Đơn giá</th>
+                                <th>Hoa hồng</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="5">KOL REVIEW/<br>KOC<br>BÁN HÀNG</td>
+                                <td>NANO</td>
+                                <td>1K-10K</td>
+                                <td>Video</td>
+                                <td>2tr</td>
+                                <td rowspan="5">• Phí quản lý +10%</td>
+                                <td rowspan="5">Đối với các brand chưa có kế hoạch cụ thể, booking lẻ.<br><br>Để có báo giá chính xác, brand cần cung cấp:<br>• Brief chi tiết<br>• Thời gian chạy dự kiến</td>
+                            </tr>
+                            <tr>
+                                <td>MICRO</td>
+                                <td>10K-100K</td>
+                                <td>Video</td>
+                                <td>từ 4tr</td>
+                            </tr>
+                            <tr>
+                                <td>MIDDLE</td>
+                                <td>100K-500K</td>
+                                <td>Video</td>
+                                <td>từ 6tr</td>
+                            </tr>
+                            <tr>
+                                <td>MACRO</td>
+                                <td>500K-1M</td>
+                                <td>Video</td>
+                                <td>từ 8-10tr</td>
+                            </tr>
+                            <tr>
+                                <td>MEGA</td>
+                                <td>1M</td>
+                                <td>Video</td>
+                                <td>trên 15tr</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 5: Dịch vụ khác -->
+            <div class="pricing-tab-content" id="tab5">
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Dịch vụ khác</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3 class="service-title">Quảng cáo</h3>
+                        <div class="service-content">
+                            <p style="font-weight: 600; margin-bottom: 15px; color: #1a1a2e;">*Hỗ trợ BOOST ADS tăng hiển thị và tăng độ phủ với phí dịch vụ HẤP DẪN.</p>
+                            <p style="color: #4a4a4a; font-size: 15px;">(nhận tư vấn, set up và báo cáo số liệu dựa trên ngân sách của khách hàng)</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <h3 class="service-title">Vận hành</h3>
+                        <div class="service-content">
+                            <ul style="list-style: disc; margin-left: 20px; line-height: 1.8; color: #1a1a2e;">
+                                <li>Xây kênh mới (nếu brand chưa có trang)</li>
+                                <li>Vận hành: thiết kế hình ảnh, nội dung, set lịch lịch đăng,...</li>
+                            </ul>
+                            <p style="margin-top: 15px; color: #4a4a4a; font-size: 15px;">(nhận tư vấn, lên chương trình khuyến mãi, nội dung & báo cáo số liệu dựa trên gói khách chọn lựa)</p>
+                            <div style="margin-top: 20px; padding: 15px; background: #F0F0F0; border-radius: 8px;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="padding: 5px; color: #1a1a2e;"><strong>Quản lý 1-2 kênh Tiktok/ Facebook</strong><br><span style="color: #4a4a4a;">12-15 bài/tháng<br>Đăng bài & báo cáo cơ bản</span></td>
+                                        <td style="padding: 5px; text-align: right; color: #1a1a2e;"><strong>Từ 8.000.000đ/tháng</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="margin-top: 10px; padding: 15px; background: #F0F0F0; border-radius: 8px;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="padding: 5px; color: #1a1a2e;"><strong>Quản lý 2 kênh / nội dung thương xuyên</strong><br><span style="color: #4a4a4a;">12-15 bài/tháng<br>Content plan, chi tiết, tối ưu SEO<br>Báo cáo chuyên sâu theo KPI</span></td>
+                                        <td style="padding: 5px; text-align: right; color: #1a1a2e;"><strong>Từ 20.000.000đ/tháng</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="margin-top: 10px; padding: 15px; background: #F0F0F0; border-radius: 8px;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="padding: 5px; color: #1a1a2e;"><strong>Quản lý 2-3 kênh đa nền tảng chuyên nghiệp</strong><br><span style="color: #4a4a4a;">20+ bài/tháng + hỗ trợ chạy ads<br>Quản lý tương tác, insight, content calendar<br>Báo cáo chuyên sâu & KPI tăng trưởng</span></td>
+                                        <td style="padding: 5px; text-align: right; color: #1a1a2e;"><strong>Từ 35.000.000+/tháng</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; text-align: center;">
+                    <button class="btn btn-primary btn-large" onclick="openContactModal()">TƯ VẤN THÊM</button>
+                </div>
             </div>
         </div>
     </section>
@@ -480,17 +726,17 @@
 
     <script>
         $(document).ready(function() {
-            // Billing Toggle
-            $('#billingToggle').on('click', function() {
-                $(this).toggleClass('active');
+            // Tab Switching
+            $('.pricing-tab-btn').on('click', function() {
+                const tabId = $(this).data('tab');
 
-                if ($(this).hasClass('active')) {
-                    $('.monthly-price').hide();
-                    $('.annual-price').show();
-                } else {
-                    $('.monthly-price').show();
-                    $('.annual-price').hide();
-                }
+                // Remove active class from all tabs and content
+                $('.pricing-tab-btn').removeClass('active');
+                $('.pricing-tab-content').removeClass('active');
+
+                // Add active class to clicked tab and corresponding content
+                $(this).addClass('active');
+                $('#' + tabId).addClass('active');
             });
 
             // FAQ Toggle
