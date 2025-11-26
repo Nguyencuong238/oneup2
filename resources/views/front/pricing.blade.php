@@ -316,6 +316,85 @@
             margin-top: 30px;
         }
 
+        /* Pricing Card Styles for Tab 3 */
+        .koc-pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 30px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+        }
+
+        .koc-pricing-card.gold-border {
+            border-left-color: #f0c14b;
+            background: #fffdf5;
+        }
+
+        .koc-pricing-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 0 0 8px 0;
+        }
+
+        .koc-pricing-card .price {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .koc-pricing-card .description {
+            font-size: 15px;
+            color: #666;
+            margin: 0;
+        }
+
+        .koc-note-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f5f5ff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .koc-note-box span {
+            font-size: 15px;
+            color: #4a4a4a;
+        }
+
+        .commitment-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .commitment-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 30px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+        }
+
+        .commitment-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 0 0 10px 0;
+        }
+
+        .commitment-card p {
+            font-size: 15px;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .pricing-tabs-nav {
@@ -506,7 +585,7 @@
                 <button class="pricing-tab-btn" data-tab="tab2">Booking KOLs - Nhà hàng</button>
                 <button class="pricing-tab-btn" data-tab="tab3">Booking KOLs - Sản phẩm</button>
                 <button class="pricing-tab-btn" data-tab="tab4">Hợp tác KOL/KOC</button>
-                <button class="pricing-tab-btn" data-tab="tab5">Dịch vụ khác</button>
+                <button class="pricing-tab-btn" data-tab="tab5">Vận Hành Kênh Social Media</button>
             </div>
 
             <!-- Tab 1: Dịch vụ phân tích và đăng ký chiến dịch -->
@@ -541,111 +620,111 @@
 
             <!-- Tab 2: Booking KOLs - Nhà hàng/địa điểm -->
             <div class="pricing-tab-content" id="tab2">
-                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Giá gói dịch vụ BOOKING KOLS<br><small>(review nhà hàng/ địa điểm ăn uống)</small><br><small style="font-size: 14px;">(Giá chưa bao gồm VAT & 10% phí quản lý)</small></h2>
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 20px;">Bảng Giá Gói Booking KOL/KOC - Review Nhà Hàng, Địa điểm Ăn Uống</h2>
+                <p style="text-align: center; color: #4a4a4a; margin-bottom: 30px; font-size: 16px;">Gói dịch vụ video chuyên nghiệp cùng KOL, tích hợp đa nền tảng và tặng kèm những ưu đãi giá trị dành riêng cho thương hiệu của bạn.</p>
                 <div style="overflow-x: auto;">
                     <table class="pricing-table">
                         <thead>
                             <tr>
-                                <th>Quyền lợi</th>
-                                <th>Gói Basic<br><span class="price">10.000.000</span></th>
-                                <th>Gói Popular<br><span class="price">25.000.000</span></th>
-                                <th>Gói Premium<br><span class="price">30.000.000</span></th>
-                                <th>Tư Vấn</th>
+                                <th style="background: #F8F9FA; color: #1a1a2e;">Tiêu chí</th>
+                                <th>10 triệu đồng</th>
+                                <th>25 triệu đồng</th>
+                                <th>30 triệu đồng</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>GIÁ</td><td>10.000.000</td><td>25.000.000</td><td>30.000.000</td><td>Tư vấn thêm</td></tr>
-                            <tr><td>Số lượng kols (1 video/kols)</td><td>5</td><td>5</td><td>7</td><td rowspan="8">Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
-                            <tr><td>Mức follower kols</td><td>10-50k</td><td>50-100k</td><td>50-300k</td></tr>
-                            <tr><td>Độ dài video</td><td>30-60s</td><td>60-90s</td><td>60-90s</td></tr>
-                            <tr><td>Dạng video</td><td>Hình ảnh/ nhạc/ voice</td><td>Hình ảnh/ nhạc/ voice</td><td>Hình ảnh/ nhạc/ voice</td></tr>
-                            <tr><td>Nền tảng được đăng lại</td><td>Tiktok/ FB/ Instagram</td><td>Tiktok/ FB/ Instagram</td><td>Tiktok/ FB/ Instagram</td></tr>
+                            <tr><td>Số lượng KOLs</td><td>5 KOLs (10-50k followers)</td><td>5 KOLs (50-100k followers)</td><td>7 KOLs (50-300k followers)</td></tr>
+                            <tr><td>Độ dài video</td><td>30-60 giây</td><td>60-90 giây</td><td>60-90 giây</td></tr>
+                            <tr><td>Nền tảng</td><td>TikTok/FB/Instagram</td><td>TikTok/FB/Instagram</td><td>TikTok/FB/Instagram</td></tr>
                             <tr><td>SDHA (1 tháng)</td><td>Không</td><td>Có</td><td>Có</td></tr>
-                            <tr><td>Demo & feedback chỉnh sửa</td><td>2 lần</td><td>2 lần</td><td>2 lần</td></tr>
-                            <tr><td>Air video</td><td>Không giới hạn ngày giờ</td><td>Không giới hạn ngày giờ</td><td>Không giới hạn ngày giờ</td></tr>
-                            <tr><td colspan="5" style="background: #F0F0F0; font-weight: 600; padding: 15px;">GÓI TĂNG KÈM</td></tr>
-                            <tr><td>Hỗ trợ hình ảnh social fanpage cho brand</td><td>5</td><td>5</td><td>7</td><td rowspan="4"></td></tr>
-                            <tr><td>Hỗ trợ bài viết trên nhóm cộng đồng</td><td>Không</td><td>Có</td><td>Có</td></tr>
-                            <tr><td>Bó hình ảnh</td><td>Có (10 tấm)</td><td>Có (20 tấm)</td><td>Có (30 tấm)</td></tr>
-                            <tr><td>Brand hashtag/ địa điểm</td><td>Có</td><td>Có</td><td>Có</td></tr>
+                            <tr><td>Hỗ trợ hình ảnh</td><td>5 tấm</td><td>5 tấm + 20 tấm social</td><td>7 tấm + 30 tấm social</td></tr>
                         </tbody>
                     </table>
                 </div>
-                <div style="margin-top: 20px; padding: 15px; background: #FFF5F7; border-radius: 8px;">
-                    <p style="font-weight: 600; margin-bottom: 10px; color: #1a1a2e;">*Hỗ trợ BOOST ADS tăng hiển thị và tăng độ phủ với phí dịch vụ HẤP DẪN.</p>
-                    <p style="color: #4a4a4a; font-size: 15px;">(nhận tư vấn, set up và báo cáo số liệu dựa trên ngân sách của khách hàng)</p>
+                <div style="margin-top: 20px; padding: 15px; background: #F0F0FF; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px;">[NOTE]</span>
+                    <p style="color: #4a4a4a; font-size: 15px; margin: 0;">Hỗ trợ BOOST ADS tăng hiển thị với phí dịch vụ hấp dẫn - nhận tư vấn, set up và báo cáo số liệu chi tiết</p>
+                </div>
+
+                <!-- Gói Tặng Kèm Đặc Biệt -->
+                <div style="margin-top: 60px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 50px 40px; border-radius: 16px;">
+                    <h2 style="color: #1a1a2e; font-weight: 800; margin-bottom: 50px; font-size: 36px; text-align: center;">Gói Tặng Kèm Đặc Biệt</h2>
+                    <div class="two-column-layout" style="gap: 40px;">
+                        <div style="background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid #667eea;">
+                            <h3 style="font-weight: 700; margin-bottom: 25px; color: #1a1a2e; font-size: 24px;">Gói 10 Triệu</h3>
+                            <ul style="list-style: none; margin: 0; padding: 0; line-height: 2.4; color: #4a4a4a; font-size: 16px;">
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ 5 hình ảnh social fanpage</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Bộ 10 tấm hình ảnh</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Brand hashtag/địa điểm</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Demo & feedback 2 lần</li>
+                                <li style="padding: 8px 0;">✓ Air video không giới hạn</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid #764ba2;">
+                            <h3 style="font-weight: 700; margin-bottom: 25px; color: #1a1a2e; font-size: 24px;">Gói 25-30 Triệu</h3>
+                            <ul style="list-style: none; margin: 0; padding: 0; line-height: 2.4; color: #4a4a4a; font-size: 16px;">
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ 5-7 hình ảnh social fanpage</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Hỗ trợ bài viết nhóm cộng đồng</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Bộ 20-30 tấm hình ảnh</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Brand hashtag/địa điểm</li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✓ Demo & feedback 2 lần</li>
+                                <li style="padding: 8px 0;">✓ Air video không giới hạn</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Tab 3: Booking KOLs - Sản phẩm -->
             <div class="pricing-tab-content" id="tab3">
-                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Giá gói dịch vụ BOOKING KOLS<br><small>(review sản phẩm)</small><br><small style="font-size: 14px;">(Giá chưa bao gồm VAT)</small></h2>
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 20px;">Bảng Giá Gói Booking KOL/KOC - Review Sản phẩm & Bán Hàng Affiliate</h2>
+                <p style="text-align: center; color: #4a4a4a; margin-bottom: 30px; font-size: 16px;">Giải pháp video ngắn với KOC giúp thương hiệu tiếp cận đại chúng một cách hiệu quả và tiết kiệm chi phí.</p>
                 <div style="overflow-x: auto;">
                     <table class="pricing-table">
                         <thead>
                             <tr>
                                 <th>Quyền lợi</th>
-                                <th>Gói Basic<br><span class="price">3.000.000</span></th>
-                                <th>Gói Popular<br><span class="price">4.500.000</span></th>
-                                <th>Gói Premium<br><span class="price">7.000.000</span></th>
-                                <th>Tư Vấn</th>
+                                <th>Gói 30 KOC<br><span class="price">3.000.000đ</span></th>
+                                <th>Gói 50 KOC<br><span class="price">4.500.000đ</span></th>
+                                <th>Gói 100 KOC<br><span class="price">7.000.000đ</span></th>
+                                <th>Gói Tư Vấn<br><span class="price">Liên hệ</span></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>GIÁ</td><td>3.000.000</td><td>4.500.000</td><td>7.000.000</td><td>Tư vấn thêm</td></tr>
-                            <tr><td>Số lượng koc</td><td>30</td><td>50</td><td>100</td><td rowspan="3">Tư vấn túy theo nhu cầu của khách hàng.</td></tr>
+                            <tr><td>Giá</td><td>3.000.000đ</td><td>4.500.000đ</td><td>7.000.000đ</td><td>Liên hệ</td></tr>
+                            <tr><td>Số lượng video</td><td>30 video ngắn</td><td>50 video ngắn</td><td>100 video ngắn</td><td rowspan="2">Tùy chỉnh theo nhu cầu</td></tr>
                             <tr><td>Độ dài video</td><td>30-45s</td><td>30-60s</td><td>30-60s</td></tr>
-                            <tr><td>Dạng video</td><td>Video ngắn</td><td>Video ngắn</td><td>Video ngắn</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <div style="margin-top: 20px; padding: 15px; background: #F0F0FF; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px;">💬</span>
+                    <p style="color: #4a4a4a; font-size: 15px; margin: 0;">Giá chưa bao gồm VAT. Hỗ trợ BOOST ADS với phí dịch vụ hấp dẫn.</p>
+                </div>
 
-                <div class="two-column-layout">
-                    <!-- Left Column -->
-                    <div style="border-left: 3px solid #667eea; padding-left: 20px;">
-                        <div style="margin-bottom: 30px;">
-                            <h3 style="font-weight: 700; margin-bottom: 15px; color: #1a1a2e; font-size: 18px;">Áp dụng</h3>
-                            <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
-                                <li>Khác có mục tiêu giai đoạn rõ ràng và có thể đo lường.</li>
-                                <li>Khách có ngân sách rõ ràng và KPI tương ứng</li>
-                                <li>Khách cần marketing tích hợp ở cấp độ thương hiệu</li>
-                                <li>Khách có nhu cầu tạo ra sản phẩm bán chạy.</li>
-                            </ul>
-                        </div>
-
-                        <div style="margin-bottom: 30px;">
-                            <h3 style="font-weight: 700; margin-bottom: 15px; color: #1a1a2e; font-size: 18px;">Hình thức</h3>
-                            <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
-                                <li>Khách cung cấp: Ngân sách, KPI</li>
-                                <li>Oneup cung cấp: Phương án chạy doanh số</li>
-                                <li>Confirm phương án, bắt đầu tiền hành.</li>
-                            </ul>
-                        </div>
-
+                <!-- Cam Kết Chất Lượng -->
+                <div style="margin-top: 60px;">
+                    <h2 style="color: #1a1a2e; font-weight: 800; margin-bottom: 40px; font-size: 32px;">Cam Kết Chất Lượng</h2>
+                    <div class="two-column-layout">
                         <div>
-                            <h3 style="font-weight: 700; margin-bottom: 15px; color: #1a1a2e; font-size: 18px;">Ghi chú</h3>
-                            <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
-                                <li>KPI không cam kết GMV</li>
-                                <li>kol/koc liên quan đến kế hoạch trong gói này brand không được lựa chọn.</li>
-                            </ul>
+                            <div class="commitment-card">
+                                <h4 style="font-style: italic;">Gắn Link Vĩnh Viễn</h4>
+                                <p>Video được giữ nguyên trên kênh của KOL/KOC, đảm bảo hiệu quả lâu dài cho thương hiệu.</p>
+                            </div>
+                            <div class="commitment-card">
+                                <h4 style="font-style: italic;">Kịch Bản Chuyển Đổi</h4>
+                                <p>Nội dung được thiết kế chuẩn chỉnh nhằm tối ưu hóa tỷ lệ chuyển đổi khách hàng.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Right Column -->
-                    <div>
-                        <div style="background: #1a1a2e; color: white; padding: 30px; border-radius: 8px; margin-bottom: 20px;">
-                            <h3 style="font-weight: 700; margin-bottom: 15px; font-size: 20px;">*CAM KẾT:</h3>
-                            <ol style="margin-left: 20px; line-height: 2; color: white; font-size: 15px;">
-                                <li>Gắn link vĩnh viễn trên kênh.</li>
-                                <li>Chuẩn kịch bản chuyển đổi</li>
-                                <li>Video sắc nét, âm thanh rõ ràng</li>
-                                <li>Chuẩn ngành hàng, chuẩn tệp khách</li>
-                            </ol>
-                        </div>
-
-                        <div style="background: #1a1a2e; color: white; padding: 30px; border-radius: 8px;">
-                            <p style="font-weight: 700; margin-bottom: 15px; font-size: 16px;">*Hỗ trợ BOOST ADS tăng hiển thị và tăng độ phủ với phí dịch vụ HẤP DẪN.</p>
-                            <p style="font-size: 14px; line-height: 1.8;">(nhận tư vấn, set up và báo cáo số liệu dựa trên ngân sách của khách hàng)</p>
+                        <div>
+                            <div class="commitment-card">
+                                <h4 style="font-style: italic;">Chất Lượng Hình Ảnh</h4>
+                                <p>Video sắc nét, âm thanh rõ ràng, đáp ứng tiêu chuẩn chuyên nghiệp cao nhất.</p>
+                            </div>
+                            <div class="commitment-card">
+                                <h4 style="font-style: italic;">Chuẩn Tệp Khách Hàng</h4>
+                                <p>Nội dung phù hợp với ngành hàng và đúng tệp khách hàng mục tiêu của bạn.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -653,106 +732,98 @@
 
             <!-- Tab 4: Hợp tác KOL/KOC -->
             <div class="pricing-tab-content" id="tab4">
-                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Hợp tác KOL/KOC<br><small>(booking kol lẻ)</small></h2>
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 20px;">Bảng Giá Booking KOL/KOC Theo Video Đơn Lẻ</h2>
+                <p style="text-align: center; color: #4a4a4a; margin-bottom: 30px; font-size: 16px;">Bảng giá linh hoạt cho việc hợp tác với các nhà sáng tạo nội dung ở mọi cấp độ, từ Nano đến Mega influencer.</p>
                 <div style="overflow-x: auto;">
                     <table class="pricing-table">
                         <thead>
                             <tr>
-                                <th>Nhóm creator</th>
-                                <th>Phân loại</th>
+                                <th>Nhóm Creator</th>
+                                <th>Phân Loại</th>
                                 <th>Follower</th>
-                                <th>Video</th>
-                                <th>Đơn giá</th>
-                                <th>Hoa hồng</th>
-                                <th>Ghi chú</th>
+                                <th>Loại Video</th>
+                                <th>Đơn Giá</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td rowspan="5">KOL REVIEW/<br>KOC<br>BÁN HÀNG</td>
                                 <td>NANO</td>
+                                <td>KOL Review/KOC Bán Hàng</td>
                                 <td>1K-10K</td>
                                 <td>Video</td>
-                                <td>2tr</td>
-                                <td rowspan="5">• Phí quản lý +10%</td>
-                                <td rowspan="5">Đối với các brand chưa có kế hoạch cụ thể, booking lẻ.<br><br>Để có báo giá chính xác, brand cần cung cấp:<br>• Brief chi tiết<br>• Thời gian chạy dự kiến</td>
+                                <td>2 triệu đồng</td>
                             </tr>
                             <tr>
                                 <td>MICRO</td>
+                                <td>KOL Review/KOC Bán Hàng</td>
                                 <td>10K-100K</td>
                                 <td>Video</td>
-                                <td>từ 4tr</td>
+                                <td>Từ 4 triệu đồng</td>
                             </tr>
                             <tr>
                                 <td>MIDDLE</td>
+                                <td>KOL Review/KOC Bán Hàng</td>
                                 <td>100K-500K</td>
                                 <td>Video</td>
-                                <td>từ 6tr</td>
+                                <td>Từ 6 triệu đồng</td>
                             </tr>
                             <tr>
                                 <td>MACRO</td>
+                                <td>KOL Review/KOC Bán Hàng</td>
                                 <td>500K-1M</td>
                                 <td>Video</td>
-                                <td>từ 8-10tr</td>
+                                <td>Từ 8-10 triệu đồng</td>
                             </tr>
                             <tr>
                                 <td>MEGA</td>
-                                <td>1M</td>
+                                <td>KOL Review/KOC Bán Hàng</td>
+                                <td>1M+</td>
                                 <td>Video</td>
-                                <td>trên 15tr</td>
+                                <td>Trên 15 triệu đồng</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="margin-top: 20px; color: #4a4a4a; font-size: 15px;">Phí quản lý +10%. Để có báo giá chính xác, brand cần cung cấp brief chi tiết và thời gian chạy dự kiến.</p>
             </div>
 
-            <!-- Tab 5: Dịch vụ khác -->
+            <!-- Tab 5: Vận Hành Kênh Social Media -->
             <div class="pricing-tab-content" id="tab5">
-                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 30px;">Dịch vụ khác</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3 class="service-title">Quảng cáo</h3>
-                        <div class="service-content">
-                            <p style="font-weight: 600; margin-bottom: 15px; color: #1a1a2e;">*Hỗ trợ BOOST ADS tăng hiển thị và tăng độ phủ với phí dịch vụ HẤP DẪN.</p>
-                            <p style="color: #4a4a4a; font-size: 15px;">(nhận tư vấn, set up và báo cáo số liệu dựa trên ngân sách của khách hàng)</p>
-                        </div>
+                <h2 class="text-center mb-4" style="color: #1a1a2e; font-weight: 700; margin-bottom: 20px;">Gói Vận Hành Kênh Social Media</h2>
+                <p style="text-align: center; color: #4a4a4a; margin-bottom: 40px; font-size: 16px;">Dịch vụ quản lý và vận hành kênh truyền thông xã hội chuyên nghiệp, giúp thương hiệu tối ưu hiện diện số.</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                    <!-- Gói Cơ Bản -->
+                    <div class="commitment-card">
+                        <h4 style="font-style: italic; font-size: 20px; margin-bottom: 10px;">Gói Cơ Bản</h4>
+                        <p class="price" style="font-size: 16px; font-weight: 600; color: #667eea; margin-bottom: 20px;">Từ 8.000.000đ/tháng</p>
+                        <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
+                            <li>Quản lý 1 kênh TikTok/Facebook</li>
+                            <li>12-15 bài/tháng</li>
+                            <li>Đăng bài & báo cáo cơ bản</li>
+                        </ul>
                     </div>
-                    <div class="service-card">
-                        <h3 class="service-title">Vận hành</h3>
-                        <div class="service-content">
-                            <ul style="list-style: disc; margin-left: 20px; line-height: 1.8; color: #1a1a2e;">
-                                <li>Xây kênh mới (nếu brand chưa có trang)</li>
-                                <li>Vận hành: thiết kế hình ảnh, nội dung, set lịch lịch đăng,...</li>
-                            </ul>
-                            <p style="margin-top: 15px; color: #4a4a4a; font-size: 15px;">(nhận tư vấn, lên chương trình khuyến mãi, nội dung & báo cáo số liệu dựa trên gói khách chọn lựa)</p>
-                            <div style="margin-top: 20px; padding: 15px; background: #F0F0F0; border-radius: 8px;">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        <td style="padding: 5px; color: #1a1a2e;"><strong>Quản lý 1-2 kênh Tiktok/ Facebook</strong><br><span style="color: #4a4a4a;">12-15 bài/tháng<br>Đăng bài & báo cáo cơ bản</span></td>
-                                        <td style="padding: 5px; text-align: right; color: #1a1a2e;"><strong>Từ 8.000.000đ/tháng</strong></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div style="margin-top: 10px; padding: 15px; background: #F0F0F0; border-radius: 8px;">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        <td style="padding: 5px; color: #1a1a2e;"><strong>Quản lý 2 kênh / nội dung thương xuyên</strong><br><span style="color: #4a4a4a;">12-15 bài/tháng<br>Content plan, chi tiết, tối ưu SEO<br>Báo cáo chuyên sâu theo KPI</span></td>
-                                        <td style="padding: 5px; text-align: right; color: #1a1a2e;"><strong>Từ 20.000.000đ/tháng</strong></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div style="margin-top: 10px; padding: 15px; background: #F0F0F0; border-radius: 8px;">
-                                <table style="width: 100%;">
-                                    <tr>
-                                        <td style="padding: 5px; color: #1a1a2e;"><strong>Quản lý 2-3 kênh đa nền tảng chuyên nghiệp</strong><br><span style="color: #4a4a4a;">20+ bài/tháng + hỗ trợ chạy ads<br>Quản lý tương tác, insight, content calendar<br>Báo cáo chuyên sâu & KPI tăng trưởng</span></td>
-                                        <td style="padding: 5px; text-align: right; color: #1a1a2e;"><strong>Từ 35.000.000+/tháng</strong></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                    <!-- Gói Chuyên Nghiệp -->
+                    <div class="commitment-card">
+                        <h4 style="font-style: italic; font-size: 20px; margin-bottom: 10px;">Gói Chuyên Nghiệp</h4>
+                        <p class="price" style="font-size: 16px; font-weight: 600; color: #667eea; margin-bottom: 20px;">Từ 20.000.000đ/tháng</p>
+                        <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
+                            <li>Quản lý 2 kênh/nội dung thường xuyên</li>
+                            <li>12-15 bài/tháng</li>
+                            <li>Content plan chi tiết, tối ưu SEO</li>
+                        </ul>
+                    </div>
+                    <!-- Gói Doanh Nghiệp -->
+                    <div class="commitment-card">
+                        <h4 style="font-style: italic; font-size: 20px; margin-bottom: 10px;">Gói Doanh Nghiệp</h4>
+                        <p class="price" style="font-size: 16px; font-weight: 600; color: #667eea; margin-bottom: 20px;">Từ 35.000.000đ+/tháng</p>
+                        <ul style="list-style: disc; margin-left: 20px; line-height: 2; color: #4a4a4a;">
+                            <li>Quản lý 2-3 kênh đa nền tảng</li>
+                            <li>20+ bài/tháng + hỗ trợ chạy ads</li>
+                            <li>Quản lý tương tác, insight, content calendar</li>
+                            <li>Báo cáo chuyên sâu & KPI tăng trưởng</li>
+                        </ul>
                     </div>
                 </div>
-
             </div>
             <div style="margin-top: 30px; text-align: center;">
                 <button class="btn btn-primary btn-large" onclick="openContactModal()">TƯ VẤN THÊM</button>
